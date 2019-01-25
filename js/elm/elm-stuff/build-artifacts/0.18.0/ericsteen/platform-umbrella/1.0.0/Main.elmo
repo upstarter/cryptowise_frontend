@@ -1,0 +1,18 @@
+var _ericsteen$platform_umbrella$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _ericsteen$platform_umbrella$Main$init = function (flags) {
+	return A2(
+		_elm_lang$core$Platform_Cmd_ops['!'],
+		_ericsteen$platform_umbrella$Model$initialModel(flags),
+		{ctor: '[]'});
+};
+var _ericsteen$platform_umbrella$Main$main = _elm_lang$html$Html$programWithFlags(
+	{init: _ericsteen$platform_umbrella$Main$init, view: _ericsteen$platform_umbrella$View$view, update: _ericsteen$platform_umbrella$Update$update, subscriptions: _ericsteen$platform_umbrella$Main$subscriptions})(
+	A2(
+		_elm_lang$core$Json_Decode$andThen,
+		function (userType) {
+			return _elm_lang$core$Json_Decode$succeed(
+				{userType: userType});
+		},
+		A2(_elm_lang$core$Json_Decode$field, 'userType', _elm_lang$core$Json_Decode$string)));

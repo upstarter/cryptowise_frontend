@@ -1,0 +1,3 @@
+var _ericsteen$platform_umbrella$Decoders$validationErrorsDecoder = _elm_lang$core$Json_Decode$dict(
+	_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string));
+var _ericsteen$platform_umbrella$Decoders$responseDecoder = _elm_lang$core$Json_Decode$succeed(true);

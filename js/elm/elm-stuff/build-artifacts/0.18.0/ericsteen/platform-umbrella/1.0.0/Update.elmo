@@ -1,0 +1,86 @@
+var _ericsteen$platform_umbrella$Update$update = F2(
+	function (msg, model) {
+		var formFields = _ericsteen$platform_umbrella$Model$extractFormFields(model.subscribeForm);
+		var subscribeForm = model.subscribeForm;
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'HandleFullNameInput':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							subscribeForm: _ericsteen$platform_umbrella$Model$Editing(
+								_elm_lang$core$Native_Utils.update(
+									formFields,
+									{fullName: _p0._0}))
+						}),
+					{ctor: '[]'});
+			case 'HandleEmailInput':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							subscribeForm: _ericsteen$platform_umbrella$Model$Editing(
+								_elm_lang$core$Native_Utils.update(
+									formFields,
+									{email: _p0._0}))
+						}),
+					{ctor: '[]'});
+			case 'HandleFormSubmit':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{
+							subscribeForm: _ericsteen$platform_umbrella$Model$Saving(formFields)
+						}),
+					{
+						ctor: '::',
+						_0: _ericsteen$platform_umbrella$Commands$subscribe(subscribeForm),
+						_1: {ctor: '[]'}
+					});
+			default:
+				if (_p0._0.ctor === 'Ok') {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{subscribeForm: _ericsteen$platform_umbrella$Model$Success}),
+						{ctor: '[]'});
+				} else {
+					if (_p0._0._0.ctor === 'BadStatus') {
+						var _p1 = A2(_elm_lang$core$Json_Decode$decodeString, _ericsteen$platform_umbrella$Decoders$validationErrorsDecoder, _p0._0._0._0.body);
+						if (_p1.ctor === 'Ok') {
+							return A2(
+								_elm_lang$core$Platform_Cmd_ops['!'],
+								_elm_lang$core$Native_Utils.update(
+									model,
+									{
+										subscribeForm: A2(_ericsteen$platform_umbrella$Model$Invalid, formFields, _p1._0)
+									}),
+								{ctor: '[]'});
+						} else {
+							return A2(
+								_elm_lang$core$Platform_Cmd_ops['!'],
+								_elm_lang$core$Native_Utils.update(
+									model,
+									{
+										subscribeForm: A2(_ericsteen$platform_umbrella$Model$Errored, formFields, 'Oops! Something went wrong!')
+									}),
+								{ctor: '[]'});
+						}
+					} else {
+						return A2(
+							_elm_lang$core$Platform_Cmd_ops['!'],
+							_elm_lang$core$Native_Utils.update(
+								model,
+								{
+									subscribeForm: A2(_ericsteen$platform_umbrella$Model$Errored, formFields, 'Oops! Something went wrong!')
+								}),
+							{ctor: '[]'});
+					}
+				}
+		}
+	});

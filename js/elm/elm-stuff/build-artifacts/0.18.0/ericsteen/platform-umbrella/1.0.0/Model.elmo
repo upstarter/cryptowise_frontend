@@ -1,0 +1,63 @@
+var _ericsteen$platform_umbrella$Model$emptyValidationErrors = _elm_lang$core$Dict$empty;
+var _ericsteen$platform_umbrella$Model$extractValidationErrors = function (subscribeForm) {
+	var _p0 = subscribeForm;
+	if (_p0.ctor === 'Invalid') {
+		return _p0._1;
+	} else {
+		return _ericsteen$platform_umbrella$Model$emptyValidationErrors;
+	}
+};
+var _ericsteen$platform_umbrella$Model$providerFormFields = {fullName: '', email: '', userType: 'provider', buttonText: 'Apply'};
+var _ericsteen$platform_umbrella$Model$emptyFormFields = {fullName: '', email: '', userType: 'Investor', buttonText: 'Subscribe'};
+var _ericsteen$platform_umbrella$Model$extractFormFields = function (subscribeForm) {
+	var _p1 = subscribeForm;
+	switch (_p1.ctor) {
+		case 'Editing':
+			return _p1._0;
+		case 'Saving':
+			return _p1._0;
+		case 'Invalid':
+			return _p1._0;
+		case 'Errored':
+			return _p1._0;
+		default:
+			return _ericsteen$platform_umbrella$Model$emptyFormFields;
+	}
+};
+var _ericsteen$platform_umbrella$Model$Flags = function (a) {
+	return {userType: a};
+};
+var _ericsteen$platform_umbrella$Model$FormFields = F4(
+	function (a, b, c, d) {
+		return {fullName: a, email: b, userType: c, buttonText: d};
+	});
+var _ericsteen$platform_umbrella$Model$Model = function (a) {
+	return {subscribeForm: a};
+};
+var _ericsteen$platform_umbrella$Model$Success = {ctor: 'Success'};
+var _ericsteen$platform_umbrella$Model$Errored = F2(
+	function (a, b) {
+		return {ctor: 'Errored', _0: a, _1: b};
+	});
+var _ericsteen$platform_umbrella$Model$Invalid = F2(
+	function (a, b) {
+		return {ctor: 'Invalid', _0: a, _1: b};
+	});
+var _ericsteen$platform_umbrella$Model$Saving = function (a) {
+	return {ctor: 'Saving', _0: a};
+};
+var _ericsteen$platform_umbrella$Model$Editing = function (a) {
+	return {ctor: 'Editing', _0: a};
+};
+var _ericsteen$platform_umbrella$Model$initialModel = function (flags) {
+	var _p2 = flags.userType;
+	if (_p2 === 'provider') {
+		return {
+			subscribeForm: _ericsteen$platform_umbrella$Model$Editing(_ericsteen$platform_umbrella$Model$providerFormFields)
+		};
+	} else {
+		return {
+			subscribeForm: _ericsteen$platform_umbrella$Model$Editing(_ericsteen$platform_umbrella$Model$emptyFormFields)
+		};
+	}
+};

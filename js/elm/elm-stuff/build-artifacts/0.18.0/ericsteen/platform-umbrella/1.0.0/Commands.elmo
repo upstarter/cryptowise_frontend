@@ -1,0 +1,54 @@
+var _ericsteen$platform_umbrella$Commands$encodeModel = function (_p0) {
+	var _p1 = _p0;
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'lead',
+				_1: _elm_lang$core$Json_Encode$object(
+					{
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'email',
+							_1: _elm_lang$core$Json_Encode$string(_p1.email)
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'userType',
+								_1: _elm_lang$core$Json_Encode$string(_p1.userType)
+							},
+							_1: {ctor: '[]'}
+						}
+					})
+			},
+			_1: {ctor: '[]'}
+		});
+};
+var _ericsteen$platform_umbrella$Commands$post = function (formFields) {
+	return _elm_lang$http$Http$request(
+		{
+			method: 'POST',
+			headers: {ctor: '[]'},
+			url: '/api/v1/leads',
+			body: _elm_lang$http$Http$jsonBody(
+				_ericsteen$platform_umbrella$Commands$encodeModel(formFields)),
+			expect: _elm_lang$http$Http$expectJson(_ericsteen$platform_umbrella$Decoders$responseDecoder),
+			timeout: _elm_lang$core$Maybe$Nothing,
+			withCredentials: false
+		});
+};
+var _ericsteen$platform_umbrella$Commands$subscribe = function (subscribeForm) {
+	var _p2 = subscribeForm;
+	if (_p2.ctor === 'Editing') {
+		return A2(
+			_elm_lang$http$Http$send,
+			_ericsteen$platform_umbrella$Messages$SubscribeResponse,
+			_ericsteen$platform_umbrella$Commands$post(_p2._0));
+	} else {
+		return _elm_lang$core$Platform_Cmd$none;
+	}
+};

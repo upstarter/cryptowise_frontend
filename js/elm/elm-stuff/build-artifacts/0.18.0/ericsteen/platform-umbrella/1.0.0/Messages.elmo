@@ -1,0 +1,10 @@
+var _ericsteen$platform_umbrella$Messages$SubscribeResponse = function (a) {
+	return {ctor: 'SubscribeResponse', _0: a};
+};
+var _ericsteen$platform_umbrella$Messages$HandleFormSubmit = {ctor: 'HandleFormSubmit'};
+var _ericsteen$platform_umbrella$Messages$HandleEmailInput = function (a) {
+	return {ctor: 'HandleEmailInput', _0: a};
+};
+var _ericsteen$platform_umbrella$Messages$HandleFullNameInput = function (a) {
+	return {ctor: 'HandleFullNameInput', _0: a};
+};
