@@ -2,7 +2,7 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack-dev-server --inline --hot --stdin --host localhost --port 8080 --config webpack.config.js --mode development",
     "deploy": "webpack --mode production",
     "build": "NODE_ENV=development ./node_modules/webpack/bin/webpack.js --progress --color",
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"

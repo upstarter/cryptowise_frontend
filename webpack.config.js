@@ -27,7 +27,7 @@ module.exports = {
   },
   output: {
     // `path` is the folder where Webpack will place your bundles
-    path: path.resolve(__dirname, "../priv/static/"),
+    path: path.resolve(__dirname, "../dist"),
     // `filename` provides a template for naming your bundles (remember to use `[name]`)
     filename: 'js/[name].bundle.js',
     // `chunkFilename` provides a template for naming code-split bundles (optional)
@@ -175,12 +175,12 @@ module.exports = {
       "Access-Control-Allow-Headers": "*"
     },
     watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
-    contentBase: path.resolve(__dirname, "../priv/static/")
+    contentBase: path.resolve(__dirname, "../dist/")
   },
   plugins: [
     new AntdScssThemePlugin('./css/theme.scss'),
     new ReactLoadablePlugin({
-      filename: '../priv/static/react-loadable.json',
+      filename: '../dist/react-loadable.json',
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -189,7 +189,7 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     new CopyWebpackPlugin([{
-      from: "./static"
+      from: "./js/react_app/src/"
     }]),
     new BundleAnalyzerPlugin({
       generateStatsFile: true
