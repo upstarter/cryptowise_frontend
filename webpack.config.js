@@ -7,6 +7,7 @@ const UglifyJsPlugin = require("uglify-js-plugin");
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const AntdScssThemePlugin = require('antd-scss-theme-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const env = process.env.NODE_ENV || "development";
 const devMode = env === "development";
@@ -21,17 +22,17 @@ module.exports = {
   mode: mode,
   devtool: "source-map",
   entry: {
-    app: ["./js/app.js"
-      // , "./js/elm/src/Main.elm"
+    app: ["./src/js/app.js"
+      // , "./js/elm/app/Main.elm"
     ]
   },
   output: {
     // `path` is the folder where Webpack will place your bundles
-    path: path.resolve(__dirname, "../dist"),
+    path: path.resolve(__dirname, "dist"),
     // `filename` provides a template for naming your bundles (remember to use `[name]`)
-    filename: 'js/[name].bundle.js',
+    filename: 'dist/js/[name].bundle.js',
     // `chunkFilename` provides a template for naming code-split bundles (optional)
-    chunkFilename: 'js/[name].bundle.js'
+    chunkFilename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -82,7 +83,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               // sourceMap: devMode,
-              camelCase: true,
+              // camelCase: true,
               localIdentName: '[name]-[local]-[hash:base64:5]',
             },
           },
@@ -121,7 +122,7 @@ module.exports = {
       },
       {
         test: /\.(jsx?)/,
-        exclude: ["/node_modules", "/js/elm"],
+        exclude: ["/node_modules", "/src/js/elm"],
         use: [
           { loader: "babel-loader?cacheDirectory=true",
           }
@@ -153,7 +154,13 @@ module.exports = {
   resolve: {
     extensions: [".css", ".sass", ".scss", ".less", ".js", ".jsx"],
     alias: {
-      phoenix: __dirname + "/deps/phoenix/assets/js/phoenix.js"
+      Components: path.resolve(__dirname, 'src/js/react_app/src/components'),
+      Styles: path.resolve(__dirname, 'src/js/react_app/src/styles'),
+      Utils: path.resolve(__dirname, 'src/js/react_app/src/utils/'),
+      Images: path.resolve(__dirname, 'src/assets/images'),
+      Css: path.resolve(__dirname, 'src/assets/css'),
+      Fonts: path.resolve(__dirname, 'src/assets/fonts'),
+      Templates: path.resolve(__dirname, 'src/templates/')
     }
   },
   devServer: {
@@ -175,12 +182,17 @@ module.exports = {
       "Access-Control-Allow-Headers": "*"
     },
     watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
-    contentBase: path.resolve(__dirname, "../dist/")
+    contentBase: path.resolve(__dirname, "dist"),
+    port: 8081,
+  },
+  node: {
+    fs: 'empty' // Weird hack for now to prevent 'fs' errors
   },
   plugins: [
-    new AntdScssThemePlugin('./css/theme.scss'),
+    new Dotenv(),
+    new AntdScssThemePlugin('./src/assets/css/theme.scss'),
     new ReactLoadablePlugin({
-      filename: '../dist/react-loadable.json',
+      filename: './dist/react-loadable.json',
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -189,10 +201,10 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     new CopyWebpackPlugin([{
-      from: "./js/react_app/src/"
+      from: "./src/js/react_app/src/"
     }]),
-    new BundleAnalyzerPlugin({
-      generateStatsFile: true
-    })
+    // new BundleAnalyzerPlugin({
+    //   generateStatsFile: true
+    // })
   ]
 };
