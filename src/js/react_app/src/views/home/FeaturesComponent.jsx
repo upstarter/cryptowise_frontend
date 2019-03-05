@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 import colors from '../../styles/colors'
 import { Row, Col } from 'antd'
 import injectSheet, { jss } from "react-jss"
+import Icon1 from 'Images/icon1.svg';
+import Icon2 from 'Images/icon2.svg';
+import Icon3 from 'Images/icon3.svg';
 
 
 class FeaturesComponent extends React.Component {
@@ -19,7 +22,7 @@ class FeaturesComponent extends React.Component {
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                 <div className="feature-icon">
                   <figure className="image">
-                    <img alt="Crypto investing strategies" src="/images/icon1.svg"/>
+                    <img alt="Crypto investing strategies" src={Icon1}/>
                   </figure>
                 </div>
                 <h3>Crypto Investing Strategy</h3>
@@ -32,7 +35,7 @@ class FeaturesComponent extends React.Component {
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                 <div className="feature-icon">
                   <figure className="image">
-                    <img alt="Crypto Investing" src="/images/icon2.svg"/>
+                    <img alt="Crypto Investing" src={Icon2}/>
                   </figure>
                 </div>
                 <h3>Crypto Financial Analysis</h3>
@@ -44,7 +47,7 @@ class FeaturesComponent extends React.Component {
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                 <div className="feature-icon">
                   <figure className="image">
-                    <img alt="Crypto Trading, Crypto Investing" src="/images/icon3.svg"/>
+                    <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
                   </figure>
                 </div>
                 <h3>Investment Collaboration</h3>

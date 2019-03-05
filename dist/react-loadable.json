@@ -775,7 +775,7 @@
       "publicPath": "dist/js/app.bundle.js.map"
     }
   ],
-  "../icon": [
+  "antd/es/icon": [
     {
       "id": "./node_modules/antd/es/icon/index.js",
       "name": "./node_modules/antd/es/icon/index.js",
@@ -3067,7 +3067,7 @@
       "publicPath": "dist/js/app.bundle.js.map"
     }
   ],
-  "indexof": [
+  "component-indexof": [
     {
       "id": "./node_modules/component-indexof/index.js",
       "name": "./node_modules/component-indexof/index.js",
@@ -4469,20 +4469,6 @@
     {
       "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdSassLoader.js?!./src/js/react_app/src/views/analysis/Tooltip.css",
       "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdSassLoader.js?!./src/js/react_app/src/views/analysis/Tooltip.css",
-      "file": "dist/js/app.bundle.js.map",
-      "publicPath": "dist/js/app.bundle.js.map"
-    }
-  ],
-  "../css-loader/lib/css-base.js": [
-    {
-      "id": "./node_modules/css-loader/lib/css-base.js",
-      "name": "./node_modules/css-loader/lib/css-base.js",
-      "file": "dist/js/app.bundle.js",
-      "publicPath": "dist/js/app.bundle.js"
-    },
-    {
-      "id": "./node_modules/css-loader/lib/css-base.js",
-      "name": "./node_modules/css-loader/lib/css-base.js",
       "file": "dist/js/app.bundle.js.map",
       "publicPath": "dist/js/app.bundle.js.map"
     }
@@ -9975,7 +9961,7 @@
       "publicPath": "dist/js/app.bundle.js.map"
     }
   ],
-  "webpack/hot/emitter": [
+  "./emitter": [
     {
       "id": "./node_modules/webpack/hot/emitter.js",
       "name": "./node_modules/webpack/hot/emitter.js",
@@ -10493,7 +10479,7 @@
       "publicPath": "dist/js/app.bundle.js.map"
     }
   ],
-  "../utils/consts": [
+  "../../utils/consts": [
     {
       "id": "./src/js/react_app/src/utils/consts.js",
       "name": "./src/js/react_app/src/utils/consts.js",
@@ -10829,6 +10815,132 @@
       "publicPath": "dist/js/app.bundle.js.map"
     }
   ],
+  "antd/es/col/style": [
+    {
+      "id": "./node_modules/antd/es/col/style/index.js",
+      "name": "./node_modules/antd/es/col/style/index.js",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./node_modules/antd/es/col/style/index.js",
+      "name": "./node_modules/antd/es/col/style/index.js",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "../../grid/style/index.less": [
+    {
+      "id": "./node_modules/antd/es/grid/style/index.less",
+      "name": "./node_modules/antd/es/grid/style/index.less",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./node_modules/antd/es/grid/style/index.less",
+      "name": "./node_modules/antd/es/grid/style/index.less",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "antd/es/row/style": [
+    {
+      "id": "./node_modules/antd/es/row/style/index.js",
+      "name": "./node_modules/antd/es/row/style/index.js",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./node_modules/antd/es/row/style/index.js",
+      "name": "./node_modules/antd/es/row/style/index.js",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "../../style/index.less": [
+    {
+      "id": "./node_modules/antd/es/style/index.less",
+      "name": "./node_modules/antd/es/style/index.less",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./node_modules/antd/es/style/index.less",
+      "name": "./node_modules/antd/es/style/index.less",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "!!../../../../css-loader/index.js??ref--5-1!../../../../antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js??ref--5-2!./index.less": [
+    {
+      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
+      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
+      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "!!../../../css-loader/index.js??ref--5-1!../../../antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js??ref--5-2!./index.less": [
+    {
+      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
+      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
+      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "Images/icon1.svg": [
+    {
+      "id": "./src/assets/images/icon1.svg",
+      "name": "./src/assets/images/icon1.svg",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./src/assets/images/icon1.svg",
+      "name": "./src/assets/images/icon1.svg",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "Images/icon2.svg": [
+    {
+      "id": "./src/assets/images/icon2.svg",
+      "name": "./src/assets/images/icon2.svg",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./src/assets/images/icon2.svg",
+      "name": "./src/assets/images/icon2.svg",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
+  "Images/icon3.svg": [
+    {
+      "id": "./src/assets/images/icon3.svg",
+      "name": "./src/assets/images/icon3.svg",
+      "file": "home.bundle.js",
+      "publicPath": "home.bundle.js"
+    },
+    {
+      "id": "./src/assets/images/icon3.svg",
+      "name": "./src/assets/images/icon3.svg",
+      "file": "home.bundle.js.map",
+      "publicPath": "home.bundle.js.map"
+    }
+  ],
   "../../views/blog/BlogComponent": [
     {
       "id": "./src/js/react_app/src/views/blog/BlogComponent.jsx",
@@ -10895,20 +11007,8 @@
     {
       "id": "./src/assets/images/hero.jpg",
       "name": "./src/assets/images/hero.jpg",
-      "file": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js",
-      "publicPath": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js"
-    },
-    {
-      "id": "./src/assets/images/hero.jpg",
-      "name": "./src/assets/images/hero.jpg",
       "file": "home~provider.bundle.js.map",
       "publicPath": "home~provider.bundle.js.map"
-    },
-    {
-      "id": "./src/assets/images/hero.jpg",
-      "name": "./src/assets/images/hero.jpg",
-      "file": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js.map",
-      "publicPath": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js.map"
     }
   ],
   "../../styles/heroStyles": [
@@ -10921,20 +11021,8 @@
     {
       "id": "./src/js/react_app/src/styles/heroStyles.js",
       "name": "./src/js/react_app/src/styles/heroStyles.js",
-      "file": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js",
-      "publicPath": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js"
-    },
-    {
-      "id": "./src/js/react_app/src/styles/heroStyles.js",
-      "name": "./src/js/react_app/src/styles/heroStyles.js",
       "file": "home~provider.bundle.js.map",
       "publicPath": "home~provider.bundle.js.map"
-    },
-    {
-      "id": "./src/js/react_app/src/styles/heroStyles.js",
-      "name": "./src/js/react_app/src/styles/heroStyles.js",
-      "file": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js.map",
-      "publicPath": "home~provider.7194bdd4d78a53f2e2cd.hot-update.js.map"
     }
   ],
   "./ProviderComponent": [
@@ -10977,90 +11065,6 @@
       "name": "./src/js/react_app/src/views/providers/ProviderHeroComponent.jsx",
       "file": "provider.bundle.js.map",
       "publicPath": "provider.bundle.js.map"
-    }
-  ],
-  "antd/es/col/style": [
-    {
-      "id": "./node_modules/antd/es/col/style/index.js",
-      "name": "./node_modules/antd/es/col/style/index.js",
-      "file": "vendors~home.bundle.js",
-      "publicPath": "vendors~home.bundle.js"
-    },
-    {
-      "id": "./node_modules/antd/es/col/style/index.js",
-      "name": "./node_modules/antd/es/col/style/index.js",
-      "file": "vendors~home.bundle.js.map",
-      "publicPath": "vendors~home.bundle.js.map"
-    }
-  ],
-  "../../grid/style/index.less": [
-    {
-      "id": "./node_modules/antd/es/grid/style/index.less",
-      "name": "./node_modules/antd/es/grid/style/index.less",
-      "file": "vendors~home.bundle.js",
-      "publicPath": "vendors~home.bundle.js"
-    },
-    {
-      "id": "./node_modules/antd/es/grid/style/index.less",
-      "name": "./node_modules/antd/es/grid/style/index.less",
-      "file": "vendors~home.bundle.js.map",
-      "publicPath": "vendors~home.bundle.js.map"
-    }
-  ],
-  "antd/es/row/style": [
-    {
-      "id": "./node_modules/antd/es/row/style/index.js",
-      "name": "./node_modules/antd/es/row/style/index.js",
-      "file": "vendors~home.bundle.js",
-      "publicPath": "vendors~home.bundle.js"
-    },
-    {
-      "id": "./node_modules/antd/es/row/style/index.js",
-      "name": "./node_modules/antd/es/row/style/index.js",
-      "file": "vendors~home.bundle.js.map",
-      "publicPath": "vendors~home.bundle.js.map"
-    }
-  ],
-  "../../style/index.less": [
-    {
-      "id": "./node_modules/antd/es/style/index.less",
-      "name": "./node_modules/antd/es/style/index.less",
-      "file": "vendors~home.bundle.js",
-      "publicPath": "vendors~home.bundle.js"
-    },
-    {
-      "id": "./node_modules/antd/es/style/index.less",
-      "name": "./node_modules/antd/es/style/index.less",
-      "file": "vendors~home.bundle.js.map",
-      "publicPath": "vendors~home.bundle.js.map"
-    }
-  ],
-  "!!../../../../css-loader/index.js??ref--5-1!../../../../antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js??ref--5-2!./index.less": [
-    {
-      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
-      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
-      "file": "vendors~home.bundle.js",
-      "publicPath": "vendors~home.bundle.js"
-    },
-    {
-      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
-      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/grid/style/index.less",
-      "file": "vendors~home.bundle.js.map",
-      "publicPath": "vendors~home.bundle.js.map"
-    }
-  ],
-  "!!../../../css-loader/index.js??ref--5-1!../../../antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js??ref--5-2!./index.less": [
-    {
-      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
-      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
-      "file": "vendors~home.bundle.js",
-      "publicPath": "vendors~home.bundle.js"
-    },
-    {
-      "id": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
-      "name": "./node_modules/css-loader/index.js?!./node_modules/antd-scss-theme-plugin/build/dist/lib/antdLessLoader.js?!./node_modules/antd/es/style/index.less",
-      "file": "vendors~home.bundle.js.map",
-      "publicPath": "vendors~home.bundle.js.map"
     }
   ],
   "exenv": [
@@ -11175,7 +11179,7 @@
       "publicPath": "vendors~provider.bundle.js.map"
     }
   ],
-  "../helpers/tabbable": [
+  "./tabbable": [
     {
       "id": "./node_modules/react-modal/lib/helpers/tabbable.js",
       "name": "./node_modules/react-modal/lib/helpers/tabbable.js",

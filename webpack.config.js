@@ -158,7 +158,7 @@ module.exports = {
       Styles: path.resolve(__dirname, 'src/js/react_app/src/styles'),
       Utils: path.resolve(__dirname, 'src/js/react_app/src/utils/'),
       Images: path.resolve(__dirname, 'src/assets/images'),
-      Css: path.resolve(__dirname, 'src/assets/css'),
+      Css: path.resolve(__dirname, 'src/assets/css/'),
       Fonts: path.resolve(__dirname, 'src/assets/fonts'),
       Templates: path.resolve(__dirname, 'src/templates/')
     }
