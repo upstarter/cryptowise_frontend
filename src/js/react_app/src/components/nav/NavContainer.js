@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import img from "../../../../../static/images/nav_logo.svg";
+import img from "Images/white_nav_logo.svg";
 import { Link } from "react-router-dom";
 import { Auth } from "../auth/Auth";
 import injectSheet, { jss } from "react-jss"

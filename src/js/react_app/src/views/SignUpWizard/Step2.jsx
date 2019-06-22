@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import { Redirect, withRouter } from 'react-router-dom'
+import { GoogleLogin, GoogleLogout } from 'react-google-login'
+import FacebookLogin from 'react-facebook-login';
+
+import {url} from '../../utils/consts'
 import injectSheet from "react-jss";
 import Tile from "../../components/Tile/Tile";
 import logo from "Images/white_nav_logo.svg";
@@ -6,6 +11,7 @@ import fbsvg from "Images/facebook.svg";
 import fbWhite from "Images/facebook-white.svg";
 import googleLogo from "Images/google.svg";
 import googleLogoWhite from "Images/google-plus-white.png";
+import googleSigninButton from "Images/btn_google_signin_dark_normal_web.png";
 import colors from "Styles/colors"
 
 
@@ -16,6 +22,7 @@ class SignUpStep2 extends Component {
     // Bindings for form fields would go here,
     // and state would keep track of field input
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.responseGoogle = this.responseGoogle.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -43,6 +50,15 @@ class SignUpStep2 extends Component {
     console.log(this.state);
     this.props.saveForm(this.state);
   }
+
+  responseGoogle(response) {
+    console.log(response);
+  }
+
+  responseFacebook = (response) => {
+    console.log(response);
+  }
+
   render() {
     let props = this.props;
     let classes = props.classes;
@@ -57,29 +73,48 @@ class SignUpStep2 extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            Monetize your crypto capabilities
+            Uncover hypergrowth cryptoassets along with top analysts
           </h2>
         </div>
         <div className={classes.main}>
           <div className={classes.socialButtons}>
-            <a
-              href="#"
-              className={"social-button " + classes.facebook_connect}
-              id="facebook-connect"
-            >
-              {" "}
-              <span>Connect with Facebook</span>
-            </a>
-            <a
-              href="#"
-              className={"social-button " + classes.google_connect}
-              id="google-connect"
-            >
-              {" "}
-              <span>Connect with Google</span>
-            </a>
+            <div>
+              {/* <FacebookLogin
+                appId="494273931358072"
+                autoLoad
+                callback={this.responseFacebook}
+                cssClass={classes.fbLoginButton}
+                icon="fa-facebook"
+                textButton = "&nbsp;&nbsp;Continue with Facebook"
+                // render={renderProps => (
+                //   <button
+                //     className="fb-login-button"
+                //     onClick={renderProps.onClick}
+                //   >
+                //     Continue with Facebook
+                //   </button>
+                // )}
+              /> */}
+            </div>
+              <GoogleLogin
+                clientId={process.env.GOOGLE_CLIENT_ID}
+                render={renderProps => (
+                  <button
+                    className={classes.googleLoginButton}
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}>
+                      <img src={googleSigninButton} />
+                  </button>
+                )}
+                onSuccess={this.responseGoogle}
+                onFailure={this.responseGoogle}
+                cookiePolicy={'single_host_origin'}
+              >
+              </GoogleLogin>
           </div>
-          <div className={classes.vl} />
+          <hr />
+          -- or signup with email --
+          <hr />
           <div className={classes.loginForm}>
             <form
               onSubmit={e => {
@@ -95,7 +130,7 @@ class SignUpStep2 extends Component {
                     id="name"
                     value={this.state.name}
                     type="fullname"
-                    placeholder="e.g. Bob Smith"
+                    placeholder="e.g. John Doe"
                     className="input"
                     required
                     onChange={this.handleNameChange}
@@ -114,7 +149,7 @@ class SignUpStep2 extends Component {
                     id="email"
                     value={this.state.email}
                     type="email"
-                    placeholder="e.g. bobsmith@gmail.com"
+                    placeholder="e.g. johndoe@gmail.com"
                     className="input"
                     required
                     onChange={this.handleEmailChange}
@@ -143,20 +178,21 @@ class SignUpStep2 extends Component {
                   </span>
                 </div>
               </div>
-              <div className="field">
+              <div className="field" style={{marginTop: 4}}>
                 <label htmlFor="remember" className="checkbox">
                   <input id="remember" type="checkbox" />
                   Remember me
                 </label>
               </div>
-              <div className="field">
-                <button onClick={this.props.prev} className="button is-primary">
+              <div className="field" style={{marginTop: 4}}>
+                <button onClick={this.props.prev} className={classes.formButton}>
                   Back
                 </button>
                 <button
                   onClick={this.submit}
                   // type="submit"
-                  className="button is-success"
+                  style={{marginLeft: 4}}
+                  className={classes.formButton}
                 >
                   Submit
                 </button>
@@ -174,26 +210,73 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "row",
+    flexWrap: 'wrap',
+    alignItems: 'center',
     justifyContent: "center",
-  },
-  main: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    margin: '5px auto',
-    width: '800px !important',
-    'overflow-y': 'none',
+
   },
   header: {
-    position: 'fixed',
+    textAlign: 'center',
     width: '100%',
+    margin: [0,0,20,0],
     zIndex: 1,
     background: `${colors.white}`,
+  },
+  main: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    justifyContent: "center",
+    alignItems: 'center',
+    width: '800px !important',
+    'overflow-y': 'none',
   },
   title: {
     padding: [10,20,20,25],
     fontSize: "21px !important",
     color: `${colors.black}`,
+  },
+  formButton: {
+    margin: [0, 0, 0, 0],
+    padding: 4,
+    borderRadius: 4,
+    width: 75,
+  },
+  fbLoginButton: {
+    width: 190,
+    height:35,
+    borderRadius: 3,
+    background: '#3b5998',
+    color: 'white',
+    border: '0px transparent',
+    textAlign: 'center',
+    margin: [5, 0, 0, 0],
+    display: 'inline-block',
+    '&:hover': {
+        background: '#3b5998',
+        opacity: "0.6"
+    }
+  },
+  googleLoginButton: {
+    width: 190,
+    height: 48,
+    borderRadius: 3,
+    color: 'white',
+    background: 'transparent',
+    border: '0px transparent',
+    textAlign: 'center',
+    margin: [10, 0, 0, 0],
+    display: 'inline-block',
+    '&:hover': {
+        background: 'transparent',
+        opacity: "0.6"
+    }
+  },
+  socialButtons: {
+    justifyContent: 'center',
+  },
+  loginForm: {
+    justifyContent: 'center',
   },
   footer: {
     position: 'fixed',
@@ -205,36 +288,6 @@ const styles = {
     background: `${colors.white}`,
     boxShadow: '8px 2px 4px 8px #f0f1f2',
   },
-  button: {
-    float: 'right',
-    width: '75px',
-    margin: "30px 170px 0 0",
-  },
-  socialButtons: {
-    flex: "1",
-    maxWidth: "40%"
-  },
-  loginForm: {
-    flex: "1",
-    maxWidth: "40%"
-  },
-  vl: {
-    borderLeft: "1px solid black",
-    height: "20em"
-  },
-  facebook_connect: {
-    background: `rgb(255, 255, 255) url(${fbsvg}) no-repeat scroll 5px 0px / 30px 50px padding-box border-box`,
-    "&:hover": {
-      background: `rgb(60, 90, 154) url(${fbWhite}) no-repeat scroll 5px 0px / 30px 50px padding-box border-box`
-    }
-  },
-  google_connect: {
-    background: `rgb(255, 255, 255) url(${googleLogo}) no-repeat scroll 10px 0px / 30px 50px padding-box border-box`,
-    "&:hover": {
-      background: `rgb(220, 74, 61) url(${googleLogo}) no-repeat scroll 10px 0px / 30px 50px padding-box border-box`
-    }
-  },
-
   "@media (min-width: 576px) (max-width: 992px)": {
     header: {
       height: "160px",
@@ -288,4 +341,4 @@ const styles = {
 };
 
 const Step2 = injectSheet(styles)(SignUpStep2);
-export default Step2;
+export default withRouter(Step2);

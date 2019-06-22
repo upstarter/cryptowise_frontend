@@ -117,6 +117,7 @@ const styles = {
   header: {
     position: 'fixed',
     width: '100%',
+    margin: [0,0,20,0],
     zIndex: 1,
     background: `${colors.white}`,
   },
@@ -169,7 +170,7 @@ const styles = {
   },
   "@media (max-width: 576px)": {
     header: {
-      maxHeight: "145px",
+      maxHeight: "155px",
       lineHeight: ".1em",
     },
     title: {
@@ -184,7 +185,7 @@ const styles = {
       gridTemplateColumns: "1fr 1fr"
     },
     main: {
-      marginTop: 60,
+      marginTop: 120,
     },
 
   }

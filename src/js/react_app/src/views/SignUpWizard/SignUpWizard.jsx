@@ -45,12 +45,14 @@ export default class SignUpWizard extends Component {
           state._saveinterestIds !== null
         ) {
           axios
-            .post(`${url}/api/v1/auth`, {
-              name: state.name,
-              email: state.email,
-              password: state.password,
-              topic_knowledge_ids: state.topic_knowledge_ids,
-              topic_interest_ids: state.topic_interest_ids
+            .post(`${url}/api/v1/auth/create`, {
+              auth: {
+                name: state.name,
+                email: state.email,
+                password: state.password,
+                topic_knowledge_ids: state.topic_knowledge_ids,
+                topic_interest_ids: state.topic_interest_ids
+              }
             })
             .then(function(response) {
               console.log(response);
