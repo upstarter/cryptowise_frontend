@@ -32,7 +32,7 @@ const colors = {
   lightBlack: '#5D626E',
   lightBlue: '#EEf4fb',
   lightPurple: '#783D6F',
-  OdarkPurple: 'rgba(83,40,85,.8)',
+  darkPurple: 'rgba(83,40,85,.8)',
   silver: '#AEBED4',
   green: '#73b581', //#8de8c3
   smoke: '#D0E5FF',
