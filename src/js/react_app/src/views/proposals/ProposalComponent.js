@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
-import { List, Avatar, Button, Skeleton } from 'antd';
+import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider } from 'antd';
+const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 
 const count = 3;
@@ -79,39 +80,43 @@ class ProposalComponent extends React.Component {
         <ScrollToTopOnMount />
         <section id="proposal" className={classes.proposals}>
           <div id="proposal-blurb">
-            <div id="proposal-blurb-intro">
-              <h1>Proposals</h1>
-              <p>
-                Proposals are a way for our ecosystem to sprout the seeds of what it is to become. They are the guiding light
-                to prosperity and opportunity for the next generations of entrepreneurs, hackers, financiers.
-              </p>
-            </div>
+            <Typography>
+              <div id="proposal-blurb-intro">
+                <Title>Proposals</Title>
+                <Paragraph>
+                  Proposals are a way for our ecosystem to sprout the seeds of
+                  what it is to become over the long term. They are the guiding north
+                  star to prosperity and opportunity for the next generations of hackers, fin-repreneurs, and financiers.
+                </Paragraph>
+              </div>
 
-            <div id="proposal-blurb-features">
-              <h5 id="proposal-blurb-how">How to participate:</h5>
-              <ol id="proposal-blurb-how-list">
-                <li>Submit features.</li>
-                <li>Find features relevent to your activities</li>
-                <li>Upvote features submitted by the community for inclusion in our RIFS program (rapid implementation feasibility study).</li>
-              </ol>
-            </div>
+              <div id="proposal-blurb-features">
+                <h5 id="proposal-blurb-how">How to participate:</h5>
+                <ol id="proposal-blurb-list">
+                  <li>Submit and find features relevent to your goals & activities</li>
+                  <li>Claim features relevent to your goals & activities and implement as API endpoints for RIFF awards</li>
+                </ol>
+              </div>
 
-            <div id="proposal-blurb-guide">
-              <h6 id="proposal-blurb-title" className="subtitle-small">
-                Guidelines
-              </h6>
-              <ol id="proposal-blurb-guide-list">
-                <li>Submit features.</li>
-                <li>Find features relevent to your activities</li>
-                <li>Upvote features submitted by the community for inclusion in our RIFS program (rapid implementation feasibility study).</li>
-              </ol>
-            </div>
-
+              <div id="proposal-blurb-guide">
+                <h5 id="proposal-blurb-title">
+                  RIFF Guidelines
+                </h5>
+                <ol id="proposal-blurb-list">
+                  <li>Submit features that take a few days or weeks to implement</li>
+                  <li>Prioritize features relevent to your goals & activities</li>
+                  <li>Upvote features submitted by the community for inclusion in our RIFFS program (rapid implementation feasibility & fundability study).</li>
+                </ol>
+              </div>
+            </Typography>
           </div>
+
           <div id="proposal-items" className={classes.proposalItems}>
-            <div id="proposal-items-heading">
-              <h3>Community Proposals</h3>
-            </div>
+            <Affix offsetTop={64}>
+              <div id="proposal-items-heading">
+                <h3>RIFF Proposals</h3>
+              </div>
+            </Affix>
             <div className="proposal-column">
               <List
                 className="demo-loadmore-list"
@@ -120,16 +125,19 @@ class ProposalComponent extends React.Component {
                 loadMore={loadMore}
                 dataSource={list}
                 renderItem={item => (
-                  <List.Item actions={[<a>edit</a>, <a>more</a>]}>
+                  <List.Item actions={[<a>more</a>]}>
                     <Skeleton avatar title={false} loading={item.loading} active>
                       <List.Item.Meta
                         avatar={
                           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                         }
                         title={<a href="https://ant.design">{item.name.last}</a>}
-                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                        description="RIFF, a proposal language for analytical crypto-networking applications, refined by the CryptoWise Team"
                       />
-                      <div>content</div>
+                      {/* <div>Content Goes here</div> */}
+                      <div>
+                        <Rate allowHalf />
+                      </div>
                     </Skeleton>
                   </List.Item>
                 )}
@@ -173,6 +181,10 @@ const proposalStyles = {
         maxWidth: '60ch',
       },
 
+      '& #proposal-blurb-list': {
+        padding: [10,0,10,10]
+      },
+
 
       '& #proposal-blurb-features': {
         padding: [10, 0, 0, 0],
@@ -181,9 +193,15 @@ const proposalStyles = {
           padding: [0,0,0,0]
         },
 
-        '& #proposal-blurb-how-list': {
-          padding: [0,0,0,40]
-        }
+      },
+
+      '& #proposal-blurb-guide': {
+        padding: [10, 0, 0, 0],
+
+        '& #proposal-blurb-guide-title': {
+          padding: [0,0,0,0]
+        },
+
       }
     }
 
@@ -193,32 +211,28 @@ const proposalStyles = {
     gridArea: 'content',
     backgroundColor: '#ffffff',
 
+    '@media (min-width: 992px)': {
+      width: '98%',
+    },
+
     '& #proposal-items-heading': {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       // position: 'fixed',
-      height: 50,
-      border: '1.2px solid #000000',
+      height: 40,
+      // border: '1.2px solid #000000',
       fontWeight: '400',
       zIndex: 10,
-      // backgroundColor: '#D0E5FF',
+      backgroundColor: '#D0E5FF',
       color: '#000',
-
-      '@media (min-width: 992px)': {
-        width: '55vw',
-      },
-
-
     },
 
-    '& ul.proposal-column': {
-      '& li': {
-        display: 'block',
-        listStyleType: 'none',
-        padding: [10, 20, 10, 20],
-        border: '1px solid #727d88',
-      }
+    '& .ant-list-item': {
+      // display: 'block',
+      // listStyleType: 'none',
+      padding: 14,
+      // border: '1px solid #727d88',
     }
   }
 }
