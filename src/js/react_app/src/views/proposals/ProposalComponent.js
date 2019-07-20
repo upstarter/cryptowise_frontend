@@ -8,7 +8,7 @@ import axios from "axios";
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
-//import colors from '../../styles/colors'
+// import colors from '../../styles/colors'
 
 class ProposalComponent extends React.Component {
   state = {
@@ -65,6 +65,7 @@ class ProposalComponent extends React.Component {
     const loadMore =
       !initLoading && !loading ? (
         <div
+          id='load-more-button'
           style={{
             textAlign: 'center',
             marginTop: 12,
@@ -72,7 +73,7 @@ class ProposalComponent extends React.Component {
             lineHeight: '32px',
           }}
         >
-          <Button onClick={this.onLoadMore}>loading more</Button>
+          <Button onClick={this.onLoadMore}>Load More</Button>
         </div>
       ) : null;
     return (
@@ -80,7 +81,7 @@ class ProposalComponent extends React.Component {
         <ScrollToTopOnMount />
         <section id="proposal" className={classes.proposals}>
           <div id="proposal-blurb">
-            <Typography>
+            <Typography className='blurb-typography'>
               <div id="proposal-blurb-intro">
                 <Title>Proposals</Title>
                 <Paragraph>
@@ -95,16 +96,6 @@ class ProposalComponent extends React.Component {
                 <ol id="proposal-blurb-list">
                   <li>Submit and find features relevent to your goals & activities</li>
                   <li>Claim features relevent to your goals & activities and implement as API endpoints for RIFF awards</li>
-                </ol>
-              </div>
-
-              <div id="proposal-blurb-guide">
-                <h5 id="proposal-blurb-title">
-                  RIFF Guidelines
-                </h5>
-                <ol id="proposal-blurb-list">
-                  <li>Submit features that take a few days or weeks to implement</li>
-                  <li>Prioritize features relevent to your goals & activities</li>
                   <li>Upvote features submitted by the community for inclusion in our RIFFS program (rapid implementation feasibility & fundability study).</li>
                 </ol>
               </div>
@@ -119,13 +110,13 @@ class ProposalComponent extends React.Component {
             </Affix>
             <div className="proposal-column">
               <List
-                className="demo-loadmore-list"
+                className="loadmore-list"
                 loading={initLoading}
-                itemLayout="horizontal"
+                itemLayout="vertical"
                 loadMore={loadMore}
                 dataSource={list}
                 renderItem={item => (
-                  <List.Item actions={[<a>more</a>]}>
+                  <List.Item actions={[<a>save</a>,<a>more</a>,<a>edit</a>]}>
                     <Skeleton avatar title={false} loading={item.loading} active>
                       <List.Item.Meta
                         avatar={
@@ -134,8 +125,8 @@ class ProposalComponent extends React.Component {
                         title={<a href="https://ant.design">{item.name.last}</a>}
                         description="RIFF, a proposal language for analytical crypto-networking applications, refined by the CryptoWise Team"
                       />
-                      {/* <div>Content Goes here</div> */}
-                      <div>
+                      <div className='ant-list-item-foot'>
+                        <h6 className='sub-title'>Your Rating</h6>
                         <Rate allowHalf />
                       </div>
                     </Skeleton>
@@ -152,89 +143,82 @@ class ProposalComponent extends React.Component {
 
 const proposalStyles = {
   proposals: {
-
     display: 'grid',
-    gridTemplateColumns: '35vw 65vw',
+    backgroundColor: '#fff',
+
+    gridTemplateColumns: '30vw 70vw',
     gridTemplateAreas: '"sidebar content"',
 
-    '@media (max-width: 576px)': {
+    '@media (max-width: 880px)': {
       gridTemplateColumns: '100vw 100vw',
       gridTemplateAreas: '"sidebar" "content"'
     },
 
-    '@media (min-width: 576px and max-width: 992px)': {
-      gridTemplateColumns: '35vw 65vw',
-      gridTemplateAreas: '"sidebar content"'
-    },
-
-    '@media (min-width: 992px)': {
-      gridTemplateColumns: '35vw 54vw',
+    '@media (min-width: 880px)': {
+      gridTemplateColumns: '30vw 70vw',
       gridTemplateAreas: '"sidebar content"'
     },
 
     '& #proposal-blurb': {
       gridArea: 'sidebar',
+      margin: '0 auto 30px',
       maxWidth: '60ch',
-      padding: [0, 0, 0, 65],
-
-      '& #proposal-blurb-intro': {
-        maxWidth: '60ch',
-      },
-
-      '& #proposal-blurb-list': {
-        padding: [10,0,10,10]
-      },
-
-
-      '& #proposal-blurb-features': {
-        padding: [10, 0, 0, 0],
-
-        '& #proposal-blurb-features-title': {
-          padding: [0,0,0,0]
-        },
-
-      },
-
-      '& #proposal-blurb-guide': {
-        padding: [10, 0, 0, 0],
-
-        '& #proposal-blurb-guide-title': {
-          padding: [0,0,0,0]
-        },
-
-      }
+      padding: 14,
     }
-
   },
 
   proposalItems: {
     gridArea: 'content',
-    backgroundColor: '#ffffff',
-
-    '@media (min-width: 992px)': {
-      width: '98%',
-    },
+    backgroundColor: '#fff',
 
     '& #proposal-items-heading': {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      // position: 'fixed',
       height: 40,
-      // border: '1.2px solid #000000',
-      fontWeight: '400',
-      zIndex: 10,
-      backgroundColor: '#D0E5FF',
-      color: '#000',
+      backgroundColor: '#813772',
+      color: '#fff',
     },
 
-    '& .ant-list-item': {
-      // display: 'block',
-      // listStyleType: 'none',
-      padding: 14,
-      // border: '1px solid #727d88',
-    }
-  }
+    '& .loadmore-list': {
+      minHeight: 350
+    },
+
+    '& #load-more-button': {
+      margin: [0,0,20,0]
+    },
+
+    '@media (max-width: 880px)': {
+        '& .ant-list-item': {
+          maxWidth: '90vw',
+          margin: '0 auto',
+          padding: 20,
+
+          '& .ant-list-item-meta': {
+            maxWidth: '90vw',
+            margin: '0 auto',
+            padding: 10
+          },
+
+          '& .ant-list-item-foot': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: '50vw',
+            margin: '0 auto',
+          },
+
+          '& .ant-list-item-action': {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        },
+    },
+
+
+  },
 }
 
 export default injectSheet(proposalStyles)(ProposalComponent)

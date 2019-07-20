@@ -16,9 +16,7 @@ class BlogListContainer extends React.Component {
     }
   }
 
-
   componentDidMount() {
-
       this.setState({ isLoading: true });
 
       fetch('/api/v1/blog_posts')
@@ -60,21 +58,21 @@ class BlogListContainer extends React.Component {
 }
 
 
-// whatever is returned will show up as props inside BookList
+// whatever is returned will show up as props inside BlogList
 
 const mapStateToProps = (state, ownProps) => {
   return {
     blogPosts: state.blogPosts
   }
 }
-//anything returned from here will end up as props on BookListContainer
-//whenever selectPost is called the result should be passed to all reducers
 
+// anything returned from here will end up as props on BlogListContainer
+// whenever selectPost is called the result should be passed to all reducers
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators({selectPost: null}, dispatch);
 }
 
 // connect takes a function and component and produces a container that is aware
 // of state contained by redux
-// promote BookList to Container
+// promote BlogList to Container
 export default connect(mapStateToProps, mapDispatchToProps)(BlogListContainer);

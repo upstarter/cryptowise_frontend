@@ -1,6 +1,8 @@
 import { push } from 'react-router-redux';
 import { url } from '../utils/consts';
-import { httpPost } from '../utils/request';
+import axios from "axios";
+import { SESSION_ERROR } from "../actions/index";
+
 
 export default const Sessions = {
   logIn: (creds) => {
@@ -8,9 +10,9 @@ export default const Sessions = {
       const data = {
         session: creds,
       };
-      httpPost('/api/v1/auth/sign_in', data)
+      axios.post(`${url}/api/v1/auth/sign_in`, data)
       .then((response) => {
-        localStorage.setItem('phoenixAuthToken',
+        localStorage.setItem('jwt',
           response.jwt);
         setCurrentUser(dispatch, response.user);
         dispatch(push('/'));
@@ -19,7 +21,7 @@ export default const Sessions = {
         error.response.json()
         .then((errorJSON) => {
           dispatch({
-            type: Constants.SESSIONS_ERROR,
+            type: SESSION_ERROR,
             error: errorJSON.error,
           });
         });

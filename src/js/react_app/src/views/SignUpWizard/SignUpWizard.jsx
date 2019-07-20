@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
-import axios from "axios";
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import userPostFetch from "../../actions/userPostFetch";
 import { url } from "../../utils/consts";
+import { withRouter } from "react-router";
 
-export default class SignUpWizard extends Component {
+
+
+export class SignUpWizard extends Component {
   constructor() {
     super();
     this.state = {
@@ -44,25 +49,11 @@ export default class SignUpWizard extends Component {
           state.topic_knowledge_ids !== null &&
           state._saveinterestIds !== null
         ) {
-          axios
-            .post(`${url}/api/v1/auth/create`, {
-              auth: {
-                name: state.name,
-                email: state.email,
-                password: state.password,
-                topic_knowledge_ids: state.topic_knowledge_ids,
-                topic_interest_ids: state.topic_interest_ids
-              }
-            })
-            .then(function(response) {
-              console.log(response);
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
+          this.props.userPostFetch(state)
         }
       }
     );
+    this.props.history.replace('/proposals')
   }
   _next() {
     let currentStep = this.state.currentStep;
@@ -111,3 +102,9 @@ export default class SignUpWizard extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  userPostFetch: (userInfo) => dispatch(userPostFetch(userInfo))
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(SignUpWizard));

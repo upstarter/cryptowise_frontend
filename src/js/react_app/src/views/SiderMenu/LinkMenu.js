@@ -14,30 +14,16 @@ const LinkMenu = withRouter(props => {
       selectedKeys={[location.pathname]}
       defaultSelectedKeys={["/"]}
     >
-    <Menu.Item key="/">
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <Icon type="team" />
-        <span className="nav-text">Join Us</span>
-      </Link>
-    </Menu.Item>
-    <Menu.Item key="/proposals">
-      <Link to="/proposals" style={{ textDecoration: "none" }}>
-        <Icon type="notification" />
-        <span className="nav-text">Feature Proposals</span>
-      </Link>
-    </Menu.Item>
-    <Menu.Item key="/analysis">
-      <Icon type="area-chart" />
-      <span className="nav-text">
-      <Link to="/analysis">
-        Analysis
-      </Link>
-      </span>
-    </Menu.Item>
-    <Menu.Item key="/portfolio">
-        <Link to="/portfolio" style={{ textDecoration: "none" }}>
-          <Icon type="user" />
-          <span className="nav-text">Portfolio</span>
+      <Menu.Item key="/">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Icon type="team" />
+          <span className="nav-text">Join Us</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="/proposals">
+        <Link to="/proposals" style={{ textDecoration: "none" }}>
+          <Icon type="notification" />
+          <span className="nav-text">Feature Proposals</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="/analysis">
@@ -47,6 +33,12 @@ const LinkMenu = withRouter(props => {
           Analysis
         </Link>
         </span>
+      </Menu.Item>
+      <Menu.Item key="/portfolio">
+          <Link to="/portfolio" style={{ textDecoration: "none" }}>
+            <Icon type="user" />
+            <span className="nav-text">Portfolio</span>
+          </Link>
       </Menu.Item>
       <Menu.Item key="/developers">
         <Link to="/developers" style={{ textDecoration: "none" }}>

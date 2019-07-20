@@ -12,7 +12,7 @@ class SiderMenu extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapsed: false
+      collapsed: true
     };
   }
 
@@ -21,20 +21,23 @@ class SiderMenu extends React.Component {
       collapsed: !(this.state.collapsed),
     });
   }
+
+  onSiderCollapse = collapsed => {
+    this.toggle()
+  };
+
+
   render() {
     const { location } = this.props;
     const { classes } = this.props;
     return (
       <Sider
         className={classes.sider}
-        breakpoint="sm"
         collapsedWidth="0"
         collapsible
+        collapsed={this.state.collapsed}
+        onCollapse={this.onSiderCollapse}
         onBreakpoint={(broken) => { console.log(broken); }}
-        onCollapse={
-          (collapsed, type) =>
-            { collapsed ? this.props.setContentMarginLeft('0px') : this.props.setContentMarginLeft('200px') }
-        }
       >
         <LinkMenu />
       </Sider>
@@ -49,7 +52,12 @@ const siderMenuStyles = {
     height: '100vh',
     position: 'fixed',
     zIndex: 100,
-    left: 0 
+    left: 0,
+
+    '& .ant-layout-sider-zero-width-trigger': {
+      backgroundColor: 'rgba(28,49,70,0.5) !important',
+      color: 'rgba(255,255,255,0.8) !important',
+    }
   }
 }
 

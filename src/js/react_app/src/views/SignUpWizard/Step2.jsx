@@ -65,10 +65,10 @@ class SignUpStep2 extends Component {
     if (props.currentStep !== 2) {
       return null;
     }
-    let Tiles = [];
-    for (let i = 0; i < 18; i++) {
-      Tiles.push(<Tile />);
-    }
+    // let Tiles = [];
+    // for (let i = 0; i < 18; i++) {
+    //   Tiles.push(<Tile />);
+    // }
     return (
       <div className={classes.container}>
         <div className={classes.header}>
@@ -232,7 +232,7 @@ const styles = {
     'overflow-y': 'none',
   },
   title: {
-    padding: [10,20,20,25],
+    padding: [0,20,20,20],
     fontSize: "21px !important",
     color: `${colors.black}`,
   },

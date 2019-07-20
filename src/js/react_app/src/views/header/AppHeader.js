@@ -43,7 +43,7 @@ class AppHeader extends React.Component {
               <img className={classes.logo} src={nav_logo} />
           </div>
         </Link>
-        <div style={{marginTop: '-10px'}}>
+        <div>
           <Menu
             mode="horizontal"
             className={classes.menu}
@@ -95,9 +95,10 @@ const headerStyles = {
     },
   },
   menu: {
+    padding: 9,
     background: `${colors.primary}`,
     color: '#fff',
-    padding: 0,
+
   },
   logo: {
     color: '#000',

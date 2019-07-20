@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import Actions from '../../actions/sessions';
 import Login from '../../components/auth/Login'
 
-class SessionsNew extends React.Component {
+class NewSession extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { dispatch } = this.props;
 
     const data = {
+      name: this.refs.name.value
       email: this.refs.email.value,
       password: this.refs.password.value
     };
