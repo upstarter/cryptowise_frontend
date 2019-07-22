@@ -1,6 +1,6 @@
 import { Modal, Button } from 'antd';
 
-class App extends React.Component {
+class AntModal extends React.Component {
   state = {
     ModalText: 'Customize your experience',
     visible: false,
@@ -13,18 +13,32 @@ class App extends React.Component {
     });
   }
 
-  handleOk = () => {
+  handleCreate = () => {
+    const { form } = this.formRef.props;
     this.setState({
       ModalText: 'The modal will be closed after two seconds',
       confirmLoading: true,
     });
-    setTimeout(() => {
-      this.setState({
-        visible: false,
-        confirmLoading: false,
-      });
-    }, 2000);
-  }
+    form.validateFields((err, values) => {
+      if (err) {
+        return;
+      }
+
+      console.log('Received values of form: ', values);
+      form.resetFields();
+      setTimeout(() => {
+        this.setState({
+          visible: false,
+          confirmLoading: false,
+        });
+      }, 2000);
+    });
+  };
+
+  saveFormRef = formRef => {
+    this.formRef = formRef;
+  };
+
 
   handleCancel = () => {
     console.log('Clicked cancel button');
@@ -42,7 +56,7 @@ class App extends React.Component {
         </Button>
         <Modal title="Title"
           visible={visible}
-          onOk={this.handleOk}
+          onOk={this.handleCreate}
           confirmLoading={confirmLoading}
           onCancel={this.handleCancel}
         >
