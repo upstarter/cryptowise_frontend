@@ -75,7 +75,7 @@ class ProposalComponent extends React.Component {
   };
 
   handleCreate = () => {
-    console.error('handlecreate')
+    console.errorx('handlecreate')
     this.setState({
       ModalContent: 'The modal will be closed after two seconds',
       confirmLoading: true,

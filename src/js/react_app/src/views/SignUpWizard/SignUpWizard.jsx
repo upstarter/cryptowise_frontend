@@ -49,7 +49,7 @@ export class SignUpWizard extends Component {
           state._saveinterestIds !== null
         ) {
           console.error('dispatch', state)
-          this.props.dispatch(userPostFetch(state))
+          this.props.dispatch(registerUser(state))
         }
       }
     );
