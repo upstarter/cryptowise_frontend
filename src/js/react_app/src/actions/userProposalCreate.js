@@ -6,28 +6,29 @@ import { USER_PROPOSAL_CREATE } from "./index";
 
 const userProposalCreate = state => {
     console.error('userProposalCreate', state)
-    const response = axios
+    const request = axios
         .post(`${url}/api/v1/proposals`, {
           proposal: {
             title: state.title,
             description: state.description
           }
         })
-        .then(response => {
-          const data = response.data
-          console.log(response.data)
-          if (data.error) {
-            console.log('user proposal create error')
-          } else {
 
-          }
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    return {
-      type: USER_PROPOSAL_CREATE,
-      payload: response
+    return (dispatch) => {
+      request.then(response => {
+        const data = response.data
+        console.log('proposal create response',response.data)
+        if (data.error) {
+          console.log('user proposal create error')
+        } else {
+
+        }
+      }).then(({data}) => {
+        dispatch(loginUser())
+      }).catch(function(error) {
+        console.log(error);
+      })
+
     };
 }
 

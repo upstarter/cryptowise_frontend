@@ -2,9 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
-import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider } from 'antd';
+import NewProposalForm from '../../components/proposals/NewProposalForm'
+import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
+import { connect } from "react-redux";
+import userProposalCreate from "../../actions/userProposalCreate";
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
@@ -16,6 +19,9 @@ class ProposalComponent extends React.Component {
     loading: false,
     data: [],
     list: [],
+    ModalContent: 'Customize your experience',
+    visible: false,
+    confirmLoading: false
   };
 
   componentDidMount() {
@@ -30,8 +36,7 @@ class ProposalComponent extends React.Component {
 
   getData = callback => {
     axios.get(fakeDataUrl).then((res) => {
-      console.log(res)
-        callback(res.data)
+      callback(res.data)
     })
   };
 
@@ -59,9 +64,48 @@ class ProposalComponent extends React.Component {
     });
   };
 
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  saveFormRef = formRef => {
+    this.formRef = formRef;
+  };
+
+  handleCreate = () => {
+    console.error('handlecreate')
+    this.setState({
+      ModalContent: 'The modal will be closed after two seconds',
+      confirmLoading: true,
+    });
+
+    const { form } = this.formRef.props;
+    form.validateFields((err, values) => {
+      console.log(err, values)
+      if (err) {
+        console.error('handleCreate error', err)
+        return;
+      }
+      this.props.dispatch(userProposalCreate(values))
+      console.log('Received values of form: ', values);
+      form.resetFields();
+      this.setState({ visible: false, confirmLoading: false })
+    });
+
+  }
+
+  handleCancel = () => {
+    console.log('Clicked cancel button');
+    this.setState({
+      visible: false,
+    });
+  }
+
   render() {
     const { classes } = this.props
-    const { initLoading, loading, list } = this.state;
+    const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -79,26 +123,37 @@ class ProposalComponent extends React.Component {
     return (
       <React.Fragment>
         <ScrollToTopOnMount />
+
+        <NewProposalForm
+          wrappedComponentRef={this.saveFormRef}
+          wrapClassName={classes.modal}
+          visible={this.state.visible}
+          onCancel={this.handleCancel}
+          onCreate={this.handleCreate}
+          confirmLoading={confirmLoading}
+        />
         <section id="proposal" className={classes.proposals}>
+          <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
           <div id="proposal-blurb">
             <Typography className='blurb-typography'>
               <div id="proposal-blurb-intro">
-                <Title>Proposals</Title>
+                <Title id="proposal-blurb-title">Feature Proposals</Title>
+                <h4 style={{textAlign: 'center', margin: '-10px 0 35px 0'}} className='subtitle-small'>🌱 Evolve your Ecosystem</h4>
                 <Paragraph>
-                  Proposals are a way for our ecosystem to sprout the seeds of
-                  what it is to become over the long term. They are the guiding north
-                  star to prosperity and opportunity for the next generations of hackers, fin-repreneurs, and financiers.
+                  Feature Proposals sprout the seeds of the CryptoWise ecosystem features for the long term. They are the guiding north
+                  star to prosperity and opportunity for our membership of high-tech financiers, fin-hackers, and finpreneurs.
                 </Paragraph>
               </div>
 
               <div id="proposal-blurb-features">
                 <h5 id="proposal-blurb-how">How to participate:</h5>
                 <ol id="proposal-blurb-list">
-                  <li>Submit and find features relevent to your goals & activities</li>
-                  <li>Claim features relevent to your goals & activities and implement as API endpoints for RIFF awards</li>
-                  <li>Upvote features submitted by the community for inclusion in our RIFFS program (rapid implementation feasibility & fundability study).</li>
+                  <li>Submit new features relevent to your goals & activities</li>
+                  <li>Find features relevent to your goals & activities and get involved as the community evolves</li>
+                  <li>Rate features submitted by the community for possible inclusion in our RIFFS 🎸 program (<b>R</b>apid <b>I</b>mplementation <b>F</b>easibility & <b>F</b>undability <b>S</b>tudy).</li>
                 </ol>
               </div>
+              <p>Before making a public proposal, we just ask that you think hard on what features on our network would be most valuable for you to make highly sound investment decisions.</p>
             </Typography>
           </div>
 
@@ -142,10 +197,12 @@ class ProposalComponent extends React.Component {
 }
 
 const proposalStyles = {
+  modal: {
+
+  },
   proposals: {
     display: 'grid',
     backgroundColor: '#fff',
-
     gridTemplateColumns: '30vw 70vw',
     gridTemplateAreas: '"sidebar content"',
 
@@ -164,6 +221,24 @@ const proposalStyles = {
       margin: '0 auto 30px',
       maxWidth: '60ch',
       padding: 14,
+
+      '& #proposal-blurb-title': {
+        textAlign: 'center'
+      }
+    },
+
+    '& .float': {
+    	position: 'fixed',
+    	width: 60,
+    	height:60,
+    	bottom:40,
+    	right:40,
+      backgroundColor: 'rgba(118,48,103,0.85)',
+    	color: '#FFF',
+    	borderRadius: 50,
+    	textAlign: 'center',
+    	boxShadow: [2, 2, 3, '#999'],
+      zIndex: 10
     }
   },
 
@@ -221,4 +296,9 @@ const proposalStyles = {
   },
 }
 
-export default injectSheet(proposalStyles)(ProposalComponent)
+//
+// const mapDispatchToProps = (dispatch, ownProps) => ({
+//   userProposalCreate: (proposalInfo) => dispatch(userProposalCreate(proposalInfo))
+// })
+
+export default connect(null, null)(injectSheet(proposalStyles)(ProposalComponent));

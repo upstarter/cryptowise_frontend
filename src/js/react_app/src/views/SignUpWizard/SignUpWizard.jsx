@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
 import userPostFetch from "../../actions/userPostFetch";
 import { url } from "../../utils/consts";
 import { withRouter } from "react-router";
@@ -49,7 +48,8 @@ export class SignUpWizard extends Component {
           state.topic_knowledge_ids !== null &&
           state._saveinterestIds !== null
         ) {
-          this.props.userPostFetch(state)
+          console.error('dispatch', state)
+          this.props.dispatch(userPostFetch(state))
         }
       }
     );
@@ -103,8 +103,8 @@ export class SignUpWizard extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  userPostFetch: (userInfo) => dispatch(userPostFetch(userInfo))
-})
+// const mapDispatchToProps = (dispatch, ownProps) => ({
+//   userPostFetch: (userInfo) => dispatch(userPostFetch(userInfo))
+// })
 
-export default connect(null, mapDispatchToProps)(withRouter(SignUpWizard));
+export default connect(null, null)(withRouter(SignUpWizard));
