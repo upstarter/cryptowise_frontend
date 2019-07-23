@@ -1,13 +1,9 @@
 // http://tech.tunecore.com/phoenix_react_jwt
 
 export const Auth = {
-  isAuthenticated() {  false },
+  isAuthenticated() { return false },
 
   isBrowser() { typeof window !== `undefined` },
-
-  getUser() {
-    window.localStorage.cryptowiseUser ? JSON.parse(window.localStorage.cryptowiseUser) : {}
-  },
 
   setUser(user) { (window.localStorage.cryptowiseUser = JSON.stringify(user)) },
 
@@ -26,6 +22,10 @@ export const Auth = {
   },
 
   currentUser() { isBrowser && getUser() },
+
+  getUser() {
+    window.localStorage.cryptowiseUser ? JSON.parse(window.localStorage.cryptowiseUser) : {}
+  },
 
   authenticate(state, cb) {
     handleLogin(state.email, state.password) ? (this.isAuthenticated = true) : false

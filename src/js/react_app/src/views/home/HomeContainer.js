@@ -100,13 +100,13 @@ class HomeContainer extends React.Component {
                 }}>
                 <div className={classes.content}>
                   <Route exact path="/" component={HomeComponent} />
-                  <Route exact path="/membership" component={MembershipComponent} />
+                  {/* <Route exact path="/membership" component={MembershipComponent} /> */}
                   <Route exact path="/developers" component={DeveloperComponent} />
                   <Route exact path="/contribute" component={ProviderContainer} />
-                  <Route exact path="/insights" component={InsightComponent} />
-                  <Route exact path="/proposals" component={ProposalComponent} />
-                  <Route exact path="/analysis" component={AnalysisContainer} />
-                  <Route exact path="/portfolio" component={PortfolioComponent} />
+                  {/* <Route exact path="/insights" component={InsightComponent} /> */}
+                  <PrivateRoute exact path="/proposals" component={ProposalComponent} />
+                  <PrivateRoute exact path="/analysis" component={AnalysisContainer} />
+                  <PrivateRoute exact path="/portfolio" component={PortfolioComponent} />
                   <PrivateRoute exact path="/profile" component={Protected} />
                   <Route exact path="/about" component={AboutComponent} />
                   <Route exact path="/signup" component={SignUpContainer} />
