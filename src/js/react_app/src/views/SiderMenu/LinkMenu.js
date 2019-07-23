@@ -11,7 +11,6 @@ const LinkMenu = withRouter(props => {
       className={classes.menu}
       theme="dark"
       mode="inline"
-      inlineCollapsed="false"
       selectedKeys={[location.pathname]}
       defaultSelectedKeys={["/"]}
     >

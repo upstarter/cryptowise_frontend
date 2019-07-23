@@ -9,7 +9,7 @@ import DeveloperComponent from "../../views/developers/DeveloperComponent";
 import ProposalComponent from "../../views/proposals/ProposalComponent";
 import InsightComponent from "../../views/insights/InsightComponent";
 import SignUpContainer from "../../views/SignUpWizard/SignUpContainer";
-import Login from "../../views/auth/Login";
+import BasicLoginForm from "../../views/auth/BasicLoginForm";
 import Logout from "../../views/auth/Logout";
 import Signup from "../../views/auth/Signup";
 import PrivateRoute from "../../components/auth/PrivateRoute";
@@ -55,7 +55,7 @@ class HomeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      visible: true,
+      visible: false,
       contentMarginLeft: '0px'
     };
   }
@@ -110,7 +110,7 @@ class HomeContainer extends React.Component {
                   <PrivateRoute exact path="/profile" component={Protected} />
                   <Route exact path="/about" component={AboutComponent} />
                   <Route exact path="/signup" component={SignUpContainer} />
-                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/login" component={BasicLoginForm} />
                   <Route exact path="/logout" component={Logout} />
                   <Route
                     exact
