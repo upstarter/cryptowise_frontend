@@ -5,7 +5,7 @@ import { LOGIN_USER } from "./index";
 
 const registerUser = state => {
     console.error('registerUser', state)
-    const response = axios
+    const request = axios
         .post(`${url}/api/v1/auth/create`, {
           auth: {
             name: state.name,
@@ -27,7 +27,7 @@ const registerUser = state => {
           localStorage.setItem('token', data.jwt)
           localStorage.setItem('user_info', data.user_info)
         }
-      }).then(({data}) => {
+      }).then((data) => {
         dispatch(loginUser())
       }).catch(function(error) {
         console.log(error);

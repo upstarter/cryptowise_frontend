@@ -153,7 +153,7 @@ class ProposalComponent extends React.Component {
                   <li>Rate features submitted by the community for possible inclusion in our RIFFS 🎸 program (<b>R</b>apid <b>I</b>mplementation <b>F</b>easibility & <b>F</b>undability <b>S</b>tudy).</li>
                 </ol>
               </div>
-              <p>Before making a public proposal, we just ask that you think hard on what features on our network would be most valuable for you to make highly sound investment decisions.</p>
+              <p>Before making a public proposal, we just ask that you think hard on what software, data, and/or features on our network would be most valuable for you to make highly sound investment decisions.</p>
             </Typography>
           </div>
 
@@ -212,14 +212,13 @@ const proposalStyles = {
     },
 
     '@media (min-width: 880px)': {
-      gridTemplateColumns: '30vw 70vw',
+      gridTemplateColumns: '40vw 60vw',
       gridTemplateAreas: '"sidebar content"'
     },
 
     '& #proposal-blurb': {
       gridArea: 'sidebar',
       margin: '0 auto 30px',
-      maxWidth: '60ch',
       padding: 14,
 
       '& #proposal-blurb-title': {
@@ -251,7 +250,8 @@ const proposalStyles = {
       alignItems: 'center',
       justifyContent: 'center',
       height: 40,
-      backgroundColor: '#813772',
+      minWidth: '100%',
+      backgroundColor: 'rgba(118,48,103,0.85)',
       color: '#fff',
     },
 

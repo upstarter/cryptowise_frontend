@@ -47,7 +47,6 @@ class SignUpStep2 extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
     this.props.saveForm(this.state);
   }
 
@@ -96,7 +95,7 @@ class SignUpStep2 extends Component {
                 // )}
               /> */}
             </div>
-              <GoogleLogin
+              {/* <GoogleLogin
                 clientId={process.env.GOOGLE_CLIENT_ID}
                 render={renderProps => (
                   <button
@@ -110,11 +109,11 @@ class SignUpStep2 extends Component {
                 onFailure={this.responseGoogle}
                 cookiePolicy={'single_host_origin'}
               >
-              </GoogleLogin>
+              </GoogleLogin> */}
           </div>
-          <hr />
+          {/* <hr />
           -- or signup with email --
-          <hr />
+          <hr /> */}
           <div className={classes.loginForm}>
             <form
               onSubmit={e => {
@@ -232,7 +231,7 @@ const styles = {
     'overflow-y': 'none',
   },
   title: {
-    padding: [0,20,20,20],
+    padding: [20,20,20,20],
     fontSize: "21px !important",
     color: `${colors.black}`,
   },
@@ -296,7 +295,8 @@ const styles = {
     title: {
       width: '80vw',
       margin: '1.7em auto',
-      fontSize: "21px"
+      fontSize: "21px",
+      margin: 20
     },
     tileGrid: {
       gridTemplateColumns: "1fr 1fr 1fr 1fr"
@@ -323,7 +323,9 @@ const styles = {
     title: {
       width: '80vw',
       margin: '1.7em auto',
-      fontSize: "16px"
+      fontSize: "16px",
+      margin: 20,
+
     },
     steps: {
       display: 'none !important',

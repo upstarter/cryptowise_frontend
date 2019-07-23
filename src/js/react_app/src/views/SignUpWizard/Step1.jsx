@@ -26,7 +26,6 @@ class SignUpStep1 extends Component {
     alert("Choose at least 3.");
   }
   _validateSelected() {
-    console.log(this.state.topic_knowledge_ids)
     if (this.state.topic_knowledge_ids.length >= 3) {
       this.setState({showFooter: true})
     } else {

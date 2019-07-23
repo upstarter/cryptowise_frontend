@@ -55,7 +55,7 @@ class HomeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      visible: false,
+      visible: true,
       contentMarginLeft: '0px'
     };
   }

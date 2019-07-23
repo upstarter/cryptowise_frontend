@@ -70,6 +70,7 @@ class AppHeader extends React.Component {
                 </span>
               }
             >
+              <Menu.Item key="/login">Sign In</Menu.Item>
               <Menu.Item key="/contact">Contact</Menu.Item>
               <Menu.Item key="/about">About</Menu.Item>
               <Menu.Item key="/logout">Sign out</Menu.Item>

@@ -18,7 +18,6 @@ class CardTile extends Component {
   }
 
   handleSelected(id) {
-    console.log('currentState', this.state.selected )
     this.setState({ selected: !this.state.selected });
 
     if (this.state.selected) {

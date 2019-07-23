@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import Auth from '../../components/auth/Auth'
-import { Route, Redirect } from "react-router-dom";
+import {
+  Route,
+  Redirect,
+  Link,
+  withRouter
+} from "react-router-dom";
 
 export default class Login extends Component {
 

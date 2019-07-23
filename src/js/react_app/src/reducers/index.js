@@ -2,10 +2,10 @@ import { combineReducers } from "redux";
 import TokensReducer from "./reducer_tokens";
 import LoginUserReducer from "./reducer_login_user";
 import UserProposalReducer from "./reducerUserProposal";
+import { connectRouter } from 'connected-react-router'
 
-const rootReducer = combineReducers({
+export default (history) => combineReducers({
+  router: connectRouter(history),
   tokens: TokensReducer,
   loginUser: LoginUserReducer
 });
-
-export default rootReducer;

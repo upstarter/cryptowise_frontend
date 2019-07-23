@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { connect } from "react-redux";
-import userPostFetch from "../../actions/userPostFetch";
+import registerUser from "../../actions/registerUser";
 import { url } from "../../utils/consts";
 import { withRouter } from "react-router";
-
-
 
 export class SignUpWizard extends Component {
   constructor() {
@@ -36,23 +34,23 @@ export class SignUpWizard extends Component {
     });
   }
   _saveUserInfo(data) {
-    this.setState(
-      {
+    console.log('sta1', data)
+    data.topic_knowledge_ids = this.state.topic_knowledge_ids
+    this.props.dispatch(registerUser(data))
+
+    this.setState({
         name: data.name,
         email: data.email,
         password: data.password
-      },
-      () => {
-        let state = this.state;
-        if (
-          state.topic_knowledge_ids !== null &&
-          state._saveinterestIds !== null
-        ) {
-          console.error('dispatch', state)
-          this.props.dispatch(registerUser(state))
-        }
+    }, () => {
+      let state = this.state;
+      if (
+        state.topic_knowledge_ids !== null &&
+        state._saveinterestIds !== null
+      ) {
+        // console.log('dispatch', state)
       }
-    );
+    })
     this.props.history.replace('/proposals')
   }
   _next() {
