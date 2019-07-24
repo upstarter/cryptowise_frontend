@@ -28,7 +28,15 @@ const heroStyles = {
       },
       '& .title': {
         maxWidth: '90rem',
-        marginLeft: '-20%',
+        marginLeft: '-10%',
+        '@media (min-width: 480px)': {
+          fontSize: '3.3rem !important'
+        },
+        '@media (max-width: 480px)': {
+          fontSize: '30px !important',
+          maxWidth: '125px !important',
+          textAlign: 'left'
+        }
       },
     },
 

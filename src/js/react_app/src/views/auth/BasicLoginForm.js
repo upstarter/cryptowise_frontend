@@ -7,6 +7,7 @@ import {
   Link,
   withRouter
 } from "react-router-dom";
+import loginUser from "Actions/loginUser"
 import injectSheet, { jss } from 'react-jss'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import colors from "Styles/colors"
@@ -14,9 +15,11 @@ import colors from "Styles/colors"
 class BasicLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
+    console.error(this.props.form)
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        this.props.dispatch(loginUser(values))
       }
     });
   };
@@ -27,7 +30,7 @@ class BasicLoginForm extends React.Component {
     return (
       <div className={classes.container}>
         <div className={classes.header}>
-          <h2 className={classes.title}>
+          <h2 id="title" className={classes.title, "title-small"}>
             Sign in to uncover hypergrowth cryptoassets along with top analysts
           </h2>
         </div>
@@ -65,7 +68,7 @@ class BasicLoginForm extends React.Component {
               <Button type="primary" htmlType="submit" className={classes.loginFormButton}>
                 Log in
               </Button>
-              Or <a href="">register now!</a>
+              Or <a href="/signup">register now!</a>
             </Form.Item>
           </Form>
         </div>
@@ -83,15 +86,20 @@ const styles = {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: "center",
-
   },
   header: {
     // textAlign: 'center',
-    width: '100%',
-    height: '10vh',
+    width: '100vw',
+    minHeight: '230px',
     margin: [0,0,20,0],
     zIndex: 1,
     background: `${colors.white}`,
+    '& #title': {
+      maxWidth: '350px',
+      margin: '20px auto',
+      textAlign: 'center',
+      color: `${colors.black}`,
+    },
   },
   main: {
     display: 'flex',
@@ -99,14 +107,6 @@ const styles = {
     flexDirection: 'column',
     justifyContent: "center",
     alignItems: 'center',
-    width: '800px !important',
-    'overflow-y': 'none',
-  },
-  title: {
-    textAlign: 'center',
-    padding: 20,
-    fontSize: "21px !important",
-    color: `${colors.black}`,
   },
   loginForm: {
     maxWidth: '300px',
@@ -161,14 +161,13 @@ const styles = {
     background: `${colors.white}`,
     boxShadow: '8px 2px 4px 8px #f0f1f2',
   },
-  "@media (min-width: 576px) (max-width: 992px)": {
+  "@media (min-width: 480px)": {
     header: {
       height: "160px",
       lineHeight: "2em",
     },
     title: {
-      padding: '7%',
-      fontSize: "21px",
+      width: '200px',
     },
     tileGrid: {
       gridTemplateColumns: "1fr 1fr 1fr 1fr"
@@ -187,14 +186,13 @@ const styles = {
       maxWidth: "100%"
     }
   },
-  "@media (max-width: 800px)": {
+  "@media (max-width: 480px)": {
     header: {
-      height: "160px",
-      lineHeight: "2em",
-    },
-    title: {
-      padding: '7%',
-      fontSize: "16px",
+      minHeight: "140px",
+      '& #title': {
+        maxWidth: '25ch',
+        fontSize: 21,
+      },
     },
     steps: {
       display: 'none !important',

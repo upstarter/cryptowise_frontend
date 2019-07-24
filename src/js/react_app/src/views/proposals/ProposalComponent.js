@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
-import NewProposalForm from '../../components/proposals/NewProposalForm'
+import NewProposalForm from './NewProposalForm'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";

@@ -1,11 +1,11 @@
-// http://tech.tunecore.com/phoenix_react_jwt
 
-export const Auth = {
+
+const Auth = {
   isAuthenticated() { return false },
 
   isBrowser() { typeof window !== `undefined` },
 
-  setUser(user) { (window.localStorage.cryptowiseUser = JSON.stringify(user)) },
+  setCurrentUser(user) { (window.localStorage.cryptowiseUser = JSON.stringify(user)) },
 
   handleLogin(email, password) {
       if (!isBrowser) return false

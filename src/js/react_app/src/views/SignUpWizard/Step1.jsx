@@ -73,7 +73,7 @@ class SignUpStep1 extends Component {
         <div className={classes.header}>
           <h2 className={classes.title}>
             So we can provide you with relevant signals and content,
-            please choose <em>at least</em> 3 topics your most interested in.
+            please choose <strong>at least</strong> 3 topics your most interested in.
           </h2>
         </div>
         <div className={classes.main}>
@@ -105,31 +105,32 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
   },
-  main: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    margin: '5px auto',
-    width: '800px !important',
-    'overflow-y': 'none',
-  },
   header: {
     position: 'fixed',
+    maxHeight: '25vh',
+    marginBottom: '50px',
+    maxWidth: 800,
     width: '100%',
-    margin: [0,0,20,0],
     zIndex: 1,
     background: `${colors.white}`,
   },
+  main: {
+    marginTop: 68,
+    width: '800px !important',
+    'overflow-y': 'none',
+  },
   title: {
-    padding: [10,20,20,25],
+    padding: 15,
     fontSize: "21px !important",
     color: `${colors.black}`,
     textAlign: 'center'
-
   },
   footer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'fixed',
-    height: "80px",
+    height: "60px",
     width: '100vw',
     bottom: 0,
     right: 0,
@@ -138,53 +139,51 @@ const styles = {
     boxShadow: '8px 2px 4px 8px #f0f1f2',
   },
   button: {
-    float: 'right',
     width: '75px',
-    margin: "30px 170px 0 0",
   },
   tileGrid: {
     marginTop: '35px',
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    // gridTemplateRows: "repeat(3, auto)",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridTemplateRows: "repeat(2, auto)",
     gridColumnGap: ".2em",
     gridRowGap: ".2em"
   },
 
-  "@media (min-width: 576px)": {
+  "@media (min-width: 482px) and (max-width: 662px)": {
     header: {
-      maxWidth: 800,
-      maxHeight: "90px",
-      lineHeight: "2em",
+      maxHeight: "25vh",
     },
     title: {
       fontSize: "19px"
     },
     tileGrid: {
-      gridTemplateColumns: "1fr 1fr 1fr 1fr"
+      gridTemplateColumns: "1fr"
     },
     main: {
-      marginTop: 60,
+      maxWidth: '99vw',
+      marginTop: 100
     }
   },
-  "@media (max-width: 576px)": {
+  // MOBILE
+  "@media (max-width: 482px)": {
     header: {
-      maxHeight: "155px",
-      lineHeight: ".1em",
+      maxHeight: "30vh",
+      // lineHeight: ".01em",
     },
     title: {
-      fontSize: "14px",
-      width: '95vw',
+      padding: 20,
+      fontSize: "17px !important",
       textAlign: 'center'
     },
     steps: {
       display: 'none !important',
     },
     tileGrid: {
-      gridTemplateColumns: "1fr 1fr"
+      gridTemplateColumns: "1fr"
     },
     main: {
-      marginTop: 120,
+      marginTop: 125,
     },
 
   }

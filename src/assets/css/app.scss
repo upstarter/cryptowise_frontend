@@ -21,6 +21,10 @@ html, body {
   color: #000;
 }
 
+p {
+  margin: 1.8ch;
+}
+
 .hidden { display: 'none'; }
 
 .ReactModal__Body--open {
@@ -33,6 +37,7 @@ html, body {
 }
 
 #wrapper {
+
   font-family: Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
@@ -76,8 +81,8 @@ html, body {
   .title-small {
     font-family: "Avenir-Light", sans-serif;
     font-weight: 200;
-    font-size: 2rem;
-    line-height: 4rem;
+    font-size: 3.6rem;
+    line-height: 4.9rem;
     letter-spacing: -0.02ch;
     @media (min-width: 992px) {
       font-size: 4rem;
@@ -355,108 +360,4 @@ div {
           border-width: 0.25em;
       }
   }
-}
-
-// social-buttons.scss
-.social-button {
-    background-position: 25px 0px;
-    box-sizing: border-box;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    display: inline-block;
-    height: 50px;
-    line-height: 50px;
-    text-align: left;
-    text-decoration: none;
-    text-transform: uppercase;
-    vertical-align: middle;
-    width: 100%;
-    border-radius: 3px;
-    margin: 10px auto;
-    outline: rgb(255, 255, 255) none 0px;
-    padding-left: 20%;
-    transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
-#facebook-connect {
-    // background: rgb(255, 255, 255) url('https://eswarasai.com/projects/social-login/img/facebook.svg') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
-    border: 1px solid rgb(60, 90, 154);
-}
-
-#facebook-connect:hover {
-    border-color: rgb(60, 90, 154);
-    // background: rgb(60, 90, 154) url('https://eswarasai.com/projects/social-login/img/facebook-white.svg') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
-    -webkit-transition: all .8s ease-out;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease-out;
-}
-
-#facebook-connect span {
-    box-sizing: border-box;
-    color: rgb(60, 90, 154);
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
-    border: 0px none rgb(255, 255, 255);
-    outline: rgb(255, 255, 255) none 0px;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
-#facebook-connect:hover span {
-    color: #FFF;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
-#google-connect {
-    // background: rgb(255, 255, 255) url('https://eswarasai.com/projects/social-login/img/google-plus.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
-    border: 1px solid rgb(220, 74, 61);
-}
-
-#google-connect:hover {
-    border-color: rgb(220, 74, 61);
-    // background: rgb(220, 74, 61) url('https://eswarasai.com/projects/social-login/img/google-plus-white.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
-    -webkit-transition: all .8s ease-out;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease-out;
-}
-
-#google-connect span {
-    box-sizing: border-box;
-    color: rgb(220, 74, 61);
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
-    border: 0px none rgb(220, 74, 61);
-    outline: rgb(255, 255, 255) none 0px;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
-#google-connect:hover span {
-    color: #FFF;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
 }

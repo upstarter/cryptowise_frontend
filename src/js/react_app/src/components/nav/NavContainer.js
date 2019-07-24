@@ -160,7 +160,7 @@ const navStyles = {
   nav: {
     backgroundColor: `${colors.darkBlue}`,
     zIndex: '1',
-    height: '5rem',
+    height: '0.5rem',
     position: 'fixed',
     top: '0',
     transition: 'top .2s ease-in-out',

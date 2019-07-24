@@ -39,9 +39,7 @@ class AppHeader extends React.Component {
         className={classes.header}
       >
         <Link to="/">
-          <div style={{flexDirection: 'flex-start', padding: '5px 13px', zIndex: 100}}>
-              <img className={classes.logo} src={nav_logo} />
-          </div>
+          <img className={classes.logo} src={nav_logo} />
         </Link>
         <div>
           <Menu
@@ -103,6 +101,7 @@ const headerStyles = {
   },
   logo: {
     color: '#000',
+    margin: '15px',
     '@media (max-width: 576px)': {
       // marginLeft: '32px',
     },

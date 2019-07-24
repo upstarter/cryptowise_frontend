@@ -31,7 +31,7 @@ class HeroComponent extends React.Component {
         <div className='hero-body'>
           <div className="wrap">
             <h1 className="title">
-              Become a <span className="fancy-underline">top 1%</span> crypto
+              &#8592;	Become a <span className="fancy-underline">top 1%</span> crypto
               <div className="slidingVertical">
                 <span>investor.</span>
                 <span>analyst.</span>

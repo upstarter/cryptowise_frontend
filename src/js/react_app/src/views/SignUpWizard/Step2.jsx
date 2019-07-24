@@ -129,7 +129,7 @@ class SignUpStep2 extends Component {
                     id="name"
                     value={this.state.name}
                     type="fullname"
-                    placeholder="e.g. John Doe"
+                    placeholder="e.g. Jane Doe"
                     className="input"
                     required
                     onChange={this.handleNameChange}
@@ -148,7 +148,7 @@ class SignUpStep2 extends Component {
                     id="email"
                     value={this.state.email}
                     type="email"
-                    placeholder="e.g. johndoe@gmail.com"
+                    placeholder="e.g. janedoe@gmail.com"
                     className="input"
                     required
                     onChange={this.handleEmailChange}

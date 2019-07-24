@@ -154,13 +154,20 @@ module.exports = {
   resolve: {
     extensions: [".css", ".sass", ".scss", ".less", ".js", ".jsx"],
     alias: {
+      Actions: path.resolve(__dirname, 'src/js/react_app/src/actions'),
+      Reducers: path.resolve(__dirname, 'src/js/react_app/src/reducers'),
       Components: path.resolve(__dirname, 'src/js/react_app/src/components'),
+      Auth: path.resolve(__dirname, 'src/js/react_app/src/components/auth'),
       Styles: path.resolve(__dirname, 'src/js/react_app/src/styles'),
-      Utils: path.resolve(__dirname, 'src/js/react_app/src/utils/'),
+      Utils: path.resolve(__dirname, 'src/js/react_app/src/utils'),
       Images: path.resolve(__dirname, 'src/assets/images'),
-      Css: path.resolve(__dirname, 'src/assets/css/'),
+      Css: path.resolve(__dirname, 'src/assets/css'),
       Fonts: path.resolve(__dirname, 'src/assets/fonts'),
-      Templates: path.resolve(__dirname, 'src/templates/')
+      Templates: path.resolve(__dirname, 'src/templates'),
+      Views: path.resolve(__dirname, 'src/js/react_app/src/views'),
+      Proposals: path.resolve(__dirname, 'src/js/react_app/src/views/proposals'),
+      Marketing: path.resolve(__dirname, 'src/js/react_app/src/views/marketing'),
+      Sessions: path.resolve(__dirname, 'src/js/react_app/src/views/sessions')
     }
   },
   devServer: {

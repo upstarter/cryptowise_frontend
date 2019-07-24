@@ -12,7 +12,8 @@ class SiderMenu extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapsed: true
+      collapsed: true,
+      broken: false
     };
   }
 
@@ -26,6 +27,25 @@ class SiderMenu extends React.Component {
     this.toggle()
   };
 
+  collapse = () => {
+    this.setState({
+      collapsed: true,
+    });
+  }
+
+  open = () => {
+    this.setState({
+      collapsed: false
+    });
+  }
+
+  broken = (broken) => {
+    this.setState({
+      broken: broken,
+      collapsed: true
+    });
+  }
+
 
   render() {
     const { location } = this.props;
@@ -33,11 +53,15 @@ class SiderMenu extends React.Component {
     return (
       <Sider
         className={classes.sider}
-        collapsedWidth="0"
         collapsible
+        defaultCollapsed={false}
+        collapsedWidth="0"
+        // collapsedWidth={() => this.state.collapsedWidth()} // responsive collapse
         collapsed={this.state.collapsed}
         onCollapse={this.onSiderCollapse}
-        onBreakpoint={(broken) => { console.log(broken); }}
+        onMouseEnter={() => this.open()}
+        onMouseLeave={() => this.collapse()}
+        // onBreakpoint={(broken) => { this.broken(broken) }}
       >
         <LinkMenu />
       </Sider>

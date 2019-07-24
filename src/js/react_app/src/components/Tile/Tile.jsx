@@ -55,7 +55,7 @@ class CardTile extends Component {
               className={classes.name}
               style={state.selected ? { color: `${colors.primary}` } : null}
             >
-              <p><strong>{data.id}</strong></p>
+              {/* <p><strong>{data.id}</strong></p> */}
               <p><strong>{data.name}</strong></p>
               <p
                 className={classes.description}
