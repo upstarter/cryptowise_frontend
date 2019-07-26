@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import Elm from 'react-elm-components'
 // import {Main} from '../../../elm/src/Main'
-import AppButton from "../../components/Button/AppButton";
+import AppButton from "Components/Button/AppButton";
 import Modal from "react-modal";
-import SignUpWizard from "../SignUpWizard/SignUpWizard";
+import SignUpWizard from "Views/SignUpWizard/SignUpWizard";
 import injectSheet, { jss } from 'react-jss'
-import heroStyles from '../../styles/heroStyles'
+import heroStyles from 'Styles/heroStyles'
 
 
 class ProviderHeroComponent extends React.Component {

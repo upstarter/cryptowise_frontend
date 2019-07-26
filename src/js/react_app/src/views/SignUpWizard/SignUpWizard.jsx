@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { connect } from "react-redux";
-import registerUser from "../../actions/registerUser";
-import { url } from "../../utils/consts";
+import registerUser from "Actions/registerUser";
+import { url } from "Utils/consts";
 import { withRouter } from "react-router";
 
 export class SignUpWizard extends Component {

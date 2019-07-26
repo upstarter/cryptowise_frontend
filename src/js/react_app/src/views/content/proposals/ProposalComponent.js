@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
+import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import NewProposalForm from './NewProposalForm'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import userProposalCreate from "../../actions/userProposalCreate";
+import userProposalCreate from "Actions/userProposalCreate";
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
-// import colors from '../../styles/colors'
+// import colors from 'Styles/colors'
 
 class ProposalComponent extends React.Component {
   state = {

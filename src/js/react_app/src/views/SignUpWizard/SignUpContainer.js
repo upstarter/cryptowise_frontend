@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import injectSheet from "react-jss";
 import SignUpWizard from "../SignUpWizard/SignUpWizard";
 import axios from "axios";
-import { url } from "../../utils/consts";
-import colors from "../../styles/colors"
+import { url } from "Utils/consts";
+import colors from "Styles/colors"
 
 class SignupContainer extends Component {
   constructor() {

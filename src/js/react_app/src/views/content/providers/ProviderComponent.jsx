@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import injectSheet, { jss } from 'react-jss'
-import colors from '../../styles/colors'
+import colors from 'Styles/colors'
 
 class ProviderComponent extends React.Component {
   render() {

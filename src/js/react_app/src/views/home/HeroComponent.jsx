@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AppButton from "../../components/Button/AppButton";
-import { url } from "../../utils/consts";
+import { url } from "Utils/consts";
 // quiz
 import injectSheet, { jss } from "react-jss";
 import nestedJSS from 'jss-nested'
-import heroStyles from '../../styles/heroStyles'
+import heroStyles from 'Styles/heroStyles'
 
 class HeroComponent extends React.Component {
   constructor() {

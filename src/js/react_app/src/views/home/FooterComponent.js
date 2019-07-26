@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
-import colors from '../../styles/colors'
+import colors from 'Styles/colors'
 import injectSheet, { jss } from "react-jss"
 import { Layout } from 'antd';
 const { Footer } = Layout;

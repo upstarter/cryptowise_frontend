@@ -4,7 +4,7 @@ import img from "Images/white_nav_logo.svg";
 import { Link } from "react-router-dom";
 import { Auth } from "../auth/Auth";
 import injectSheet, { jss } from "react-jss"
-import colors from '../../styles/colors'
+import colors from 'Styles/colors'
 
 class NavContainer extends React.Component {
   constructor(props) {

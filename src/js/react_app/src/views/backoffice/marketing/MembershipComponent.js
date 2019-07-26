@@ -1,28 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
-
-// import colors from '../../styles/colors'
+import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
+// import colors from 'Styles/colors'
 // import BarChart from "../../components/charts/bar"
 
 
-class InsightComponent extends React.Component {
+class MembershipComponent extends React.Component {
   render() {
     const { classes } = this.props
     return (
       <React.Fragment>
         <ScrollToTopOnMount/>
-        <section id="insight" className={classes.insights}>
-          <div id="insight-content" className="content">
-            <h1 className="title">Insights</h1>
-            <h3 className="subtitle">
-              CryptoWise is empowering insights to form new knowledge markets
+        <section id="membership" className={classes.membership}>
+          <div id="membership-content" className="content">
+            <h1 className="title">CryptoWise Membership</h1>
+            <h4 className="subtitle">
+              CryptoWise is empowering membership to form new knowledge markets
               on the blockchain, which will allow knowledge and truth seekers to
               connect, cooperate, and compete without requiring any trusted
               intermediaries. Achieving this visionary goal requires
-              contributions.
-            </h3>
+              contributions from a growing community of membership; And we need
+              your help.
+            </h4>
             <p className="paragraph">
 
             </p>
@@ -53,9 +53,9 @@ class InsightComponent extends React.Component {
   }
 }
 
-const insightStyles = {
-  insights: {
-    '& #insight-content': {
+const membershipStyles = {
+  membership: {
+    '& #membership-content': {
       padding: '0rem 1rem 1rem 1rem',
       margin: '0 auto',
       maxWidth: '60ch',
@@ -75,4 +75,4 @@ const insightStyles = {
   }
 }
 
-export default injectSheet(insightStyles)(InsightComponent)
+export default injectSheet(membershipStyles)(MembershipComponent)

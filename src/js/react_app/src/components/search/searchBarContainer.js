@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchTokens } from "../../actions/index";
+import { fetchTokens } from "Actions/index";
 
 class SearchBarContainer extends Component {
   constructor(props) {

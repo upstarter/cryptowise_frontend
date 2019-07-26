@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Actions from '../../actions/sessions';
+import Actions from 'Actions/sessions';
 import Login from '../../components/auth/Login'
 
 class NewSession extends React.Component {

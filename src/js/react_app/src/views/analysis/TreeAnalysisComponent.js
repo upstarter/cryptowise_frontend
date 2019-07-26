@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { url, api_url } from "../../utils/consts";
-import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
+import { url, api_url } from "Utils/consts";
+import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import Treemap from '../../components/charts/Treemap'
 import injectSheet, { jss } from "react-jss";
 import { Layout, Icon } from "antd";

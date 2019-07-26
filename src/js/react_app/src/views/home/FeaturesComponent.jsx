@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import colors from '../../styles/colors'
+import colors from 'Styles/colors'
 import { Row, Col } from 'antd'
 import injectSheet, { jss } from "react-jss"
 import Icon1 from 'Images/icon1.svg';

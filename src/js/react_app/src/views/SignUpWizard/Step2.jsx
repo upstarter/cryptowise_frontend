@@ -3,7 +3,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { GoogleLogin, GoogleLogout } from 'react-google-login'
 import FacebookLogin from 'react-facebook-login';
 
-import {url} from '../../utils/consts'
+import {url} from 'Utils/consts'
 import injectSheet from "react-jss";
 import Tile from "../../components/Tile/Tile";
 import logo from "Images/white_nav_logo.svg";

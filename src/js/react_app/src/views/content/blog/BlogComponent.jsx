@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from "react-router-dom"
-import {url} from '../../utils/consts'
+import {url} from 'Utils/consts'
 import injectSheet, { jss } from "react-jss"
 import { Row, Col } from 'antd'
-import colors from '../../styles/colors'
+import colors from 'Styles/colors'
 
 class BlogComponent extends React.Component {
 

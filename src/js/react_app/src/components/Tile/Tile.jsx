@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
 import { Card } from 'antd';
-import colors from "../../styles/colors"
+import colors from "Styles/colors"
 
 class CardTile extends Component {
   constructor(props) {

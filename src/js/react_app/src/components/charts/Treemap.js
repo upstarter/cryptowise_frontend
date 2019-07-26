@@ -1,6 +1,6 @@
 import React from 'react';
 import './carrotsearch.foamtree';
-import { url } from "../../utils/consts";
+import { url } from "Utils/consts";
 import { Redirect } from "react-router-dom";
 
 export default class Treemap extends React.Component {

@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { url } from "../../utils/consts";
-import PortfolioGrid from "../../components/datagrid/PortfolioGrid";
-import ScrollToTopOnMount from '../../utils/ScrollToTopOnMount'
+import { url } from "Utils/consts";
+import PortfolioGrid from "Components/datagrid/PortfolioGrid";
+import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import injectSheet, { jss } from "react-jss";
 import { Layout, Icon } from "antd";
 const { Content } = Layout;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import Auth from '../../components/auth/Auth'
+import Auth from 'Components/auth/Auth'
 import {
   Route,
   Redirect,
