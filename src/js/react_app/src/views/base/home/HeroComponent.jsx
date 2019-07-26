@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import AppButton from "../../components/Button/AppButton";
+import AppButton from "Components/Button/AppButton";
 import { url } from "Utils/consts";
 // quiz
 import injectSheet, { jss } from "react-jss";

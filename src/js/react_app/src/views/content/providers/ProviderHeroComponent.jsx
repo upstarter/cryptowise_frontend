@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 // import {Main} from '../../../elm/src/Main'
 import AppButton from "Components/Button/AppButton";
 import Modal from "react-modal";
-import SignUpWizard from "Views/SignUpWizard/SignUpWizard";
+import SignUpWizard from "Base/SignUpWizard/SignUpWizard";
 import injectSheet, { jss } from 'react-jss'
 import heroStyles from 'Styles/heroStyles'
 

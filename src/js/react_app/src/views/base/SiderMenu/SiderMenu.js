@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 const { Sider } = Layout;
 import LinkMenu from './LinkMenu'
 import injectSheet, { jss } from "react-jss"
-import AppButton from "../../components/Button/AppButton";
+import AppButton from "Components/Button/AppButton";
 import { Button, Radio, Icon } from 'antd';
 
 

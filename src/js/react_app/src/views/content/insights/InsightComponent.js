@@ -4,7 +4,7 @@ import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 
 // import colors from 'Styles/colors'
-// import BarChart from "../../components/charts/bar"
+// import BarChart from "Components/charts/bar"
 
 
 class InsightComponent extends React.Component {

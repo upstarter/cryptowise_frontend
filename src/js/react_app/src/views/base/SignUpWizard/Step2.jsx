@@ -5,7 +5,7 @@ import FacebookLogin from 'react-facebook-login';
 
 import {url} from 'Utils/consts'
 import injectSheet from "react-jss";
-import Tile from "../../components/Tile/Tile";
+import Tile from "Components/Tile/Tile";
 import logo from "Images/white_nav_logo.svg";
 import fbsvg from "Images/facebook.svg";
 import fbWhite from "Images/facebook-white.svg";

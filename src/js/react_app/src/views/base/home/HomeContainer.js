@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import AppHeader from "../../views/header/AppHeader";
-import AnalysisContainer from "../../views/analysis/AnalysisContainer"
+import AppHeader from "../header/AppHeader";
+import AnalysisContainer from "Content/analysis/AnalysisContainer"
 import PortfolioComponent from "Content/portfolio/PortfolioComponent";
 import MembershipComponent from "Marketing/MembershipComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import InsightComponent from "Content/insights/InsightComponent";
-import SignUpContainer from "../../views/SignUpWizard/SignUpContainer";
+import SignUpContainer from "Base/SignUpWizard/SignUpContainer";
 import BasicLoginForm from "Auth/BasicLoginForm";
-import PrivateRoute from "../../components/auth/PrivateRoute";
+import PrivateRoute from "Components/auth/PrivateRoute";
 import PrivacyComponent from "../PrivacyComponent";
 import FooterComponent from "./FooterComponent";
 import { Layout, Menu, Icon, Drawer } from "antd";
@@ -18,7 +18,7 @@ const { Content, Sider, Footer } = Layout;
 const { SubMenu } = Menu;
 import config from "Utils/config";
 
-import SiderMenu from "../../views/SiderMenu/SiderMenu";
+import SiderMenu from "Base/SiderMenu/SiderMenu";
 import injectSheet, { jss } from "react-jss";
 import typography from "Styles/typography";
 import colors from "Styles/colors";
@@ -41,7 +41,7 @@ const AboutComponent = Loadable({
 
 const ProviderContainer = Loadable({
   loader: () =>
-    import("../content/providers/ProviderContainer" /* webpackChunkName: "provider" */),
+    import("Content/providers/ProviderContainer" /* webpackChunkName: "provider" */),
   loading() {
     return <div>Loading...</div>;
   }
@@ -109,7 +109,7 @@ class HomeContainer extends React.Component {
                   <Route exact path="/about" component={AboutComponent} />
                   <Route exact path="/signup" component={SignUpContainer} />
                   <Route exact path="/login" component={BasicLoginForm} />
-                  {/* <Route exact path="/logout" component={Logout} /> */}
+                  <Route exact path="/logout" component={Logout} />
                   <Route
                     exact
                     path="/privacy_policy"

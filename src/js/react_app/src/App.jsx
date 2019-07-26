@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
-import HomeContainer from "./views/home/home"
+import HomeContainer from "Views/base/home/home"
 import { ConnectedRouter } from 'connected-react-router'
 import configureStore, { history } from './store'
 

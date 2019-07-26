@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Auth from '../../components/auth/Auth'
+import Auth from 'Components/auth/Auth'
 import { Route, Redirect } from "react-router-dom";
 
 export default class Signup extends Component {

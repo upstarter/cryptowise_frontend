@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 // import colors from 'Styles/colors'
-// import BarChart from "../../components/charts/bar"
+// import BarChart from "Components/charts/bar"
 
 
 class AboutComponent extends React.Component {

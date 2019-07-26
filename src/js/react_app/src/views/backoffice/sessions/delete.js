@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Actions from 'Actions/sessions';
-import Logout from '../../components/auth/Logout'
+import Logout from 'Components/auth/Logout'
 
 class SessionsDelete extends React.Component {
   handleSubmit(e) {

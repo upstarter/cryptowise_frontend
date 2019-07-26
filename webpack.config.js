@@ -166,6 +166,7 @@ module.exports = {
       Views: path.resolve(__dirname, 'src/js/react_app/src/views'),
       Proposals: path.resolve(__dirname, 'src/js/react_app/src/views/proposals'),
       Content: path.resolve(__dirname, 'src/js/react_app/src/views/content'),
+      Base: path.resolve(__dirname, 'src/js/react_app/src/views/base'),
       Developers: path.resolve(__dirname, 'src/js/react_app/src/views/content/developers'),
       Auth: path.resolve(__dirname, 'src/js/react_app/src/views/backoffice/auth'),
       Marketing: path.resolve(__dirname, 'src/js/react_app/src/views/backoffice/marketing'),
