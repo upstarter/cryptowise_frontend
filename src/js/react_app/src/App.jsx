@@ -4,10 +4,18 @@ import { Provider } from "react-redux"
 import HomeContainer from "Views/base/home/home"
 import { ConnectedRouter } from 'connected-react-router'
 import configureStore, { history } from './store'
+import setAuthToken from 'Components/auth/setAuthToken'
+import setCurrentUser from 'Actions/setCurrentUser'
+import decode from 'jwt-decode'
 
 const store = configureStore(/*provide initial state if any*/)
 
-export default class App extends React.Component {
+if (localStorage.cw_token) {
+  setAuthToken(localStorage.cw_token)
+  store.dispatch(setCurrentUser(decode(localStorage.cw_token)))
+}
+
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
@@ -18,3 +26,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App

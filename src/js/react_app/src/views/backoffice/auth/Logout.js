@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Auth from 'Components/auth/Auth'
+import AuthService from 'Components/auth/AuthService'
 import { Route, Redirect } from "react-router-dom";
 
 export default class Logout extends Component {

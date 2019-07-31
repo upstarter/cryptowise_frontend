@@ -9,8 +9,9 @@ import DeveloperComponent from "Developers/DeveloperComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import InsightComponent from "Content/insights/InsightComponent";
 import SignUpContainer from "Base/SignUpWizard/SignUpContainer";
+import Logout from "Auth/Logout";
 import BasicLoginForm from "Auth/BasicLoginForm";
-import PrivateRoute from "Components/auth/PrivateRoute";
+import AuthRoute from "Components/auth/AuthRoute";
 import PrivacyComponent from "../PrivacyComponent";
 import FooterComponent from "./FooterComponent";
 import { Layout, Menu, Icon, Drawer } from "antd";
@@ -102,10 +103,10 @@ class HomeContainer extends React.Component {
                   <Route exact path="/developers" component={DeveloperComponent} />
                   <Route exact path="/contribute" component={ProviderContainer} />
                   {/* <Route exact path="/insights" component={InsightComponent} /> */}
-                  <PrivateRoute exact path="/proposals" component={ProposalComponent} />
-                  <PrivateRoute exact path="/analysis" component={AnalysisContainer} />
-                  <PrivateRoute exact path="/portfolio" component={PortfolioComponent} />
-                  <PrivateRoute exact path="/profile" component={Protected} />
+                  <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                  <AuthRoute exact path="/analysis" component={AnalysisContainer} />
+                  <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
+                  <AuthRoute exact path="/profile" component={Protected} />
                   <Route exact path="/about" component={AboutComponent} />
                   <Route exact path="/signup" component={SignUpContainer} />
                   <Route exact path="/login" component={BasicLoginForm} />

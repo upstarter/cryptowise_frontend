@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import Elm from 'react-elm-components'
 // import {Main} from '../../../elm/src/Main'
-import AppButton from "Components/Button/AppButton";
+import AppButton from "Components/base/button/AppButton";
 import Modal from "react-modal";
 import SignUpWizard from "Base/SignUpWizard/SignUpWizard";
 import injectSheet, { jss } from 'react-jss'

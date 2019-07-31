@@ -3,19 +3,24 @@ import { url } from '../utils/consts';
 import axios from "axios";
 import { LOGIN_USER } from "./index";
 import { SESSION_ERROR } from "./index";
-import Auth from "Components/auth/Auth"
+import setAuthToken from 'Components/auth/setAuthToken'
+import setCurrentUser from 'Actions/setCurrentUser'
+import decode from 'jwt-decode'
 
 const loginUser = creds => {
     return dispatch => {
       const data = {
         session: creds,
       };
-      console.log('sessions', creds, data)
+
       axios.post(`${url}/api/v1/auth/sign_in`, data)
       .then((response) => {
-        console.log('resp', response)
-        localStorage.setItem('token', response.jwt);
-        // Auth.setCurrentUser(respo nse.user);
+        console.log(response)
+        const token = response.data.jwt
+        localStorage.setItem('cw_token', token);
+        setAuthToken(token)
+        dispatch(setCurrentUser(decode(token)))
+
         // dispatch(push('/'));
       })
       .catch((error) => {

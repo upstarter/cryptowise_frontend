@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import Auth from 'Components/auth/Auth'
 import {
   Route,
   Redirect,
@@ -15,7 +14,7 @@ import colors from "Styles/colors"
 class BasicLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    console.error(this.props.form)
+    // console.error(this.props.form)
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
