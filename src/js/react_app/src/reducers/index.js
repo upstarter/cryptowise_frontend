@@ -9,5 +9,5 @@ export default (history) => combineReducers({
   router: connectRouter(history),
   tokens: TokensReducer,
   loginUser: LoginUserReducer,
-  currentUser: authReducer
+  auth: authReducer
 });

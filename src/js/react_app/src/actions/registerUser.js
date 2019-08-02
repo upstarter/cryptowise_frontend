@@ -1,7 +1,7 @@
 import { url } from '../utils/consts';
 import axios from "axios";
-import { LOGIN_USER } from "./index";
-import loginUser from "./loginUser";
+import Cookies from 'universal-cookie';
+
 // import { push } from 'react-router-redux';
 
 const registerUser = state => {
@@ -23,9 +23,12 @@ const registerUser = state => {
         if (data.error) {
           console.log('user register create error')
         } else {
-          console.log('registerUser localStorage data', data)
-          localStorage.setItem('cw_token', data.jwt)
-          localStorage.setItem('cw_user', JSON.stringify(data.user_info))
+          console.log(data)
+          const cookies = new Cookies();
+          cookies.set('cwjwt', data.jwt, { httpOnly: true, secure: true, sameSite: 'strict', path: '/' });
+          console.log('cookie', cookies.get('cwjwt')); // Pacman
+          // localStorage.setItem('cw_token', data.jwt)
+          // localStorage.setItem('cw_user', JSON.stringify(data.user_info))
         }
       }).then((data) => {
 

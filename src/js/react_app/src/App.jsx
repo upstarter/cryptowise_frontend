@@ -7,13 +7,14 @@ import configureStore, { history } from './store'
 import setAuthToken from 'Components/auth/setAuthToken'
 import setCurrentUser from 'Actions/setCurrentUser'
 import decode from 'jwt-decode'
+// import Cookies from 'universal-cookie';
 
 const store = configureStore(/*provide initial state if any*/)
-
-if (localStorage.cw_token) {
-  setAuthToken(localStorage.cw_token)
-  store.dispatch(setCurrentUser(decode(localStorage.cw_token)))
-}
+// const cookies = new Cookies();
+//
+// if (cookies.get('cwjwt')) {
+//   store.dispatch(setCurrentUser(decode(cookies.get('cwjwt'))))
+// }
 
 class App extends React.Component {
   render() {

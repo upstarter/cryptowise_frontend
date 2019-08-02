@@ -4,11 +4,14 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 const checkAuth = () => {
-  const token = localStorage.getItem('cw_token')
-  const refreshToken = localStorage.getItem('refreshToken')
-  if (!token || !refreshToken) {
+  const cookies = new Cookies();
+  const token = cookies.get('cwjwt')
+  // const refreshToken = cookies.get('refresh')
+  // if (!token || !refreshToken) {
+  if (!token) {
     return false
   }
   try {
