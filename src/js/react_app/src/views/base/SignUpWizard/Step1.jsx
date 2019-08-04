@@ -72,8 +72,9 @@ class SignUpStep1 extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            So we can provide you with relevant signals and content,
-            please choose <strong>at least</strong> 3 topics your most interested in.
+            So we can provide you with relevant signals and content, please
+            choose <strong className="title-small"> at least </strong> 3 topics
+            you're most interested in. <i className="subtitle-small">You may choose as many as you like.</i>
           </h2>
         </div>
         <div className={classes.main}>
@@ -115,7 +116,7 @@ const styles = {
     background: `${colors.white}`,
   },
   main: {
-    marginTop: 68,
+    marginTop: 98,
     width: '800px !important',
     'overflow-y': 'none',
   },
@@ -123,7 +124,10 @@ const styles = {
     padding: 15,
     fontSize: "21px !important",
     color: `${colors.black}`,
-    textAlign: 'center'
+    textAlign: 'center',
+    '& i': {
+      color: 'royalblue'
+    }
   },
   footer: {
     display: 'flex',
@@ -162,7 +166,7 @@ const styles = {
     },
     main: {
       maxWidth: '99vw',
-      marginTop: 100
+      marginTop: 150
     }
   },
   // MOBILE
@@ -183,7 +187,7 @@ const styles = {
       gridTemplateColumns: "1fr"
     },
     main: {
-      marginTop: 125,
+      marginTop: 165,
     },
 
   }

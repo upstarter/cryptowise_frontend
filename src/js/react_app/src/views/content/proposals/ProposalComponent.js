@@ -206,6 +206,16 @@ const proposalStyles = {
     gridTemplateColumns: '30vw 70vw',
     gridTemplateAreas: '"sidebar content"',
 
+    '& #proposal-blurb': {
+      gridArea: 'sidebar',
+      margin: '0 auto 60px',
+      padding: 21,
+
+      '& #proposal-blurb-title': {
+        textAlign: 'center'
+      }
+    },
+
     '@media (max-width: 880px)': {
       gridTemplateColumns: '100vw 100vw',
       gridTemplateAreas: '"sidebar" "content"'
@@ -214,16 +224,6 @@ const proposalStyles = {
     '@media (min-width: 880px)': {
       gridTemplateColumns: '40vw 60vw',
       gridTemplateAreas: '"sidebar content"'
-    },
-
-    '& #proposal-blurb': {
-      gridArea: 'sidebar',
-      margin: '0 auto 30px',
-      padding: 14,
-
-      '& #proposal-blurb-title': {
-        textAlign: 'center'
-      }
     },
 
     '& .float': {

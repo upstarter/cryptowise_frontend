@@ -13,7 +13,11 @@ const registerUser = state => {
             password: state.password,
             topic_knowledge_ids: state.topic_knowledge_ids,
             topic_interest_ids: state.topic_interest_ids
-          }
+          },
+          headers: {
+          },
+          withCredentials: true,
+          credentials: 'include',
         })
 
     return (dispatch) => {
@@ -25,9 +29,9 @@ const registerUser = state => {
         } else {
           console.log(data)
           const cookies = new Cookies();
-          cookies.set('cwjwt', data.jwt, { httpOnly: true, secure: true, sameSite: 'strict', path: '/' });
-          console.log('cookie', cookies.get('cwjwt')); // Pacman
-          // localStorage.setItem('cw_token', data.jwt)
+          console.log('cookies', cookies.getAll()); // Pacman
+          const token = cookies.get('_cw_rem')
+          localStorage.setItem('_cw_rem', data.jwt)
           // localStorage.setItem('cw_user', JSON.stringify(data.user_info))
         }
       }).then((data) => {

@@ -17,7 +17,7 @@ const loginUser = creds => {
       axios.post(`${url}/api/v1/auth/sign_in`, data)
       .then((response) => {
         const cookies = new Cookies();
-        const token = cookies.get('cwjwt')
+        const token = cookies.get('_cw_rem')
         loginSuccessful(token)
         dispatch({
           type: SET_CURRENT_USER,

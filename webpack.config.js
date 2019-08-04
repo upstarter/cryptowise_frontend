@@ -177,10 +177,19 @@ module.exports = {
     // webpack-dev-server defaults to localhost:8080
     proxy: {
       "/api": {
-        target: 'localhost:4000',
-        pathRewrite: { '^/api': '' },
+        target: 'http://localhost:4000',
+        // pathRewrite: { '^/api': '/api' },
+        cookieDomainRewrite: "localhost",
         changeOrigin: true,
-        secure: false
+        // secure: true
+        onProxyReq: proxyReq => {
+          // Browers may send Origin headers even with same-origin
+          // requests. To prevent CORS issues, we have to change
+          // the Origin to match the target URL.
+          if (proxyReq.getHeader('origin')) {
+            proxyReq.setHeader('origin', 'http://localhost:4000');
+          }
+        },
       }
     },
     historyApiFallback: {
@@ -189,7 +198,9 @@ module.exports = {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "*"
+      "Access-Control-Allow-Headers": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Expose-Headers": "*"
     },
     watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
     contentBase: path.resolve(__dirname, "dist"),

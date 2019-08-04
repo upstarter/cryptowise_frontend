@@ -23,23 +23,23 @@ const LinkMenu = withRouter(props => {
       <Menu.Item key="/proposals">
         <Link to="/proposals" style={{ textDecoration: "none" }}>
           <Icon type="notification" />
-          <span className="nav-text">Feature Proposals</span>
+          <span className="nav-text">Contribute</span>
         </Link>
       </Menu.Item>
-      <Menu.Item key="/analysis">
+      {/* <Menu.Item key="/analysis">
         <Icon type="area-chart" />
         <span className="nav-text">
         <Link to="/analysis">
           Analysis
         </Link>
         </span>
-      </Menu.Item>
-      <Menu.Item key="/portfolio">
+      </Menu.Item> */}
+      {/* <Menu.Item key="/portfolio">
           <Link to="/portfolio" style={{ textDecoration: "none" }}>
             <Icon type="user" />
             <span className="nav-text">Portfolio</span>
           </Link>
-      </Menu.Item>
+      </Menu.Item> */}
       <Menu.Item key="/developers">
         <Link to="/developers" style={{ textDecoration: "none" }}>
           <Icon type="code" />
