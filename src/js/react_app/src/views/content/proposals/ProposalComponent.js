@@ -263,6 +263,35 @@ const proposalStyles = {
       margin: [0,0,20,0]
     },
 
+    '@media (min-width: 880px)': {
+        '& .ant-list-item': {
+          maxWidth: '90vw',
+          margin: '0 auto',
+          padding: 20,
+
+          '& .ant-list-item-meta': {
+            maxWidth: '90vw',
+            margin: '0 auto',
+            padding: 10
+          },
+
+          '& .ant-list-item-foot': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: '50vw',
+            margin: '0 auto',
+          },
+
+          '& .ant-list-item-action': {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        },
+    },
+
     '@media (max-width: 880px)': {
         '& .ant-list-item': {
           maxWidth: '90vw',
