@@ -15,8 +15,7 @@ class DeveloperComponent extends React.Component {
         <section id="developer" className={classes.developers}>
           <div id="developer-content" className="content">
             <div id="title" className="title-small">CryptoWise for Developers</div>
-            <div id="title" className="subtitle-big">Own the Network</div>
-            <div id="title" className="subtitle-small">Like hacker news, but problems only...</div>
+            <div id="title" className="subtitle-big">Own your Networks</div>
             <p>
               Cryptoassets represent the native asset
               class to information networks: setting up a means of both
@@ -25,12 +24,12 @@ class DeveloperComponent extends React.Component {
               crypto ecosystem.
             </p>
             <p>
-                The high-tech industries of our time are crypto-networking,
-                Artificial Intelligence, cloud/fog computing, robotics, and
-                bio-tech. CryptoWise is empowering developers to form new
-                decentralized networks. Our vision is to help alleviate problems of
+                The high-tech industries of our time are Crypto-networking,
+                Artificial Intelligence, Cloud/Fog computing, Robotics,
+                Bio-tech, Nano-tech, Mixed Reality. CryptoWise is empowering developers to form new
+                decentralized market networks. Our vision is to help alleviate problems of
                 over-population and over-organization, which has a constraining
-                effect on personal freedom and which optimizes peoples' ability to
+                effect on personal freedom and which restricts peoples' ability to
                 connect, cooperate, and compete in our new globally connected,
                 hyper-efficient, rapidly accelerating crypto-economy.
             </p>
@@ -43,11 +42,13 @@ class DeveloperComponent extends React.Component {
                 can join together and pool their resources for the attainment of prosperity in
                 a way that is respectful of eachothers' autonomy and innate talents.
             </p>
+            <h3 className='subtitle-big'>
+              Peer-to-Peer disruption architecture is our rebel yell.
+            </h3>
             <p>
-              Peer-to-Peer disruption architecture is our rebel
-              yell. Achieving the goal of a decentralized and equinimitous distribution
-              in the means of technological production requires significant contributions from a growing
-              community of developers; And we need your help. Help us curate the
+              Achieving the goal of a decentralized and equinimitous distribution
+              of the means of technological disruption requires significant contributions from a growing
+              community of developers; And we need your help. Help us curate and enrich the
               best algorithms and content from our growing community of volunteer analysts
               and crypto-network engineers and researchers.
             </p>
@@ -57,18 +58,18 @@ class DeveloperComponent extends React.Component {
               expertise in the foundations of our new disruptive technologies.
               Our team is made up of engineers, scientists and researchers steeped
               in the technical complexity that are crypto-networking and
-              web software engineering. Join Us!
+              web software engineering.
             </p>
-            <div>
+            <div id='developer-list'>
               <ul style={{marginLeft: 30}}>
-                <li>Grow and Share your crypto-finance expertise, own your network</li>
+                <li>Grow and Share your deep crypto-finance expertise, own your network</li>
 
-                <li>Access our repository of ultra-modern data and software tools</li>
-                <li>Carefully selected early contributors who will have access to closed Beta</li>
-                <li>Crowdsource token project intelligence for early adopters</li>
-                <li>Fill out our Google docs application form |here| and we will get back to you soon.</li>
-                <li>Polkadot, Cosmos (Interop)</li>
-                <li>BDFL Eric Steen, democratically developed software usually doesn't work, just enough authority, engineers making risk decisions, not management</li>
+                <li>Access our repository of tools</li>
+                {/* <li>Carefully selected early contributors who will have access to closed Beta</li> */}
+                <li>Crowdsourced token project intelligence for early adopters</li>
+                {/* <li>Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
+                {/* <li>Polkadot, Cosmos (Interop)</li> */}
+                {/* <li>BDFL Eric Steen, democratically developed software usually doesn't work, just enough authority, engineers making risk decisions, not management</li> */}
                 <li>Like what you read? Share it! Hate what you read? Let us know @CryptoWiseAI.</li>
               </ul>
             </div>
@@ -90,6 +91,15 @@ const devStyles = {
         width: '50%',
         margin: '0 auto',
         textAlign: 'center'
+      },
+      '& h3': {
+        textAlign: 'center',
+        maxWidth: '50ch'
+      },
+
+      '& #developer-list': {
+        maxWidth: '50ch',
+        padding: 15
       },
 
       '@media (min-width: 992px)': {

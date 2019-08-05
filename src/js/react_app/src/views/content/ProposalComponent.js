@@ -8,7 +8,6 @@ const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
 import userProposalCreate from "Actions/userProposalCreate";
-import colors from "Styles/colors"
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
@@ -136,79 +135,53 @@ class ProposalComponent extends React.Component {
         <section id="proposal" className={classes.proposals}>
           <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
           <div id="proposal-blurb">
-            <Typography>
+            <Typography className='blurb-typography'>
               <div id="proposal-blurb-intro">
-                <Title>🎸 Problem Riff's</Title>
-                <h2 id='subtitle' className='subtitle-small'>Like a Hacker News focused on mob solving investment problems for retirement security.</h2>
+                <Title id="proposal-blurb-title">Feature Proposals</Title>
+                <h4 style={{textAlign: 'center', margin: '-10px 0 35px 0'}} className='subtitle-small'>🌱 Evolve your Ecosystem</h4>
                 <Paragraph>
-                  Problems are a way for our ecosystem to sprout the seeds of
-                  what it is to become over the long term. They are the guiding north
-                  star to prosperity and opportunity for the next generations of fin-hackers, fin-repreneurs, and fin-hack-nanciers.
-                </Paragraph>
-                <Paragraph style={{textAlign: 'center'}}>( ¯\_(😃)_/¯ )</Paragraph>
-                <Paragraph>
-                  Please think about the problems you view as most critically needing solutions along the factors determining
-                  optimization of investment returns and share them. Expert teams will research the top scoring
-                  problems and share their preliminary results.
+                  Feature Proposals sprout the seeds of the CryptoWise ecosystem features for the long term. They are the guiding north
+                  star to prosperity and opportunity for our membership of high-tech financiers, fin-hackers, and finpreneurs.
                 </Paragraph>
               </div>
 
               <div id="proposal-blurb-features">
                 <h5 id="proposal-blurb-how">How to participate:</h5>
                 <ol id="proposal-blurb-list">
-                  <li>
-                    <strong className='subtitle-big'>Submit 👩🏽‍🏫 </strong>,
-                    <strong className='subtitle-big'> Search 🔎 </strong>
-                    , and
-                    <strong className='subtitle-big'> Rate 🌟 </strong>
-                    problems relevent to your goals & activities.
-                  </li>
-                  <li><strong className='subtitle-big'>Make an Offer</strong> to solve problem(s) relevent to your goals & activities and
-                    implement as API endpoints for RIFF rewards. A rising tide raises all boats.
-                  </li>
+                  <li>Submit new features relevent to your goals & activities</li>
+                  <li>Find features relevent to your goals & activities and get involved as the community evolves</li>
+                  <li>Rate features submitted by the community for possible inclusion in our RIFFS 🎸 program (<b>R</b>apid <b>I</b>mplementation <b>F</b>easibility & <b>F</b>undability <b>S</b>tudy).</li>
                 </ol>
               </div>
-
-              <div id="proposal-blurb-guide">
-                <h5 id="proposal-blurb-title">
-                  RIFF Guidelines
-                </h5>
-                <ol id="proposal-blurb-list">
-                  <li>Submit problems that take no longer than a few days or weeks to solve.</li>
-                  <li>Prioritize problems relevent to your goals & activities to gain most value.</li>
-                  <li>Upvote problems submitted by the community for inclusion in a cloud-sourced teams'
-                     RIFF'S program (Rapid Implementation Feasibility & Fundability Study).
-                  </li>
-                </ol>
-              </div>
+              <p>Before making a public proposal, we just ask that you think hard on what software, data, and/or features on our network would be most valuable for you to make highly sound investment decisions.</p>
             </Typography>
           </div>
 
           <div id="proposal-items" className={classes.proposalItems}>
             <Affix offsetTop={64}>
               <div id="proposal-items-heading">
-                <h3>RIFF Problems</h3>
+                <h3>RIFF Proposals</h3>
               </div>
             </Affix>
             <div className="proposal-column">
               <List
-                className="demo-loadmore-list"
+                className="loadmore-list"
                 loading={initLoading}
-                itemLayout="horizontal"
+                itemLayout="vertical"
                 loadMore={loadMore}
                 dataSource={list}
                 renderItem={item => (
-                  <List.Item actions={[<a>more</a>]}>
+                  <List.Item actions={[<a>save</a>,<a>more</a>,<a>edit</a>]}>
                     <Skeleton avatar title={false} loading={item.loading} active>
                       <List.Item.Meta
                         avatar={
-                           <Avatar style={{ backgroundColor: '#D0E5FF' }} icon="user" />
+                          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                         }
                         title={<a href="https://ant.design">{item.name.last}</a>}
                         description="RIFF, a proposal language for analytical crypto-networking applications, refined by the CryptoWise Team"
                       />
-                      {/* <div>Content Goes here</div> */}
-                      <div>
+                      <div className='ant-list-item-foot'>
+                        <h6 className='sub-title'>Your Rating</h6>
                         <Rate allowHalf />
                       </div>
                     </Skeleton>
@@ -235,40 +208,11 @@ const proposalStyles = {
 
     '& #proposal-blurb': {
       gridArea: 'sidebar',
-      maxWidth: '60ch',
-      padding: [0, 0, 0, 75],
-      '& strong': {
-        fontSize: 20,
-        // color: `${colors.antBlue}`
-      },
-      '& #proposal-blurb-intro': {
-        maxWidth: '60ch',
-        '& #subtitle': {
-          marginBottom: 20
-        }
-      },
+      margin: '0 auto 60px',
+      padding: 21,
 
-      '& #proposal-blurb-list': {
-        padding: [10,0,10,10]
-      },
-
-
-      '& #proposal-blurb-features': {
-        padding: [10, 0, 0, 0],
-
-        '& #proposal-blurb-features-title': {
-          padding: [0,0,0,0]
-        },
-
-      },
-
-      '& #proposal-blurb-guide': {
-        padding: [10, 0, 0, 0],
-
-        '& #proposal-blurb-guide-title': {
-          padding: [0,0,0,0]
-        },
-
+      '& #proposal-blurb-title': {
+        textAlign: 'center'
       }
     },
 
@@ -278,7 +222,7 @@ const proposalStyles = {
     },
 
     '@media (min-width: 880px)': {
-      gridTemplateColumns: '38vw 62vw',
+      gridTemplateColumns: '40vw 60vw',
       gridTemplateAreas: '"sidebar content"'
     },
 
@@ -299,33 +243,91 @@ const proposalStyles = {
 
   proposalItems: {
     gridArea: 'content',
-    backgroundColor: '#ffffff',
-
-    '@media (min-width: 992px)': {
-      width: '98%',
-    },
+    backgroundColor: '#fff',
 
     '& #proposal-items-heading': {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      // position: 'fixed',
       height: 40,
-      // border: '1.2px solid #000000',
-      fontWeight: '400',
-      zIndex: 10,
-      backgroundColor: '#D0E5FF',
-      color: '#000',
+      minWidth: '100%',
+      backgroundColor: 'rgba(118,48,103,0.85)',
+      color: '#fff',
     },
 
-    '& .ant-list-item': {
-      // display: 'block',
-      // listStyleType: 'none',
-      padding: 14,
-      // border: '1px solid #727d88',
-    }
-  },
+    '& .loadmore-list': {
+      minHeight: 350
+    },
 
+    '& #load-more-button': {
+      margin: [0,0,20,0]
+    },
+
+    '@media (min-width: 880px)': {
+        '& .ant-list-item': {
+          maxWidth: '90vw',
+          margin: '0 auto',
+          padding: 20,
+
+          '& .ant-list-item-meta': {
+            maxWidth: '90vw',
+            margin: '0 auto',
+            padding: 10
+          },
+
+          '& .ant-list-item-foot': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: '50vw',
+            margin: '0 auto',
+          },
+
+          '& .ant-list-item-action': {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        },
+    },
+
+    '@media (max-width: 880px)': {
+        '& .ant-list-item': {
+          maxWidth: '90vw',
+          margin: '0 auto',
+          padding: 20,
+
+          '& .ant-list-item-meta': {
+            maxWidth: '90vw',
+            margin: '0 auto',
+            padding: 10
+          },
+
+          '& .ant-list-item-foot': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: '50vw',
+            margin: '0 auto',
+          },
+
+          '& .ant-list-item-action': {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        },
+    },
+
+
+  },
 }
 
-export default injectSheet(proposalStyles)(ProposalComponent)
+//
+// const mapDispatchToProps = (dispatch, ownProps) => ({
+//   userProposalCreate: (proposalInfo) => dispatch(userProposalCreate(proposalInfo))
+// })
+
+export default connect(null, null)(injectSheet(proposalStyles)(ProposalComponent));
