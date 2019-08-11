@@ -11,5 +11,5 @@ RUN apt-get update -y \
 COPY . .
 RUN cd ${npm_subdir} \
     && npm install \
-    && npm run deploy \
-    && npm start
+    && npm rebuild node-sass \
+    && npm run deploy

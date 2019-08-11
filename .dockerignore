@@ -1,3 +1,10 @@
 .git
-build
 .DS_Store
+build
+/dist
+/_build/
+/deps/
+/doc/
+/priv/static/
+/test/
+/tmp/
