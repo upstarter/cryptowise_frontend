@@ -4,7 +4,7 @@
   "scripts": {
     "build": "NODE_ENV=development ./node_modules/webpack/bin/webpack.js --progress --color",
     "start": "webpack-dev-server --open --inline --hot --stdin --host localhost --port 8081 --config webpack.config.js --mode development",
-    "bundle": "./node_modules/.bin/webpack --config webpack.config.js",
+    "bundle": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --progress --color --mode production",
     "deploy": "npm run bundle",
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },

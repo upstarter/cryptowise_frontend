@@ -24,23 +24,27 @@ class DeveloperComponent extends React.Component {
               crypto ecosystem.
             </p>
             <p>
-                The high-tech industries of our time are Crypto-networking,
-                Artificial Intelligence, Cloud/Fog computing, Robotics,
-                Bio-tech, Nano-tech, Mixed Reality. CryptoWise is empowering developers to form new
-                decentralized market networks. Our vision is to help alleviate problems of
-                over-population and over-organization, which has a constraining
-                effect on personal freedom and which restricts peoples' ability to
-                connect, cooperate, and compete in our new globally connected,
-                hyper-efficient, rapidly accelerating crypto-economy.
+              The high-tech industries of our time are Crypto-networking,
+              Artificial Intelligence, Cloud/Fog computing, Robotics,
+              Bio-tech, Nano-tech, Mixed Reality. CryptoWise is empowering developers to form new
+              decentralized market networks. Since technological trends follow ever-shortening
+              cycles of markeiting hype, our vision is to decentralize rapidly to alleviate problems of
+              over-population and over-organization, which has a constraining
+              effect on personal freedom and which restricts peoples' ability to
+              connect, cooperate, and compete in our new globally connected,
+              hyper-efficient, rapidly accelerating crypto-economy.
             </p>
             <p>
-                With the objective of minimizing the cultural and productivity damaging
-                effects of the creativity-starved rent-seeking financial
-                intermediaries, our mission is to provide talented creators with
-                the resources and access to capital that they desperately need
-                to create a more efficient, effective, and prosperous world in which people
-                can join together and pool their resources for the attainment of prosperity in
-                a way that is respectful of eachothers' autonomy and innate talents.
+                With the objective of minimizing the cultural and productivity
+                damaging effects of over-organized and creativity-starved
+                rent-seeking financial intermediaries, our mission is to provide
+                talented fintech creators with the resources and access to
+                capital that they desperately need to create a more efficient,
+                effective, and prosperous crypto-economy. One in which people
+                can join together and pool their resources for the attainment of
+                prosperity in a way that is respectful of their autonomy and
+                individuality, rather than subordinate to the needs of a
+                dis-combobulated heirarchical cluster-fuck with a do-gooder mentality.
             </p>
             <h3 className='subtitle-big'>
               Peer-to-Peer disruption architecture is our rebel yell.
