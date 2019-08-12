@@ -139,16 +139,16 @@ class ProposalComponent extends React.Component {
             <Typography>
               <div id="proposal-blurb-intro">
                 <Title>🎸 Problem Riff's</Title>
-                <h2 id='subtitle' className='subtitle-small'>Like a Hacker News focused on mob solving investment problems for retirement security.</h2>
+                <h2 id='subtitle' className='subtitle-small'>Like a Hacker News focused on solving investment problems for retirement security.</h2>
                 <Paragraph>
                   Problems are a way for our ecosystem to sprout the seeds of
                   what it is to become over the long term. They are the guiding north
-                  star to prosperity and opportunity for the next generations of fin-hackers, fin-repreneurs, and fin-hack-nanciers.
+                  star to prosperity and opportunity for the next generations of fin-technologists, fin-repreneurs, and financiers.
                 </Paragraph>
                 <Paragraph style={{textAlign: 'center'}}>( ¯\_(😃)_/¯ )</Paragraph>
                 <Paragraph>
-                  Please think about the problems you view as most critically needing solutions along the factors determining
-                  optimization of investment returns and share them. Expert teams will research the top scoring
+                  We stay focused on the problems that inhibit global investment returns and share them with eachother. Like a financial
+                  media show but more interactive. Expert teams will research top scoring
                   problems and share their preliminary results.
                 </Paragraph>
               </div>
@@ -174,10 +174,12 @@ class ProposalComponent extends React.Component {
                   RIFF Guidelines
                 </h5>
                 <ol id="proposal-blurb-list">
-                  <li>Submit problems that take no longer than a few days or weeks to solve.</li>
+                  <li>Try to submit problems that take no longer than a few days or weeks to solve.</li>
                   <li>Prioritize problems relevent to your goals & activities to gain most value.</li>
                   <li>Upvote problems submitted by the community for inclusion in a cloud-sourced teams'
                      RIFF'S program (Rapid Implementation Feasibility & Fundability Study).
+                  </li>
+                  <li>Trolls are immediately expelled without recourse.
                   </li>
                 </ol>
               </div>
