@@ -19,7 +19,7 @@ class DeveloperComponent extends React.Component {
             <p>
               Cryptoassets represent the native asset
               class to information networks: setting up a means of both
-              capitalisation and monetisation. As information networks grow and
+              capitalization and monetization. As information networks grow and
               mature, so will our understanding of the archetypal tokens in the
               crypto ecosystem.
             </p>
@@ -28,23 +28,24 @@ class DeveloperComponent extends React.Component {
               Artificial Intelligence, Cloud/Fog computing, Robotics,
               Bio-tech, Nano-tech, Mixed Reality. CryptoWise is empowering developers to form new
               decentralized market networks. Since technological trends follow ever-shortening
-              cycles of markeiting hype, our vision is to decentralize rapidly to alleviate problems of
+              cycles of marketing hype, decentralization stands as the most readily available
+              solution for rapidly alleviating the important problems of
               over-population and over-organization, which has a constraining
               effect on personal freedom and which restricts peoples' ability to
               connect, cooperate, and compete in our new globally connected,
-              hyper-efficient, rapidly accelerating crypto-economy.
+              hyper-efficient, rapidly accelerating economy.
             </p>
             <p>
-                With the objective of minimizing the cultural and productivity
-                damaging effects of over-organized and creativity-starved
-                rent-seeking financial intermediaries, our mission is to provide
-                talented fintech creators with the resources and access to
-                capital that they desperately need to create a more efficient,
-                effective, and prosperous crypto-economy. One in which people
-                can join together and pool their resources for the attainment of
-                prosperity in a way that is respectful of their autonomy and
-                individuality, rather than subordinate to the needs of a
-                dis-combobulated heirarchical cluster-fuck with a do-gooder mentality.
+              With the objective of minimizing the cultural and productivity
+              damaging effects of over-organized and creativity-starved
+              rent-seeking financial intermediaries, our mission is to provide
+              talented fintech creators with the resources and access to
+              capital that they desperately need to create a more efficient,
+              effective, and prosperous economy. One in which people
+              can join together and pool their resources for the attainment of
+              prosperity in a way that is respectful of their autonomy and
+              individuality, rather than subordinate to the needs of a
+              dis-combobulated heirarchical cluster-fuck with a do-gooder mentality.
             </p>
             <h3 className='subtitle-big'>
               Peer-to-Peer disruption architecture is our rebel yell.

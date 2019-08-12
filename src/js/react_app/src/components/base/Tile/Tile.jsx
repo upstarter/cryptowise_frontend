@@ -56,11 +56,11 @@ class CardTile extends Component {
               style={state.selected ? { color: `${colors.primary}` } : null}
             >
               {/* <p><strong>{data.id}</strong></p> */}
-              <p><strong>{data.name}</strong></p>
+              <p><span>{data.name}</span></p>
               <p
                 className={classes.description}
               >
-                <span style={{overflow: 'hidden', textOverflow: 'ellipsis'}}>
+                <span style={{display: 'none', overflow: 'hidden', textOverflow: 'ellipsis'}}>
                   {data.description}
                 </span>
               </p>
@@ -75,13 +75,21 @@ class CardTile extends Component {
 
 const styles = {
   card: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     color: '#000',
-    cursor: "pointer"
+    cursor: "pointer",
+    textAlign: 'center !important',
+    '& .ant-card-body': {
+      padding: '0px !important',
+    },
   },
+
   name: {
     fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
-    fontSize: '16px',
-    fontStyle: 'bold',
+    fontSize: '14px',
     textAlign: 'center',
     userSelect: 'none',
   },

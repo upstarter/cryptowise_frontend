@@ -72,9 +72,9 @@ class SignUpStep1 extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            So we can provide you with relevant signals and content, please
-            choose <strong className="title-small"> at least </strong> 3 topics
-            you're most interested in. <i className="subtitle-small">You may choose as many as you like.</i>
+            Discover investment intelligence relevant to your interests.
+            Choose 3 or more topics you're interested in. <span className="subtitle-small">Click for details, then
+             select as many as you like.</span>
           </h2>
         </div>
         <div className={classes.main}>
@@ -110,23 +110,26 @@ const styles = {
     position: 'fixed',
     maxHeight: '25vh',
     marginBottom: '50px',
-    maxWidth: 800,
+    maxWidth: 400,
+    padding: '7px',
     width: '100%',
     zIndex: 1,
+    boxShadow: '1px 1px 2px 1px silver',
     background: `${colors.white}`,
   },
   main: {
-    marginTop: 98,
-    width: '800px !important',
+    marginTop: 180,
+    width: '400px !important',
     'overflow-y': 'none',
   },
   title: {
     padding: 15,
-    fontSize: "21px !important",
+    fontSize: "20px !important",
     color: `${colors.black}`,
     textAlign: 'center',
-    '& i': {
-      color: 'royalblue'
+    margin: [0,0,0,20],
+    '& .subtitle-small': {
+      color: 'darkblue',
     }
   },
   footer: {
@@ -134,13 +137,13 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'fixed',
-    height: "60px",
+    minHeight: "65px",
     width: '100vw',
     bottom: 0,
     right: 0,
-    fontSize: 22,
+    fontSize: 24,
     background: `${colors.white}`,
-    boxShadow: '8px 2px 4px 8px #f0f1f2',
+    boxShadow: '1px 1px 2px 1px silver',
   },
   button: {
     width: '75px',
@@ -148,8 +151,8 @@ const styles = {
   tileGrid: {
     marginTop: '35px',
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridTemplateRows: "repeat(2, auto)",
+    gridTemplateColumns: "repeat(1, 1fr)",
+    gridTemplateRows: "repeat(1, auto)",
     gridColumnGap: ".2em",
     gridRowGap: ".2em"
   },
@@ -172,13 +175,14 @@ const styles = {
   // MOBILE
   "@media (max-width: 482px)": {
     header: {
-      maxHeight: "30vh",
+      maxHeight: "45vh",
+      padding: [7, 7, 7, 21],
+
       // lineHeight: ".01em",
     },
     title: {
-      padding: 20,
-      fontSize: "17px !important",
-      textAlign: 'center'
+      fontSize: "15px !important",
+      textAlign: 'left'
     },
     steps: {
       display: 'none !important',
@@ -187,9 +191,12 @@ const styles = {
       gridTemplateColumns: "1fr"
     },
     main: {
-      marginTop: 165,
+      marginTop: 190,
     },
-
+    footer: {
+      display: 'flex',
+      minHeight: 65,
+    },
   }
 };
 
