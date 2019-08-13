@@ -8,6 +8,7 @@ const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugi
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const env = process.env.NODE_ENV || "development";
 const devMode = env === "development";
@@ -30,7 +31,7 @@ module.exports = {
     // `path` is the folder where Webpack will place your bundles
     path: path.resolve(__dirname, "dist"),
     // `filename` provides a template for naming your bundles (remember to use `[name]`)
-    filename: 'dist/js/[name].bundle.js',
+    filename: '[name].bundle.js',
     // `chunkFilename` provides a template for naming code-split bundles (optional)
     chunkFilename: '[name].bundle.js'
   },
@@ -211,6 +212,10 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
+    new HtmlWebpackPlugin({
+      title: 'CryptoWise',
+      template: 'src/index.html'
+    }),
     new AntdScssThemePlugin('./src/assets/css/theme.scss'),
     new ReactLoadablePlugin({
       filename: './dist/react-loadable.json',

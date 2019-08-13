@@ -1,47 +1,10 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="src/assets/css/app.scss" />
-</head>
-
-<body>
-
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '494273931358072',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v3.3'
-        });
-
-        FB.AppEvents.logPageView();
-
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "https://connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!-- <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script> -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=494273931358072&autoLogAppEvents=1"></script>
+  <head>
+    <meta charset="utf-8"/>
+    <title>CryptoWise</title>
+  <link href="app.232dee2305a8adcac785.css" rel="stylesheet"></head>
+  <body>
     <div id="app"></div>
-    <script src="/dist/js/app.bundle.js"></script>
-    <script src="/dist/js/home.bundle.js"></script>
-    <script src="/dist/js/about.bundle.js"></script>
-    <script src="/dist/js/provider.bundle.js"></script>
-    <script src="/dist/js/vendors~app.bundle.js"></script>
-    <!-- <script src="/js/vendors~home.bundle.js"></script> -->
-</body>
-
+  <script type="text/javascript" src="app.bundle.js"></script></body>
 </html>
