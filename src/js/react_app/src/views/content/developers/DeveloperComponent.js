@@ -15,37 +15,47 @@ class DeveloperComponent extends React.Component {
         <section id="developer" className={classes.developers}>
           <div id="developer-content" className="content">
             <div id="title" className="title-small">CryptoWise for Developers</div>
-            <div id="title" className="subtitle-big">Own your Networks</div>
+            <div id="title" style={{marginBottom: 30}} className="subtitle-big">Own your Networks</div>
             <p>
-              Cryptoassets represent the native asset
-              class to information networks: setting up a means of both
-              capitalization and monetization. As information networks grow and
-              mature, so will our understanding of the archetypal tokens in the
-              crypto ecosystem.
+              Cryptoassets represent the native asset class to information
+              networks: setting up a means of both capitalization and
+              monetization. As information networks grow and mature, so will our
+              understanding of the archetypal tokens in the crypto ecosystem.
             </p>
             <p>
-              The high-tech industries of our time are Crypto-networking,
-              Artificial Intelligence, Cloud/Fog computing, Robotics,
-              Bio-tech, Nano-tech, Mixed Reality. CryptoWise is empowering developers to form new
-              decentralized market networks. Since technological trends follow ever-shortening
-              cycles of marketing hype, decentralization stands as the most readily available
-              solution for rapidly alleviating the important problems of
-              over-population and over-organization, which has a constraining
-              effect on personal freedom and which restricts peoples' ability to
-              connect, cooperate, and compete in our new globally connected,
-              hyper-efficient, rapidly accelerating economy.
+              The high-tech ecosystems of our time are Crypto Networking,
+              Artificial Intelligence, Cloud/Fog computing, Robotics, BioTech,
+              NanoTech, TransformativeTech, HealthTech, Mixed Reality, IoT, and
+              RegTech, GovTech. CryptoWise is empowering developers to form useful
+              decentralized market networks.
+            </p>
+            <p>
+              Where popular technological trends follow ever-shortening cycles
+              of marketing hype and often lack true disruption, decentralization
+              stands as the most readily available solution to allevate the
+              important problems of corruption, over-organization and additional
+              effects of over-population. These evolutionary outcomes are known
+              to have a constraining effect on personal freedom.
+            </p>
+            <p>
+              Corruption has a trust undermining effect by restricting peoples
+              ability to openly connect, cooperate, and compete in our
+              ever-accelerating, hyper-efficient, rapidly democratizing global
+              economy. Blockchain stands strong to fix the chasm of trust via
+              transparency and sound scientific verifiability in contractual
+              obligations and transactional integrity.
             </p>
             <p>
               With the objective of minimizing the cultural and productivity
               damaging effects of over-organized and creativity-starved
               rent-seeking financial intermediaries, our mission is to provide
-              talented fintech creators with the resources and access to
-              capital that they desperately need to create a more efficient,
-              effective, and prosperous economy. One in which people
-              can join together and pool their resources for the attainment of
-              prosperity in a way that is respectful of their autonomy and
-              individuality, rather than subordinate to the needs of a
-              dis-combobulated heirarchical cluster-fuck with a do-gooder mentality.
+              talented fintech creators with the resources and access to capital
+              that they desperately need to create a more efficient, effective,
+              and prosperous economy. One in which people can join together and
+              pool their resources for the attainment of prosperity in a way
+              that is respectful of their autonomy and individuality, rather
+              than subordinate to the needs of a dis-combobulated heirarchical
+              cluster of busy-ness with a do-gooder mentality.
             </p>
             <h3 className='subtitle-big'>
               Peer-to-Peer disruption architecture is our rebel yell.

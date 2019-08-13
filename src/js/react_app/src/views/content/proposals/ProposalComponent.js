@@ -138,17 +138,18 @@ class ProposalComponent extends React.Component {
           <div id="proposal-blurb">
             <Typography>
               <div id="proposal-blurb-intro">
-                <Title>🎸 Problem Riff's</Title>
-                <h2 id='subtitle' className='subtitle-small'>Like a Hacker News focused on solving investment problems for retirement security.</h2>
+                <Title>Problem RIFF's 🎸</Title>
+                <h2 id='subtitle' className='subtitle-small'>Like a Hacker News focused on solving investment problems and creating
+                   retirement security rockstars.</h2>
                 <Paragraph>
-                  Problems are a way for our ecosystem to sprout the seeds of
-                  what it is to become over the long term. They are the guiding north
+                  Problems encourage the ecosystem to sprout the seeds of
+                  what it will become over the long term. Problems are the guiding north
                   star to prosperity and opportunity for the next generations of fin-technologists, fin-repreneurs, and financiers.
-                </Paragraph>
-                <Paragraph style={{textAlign: 'center'}}>( ¯\_(😃)_/¯ )</Paragraph>
-                <Paragraph>
-                  We stay focused on the problems that inhibit global investment returns and share them with eachother. Like a financial
-                  media show but more interactive. Expert teams will research top scoring
+                {/* </Paragraph> */}
+                {/* <Paragraph style={{textAlign: 'center'}}>( ¯\_(😃)_/¯ )</Paragraph> */}
+                {/* <Paragraph> */}
+                   We stay focused on the problems that inhibit growth in a portfolio of global investment returns and share
+                  them with eachother. Like a financial media show but more interactive. Expert teams will research top scoring
                   problems and share their preliminary results.
                 </Paragraph>
               </div>

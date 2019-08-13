@@ -149,12 +149,12 @@ const styles = {
     width: '75px',
   },
   tileGrid: {
-    marginTop: '35px',
-    display: "grid",
-    gridTemplateColumns: "repeat(1, 1fr)",
-    gridTemplateRows: "repeat(1, auto)",
-    gridColumnGap: ".2em",
-    gridRowGap: ".2em"
+    marginTop: '42px',
+    // display: "grid",
+    // gridTemplateColumns: "repeat(1, 1fr)",
+    // gridTemplateRows: "repeat(1, auto)",
+    // gridColumnGap: ".2rem",
+    // gridRowGap: ".2rem"
   },
 
   "@media (min-width: 482px) and (max-width: 662px)": {

@@ -76,33 +76,35 @@ class CardTile extends Component {
 const styles = {
   card: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+
+    minHeight: 50,
+    marginBottom: 5,
     color: '#000',
     cursor: "pointer",
-    textAlign: 'center !important',
+    '& .card-content': {
+
+    },
     '& .ant-card-body': {
-      padding: '0px !important',
+      padding: '15px 0 0 0 !important',
     },
   },
-
   name: {
     fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
     fontSize: '14px',
-    textAlign: 'center',
     userSelect: 'none',
   },
-  description: {
-    marginTop: '10px',
-    fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
-    fontSize: '14px',
-    fontWeight: 400,
-    fontStyle: 'italic',
-    textAlign: 'center',
-    userSelect: 'none',
-    color: `${colors.lighterLightBlue}`
-  }
+  // description: {
+  //   marginTop: '10px',
+  //   fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
+  //   fontSize: '14px',
+  //   fontWeight: 400,
+  //   fontStyle: 'italic',
+  //   textAlign: 'center',
+  //   userSelect: 'none',
+  //   color: `${colors.lighterLightBlue}`
+  // }
 };
 
 const Tile = injectSheet(styles)(CardTile);

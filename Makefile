@@ -2,7 +2,7 @@
 # build & publish release in container-registry
 
 deploy:
-	$(MAKE) build && $(MAKE) push && $(MAKE) create
+	$(MAKE) build && $(MAKE) push && $(MAKE) create && $(MAKE) firewall
 
 ssh:
 	gcloud compute ssh --project eternal-sunset-206422 --zone us-central1-f cw-web-instance

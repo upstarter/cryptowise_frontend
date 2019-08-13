@@ -14,7 +14,27 @@ set -v
 
 # Install dependencies from apt
 apt-get update
-apt-get install -yq ca-certificates git
+apt-get install -yq ca-certificates git nginx
+
+cat > /etc/nginx/conf.d/cw.conf << END_TEXT
+server {
+    server_name localhost; #example.com www.example.com;
+
+    location / {
+        root  /opt/app/cryptowise_frontend;
+        index  index.html index.htm;
+        try_files $uri $uri/ =404;
+    }
+
+    error_page  500 502 503 504  /50x.html;
+    location = /50x.html {
+        root  /usr/share/nginx/html;
+    }
+}
+END_TEXT
+
+systemctl start nginx
+
 
 # Install nodejs
 # mkdir /opt/nodejs

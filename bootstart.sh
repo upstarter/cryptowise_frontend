@@ -5,7 +5,7 @@ useradd -m -d /home/nodeapp nodeapp
 chown -R nodeapp:nodeapp /opt/app
 
 cd /opt/app/cryptowise_frontend
-NODE_ENV=production npm start
+NODE_ENV=production serve
 
 # sudo service supervisor start
 # Configure supervisor to run the node app.
