@@ -2,9 +2,9 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=development ./node_modules/webpack/bin/webpack.js --progress --color",
-    "start": "webpack-dev-server --open --inline --hot --stdin --host localhost --port 8081 --config webpack.config.js --mode development",
-    "bundle": "NODE_ENV=production PORT=8080 ./node_modules/webpack/bin/webpack.js --config webpack.config.js --progress --color --mode production",
+    "build": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --config webpack.prod.js --progress --color",
+    "start": "webpack-dev-server --open --inline --hot --stdin --host localhost --port 8081 --config webpack.dev.js --mode development",
+    "bundle": "NODE_ENV=production PORT=8080 ./node_modules/webpack/bin/webpack.js --config webpack.common.js --progress --color --mode production",
     "deploy": "npm run bundle",
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },
@@ -67,6 +67,7 @@
     "eslint": "^4.8.0",
     "eslint-plugin-react": "^7.13.0",
     "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^5.0.0",
     "imports-loader": "~0.8",
     "install": "^0.12.2",
     "less": "^3.8.1",
@@ -84,6 +85,6 @@
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.7.2",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.2.1"
   }
 }

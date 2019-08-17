@@ -143,7 +143,16 @@ module.exports = {
       // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: "url-loader?name=/images/[name].[ext]",
+        use: [
+          'file-loader?name=/images/[name].[ext]',
+          {
+            loader: "image-webpack-loader",
+            options: {
+              disable: true
+            }
+          },
+        ],
+
       },
       {
         test: /\.(ttf|otf|eot|woff2?)$/,

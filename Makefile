@@ -1,18 +1,23 @@
 # FRONTEND
-# build & publish release in container-registry
 
+# build container, publish release in container-registry, create/update instance
 deploy:
-	$(MAKE) build_image && $(MAKE) push_image && $(MAKE) create_instance && $(MAKE) progress
+	$(MAKE) build_image \
+		&& $(MAKE) push_image \
+		&& $(MAKE) create_instance \
+		&& $(MAKE) progress
 
 ssh:
-	gcloud compute ssh --project eternal-sunset-206422 --zone us-central1-f cw-web-instance
+	gcloud compute ssh --project eternal-sunset-206422 \
+		--zone us-central1-f cw-web-instance
 
 build_image:
 	docker build -t cw-web-image .
 
 push_image:
-	docker tag cw-web-image gcr.io/eternal-sunset-206422/cw-web-image:latest \
-	&& docker push gcr.io/eternal-sunset-206422/cw-web-image:latest
+	docker tag cw-web-image \
+		gcr.io/eternal-sunset-206422/cw-web-image:latest \
+		&& docker push gcr.io/eternal-sunset-206422/cw-web-image:latest
 
 # gcloud compute instances create-with-container cw-web-instance
 # 	--container-image gcr.io/cloud-marketplace/google/nginx1:1.12
@@ -32,7 +37,7 @@ progress:
 	gcloud compute instances get-serial-port-output cw-web-instance \
 		--zone us-central1-f
 
-# google has a default 8080
+# google has a default 8080 already
 firewall:
 	gcloud compute firewall-rules create http-server-allow-http-8080 \
 		--allow tcp:8080 \
