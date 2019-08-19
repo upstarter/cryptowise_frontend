@@ -103,20 +103,47 @@ module.exports = merge(common, {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
-          'file-loader?name=/images/[name].[ext]',
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: 'images/[name]-[hash:8].[ext]'
+            }
+          },
           {
             loader: "image-webpack-loader",
             options: {
-              limit: 10000,
-              disable: true
+              disable: false,
+              mozjpeg: {
+               progressive: true,
+               quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+               enabled: true,
+              },
+              pngquant: {
+               quality: '65-90',
+               speed: 4
+              },
+              gifsicle: {
+               interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+               quality: 75
+              }
             }
           },
         ],
-
       },
       {
         test: /\.(ttf|otf|eot|woff2?)$/,
-        loader: "file-loader?name=/fonts/[name].[ext]",
+        loader: "file-loader",
+        options: {
+          name: 'fonts/[name].[ext]',
+          outputPath: 'fonts',
+        }
       }
     ],
     noParse: [/\.elm$/]

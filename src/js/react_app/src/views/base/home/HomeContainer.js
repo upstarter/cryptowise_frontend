@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../header/AppHeader";
 import AnalysisContainer from "Content/analysis/AnalysisContainer"
 import PortfolioComponent from "Content/portfolio/PortfolioComponent";
+import HomeComponent from "./HomeComponent";
 import MembershipComponent from "Marketing/MembershipComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
@@ -26,12 +27,12 @@ import colors from "Styles/colors";
 
 import Loadable from "react-loadable";
 
-const HomeComponent = Loadable({
-  loader: () => import("./HomeComponent" /* webpackChunkName: "home" */),
-  loading() {
-    return <div>Loading...</div>;
-  }
-});
+// const HomeComponent = Loadable({
+//   loader: () => import("./HomeComponent" /* webpackChunkName: "home" */),
+//   loading() {
+//     return <div>Loading...</div>;
+//   }
+// });
 
 const AboutComponent = Loadable({
   loader: () => import("./AboutComponent" /* webpackChunkName: "about" */),

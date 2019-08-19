@@ -1,12 +1,8 @@
 const path = require("path");
 const fs  = require('fs');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const UglifyJsPlugin = require("uglify-js-plugin");
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -35,132 +31,23 @@ module.exports = {
     // `chunkFilename` provides a template for naming code-split bundles (optional)
     chunkFilename: '[name].bundle.js'
   },
-  module: {
-    rules: [
-      // {
-      //   test: /antd.*\.less$/,
-      //   use: [
-      //     {
-      //       loader:  devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-      //       options: {
-      //         // sourceMap: devMode,
-      //       },
-      //     },
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         importLoaders: 1,
-      //         // sourceMap: devMode,
-      //       },
-      //     },
-      //     AntdScssThemePlugin.themify({
-      //       loader: 'less-loader', // compiles Less to CSS
-      //         options: {
-      //           // sourceMap: devMode,
-      //           javascriptEnabled: true,
-      //         }
-      //     }),
-      //     // {
-      //     //   loader: 'postcss-loader',
-      //     //   options: {
-      //     //     config: {
-      //     //       path: './postcss.config.js',
-      //     //     },
-      //     //   },
-      //     // },
-      //   ]
-      // },
-      {
-        test: /\.(sc|c|)ss$/,
-        use: [
-          {
-            loader:  devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-            options: {
-              // sourceMap: devMode,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              // sourceMap: devMode,
-              // camelCase: true,
-              localIdentName: '[name]-[local]-[hash:base64:5]',
-            },
-          },
-          AntdScssThemePlugin.themify({
-            loader: 'sass-loader',
-            options: {
-              // sourceMap: devMode,
-            },
-          }),
-        ],
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {
-            loader:  devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-            options: {
-              // sourceMap: devMode,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              // sourceMap: devMode,
-            },
-          },
-          AntdScssThemePlugin.themify({
-            loader: 'less-loader', // compiles Less to CSS
-              options: {
-                // sourceMap: devMode,
-                javascriptEnabled: true,
-              }
-          }),
-        ],
-      },
-      {
-        test: /\.(jsx?)/,
-        exclude: ["/node_modules", "/src/js/elm"],
-        use: [
-          { loader: "babel-loader?cacheDirectory=true",
-          }
-        ]
-      },
-      // {
-      //   test: /\.elm$/,
-      //   exclude: ["/elm-stuff/", "/node_modules"],
-      //   loader: "elm-webpack-loader",
-      //   options: {
-      //     pathToMake: elmMakePath,
-      //     maxInstances: 2,
-      //     debug: !isProd,
-      //     warn: true,
-      //     cwd: elmSource
-      //   }
-      // },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          'file-loader?name=/images/[name].[ext]',
-          {
-            loader: "image-webpack-loader",
-            options: {
-              disable: true
-            }
-          },
-        ],
-
-      },
-      {
-        test: /\.(ttf|otf|eot|woff2?)$/,
-        loader: "file-loader?name=/fonts/[name].[ext]",
-      }
-    ],
-    noParse: [/\.elm$/]
-  },
+  // module: {
+  //   rules: [
+  //     // {
+  //     //   test: /\.elm$/,
+  //     //   exclude: ["/elm-stuff/", "/node_modules"],
+  //     //   loader: "elm-webpack-loader",
+  //     //   options: {
+  //     //     pathToMake: elmMakePath,
+  //     //     maxInstances: 2,
+  //     //     debug: !isProd,
+  //     //     warn: true,
+  //     //     cwd: elmSource
+  //     //   }
+  //     // },
+  //   ],
+  //   noParse: [/\.elm$/]
+  // },
   resolve: {
     extensions: [".css", ".sass", ".scss", ".less", ".js", ".jsx"],
     alias: {
@@ -183,39 +70,6 @@ module.exports = {
       Sessions: path.resolve(__dirname, 'src/js/react_app/src/views/backoffice/sessions')
     }
   },
-  devServer: {
-    // webpack-dev-server defaults to localhost:8080
-    proxy: {
-      "/api": {
-        target: 'http://localhost:4000',
-        // pathRewrite: { '^/api': '/api' },
-        cookieDomainRewrite: "localhost",
-        changeOrigin: true,
-        // secure: true
-        onProxyReq: proxyReq => {
-          // Browers may send Origin headers even with same-origin
-          // requests. To prevent CORS issues, we have to change
-          // the Origin to match the target URL.
-          if (proxyReq.getHeader('origin')) {
-            proxyReq.setHeader('origin', 'http://localhost:4000');
-          }
-        },
-      }
-    },
-    historyApiFallback: {
-      index: '/'
-    },
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "*",
-      "Access-Control-Allow-Credentials": "true",
-      "Access-Control-Expose-Headers": "*"
-    },
-    watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
-    contentBase: path.resolve(__dirname, "dist"),
-    port: 8081,
-  },
   node: {
     fs: 'empty' // Weird hack for now to prevent 'fs' errors
   },
@@ -223,20 +77,14 @@ module.exports = {
     new Dotenv(),
     new HtmlWebpackPlugin({
       title: 'CryptoWise',
-      template: 'src/index.html'
+      template: './src/index.html'
     }),
-    new AntdScssThemePlugin('./src/assets/css/theme.scss'),
-    new ReactLoadablePlugin({
-      filename: './dist/react-loadable.json',
-    }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    }),
+    // new ReactLoadablePlugin({
+    //   filename: './dist/react-loadable.json',
+    // }),
     new CopyWebpackPlugin([{
-      from: "./src/js/react_app/src/"
+      from: "./src/assets/images",
+      to: "src/assets/images"
     }]),
     // new BundleAnalyzerPlugin({
     //   generateStatsFile: true
