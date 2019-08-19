@@ -33,7 +33,7 @@ const heroStyles = {
           // fontSize: '4.9rem !important'
         },
         '@media (max-width: 480px)': {
-          // fontSize: '30px !important',
+          fontSize: '30px !important',
           maxWidth: '125px !important',
           textAlign: 'left'
         }
