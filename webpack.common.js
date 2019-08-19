@@ -82,10 +82,10 @@ module.exports = {
     // new ReactLoadablePlugin({
     //   filename: './dist/react-loadable.json',
     // }),
-    new CopyWebpackPlugin([{
-      from: "./src/assets/images",
-      to: "src/assets/images"
-    }]),
+    // new CopyWebpackPlugin([{
+    //   from: "./src/assets/images",
+    //   to: "src/assets/images"
+    // }]),
     // new BundleAnalyzerPlugin({
     //   generateStatsFile: true
     // })

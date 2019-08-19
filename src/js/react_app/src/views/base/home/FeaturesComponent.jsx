@@ -75,10 +75,7 @@ const featuresStyles = {
     '& h1': {
       color: 'white'
     },
-    '& h3, & p': {
-      textAlign: 'center',
-      color: 'white'
-    }
+
   },
   heading: {
     textAlign: 'center',
@@ -95,7 +92,13 @@ const featuresStyles = {
     '& .subtitle-small': {
       margin: '0 auto',
       maxWidth: '35rem'
-    }
+    },
+    '& h3, & p': {
+      display: 'flex',
+      justifyContent: 'center',
+      textAlign: 'center !important',
+      color: 'white'
+    },
   }
 }
 

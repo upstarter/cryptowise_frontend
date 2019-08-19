@@ -86,14 +86,12 @@ const styles = {
     justifyContent: "center",
   },
   header: {
-    // textAlign: 'center',
     width: '100vw',
-    minHeight: '230px',
+    minHeight: '18em',
     margin: [0,0,20,0],
-    zIndex: 1,
     background: `${colors.white}`,
     '& #title': {
-      maxWidth: '350px',
+      maxWidth: '400px',
       margin: '20px auto',
       textAlign: 'center',
       color: `${colors.black}`,
