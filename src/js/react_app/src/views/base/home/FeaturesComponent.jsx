@@ -91,7 +91,9 @@ const featuresStyles = {
     },
     '& .subtitle-small': {
       margin: '0 auto',
-      maxWidth: '35rem'
+      maxWidth: '35rem',
+      color: '#AEBED4',
+
     },
     '& h3, & p': {
       display: 'flex',

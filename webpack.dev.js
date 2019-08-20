@@ -107,7 +107,7 @@ module.exports = merge(common, {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: 'images/[name]-[hash:8].[ext]'
+              name: 'images/[name].[ext]'
             }
           },
           {
@@ -142,7 +142,6 @@ module.exports = merge(common, {
         loader: "file-loader",
         options: {
           name: 'fonts/[name].[ext]',
-          outputPath: 'fonts',
         }
       }
     ],

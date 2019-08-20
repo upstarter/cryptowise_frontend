@@ -5,12 +5,12 @@
 @font-face {
   font-family: "Avenir";
   src:
-    url("/fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
-    url("/fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
-    url("/fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
-    url("/fonts/avenir/Avenir-Book.ttf") format("truetype"),
-    url("/fonts/avenir/Avenir-Light.ttf") format("truetype"),
-    url("/fonts/avenir/Avenir-Roman.ttf") format("truetype")
+    url("../fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
+    url("../fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
+    url("../fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
+    url("../fonts/avenir/Avenir-Book.ttf") format("truetype"),
+    url("../fonts/avenir/Avenir-Light.ttf") format("truetype"),
+    url("../fonts/avenir/Avenir-Roman.ttf") format("truetype")
 }
 
 html, body {
@@ -43,8 +43,6 @@ p {
   font-size: 1.5rem;
   color: #000;
 
-
-  // -- font skintones
   .light-wrap {
     color: #000;
     .title { color: #000; }
@@ -57,7 +55,7 @@ p {
     color: #fff;
     .title { color: #fff; }
     .subtitle-big { color: '#AEBED4'; }
-    .subtitle-small { color: '#AEBED4'; }
+    .subtitle-small { color: '#AEBED4 !important'; }
     .list { color: #fff; }
   }
 

@@ -17,7 +17,7 @@ const bold = '700'
 
 const typography = {
 
-  typography: {
+  main: {
 
     fontFamily: 'Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, Helvetica sans-serif',
     fontWeight: `${normal}`,

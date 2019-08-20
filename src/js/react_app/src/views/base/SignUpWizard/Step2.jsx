@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect, withRouter } from 'react-router-dom'
 import { GoogleLogin, GoogleLogout } from 'react-google-login'
 import FacebookLogin from 'react-facebook-login';
+import BasicRegistrationForm from "Auth/BasicRegistrationForm";
 
 import {url} from 'Utils/consts'
 import injectSheet from "react-jss";
@@ -36,6 +37,10 @@ class SignUpStep2 extends Component {
   //   // a sanitized version of state can be passed instead
   //   this.props.afterValid(this.state);
   // }
+  handleSubmit(event) {
+    // event.preventDefault();
+    this.props.saveForm(event);
+  }
   handleEmailChange(event) {
     this.setState({ email: event.target.value });
   }
@@ -45,11 +50,6 @@ class SignUpStep2 extends Component {
   handlePasswordChange(event) {
     this.setState({ password: event.target.value });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.saveForm(this.state);
-  }
-
   responseGoogle(response) {
     console.log(response);
   }
@@ -76,128 +76,7 @@ class SignUpStep2 extends Component {
           </h2>
         </div>
         <div className={classes.main}>
-          <div className={classes.socialButtons}>
-            <div>
-              {/* <FacebookLogin
-                appId="494273931358072"
-                autoLoad
-                callback={this.responseFacebook}
-                cssClass={classes.fbLoginButton}
-                icon="fa-facebook"
-                textButton = "&nbsp;&nbsp;Continue with Facebook"
-                // render={renderProps => (
-                //   <button
-                //     className="fb-login-button"
-                //     onClick={renderProps.onClick}
-                //   >
-                //     Continue with Facebook
-                //   </button>
-                // )}
-              /> */}
-            </div>
-              {/* <GoogleLogin
-                clientId={process.env.GOOGLE_CLIENT_ID}
-                render={renderProps => (
-                  <button
-                    className={classes.googleLoginButton}
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}>
-                      <img src={googleSigninButton} />
-                  </button>
-                )}
-                onSuccess={this.responseGoogle}
-                onFailure={this.responseGoogle}
-                cookiePolicy={'single_host_origin'}
-              >
-              </GoogleLogin> */}
-          </div>
-          {/* <hr />
-          -- or signup with email --
-          <hr /> */}
-          <div className={classes.loginForm}>
-            <form
-              onSubmit={e => {
-                this.handleSubmit(e);
-              }}
-            >
-              <div className="field">
-                <label htmlFor="name" className="label">
-                  Name
-                </label>
-                <div className="control has-icons-left">
-                  <input
-                    id="name"
-                    value={this.state.name}
-                    type="fullname"
-                    placeholder="e.g. Jane Doe"
-                    className="input"
-                    required
-                    onChange={this.handleNameChange}
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fa fa-envelope" />
-                  </span>
-                </div>
-              </div>
-              <div className="field">
-                <label htmlFor="email" className="label">
-                  Email
-                </label>
-                <div className="control has-icons-left">
-                  <input
-                    id="email"
-                    value={this.state.email}
-                    type="email"
-                    placeholder="e.g. janedoe@gmail.com"
-                    className="input"
-                    required
-                    onChange={this.handleEmailChange}
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fa fa-envelope" />
-                  </span>
-                </div>
-              </div>
-              <div className="field">
-                <label htmlFor="password" className="label">
-                  Password
-                </label>
-                <div className="control has-icons-left">
-                  <input
-                    id="password"
-                    value={this.state.password}
-                    type="password"
-                    placeholder="*******"
-                    className="input"
-                    required
-                    onChange={this.handlePasswordChange}
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fa fa-lock" />
-                  </span>
-                </div>
-              </div>
-              <div className="field" style={{marginTop: 4}}>
-                <label htmlFor="remember" className="checkbox">
-                  <input id="remember" type="checkbox" />
-                  Remember me
-                </label>
-              </div>
-              <div className="field" style={{marginTop: 4}}>
-                <button onClick={this.props.prev} className={classes.formButton}>
-                  Back
-                </button>
-                <button
-                  onClick={this.submit}
-                  // type="submit"
-                  style={{marginLeft: 4}}
-                  className={classes.formButton}
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
+          <BasicRegistrationForm saveForm={this.handleSubmit}/>
         </div>
       </div>
     );
@@ -222,12 +101,12 @@ const styles = {
     background: `${colors.white}`,
   },
   main: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    justifyContent: "center",
-    alignItems: 'center',
-    width: '800px !important',
+    // display: 'flex',
+    // flexWrap: 'wrap',
+    // flexDirection: 'column',
+    // justifyContent: "center",
+    // alignItems: 'center',
+    minWidth: '400px !important',
     'overflow-y': 'none',
   },
   title: {
@@ -344,3 +223,130 @@ const styles = {
 
 const Step2 = injectSheet(styles)(SignUpStep2);
 export default withRouter(Step2);
+
+// old main
+//
+// <div className={classes.main}>
+//   <div className={classes.socialButtons}>
+//     <div>
+//       {/* <FacebookLogin
+//         appId="494273931358072"
+//         autoLoad
+//         callback={this.responseFacebook}
+//         cssClass={classes.fbLoginButton}
+//         icon="fa-facebook"
+//         textButton = "&nbsp;&nbsp;Continue with Facebook"
+//         // render={renderProps => (
+//         //   <button
+//         //     className="fb-login-button"
+//         //     onClick={renderProps.onClick}
+//         //   >
+//         //     Continue with Facebook
+//         //   </button>
+//         // )}
+//       /> */}
+//     </div>
+//       {/* <GoogleLogin
+//         clientId={process.env.GOOGLE_CLIENT_ID}
+//         render={renderProps => (
+//           <button
+//             className={classes.googleLoginButton}
+//             onClick={renderProps.onClick}
+//             disabled={renderProps.disabled}>
+//               <img src={googleSigninButton} />
+//           </button>
+//         )}
+//         onSuccess={this.responseGoogle}
+//         onFailure={this.responseGoogle}
+//         cookiePolicy={'single_host_origin'}
+//       >
+//       </GoogleLogin> */}
+//   </div>
+//   {/* <hr />
+//   -- or signup with email --
+//   <hr /> */}
+//   <div className={classes.loginForm}>
+//     <form
+//       onSubmit={e => {
+//         this.handleSubmit(e);
+//       }}
+//     >
+//       <div className="field">
+//         <label htmlFor="name" className="label">
+//           Name
+//         </label>
+//         <div className="control has-icons-left">
+//           <input
+//             id="name"
+//             value={this.state.name}
+//             type="fullname"
+//             placeholder="e.g. Jane Doe"
+//             className="input"
+//             required
+//             onChange={this.handleNameChange}
+//           />
+//           <span className="icon is-small is-left">
+//             <i className="fa fa-envelope" />
+//           </span>
+//         </div>
+//       </div>
+//       <div className="field">
+//         <label htmlFor="email" className="label">
+//           Email
+//         </label>
+//         <div className="control has-icons-left">
+//           <input
+//             id="email"
+//             value={this.state.email}
+//             type="email"
+//             placeholder="e.g. janedoe@gmail.com"
+//             className="input"
+//             required
+//             onChange={this.handleEmailChange}
+//           />
+//           <span className="icon is-small is-left">
+//             <i className="fa fa-envelope" />
+//           </span>
+//         </div>
+//       </div>
+//       <div className="field">
+//         <label htmlFor="password" className="label">
+//           Password
+//         </label>
+//         <div className="control has-icons-left">
+//           <input
+//             id="password"
+//             value={this.state.password}
+//             type="password"
+//             placeholder="*******"
+//             className="input"
+//             required
+//             onChange={this.handlePasswordChange}
+//           />
+//           <span className="icon is-small is-left">
+//             <i className="fa fa-lock" />
+//           </span>
+//         </div>
+//       </div>
+//       <div className="field" style={{marginTop: 4}}>
+//         <label htmlFor="remember" className="checkbox">
+//           <input id="remember" type="checkbox" />
+//           Remember me
+//         </label>
+//       </div>
+//       <div className="field" style={{marginTop: 4}}>
+//         <button onClick={this.props.prev} className={classes.formButton}>
+//           Back
+//         </button>
+//         <button
+//           onClick={this.submit}
+//           // type="submit"
+//           style={{marginLeft: 4}}
+//           className={classes.formButton}
+//         >
+//           Submit
+//         </button>
+//       </div>
+//     </form>
+//   </div>
+// </div>

@@ -29,11 +29,14 @@ const heroStyles = {
       '& .title': {
         maxWidth: '90rem',
         marginLeft: '-10%',
-        '@media (min-width: 480px)': {
-          // fontSize: '4.9rem !important'
+        '@media (min-width: 800px)': {
+          fontSize: '4.9rem !important',
+        },
+        '@media (min-width: 480px) and (max-width: 800px)': {
+          fontSize: '3.2rem !important'
         },
         '@media (max-width: 480px)': {
-          fontSize: '30px !important',
+          fontSize: '2.9rem !important',
           maxWidth: '125px !important',
           textAlign: 'left'
         }

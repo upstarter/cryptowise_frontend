@@ -24,6 +24,7 @@ import SiderMenu from "Base/SiderMenu/SiderMenu";
 import injectSheet, { jss } from "react-jss";
 import typography from "Styles/typography";
 import colors from "Styles/colors";
+import globalStyles from "Styles/globalStyles";
 
 import Loadable from "react-loadable";
 
@@ -79,51 +80,53 @@ class HomeContainer extends React.Component {
     return (
       <React.Fragment>
         <BrowserRouter>
-          <Layout className={classes.typography, classes.baseLayout} id="wrapper">
-            <Drawer
-              title="CryptoWise"
-              placement="right"
-              closable={true}
-              onClose={this.onClose}
-              visible={this.state.visible}
-            >
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-            </Drawer>
-            <AppHeader />
-            <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
-            <Layout className={classes.baseContent}>
-              <Content
-                style={{
-                  marginLeft: `${this.state.contentMarginLeft}`,
-                }}>
-                <div className={classes.content}>
-                  <Route exact path="/" component={HomeComponent} />
-                  {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                  <Route exact path="/developers" component={DeveloperComponent} />
-                  <Route exact path="/contribute" component={ProviderContainer} />
-                  {/* <Route exact path="/insights" component={InsightComponent} /> */}
-                  <AuthRoute exact path="/proposals" component={ProposalComponent} />
-                  <AuthRoute exact path="/analysis" component={AnalysisContainer} />
-                  <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                  <AuthRoute exact path="/profile" component={Protected} />
-                  <Route exact path="/about" component={AboutComponent} />
-                  <Route exact path="/signup" component={SignUpContainer} />
-                  <Route exact path="/login" component={BasicLoginForm} />
-                  <Route exact path="/logout" component={Logout} />
-                  <Route
-                    exact
-                    path="/privacy_policy"
-                    component={PrivacyComponent}
-                  />
-                </div>
-              </Content>
-              <Footer className={classes.footer} style={{marginLeft: `${this.state.contentMarginLeft}`}}>
-                Aion Labs, Inc. ©2018
-              </Footer>
+          <div className={classes.globe}>
+            <Layout className={classes.typography, classes.baseLayout} id="wrapper">
+              <Drawer
+                title="CryptoWise"
+                placement="right"
+                closable={true}
+                onClose={this.onClose}
+                visible={this.state.visible}
+              >
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+              </Drawer>
+              <AppHeader />
+              <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
+              <Layout className={classes.baseContent}>
+                <Content
+                  style={{
+                    marginLeft: `${this.state.contentMarginLeft}`,
+                  }}>
+                  <div className={classes.content}>
+                    <Route exact path="/" component={HomeComponent} />
+                    {/* <Route exact path="/membership" component={MembershipComponent} /> */}
+                    <Route exact path="/developers" component={DeveloperComponent} />
+                    <Route exact path="/contribute" component={ProviderContainer} />
+                    {/* <Route exact path="/insights" component={InsightComponent} /> */}
+                    <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                    <AuthRoute exact path="/analysis" component={AnalysisContainer} />
+                    <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
+                    <AuthRoute exact path="/profile" component={Protected} />
+                    <Route exact path="/about" component={AboutComponent} />
+                    <Route exact path="/signup" component={SignUpContainer} />
+                    <Route exact path="/login" component={BasicLoginForm} />
+                    <Route exact path="/logout" component={Logout} />
+                    <Route
+                      exact
+                      path="/privacy_policy"
+                      component={PrivacyComponent}
+                    />
+                  </div>
+                </Content>
+                <Footer className={classes.footer} style={{marginLeft: `${this.state.contentMarginLeft}`}}>
+                  Aion Labs, Inc. ©2018
+                </Footer>
+              </Layout>
             </Layout>
-          </Layout>
+          </div>
         </BrowserRouter>
       </React.Fragment>
     );
@@ -131,7 +134,8 @@ class HomeContainer extends React.Component {
 }
 
 const appStyles = {
-  typography: `${typography}`,
+  // globe: `${globalStyles.main}`,
+  // typography: `${typography.main}`,
   baseLayout: {
     minHeight: '100vh',
     background: `${colors.midTone}`,
@@ -163,4 +167,6 @@ const appStyles = {
   }
 };
 
+injectSheet(globalStyles)(HomeContainer);
+injectSheet(typography)(HomeContainer);
 export default injectSheet(appStyles)(HomeContainer);

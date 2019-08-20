@@ -8,7 +8,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import App from "./src/App"
 import "normalize.css"
-//import styles from "../../css/styles.scss"
+
 
 // import { getBundles } from 'react-loadable/webpack'
 
