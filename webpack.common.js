@@ -4,7 +4,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const Dotenv = require('dotenv-webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const env = process.env.NODE_ENV || "development";
 const devMode = env === "development";
@@ -75,10 +74,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new HtmlWebpackPlugin({
-      title: 'CryptoWise',
-      template: './src/index.html'
-    }),
+
     // new ReactLoadablePlugin({
     //   filename: './dist/react-loadable.json',
     // }),

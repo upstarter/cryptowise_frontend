@@ -4,9 +4,14 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const AntdScssThemePlugin = require('antd-scss-theme-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
   devtool: 'inline-source-map',
+  output: {
+    // `path` is the folder where Webpack will place your bundles
+    path: path.resolve(__dirname, "build"),
+  },
   module: {
     rules: [
       {
@@ -15,20 +20,20 @@ module.exports = merge(common, {
           {
             loader:  'style-loader',
             options: {
-              sourceMap: false,
+              sourceMap: true,
             },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              sourceMap: false,
+              sourceMap: true,
             },
           },
           AntdScssThemePlugin.themify({
             loader: 'less-loader', // compiles Less to CSS
               options: {
-                sourceMap: false,
+                sourceMap: true,
                 javascriptEnabled: true,
               }
           }),
@@ -48,21 +53,21 @@ module.exports = merge(common, {
           {
             loader:  'style-loader',
             options: {
-              sourceMap: false,
+              sourceMap: true,
             },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              sourceMap: false,
+              sourceMap: true,
               localIdentName: '[name]-[local]-[hash:base64:5]',
             },
           },
           AntdScssThemePlugin.themify({
             loader: 'sass-loader',
             options: {
-              sourceMap: false,
+              sourceMap: true,
             },
           }),
         ],
@@ -73,20 +78,20 @@ module.exports = merge(common, {
           {
             loader:  'style-loader',
             options: {
-              sourceMap: false,
+              sourceMap: true,
             },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              sourceMap: false,
+              sourceMap: true,
             },
           },
           AntdScssThemePlugin.themify({
             loader: 'less-loader', // compiles Less to CSS
               options: {
-                sourceMap: false,
+                sourceMap: true,
                 javascriptEnabled: true,
               }
           }),
@@ -151,7 +156,7 @@ module.exports = merge(common, {
     // webpack-dev-server defaults to localhost:8080
     port: 8081,
     watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
-    contentBase: path.resolve(__dirname, "dist"),
+    contentBase: path.resolve(__dirname, "build"),
     historyApiFallback: {
       index: '/'
     },
@@ -181,6 +186,10 @@ module.exports = merge(common, {
     },
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'CryptoWise',
+      template: './src/assets/dev.index.html'
+    }),
     new AntdScssThemePlugin('./src/assets/css/theme.scss'),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

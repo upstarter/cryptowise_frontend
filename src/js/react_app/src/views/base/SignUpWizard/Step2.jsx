@@ -72,8 +72,9 @@ class SignUpStep2 extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            Uncover hypergrowth cryptoassets along with top analysts
+            Join Us
           </h2>
+          <h3 className="subtitle-small">Uncover hypergrowth cryptoassets along with top analysts</h3>
         </div>
         <div className={classes.main}>
           <BasicRegistrationForm saveForm={this.handleSubmit}/>
@@ -94,6 +95,12 @@ const styles = {
 
   },
   header: {
+    minHeight: 100,
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    justifyContent: "center",
+    alignItems: 'center',
     textAlign: 'center',
     width: '100%',
     margin: [0,0,20,0],
@@ -101,17 +108,16 @@ const styles = {
     background: `${colors.white}`,
   },
   main: {
-    // display: 'flex',
-    // flexWrap: 'wrap',
-    // flexDirection: 'column',
-    // justifyContent: "center",
-    // alignItems: 'center',
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    justifyContent: "center",
+    alignItems: 'center',
     minWidth: '400px !important',
     'overflow-y': 'none',
   },
   title: {
-    padding: [20,20,20,20],
-    fontSize: "21px !important",
+    fontSize: "23px !important",
     color: `${colors.black}`,
   },
   formButton: {

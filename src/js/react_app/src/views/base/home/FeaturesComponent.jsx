@@ -25,7 +25,7 @@ class FeaturesComponent extends React.Component {
                     <img alt="Crypto investing strategies" src={Icon1}/>
                   </figure>
                 </div>
-                <h3>Crypto Investing Strategy</h3>
+                <h3>Investing Strategy</h3>
                 <p className="subtitle-small">
                   It takes sophisticated methods to construct, manage and
                   optimize a cryptoasset portfolio. Get help with
@@ -38,7 +38,7 @@ class FeaturesComponent extends React.Component {
                     <img alt="Crypto Investing" src={Icon2}/>
                   </figure>
                 </div>
-                <h3>Crypto Financial Analysis</h3>
+                <h3>Crypto Analysis</h3>
                 <p className="subtitle-small">
                   Free access to cryptoasset market insights & financial analysis written
                   by a passionate community of crypto and finance experts.

@@ -27,9 +27,13 @@ const heroStyles = {
         marginTop: '15px',
       },
       '& .title': {
+        fontFamily: 'Avenir-Light, sans-serif',
         maxWidth: '90rem',
         marginLeft: '-10%',
-        '@media (min-width: 800px)': {
+        fontSize: '5.4rem',
+        lineHeight: '4.9rem',
+        letterSpacing: '-.02ch',
+        '@media  (min-width: 800px) and (max-width: 1000px)': {
           fontSize: '4.9rem !important',
         },
         '@media (min-width: 480px) and (max-width: 800px)': {
