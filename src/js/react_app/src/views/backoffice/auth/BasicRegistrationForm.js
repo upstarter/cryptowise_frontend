@@ -91,24 +91,24 @@ class RegistrationForm extends React.Component {
   //   }
   // };
   //
-  // validateToNextPassword = (rule, value, callback) => {
+
+  // handleWebsiteChange = value => {
+  //   let autoCompleteResult;
+  //   if (!value) {
+  //     autoCompleteResult = [];
+  //   } else {
+  //     autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
+  //   }
+  //   this.setState({ autoCompleteResult });
+  // };
+
+  // validatePassword = (rule, value, callback) => {
   //   const { form } = this.props;
   //   if (value && this.state.confirmDirty) {
-  //     form.validateFields(['confirm'], { force: true });
+  //     form.validateFields(['password'], { force: true });
   //   }
   //   callback();
   // };
-
-  handleWebsiteChange = value => {
-    let autoCompleteResult;
-    if (!value) {
-      autoCompleteResult = [];
-    } else {
-      autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-    }
-    this.setState({ autoCompleteResult });
-  };
-
   render() {
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
@@ -166,7 +166,12 @@ class RegistrationForm extends React.Component {
             ],
           })(<Input />)}
         </Form.Item>
-        <Form.Item label="Password" hasFeedback>
+        <Form.Item
+          label="Password"
+          hasFeedback
+          // validateStatus="error"
+          // help="Should be at least 8 chars"
+          >
           {getFieldDecorator('password', {
             rules: [
               {
@@ -174,10 +179,14 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your password!',
               },
               {
-                validator: this.validateToNextPassword,
+                min: 8,
+                message: 'Should be at least 8 characters'
+              },
+              {
+                // validator: this.validatePassword,
               },
             ],
-          })(<Input.Password />)}
+          })(<Input.Password onBlur={this.handleConfirmBlur}/>)}
         </Form.Item>
         {/* <Form.Item label="Confirm Password" hasFeedback>
           {getFieldDecorator('confirm', {
@@ -214,11 +223,11 @@ class RegistrationForm extends React.Component {
             ],
           })(<Cascader options={residences} />)}
         </Form.Item> */}
-        <Form.Item label="Phone Number">
+        {/* <Form.Item label="Phone Number">
           {getFieldDecorator('phone', {
             rules: [{ required: false, message: 'Please input your phone number!' }],
           })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
-        </Form.Item>
+        </Form.Item> */}
         {/* <Form.Item label="Website">
           {getFieldDecorator('website', {
             rules: [{ required: true, message: 'Please input website!' }],
@@ -244,7 +253,7 @@ class RegistrationForm extends React.Component {
             </Col>
           </Row>
         </Form.Item> */}
-        <Form.Item {...tailFormItemLayout}>
+        {/* <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
             valuePropName: 'checked',
           })(
@@ -252,7 +261,7 @@ class RegistrationForm extends React.Component {
               I have read the <a href="">agreement</a>
             </Checkbox>,
           )}
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register

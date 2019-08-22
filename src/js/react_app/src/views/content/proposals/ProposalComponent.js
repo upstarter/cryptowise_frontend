@@ -76,7 +76,6 @@ class ProposalComponent extends React.Component {
   };
 
   handleCreate = () => {
-    console.errorx('handlecreate')
     this.setState({
       ModalContent: 'The modal will be closed after two seconds',
       confirmLoading: true,
@@ -139,22 +138,25 @@ class ProposalComponent extends React.Component {
             <Typography>
               <div id="proposal-blurb-intro">
                 <Title>Problem RIFF's 🎸</Title>
-                <h2 id='subtitle' className='subtitle-small'>Like a Hacker News focused on solving investment problems and creating
-                   retirement security rockstars.</h2>
+                <h2 id='subtitle' className='subtitle-small'>
+                  Currently a Hacker Quorum focused on solving investment
+                  problems and creating retirement security rockstars.
+                 </h2>
                 <Paragraph>
-                  Problems encourage the ecosystem to sprout the seeds of
-                  what it will become over the long term. Problems are the guiding north
-                  star to prosperity and opportunity for the next generations of fin-technologists, fin-repreneurs, and financiers.
-                {/* </Paragraph> */}
-                {/* <Paragraph style={{textAlign: 'center'}}>( ¯\_(😃)_/¯ )</Paragraph> */}
-                {/* <Paragraph> */}
-                   We stay focused on the problems that inhibit growth in a portfolio of global investment returns and share
-                  them with eachother. Like a financial media show but more interactive. Expert teams will research top scoring
-                  problems and share their preliminary results.
+                  🌱 Problem RIFF's (Rapid Implementation Feasibility & Fundability
+                  Study) encourage our ecosystem to sprout the seeds of what it will
+                  become over the long term. Problems are the guiding north star to
+                  prosperity and opportunity for the next generations of
+                  fin-technologists, fin-repreneurs, and financiers. <b>Submit,
+                  Search, and Rate</b> problems that inhibit returns in a portfolio or
+                  trading system and share them with the community. Self-organizing
+                  expert teams will form to research top scoring problems and share
+                  their preliminary results for critique 🧐 and adulation 👍.
                 </Paragraph>
+
               </div>
 
-              <div id="proposal-blurb-features">
+              {/* <div id="proposal-blurb-features">
                 <h5 id="proposal-blurb-how">How to participate:</h5>
                 <ol id="proposal-blurb-list">
                   <li>
@@ -168,29 +170,15 @@ class ProposalComponent extends React.Component {
                     implement as API endpoints for RIFF rewards. A rising tide raises all boats.
                   </li>
                 </ol>
-              </div>
+              </div> */}
 
-              <div id="proposal-blurb-guide">
-                <h5 id="proposal-blurb-title">
-                  RIFF Guidelines
-                </h5>
-                <ol id="proposal-blurb-list">
-                  <li>Try to submit problems that take no longer than a few days or weeks to solve.</li>
-                  <li>Prioritize problems relevent to your goals & activities to gain most value.</li>
-                  <li>Upvote problems submitted by the community for inclusion in a cloud-sourced teams'
-                     RIFF'S program (Rapid Implementation Feasibility & Fundability Study).
-                  </li>
-                  <li>Trolls are immediately expelled without recourse.
-                  </li>
-                </ol>
-              </div>
             </Typography>
           </div>
 
           <div id="proposal-items" className={classes.proposalItems}>
             <Affix offsetTop={64}>
               <div id="proposal-items-heading">
-                <h3>RIFF Problems</h3>
+                <h3>Problem RIFF's</h3>
               </div>
             </Affix>
             <div className="proposal-column">
@@ -231,58 +219,72 @@ const proposalStyles = {
 
   },
   proposals: {
+    height: '100%',
     display: 'grid',
     backgroundColor: '#fff',
     gridTemplateColumns: '30vw 70vw',
     gridTemplateAreas: '"sidebar content"',
 
+    '@media (max-width: 800px)': {
+      gridTemplateColumns: '100vw 100vw',
+      gridTemplateAreas: '"sidebar" "content"',
+    },
+
+    '@media (min-width: 800px)': {
+      gridTemplateColumns: '38vw 62vw',
+      gridTemplateAreas: '"sidebar content"',
+    },
+
     '& #proposal-blurb': {
       gridArea: 'sidebar',
-      maxWidth: '60ch',
-      padding: [0, 0, 0, 75],
+      marginTop: -30,
+      padding: [15, 15, 15, 65],
       '& strong': {
-        fontSize: 20,
+        fontSize: 18,
         // color: `${colors.antBlue}`
       },
-      '& #proposal-blurb-intro': {
+      // '& #proposal-blurb-intro': {
+      //   '& #subtitle': {
+      //     marginBottom: 10
+      //   }
+      // },
+      //
+      // '& #proposal-blurb-list': {
+      //   padding: [10,0,10,10]
+      // },
+      //
+      //
+      // '& #proposal-blurb-features': {
+      //   padding: [10, 0, 0, 0],
+      //
+      //   '& #proposal-blurb-features-title': {
+      //     padding: [0,0,0,0]
+      //   },
+      //
+      // },
+      //
+      // '& #proposal-blurb-guide': {
+      //   padding: [10, 0, 0, 0],
+      //
+      //   '& #proposal-blurb-guide-title': {
+      //     padding: [0,0,0,0]
+      //   },
+      //
+      // },
+      '@media (max-width: 680px)': {
+        maxWidth: '100vw',
+      },
+
+      '@media (min-width: 680px) and (max-width: 1200px)': {
+        position: 'fixed',
+        maxWidth: '40ch',
+      },
+
+      '@media (min-width: 1200px)': {
+        position: 'fixed',
         maxWidth: '60ch',
-        '& #subtitle': {
-          marginBottom: 20
-        }
       },
 
-      '& #proposal-blurb-list': {
-        padding: [10,0,10,10]
-      },
-
-
-      '& #proposal-blurb-features': {
-        padding: [10, 0, 0, 0],
-
-        '& #proposal-blurb-features-title': {
-          padding: [0,0,0,0]
-        },
-
-      },
-
-      '& #proposal-blurb-guide': {
-        padding: [10, 0, 0, 0],
-
-        '& #proposal-blurb-guide-title': {
-          padding: [0,0,0,0]
-        },
-
-      }
-    },
-
-    '@media (max-width: 880px)': {
-      gridTemplateColumns: '100vw 100vw',
-      gridTemplateAreas: '"sidebar" "content"'
-    },
-
-    '@media (min-width: 880px)': {
-      gridTemplateColumns: '38vw 62vw',
-      gridTemplateAreas: '"sidebar content"'
     },
 
     '& .float': {
@@ -303,9 +305,9 @@ const proposalStyles = {
   proposalItems: {
     gridArea: 'content',
     backgroundColor: '#ffffff',
+    border: '1px solid #D0E5FF',
 
-    '@media (min-width: 992px)': {
-      width: '98%',
+    '@media (min-width: 800px)': {
     },
 
     '& #proposal-items-heading': {

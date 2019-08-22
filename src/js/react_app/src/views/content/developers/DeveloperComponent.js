@@ -15,7 +15,7 @@ class DeveloperComponent extends React.Component {
         <section id="developer" className={classes.developers}>
           <div id="developer-content" className="content">
             <div id="title" className="title-small">CryptoWise for Developers</div>
-            <div id="title" style={{marginBottom: 30}} className="subtitle-big">Own your Networks</div>
+            <div id="title" style={{marginBottom: 30}} className="subtitle-big">Own the Network</div>
             <p>
               Cryptoassets represent the native asset class to information
               networks: setting up a means of both capitalization and
