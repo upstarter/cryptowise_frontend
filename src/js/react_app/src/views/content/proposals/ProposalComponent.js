@@ -138,20 +138,21 @@ class ProposalComponent extends React.Component {
             <Typography>
               <div id="proposal-blurb-intro">
                 <Title>Problem RIFF's 🎸</Title>
+                <div className='subtitle-small'><strong>R</strong>apid <strong>I</strong>mplementation <strong>F</strong>easibility & <strong>F</strong>undability
+                Studies</div>
                 <h2 id='subtitle' className='subtitle-small'>
-                  Currently a Hacker Quorum focused on solving investment
+                  Currently a Hacker Quorum focused on solving personal investment
                   problems and creating retirement security rockstars.
                  </h2>
                 <Paragraph>
-                  🌱 Problem RIFF's (Rapid Implementation Feasibility & Fundability
-                  Study) encourage our ecosystem to sprout the seeds of what it will
+                  🌱 Problem RIFF's encourage our ecosystem to sprout the seeds of what it will
                   become over the long term. Problems are the guiding north star to
                   prosperity and opportunity for the next generations of
-                  fin-technologists, fin-repreneurs, and financiers. <b>Submit,
-                  Search, and Rate</b> problems that inhibit returns in a portfolio or
+                  fin-technologists, fin-repreneurs, and financiers. <b>Submit</b>,
+                  Search, and <b>Rate</b> problems that inhibit returns in a portfolio or
                   trading system and share them with the community. Self-organizing
                   expert teams will form to research top scoring problems and share
-                  their preliminary results for critique 🧐 and adulation 👍.
+                  their preliminary results for critique 🧐 and/or adulation 👍.
                 </Paragraph>
 
               </div>
@@ -189,11 +190,12 @@ class ProposalComponent extends React.Component {
                 loadMore={loadMore}
                 dataSource={list}
                 renderItem={item => (
-                  <List.Item actions={[<a>more</a>]}>
+                  // <List.Item actions={[<a>more</a>]}>
+                  <List.Item>
                     <Skeleton avatar title={false} loading={item.loading} active>
                       <List.Item.Meta
                         avatar={
-                           <Avatar style={{ backgroundColor: '#D0E5FF' }} icon="user" />
+                           <Avatar style={{ backgroundColor: '#D0E5FF' }} icon="team" />
                         }
                         title={<a href="https://ant.design">{item.name.last}</a>}
                         description="RIFF, a proposal language for analytical crypto-networking applications, refined by the CryptoWise Team"
@@ -238,10 +240,10 @@ const proposalStyles = {
     '& #proposal-blurb': {
       gridArea: 'sidebar',
       marginTop: -30,
-      padding: [15, 15, 15, 65],
+      padding: [15, 15, 15, 50],
       '& strong': {
-        fontSize: 18,
-        // color: `${colors.antBlue}`
+        fontSize: '16 !important',
+        color: `${colors.black}`
       },
       // '& #proposal-blurb-intro': {
       //   '& #subtitle': {
@@ -275,14 +277,14 @@ const proposalStyles = {
         maxWidth: '100vw',
       },
 
-      '@media (min-width: 680px) and (max-width: 1200px)': {
+      '@media (min-width: 680px) and (max-width: 900px)': {
         position: 'fixed',
-        maxWidth: '40ch',
+        maxWidth: '43ch',
       },
 
-      '@media (min-width: 1200px)': {
+      '@media (min-width: 900px)': {
         position: 'fixed',
-        maxWidth: '60ch',
+        maxWidth: '50ch',
       },
 
     },
@@ -293,7 +295,8 @@ const proposalStyles = {
     	height:60,
     	bottom:40,
     	right:40,
-      backgroundColor: 'rgba(118,48,103,0.85)',
+      backgroundColor: `${colors.green}`,
+      // backgroundColor: 'rgba(118,48,103,0.85)',
     	color: '#FFF',
     	borderRadius: 50,
     	textAlign: 'center',
@@ -304,9 +307,10 @@ const proposalStyles = {
 
   proposalItems: {
     gridArea: 'content',
+    marginBottom: 70,
+    paddingBottom: 30,
     backgroundColor: '#ffffff',
     border: '1px solid #D0E5FF',
-
     '@media (min-width: 800px)': {
     },
 
@@ -328,7 +332,12 @@ const proposalStyles = {
       // listStyleType: 'none',
       padding: 14,
       // border: '1px solid #727d88',
-    }
+    },
+
+    '@media (min-width: 680px)': {
+      marginLeft: 25,
+    },
+
   },
 
 }

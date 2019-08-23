@@ -161,6 +161,11 @@ const appStyles = {
     },
   },
   footer: {
+    position: 'fixed',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    // width: '100vw',
     background: `${colors.primary}`,
     color: `${colors.green}`,
     textAlign: 'center',
