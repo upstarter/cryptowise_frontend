@@ -26,8 +26,10 @@ import Cookies from 'universal-cookie';
 
 const checkAuth = () => {
   const cookies = new Cookies();
-  const token = cookies.get('_cw_rem')
-  // const refreshToken = cookies.get('refresh')
+  const token = cookies.get('_cw_acc')
+  // localStorage.setItem('cw_user', JSON.stringify(data.user_info))
+
+  // const refreshToken = cookies.get('_cw_ref')
   // if (!token || !refreshToken) {
   console.log('checkAuth token', token)
   if (!token) {

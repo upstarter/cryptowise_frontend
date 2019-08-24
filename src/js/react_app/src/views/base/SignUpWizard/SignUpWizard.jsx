@@ -37,21 +37,21 @@ export class SignUpWizard extends Component {
     console.log('sta1', data)
     data.topic_knowledge_ids = this.state.topic_knowledge_ids
     this.props.dispatch(registerUser(data))
-
-    this.setState({
-        name: data.name,
-        email: data.email,
-        password: data.password
-    }, () => {
-      let state = this.state;
-      if (
-        state.topic_knowledge_ids !== null &&
-        state._saveinterestIds !== null
-      ) {
-        // console.log('dispatch', state)
-      }
-    })
     this.props.history.replace('/proposals')
+
+    // this.setState({
+    //     name: data.name,
+    //     email: data.email,
+    //     password: data.password
+    // }, () => {
+    //   let state = this.state;
+    //   if (
+    //     state.topic_knowledge_ids !== null &&
+    //     state._saveinterestIds !== null
+    //   ) {
+    //     this.props.history.replace('/proposals')
+    //   }
+    // })
   }
   _next() {
     let currentStep = this.state.currentStep;

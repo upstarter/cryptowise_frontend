@@ -12,13 +12,17 @@ const loginUser = creds => {
     return dispatch => {
       const data = {
         session: creds,
+        headers: {
+        },
+        withCredentials: true,
+        credentials: 'include'
       };
 
       axios.post(`${url}/api/v1/auth/sign_in`, data)
       .then((response) => {
         const cookies = new Cookies();
-        const token = cookies.get('_cw_rem')
-        loginSuccessful(token)
+        const token = cookies.get('_cw_acc')
+        setAuthToken(token)
         dispatch({
           type: SET_CURRENT_USER,
           payload: token
@@ -35,9 +39,15 @@ const loginUser = creds => {
     };
 }
 
-const loginSuccessful = (token) => {
-  // localStorage.setItem('cw_token', token);
-  // setAuthToken(token)
+const loginSuccessful = (response) => {
+  const cookies = new Cookies();
+  const token = cookies.get('_cw_acc')
+  setAuthToken(token)
+  dispatch({
+    type: SET_CURRENT_USER,
+    payload: token
+  })
+  dispatch(push('/proposals'));
 }
 
 export default loginUser

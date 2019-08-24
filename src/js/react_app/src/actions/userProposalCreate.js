@@ -11,7 +11,15 @@ const userProposalCreate = state => {
           proposal: {
             title: state.title,
             description: state.description
-          }
+          },
+        },
+        {
+          proxy: {
+            host: '127.0.0.1',
+            port: 4000
+          },
+          withCredentials: true,
+          credentials: 'include',
         })
 
     return (dispatch) => {

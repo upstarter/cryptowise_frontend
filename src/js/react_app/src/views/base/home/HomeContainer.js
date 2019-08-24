@@ -162,6 +162,10 @@ const appStyles = {
   },
   footer: {
     position: 'fixed',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 50,
     bottom: 0,
     right: 0,
     left: 0,

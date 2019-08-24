@@ -137,9 +137,9 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'fixed',
-    minHeight: "65px",
+    minHeight: "50px",
     width: '100vw',
-    bottom: 0,
+    bottom: 50,
     right: 0,
     fontSize: 24,
     background: `${colors.white}`,
@@ -149,7 +149,7 @@ const styles = {
     width: '75px',
   },
   tileGrid: {
-    marginTop: '42px',
+    marginTop: '40px',
     // display: "grid",
     // gridTemplateColumns: "repeat(1, 1fr)",
     // gridTemplateRows: "repeat(1, auto)",
@@ -169,7 +169,7 @@ const styles = {
     },
     main: {
       maxWidth: '99vw',
-      marginTop: 150
+      marginTop: 170
     }
   },
   // MOBILE
@@ -191,7 +191,7 @@ const styles = {
       gridTemplateColumns: "1fr"
     },
     main: {
-      marginTop: 190,
+      marginTop: 170,
     },
     footer: {
       display: 'flex',

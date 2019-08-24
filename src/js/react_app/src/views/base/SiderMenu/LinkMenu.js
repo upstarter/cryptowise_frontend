@@ -22,8 +22,8 @@ const LinkMenu = withRouter(props => {
       </Menu.Item>
       <Menu.Item key="/proposals">
         <Link to="/proposals" style={{ textDecoration: "none" }}>
-          <Icon type="notification" />
-          <span className="nav-text">Discover</span>
+          <Icon type="dot-chart" />
+          <span className="nav-text">Explore</span>
         </Link>
       </Menu.Item>
       {/* <Menu.Item key="/analysis">

@@ -141,7 +141,7 @@ class ProposalComponent extends React.Component {
                 <div className='subtitle-small'><strong>R</strong>apid <strong>I</strong>mplementation <strong>F</strong>easibility & <strong>F</strong>undability
                 Studies</div>
                 <h2 id='subtitle' className='subtitle-small'>
-                  Currently a Hacker Quorum focused on solving personal investment
+                  A Hacker Quorum focused on solving personal investment
                   problems and creating retirement security rockstars.
                  </h2>
                 <Paragraph>
@@ -179,7 +179,7 @@ class ProposalComponent extends React.Component {
           <div id="proposal-items" className={classes.proposalItems}>
             <Affix offsetTop={64}>
               <div id="proposal-items-heading">
-                <h3>Problem RIFF's</h3>
+                <h3>🌱 Problem RIFF's</h3>
               </div>
             </Affix>
             <div className="proposal-column">
@@ -218,7 +218,11 @@ class ProposalComponent extends React.Component {
 
 const proposalStyles = {
   modal: {
-
+    width: 10,
+    '& .ant-modal-content': {
+      color: 'red !important',
+      textDecoration: 'none !important',
+    }
   },
   proposals: {
     height: '100%',
