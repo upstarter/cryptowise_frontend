@@ -1,15 +1,15 @@
-import { url } from '../utils/consts';
+import { url } from 'Utils/consts';
 import axios from "axios";
 import Cookies from 'universal-cookie';
 import { push } from 'connected-react-router'
 import setAuthToken from 'Components/auth/setAuthToken'
-import { SET_CURRENT_USER } from './index'
+import { SET_CURRENT_USER } from 'Actions/index'
 
 const registerUser = state => {
     const request = axios
         .post(`${url}/api/v1/auth/create`, {
           auth: {
-            name: state.name,
+            nickname: state.nickname,
             email: state.email,
             password: state.password,
             topic_knowledge_ids: state.topic_knowledge_ids,
@@ -18,7 +18,7 @@ const registerUser = state => {
         })
 
     return (dispatch) => {
-      request.then(response => {
+      return request.then(response => {
         const data = response.data
 
         if (data.error) {

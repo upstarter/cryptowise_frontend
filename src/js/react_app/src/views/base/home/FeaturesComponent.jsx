@@ -29,7 +29,8 @@ class FeaturesComponent extends React.Component {
                 <p className="subtitle-small">
                   It takes sophisticated methods to construct, manage and
                   optimize a modern investment portfolio. Get help with
-                  the complex bits and be informed of important asset developments.
+                  the complex bits and be informed of asset developments relevant
+                  to your goals.
                 </p>
               </Col>
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
@@ -41,7 +42,7 @@ class FeaturesComponent extends React.Component {
                 <h3>Crypto Networking</h3>
                 <p className="subtitle-small">
                   Participate in an autonomous decentralized ecosystem that rewards creative solutions to
-                  complicated investment problems based on the wisdom of the AI crowd.
+                  complicated investment problems based on the wisdom of the Artificial Intelligence community.
                 </p>
               </Col>
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
@@ -50,11 +51,12 @@ class FeaturesComponent extends React.Component {
                     <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
                   </figure>
                 </div>
-                <h3>Multi-agent Formations</h3>
+                <h3>Multi-Agent Formations</h3>
                 <p className="subtitle-small">
-                  Autonomic Swarms and individual Agents deliver novel personalized
-                  opportunites and guidance based on preferences. Participants
-                  can create autonomous teams to focus on ontologies, strategies, tactics.
+                  Autonomic Swarms and individual Agents deliver novel
+                  specialized guidance. Participants self-select into autonomous
+                  teams to focus coherent sets of ontologies, strategies,
+                  tactics.
                 </p>
               </Col>
             </Row>
@@ -67,9 +69,8 @@ class FeaturesComponent extends React.Component {
 
 const featuresStyles = {
   features: {
-    padding: '6rem',
-    margin: '-7 auto',
-
+    padding: '3rem',
+    margin: '-10 auto',
     background: '#191F2D',
     color: '#fff',
     '& a': { background: 'none !important' },

@@ -13,35 +13,23 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
       return (
         <Modal
           visible={visible}
-          title="Create a new RIFF for Solutions"
-          okText="Create"
+          title="Submit a Proposal"
+          okText="Propose"
           onCancel={onCancel}
           onOk={onCreate}
           confirmLoading={confirmLoading}
         >
           <Form layout="vertical">
             <Paragraph>RIFF Guidelines</Paragraph>
-            <ul>
+            <ul style={{paddingLeft: 30}}>
               <li>
-                Solutions should take no longer than a few days or weeks to implement.
-              </li>
-              <li>
-                Prioritize problems relevent to your goals & activities to gain most value.
-              </li>
-              <li>
-                Upvote problems submitted by the community for expert solutions.
-              </li>
-              <li>
-                Subversive Trolls will be immediately expelled without recourse.
+                Propose solutions relevent to your strongest capabilities, goals & activities.
               </li>
             </ul>
-            <Paragraph>Examples of decent problem submissions...</Paragraph>
-            <ul>
+            <Paragraph>Examples of good proposals...</Paragraph>
+            <ul style={{paddingLeft: 30}}>
               <li>
                 "What business models currently stand to dominate the crypto ecosystem?"
-              </li>
-              <li>
-                "How do global interest rates effect the volatility of bitcoin"
               </li>
               <li>
                 "Determine the optimal swing trading value-at-risk period for trend following DFINITY"
@@ -50,10 +38,12 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
             <Form.Item label="Title">
               {getFieldDecorator('title', {
                 rules: [{ required: true, message: 'Please input the title of feature!' }],
-              })(<Input />)}
+              })(<Input placeholder="How do global interest rates effect the volatility of bitcoin?"/>)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<TextArea rows={10} type="textarea" />)}
+              {getFieldDecorator('description')(<TextArea placeholder="Bitcoin volatility
+                seems to be highly effecte by x, y, z..." rows={4}
+              type="textarea" />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
               {getFieldDecorator('is_public', {

@@ -97,29 +97,28 @@ class HomeContainer extends React.Component {
               <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
               <Layout className={classes.baseContent}>
                 <Content
+                  className={classes.content}
                   style={{
                     marginLeft: `${this.state.contentMarginLeft}`,
                   }}>
-                  <div className={classes.content}>
-                    <Route exact path="/" component={HomeComponent} />
-                    {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                    <Route exact path="/developers" component={DeveloperComponent} />
-                    <Route exact path="/contribute" component={ProviderContainer} />
-                    {/* <Route exact path="/insights" component={InsightComponent} /> */}
-                    <AuthRoute exact path="/proposals" component={ProposalComponent} />
-                    <AuthRoute exact path="/analysis" component={AnalysisContainer} />
-                    <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                    <AuthRoute exact path="/profile" component={Protected} />
-                    <Route exact path="/about" component={AboutComponent} />
-                    <Route exact path="/signup" component={SignUpContainer} />
-                    <Route exact path="/login" component={BasicLoginForm} />
-                    <Route exact path="/logout" component={Logout} />
-                    <Route
-                      exact
-                      path="/privacy_policy"
-                      component={PrivacyComponent}
-                    />
-                  </div>
+                  <Route exact path="/" component={HomeComponent} />
+                  {/* <Route exact path="/membership" component={MembershipComponent} /> */}
+                  <Route exact path="/developers" component={DeveloperComponent} />
+                  {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
+                  {/* <Route exact path="/insights" component={InsightComponent} /> */}
+                  <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                  {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
+                  {/* <AuthRoute exact path="/portfolio" component={PortfolioComponent} /> */}
+                  {/* <AuthRoute exact path="/profile" component={Protected} /> */}
+                  <Route exact path="/about" component={AboutComponent} />
+                  <Route exact path="/signup" component={SignUpContainer} />
+                  <Route exact path="/login" component={BasicLoginForm} />
+                  <Route exact path="/logout" component={Logout} />
+                  <Route
+                    exact
+                    path="/privacy_policy"
+                    component={PrivacyComponent}
+                  />
                 </Content>
                 <Footer className={classes.footer} style={{marginLeft: `${this.state.contentMarginLeft}`}}>
                   Aion Labs, Inc. ©2018
@@ -137,22 +136,22 @@ const appStyles = {
   // globe: `${globalStyles.main}`,
   // typography: `${typography.main}`,
   baseLayout: {
-    minHeight: '100vh',
+    minHeight: '100%',
     background: `${colors.midTone}`,
     color: 'black'
   },
   logo: {
-    height: "64px",
+    height: "54px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
   baseContent: {
-    marginTop: '64px',
+    marginTop: '45px',
+    minHeight: '100%',
     background: `${colors.grey}`,
   },
   content: {
-    height: '100%',
     '& p, & h3': {
       textAlign: 'left'
     },
@@ -165,7 +164,7 @@ const appStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 50,
+    height: 45,
     bottom: 0,
     right: 0,
     left: 0,

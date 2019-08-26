@@ -13,8 +13,8 @@ const heroStyles = {
     '& .title': { color: 'white' },
 
     '& .hero-body': {
-      marginTop: -20,
-      padding: '6rem 6rem 6rem',
+      // marginTop: -20,
+      // padding: '6rem 6rem 6rem',
       textAlign: 'center',
       '& .wrap': {
         display: 'flex',

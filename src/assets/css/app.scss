@@ -14,6 +14,7 @@
 }
 
 html, body {
+  height: 100vh;
   font-family: Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif;
   font-weight: 400;
   font-size: 62.5%;
@@ -23,6 +24,28 @@ html, body {
 
 p {
   margin: 1.8ch;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+
+  // @media (min-width: 576px) {
+  //   overflow-y: hidden; // hide vertical scrollbar
+  //   overflow-x: hidden; // hide horizontal
+  //   ::-webkit-scrollbar {
+  //     display: none;
+  //   }
+  // }
 }
 
 .hidden { display: 'none'; }
@@ -177,28 +200,6 @@ p {
     line-height: 2.6rem;
     letter-spacing: 0.15ch;
   }
-}
-
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-body {
-  height: 100vh;
-  margin: 0;
-  box-sizing: border-box;
-
-  // @media (min-width: 576px) {
-  //   overflow-y: hidden; // hide vertical scrollbar
-  //   overflow-x: hidden; // hide horizontal
-  //   ::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  // }
 }
 
 .center {

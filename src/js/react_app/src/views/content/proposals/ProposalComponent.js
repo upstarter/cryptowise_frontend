@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
+import { api_url } from 'Utils/consts'
 import NewProposalForm from './NewProposalForm'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
@@ -12,7 +13,6 @@ import colors from "Styles/colors"
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
-// import colors from 'Styles/colors'
 
 class ProposalComponent extends React.Component {
   state = {
@@ -20,6 +20,7 @@ class ProposalComponent extends React.Component {
     loading: false,
     data: [],
     list: [],
+    page: 1,
     ModalContent: 'Customize your experience',
     visible: false,
     confirmLoading: false
@@ -29,14 +30,17 @@ class ProposalComponent extends React.Component {
     this.getData(res => {
       this.setState({
         initLoading: false,
-        data: res.results,
-        list: res.results,
+        data: res.data,
+        list: res.data,
+        page: this.state.page + 1
       });
     });
   }
 
   getData = callback => {
-    axios.get(fakeDataUrl).then((res) => {
+    const url = `${api_url}/proposals?per_page=${count}&page=${this.state.page}`
+    axios.get(url).then((res) => {
+      console.log('Data', res.data)
       callback(res.data)
     })
   };
@@ -47,13 +51,15 @@ class ProposalComponent extends React.Component {
       list: this.state.data.concat([...new Array(count)].map(() => ({ loading: true, name: {} }))),
     });
     this.getData(res => {
-      const data = this.state.data.concat(res.results);
-      console.log('YOOO', data)
+      const data = this.state.data.concat(res.data);
+      const page = this.state.page + 1
+
       this.setState(
         {
           data,
           list: data,
           loading: false,
+          page: page,
         },
         () => {
           // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
@@ -177,14 +183,14 @@ class ProposalComponent extends React.Component {
           </div>
 
           <div id="proposal-items" className={classes.proposalItems}>
-            <Affix offsetTop={64}>
+            <Affix offsetTop={45}>
               <div id="proposal-items-heading">
                 <h3>🌱 Problem RIFF's</h3>
               </div>
             </Affix>
             <div className="proposal-column">
               <List
-                className="demo-loadmore-list"
+                className="item-list"
                 loading={initLoading}
                 itemLayout="horizontal"
                 loadMore={loadMore}
@@ -197,10 +203,15 @@ class ProposalComponent extends React.Component {
                         avatar={
                            <Avatar style={{ backgroundColor: '#D0E5FF' }} icon="team" />
                         }
-                        title={<a href="https://ant.design">{item.name.last}</a>}
-                        description="RIFF, a proposal language for analytical crypto-networking applications, refined by the CryptoWise Team"
+                        title={<a href="https://ant.design">{item.user_name}</a>}
+                        description={<p className='item-name'>Type: {item.type}</p>}
                       />
-                      {/* <div>Content Goes here</div> */}
+                      {
+                        <>
+                          <div className='item-name'>{item.name}</div>
+                          <div className='item-description'>{item.description}</div>
+                        </>
+                      }
                       <div>
                         <Rate allowHalf />
                       </div>
@@ -243,11 +254,10 @@ const proposalStyles = {
 
     '& #proposal-blurb': {
       gridArea: 'sidebar',
-      marginTop: -30,
-      padding: [15, 15, 15, 50],
+      marginTop: -45,
+      padding: [15, 25, 15, 50],
       '& strong': {
-        fontSize: '16 !important',
-        color: `${colors.black}`
+        fontSize: '16px !important',
       },
       // '& #proposal-blurb-intro': {
       //   '& #subtitle': {
@@ -282,13 +292,13 @@ const proposalStyles = {
       },
 
       '@media (min-width: 680px) and (max-width: 900px)': {
-        position: 'fixed',
-        maxWidth: '43ch',
+        // position: 'fixed',
+        maxWidth: '95vw',
       },
 
       '@media (min-width: 900px)': {
         position: 'fixed',
-        maxWidth: '50ch',
+        maxWidth: '43ch',
       },
 
     },
@@ -322,6 +332,7 @@ const proposalStyles = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      paddingTop: 10,
       // position: 'fixed',
       height: 40,
       // border: '1.2px solid #000000',
@@ -331,15 +342,27 @@ const proposalStyles = {
       color: '#000',
     },
 
+    '& .item-list': {
+      '& .item-description': {}
+    },
+
+    // '& .ant-list-item-meta': {
+    //   maxWidth: 250
+    // },
+
+
     '& .ant-list-item': {
       // display: 'block',
       // listStyleType: 'none',
       padding: 14,
       // border: '1px solid #727d88',
+      '& .item-description': {
+        margin: [0,17,0,17]
+      }
     },
 
     '@media (min-width: 680px)': {
-      marginLeft: 25,
+      // marginLeft: 25,
     },
 
   },

@@ -15,50 +15,51 @@ class DeveloperComponent extends React.Component {
         <section id="developer" className={classes.developers}>
           <div id="developer-content" className="content">
             <div id="title" className="title-small">CryptoWise for Developers</div>
-            <div id="title" style={{marginBottom: 30}} className="subtitle-big">Own the Network</div>
+            <div id="title" style={{marginBottom: 30}} className="subtitle-big">Own your Networks</div>
             <p>
-              Cryptoassets represent the native asset class to information
+              Cryptoassets represent the native asset class of information
               networks: setting up a means of both capitalization and
               monetization. As information networks grow and mature, so will our
               understanding of the archetypal tokens in the crypto ecosystem.
             </p>
             <p>
-              The high-tech ecosystems of our time are Crypto Networking,
+              The information networks of our time reside within Crypto Networking,
               Artificial Intelligence, Cloud/Fog computing, Robotics, BioTech,
               NanoTech, TransformativeTech, HealthTech, Mixed Reality, IoT, and
               RegTech, GovTech. CryptoWise is empowering developers to form useful
-              decentralized market networks.
+              decentralized market networks to solve critically important problems in these
+              ecosystems.
             </p>
             <p>
-              Where popular technological trends follow ever-shortening cycles
-              of marketing hype and often lack true disruption, decentralization
-              stands as the most readily available solution to allevate the
-              important problems of corruption, over-organization and additional
-              effects of over-population. These evolutionary outcomes are known
-              to have a constraining effect on personal freedom.
+              Where most popular technological trends follow ever-shortening
+              cycles of marketing hype, deliberative and transparent
+              decentralized networks stand as the most readily available
+              solution to problems of over-organization, over-population,
+              corruption, and inequality of global wealth distributions, all of
+              which constrain individual and group freedoms.
             </p>
             <p>
-              Corruption has a trust undermining effect by restricting peoples
-              ability to openly connect, cooperate, and compete in our
-              ever-accelerating, hyper-efficient, rapidly democratizing global
-              economy. Blockchain stands strong to fix the chasm of trust via
-              transparency and sound scientific verifiability in contractual
-              obligations and transactional integrity.
+              Decentralized networks also provide the means to increase
+              individuals ability to openly connect, cooperate, and compete in
+              our ever-accelerating, hyper-efficient, rapidly democratizing
+              global economy.
             </p>
             <p>
-              With the objective of minimizing the cultural and productivity
-              damaging effects of over-organized and creativity-starved
-              rent-seeking financial intermediaries, our mission is to provide
-              talented fintech creators with the resources and access to capital
-              that they desperately need to create a more efficient, effective,
-              and prosperous economy. One in which people can join together and
-              pool their resources for the attainment of prosperity in a way
-              that is respectful of their autonomy and individuality, rather
-              than subordinate to the needs of a dis-combobulated heirarchical
-              cluster of busy-ness with a do-gooder mentality.
+              With the objective of minimizing the cultural and individual
+              productivity damaging effects of over-organized and
+              creativity-starved rent-seeking financial intermediaries, our
+              mission is to provide talented technology creators with the resources
+              and access to capital that they desperately need to create a more
+              efficient, effective, and prosperous economy. One in which people
+              can join together and pool their resources for the attainment of
+              prosperity in a way that is respectful of their autonomy and
+              individuality, rather than subordinate to the needs of a
+              heirarchical cluster of busy-ness with a do-gooder mentality
+              that is increasingly ineffective at making the world a better
+              place to actualize oneself and/or others.
             </p>
             <h3 className='subtitle-big'>
-              Peer-to-Peer disruption architecture is our rebel yell.
+              Peer-to-Peer decentralized organization is our lifeline.
             </h3>
             <p>
               Achieving the goal of a decentralized and equinimitous distribution
@@ -68,18 +69,15 @@ class DeveloperComponent extends React.Component {
               and crypto-network engineers and researchers.
             </p>
             <p>
-              Most crypto analyst firms and research houses on wall street are made up of
-              highly non-technical MBA or finance graduates with little
-              expertise in the foundations of our new disruptive technologies.
-              Our team is made up of engineers, scientists and researchers steeped
-              in the technical complexity that are crypto-networking and
-              web software engineering.
+              Our ecosytem is made up of engineers, scientists and
+              researchers steeped in the technical complexity that are
+              crypto-networking and web software engineering.
             </p>
             <div id='developer-list'>
               <ul style={{marginLeft: 30}}>
                 <li>Grow and Share your deep crypto-finance expertise, own your network</li>
 
-                <li>Access our repository of tools</li>
+                <li>Access our repository of tools: algorithms, systems, strategies, tactics.</li>
                 {/* <li>Carefully selected early contributors who will have access to closed Beta</li> */}
                 <li>Crowdsourced token project intelligence for early adopters</li>
                 {/* <li>Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
@@ -98,8 +96,9 @@ class DeveloperComponent extends React.Component {
 const devStyles = {
   developers: {
     '& #developer-content': {
-      padding: '3ch 1rem 1rem 1rem',
+      padding: '3ch 1rem 4rem 1rem',
       margin: '0 auto',
+      marginBottom: 30,
       maxWidth: '60ch',
 
       '& #title': {

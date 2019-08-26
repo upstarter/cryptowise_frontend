@@ -83,19 +83,23 @@ class AppHeader extends React.Component {
 
 const headerStyles = {
   header: {
+    display: "flex",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 45,
     background: `${colors.primary}`,
     padding: 0,
     position: 'fixed',
     width: '100%',
     right: 0,
     zIndex: 1,
-    display: "flex",
-    justifyContent: 'space-between',
+
     '@media (min-width: 576px)': {
     },
   },
   menu: {
-    padding: 9,
+    height: 45,
+    // padding: 9,
     background: `${colors.primary}`,
     color: '#fff',
 
