@@ -7,7 +7,7 @@ import { SET_CURRENT_USER } from 'Actions/index'
 
 const registerUser = state => {
     const request = axios
-        .post(`${url}/api/v1/auth/create`, {
+        .post(`${url}/v1/auth/create`, {
           auth: {
             nickname: state.nickname,
             email: state.email,

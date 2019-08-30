@@ -23,7 +23,7 @@ class BlogComponent extends React.Component {
 
       this.setState({ isLoading: true });
 
-      fetch(`${url}/api/v1/blog_posts`)
+      fetch(`${url}/v1/blog_posts`)
         .then(response => {
           if (response.ok) {
             return response.json();

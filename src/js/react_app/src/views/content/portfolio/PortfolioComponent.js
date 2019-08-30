@@ -24,7 +24,7 @@ class PortfolioComponent extends React.Component {
       isLoading: true
     });
 
-    // fetch(`${url}/api/v1/portfolios/new`)
+    // fetch(`${url}/v1/portfolios/new`)
     //   .then(response => {
     //     if (response.ok) {
     //       return response.json();

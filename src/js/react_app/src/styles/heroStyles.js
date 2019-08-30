@@ -21,31 +21,32 @@ const heroStyles = {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        '& .title': {
+          fontFamily: 'Avenir-Light, sans-serif',
+          maxWidth: '90rem',
+          marginLeft: '-15%',
+          fontSize: '4.8rem',
+          lineHeight: '4.9rem',
+          letterSpacing: '-.02ch',
+          '@media  (min-width: 800px) and (max-width: 1000px)': {
+            fontSize: '4.9rem !important',
+          },
+          '@media (min-width: 480px) and (max-width: 800px)': {
+            fontSize: '3.2rem !important'
+          },
+          '@media (max-width: 480px)': {
+            fontSize: '2.9rem !important',
+            maxWidth: '125px !important',
+            textAlign: 'left'
+          }
+        },
+      },
       },
       '& .subtitle-big': {
         maxWidth: '300rem',
         marginTop: '15px',
       },
-      '& .title': {
-        fontFamily: 'Avenir-Light, sans-serif',
-        maxWidth: '90rem',
-        marginLeft: '-10%',
-        fontSize: '5.4rem',
-        lineHeight: '4.9rem',
-        letterSpacing: '-.02ch',
-        '@media  (min-width: 800px) and (max-width: 1000px)': {
-          fontSize: '4.9rem !important',
-        },
-        '@media (min-width: 480px) and (max-width: 800px)': {
-          fontSize: '3.2rem !important'
-        },
-        '@media (max-width: 480px)': {
-          fontSize: '2.9rem !important',
-          maxWidth: '125px !important',
-          textAlign: 'left'
-        }
-      },
-    },
+
 
     '& .email-leadgen': {
       fontSize: '3rem',

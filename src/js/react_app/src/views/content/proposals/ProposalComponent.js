@@ -139,22 +139,19 @@ class ProposalComponent extends React.Component {
           confirmLoading={confirmLoading}
         />
         <section id="proposal" className={classes.proposals}>
-          <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
           <div id="proposal-blurb">
             <Typography>
               <div id="proposal-blurb-intro">
-                <Title>Problem RIFF's 🎸</Title>
-                <div className='subtitle-small'><strong>R</strong>apid <strong>I</strong>mplementation <strong>F</strong>easibility & <strong>F</strong>undability
-                Studies</div>
-                <h2 id='subtitle' className='subtitle-small'>
+                <Title id="blurb-title">Problem RIFF's 🎸</Title>
+                <h4 id='subtitle' className='subtitle-small'>
                   A Hacker Quorum focused on solving personal investment
-                  problems and creating retirement security rockstars.
-                 </h2>
+                  problems and creating retirement rockstars.
+                </h4>
                 <Paragraph>
                   🌱 Problem RIFF's encourage our ecosystem to sprout the seeds of what it will
                   become over the long term. Problems are the guiding north star to
                   prosperity and opportunity for the next generations of
-                  fin-technologists, fin-repreneurs, and financiers. <b>Submit</b>,
+                  fin-technologists, fin-repreneurs, and/or financiers. <b>Submit</b>,
                   Search, and <b>Rate</b> problems that inhibit returns in a portfolio or
                   trading system and share them with the community. Self-organizing
                   expert teams will form to research top scoring problems and share
@@ -185,7 +182,10 @@ class ProposalComponent extends React.Component {
           <div id="proposal-items" className={classes.proposalItems}>
             <Affix offsetTop={45}>
               <div id="proposal-items-heading">
-                <h3>🌱 Problem RIFF's</h3>
+                <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
+                <h3>🎸 RIFF's 🌱</h3>
+                <div id="riff-blurb"><strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
+                </div>
               </div>
             </Affix>
             <div className="proposal-column">
@@ -248,28 +248,27 @@ const proposalStyles = {
     },
 
     '@media (min-width: 800px)': {
-      gridTemplateColumns: '38vw 62vw',
+      gridTemplateColumns: '3fr 7fr',
       gridTemplateAreas: '"sidebar content"',
     },
 
     '& #proposal-blurb': {
       gridArea: 'sidebar',
-      marginTop: -45,
+      marginTop: -40,
       padding: [15, 25, 15, 50],
-      '& strong': {
-        fontSize: '16px !important',
+
+      '& #proposal-blurb-intro': {
+        '& #subtitle': {
+          marginBottom: 10,
+          // fontSize: '1.15rem',
+        }
       },
-      // '& #proposal-blurb-intro': {
-      //   '& #subtitle': {
-      //     marginBottom: 10
-      //   }
-      // },
-      //
-      // '& #proposal-blurb-list': {
-      //   padding: [10,0,10,10]
-      // },
-      //
-      //
+
+      '& #proposal-blurb-list': {
+        padding: [10,0,10,10]
+      },
+
+
       // '& #proposal-blurb-features': {
       //   padding: [10, 0, 0, 0],
       //
@@ -278,7 +277,7 @@ const proposalStyles = {
       //   },
       //
       // },
-      //
+
       // '& #proposal-blurb-guide': {
       //   padding: [10, 0, 0, 0],
       //
@@ -289,39 +288,28 @@ const proposalStyles = {
       // },
       '@media (max-width: 680px)': {
         maxWidth: '100vw',
+        '& #blurb-title': {
+          fontSize: '2rem',
+        },
       },
 
       '@media (min-width: 680px) and (max-width: 900px)': {
-        // position: 'fixed',
-        maxWidth: '95vw',
+        position: 'fixed',
+        overflow: 'scroll',
+        maxWidth: '25rem',
       },
 
       '@media (min-width: 900px)': {
         position: 'fixed',
-        maxWidth: '43ch',
+        maxWidth: '30vw'
       },
 
     },
-
-    '& .float': {
-    	position: 'fixed',
-    	width: 60,
-    	height:60,
-    	bottom:40,
-    	right:40,
-      backgroundColor: `${colors.green}`,
-      // backgroundColor: 'rgba(118,48,103,0.85)',
-    	color: '#FFF',
-    	borderRadius: 50,
-    	textAlign: 'center',
-    	boxShadow: [2, 2, 3, '#999'],
-      zIndex: 10
-    }
   },
 
   proposalItems: {
     gridArea: 'content',
-    marginBottom: 70,
+    marginBottom: 50,
     paddingBottom: 30,
     backgroundColor: '#ffffff',
     border: '1px solid #D0E5FF',
@@ -329,20 +317,57 @@ const proposalStyles = {
     },
 
     '& #proposal-items-heading': {
-      display: 'flex',
+      display: 'grid',
+      gridTemplateRows: '25px auto',
+      gridTemplateColumns: '50px 1fr',
       alignItems: 'center',
-      justifyContent: 'center',
-      paddingTop: 10,
+      justifyItems: 'center',
       // position: 'fixed',
-      height: 40,
+      height: 50,
       // border: '1.2px solid #000000',
       fontWeight: '400',
       zIndex: 10,
       backgroundColor: '#D0E5FF',
-      color: '#000',
+      // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
+      // background: 'rgba(250,200,200,0.1)',
+      // border: '1px solid rgba(250,200,200,.5)',
+      color: '#111',
+      '& .float': {
+        gridColumn: '1 / 2',
+        gridRow: '1 / 3',
+        // position: 'fixed',
+        // width: 60,
+        // height:60,
+        // bottom:40,
+        // right:40,
+        backgroundColor: `${colors.green}`,
+        // backgroundColor: 'rgba(118,48,103,0.85)',
+        color: '#FFF',
+        borderRadius: 50,
+        textAlign: 'center',
+        boxShadow: [2, 2, 3, '#999'],
+        zIndex: 10
+      },
+      '& h3': {
+        gridColumn: '2',
+        fontSize: '2.0rem',
+        letterSpacing: '0.5rem',
+        paddingTop: 17
+      },
+      '& #riff-blurb': {
+        gridColumn: '2',
+        gridRow: '2',
+        fontSize: '1.3rem',
+        letterSpacing: '.01em',
+        '& strong': {
+          fontSize: '1.6rem !important',
+          fontWeight: '1000',
+        },
+      }
     },
 
     '& .item-list': {
+      padding: 10,
       '& .item-description': {}
     },
 
@@ -352,10 +377,10 @@ const proposalStyles = {
 
 
     '& .ant-list-item': {
-      // display: 'block',
-      // listStyleType: 'none',
+      boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
+      background: 'rgba(240,240,240,0.1)',
+      border: '1px solid rgba(240,240,240,.5)',
       padding: 14,
-      // border: '1px solid #727d88',
       '& .item-description': {
         margin: [0,17,0,17]
       }

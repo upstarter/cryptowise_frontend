@@ -16,7 +16,7 @@ const loginUser = creds => {
       withCredentials: true,
       credentials: 'include'
     };
-    const request = axios.post(`${url}/api/v1/auth/sign_in`, data)
+    const request = axios.post(`${url}/v1/auth/sign_in`, data)
     return dispatch => {
       return request.then(response => {
           const cookies = new Cookies();
@@ -36,7 +36,7 @@ const loginUser = creds => {
         });
     };
 }
-// 
+//
 // const loginSuccessful = (response) => {
 //   const cookies = new Cookies();
 //   const token = cookies.get('_cw_acc')

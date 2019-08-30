@@ -168,7 +168,7 @@ module.exports = merge(common, {
       "Access-Control-Expose-Headers": "*"
     },
     proxy: {
-      "/api": {
+      "/": {
         target: 'http://localhost:4000',
         // pathRewrite: { '^/api': '/api' },
         cookieDomainRewrite: "localhost",

@@ -19,7 +19,7 @@ class BlogListContainer extends React.Component {
   componentDidMount() {
       this.setState({ isLoading: true });
 
-      fetch('/api/v1/blog_posts')
+      fetch('/v1/blog_posts')
         .then(response => {
           if (response.ok) {
             return response.json();

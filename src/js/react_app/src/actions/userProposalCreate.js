@@ -7,7 +7,7 @@ import { USER_PROPOSAL_CREATE } from "./index";
 const userProposalCreate = state => {
     console.error('userProposalCreate', state)
     const request = axios
-        .post(`${url}/api/v1/proposals`, {
+        .post(`${url}/v1/proposals`, {
           proposal: {
             title: state.title,
             description: state.description

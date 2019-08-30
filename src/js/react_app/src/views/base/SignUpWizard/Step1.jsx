@@ -72,7 +72,7 @@ class SignUpStep1 extends Component {
       <div className={classes.container}>
         <div className={classes.header}>
           <h2 className={classes.title}>
-            Discover investment intelligence relevant to your interests.
+            Find wise solutions to problems relevant to your interests.
             Choose 3 or more topics you're interested in. <span className="subtitle-small">Click for details, then
              select as many as you like.</span>
           </h2>
@@ -119,6 +119,7 @@ const styles = {
   },
   main: {
     marginTop: 180,
+    marginBottom: 100,
     width: '400px !important',
     'overflow-y': 'none',
   },

@@ -33,7 +33,7 @@ export default class Treemap extends React.Component {
   }
 
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
 
     if (nextProps.data !== this.props.data) {
       this.treemap.set({

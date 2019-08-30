@@ -1,5 +1,5 @@
-const APIV1 = '/api/v1'
-const APIV2 = '/api/v2'
+const APIV1 = '/v1'
+const APIV2 = '/v2'
 
 module.exports = {
     name: 'Cryptowise',
@@ -10,7 +10,7 @@ module.exports = {
     iconFontJS: '/public/iconfont.js',
     CORS: [],
     openPages: ['/'],
-    apiPrefix: '/api/v1',
+    apiPrefix: '/v1',
     APIV1,
     APIV2,
     api: {

@@ -19,7 +19,7 @@ class ProviderHeroComponent extends React.Component {
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
-  componentWillMount() {
+  componentDidMount() {
     Modal.setAppElement("body");
   }
 

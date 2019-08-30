@@ -19,7 +19,7 @@ export default class AuthService {
               password
           }
         }
-        return axios.post(`${url}/api/v1/auth/sign_in`, data)
+        return axios.post(`${url}/v1/auth/sign_in`, data)
           .then(res => {
               this.setToken(res.token) // Setting the token in localStorage
               //this.setUser(res.user) // set current user from res.user OR DECODE FROM TOKEN

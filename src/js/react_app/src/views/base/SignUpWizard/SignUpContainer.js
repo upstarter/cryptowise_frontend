@@ -14,7 +14,7 @@ class SignupContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`${url}/api/v1/topics`)
+    fetch(`${url}/v1/topics`)
       .then(response => {
         if (response.status !== 200) {
           console.log(

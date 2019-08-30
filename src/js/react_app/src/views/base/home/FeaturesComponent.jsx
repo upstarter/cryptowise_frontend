@@ -29,7 +29,7 @@ class FeaturesComponent extends React.Component {
                 <p className="subtitle-small">
                   It takes sophisticated methods to construct, manage and
                   optimize a modern investment portfolio. Get help with
-                  the complex bits and be informed of asset developments relevant
+                  the complex bits and stay informed of asset developments relevant
                   to your goals.
                 </p>
               </Col>
@@ -39,10 +39,12 @@ class FeaturesComponent extends React.Component {
                     <img alt="Crypto Network" src={Icon2}/>
                   </figure>
                 </div>
-                <h3>Crypto Networking</h3>
+                <h3>Investing Mastery</h3>
                 <p className="subtitle-small">
-                  Participate in an autonomous decentralized ecosystem that rewards creative solutions to
-                  complicated investment problems based on the wisdom of the Artificial Intelligence community.
+                  Participate in an investing ecosystem that rewards creative
+                  solutions to complicated investment problems. Content based on
+                  the research of financial experts and the
+                  Artificial Intelligence community.
                 </p>
               </Col>
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
@@ -51,12 +53,12 @@ class FeaturesComponent extends React.Component {
                     <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
                   </figure>
                 </div>
-                <h3>Multi-Agent Formations</h3>
+                <h3>Decentralized Networks</h3>
                 <p className="subtitle-small">
-                  Autonomic Swarms and individual Agents deliver novel
-                  specialized guidance. Participants self-select into autonomous
-                  teams to focus coherent sets of ontologies, strategies,
-                  tactics.
+                  Core Teams, Swarms and Individual Agents deliver novel
+                  specialized guidance. Participants autonomously self-select
+                  to focus on coherent sets of ontologies, strategies, tactics
+                  within their core capabilities.
                 </p>
               </Col>
             </Row>

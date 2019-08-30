@@ -25,7 +25,7 @@ post formFields =
     Http.request
         { method = "POST"
         , headers = []
-        , url = "/api/v1/leads"
+        , url = "/v1/leads"
         , body = Http.jsonBody (encodeModel formFields)
         , expect = Http.expectJson responseDecoder
         , timeout = Nothing
