@@ -57,6 +57,7 @@ class SignUpStep1 extends Component {
       ? props.topics.map((data, i) => {
           return (
             <Tile
+              className="topic-tile"
               data={data}
               key={i}
               id={data.id}
@@ -73,8 +74,7 @@ class SignUpStep1 extends Component {
         <div className={classes.header}>
           <h2 className={classes.title}>
             Find wise solutions to problems relevant to your interests.
-            Choose 3 or more topics you're interested in. <span className="subtitle-small">Click for details, then
-             select as many as you like.</span>
+            Choose 3 or more topics you're interested in. <span className="subtitle-small">Select as many as you like.</span>
           </h2>
         </div>
         <div className={classes.main}>
@@ -130,7 +130,7 @@ const styles = {
     textAlign: 'center',
     margin: [0,0,0,20],
     '& .subtitle-small': {
-      color: 'darkblue',
+      color: `${colors.smoothPurple}`,
     }
   },
   footer: {
@@ -156,6 +156,9 @@ const styles = {
     // gridTemplateRows: "repeat(1, auto)",
     // gridColumnGap: ".2rem",
     // gridRowGap: ".2rem"
+    '& .ant-card': {
+
+    }
   },
 
   "@media (min-width: 482px) and (max-width: 662px)": {

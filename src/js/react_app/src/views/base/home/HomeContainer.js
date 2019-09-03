@@ -121,7 +121,7 @@ class HomeContainer extends React.Component {
                   />
                 </Content>
                 <Footer className={classes.footer} style={{marginLeft: `${this.state.contentMarginLeft}`}}>
-                  Aion Labs, Inc. ©2018
+                  Aion Labs, Inc. ©{(new Date).getFullYear()}
                 </Footer>
               </Layout>
             </Layout>
@@ -163,7 +163,7 @@ const appStyles = {
     position: 'fixed',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'left',
     height: 45,
     bottom: 0,
     right: 0,

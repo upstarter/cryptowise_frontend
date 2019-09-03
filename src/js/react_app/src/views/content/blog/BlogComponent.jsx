@@ -68,14 +68,14 @@ class BlogComponent extends React.Component {
             <h1>Blog Posts</h1>
           </div>
           <div className={classes.blogPosts}>
-            <Row type="flex" justify="space-between">
+            <Row type="flex" justify="space-around">
               {blogPosts.map(post =>
                 <Col key={post.link} xs={25} sm={25} md={7} lg={7} xl={7}>
                   <div key={post.link} className={classes.card}>
-                    <div className="card-content">
+                    <div className="card-content" className={classes.card_content}>
                       <p id="date" className="caption" dangerouslySetInnerHTML={{__html: post.date}}>
                       </p>
-                      <div className={classes.card_content} dangerouslySetInnerHTML={{__html: post.content}}>
+                      <div className="card-subtitle" dangerouslySetInnerHTML={{__html: post.content}}>
                       </div>
                       <a href={post.link} className="link">Read More</a>
                     </div>
@@ -91,30 +91,40 @@ class BlogComponent extends React.Component {
 }
 const blogStyles = {
   blog: {
+    padding: '3rem',
+    margin: '-10 auto',
+    background: '#191F2D',
     color: '#fff',
     '& a': { background: 'none !important' }
   },
   blogPosts: {
     '@media (min-width: 992px)': {
-      width: '60vw',
-      margin: '0 auto',
+      // width: '60vw',
+      // margin: '0 auto',
     }
   },
   heading: {
     textAlign: 'center',
-    marginBottom: '50px',
+
+    marginBottom: '10px',
     '& h1': {
       color: `${colors.white}`
     }
   },
   card: {
-    width: '320px',
-    margin: '20px,',
+    // maxWidth: '50ch',
+    marginBottom: 70,
     minHeight: '100%',
 
-    '@media (min-width: 992px)': {
-       maxWidth: '60ch'
+    '@media (max-width: 808px)': {
+      // maxWidth: '50ch'
     },
+
+    '@media (min-width: 992px)': {
+       // maxWidth: '60ch'
+    },
+
+
 
     '.content .is-loading': {
       minHeight: '100vh',
@@ -131,7 +141,22 @@ const blogStyles = {
     },
   },
   card_content: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+
+    // '& .caption': {
+    //   display: 'flex',
+    //   textAlign: 'center !important',
+    //   alignItems: 'center',
+    // },
+    // '& .link': {
+    //   display: 'flex',
+    //   textAlign: 'center !important',
+    //   alignItems: 'center'
+    // },
     '& h1': {
+      textAlign: 'center !important',
       fontFamily: 'Avenir-Medium',
       fontWeight: 'normal',
       fontSize: '2rem',
@@ -140,6 +165,7 @@ const blogStyles = {
       color: `${colors.white}`,
     },
     '& h2': {
+      textAlign: 'center !important',
       fontFamily: 'Avenir-Medium',
       fontWeight: 'normal',
       fontSize: '2rem',
@@ -148,28 +174,34 @@ const blogStyles = {
       color: `${colors.white}`,
     },
     '& h3': {
+      // justifyContent: 'center',
+      // textAlign: 'center !important',
       fontFamily: 'Avenir-Light',
       fontWeight: 'normal',
       fontSize: '1.8rem',
       lineHeight: '2.6rem',
       letterSpacing: '0.1ch',
+      filter: 'saturate(0.65)',
       color: `${colors.white}`,
     },
     '& h4': {
       fontFamily: 'Avenir-Book',
       fontWeight: 'normal',
-      fontSize: '1.6rem',
-      lineHeight: '2.6rem',
-      letterSpacing: '0.1ch',
+      fontSize: '1.4rem !important',
+      lineHeight: '1.7rem !important',
+      letterSpacing: '0.09ch',
       color: `${colors.smoke}`,
     },
     '& p': {
+      display: 'flex',
+      // justifyContent: 'center',
+      // textAlign: 'center !important',
       fontFamily: 'Avenir-Book',
       fontWeight: 'light',
       lineHeight: '2rem',
       letterSpacing: '0.1ch',
       fontSize: '1.4rem',
-      color: `${colors.smoke}`,
+      color: `${colors.silver}`,
     }
   }
 }

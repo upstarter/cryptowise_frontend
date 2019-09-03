@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
-import { Card } from 'antd';
+import { Card, Icon } from 'antd';
 import colors from "Styles/colors"
 
 class CardTile extends Component {
@@ -45,18 +45,25 @@ class CardTile extends Component {
     // console.log("ids", props.selectedIds);
     return (
        <Card
-         bordered={true}
+         bordered="true"
+         hoverable="true"
          className={classes.card}
-         style={state.selected ? { background: `${colors.silver}` } : null}
+         style={state.selected ? { background: `${colors.smoothPurple}` } : null}
          onClick={id => this.handleSelected(data.id)}
         >
           <div className="card-content">
             <div
-              className={classes.name}
-              style={state.selected ? { color: `${colors.primary}` } : null}
+              className={classes.item}
+              style={state.selected ? { color: `${colors.white}` } : null}
             >
               {/* <p><strong>{data.id}</strong></p> */}
-              <p><span>{data.name}</span></p>
+              <p id='name'><span>{data.name}</span></p>
+               <Icon
+                 style={state.selected ? { display: 'inline' } : { display: 'none'}}
+                 id='check-icon'
+                 type="check-circle"
+                 theme="twoTone"
+                 twoToneColor={`${colors.green}`} />
               <p
                 className={classes.description}
               >
@@ -83,6 +90,9 @@ const styles = {
     marginBottom: 5,
     color: '#000',
     cursor: "pointer",
+    // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
+    border: '1px solid rgba(240,240,240,.5)',
+    fontSize: '1.2rem',
     '& .card-content': {
 
     },
@@ -90,11 +100,16 @@ const styles = {
       padding: '15px 0 0 0 !important',
     },
   },
-  name: {
+  item: {
+    display: 'flex',
+    alignItems: 'center',
     fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
     fontSize: '14px',
     userSelect: 'none',
   },
+  '& .check-icon': {
+    display: 'none'
+  }
   // description: {
   //   marginTop: '10px',
   //   fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",

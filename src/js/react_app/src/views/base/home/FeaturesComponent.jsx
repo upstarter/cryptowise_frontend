@@ -28,9 +28,9 @@ class FeaturesComponent extends React.Component {
                 <h3>Strategic Asset Analysis</h3>
                 <p className="subtitle-small">
                   It takes sophisticated methods to construct, manage and
-                  optimize a modern investment portfolio. Get help with
-                  the complex bits and stay informed of asset developments relevant
-                  to your goals.
+                  optimize a modern high tech investment portfolio. Get help
+                  with the complex bits and stay informed of asset developments
+                  relevant to your goals.
                 </p>
               </Col>
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
@@ -39,12 +39,12 @@ class FeaturesComponent extends React.Component {
                     <img alt="Crypto Network" src={Icon2}/>
                   </figure>
                 </div>
-                <h3>Investing Mastery</h3>
+                <h3>Crowd Investing Mastery</h3>
                 <p className="subtitle-small">
                   Participate in an investing ecosystem that rewards creative
-                  solutions to complicated investment problems. Content based on
-                  the research of financial experts and the
-                  Artificial Intelligence community.
+                  solutions to complicated investment problems. Reward content
+                  and curation based on the research of financial experts and
+                  the Artificial Intelligence community.
                 </p>
               </Col>
               <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
@@ -53,12 +53,12 @@ class FeaturesComponent extends React.Component {
                     <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
                   </figure>
                 </div>
-                <h3>Decentralized Networks</h3>
+                <h3>Decentralized Networking</h3>
                 <p className="subtitle-small">
-                  Core Teams, Swarms and Individual Agents deliver novel
-                  specialized guidance. Participants autonomously self-select
-                  to focus on coherent sets of ontologies, strategies, tactics
-                  within their core capabilities.
+                  Core Teams, Task Forces, Swarms, and Individual Agents deliver
+                  practical insights. Participants autonomously formulate on
+                  coherent sets of policies tailored to their self-selected core
+                  capabilities within investment objectives.
                 </p>
               </Col>
             </Row>
@@ -77,13 +77,15 @@ const featuresStyles = {
     color: '#fff',
     '& a': { background: 'none !important' },
     '& h1': {
-      color: 'white'
+      filter: 'saturate(0.65)',
+      color: `${colors.white}`
     },
 
   },
   heading: {
     textAlign: 'center',
     marginBottom: '10px',
+    color: 'white'
   },
 
   feature: {
@@ -96,14 +98,20 @@ const featuresStyles = {
     '& .subtitle-small': {
       margin: '0 auto',
       maxWidth: '35rem',
-      color: '#AEBED4',
+      color: `${colors.smoke}`,
 
     },
-    '& h3, & p': {
+    '& h3': {
+      fontSize: '2.2rem !important',
+      textAlign: 'center !important',
+      filter: 'saturate(0.75)',
+      color: `${colors.yellow}`,
+    },
+
+    '& p': {
       display: 'flex',
       justifyContent: 'center',
       textAlign: 'center !important',
-      color: 'white'
     },
   }
 }

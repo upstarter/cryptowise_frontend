@@ -7,10 +7,11 @@ const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   output: {
-    // `path` is the folder where Webpack will place your bundles
     path: path.resolve(__dirname, "build"),
+    publicPath: '/',
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -19,21 +20,21 @@ module.exports = merge(common, {
         use: [
           {
             loader:  'style-loader',
-            options: {
-              sourceMap: true,
-            },
+            // options: {
+            //   sourceMap: true,
+            // },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              sourceMap: true,
+              // sourceMap: true,
             },
           },
           AntdScssThemePlugin.themify({
             loader: 'less-loader', // compiles Less to CSS
               options: {
-                sourceMap: true,
+                // sourceMap: true,
                 javascriptEnabled: true,
               }
           }),
@@ -53,21 +54,21 @@ module.exports = merge(common, {
           {
             loader:  'style-loader',
             options: {
-              sourceMap: true,
+              // sourceMap: true,
             },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              sourceMap: true,
+              // sourceMap: true,
               localIdentName: '[name]-[local]-[hash:base64:5]',
             },
           },
           AntdScssThemePlugin.themify({
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
+              // sourceMap: true,
             },
           }),
         ],
@@ -78,20 +79,20 @@ module.exports = merge(common, {
           {
             loader:  'style-loader',
             options: {
-              sourceMap: true,
+              // sourceMap: true,
             },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              sourceMap: true,
+              // sourceMap: true,
             },
           },
           AntdScssThemePlugin.themify({
             loader: 'less-loader', // compiles Less to CSS
               options: {
-                sourceMap: true,
+                // sourceMap: true,
                 javascriptEnabled: true,
               }
           }),
@@ -153,13 +154,19 @@ module.exports = merge(common, {
     noParse: [/\.elm$/]
   },
   devServer: {
+    // allowedHosts: [
+    //   'localhost',
+    //   'api.localhost'
+    // ],
     // webpack-dev-server defaults to localhost:8080
+    // lazy: true,
+    overlay: true,
     port: 8081,
-    watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
     contentBase: path.resolve(__dirname, "build"),
-    historyApiFallback: {
-      index: '/'
-    },
+    hot: true,
+    compress: true,
+    watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
+    historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
@@ -168,7 +175,7 @@ module.exports = merge(common, {
       "Access-Control-Expose-Headers": "*"
     },
     proxy: {
-      "/": {
+      "/v1": {
         target: 'http://localhost:4000',
         // pathRewrite: { '^/api': '/api' },
         cookieDomainRewrite: "localhost",

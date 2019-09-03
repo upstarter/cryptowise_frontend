@@ -1,6 +1,6 @@
-# {
-#   "extends": "airbnb",
-#   "rules": {
-#     "space-before-function-paren": 0
-#   }
-# }
+{
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "double"]
+    }
+}

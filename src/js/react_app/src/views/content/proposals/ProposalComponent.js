@@ -327,7 +327,7 @@ const proposalStyles = {
       // border: '1.2px solid #000000',
       fontWeight: '400',
       zIndex: 10,
-      backgroundColor: '#D0E5FF',
+      // backgroundColor: `${colors.babyBlue}`,
       // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
       // background: 'rgba(250,200,200,0.1)',
       // border: '1px solid rgba(250,200,200,.5)',

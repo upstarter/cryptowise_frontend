@@ -16,7 +16,7 @@ const mode = env === "production" ? "production" : "development"
 
 module.exports = {
   mode: mode,
-  devtool: "source-map",
+  // devtool: "source-map",
   entry: {
     app: ["./src/js/app.js"
       // , "./js/elm/app/Main.elm"
@@ -78,10 +78,10 @@ module.exports = {
     // new ReactLoadablePlugin({
     //   filename: './dist/react-loadable.json',
     // }),
-    // new CopyWebpackPlugin([{
-    //   from: "./src/assets/images",
-    //   to: "src/assets/images"
-    // }]),
+    new CopyWebpackPlugin([{
+      from: "./src/assets/css",
+      to: "css"
+    }]),
     // new BundleAnalyzerPlugin({
     //   generateStatsFile: true
     // })
