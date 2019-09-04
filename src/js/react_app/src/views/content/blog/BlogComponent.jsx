@@ -181,8 +181,8 @@ const blogStyles = {
       fontSize: '1.8rem',
       lineHeight: '2.6rem',
       letterSpacing: '0.1ch',
-      filter: 'saturate(0.65)',
-      color: `${colors.white}`,
+      filter: 'saturate(0.85)',
+      color: `${colors.orangeRed}`,
     },
     '& h4': {
       fontFamily: 'Avenir-Book',

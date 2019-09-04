@@ -136,7 +136,7 @@ const appStyles = {
   // globe: `${globalStyles.main}`,
   // typography: `${typography.main}`,
   baseLayout: {
-    minHeight: '100%',
+    minHeight: '100vh',
     background: `${colors.midTone}`,
     color: 'black'
   },

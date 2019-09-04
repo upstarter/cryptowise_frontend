@@ -71,28 +71,28 @@ class SignUpStep1 extends Component {
       : [];
     return (
       <div className={classes.container}>
-        <div className={classes.header}>
+        <div id="topics-header" className={classes.header}>
           <h2 className={classes.title}>
-            Find wise solutions to problems relevant to your interests.
-            Choose 3 or more topics you're interested in. <span className="subtitle-small">Select as many as you like.</span>
+            Find wise investment solutions relevant to your interests.
+            Choose 3 or more topics that interest you. <span className="subtitle-small">Select as many as you like.</span>
           </h2>
         </div>
         <div className={classes.main}>
 
           <div className={classes.tileGrid}>{tiles}</div>
-            <div className={classes.footer}>
-              <Button
-                className={classes.button}
-                onClick={this._validate}
-                disabled={!this.state.showFooter}
-                style={
-                  this.state.showFooter ? {background: `${colors.antBlue}`,
-                                           color: `${colors.white}`} : {  }
-                }
-              >
-                Next ->
-              </Button>
-            </div>
+          <div className={classes.footer}>
+            <Button
+              className={classes.button}
+              onClick={this._validate}
+              disabled={!this.state.showFooter}
+              style={
+                this.state.showFooter ? {background: `${colors.green}`,
+                                         color: `${colors.white}`} : {  }
+              }
+            >
+              Next ->
+            </Button>
+          </div>
         </div>
 
       </div>
@@ -105,32 +105,39 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+    '& #topics-header': {
+      position: 'fixed',
+      top: 45,
+      maxHeight: '25vh',
+      // marginBottom: '50px',
+      maxWidth: 405,
+      // padding: '7px',
+      width: '105%',
+      zIndex: 1,
+      // boxShadow: '1px 1px 2px 1px silver',
+      background: `${colors.secondaryDark}`,
+      // filter: 'saturate(.8) invert(1)'
+    },
   },
-  header: {
-    position: 'fixed',
-    maxHeight: '25vh',
-    marginBottom: '50px',
-    maxWidth: 400,
-    padding: '7px',
-    width: '100%',
-    zIndex: 1,
-    boxShadow: '1px 1px 2px 1px silver',
-    background: `${colors.white}`,
-  },
+
   main: {
-    marginTop: 180,
+    height: '100vh',
+    marginTop: 160,
     marginBottom: 100,
+
     width: '400px !important',
     'overflow-y': 'none',
   },
   title: {
     padding: 15,
     fontSize: "20px !important",
-    color: `${colors.black}`,
+    color: `${colors.offWhite}`,
     textAlign: 'center',
     margin: [0,0,0,20],
     '& .subtitle-small': {
-      color: `${colors.smoothPurple}`,
+      fontWeight: 'bold',
+      filter: 'saturate(2.5) contrast(2)',
+      color: `${colors.origPurple}`,
     }
   },
   footer: {
@@ -140,17 +147,17 @@ const styles = {
     position: 'fixed',
     minHeight: "50px",
     width: '100vw',
-    bottom: 50,
+    zIndex: 10,
+    bottom: 0,
     right: 0,
     fontSize: 24,
-    background: `${colors.white}`,
-    boxShadow: '1px 1px 2px 1px silver',
+    background: 'transparent',
   },
   button: {
     width: '75px',
   },
   tileGrid: {
-    marginTop: '40px',
+    margin: '40px 0 440px 0',
     // display: "grid",
     // gridTemplateColumns: "repeat(1, 1fr)",
     // gridTemplateRows: "repeat(1, auto)",

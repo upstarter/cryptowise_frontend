@@ -228,8 +228,9 @@ body {
   }
 
   .dark-wrap {
-    padding: 6rem 7rem 12rem;
-    background:  #191F2D;
+    height: 100% !important;
+    padding: 3rem 4rem 6rem;
+    background: rgb(25, 31, 46);
     color: #fff;
     a { background: none !important; }
   }

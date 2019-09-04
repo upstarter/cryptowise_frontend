@@ -13,57 +13,59 @@ class FeaturesComponent extends React.Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        <section id='features' className={classes.features}>
-          <div className={classes.heading}>
-            <h1>Features</h1>
-          </div>
-          <div className="wrap">
-            <Row type="flex" justify="space-around">
-              <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
-                <div className="feature-icon">
-                  <figure className="image">
-                    <img alt="Crypto investing strategies" src={Icon1}/>
-                  </figure>
-                </div>
-                <h3>Strategic Asset Analysis</h3>
-                <p className="subtitle-small">
-                  It takes sophisticated methods to construct, manage and
-                  optimize a modern high tech investment portfolio. Get help
-                  with the complex bits and stay informed of asset developments
-                  relevant to your goals.
-                </p>
-              </Col>
-              <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
-                <div className="feature-icon">
-                  <figure className="image">
-                    <img alt="Crypto Network" src={Icon2}/>
-                  </figure>
-                </div>
-                <h3>Crowd Investing Mastery</h3>
-                <p className="subtitle-small">
-                  Participate in an investing ecosystem that rewards creative
-                  solutions to complicated investment problems. Reward content
-                  and curation based on the research of financial experts and
-                  the Artificial Intelligence community.
-                </p>
-              </Col>
-              <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
-                <div className="feature-icon">
-                  <figure className="image">
-                    <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
-                  </figure>
-                </div>
-                <h3>Decentralized Networking</h3>
-                <p className="subtitle-small">
-                  Core Teams, Task Forces, Swarms, and Individual Agents deliver
-                  practical insights. Participants autonomously formulate on
-                  coherent sets of policies tailored to their self-selected core
-                  capabilities within investment objectives.
-                </p>
-              </Col>
-            </Row>
-          </div>
-        </section>
+        <div className="dark-wrap">
+          <section id='features' className={classes.features}>
+            <div className={classes.heading}>
+              <h1>Features</h1>
+            </div>
+            <div className="wrap">
+              <Row type="flex" justify="space-around">
+                <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
+                  <div className="feature-icon">
+                    <figure className="image">
+                      <img alt="Crypto investing strategies" src={Icon1}/>
+                    </figure>
+                  </div>
+                  <h3>Strategic Asset Analysis</h3>
+                  <p className="subtitle-small">
+                    It takes sophisticated methods to construct, manage and
+                    optimize a modern high tech investment portfolio. Get help
+                    with the complex bits and stay informed of asset developments
+                    relevant to your goals.
+                  </p>
+                </Col>
+                <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
+                  <div className="feature-icon">
+                    <figure className="image">
+                      <img alt="Crypto Network" src={Icon2}/>
+                    </figure>
+                  </div>
+                  <h3>Crowd Investing Mastery</h3>
+                  <p className="subtitle-small">
+                    Participate in an investing ecosystem that rewards creative
+                    solutions to complicated investment problems. Generate & Synthesize
+                    cutting edge research across increasingly vast design spaces in Finance
+                    and Artificial Intelligence.
+                  </p>
+                </Col>
+                <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
+                  <div className="feature-icon">
+                    <figure className="image">
+                      <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
+                    </figure>
+                  </div>
+                  <h3>Decentralized Networking</h3>
+                  <p className="subtitle-small">
+                    Core Teams, Task Forces, Swarms, and Individual Agents deliver
+                    practical insights. Participants autonomously formulate
+                    coherent sets of policies tailored to self-selected core
+                    capabilities within and across group investment objectives.
+                  </p>
+                </Col>
+              </Row>
+            </div>
+          </section>
+        </div>
       </React.Fragment>
     )
   }
@@ -73,7 +75,7 @@ const featuresStyles = {
   features: {
     padding: '3rem',
     margin: '-10 auto',
-    background: '#191F2D',
+
     color: '#fff',
     '& a': { background: 'none !important' },
     '& h1': {
@@ -104,8 +106,8 @@ const featuresStyles = {
     '& h3': {
       fontSize: '2.2rem !important',
       textAlign: 'center !important',
-      filter: 'saturate(0.75)',
-      color: `${colors.yellow}`,
+      // filter: 'saturate(1)',
+      color: `${colors.silver}`,
     },
 
     '& p': {

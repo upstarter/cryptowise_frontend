@@ -85,7 +85,7 @@ export class SignUpWizard extends Component {
   render() {
     let state = this.state;
     return (
-      <div style={{ height: "100%", fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif" }}>
+      <div className="dark-wrap" style={{ height: "100% !important", fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif" }}>
         <Step1
           currentStep={state.currentStep}
           afterValid={this._next}

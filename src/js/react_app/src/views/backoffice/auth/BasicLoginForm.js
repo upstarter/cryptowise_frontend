@@ -28,49 +28,51 @@ class BasicLoginForm extends React.Component {
     const { classes } = this.props
     const { getFieldDecorator } = this.props.form;
     return (
-      <div className={classes.container}>
-        <div className={classes.header}>
-          <h2 id="title" className={classes.title, "title-small"}>
-            Sign in to uncover hypergrowth cryptoassets along with top analysts
-          </h2>
-        </div>
-        <div className={classes.main}>
-          <Form onSubmit={this.handleSubmit} className={classes.loginForm}>
-            <Form.Item>
-              {getFieldDecorator('username', {
-                rules: [{ required: true, message: 'Please input your username!' }],
-              })(
-                <Input
-                  prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Username"
-                />,
-              )}
-            </Form.Item>
-            <Form.Item>
-              {getFieldDecorator('password', {
-                rules: [{ required: true, message: 'Please input your Password!' }],
-              })(
-                <Input
-                  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  type="password"
-                  placeholder="Password"
-                />,
-              )}
-            </Form.Item>
-            <Form.Item>
-              {getFieldDecorator('remember', {
-                valuePropName: 'checked',
-                initialValue: true,
-              })(<Checkbox>Remember me</Checkbox>)}
-              <a className={classes.loginFormForgot} href="">
-                Forgot password
-              </a>
-              <Button type="primary" htmlType="submit" className={classes.loginFormButton}>
-                Log in
-              </Button>
-              Or <a href="/signup">register now!</a>
-            </Form.Item>
-          </Form>
+      <div className="dark-wrap">
+        <div className={classes.container}>
+          <div className="header">
+            <h2 id="title" className={classes.title, "title-small"}>
+              Sign in to uncover hypergrowth cryptoassets along with top analysts
+            </h2>
+          </div>
+          <div className={classes.main}>
+            <Form onSubmit={this.handleSubmit} className={classes.loginForm}>
+              <Form.Item>
+                {getFieldDecorator('username', {
+                  rules: [{ required: true, message: 'Please input your username!' }],
+                })(
+                  <Input
+                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    placeholder="Username"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('password', {
+                  rules: [{ required: true, message: 'Please input your Password!' }],
+                })(
+                  <Input
+                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    type="password"
+                    placeholder="Password"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('remember', {
+                  valuePropName: 'checked',
+                  initialValue: true,
+                })(<Checkbox>Remember me</Checkbox>)}
+                <a className={classes.loginFormForgot} href="">
+                  Forgot password
+                </a>
+                <Button type="primary" htmlType="submit" className={classes.loginFormButton}>
+                  Log in
+                </Button>
+                Or <a href="/signup">register now!</a>
+              </Form.Item>
+            </Form>
+          </div>
         </div>
       </div>
     );
@@ -81,33 +83,34 @@ const WrappedBasicLoginForm = Form.create({ name: 'basic_login' })(BasicLoginFor
 
 const styles = {
   container: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: "center",
-  },
-  header: {
-    width: '100vw',
-    minHeight: '18em',
-    margin: [0,0,20,0],
-    background: `${colors.white}`,
-    '& #title': {
-      maxWidth: '400px',
-      margin: '20px auto',
-      textAlign: 'center',
-      color: `${colors.black}`,
-    },
+    height: '100vh',
+    display: "grid",
+    gridTemplateRows: "3fr 7fr",
+    '& .header': {
+      gridRow: 1,
+      width: '100vw',
+      // margin: [0,0,0,0],
+      '& #title': {
+        maxWidth: '400px',
+        margin: '0 auto',
+        textAlign: 'center',
+        color: `${colors.silver}`,
+      },
+    }
   },
   main: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    justifyContent: "center",
-    alignItems: 'center',
+    // display: 'flex',
+    // flexWrap: 'wrap',
+    // flexDirection: 'column',
+    // justifyContent: "center",
+    // alignItems: 'top',
   },
   loginForm: {
+    gridRow: 2,
     maxWidth: '300px',
+    margin: '0 auto',
+    textAlign: 'center',
+    color: `${colors.silver}`,
   },
   loginFormForgot: {
     float: 'right'

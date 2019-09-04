@@ -7,10 +7,15 @@
 // Spotify colors (https://codepen.io/alowenthal/pen/rxboRv)
 // $green: rgb(30, 215, 96);
 const colors = {
-  primary: '#001528',
+  // primary: '#001528',
+  primary: 'rgba(23,28,40, 1)',
+  secondaryDark: 'rgba(25, 31, 46, 1)',
+  tertiaryDark: 'rgba(28,35,52,1)',
+  quartDark: 'rgba(28,49,70,1)',
+
   antBlue: '#1990ff',
-  primaryDark: 'rgb(24, 24, 24)',
-  secondaryDark: 'rgb(40, 40, 40)',
+  // primaryDark: 'rgb(24, 24, 24)',
+  primaryDark: '#fff',
   midTone: '#f6f6f6',
 
   // cw colors
@@ -33,14 +38,14 @@ const colors = {
   green: 'rgba(0,155,87,1)', //#8de8c3
 
   // blues
-
-  darkBlue: '#191F2D', // darkBlue
+  royalBlue: 'rgba(22,40,152, 1)',
+  darkBlue: '#191F2D',
   lightDarkBlue: 'rgb(20,23,30)',
   lighterDarkBlue: 'rgb(23,26,33)',
   darkerDarkBlue: '#001528',
-  blue: '#76c8e7', // tealish
   lightBlue: '#EEf4fb',
   babyBlue: '#D0E5FF',
+  blue: '#76c8e7', // tealish
   // secondaryDark: 'rgb(22,27,37)',
 
   // blacks
@@ -48,7 +53,8 @@ const colors = {
   lightBlack: '#5D626E',
 
   // whites
-  white: 'rgb(240, 240, 240)',
+  white: 'rgb(255, 255, 255)',
+  offWhite: 'rgba(248, 248, 248, 0.95)',
   sand: 'rgb(200, 200, 200)',
   silver: '#AEBED4',
   smoke: '#D0E5FF',

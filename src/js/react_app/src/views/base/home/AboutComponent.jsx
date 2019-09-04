@@ -60,6 +60,43 @@ class AboutComponent extends React.Component {
               transparent research and development, and giving early
               participants in the community a stake in the network.
             </p>
+            <p>
+              The information networks of our time reside within the realms of
+              Quantum Computing, Crypto Networking, Artificial Intelligence,
+              Cloud/Fog/Edge computing, IoT, Robotics, BioTech, Crispr,
+              NanoTech, TransformativeTech, HealthTech, Mixed Reality, RegTech,
+              GovTech.
+            </p>
+            <p>
+              Cryptoassets represent the native asset class of information
+              networks: setting up a means of both capitalization and
+              monetization. As information networks grow and mature, so will our
+              understanding of the archetypal tokens in the crypto ecosystem.
+            </p>
+            <p>
+              Our mission is to provide talented technology creators with the
+              resources and access to capital that they desperately need to
+              create a more secure, private, efficient, effective, and
+              prosperous digital economy. One in which people can join together
+              and pool their resources for the attainment of prosperity in a way
+              that is respectful of their autonomy and individuality.
+            </p>
+            <p>
+              Peer-to-Peer decentralized organization is the most apparent
+              alleviation for economic and social stagnation as a result of
+              over-organization and lack of data integrity at many large
+              platforms. Until personal information rights become as
+              universally protected (by law or otherwise) as are property
+              rights, it is apparent that significant developments will be
+              needed in crypto networking ecosystems.
+            </p>
+            <p>
+              The Legal Entities of the next 5 years will be light-years beyond
+              todays status quo in organization and function. Where most popular
+              technological trends follow ever-shortening cycles of marketing
+              hype, peer-to-peer decentralized networking and distributed algorithmic
+              computation are solid long term trends worth following.
+            </p>
             <h1 className="title">Values</h1>
             <p>
               Transparency, Integrity, Openness, Curiosity, Accuracy, Precision,

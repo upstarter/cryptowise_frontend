@@ -45,33 +45,35 @@ class CardTile extends Component {
     // console.log("ids", props.selectedIds);
     return (
        <Card
-         bordered="true"
-         hoverable="true"
+         // bordered={true}
+         // hoverable={true}
          className={classes.card}
-         style={state.selected ? { background: `${colors.smoothPurple}` } : null}
+         style={state.selected ? { background: `${colors.origPurple}` } : null}
          onClick={id => this.handleSelected(data.id)}
         >
-          <div className="card-content">
-            <div
-              className={classes.item}
-              style={state.selected ? { color: `${colors.white}` } : null}
+          <div
+            id={`item-${data.id}`}
+            className={state.selected ? "selected-topic-item" : "topic-item"}
+            style={state.selected ? { color: `${colors.offWhite}` } : null}
+          >
+            {/* <p><strong>{data.id}</strong></p> */}
+            <p id='name'><span>{data.name}</span></p>
+            <Icon
+              style={state.selected ? { display: 'block' } : { display: 'none'}}
+              id='check-icon'
+              type="check-circle"
+              theme="twoTone"
+              twoToneColor={`${colors.green}`}
+            />
+            <p
+              id='topic-description'
+              className={classes.description}
+              style={state.selected ? { display: 'inline-block', overflow: 'hidden', textOverflow: 'ellipsis'} : { display: 'none'}}
             >
-              {/* <p><strong>{data.id}</strong></p> */}
-              <p id='name'><span>{data.name}</span></p>
-               <Icon
-                 style={state.selected ? { display: 'inline' } : { display: 'none'}}
-                 id='check-icon'
-                 type="check-circle"
-                 theme="twoTone"
-                 twoToneColor={`${colors.green}`} />
-              <p
-                className={classes.description}
-              >
-                <span style={{display: 'none', overflow: 'hidden', textOverflow: 'ellipsis'}}>
-                  {data.description}
-                </span>
-              </p>
-            </div>
+              <span style={{overflow: 'hidden', textOverflow: 'ellipsis'}}>
+                {data.description}
+              </span>
+            </p>
           </div>
        </Card>
 
@@ -82,31 +84,53 @@ class CardTile extends Component {
 
 const styles = {
   card: {
-    display: 'flex',
-    alignItems: 'center',
-    // justifyContent: 'center',
-
     minHeight: 50,
     marginBottom: 5,
-    color: '#000',
+    borderRadius: 8,
+    color: `${colors.sand}`,
     cursor: "pointer",
     // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
-    border: '1px solid rgba(240,240,240,.5)',
+    // border: '1px solid rgba(240,240,240,.5)',
     fontSize: '1.2rem',
-    '& .card-content': {
+    background: `${colors.secondaryDark}`,
+    '& .topic-item': {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+      fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
+      fontSize: '15px',
+      userSelect: 'none',
+      '& #check-icon': {
+        fontSize: 30,
+        marginRight: 14
+      }
+    },
 
+    '& .selected-topic-item': {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+      fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
+      fontSize: '15px',
+      userSelect: 'none',
+      '& #check-icon': {
+        fontSize: 30,
+        marginRight: 14
+      },
+      '& #topic-description': {
+        display: 'block'
+      }
+    },
+    '& .ant-card-bordered': {
+      border: 'none !important',
     },
     '& .ant-card-body': {
       padding: '15px 0 0 0 !important',
     },
   },
-  item: {
-    display: 'flex',
-    alignItems: 'center',
-    fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
-    fontSize: '14px',
-    userSelect: 'none',
-  },
+
   '& .check-icon': {
     display: 'none'
   }
