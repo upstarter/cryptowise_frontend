@@ -30,7 +30,7 @@ class BasicLoginForm extends React.Component {
     return (
       <div className="dark-wrap">
         <div className={classes.container}>
-          <div className="header">
+          <div className={classes.header}>
             <h2 id="title" className={classes.title, "title-small"}>
               Sign in to uncover hypergrowth cryptoassets along with top analysts
             </h2>
@@ -83,20 +83,20 @@ const WrappedBasicLoginForm = Form.create({ name: 'basic_login' })(BasicLoginFor
 
 const styles = {
   container: {
-    height: '100vh',
     display: "grid",
-    gridTemplateRows: "3fr 7fr",
-    '& .header': {
-      gridRow: 1,
-      width: '100vw',
-      // margin: [0,0,0,0],
-      '& #title': {
-        maxWidth: '400px',
-        margin: '0 auto',
-        textAlign: 'center',
-        color: `${colors.silver}`,
-      },
-    }
+    gridTemplateRows: "5fr 5fr",
+    justifyItems: 'center',
+  },
+  header: {
+    gridRow: 1,
+    marginTop: 60,
+    '& #title': {
+      maxWidth: 400,
+      // padding: 20,
+      margin: '0 auto',
+      textAlign: 'center',
+      color: `${colors.white}`,
+    },
   },
   main: {
     // display: 'flex',
@@ -108,7 +108,7 @@ const styles = {
   loginForm: {
     gridRow: 2,
     maxWidth: '300px',
-    margin: '0 auto',
+    // margin: '100px auto',
     textAlign: 'center',
     color: `${colors.silver}`,
   },
@@ -152,26 +152,14 @@ const styles = {
   socialButtons: {
     justifyContent: 'center',
   },
-  footer: {
-    position: 'fixed',
-    height: "80px",
-    width: '100vw',
-    bottom: 0,
-    right: 0,
-    fontSize: 22,
-    background: `${colors.white}`,
-    boxShadow: '8px 2px 4px 8px #f0f1f2',
-  },
+
   "@media (min-width: 480px)": {
     header: {
       height: "160px",
-      lineHeight: "2em",
+      lineHeight: "1em",
     },
     title: {
       width: '200px',
-    },
-    tileGrid: {
-      gridTemplateColumns: "1fr 1fr 1fr 1fr"
     },
     main: {
       padding: "1em 1em"
@@ -188,24 +176,22 @@ const styles = {
     }
   },
   "@media (max-width: 480px)": {
+    container: {
+      gridTemplateRows: "3fr 7fr",
+    },
     header: {
       minHeight: "140px",
       '& #title': {
-        maxWidth: '25ch',
+        maxWidth: '40ch',
         fontSize: 21,
+        lineHeight: '1.5em',
       },
-    },
-    steps: {
-      display: 'none !important',
-    },
-    tileGrid: {
-      gridTemplateColumns: "1fr 1fr"
     },
     main: {
       padding: "0 1em"
     },
     loginForm: {
-      maxWidth: "100%"
+      maxWidth: "300px"
     }
   }
 };

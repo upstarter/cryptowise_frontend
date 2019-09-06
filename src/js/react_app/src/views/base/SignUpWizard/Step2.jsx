@@ -105,7 +105,14 @@ const styles = {
     width: '100%',
     margin: [0,0,20,0],
     zIndex: 1,
-    background: `${colors.white}`,
+    '& h2': {
+      fontSize: "23px !important",
+      color: `${colors.offWhite}`,
+
+    },
+    '& h3': {
+      color: `${colors.offWhite} !important`,
+    },
   },
   main: {
     display: 'flex',
@@ -115,11 +122,10 @@ const styles = {
     alignItems: 'center',
     minWidth: '400px !important',
     'overflow-y': 'none',
+    // filter: 'invert(1)',
+
   },
-  title: {
-    fontSize: "23px !important",
-    color: `${colors.black}`,
-  },
+
   formButton: {
     margin: [0, 0, 0, 0],
     padding: 4,

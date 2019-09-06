@@ -8,7 +8,7 @@ import AppButton from "Components/base/button/AppButton";
 // import BarChart from "Components/charts/bar"
 
 
-class DeveloperComponent extends React.Component {
+class DataScientistComponent extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -27,10 +27,10 @@ class DeveloperComponent extends React.Component {
       <React.Fragment>
         <ScrollToTopOnMount/>
         <div className="dark-wrap">
-          <section id="developer" className={classes.developers}>
-            <div id="developer-content" className="content">
-              <div id='developer-header'>
-                <div id="title" className="title-small"><span id='title-dev'>CryptoWise for</span> Developers</div>
+          <section id="data-scientist" className={classes.data_scientists}>
+            <div id="data-scientist-content" className="content">
+              <div id='data-scientist-header'>
+                <div id="title" className="title-small"><span id='title-dev'>CryptoWise for</span> Data Scientists</div>
                 <p style={{textAlign: 'center'}}>
                   <span style={{ fontSize: '1.2em'}}>The world needs your investment wisdom.</span>
                 </p>
@@ -49,7 +49,7 @@ class DeveloperComponent extends React.Component {
                   </AppButton>
                 </p>
               </div>
-              <div id='developer-list'>
+              <div id='data-scientist-list'>
                 <div id="subtitle" className="subtitle-big">What's included?</div>
 
                 <ul style={{marginLeft: 30}}>
@@ -83,8 +83,8 @@ class DeveloperComponent extends React.Component {
 }
 
 const devStyles = {
-  developers: {
-    '& #developer-content': {
+  data_scientists: {
+    '& #data-scientist-content': {
       margin: '0 auto',
       padding: 20,
       paddingBottom: 150,
@@ -93,14 +93,14 @@ const devStyles = {
       filter: 'saturate(1) contrast(1)',
 
       '& #title': {
-        fontSize: '3em',
+        fontSize: '3.5em',
         lineHeight: '1em',
-        // marginBottom: '0.4em',
-        // width: '50%',
-        // margin: '0 auto',
+        width: '50%',
         textAlign: 'center',
+        margin: '0 auto',
+      
         '& #title-dev': {
-          fontSize: '.7em'
+          fontSize: '.6em'
         }
       },
       '& #subtitle': {
@@ -121,12 +121,12 @@ const devStyles = {
         maxWidth: '50ch'
       },
 
-      '& #developer-header': {
+      '& #data-scientist-header': {
         maxWidth: '50ch',
         marginBottom: '20px'
       },
 
-      '& #developer-list': {
+      '& #data-scientist-list': {
         maxWidth: '50ch',
         // padding: 15
       },
@@ -146,4 +146,4 @@ const devStyles = {
   }
 }
 
-export default injectSheet(devStyles)(DeveloperComponent)
+export default injectSheet(devStyles)(DataScientistComponent)

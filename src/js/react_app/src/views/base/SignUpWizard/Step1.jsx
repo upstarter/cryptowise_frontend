@@ -86,8 +86,8 @@ class SignUpStep1 extends Component {
               onClick={this._validate}
               disabled={!this.state.showFooter}
               style={
-                this.state.showFooter ? {background: `${colors.green}`,
-                                         color: `${colors.white}`} : {  }
+                this.state.showFooter ? {background: `${colors.origGreen}`,
+                                         color: `${colors.offWhite}`} : {  }
               }
             >
               Next ->
@@ -121,7 +121,7 @@ const styles = {
   },
 
   main: {
-    height: '100vh',
+    height: '100%',
     marginTop: 160,
     marginBottom: 100,
 
@@ -136,7 +136,7 @@ const styles = {
     margin: [0,0,0,20],
     '& .subtitle-small': {
       fontWeight: 'bold',
-      filter: 'saturate(2.5) contrast(2)',
+      filter: 'saturate(2.2) contrast(1)',
       color: `${colors.origPurple}`,
     }
   },

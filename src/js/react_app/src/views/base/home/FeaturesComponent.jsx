@@ -93,9 +93,9 @@ const featuresStyles = {
   feature: {
     '& .feature-icon': {
       margin: '0 auto',
-      padding: '.7rem',
-      height: '55px',
-      width: '50px',
+      padding: '2rem',
+      height: '10rem',
+      width: '10rem',
     },
     '& .subtitle-small': {
       margin: '0 auto',

@@ -6,6 +6,7 @@ import LinkMenu from './LinkMenu'
 import injectSheet, { jss } from "react-jss"
 import AppButton from "Components/base/button/AppButton";
 import { Button, Radio, Icon } from 'antd';
+import colors from "Styles/colors"
 
 
 class SiderMenu extends React.Component {
@@ -79,8 +80,8 @@ const siderMenuStyles = {
     left: 0,
 
     '& .ant-layout-sider-zero-width-trigger': {
-      backgroundColor: 'rgba(28,49,70,0.5) !important',
-      color: 'rgba(255,255,255,0.8) !important',
+      backgroundColor: `${colors.primary} !important`,
+      color: `${colors.offWhite} !important`,
     }
   }
 }

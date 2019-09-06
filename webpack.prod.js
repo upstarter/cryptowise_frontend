@@ -13,35 +13,10 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /antd.*\.less$/,
-        use: [
-          {
-            loader:  MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          AntdScssThemePlugin.themify({
-            loader: 'less-loader', // compiles Less to CSS
-              options: {
-                javascriptEnabled: true,
-              }
-          }),
-      //     // {
-      //     //   loader: 'postcss-loader',
-      //     //   options: {
-      //     //     config: {
-      //     //       path: './postcss.config.js',
-      //     //     },
-      //     //   },
-      //     // },
-        ]
-      },
-      {
         test: /\.(sc|c|)ss$/,
+        issuer: {
+          exclude: /\.less$/,
+        },
         use: [
           {
             loader:  MiniCssExtractPlugin.loader,
@@ -85,6 +60,13 @@ module.exports = merge(common, {
           { loader: "babel-loader?cacheDirectory=true",
           }
         ]
+      },
+      {
+        test: /\.scss$/,
+        issuer: /\.less$/,
+        use: {
+          loader: './src/js/sassVarsToLess.js' // Change path if necessary
+        }
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,

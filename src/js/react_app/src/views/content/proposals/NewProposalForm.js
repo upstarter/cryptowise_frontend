@@ -3,29 +3,31 @@ import React from 'react'
 import { List, Button, Modal, Form, Input, Radio, Typography } from 'antd';
 const { TextArea } = Input;
 const { Title, Paragraph, Text } = Typography;
+import colors from "Styles/colors"
 
 const NewProposalForm = Form.create({ name: 'form_in_modal' })(
   // eslint-disable-next-line
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form, confirmLoading } = this.props;
+      const { visible, onCancel, onCreate, form, confirmLoading, wrapClassName } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
+          wrapClassName={wrapClassName}
+          // bodyStyle={{background: `${colors.secondaryDark}`, color: '#fff'}}
           visible={visible}
-          title="Submit a Proposal"
+          title="Propose an investment problem"
           okText="Propose"
           onCancel={onCancel}
           onOk={onCreate}
+          centered="true"
           confirmLoading={confirmLoading}
         >
           <Form layout="vertical">
-            <Paragraph>RIFF Guidelines</Paragraph>
-            <ul style={{paddingLeft: 30}}>
-              <li>
-                Propose solutions relevent to your strongest capabilities, goals & activities.
-              </li>
-            </ul>
+            {/* <Paragraph>RIFF Guidelines</Paragraph> */}
+            <Title level={3} className='subtitle-small'>
+              Propose solutions relevent to your strongest capabilities, goals & activities.
+            </Title>
             <Paragraph>Examples of good proposals...</Paragraph>
             <ul style={{paddingLeft: 30}}>
               <li>

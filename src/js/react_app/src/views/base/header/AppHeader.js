@@ -87,7 +87,7 @@ const headerStyles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 45,
-    background: `${colors.primary}`,
+    // background: `${colors.primary}`,
     padding: 0,
     position: 'fixed',
     width: '100%',
@@ -100,8 +100,8 @@ const headerStyles = {
   menu: {
     height: 45,
     // padding: 9,
-    background: `${colors.primary}`,
-    color: '#fff',
+    // background: `${colors.primary}`,
+    color: `${colors.silver}`,
 
   },
   logo: {

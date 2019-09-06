@@ -40,12 +40,25 @@ const LinkMenu = withRouter(props => {
             <span className="nav-text">Portfolio</span>
           </Link>
       </Menu.Item> */}
-      <Menu.Item key="/developers">
+      {/* <Menu.Item key="/data_scientists">
+        <Link to="/data_scientists" style={{ textDecoration: "none" }}>
+          <Icon type="code" />
+          <span className="nav-text">Data Scientists</span>
+        </Link>
+      </Menu.Item> */}
+      <Menu.Item key="/analysts">
+        <Link to="/analysts" style={{ textDecoration: "none" }}>
+          <Icon type="code" />
+          <span className="nav-text">Learn & Analyze</span>
+        </Link>
+      </Menu.Item>
+      {/* <Menu.Item key="/developers">
         <Link to="/developers" style={{ textDecoration: "none" }}>
           <Icon type="code" />
           <span className="nav-text">Developers</span>
         </Link>
-      </Menu.Item>
+      </Menu.Item> */}
+
     </Menu>
   );
 });

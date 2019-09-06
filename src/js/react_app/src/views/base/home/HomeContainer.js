@@ -6,6 +6,8 @@ import AnalysisContainer from "Content/analysis/AnalysisContainer"
 import PortfolioComponent from "Content/portfolio/PortfolioComponent";
 import HomeComponent from "./HomeComponent";
 import MembershipComponent from "Marketing/MembershipComponent";
+import DataScientistComponent from "Developers/DataScientistComponent";
+import AnalystComponent from "Developers/AnalystComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import InsightComponent from "Content/insights/InsightComponent";
@@ -101,8 +103,10 @@ class HomeContainer extends React.Component {
                   style={{
                     marginLeft: `${this.state.contentMarginLeft}`,
                   }}>
-                  <Route exact path="/" component={HomeComponent} />
+                  {/* <Route exact path="/" component={HomeComponent} /> */}
                   {/* <Route exact path="/membership" component={MembershipComponent} /> */}
+                  <Route exact path="/data_scientists" component={DataScientistComponent} />
+                  <Route exact path="/analysts" component={AnalystComponent} />
                   <Route exact path="/developers" component={DeveloperComponent} />
                   {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
                   {/* <Route exact path="/insights" component={InsightComponent} /> */}
@@ -137,19 +141,20 @@ const appStyles = {
   // typography: `${typography.main}`,
   baseLayout: {
     minHeight: '100vh',
-    background: `${colors.midTone}`,
-    color: 'black'
+    // paddingTop: 100,
+    // background: `${colors.midTone}`,
+    // color: 'black'
   },
-  logo: {
-    height: "54px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
+  // logo: {
+  //   height: "54px",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center"
+  // },
   baseContent: {
-    marginTop: '45px',
-    minHeight: '100%',
-    background: `${colors.grey}`,
+    // marginTop: '45px',
+    // minHeight: '100%',
+    // background: `${colors.grey}`,
   },
   content: {
     '& p, & h3': {
@@ -169,8 +174,8 @@ const appStyles = {
     right: 0,
     left: 0,
     // width: '100vw',
-    background: `${colors.primary}`,
-    color: `${colors.green}`,
+    // background: `${colors.primary}`,
+    // color: `${colors.origGreen}`,
     textAlign: 'center',
   }
 };

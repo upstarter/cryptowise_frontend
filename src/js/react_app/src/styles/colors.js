@@ -6,16 +6,18 @@
 
 // Spotify colors (https://codepen.io/alowenthal/pen/rxboRv)
 // $green: rgb(30, 215, 96);
+import theme from 'Css/theme_export.scss'
+
 const colors = {
   // primary: '#001528',
-  primary: 'rgba(23,28,40, 1)',
+  // primary: 'rgba(23,22,23, 1)',
+  primary: theme.primaryColor,
   secondaryDark: 'rgba(25, 31, 46, 1)',
   tertiaryDark: 'rgba(28,35,52,1)',
   quartDark: 'rgba(28,49,70,1)',
 
   antBlue: '#1990ff',
-  // primaryDark: 'rgb(24, 24, 24)',
-  primaryDark: '#fff',
+  primaryDark: 'rgba(23,22,23, 1)',
   midTone: '#f6f6f6',
 
   // cw colors
@@ -35,10 +37,11 @@ const colors = {
   lightPurple: '#783D6F',
   darkPurple: 'rgba(83,40,85,.8)',
 
+  origGreen: 'rgba(31,176,148)',
   green: 'rgba(0,155,87,1)', //#8de8c3
 
   // blues
-  royalBlue: 'rgba(22,40,152, 1)',
+  royalBlue: 'rgba(12,73,167, 1)',
   darkBlue: '#191F2D',
   lightDarkBlue: 'rgb(20,23,30)',
   lighterDarkBlue: 'rgb(23,26,33)',

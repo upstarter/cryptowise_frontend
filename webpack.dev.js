@@ -3,8 +3,9 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AntdScssThemePlugin = require('antd-scss-theme-plugin');
+
 
 module.exports = merge(common, {
   // devtool: 'inline-source-map',
@@ -12,146 +13,6 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, "build"),
     publicPath: '/',
     filename: '[name].bundle.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /antd.*\.less$/,
-        use: [
-          {
-            loader:  'style-loader',
-            // options: {
-            //   sourceMap: true,
-            // },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              // sourceMap: true,
-            },
-          },
-          AntdScssThemePlugin.themify({
-            loader: 'less-loader', // compiles Less to CSS
-              options: {
-                // sourceMap: true,
-                javascriptEnabled: true,
-              }
-          }),
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     config: {
-          //       path: './postcss.config.js',
-          //     },
-          //   },
-          // },
-        ]
-      },
-      {
-        test: /\.(sc|c|)ss$/,
-        use: [
-          {
-            loader:  'style-loader',
-            options: {
-              // sourceMap: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              // sourceMap: true,
-              localIdentName: '[name]-[local]-[hash:base64:5]',
-            },
-          },
-          AntdScssThemePlugin.themify({
-            loader: 'sass-loader',
-            options: {
-              // sourceMap: true,
-            },
-          }),
-        ],
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {
-            loader:  'style-loader',
-            options: {
-              // sourceMap: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              // sourceMap: true,
-            },
-          },
-          AntdScssThemePlugin.themify({
-            loader: 'less-loader', // compiles Less to CSS
-              options: {
-                // sourceMap: true,
-                javascriptEnabled: true,
-              }
-          }),
-        ],
-      },
-      {
-        test: /\.(jsx?)/,
-        exclude: ["/node_modules", "/src/js/elm"],
-        use: [
-          { loader: "babel-loader?cacheDirectory=true",
-          }
-        ]
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              name: 'images/[name].[ext]'
-            }
-          },
-          {
-            loader: "image-webpack-loader",
-            options: {
-              disable: true,
-              mozjpeg: {
-               progressive: true,
-               quality: 65
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-               enabled: true,
-              },
-              pngquant: {
-               quality: '65-90',
-               speed: 4
-              },
-              gifsicle: {
-               interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-               quality: 75
-              }
-            }
-          },
-        ],
-      },
-      {
-        test: /\.(ttf|otf|eot|woff2?)$/,
-        loader: "file-loader",
-        options: {
-          name: 'fonts/[name].[ext]',
-        }
-      }
-    ],
-    noParse: [/\.elm$/]
   },
   devServer: {
     // allowedHosts: [
