@@ -103,7 +103,7 @@ class HomeContainer extends React.Component {
                   style={{
                     marginLeft: `${this.state.contentMarginLeft}`,
                   }}>
-                  {/* <Route exact path="/" component={HomeComponent} /> */}
+                  <Route exact path="/" component={HomeComponent} />
                   {/* <Route exact path="/membership" component={MembershipComponent} /> */}
                   <Route exact path="/data_scientists" component={DataScientistComponent} />
                   <Route exact path="/analysts" component={AnalystComponent} />

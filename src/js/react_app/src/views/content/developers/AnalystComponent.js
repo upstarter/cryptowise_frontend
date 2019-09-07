@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import AppButton from "Components/base/button/AppButton";
+import colors from "Styles/colors"
 
 // import colors from 'Styles/colors'
 // import BarChart from "Components/charts/bar"
@@ -34,9 +35,11 @@ class AnalystComponent extends React.Component {
                   <span id='title-dev'>CryptoWise for</span>
                 </h1>
                 <div id="words" className="slidingVertical">
-                  <span>Strategists</span>
+                  <span>Investment Strategists</span>
                   <span>Data Curators</span>
                   <span>Feature Analysts</span>
+                  <span>ML & AI Engineers</span>
+                  <span>Financial Analysts</span>
                 </div>
                 <p id="subtitle">
                   <span>The world needs your investment wisdom.</span>
@@ -61,8 +64,7 @@ class AnalystComponent extends React.Component {
                 <ul>
                   <li>Free training and plug-and-play capabilities to help you access and/or provide ecosystem leading peer-to-peer robo-advisory services.</li>
                   <li>Help discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
-                  <li>Become a leading source of crypto (and related technology) expertise in a growing ecosystem.</li>
-                  <li>Grow and tune your investment capabilities (crypto and traditional).</li>
+                  <li>Become a leading source of crypto expertise in a growing ecosystem.</li>
                   <li>Access our wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your investing activities.</li>
                   {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
 
@@ -113,6 +115,7 @@ const devStyles = {
         justifyItems: 'center',
         '& #title': {
           gridRow: 1,
+          // justifySelf: 'start',
           fontSize: '2rem',
         },
         '& #words': {
@@ -164,7 +167,11 @@ const devStyles = {
         gridRow: 6,
         gridColumn: 2,
         justifySelf: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        '& li a': {
+          color: `${colors.origGreen}`,
+          filter: 'saturate(2)',
+        }
       },
 
 

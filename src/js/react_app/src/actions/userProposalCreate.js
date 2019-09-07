@@ -5,21 +5,13 @@ import { USER_PROPOSAL_CREATE } from "./index";
 // import { push } from 'react-router-redux';
 
 const userProposalCreate = state => {
-    console.error('userProposalCreate', state)
+
     const request = axios
         .post(`${url}/v1/proposals`, {
           proposal: {
             title: state.title,
             description: state.description
           },
-        },
-        {
-          proxy: {
-            host: '127.0.0.1',
-            port: 4000
-          },
-          withCredentials: true,
-          credentials: 'include',
         })
 
     return (dispatch) => {

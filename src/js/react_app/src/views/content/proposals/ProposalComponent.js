@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import userProposalCreate from "Actions/userProposalCreate";
 import colors from "Styles/colors"
 
-const count = 3;
+const count = 5;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
 class ProposalComponent extends React.Component {
@@ -82,6 +82,7 @@ class ProposalComponent extends React.Component {
   };
 
   handleCreate = () => {
+
     this.setState({
       ModalContent: 'The modal will be closed after two seconds',
       confirmLoading: true,
@@ -89,17 +90,14 @@ class ProposalComponent extends React.Component {
 
     const { form } = this.formRef.props;
     form.validateFields((err, values) => {
-      console.log(err, values)
       if (err) {
         console.error('handleCreate error', err)
         return;
       }
       this.props.dispatch(userProposalCreate(values))
-      console.log('Received values of form: ', values);
-      form.resetFields();
-      this.setState({ visible: false, confirmLoading: false })
     });
-
+    form.resetFields();
+    this.setState({ visible: false, confirmLoading: false })
   }
 
   handleCancel = () => {
@@ -142,7 +140,7 @@ class ProposalComponent extends React.Component {
             />
             <div id="proposal-blurb">
               <div id="proposal-blurb-intro">
-                <h3 id="blurb-title">RIFF's (on problems)</h3>
+                <h3 id="blurb-title">RIFF's</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
                   A Hacker Quorum focused on solving personal investment
                   problems and creating retirement 🎸 rockstars.
@@ -153,7 +151,7 @@ class ProposalComponent extends React.Component {
                   <strong> F</strong>easibility, <strong> F</strong>undability)
                   to emphasize what we think would be the important features
                   of viable investment research ideas. A RIFF may be voted up
-                  to the top 1% of the RIFF universe and become a candidate for
+                  to the top 1% of the RIFF universe and may become a candidate for
                   future ecosystem activities.
                 </p>
                 <p>
@@ -163,8 +161,8 @@ class ProposalComponent extends React.Component {
                   a technology investment ecosystem run by highly capable
                   peers who invest their time, energy, and resources to help
                   ensure the retirement security of the ecosystem as a whole.
-                  <b> Submit</b> your own research ideas and/or <b>Rate</b>
-                  other's ideas so the collective interests of the ecosystem
+                  <b> Submit</b> your own research ideas and/or <b>Rate </b>
+                  others' ideas so the collective interests of the ecosystem
                   can emerge. Self-organizing expert teams can form to
                   research solutions and share their preliminary results.
                 </p>
@@ -197,14 +195,14 @@ class ProposalComponent extends React.Component {
                           avatar={
                              <Avatar style={{}} icon="team" />
                           }
-                          title={<a href="https://ant.design">{item.user_name}</a>}
-                          description={<p className='item-name'>Type: {item.type}</p>}
+                          title={<a href="https://ant.design">{item.name}</a>}
+                          description={<p className='item-name'>{item.description}</p>}
                         />
                         {
-                          <div id="meta-details">
-                            <p className='item-name'>{item.name}</p>
-                            <p className='item-description'>{item.description}</p>
-                          </div>
+                          // <div id="meta-details">
+                          //   <p className='item-name'>{item.name}</p>
+                          //   <p className='item-description'>{item.description}</p>
+                          // </div>
                         }
                         <div>
                           <Rate allowHalf />
@@ -357,23 +355,30 @@ const proposalStyles = {
       // }
     },
     //
-    // '& .item-list': {
-    //   // padding: 10,
-    //   color: `${colors.offWhite} !important`,
-    //
-    //   '& #list-item-meta': {
-    //     '& p': { color: `${colors.offWhite}`},
-    //     '& a': { color: `${colors.offWhite}`},
-    //     '& .ant-list-item-meta-content': {
-    //        color: `${colors.offWhite} !important`,
-    //        '& #main-content': {
-    //          '& .item-name': {color: `${colors.offWhite}`},
-    //          '& .item-description': { color: `${colors.offWhite}` },
-    //        },
-    //     },
-    //
-    //   },
-    // },
+    '& .item-list': {
+      // padding: 10,
+      color: `${colors.offWhite} !important`,
+
+      '& #list-item-meta': {
+        '& p': { color: `${colors.offWhite}`},
+        '& a': { color: `${colors.offWhite}`},
+        '& .ant-list-item-meta-content': {
+           color: `${colors.offWhite} !important`,
+           '& #main-content': {
+             '& .item-name': {color: `${colors.offWhite}`},
+             '& .item-description': { color: `${colors.offWhite}` },
+           },
+        },
+      },
+      '& #meta-details': {
+         padding: 40,
+         textAlign: 'center',
+         '& .item-description': {
+
+         },
+       },
+
+    },
 
     // '& .ant-list-item': {
     //   color: `${colors.offWhite}`,

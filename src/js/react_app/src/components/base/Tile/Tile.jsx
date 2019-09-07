@@ -48,7 +48,7 @@ class CardTile extends Component {
          // bordered={true}
          // hoverable={true}
          className={classes.card}
-         style={state.selected ? { background: `${colors.origPurple}` } : null}
+         style={state.selected ? { background: `rgba(118, 48, 103, .7)` } : null}
          onClick={id => this.handleSelected(data.id)}
         >
           <div
@@ -57,18 +57,21 @@ class CardTile extends Component {
             style={state.selected ? { color: `${colors.offWhite}` } : null}
           >
             {/* <p><strong>{data.id}</strong></p> */}
-            <p id='name'><span>{data.name}</span></p>
-            <Icon
-              style={state.selected ? { display: 'block' } : { display: 'none'}}
-              id='check-icon'
-              type="check-circle"
-              theme="twoTone"
-              twoToneColor={`${colors.green}`}
-            />
+            <p id='name'>
+              <span>{data.name}</span>
+              <Icon
+                style={state.selected ? { position: 'absolute', right: 10, top: 10 } : { display: 'none'}}
+                id='check-icon'
+                type="check-circle"
+                theme="twoTone"
+                twoToneColor={`${colors.green}`}
+              />
+            </p>
+
             <p
               id='topic-description'
               className={classes.description}
-              style={state.selected ? { display: 'inline-block', overflow: 'hidden', textOverflow: 'ellipsis'} : { display: 'none'}}
+              style={state.selected ? { display: 'inline-block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'} : { display: 'none'}}
             >
               <span style={{overflow: 'hidden', textOverflow: 'ellipsis'}}>
                 {data.description}
@@ -109,7 +112,7 @@ const styles = {
 
     '& .selected-topic-item': {
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: 'column',
       justifyContent: 'space-between',
       width: '100%',
       fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",

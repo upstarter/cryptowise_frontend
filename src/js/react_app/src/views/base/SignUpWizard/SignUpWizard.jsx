@@ -35,9 +35,9 @@ export class SignUpWizard extends Component {
     });
   }
   _saveUserInfo(data) {
-    console.log('signUpWizard data:', data)
+
     data.topic_knowledge_ids = this.state.topic_knowledge_ids
-    console.log('yarble', data, this.state)
+
     this.props.dispatch(registerUser(data)).then(response => {
       this.props.history.replace('/proposals')
     })

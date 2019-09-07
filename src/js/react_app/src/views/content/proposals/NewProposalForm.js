@@ -20,7 +20,7 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           okText="Propose"
           onCancel={onCancel}
           onOk={onCreate}
-          centered="true"
+          centered={true}
           confirmLoading={confirmLoading}
         >
           <Form layout="vertical">

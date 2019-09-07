@@ -136,8 +136,8 @@ const styles = {
     margin: [0,0,0,20],
     '& .subtitle-small': {
       fontWeight: 'bold',
-      filter: 'saturate(2.2) contrast(1)',
-      color: `${colors.origPurple}`,
+      filter: 'saturate(1) contrast(1)',
+      color: `${colors.origGreen}`,
     }
   },
   footer: {
