@@ -6,7 +6,7 @@ export default class Logout extends Component {
 
   constructor() {
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
   }
   state = {
@@ -21,9 +21,9 @@ export default class Logout extends Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    if (Auth.logOut(this.state)) {
+  componentDidMount() {
+    const auth = new AuthService
+    if (auth.signOut(this.state)) {
       this.props.history.push("/");
     }
   }

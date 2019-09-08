@@ -17,7 +17,7 @@ const LinkMenu = withRouter(props => {
       <Menu.Item key="/">
         <Link to="/" style={{ textDecoration: "none" }}>
           <Icon type="team" />
-          <span className="nav-text">Join</span>
+          <span className="nav-text">Sign Up</span>
         </Link>
       </Menu.Item>
       <Menu.Item key="/proposals">
@@ -49,7 +49,7 @@ const LinkMenu = withRouter(props => {
       <Menu.Item key="/analysts">
         <Link to="/analysts" style={{ textDecoration: "none" }}>
           <Icon type="code" />
-          <span className="nav-text">Learn & Analyze</span>
+          <span className="nav-text">Participate</span>
         </Link>
       </Menu.Item>
       {/* <Menu.Item key="/developers">

@@ -29,7 +29,7 @@ $background-color-light: fade(royalblue, 40%);
 $collapse-header-bg: #262629;
 $info-color: #313133;
 $primary-color: #0A53B0;
-// $primary-color: rgba(232, 52, 80, 1);
+$primary-dark: rgba(232, 52, 80, 1);
 // $primary-color: rgba(23,22,23, 1);
 // $primary-color: rgba(251, 156, 48,1);
 // $primary-color: rgb(118,48,103);
@@ -68,6 +68,7 @@ $warning-color: gold;
   collapseHeaderBg: $collapse-header-bg;
   infoColor: $info-color;
   primaryColor: $primary-color;
+  primaryDark: $primary-dark;
   highlightColor: $highlight-color;
   warningColor: $warning-color;
 }

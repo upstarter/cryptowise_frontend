@@ -54,7 +54,7 @@ class HeroComponent extends React.Component {
                       size='large'
                     >
                       {" "}
-                      Join Us{" "}
+                      Sign Up{" "}
                     </AppButton>
                   </div>
                 </div>

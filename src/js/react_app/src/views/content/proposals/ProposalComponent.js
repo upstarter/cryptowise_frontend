@@ -39,7 +39,11 @@ class ProposalComponent extends React.Component {
 
   getData = callback => {
     const url = `${api_url}/proposals?per_page=${count}&page=${this.state.page}`
-    axios.get(url).then((res) => {
+    const data = {
+      withCredentials: true,
+      credentials: 'include'
+    };
+    axios.get(url, data).then((res) => {
       console.log('Data', res.data)
       callback(res.data)
     })
@@ -142,11 +146,11 @@ class ProposalComponent extends React.Component {
               <div id="proposal-blurb-intro">
                 <h3 id="blurb-title">RIFF's</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  A Hacker Quorum focused on solving personal investment
+                  A Hacker Quorum focused on solving finance
                   problems and creating retirement 🎸 rockstars.
                 </h4>
                 <p>
-                  🌱 We created the acronym "RIFF" (<strong>R</strong>apid
+                  We created the acronym "RIFF" (<strong>R</strong>apid
                   <strong> I</strong>mplementation,
                   <strong> F</strong>easibility, <strong> F</strong>undability)
                   to emphasize what we think would be the important features
@@ -155,16 +159,20 @@ class ProposalComponent extends React.Component {
                   future ecosystem activities.
                 </p>
                 <p>
-                  The goal is to identify which problems can be solved quickly
-                  and have a high potential for being crowdfunded and/or
-                  open-sourced. They are meant to provide the Blueprint/DNA of
-                  a technology investment ecosystem run by highly capable
-                  peers who invest their time, energy, and resources to help
-                  ensure the retirement security of the ecosystem as a whole.
-                  <b> Submit</b> your own research ideas and/or <b>Rate </b>
-                  others' ideas so the collective interests of the ecosystem
-                  can emerge. Self-organizing expert teams can form to
-                  research solutions and share their preliminary results.
+                  The idea of a RIFF is to identify the roles, processes, and
+                  Financial Data Structures needed for serious AI investment
+                  research and collaboration.
+                  They are meant to provide the Blueprint/DNA of an ecosystem
+                  run by highly capable financial and technology peers
+                  investing their time and resource to ensure collective
+                  retirement security. Win-Win.
+                </p>
+                <p>
+                  To participate, <b> Submit</b> your own research ideas
+                  and/or <b>Rate </b> others' ideas so the collective interests
+                  of the ecosystem can emerge. Self-organizing expert teams can
+                  form to research solutions and share their preliminary
+                  results for further collaboration as ecosystem features emerge.
                 </p>
               </div>
             </div>
@@ -251,6 +259,8 @@ const proposalStyles = {
       justifySelf: 'center',
       alignSelf: 'center',
       margin: '40px 0 0 0',
+      padding: 20,
+
       color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
@@ -269,8 +279,8 @@ const proposalStyles = {
       },
 
       '& #proposal-blurb-intro': {
-        maxWidth: '60ch',
-        padding: 25,
+        fontSize: 13,
+        // maxWidth: '60ch',
 
         '& #blurb-title': {
           fontSize: '3.5rem !important',
@@ -324,14 +334,14 @@ const proposalStyles = {
         // gridRow: '1 / 3',
         justifySelf: 'end',
         marginRight: 15,
-        backgroundColor: `${colors.origGreen}`,
+        backgroundColor: `${colors.primary}`,
         color: '#FFF',
         borderRadius: 50,
         textAlign: 'center',
         cursor: 'pointer',
         zIndex: 10,
         border: 'none',
-        boxShadow: `0 0 0 0 ${colors.origGreen}`,
+        boxShadow: `0 0 0 0 ${colors.lightBlack}`,
         '-webkit-animation': 'pulse 1.5s infinite',
       },
       '& h3': {

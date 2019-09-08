@@ -27,17 +27,11 @@ const registerUser = state => {
           console.log('pushing', data)
           const cookies = new Cookies();
           const token = cookies.get('_cw_acc')
-          console.log('TOKENSEE', token)
-          setAuthToken(token)
+          dispatch(setAuthToken(token))
           dispatch({
             type: SET_CURRENT_USER,
             payload: token
           })
-          // const cookies = new Cookies();
-          // console.log('cookies', cookies.getAll()); // Pacman
-          // const accessToken = cookies.get('_cw_acc')
-          // localStorage.setItem('_cw_acc', data.jwt)
-          // localStorage.setItem('cw_user', JSON.stringify(data.user_info))
         }
       }).then((data) => {
 

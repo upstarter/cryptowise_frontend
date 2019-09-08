@@ -169,6 +169,7 @@ const appStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'left',
+    fontSize: 12,
     height: 45,
     bottom: 0,
     right: 0,

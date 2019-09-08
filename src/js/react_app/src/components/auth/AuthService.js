@@ -1,17 +1,20 @@
 import decode from 'jwt-decode';
 import { url } from 'Utils/consts';
 import setAuthToken from 'Components/auth/setAuthToken'
+import axios from "axios";
+import Cookies from 'universal-cookie';
 
 export default class AuthService {
     // Initializing important variables
     constructor(domain) {
         this.domain = url || 'http://localhost:4000' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
-        this.login = this.login.bind(this)
+        this.signin = this.signin.bind(this)
+        this.signOut = this.signOut.bind(this)
         this.getProfile = this.getProfile.bind(this)
     }
 
-    login(username, password) {
+    signin(username, password) {
         // Get a token from api server using the fetch api
         data = {
           session: {
@@ -21,14 +24,14 @@ export default class AuthService {
         }
         return axios.post(`${url}/v1/auth/sign_in`, data)
           .then(res => {
-              this.setToken(res.token) // Setting the token in localStorage
+              this.setToken(res.token)
               //this.setUser(res.user) // set current user from res.user OR DECODE FROM TOKEN
               setAuthToken(res.token) // set token in requests
               return Promise.resolve(res);
           })
     }
 
-    loggedIn() {
+    signedIn() {
         // Checks if there is a saved token and it's still valid
         const token = this.getToken() // GEtting token from localstorage
         return !!token && !this.isTokenExpired(token) // handwaiving here
@@ -49,18 +52,29 @@ export default class AuthService {
     }
 
     setToken(idToken) {
-        // Saves user token to localStorage
-        localStorage.setItem('cw_token', idToken)
+        localStorage.setItem('_cw_acc', idToken)
     }
 
     getToken() {
-        // Retrieves the user token from localStorage
-        return localStorage.getItem('cw_token')
+        return localStorage.getItem('_cw_acc')
     }
 
-    logout() {
-        // Clear user token and profile data from localStorage
-        localStorage.removeItem('cw_token');
+    signOut() {
+          const data = {
+            withCredentials: true,
+            credentials: 'include'
+          };
+        return axios.post(`${url}/v1/auth/sign_out`, data)
+          .then(res => {
+              // Clear user access token and profile data from session
+              const cookies = new Cookies();
+              console.log('cook', cookies)
+              const sessionToken = cookies.remove('_cw_skey')
+              const accessToken = cookies.remove('_cw_acc')
+              console.log('sessionToken', sessionToken)
+              console.log('accessToken', accessToken)
+              return Promise.resolve(res);
+          })
     }
 
     getProfile() {
@@ -78,7 +92,7 @@ export default class AuthService {
 
         // Setting Authorization header
         // Authorization: Bearer xxxxxxx.xxxxxxxx.xxxxxx
-        if (this.loggedIn()) {
+        if (this.signedIn()) {
             headers['Authorization'] = 'Bearer ' + this.getToken()
         }
 

@@ -19,33 +19,35 @@ const loginUser = creds => {
     const request = axios.post(`${url}/v1/auth/sign_in`, data)
     return dispatch => {
       return request.then(response => {
+        const data = response.data
+
+        if (data.error) {
+          console.log('user signin error')
+        } else {
+          console.log('loginUserResponseData', data)
           const cookies = new Cookies();
           const token = cookies.get('_cw_acc')
-          setAuthToken(token)
+          console.log('loginUser token', token)
+
+          if (token) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+          } else {
+            delete axios.defaults.headers.common['Authorization']
+          }
           dispatch({
             type: SET_CURRENT_USER,
             payload: token
           })
-        })
-        .catch((error) => {
-          console.log('error', error)
-          dispatch({
-            type: SESSION_ERROR,
-            error: error,
-          });
-        });
+        }
+      })
+      .catch((error) => {
+        console.log('error', error)
+        // dispatch({
+        //   type: SESSION_ERROR,
+        //   error: error,
+        // });
+      });
     };
 }
-//
-// const loginSuccessful = (response) => {
-//   const cookies = new Cookies();
-//   const token = cookies.get('_cw_acc')
-//   setAuthToken(token)
-//   dispatch({
-//     type: SET_CURRENT_USER,
-//     payload: token
-//   })
-//   dispatch(push('/proposals'));
-// }
 
 export default loginUser

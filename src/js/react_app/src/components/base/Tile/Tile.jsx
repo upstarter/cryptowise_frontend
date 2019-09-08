@@ -48,7 +48,7 @@ class CardTile extends Component {
          // bordered={true}
          // hoverable={true}
          className={classes.card}
-         style={state.selected ? { background: `rgba(118, 48, 103, .7)` } : null}
+         style={state.selected ? { background: `${colors.lightBlack}` } : null}
          onClick={id => this.handleSelected(data.id)}
         >
           <div
@@ -71,7 +71,7 @@ class CardTile extends Component {
             <p
               id='topic-description'
               className={classes.description}
-              style={state.selected ? { display: 'inline-block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'} : { display: 'none'}}
+              style={state.selected ? {} : { display: 'none'}}
             >
               <span style={{overflow: 'hidden', textOverflow: 'ellipsis'}}>
                 {data.description}
@@ -90,12 +90,12 @@ const styles = {
     minHeight: 50,
     marginBottom: 5,
     borderRadius: 8,
-    color: `${colors.sand}`,
+    color: `${colors.offWhite}`,
     cursor: "pointer",
     // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
     // border: '1px solid rgba(240,240,240,.5)',
     fontSize: '1.2rem',
-    background: `${colors.secondaryDark}`,
+    background: `${colors.quartDark}`,
     '& .topic-item': {
       display: 'flex',
       flexDirection: 'row',
@@ -123,7 +123,8 @@ const styles = {
         marginRight: 14
       },
       '& #topic-description': {
-        display: 'block'
+        display: 'block',
+        fontSize: 13,
       }
     },
     '& .ant-card-bordered': {

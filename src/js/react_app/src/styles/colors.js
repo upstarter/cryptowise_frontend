@@ -38,6 +38,7 @@ const colors = {
   darkPurple: 'rgba(83,40,85,.8)',
 
   origGreen: 'rgba(31,176,148)',
+  sproutGreen: 'rgba(114,191,22)',
   green: 'rgba(0,155,87,1)', //#8de8c3
 
   // blues

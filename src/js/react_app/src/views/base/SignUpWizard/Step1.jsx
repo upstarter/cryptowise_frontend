@@ -114,8 +114,9 @@ const styles = {
       // padding: '7px',
       width: '105%',
       zIndex: 1,
-      // boxShadow: '1px 1px 2px 1px silver',
-      background: `${colors.secondaryDark}`,
+      // boxShadow: '1px 1px 3px 1px ${colors.sand}',
+      background: `${colors.primaryDark}`,
+
       // filter: 'saturate(.8) invert(1)'
     },
   },

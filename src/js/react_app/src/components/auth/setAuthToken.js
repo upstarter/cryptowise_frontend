@@ -1,16 +1,13 @@
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 const setAuthToken = (token) => {
+  console.log('setAuthToken', token)
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
   } else {
-    delete axios.defaults.headers.common['Authorization']
+    // delete axios.defaults.headers.common['Authorization']
   }
-  // npm install universal-cookie, or react-cookies
-  // const cookies = new Cookies();
-  // cookies.set('my_auth_token', token, {
-  //     path: '/'
-  // });
 }
 
 // export const getAuthToken = () => {

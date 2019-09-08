@@ -182,7 +182,7 @@ const blogStyles = {
       lineHeight: '2.6rem',
       letterSpacing: '0.1ch',
       filter: 'saturate(0.85)',
-      color: `#f88379`,
+      color: `${colors.offWhite}`,
     },
     '& h4': {
       fontFamily: 'Avenir-Book',
