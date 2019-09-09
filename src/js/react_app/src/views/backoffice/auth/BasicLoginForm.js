@@ -67,9 +67,9 @@ class BasicLoginForm extends React.Component {
                   Forgot password
                 </a>
                 <Button type="primary" htmlType="submit" className={classes.loginFormButton}>
-                  Log in
+                  Sign in
                 </Button>
-                Or <a href="/signup">register now!</a>
+                Or <a href="/signup">Register now!</a>
               </Form.Item>
             </Form>
           </div>

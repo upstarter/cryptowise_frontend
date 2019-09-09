@@ -10,6 +10,8 @@ import axios from "axios";
 import { connect } from "react-redux";
 import userProposalCreate from "Actions/userProposalCreate";
 import colors from "Styles/colors"
+import Cookies from 'universal-cookie';
+import setAuthToken from 'Components/auth/setAuthToken'
 
 const count = 5;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
@@ -43,6 +45,12 @@ class ProposalComponent extends React.Component {
       withCredentials: true,
       credentials: 'include'
     };
+
+    const cookies = new Cookies();
+    const sessionToken = cookies.get('_cw_skey')
+    const accessToken = cookies.get('_cw_acc')
+    setAuthToken(accessToken) // set token in requests
+
     axios.get(url, data).then((res) => {
       console.log('Data', res.data)
       callback(res.data)
@@ -144,28 +152,20 @@ class ProposalComponent extends React.Component {
             />
             <div id="proposal-blurb">
               <div id="proposal-blurb-intro">
-                <h3 id="blurb-title">RIFF's</h3>
+                <h3 id="blurb-title">Quantasium</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  A Hacker Quorum focused on solving finance
-                  problems and creating retirement 🎸 rockstars.
+                  A Hacker Quorum focused on the optimal security of retirement 🎸 rockstars
+                  and quant supergroups.
                 </h4>
                 <p>
-                  We created the acronym "RIFF" (<strong>R</strong>apid
-                  <strong> I</strong>mplementation,
-                  <strong> F</strong>easibility, <strong> F</strong>undability)
-                  to emphasize what we think would be the important features
-                  of viable investment research ideas. A RIFF may be voted up
-                  to the top 1% of the RIFF universe and may become a candidate for
-                  future ecosystem activities.
+                  An entry that is voted to the top decile may become a
+                  candidate for future ecosystem activities.
                 </p>
                 <p>
-                  The idea of a RIFF is to identify the roles, processes, and
-                  Financial Data Structures needed for serious AI investment
-                  research and collaboration.
-                  They are meant to provide the Blueprint/DNA of an ecosystem
-                  run by highly capable financial and technology peers
-                  investing their time and resource to ensure collective
-                  retirement security. Win-Win.
+                  The idea is to seed the design of financial data
+                  structures, algorithms, teams, roles, functions and processes
+                  needed to provide optimal investment intelligence within a
+                  decentralized network for consumption by the network.
                 </p>
                 <p>
                   To participate, <b> Submit</b> your own research ideas
@@ -181,7 +181,7 @@ class ProposalComponent extends React.Component {
               <Affix offsetTop={45}>
                 <div id="proposal-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
-                  <h3>RIFF's 🌱</h3>
+                  <h3>Quantasium 🌱</h3>
                   {/* <div id="riff-blurb">
                     <strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
                   </div> */}
@@ -256,16 +256,13 @@ const proposalStyles = {
     '& #proposal-blurb': {
       gridArea: 'sidebar',
       maxWidth: '60ch',
-      justifySelf: 'center',
-      alignSelf: 'center',
       margin: '40px 0 0 0',
-      padding: 20,
+      padding: 14,
 
-      color: `${colors.sand} !important`,
+      // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
         // maxWidth: '400px',
-        justifySelf: 'center',
 
         '& #blurb-title': {
           fontSize: '2rem',
@@ -280,15 +277,17 @@ const proposalStyles = {
 
       '& #proposal-blurb-intro': {
         fontSize: 13,
-        // maxWidth: '60ch',
+        '& p': { padding: 'none !important'},
+
+        maxWidth: '60ch',
 
         '& #blurb-title': {
-          fontSize: '3.5rem !important',
+          fontSize: '2.7rem !important',
           color: `${colors.offWhite} !important`,
           // filter: 'contrast(.8)'
         },
         '& #blurb-subtitle': {
-          color: `${colors.sand} !important`,
+          color: `${colors.offWhite} !important`,
           marginBottom: 10,
           // fontSize: '1.15rem',
         }

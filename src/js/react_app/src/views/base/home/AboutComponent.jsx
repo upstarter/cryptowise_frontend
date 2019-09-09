@@ -18,12 +18,12 @@ class AboutComponent extends React.Component {
               wisdom of the crowd and AI to optimize investment outcomes.
             </h3>
             <p className="paragraph">
-              We are connecting investors with expert level financial analysis
-              and next-generation cloud capabilities for
-              automated, scalable data gathering, insight generation, and
-              decision-making. <i> We're harnessing the acquired wisdom and
-              innate talent of those most passionate about the future of investing
-              and capital formation. </i>
+              We are connecting investors with next-generation financial
+              technology capabilities for automated, scalable data
+              gathering, insight generation, and investment decision-making. <i> We're
+              harnessing the acquired wisdom and innate talent of those most
+              passionate about the future of investing and capital formation.
+              </i>
             </p>
             <h1 className="title">Vision</h1>
             <h3 className="subtitle-big">
@@ -38,32 +38,14 @@ class AboutComponent extends React.Component {
               information that everyone in the group shares and the information
               that each of the members of the group holds privately. It&#39;s the
               combination of all those pieces of independent information, some of
-              them right, some of the wrong, that keeps the group wise. - James
-              Surowiecki, The Wisdom of Crowds
+              them right, some of the wrong, that keeps the group wise. - The Wisdom of Crowds
             </blockquote>
 
-            <p className="">
-              We are prototyping web-native solutions for crypto analysts,
-              researchers, academics-- to seed and enrich the network with an
-              injection and synthesis of scientific values. As natural
-              cryptoeconomics take root, guided via game theory & mechanism
-              design, the result will be a Cambrian explosion of new investment
-              and trading opportunities for the next generation of tech-saavy
-              investors to capitalize on.
-            </p>
             <h1 className="title">Mission</h1>
-            <p>
-              CryptoWise is enabling crypto capital markets of tomorrow.
-              Financial Analysts, Researchers, and Industry Experts are
-              intrinsically incentivized and devoid of rent-seeking middlemen.
-              We believe in lowering transaction fees, promoting free and
-              transparent research and development, and giving early
-              participants in the community a stake in the network.
-            </p>
             <p>
               The information networks of our time reside within the realms of
               Quantum Computing, Crypto Networking, Artificial Intelligence,
-              Cloud/Fog/Edge computing, IoT, Robotics, BioTech, Crispr,
+              Cloud/Fog/Edge computing, IoT, Robotics, BioTech, CRISPR,
               NanoTech, TransformativeTech, HealthTech, Mixed Reality, RegTech,
               GovTech.
             </p>
@@ -74,18 +56,18 @@ class AboutComponent extends React.Component {
               understanding of the archetypal tokens in the crypto ecosystem.
             </p>
             <p>
-              Our mission is to provide talented technology creators with the
-              resources and access to capital that they desperately need to
-              create a more secure, private, efficient, effective, and
-              prosperous digital economy. One in which people can join together
-              and pool their resources for the attainment of prosperity in a way
-              that is respectful of their autonomy and individuality.
+              Our mission is to be a top source for provide market-saavy technologists,
+              providing resources and connections for creating a secure,
+              private, efficient, effective, and prosperous digital economy in
+              which people can join together and pool their resources for the
+              attainment of prosperity in a way that is more respectful of their
+              autonomy, individuality, and unique interests and capabilities.
             </p>
             <p>
-              Peer-to-Peer decentralized organization is the most apparent
-              alleviation for economic and social stagnation as a result of
-              over-organization and lack of data integrity at many large
-              platforms. Until personal information rights become as
+              Peer-to-Peer decentralized organization is a most apparent
+              alleviation for the economic and social stagnation as a result of
+              over-organization and the increasing erosion of trust in
+              institutions. Until personal information rights become as
               universally protected (by law or otherwise) as are property
               rights, it is apparent that significant developments will be
               needed in crypto networking ecosystems.
@@ -94,8 +76,9 @@ class AboutComponent extends React.Component {
               The Legal Entities of the next 5 years will be light-years beyond
               todays status quo in organization and function. Where most popular
               technological trends follow ever-shortening cycles of marketing
-              hype, peer-to-peer decentralized networking and distributed algorithmic
-              computation are solid long term trends worth following.
+              hype, peer-to-peer decentralized networking and efficient
+              distributed computation are very solid long term trends worth
+              following.
             </p>
             <h1 className="title">Values</h1>
             <p>
@@ -107,7 +90,7 @@ class AboutComponent extends React.Component {
               Crypto Economics, Trading Strategies & Methods, Portfolio
               Management, Decentralized Applications, Artificial Intelligence,
               Software Architecture, Emerging Tech, Multi-Agent Reinforcement
-              Learning, Cognitive Computing.
+              Learning, Cognitive Computing, Quantum Computing.
             </p>
           </div>
         </section>
