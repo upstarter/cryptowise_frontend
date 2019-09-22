@@ -1,10 +1,7 @@
 .git
 .DS_Store
-build
-/dist
-/_build/
-/deps/
-/doc/
-/priv/static/
-/test/
-/tmp/
+build/
+node_modules/
+dist/
+doc/
+tmp/

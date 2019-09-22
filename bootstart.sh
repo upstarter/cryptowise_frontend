@@ -1,13 +1,7 @@
 #!/bin/sh
 
-# Create a nodeapp user. The application will run as this user.
-useradd -m -d /home/nodeapp nodeapp
-chown -R nodeapp:nodeapp /opt/app
-
-cd /opt/app/cryptowise_frontend/dist
-serve -l 8080
-
-# serve
+# web server for our app in foreground and prevent container from closing
+nginx -g daemon off;
 
 # sudo service supervisor start
 # Configure supervisor to run the node app.

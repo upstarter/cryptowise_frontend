@@ -110,7 +110,6 @@ module.exports = merge(common, {
         loader: "file-loader",
         options: {
           name: 'fonts/[name].[ext]',
-          outputPath: 'fonts',
         }
       }
     ],

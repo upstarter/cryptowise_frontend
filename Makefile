@@ -1,7 +1,16 @@
 # FRONTEND
+zone := us-central1-f
+
+release:
+	@$(MAKE) bundle
+	gsutil cp -r dist/ gs://${BUCKET_NAME}/cw-web-release
+
+bundle:
+	yarn bundle
+	# push to instance?
 
 # build container, publish release in container-registry, create/update instance
-deploy:
+old_deploy:
 	$(MAKE) build_image \
 		&& $(MAKE) push_image \
 		&& $(MAKE) create_instance \
@@ -11,26 +20,27 @@ ssh:
 	gcloud compute ssh --project eternal-sunset-206422 \
 		--zone us-central1-f cw-web-instance
 
-build_image:
+image:
 	docker build -t cw-web-image .
+
+run:
+	docker run -it cw-web-image /bin/bash
 
 push_image:
 	docker tag cw-web-image \
 		gcr.io/eternal-sunset-206422/cw-web-image:latest \
 		&& docker push gcr.io/eternal-sunset-206422/cw-web-image:latest
 
-# gcloud compute instances create-with-container cw-web-instance
-# 	--container-image gcr.io/cloud-marketplace/google/nginx1:1.12
-create_instance:
-	gcloud compute instances create-with-container cw-web-instance \
-		--container-image gcr.io/eternal-sunset-206422/cw-web-image:latest \
-	  --machine-type f1-micro \
-		--scopes "userinfo-email,cloud-platform" \
-		--metadata-from-file startup-script=instance-startup.sh \
-		--zone us-central1-f \
-		--tags http-server \
-		--container-stdin \
-    --container-tty
+create:
+	gcloud compute instances create cw-web-instance${N} \
+		--image-family debian-9 \
+		--image-project debian-cloud \
+		--metadata-from-file startup-script=instance-bootstart.sh  \
+		--machine-type f1-micro \
+		--scopes "userinfo-email,cloud-platform,storage-ro" \
+		--metadata release-url=gs://${BUCKET_NAME}/cw-web-release \
+		--zone ${zone} \
+		--tags "https-server,http-server"
 
 # check progress of instance creation
 progress:
@@ -50,3 +60,12 @@ list:
 	echo To see your application running, go to
 	echo http://IP_ADDRESS:8080 where IP_ADDRESS is the external address you
 	echo obtained above.
+
+log:
+	sudo journalctl -u google-startup-scripts.service
+
+	# HANDY DANDIES:
+	# docker run -it gcr.io/eternal-sunset-206422/cw-proxy /bin/bash
+	# psql -h /tmp/cloudsql/eternal-sunset-206422:us-central1:umbrella-db -U postgres
+
+	# sudo google_metadata_script_runner --script-type startup --debug

@@ -6,7 +6,7 @@
 
 // Spotify colors (https://codepen.io/alowenthal/pen/rxboRv)
 // $green: rgb(30, 215, 96);
-import theme from 'Css/theme_export.scss'
+// import theme from 'Css/theme_export.scss'
 
 const colors = {
   // primary: '#001528',

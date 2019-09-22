@@ -36,21 +36,21 @@ import Loadable from "react-loadable";
 //     return <div>Loading...</div>;
 //   }
 // });
-
-const AboutComponent = Loadable({
-  loader: () => import("./AboutComponent" /* webpackChunkName: "about" */),
-  loading() {
-    return <div>Loading...</div>;
-  }
-});
-
-const ProviderContainer = Loadable({
-  loader: () =>
-    import("Content/providers/ProviderContainer" /* webpackChunkName: "provider" */),
-  loading() {
-    return <div>Loading...</div>;
-  }
-});
+// 
+// const AboutComponent = Loadable({
+//   loader: () => import("./AboutComponent" /* webpackChunkName: "about" */),
+//   loading() {
+//     return <div>Loading...</div>;
+//   }
+// });
+//
+// const ProviderContainer = Loadable({
+//   loader: () =>
+//     import("Content/providers/ProviderContainer" /* webpackChunkName: "provider" */),
+//   loading() {
+//     return <div>Loading...</div>;
+//   }
+// });
 
 const Protected = () => <h3>Protected</h3>;
 

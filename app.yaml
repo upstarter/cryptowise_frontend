@@ -1,2 +1,23 @@
 env: flex
-runtime: custom
+runtime: nodejs
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
+runtime_config:
+  release_app: cw-web-release
+  packages:
+    - webpack-cli
+  build:
+    - yarn add webpack-cli --dev
+    - yarn bundle
+    # - alias elm-make="${ELM_BIN}/elm-make"
+    # - elm-make ${ELM_SRC_PATH}/Main.elm --yes --output=${ELM_OUTPUT_PATH}/elm.js
+beta_settings:
+  cloud_sql_instances: eternal-sunset-206422:us-central1:umbrella-db
+env_variables:
+  NODE_ENV: production
