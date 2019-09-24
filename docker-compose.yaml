@@ -4,45 +4,47 @@ services:
   front-envoy:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-frontenvoy
     volumes:
       - ./front-envoy.yaml:/etc/front-envoy.yaml
     networks:
       - envoymesh
     expose:
       - "80"
+      - "443"
       - "8001"
     ports:
-      - "8000:80"
+      - "80:80"
+      - "443:443"
       - "8001:8001"
 
-  service1:
+  frontend:
     build:
       context: .
-      dockerfile: Dockerfile-service
+      dockerfile: Dockerfile
     volumes:
-      - ./service-envoy.yaml:/etc/service-envoy.yaml
+      - ./frontend-envoy.yaml:/etc/frontend-envoy.yaml
     networks:
       envoymesh:
         aliases:
-          - service1
+          - frontend
     environment:
-      - SERVICE_NAME=1
+      - SERVICE_NAME=frontend
     expose:
       - "80"
 
-  service2:
+  umbrella:
     build:
-      context: .
-      dockerfile: Dockerfile-service
+      context: ../platform_umbrella
+      dockerfile: Dockerfile
     volumes:
-      - ./service-envoy.yaml:/etc/service-envoy.yaml
+      - ./umbrella-envoy.yaml:/etc/umbrella-envoy.yaml
     networks:
       envoymesh:
         aliases:
-          - service2
+          - umbrella
     environment:
-      - SERVICE_NAME=2
+      - SERVICE_NAME=umbrella
     expose:
       - "80"
 

@@ -2,7 +2,6 @@ const path = require("path");
 const fs  = require('fs');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const Dotenv = require('dotenv-webpack');
 const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 
@@ -182,8 +181,5 @@ module.exports = {
       from: "./src/assets/css",
       to: "css"
     }]),
-    // new BundleAnalyzerPlugin({
-    //   generateStatsFile: true
-    // })
   ]
 };

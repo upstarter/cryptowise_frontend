@@ -3,9 +3,11 @@
   "license": "MIT",
   "scripts": {
     "prestart": "yarn bundle;",
+    "start": "node server.js;",
     "deploy": "gcloud beta functions deploy my-serverless-app-1_0_0 --entry-point handler --trigger-http --stage-bucket medium-post-functions --memory=2048MB",
     "build": "rm -rf ./build; NODE_ENV=development ./node_modules/webpack/bin/webpack.js --config webpack.dev.js --env dev --progress --profile --colors",
     "start": "rm -rf ./build; yarn build:dev; NODE_ENV=development webpack-dev-server --open --inline --hot --stdin --host localhost --port 8081 --config webpack.dev.js --mode development",
+    "dev": "rm -rf ./build; yarn build; NODE_ENV=development webpack-dev-server --open --inline --hot --stdin --host localhost --port 8081 --config webpack.dev.js --mode development",
     "bundle": "NODE_ENV=production PORT=8080 ./node_modules/webpack/bin/webpack.js --config webpack.prod.js --progress --color --mode production",
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },

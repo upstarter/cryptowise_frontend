@@ -5,6 +5,8 @@ const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AntdScssThemePlugin = require('antd-scss-theme-plugin');
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
 
 
 module.exports = merge(common, {
@@ -65,5 +67,8 @@ module.exports = merge(common, {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    // new BundleAnalyzerPlugin({
+    //   generateStatsFile: true
+    // })
   ]
 })

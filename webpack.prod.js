@@ -130,10 +130,6 @@ module.exports = merge(common, {
       chunkFilename: '[id].css',
     }),
     new AntdScssThemePlugin('./src/assets/css/theme.scss'),
-    // new UglifyJSPlugin({
-    //   sourceMap: true
-    // }),
-
   ],
   // resolve: {
   //   extensions: [".css", ".sass", ".scss", ".less", ".js", ".jsx"],
