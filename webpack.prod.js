@@ -9,6 +9,7 @@ const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
+  mode: 'production',
   devtool: 'source-map',
   module: {
     rules: [
@@ -27,6 +28,9 @@ module.exports = merge(common, {
               importLoaders: 1,
               localIdentName: '[name]-[local]-[hash:base64:5]',
             },
+          },
+          {
+           loader: 'resolve-url-loader',
           },
           AntdScssThemePlugin.themify({
             loader: 'sass-loader',
@@ -69,40 +73,47 @@ module.exports = merge(common, {
         }
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+          test: /\.svg/,
+          use: {
+              loader: 'svg-url-loader',
+              options: {}
+          }
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              limit: 10000,
+              // limit: 10000,
               name: 'images/[name]-[hash:8].[ext]'
             }
           },
-          {
-            loader: "image-webpack-loader",
-            options: {
-              disable: false,
-              mozjpeg: {
-               progressive: true,
-               quality: 65
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-               enabled: true,
-              },
-              pngquant: {
-               quality: '65-90',
-               speed: 4
-              },
-              gifsicle: {
-               interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-               quality: 75
-              }
-            }
-          },
+          // {
+          //   loader: "image-webpack-loader",
+          //   options: {
+          //     disable: false,
+          //     mozjpeg: {
+          //      progressive: true,
+          //      quality: 65
+          //     },
+          //     // optipng.enabled: false will disable optipng
+          //     optipng: {
+          //      enabled: true,
+          //     },
+          //     pngquant: {
+          //      quality: '65-90',
+          //      speed: 4
+          //     },
+          //     gifsicle: {
+          //      interlaced: false,
+          //     },
+          //     // the webp option will enable WEBP
+          //     webp: {
+          //      quality: 75
+          //     }
+          //   }
+          // },
         ],
       },
       {
@@ -115,9 +126,9 @@ module.exports = merge(common, {
     ],
     noParse: [/\.elm$/]
   },
-  optimization: {
-    minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})]
-  },
+  // optimization: {
+  //   minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})]
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'CryptoWise',

@@ -33,7 +33,7 @@ class AboutComponent extends React.Component {
             </h3>
             <blockquote
               className="subtitle-small"
-              cite="https://www.goodreads.com/work/quotes/3250675-the-wisdom-of-crowds">
+              cite="//www.goodreads.com/work/quotes/3250675-the-wisdom-of-crowds">
               Groups are only smart when there is a balance between the
               information that everyone in the group shares and the information
               that each of the members of the group holds privately. It&#39;s the

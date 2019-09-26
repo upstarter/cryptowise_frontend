@@ -1,7 +1,15 @@
 .git
 .DS_Store
 build/
-node_modules/
+node_modules
 dist/
 doc/
 tmp/
+npm-debug.log
+Dockerfile*
+docker-compose*
+.dockerignore
+.git
+.gitignore
+README.md
+LICENSE

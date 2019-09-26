@@ -1,4 +1,5 @@
-import HeroImage from 'Images/hero.jpg';
+import HeroImage from 'Images/hero.jpeg';
+console.log('HeroImage', HeroImage)
 
 const heroStyles = {
   hero: {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
-import Tile from "Components/base/tile/Tile";
+import Tile from 'Components/base/tile/Tile';
 import colors from "Styles/colors"
 import { Button } from 'antd';
 import { Steps } from 'antd';

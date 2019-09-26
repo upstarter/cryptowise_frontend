@@ -14,7 +14,7 @@ import Cookies from 'universal-cookie';
 import setAuthToken from 'Components/auth/setAuthToken'
 
 const count = 5;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
+const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
 class ProposalComponent extends React.Component {
   state = {
@@ -203,7 +203,7 @@ class ProposalComponent extends React.Component {
                           avatar={
                              <Avatar style={{}} icon="team" />
                           }
-                          title={<a href="https://ant.design">{item.name}</a>}
+                          title={<a href="//ant.design">{item.name}</a>}
                           description={<p className='item-name'>{item.description}</p>}
                         />
                         {
