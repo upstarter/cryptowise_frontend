@@ -4,10 +4,10 @@ export const quiz = {
       "question": "Which of these entities has captured the most value in terms of network ownership effects?",
       "questionType": "photo",
       "answers": [
-        "https://dummyimage.com/600x400/000/fff&text=A",
-        "https://dummyimage.com/600x400/000/fff&text=B",
-        "https://dummyimage.com/600x400/000/fff&text=C",
-        "https://dummyimage.com/600x400/000/fff&text=D"
+        "//dummyimage.com/600x400/000/fff&text=A",
+        "//dummyimage.com/600x400/000/fff&text=B",
+        "//dummyimage.com/600x400/000/fff&text=C",
+        "//dummyimage.com/600x400/000/fff&text=D"
       ],
       "correctAnswer": "1"
     },

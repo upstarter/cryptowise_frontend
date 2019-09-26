@@ -39,7 +39,7 @@ module.exports = merge(common, {
     },
     proxy: {
       "/v1": {
-        target: 'http://localhost:4000',
+        target: '//localhost:4000',
         // pathRewrite: { '^/api': '/api' },
         cookieDomainRewrite: "localhost",
         changeOrigin: true,
@@ -49,7 +49,7 @@ module.exports = merge(common, {
           // requests. To prevent CORS issues, we have to change
           // the Origin to match the target URL.
           if (proxyReq.getHeader('origin')) {
-            proxyReq.setHeader('origin', 'http://localhost:4000');
+            proxyReq.setHeader('origin', '//localhost:4000');
           }
         },
       }

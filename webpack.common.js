@@ -28,6 +28,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     // `filename` provides a template for naming your bundles (remember to use `[name]`)
     filename: '[name].bundle.js',
+    publicPath: '/',
     // `chunkFilename` provides a template for naming code-split bundles (optional)
     chunkFilename: '[name].bundle.js'
   },
@@ -103,37 +104,37 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              limit: 10000,
-              name: 'images/[name].[ext]'
+              // limit: 10000,
+              name: 'images/[name].[ext]',
             }
           },
-          {
-            loader: "image-webpack-loader",
-            options: {
-              disable: true,
-              mozjpeg: {
-               progressive: true,
-               quality: 65
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-               enabled: true,
-              },
-              pngquant: {
-               quality: '65-90',
-               speed: 4
-              },
-              gifsicle: {
-               interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-               quality: 75
-              }
-            }
-          },
+          // {
+          //   loader: "image-webpack-loader",
+          //   options: {
+          //     disable: true,
+          //     mozjpeg: {
+          //      progressive: true,
+          //      quality: 65
+          //     },
+          //     // optipng.enabled: false will disable optipng
+          //     optipng: {
+          //      enabled: true,
+          //     },
+          //     pngquant: {
+          //      quality: '65-90',
+          //      speed: 4
+          //     },
+          //     gifsicle: {
+          //      interlaced: false,
+          //     },
+          //     // the webp option will enable WEBP
+          //     webp: {
+          //      quality: 75
+          //     }
+          //   }
+          // },
         ],
       },
       {
@@ -180,6 +181,8 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: "./src/assets/css",
       to: "css"
-    }]),
+    },
+     // { from: './src/assets/images', to: 'images' },
+  ]),
   ]
 };

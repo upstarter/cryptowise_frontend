@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie';
 export default class AuthService {
     // Initializing important variables
     constructor(domain) {
-        this.domain = url || 'http://localhost:4000' // API server domain
+        this.domain = url || '//localhost:4000' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.signin = this.signin.bind(this)
         this.signOut = this.signOut.bind(this)

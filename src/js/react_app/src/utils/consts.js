@@ -1,5 +1,5 @@
 let env = process.env.NODE_ENV
-export const url = env == 'development' ? 'http://localhost:8081' : 'https://api.cryptowise.ai'
+export const url = env == 'development' ? '//localhost:8081' : '//api.cryptowise.ai'
 export const api_url = `${url}/v1`
 
 
