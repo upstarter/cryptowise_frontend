@@ -29,9 +29,6 @@ module.exports = merge(common, {
               localIdentName: '[name]-[local]-[hash:base64:5]',
             },
           },
-          {
-           loader: 'resolve-url-loader',
-          },
           AntdScssThemePlugin.themify({
             loader: 'sass-loader',
           }),
@@ -57,64 +54,21 @@ module.exports = merge(common, {
           }),
         ],
       },
-      {
-        test: /\.(jsx?)/,
-        exclude: ["/node_modules", "/src/js/elm"],
-        use: [
-          { loader: "babel-loader?cacheDirectory=true",
-          }
-        ]
-      },
+      // {
+      //   test: /\.(jsx?)/,
+      //   // exclude: ["node_modules", "src/js/elm"],
+      //   exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
+      //   use: [
+      //     { loader: "babel-loader?cacheDirectory=true",
+      //     }
+      //   ]
+      // },
       {
         test: /\.scss$/,
         issuer: /\.less$/,
         use: {
           loader: './src/js/sassVarsToLess.js' // Change path if necessary
         }
-      },
-      {
-          test: /\.svg/,
-          use: {
-              loader: 'svg-url-loader',
-              options: {}
-          }
-      },
-      {
-        test: /\.(jpe?g|png|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              // limit: 10000,
-              name: 'images/[name]-[hash:8].[ext]'
-            }
-          },
-          // {
-          //   loader: "image-webpack-loader",
-          //   options: {
-          //     disable: false,
-          //     mozjpeg: {
-          //      progressive: true,
-          //      quality: 65
-          //     },
-          //     // optipng.enabled: false will disable optipng
-          //     optipng: {
-          //      enabled: true,
-          //     },
-          //     pngquant: {
-          //      quality: '65-90',
-          //      speed: 4
-          //     },
-          //     gifsicle: {
-          //      interlaced: false,
-          //     },
-          //     // the webp option will enable WEBP
-          //     webp: {
-          //      quality: 75
-          //     }
-          //   }
-          // },
-        ],
       },
       {
         test: /\.(ttf|otf|eot|woff2?)$/,

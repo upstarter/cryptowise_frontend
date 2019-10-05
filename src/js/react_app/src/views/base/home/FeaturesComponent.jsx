@@ -29,7 +29,7 @@ class FeaturesComponent extends React.Component {
                   <h3>Strategic Asset Analysis</h3>
                   <p className="subtitle-small">
                     It takes sophisticated methods to construct, manage and
-                    optimize a modern high tech investment portfolio. Get help
+                    optimize a modern high tech growth portfolio. Get help
                     with the complex bits and stay informed of asset developments
                     relevant to your goals.
                   </p>

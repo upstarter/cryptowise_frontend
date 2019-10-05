@@ -85,14 +85,16 @@ module.exports = {
           }),
         ],
       },
+
       {
         test: /\.(jsx?)/,
-        exclude: ["/node_modules", "/src/js/elm"],
+        exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
         use: [
           { loader: "babel-loader?cacheDirectory=true",
           }
         ]
       },
+
       {
         test: /\.scss$/,
         issuer: /\.less$/,
@@ -100,41 +102,52 @@ module.exports = {
           loader: './src/js/sassVarsToLess.js' // Change path if necessary
         }
       },
+      // {
+      //    test: /\.(svg)$/,
+      //    use: {
+      //      loader: 'file-loader',
+      //      options: {
+      //       // noquotes: true,
+      //       // limit: 10000,
+      //       name: 'images/[name].[ext]'
+      //      },
+      //    }
+      // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-              // limit: 10000,
+              limit: 10000,
               name: 'images/[name].[ext]',
             }
           },
-          // {
-          //   loader: "image-webpack-loader",
-          //   options: {
-          //     disable: true,
-          //     mozjpeg: {
-          //      progressive: true,
-          //      quality: 65
-          //     },
-          //     // optipng.enabled: false will disable optipng
-          //     optipng: {
-          //      enabled: true,
-          //     },
-          //     pngquant: {
-          //      quality: '65-90',
-          //      speed: 4
-          //     },
-          //     gifsicle: {
-          //      interlaced: false,
-          //     },
-          //     // the webp option will enable WEBP
-          //     webp: {
-          //      quality: 75
-          //     }
-          //   }
-          // },
+          {
+            loader: "image-webpack-loader",
+            options: {
+              disable: true,
+              mozjpeg: {
+               progressive: true,
+               quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+               enabled: true,
+              },
+              pngquant: {
+               quality: '65-90',
+               speed: 4
+              },
+              gifsicle: {
+               interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+               quality: 75
+              }
+            }
+          },
         ],
       },
       {
