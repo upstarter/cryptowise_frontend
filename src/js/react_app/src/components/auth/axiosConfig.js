@@ -1,5 +1,6 @@
 // First we need to import axios.js
 import axios from 'axios';
+axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
 // Next we make an 'instance' of it
 const instance = axios.create({
 // .. where we make our configurations
