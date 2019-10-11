@@ -30,8 +30,8 @@ class FeaturesComponent extends React.Component {
                   <p className="subtitle-small">
                     It takes sophisticated methods to construct, manage and
                     optimize a modern high tech growth portfolio. Collaborate
-                    with experts and stay informed of asset developments
-                    relevant to your goals.
+                    with experts to maximize returns and stay informed of asset
+                    developments relevant to your goals.
                   </p>
                 </Col>
                 <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
