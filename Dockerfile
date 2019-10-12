@@ -11,8 +11,8 @@ COPY . .
 RUN yarn bundle
 
 FROM envoyproxy/envoy:latest as production-stage
-RUN apt update \
-    && apt upgrade \
+RUN apt update -y \
+    && apt upgrade -y \
     && apt install -y wget nginx
 
 COPY --from=build-stage /app/cw_web/dist /usr/share/nginx/html
