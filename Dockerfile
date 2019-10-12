@@ -10,7 +10,7 @@ RUN yarn cache clean && yarn install
 COPY . .
 RUN yarn bundle
 
-FROM nginx as production-stage
+FROM envoyproxy/envoy:latest as production-stage
 COPY --from=build-stage /app/cw_web/dist /usr/share/nginx/html
 COPY --from=build-stage /app/cw_web/dist /var/www/html
 COPY --from=build-stage /app/cw_web/default.conf /etc/nginx/conf.d
