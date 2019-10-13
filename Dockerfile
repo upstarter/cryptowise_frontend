@@ -13,11 +13,11 @@ RUN yarn bundle
 FROM envoyproxy/envoy:latest as production-stage
 RUN apt update -y \
     && apt upgrade -y \
-    && apt install -y wget nginx
+    && apt install -y wget nginx vim
 
 COPY --from=build-stage /app/cw_web/dist /usr/share/nginx/html
 COPY --from=build-stage /app/cw_web/dist /var/www/html
-COPY --from=build-stage /app/cw_web/default.conf /etc/nginx/conf.d/
+COPY --from=build-stage /app/cw_web/default.conf /etc/nginx/conf.d/default.conf
 # COPY --from=build-stage /app/cw_web/cors_support /etc/nginx/conf.d
 
 COPY ./bootstart.sh /
