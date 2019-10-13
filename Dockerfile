@@ -17,7 +17,7 @@ RUN apt update -y \
 
 COPY --from=build-stage /app/cw_web/dist /usr/share/nginx/html
 COPY --from=build-stage /app/cw_web/dist /var/www/html
-COPY --from=build-stage /app/cw_web/default.conf /etc/nginx/conf.d
+COPY --from=build-stage /app/cw_web/default.conf /etc/nginx/conf.d/
 # COPY --from=build-stage /app/cw_web/cors_support /etc/nginx/conf.d
 # RUN CHMOD 777 -R /usr/share/nginx/html # fails
 EXPOSE 80
