@@ -17,8 +17,8 @@ RUN apt update -y \
 
 COPY --from=build-stage /app/cw_web/dist /usr/share/nginx/html
 COPY --from=build-stage /app/cw_web/dist /var/www/html
-COPY --from=build-stage /app/cw_web/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build-stage /app/cw_web/nginx/default /etc/nginx/sites-enabled/default
+COPY --from=build-stage /app/cw_web/nginx/default.conf /etc/nginx/sites-enabled/default
+# COPY --from=build-stage /app/cw_web/nginx/default /etc/nginx/sites-enabled/default
 # COPY --from=build-stage /app/cw_web/cors_support /etc/nginx/conf.d
 
 COPY ./bootstart.sh /
