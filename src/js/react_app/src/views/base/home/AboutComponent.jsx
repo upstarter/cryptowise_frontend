@@ -43,6 +43,37 @@ class AboutComponent extends React.Component {
 
             <h1 className="title">Mission</h1>
             <p>
+              The tide of centralization/decentralization has once again shifted towards
+              the edge and decentralization. In the early days of computing, centralized
+              mainframes owned and operated by centralized organizations ruled the information
+              world. Then the personal computer revolution and client/server arose to
+              decentralize power. The cloud brought a whole new level of centralization as
+              once again big tech and big data took control of our personal data in giant cloud
+              silos to extract every ounce of profit from the precious data.
+            </p>
+            <p>
+              Our organizations are being run on antiquated governance structures. Long
+              gone are the fuedal days where heirarchies of centralized power
+              are necessary to maintain order. The problem is usually over-organization
+              and too much order. The creative human spirit is being crushed by
+              the overwhelming weight of beuracratic heirarchical command &
+              control. Freedom is restricted and constrained by the well-meaning
+              but misguided authority of a select few figures who are tied into
+              the aristocratic network at the top wealth centers of society. The top 1%
+              own 99% of the wealth and control the masses from centralized vantage points
+              which drains the people of their power to create value.
+            </p>
+            <p>
+              Thankfully, the current cycle of decentralization holds great
+              promise in bringing a new level of power to the masses.
+              The legal entities of the next 5-10 years will be light-years beyond
+              todays status quo in organization and function. Where most popular
+              technological trends follow ever-shortening cycles of marketing
+              hype, peer-to-peer decentralized networking and efficient
+              distributed computation are very solid long term trends worth
+              following.
+            </p>
+            <p>
               The information networks of our time reside within the realms of
               Quantum Computing, Crypto Networking, Artificial Intelligence,
               Cloud/Fog/Edge computing, IoT, Robotics, BioTech, CRISPR,
@@ -54,31 +85,6 @@ class AboutComponent extends React.Component {
               networks: setting up a means of both capitalization and
               monetization. As information networks grow and mature, so will our
               understanding of the archetypal tokens in the crypto ecosystem.
-            </p>
-            <p>
-              Our mission is to be a top source for provide market-saavy technologists,
-              providing resources and connections for creating a secure,
-              private, efficient, effective, and prosperous digital economy in
-              which people can join together and pool their resources for the
-              attainment of prosperity in a way that is more respectful of their
-              autonomy, individuality, and unique interests and capabilities.
-            </p>
-            <p>
-              Peer-to-Peer decentralized organization is a most apparent
-              alleviation for the economic and social stagnation as a result of
-              over-organization and the increasing erosion of trust in
-              institutions. Until personal information rights become as
-              universally protected (by law or otherwise) as are property
-              rights, it is apparent that significant developments will be
-              needed in crypto networking ecosystems.
-            </p>
-            <p>
-              The Legal Entities of the next 5 years will be light-years beyond
-              todays status quo in organization and function. Where most popular
-              technological trends follow ever-shortening cycles of marketing
-              hype, peer-to-peer decentralized networking and efficient
-              distributed computation are very solid long term trends worth
-              following.
             </p>
             <h1 className="title">Values</h1>
             <p>
