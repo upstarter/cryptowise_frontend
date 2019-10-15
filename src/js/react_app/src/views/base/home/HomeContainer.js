@@ -7,7 +7,7 @@ import PortfolioComponent from "Content/portfolio/PortfolioComponent";
 import HomeComponent from "./HomeComponent";
 import MembershipComponent from "Marketing/MembershipComponent";
 // import DataScientistComponent from "Developers/DataScientistComponent";
-// import AnalystComponent from "Developers/AnalystComponent";
+import AnalystComponent from "Developers/AnalystComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import InsightComponent from "Content/insights/InsightComponent";
@@ -107,8 +107,8 @@ class HomeContainer extends React.Component {
                   <Route exact path="/" component={HomeComponent} />
                   {/* <Route exact path="/membership" component={MembershipComponent} /> */}
                   {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
-                  {/* <Route exact path="/analysts" component={AnalystComponent} /> */}
-                  <Route exact path="/developers" component={DeveloperComponent} />
+                  <Route exact path="/analysts" component={AnalystComponent} />
+                  {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
                   {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
                   {/* <Route exact path="/insights" component={InsightComponent} /> */}
                   <AuthRoute exact path="/proposals" component={ProposalComponent} />
