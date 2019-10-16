@@ -62,16 +62,15 @@ class AnalystComponent extends React.Component {
                 <div id="list-subtitle" className="subtitle-big">What's included?</div>
 
                 <ul>
-                  <li>Free training and plug-and-play capabilities to help you access and/or provide ecosystem leading peer-to-peer robo-advisory services.</li>
-                  <li>Help discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
-                  <li>Become a leading source of crypto expertise in a growing ecosystem.</li>
-                  <li>Access our wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your investing activities.</li>
-                  {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
+                  <li>Free access to ecosystem leading peer-to-peer robo-advisory services.</li>
+                  <li>Discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
+                  <li>Become a leading source of crypto-economy development and investment expertise in a growing ecosystem.</li>
+                  <li>Access our community wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your investing activities.</li>
+                  <li>Crowdsourced token project intelligence</li>
+                  <li>Early contributors will have free access to closed Beta Features</li>
 
-                  {/* <li>Carefully selected early contributors who will have access to closed Beta</li> */}
-                  {/* <li>Crowdsourced token project intelligence</li> */}
+                  {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
                   {/* <li>Polkadot, Cosmos (Interop)</li> */}
-                  {/* <li>BDFL Eric Steen, democratically developed software usually doesn't work, just enough authority, engineers making risk decisions, not management</li> */}
                 </ul>
                 <div id="list-subtitle" className="subtitle-big">Own your Networks.</div>
 
