@@ -43,6 +43,8 @@ class AboutComponent extends React.Component {
 
             <h1 className="title">Mission</h1>
             <p>
+              To provide the worlds most informative crowdsourced investment
+              research & analysis ecosystem.
             </p>
             <h1 className="title">Values</h1>
             <p>
