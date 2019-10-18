@@ -24,7 +24,6 @@ const registerUser = state => {
         if (data.error) {
           console.log('user register create error')
         } else {
-          console.log('pushing', data)
           const cookies = new Cookies();
           const token = cookies.get('_cw_acc')
           dispatch(setAuthToken(token))

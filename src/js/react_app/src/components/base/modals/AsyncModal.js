@@ -24,7 +24,6 @@ class AntModal extends React.Component {
         return;
       }
 
-      console.log('Received values of form: ', values);
       form.resetFields();
       setTimeout(() => {
         this.setState({

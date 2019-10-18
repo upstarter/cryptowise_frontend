@@ -24,10 +24,8 @@ const loginUser = creds => {
         if (data.error) {
           console.log('user signin error')
         } else {
-          console.log('loginUserResponseData', data)
           const cookies = new Cookies();
           const token = cookies.get('_cw_acc')
-          console.log('loginUser token', token)
 
           if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
