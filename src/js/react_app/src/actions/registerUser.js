@@ -1,5 +1,5 @@
 import { url } from 'Utils/consts';
-import axios from "axios";
+import axios from "Config/axios";
 import Cookies from 'universal-cookie';
 import { push } from 'connected-react-router'
 import setAuthToken from 'Services/auth/setAuthToken'
@@ -15,8 +15,6 @@ const registerUser = state => {
             topic_knowledge_ids: state.topic_knowledge_ids,
             topic_interest_ids: state.topic_interest_ids
           },
-          withCredentials: true,
-          credentials: 'include'
         })
 
     return (dispatch) => {
