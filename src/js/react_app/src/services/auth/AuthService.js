@@ -1,6 +1,6 @@
 import decode from 'jwt-decode';
 import { url } from 'Utils/consts';
-import setAuthToken from 'Components/auth/setAuthToken'
+import setAuthToken from 'Services/auth/setAuthToken'
 import axios from "axios";
 import Cookies from 'universal-cookie';
 
@@ -51,12 +51,14 @@ export default class AuthService {
         }
     }
 
-    setToken(idToken) {
-        localStorage.setItem('_cw_acc', idToken)
+    setToken(token) {
+      const cookies = new Cookies();
+      cookies.set('_cw_acc', token)
     }
 
     getToken() {
-        return localStorage.getItem('_cw_acc')
+        const cookies = new Cookies();
+        return cookies.get('_cw_acc')
     }
 
     signOut() {
@@ -68,11 +70,8 @@ export default class AuthService {
           .then(res => {
               // Clear user access token and profile data from session
               const cookies = new Cookies();
-              console.log('cook', cookies)
               const sessionToken = cookies.remove('_cw_skey')
               const accessToken = cookies.remove('_cw_acc')
-              console.log('sessionToken', sessionToken)
-              console.log('accessToken', accessToken)
               return Promise.resolve(res);
           })
     }

@@ -2,7 +2,7 @@ import { url } from 'Utils/consts';
 import axios from "axios";
 import Cookies from 'universal-cookie';
 import { push } from 'connected-react-router'
-import setAuthToken from 'Components/auth/setAuthToken'
+import setAuthToken from 'Services/auth/setAuthToken'
 import { SET_CURRENT_USER } from 'Actions/index'
 
 const registerUser = state => {

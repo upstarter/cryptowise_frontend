@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import userProposalCreate from "Actions/userProposalCreate";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
-import setAuthToken from 'Components/auth/setAuthToken'
+import setAuthToken from 'Services/auth/setAuthToken'
 
 const count = 5;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;

@@ -175,6 +175,8 @@ module.exports = {
       Actions: path.resolve(__dirname, 'src/js/react_app/src/actions'),
       Reducers: path.resolve(__dirname, 'src/js/react_app/src/reducers'),
       Components: path.resolve(__dirname, 'src/js/react_app/src/components'),
+      Config: path.resolve(__dirname, 'src/js/react_app/src/config'),
+      Services: path.resolve(__dirname, 'src/js/react_app/src/services'),
       Styles: path.resolve(__dirname, 'src/js/react_app/src/styles'),
       Utils: path.resolve(__dirname, 'src/js/react_app/src/utils'),
       Images: path.resolve(__dirname, 'src/assets/images'),

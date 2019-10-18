@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 
 const setAuthToken = (token) => {
-  console.log('setAuthToken', token)
+  console.log('setAuthToken')
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
   } else {

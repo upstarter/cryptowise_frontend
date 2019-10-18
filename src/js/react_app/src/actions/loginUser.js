@@ -3,7 +3,7 @@ import { url } from 'Utils/consts';
 import axios from "axios";
 import { SESSION_ERROR } from "Actions/index";
 import { SET_CURRENT_USER } from 'Actions/index'
-import setAuthToken from 'Components/auth/setAuthToken'
+import setAuthToken from 'Services/auth/setAuthToken'
 import setCurrentUser from 'Actions/setCurrentUser'
 import decode from 'jwt-decode'
 import Cookies from 'universal-cookie';

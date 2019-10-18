@@ -15,7 +15,7 @@ import SignUpContainer from "Base/SignUpWizard/SignUpContainer";
 import AboutComponent from "Base/home/AboutComponent";
 import Logout from "Auth/Logout";
 import BasicLoginForm from "Auth/BasicLoginForm";
-import AuthRoute from "Components/auth/AuthRoute";
+import AuthRoute from "Services/auth/AuthRoute";
 import PrivacyComponent from "../PrivacyComponent";
 import FooterComponent from "./FooterComponent";
 import { Layout, Menu, Icon, Drawer } from "antd";
