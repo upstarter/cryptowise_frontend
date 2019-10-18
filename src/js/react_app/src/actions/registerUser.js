@@ -14,7 +14,9 @@ const registerUser = state => {
             password: state.password,
             topic_knowledge_ids: state.topic_knowledge_ids,
             topic_interest_ids: state.topic_interest_ids
-          }
+          },
+          withCredentials: true,
+          credentials: 'include'
         })
 
     return (dispatch) => {
