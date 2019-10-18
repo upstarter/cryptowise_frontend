@@ -54,15 +54,6 @@ module.exports = merge(common, {
           }),
         ],
       },
-      // {
-      //   test: /\.(jsx?)/,
-      //   // exclude: ["node_modules", "src/js/elm"],
-      //   exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
-      //   use: [
-      //     { loader: "babel-loader?cacheDirectory=true",
-      //     }
-      //   ]
-      // },
       {
         test: /\.scss$/,
         issuer: /\.less$/,

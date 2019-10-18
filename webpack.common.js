@@ -36,6 +36,7 @@ module.exports = {
     rules: [
       {
         test: /\.(sc|c|)ss$/,
+        // exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
         issuer: {
           exclude: /\.less$/,
         },
@@ -62,6 +63,10 @@ module.exports = {
 
       {
         test: /\.less$/,
+        exclude: [path.resolve(__dirname, "src/js/elm")],
+        issuer: {
+          exclude: /\.(sc|c|)ss$/,
+        },
         use: [
           {
             loader:  'style-loader',
@@ -89,6 +94,7 @@ module.exports = {
       {
         test: /\.(jsx?)/,
         exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
+        include: path.resolve(__dirname, 'src'),
         use: [
           { loader: "babel-loader?cacheDirectory=true",
           }
@@ -97,6 +103,7 @@ module.exports = {
 
       {
         test: /\.scss$/,
+        exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
         issuer: /\.less$/,
         use: {
           loader: './src/js/sassVarsToLess.js' // Change path if necessary
@@ -115,6 +122,7 @@ module.exports = {
       // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
+        exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
         use: [
           {
             loader: 'url-loader',
@@ -152,6 +160,7 @@ module.exports = {
       },
       {
         test: /\.(ttf|otf|eot|woff2?)$/,
+        exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
         loader: "file-loader",
         options: {
           name: 'fonts/[name].[ext]',
@@ -195,6 +204,7 @@ module.exports = {
       from: "./src/assets/css",
       to: "css"
     },
+
      // { from: './src/assets/images', to: 'images' },
   ]),
   ]

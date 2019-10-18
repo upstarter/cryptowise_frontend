@@ -2,11 +2,10 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "prestart": "yarn bundle;",
-    "start": "rm -rf ./build; NODE_ENV=development webpack-dev-server --open --inline --hot --stdin --host localhost --port 8081 --config webpack.dev.js --mode development",
+    "prestart": "yarn build;",
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --mode development",
     "deploy": "gcloud beta functions deploy my-serverless-app-1_0_0 --entry-point handler --trigger-http --stage-bucket medium-post-functions --memory=2048MB",
     "build": "rm -rf ./build; NODE_ENV=development ./node_modules/webpack/bin/webpack.js --config webpack.dev.js --env dev --progress --profile --colors",
-    "dev": "rm -rf ./build; yarn build; NODE_ENV=development webpack-dev-server --open --inline --hot --stdin --host localhost --port 8081 --config webpack.dev.js --mode development",
     "bundle": "./node_modules/webpack/bin/webpack.js --config webpack.prod.js --progress --color --mode production",
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },

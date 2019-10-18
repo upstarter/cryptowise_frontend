@@ -5,6 +5,8 @@ const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AntdScssThemePlugin = require('antd-scss-theme-plugin');
+// var DashboardPlugin = require("webpack-dashboard/plugin");
+
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 
@@ -13,7 +15,7 @@ module.exports = merge(common, {
   // devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, "build"),
-    publicPath: '/',
+    // publicPath: '/',
     filename: '[name].bundle.js'
   },
   devServer: {
@@ -23,12 +25,14 @@ module.exports = merge(common, {
     // ],
     // webpack-dev-server defaults to localhost:8080
     // lazy: true,
+    open: true,
     overlay: true,
     port: 8081,
     contentBase: path.resolve(__dirname, "build"),
     hot: true,
-    compress: true,
-    watchOptions: {ignored: /node_modules/, include: /node_modules\/antd/},
+    inline: true,
+    // compress: true,
+    watchOptions: {include: 'src', ignored: ['src/js/elm','node_modules','src/assets']},
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -39,7 +43,7 @@ module.exports = merge(common, {
     },
     proxy: {
       "/v1": {
-        target: '//localhost:4000',
+        target: 'http://localhost:4000',
         // pathRewrite: { '^/api': '/api' },
         cookieDomainRewrite: "localhost",
         changeOrigin: true,
@@ -49,13 +53,14 @@ module.exports = merge(common, {
           // requests. To prevent CORS issues, we have to change
           // the Origin to match the target URL.
           if (proxyReq.getHeader('origin')) {
-            proxyReq.setHeader('origin', '//localhost:4000');
+            proxyReq.setHeader('origin', 'http://localhost:4000');
           }
         },
       }
     },
   },
   plugins: [
+    // new DashboardPlugin({port: 8081}),
     new HtmlWebpackPlugin({
       title: 'CryptoWise',
       template: './src/assets/dev.index.html'
