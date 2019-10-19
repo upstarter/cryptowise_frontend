@@ -75,6 +75,11 @@ module.exports = merge(common, {
   //   minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({})]
   // },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'CryptoWise',
       template: './src/assets/prod.index.html'
