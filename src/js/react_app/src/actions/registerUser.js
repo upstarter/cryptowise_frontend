@@ -1,5 +1,5 @@
 import { url } from 'Utils/consts';
-import axios from "axios";
+import axios from "Config/axios";
 import Cookies from 'universal-cookie';
 import { push } from 'connected-react-router'
 import setAuthToken from 'Services/auth/setAuthToken'
