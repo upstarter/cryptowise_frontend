@@ -29,7 +29,7 @@ const registerUser = state => {
         } else {
           const cookies = new Cookies();
           const token = cookies.get('_cw_acc')
-          dispatch(setAuthToken(token))
+          setAuthToken(token)
           dispatch({
             type: SET_CURRENT_USER,
             payload: token

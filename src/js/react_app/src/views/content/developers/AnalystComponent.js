@@ -64,13 +64,12 @@ class AnalystComponent extends React.Component {
                 <ul>
                   <li>Free access to ecosystem leading peer-to-peer robo-advisory services.</li>
                   <li>Discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
-                  <li>Become a leading source of crypto-economy development and investment expertise in a growing ecosystem.</li>
-                  <li>Access our community wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your investing activities.</li>
+                  <li>Become a leading source of crypto-economic development and investment expertise in th growing blockchain/defi ecosystem.</li>
+                  <li>Access our community wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your investment hacking activities.</li>
                   <li>Crowdsourced token project intelligence</li>
-                  <li>Early contributors will have free access to closed Beta Features</li>
+                  <li>Early contributors will have premium access to closed Beta Features</li>
 
                   {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
-                  {/* <li>Polkadot, Cosmos (Interop)</li> */}
                 </ul>
                 <div id="list-subtitle" className="subtitle-big">Own your Networks.</div>
 

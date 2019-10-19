@@ -152,27 +152,25 @@ class ProposalComponent extends React.Component {
             />
             <div id="proposal-blurb">
               <div id="proposal-blurb-intro">
-                <h3 id="blurb-title">Quantasium</h3>
+                <h3 id="blurb-title">The Quantasium</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  A Hacker Quorum focused on the optimal security of retirement 🎸 rockstars
+                  A Hacker Quorum focused on optimal strategies for retirement 🎸 rockstars
                   and quant supergroups.
                 </h4>
                 <p>
-                  An entry that is voted to the top decile may become a
+                  Entries voted to the top decile may become a
                   candidate for future ecosystem activities.
                 </p>
                 <p>
-                  The idea is to seed the design of financial data
+                  Seed the design of financial data
                   structures, algorithms, teams, roles, functions and processes
-                  needed to provide optimal investment intelligence within a
+                  used in optimal investment intelligence within a
                   decentralized network for consumption by the network.
                 </p>
                 <p>
-                  To participate, <b> Submit</b> your own research ideas
+                  To participate, <b> Submit</b> your own entries
                   and/or <b>Rate </b> others' ideas so the collective interests
-                  of the ecosystem can emerge. Self-organizing expert teams can
-                  form to research solutions and share their preliminary
-                  results for further collaboration as ecosystem features emerge.
+                  of the ecosystem can emerge.
                 </p>
               </div>
             </div>
@@ -181,7 +179,7 @@ class ProposalComponent extends React.Component {
               <Affix offsetTop={45}>
                 <div id="proposal-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
-                  <h3>Quantasium 🌱</h3>
+                  <h3>Entries 🌱</h3>
                   {/* <div id="riff-blurb">
                     <strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
                   </div> */}
