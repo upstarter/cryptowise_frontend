@@ -5,7 +5,6 @@ const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugi
 const Dotenv = require('dotenv-webpack');
 const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 
-
 const env = process.env.NODE_ENV || "development";
 const devMode = env === "development";
 const mode = env === "production" ? "production" : "development"
