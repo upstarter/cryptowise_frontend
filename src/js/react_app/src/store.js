@@ -7,7 +7,11 @@ import createRootReducer from "./reducers"
 import { createBrowserHistory } from 'history'
 
 export const history = createBrowserHistory()
-const wares = [logger, thunk, promiseMiddleware]
+
+let wares = [ thunk, promiseMiddleware ]
+if (process.env.NODE_ENV !== 'production') {
+  wares = [ ...wares, logger ]
+}
 
 // export default createStore(rootReducer, undefined, middleware)
 

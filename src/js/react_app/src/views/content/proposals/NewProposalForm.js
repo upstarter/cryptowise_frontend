@@ -44,7 +44,7 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
             </Form.Item>
             <Form.Item label="Description">
               {getFieldDecorator('description')(<TextArea placeholder="Bitcoin volatility
-                seems to be highly effecte by x, y, z..." rows={4}
+                seems to be highly effected by x, y, z..." rows={4}
               type="textarea" />)}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
