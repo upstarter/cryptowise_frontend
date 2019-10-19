@@ -6,14 +6,16 @@ import setAuthToken from 'Services/auth/setAuthToken'
 import { SET_CURRENT_USER } from 'Actions/index'
 
 const registerUser = state => {
-    const request = axios
-        .post(`${url}/v1/auth/create`, {
-          auth: {
-            nickname: state.nickname,
-            email: state.email,
-            password: state.password,
-            topic_knowledge_ids: state.topic_knowledge_ids,
-            topic_interest_ids: state.topic_interest_ids
+    const request = axios(`${url}/v1/auth/create`, {
+          method: 'POST',
+          data: {
+            auth: {
+              nickname: state.nickname,
+              email: state.email,
+              password: state.password,
+              topic_knowledge_ids: state.topic_knowledge_ids,
+              topic_interest_ids: state.topic_interest_ids
+            }
           },
           withCredentials: true
         })
