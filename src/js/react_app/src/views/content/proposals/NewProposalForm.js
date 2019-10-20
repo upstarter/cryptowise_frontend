@@ -16,8 +16,8 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           wrapClassName={wrapClassName}
           // bodyStyle={{background: `${colors.secondaryDark}`, color: '#fff'}}
           visible={visible}
-          title="Propose an investment problem"
-          okText="Propose"
+          title="Quantasium Solutions Proposal"
+          okText="Submit"
           onCancel={onCancel}
           onOk={onCreate}
           centered={true}
@@ -26,28 +26,29 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           <Form layout="vertical">
             {/* <Paragraph>RIFF Guidelines</Paragraph> */}
             <Title level={3} className='subtitle-small'>
-              Propose solutions relevent to your strongest capabilities, goals & activities.
+              Submit a data curation, feature analysis, or investment strategy idea.
             </Title>
-            <Paragraph>Examples of good proposals...</Paragraph>
+            <Paragraph>Examples...</Paragraph>
             <ul style={{paddingLeft: 30}}>
               <li>
-                "What business models currently stand to dominate the crypto ecosystem?"
+                "Curate volatility, momentum and sentiment correlations data"
               </li>
               <li>
-                "Determine the optimal swing trading value-at-risk period for trend following DFINITY"
+                "Provide the optimal swing trading value-at-risk periods for a set of tokens"
               </li>
             </ul>
             <Form.Item label="Title">
               {getFieldDecorator('title', {
-                rules: [{ required: true, message: 'Please input the title of feature!' }],
-              })(<Input placeholder="How do global interest rates effect the volatility of bitcoin?"/>)}
+                rules: [{ required: true, message: 'Please input the title!' }],
+              })(<Input placeholder="Global interest rate changes effect's on bitcoin volatility"/>)}
             </Form.Item>
             <Form.Item label="Description">
               {getFieldDecorator('description')(<TextArea placeholder="Bitcoin volatility
-                seems to be highly effected by x, y, z..." rows={4}
+                seems to be highly effected by x, y, z... Providing correlations on these data points would be very useful to
+                the community" rows={4}
               type="textarea" />)}
             </Form.Item>
-            <Form.Item className="collection-create-form_last-form-item">
+            {/* <Form.Item className="collection-create-form_last-form-item">
               {getFieldDecorator('is_public', {
                 initialValue: 'public',
               })(
@@ -56,7 +57,7 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
                   <Radio value="private">Private (you can add it to a group you've joined later)</Radio>
                 </Radio.Group>,
               )}
-            </Form.Item>
+            </Form.Item> */}
           </Form>
         </Modal>
       );
