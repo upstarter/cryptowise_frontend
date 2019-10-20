@@ -6,7 +6,7 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-  console.log('llkasjdflkjasdf0', action.payload)
+  // console.log('llkasjdflkjasdf0', action.payload)
 
   switch (action.type) {
     case SET_CURRENT_USER:
