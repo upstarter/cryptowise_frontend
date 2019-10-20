@@ -33,11 +33,11 @@ class HeroComponent extends React.Component {
             <h1 className="title">
               &#8592;	Become a <span className="fancy-underline">top 1%</span> crypto
               <div className="slidingVertical">
-                <span>investor.</span>
-                <span>analyst.</span>
-                <span>coder.</span>
-                <span>founder.</span>
                 <span>trader.</span>
+                <span>strategist.</span>
+                <span>coder.</span>
+                <span>analyst.</span>
+                <span>investor.</span>
               </div>
             </h1>
             <div id="subscribe-form" className="email-leadgen">
