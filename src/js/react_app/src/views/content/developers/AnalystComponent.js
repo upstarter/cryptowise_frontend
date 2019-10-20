@@ -64,7 +64,7 @@ class AnalystComponent extends React.Component {
                 <ul>
                   <li>Free access to ecosystem leading peer-to-peer robo-advisory services.</li>
                   <li>Discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
-                  <li>Become a leading source of crypto-economic development and investment expertise in th growing blockchain/defi ecosystem.</li>
+                  <li>Become a leading source of crypto-economic development and investment expertise in the growing blockchain/defi ecosystem.</li>
                   <li>Access our community wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your investment hacking activities.</li>
                   <li>Crowdsourced token project intelligence</li>
                   <li>Early contributors will have premium access to closed Beta Features</li>
