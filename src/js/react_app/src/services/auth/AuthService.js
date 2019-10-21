@@ -62,17 +62,19 @@ export default class AuthService {
     }
 
     signOut() {
-          const data = {
-            withCredentials: true,
-            credentials: 'include'
-          };
+      console.log('signout')
+        const data = {
+          withCredentials: true,
+          credentials: 'include'
+        };
         return axios.post(`${url}/v1/auth/sign_out`, data)
           .then(res => {
-              // Clear user access token and profile data from session
-              const cookies = new Cookies();
-              const sessionToken = cookies.remove('_cw_skey')
-              const accessToken = cookies.remove('_cw_acc')
-              return Promise.resolve(res);
+            console.log(res.data)
+            // Clear user access token and profile data from session
+            const cookies = new Cookies();
+            const sessionToken = cookies.remove('_cw_skey')
+            const accessToken = cookies.remove('_cw_acc')
+            return Promise.resolve(res);
           })
     }
 
