@@ -16,7 +16,7 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           wrapClassName={wrapClassName}
           // bodyStyle={{background: `${colors.secondaryDark}`, color: '#fff'}}
           visible={visible}
-          title="Quantasium Solutions Proposal"
+          title="Quantasium Problem Submission"
           okText="Submit"
           onCancel={onCancel}
           onOk={onCreate}
@@ -26,9 +26,10 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           <Form layout="vertical">
             {/* <Paragraph>RIFF Guidelines</Paragraph> */}
             <Title level={3} className='subtitle-small'>
-              Submit a data curation, feature analysis, or investment strategy idea.
+              Submit an investment or technical problem you feel can be solved
+              by a team of data curators, feature analyts, or investment strategists.
             </Title>
-            <Paragraph>Examples...</Paragraph>
+            {/* <Paragraph>Examples...</Paragraph>
             <ul style={{paddingLeft: 30}}>
               <li>
                 "Curate volatility, momentum and sentiment correlations data"
@@ -36,16 +37,14 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
               <li>
                 "Provide the optimal swing trading value-at-risk periods for a set of tokens"
               </li>
-            </ul>
+            </ul> */}
             <Form.Item label="Title">
               {getFieldDecorator('title', {
                 rules: [{ required: true, message: 'Please input the title!' }],
-              })(<Input placeholder="Global interest rate changes effect's on bitcoin volatility"/>)}
+              })(<Input placeholder="Enter a problem..."/>)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<TextArea placeholder="Bitcoin volatility
-                seems to be highly effected by x, y, z... Providing correlations on these data points would be very useful to
-                the community" rows={4}
+              {getFieldDecorator('description')(<TextArea placeholder="Describe the problem..." rows={4}
               type="textarea" />)}
             </Form.Item>
             {/* <Form.Item className="collection-create-form_last-form-item">
