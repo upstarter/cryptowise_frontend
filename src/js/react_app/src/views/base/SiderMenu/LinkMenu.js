@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Menu, Icon } from "antd";
 import injectSheet, { jss } from "react-jss";
+import AuthService from 'Services/auth/AuthService'
 
 const LinkMenu = withRouter(props => {
   const { location } = props;
