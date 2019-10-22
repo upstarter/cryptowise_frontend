@@ -90,7 +90,7 @@ class AnalystComponent extends React.Component {
 
 const devStyles = {
   analysts: {
-    minHeight: '110vh',
+    minHeight: '200vh',
     '& #analyst-content': {
       display: 'grid',
       gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr',
