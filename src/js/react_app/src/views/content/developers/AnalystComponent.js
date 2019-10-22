@@ -27,7 +27,7 @@ class AnalystComponent extends React.Component {
     return (
       <React.Fragment>
         <ScrollToTopOnMount/>
-        <div className="dark-wrap" style={{overflow: 'hidden', position: 'absolute'}}>
+        <div className="dark-wrap">
           <section id="analyst" className={classes.analysts}>
             <div id="analyst-content" >
               <div id='analyst-header'>
@@ -91,8 +91,6 @@ class AnalystComponent extends React.Component {
 const devStyles = {
   analysts: {
     minHeight: '110vh',
-    overflow: 'auto',
-    position: 'absolute',
     '& #analyst-content': {
       display: 'grid',
       gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr',
