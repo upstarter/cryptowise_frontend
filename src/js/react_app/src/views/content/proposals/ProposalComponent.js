@@ -179,7 +179,7 @@ class ProposalComponent extends React.Component {
               <Affix offsetTop={45}>
                 <div id="proposal-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
-                  <h3>Upvoted Community Entries 🌱</h3>
+                  <h3>Upvoted Entries 🌱</h3>
                   {/* <div id="riff-blurb">
                     <strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
                   </div> */}
@@ -260,7 +260,7 @@ const proposalStyles = {
       // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
-        // maxWidth: '400px',
+        maxWidth: '90vw',
 
         '& #blurb-title': {
           fontSize: '2rem',

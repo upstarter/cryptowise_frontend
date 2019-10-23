@@ -26,8 +26,10 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           <Form layout="vertical">
             {/* <Paragraph>RIFF Guidelines</Paragraph> */}
             <Title level={3} className='subtitle-small'>
-              Submit an investment or technical problem you feel can be solved
-              by a team of data curators, feature analyts, or investment strategists.
+              Submit an investment or technical problem solvable by a team consisting of
+              data curators, feature analysts, and investment strategists, or an
+              idea for a financial data structure, algorithm, team, role,
+              function, or process that would benefit the investing community.
             </Title>
             {/* <Paragraph>Examples...</Paragraph>
             <ul style={{paddingLeft: 30}}>
