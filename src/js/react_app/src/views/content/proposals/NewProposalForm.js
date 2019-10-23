@@ -16,7 +16,7 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           wrapClassName={wrapClassName}
           // bodyStyle={{background: `${colors.secondaryDark}`, color: '#fff'}}
           visible={visible}
-          title="Quantasium Problem Submission"
+          title="New Idea"
           okText="Submit"
           onCancel={onCancel}
           onOk={onCreate}
@@ -26,10 +26,9 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           <Form layout="vertical">
             {/* <Paragraph>RIFF Guidelines</Paragraph> */}
             <Title level={3} className='subtitle-small'>
-              Submit an investment or technical problem solvable by a team consisting of
-              data curators, feature analysts, and investment strategists, or an
-              idea for a financial data structure, algorithm, team, role,
-              function, or process that would benefit the investing community.
+              Submit an idea for a financial data
+              structure, algorithm, team role or function, methodology or process that could
+              become part of our future coordinated efforts to conquer the crypto markets.
             </Title>
             {/* <Paragraph>Examples...</Paragraph>
             <ul style={{paddingLeft: 30}}>

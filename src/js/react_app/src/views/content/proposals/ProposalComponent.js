@@ -166,8 +166,7 @@ class ProposalComponent extends React.Component {
                 </p>
                 <p>
                   Ideas voted to the top decile may become
-                  candidates for future ecosystem and/or incentive
-                  engineering.
+                  candidates for future ecosystem engineering activities.
                 </p>
                 <p>
                   To participate, <b> Submit</b> ideas
