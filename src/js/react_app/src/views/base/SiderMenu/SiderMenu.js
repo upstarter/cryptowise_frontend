@@ -14,18 +14,29 @@ class SiderMenu extends React.Component {
     super();
     this.state = {
       collapsed: true,
+      collapsedWidth: 0,
       broken: false
     };
   }
 
   toggle = () => {
     this.setState({
-      collapsed: !(this.state.collapsed),
+      collapsed: !this.state.collapsed,
     });
   }
 
-  onSiderCollapse = collapsed => {
-    this.toggle()
+  onSiderCollapse = (collapsed, type) => {
+    console.log(collapsed, type)
+    if (!collapsed) {
+      this.setState({collapsed: false})
+      setTimeout(() => {
+        this.setState({collapsed: true})
+      }, 5000)
+    } else {
+      setTimeout(() => {
+        this.setState({collapsed: true})
+      }, 5000)
+    }
   };
 
   collapse = () => {
@@ -40,14 +51,6 @@ class SiderMenu extends React.Component {
     });
   }
 
-  broken = (broken) => {
-    this.setState({
-      broken: broken,
-      collapsed: true
-    });
-  }
-
-
   render() {
     const { location } = this.props;
     const { classes } = this.props;
@@ -55,14 +58,17 @@ class SiderMenu extends React.Component {
       <Sider
         className={classes.sider}
         collapsible
-        defaultCollapsed={false}
+        defaultCollapsed={true}
+        width="140"
         collapsedWidth="0"
-        // collapsedWidth={() => this.state.collapsedWidth()} // responsive collapse
+        // trigger={this.state.broken ? '' : null}
+        // zeroWidthTriggerStyle={{bottom: 0}}
         collapsed={this.state.collapsed}
-        onCollapse={this.onSiderCollapse}
-        onMouseEnter={() => this.open()}
-        onMouseLeave={() => this.collapse()}
-        // onBreakpoint={(broken) => { this.broken(broken) }}
+        // onCollapse={this.onSiderCollapse}
+        onMouseEnter={this.open}
+        onMouseLeave={this.collapse}
+        // breakpoint="xs"
+        // onBreakpoint={(broken) => { this.collapse() } }
       >
         <LinkMenu />
       </Sider>
