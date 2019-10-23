@@ -108,7 +108,7 @@ const styles = {
     '& #topics-header': {
       position: 'fixed',
       top: 45,
-      maxHeight: '25vh',
+      minHeight: '20vh',
       // marginBottom: '50px',
       maxWidth: 405,
       // padding: '7px',
