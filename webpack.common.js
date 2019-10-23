@@ -50,13 +50,14 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
+              // modules: true,
               // sourceMap: true,
               localIdentName: '[name]-[local]-[hash:base64:5]',
             },
           },
-          AntdScssThemePlugin.themify({
+          {
             loader: 'sass-loader',
-          }),
+          },
         ],
       },
 
@@ -80,13 +81,13 @@ module.exports = {
               // sourceMap: true,
             },
           },
-          AntdScssThemePlugin.themify({
+          {
             loader: 'less-loader', // compiles Less to CSS
               options: {
                 // sourceMap: true,
                 javascriptEnabled: true,
               }
-          }),
+          },
         ],
       },
 
@@ -108,17 +109,6 @@ module.exports = {
           loader: './src/js/sassVarsToLess.js' // Change path if necessary
         }
       },
-      // {
-      //    test: /\.(svg)$/,
-      //    use: {
-      //      loader: 'file-loader',
-      //      options: {
-      //       // noquotes: true,
-      //       // limit: 10000,
-      //       name: 'images/[name].[ext]'
-      //      },
-      //    }
-      // },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],

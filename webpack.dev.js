@@ -4,12 +4,9 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AntdScssThemePlugin = require('antd-scss-theme-plugin');
+// const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 // var DashboardPlugin = require("webpack-dashboard/plugin");
-
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-
-
 
 module.exports = merge(common, {
   // devtool: 'inline-source-map',
@@ -19,10 +16,6 @@ module.exports = merge(common, {
     filename: '[name].bundle.js'
   },
   devServer: {
-    // allowedHosts: [
-    //   'localhost',
-    //   'api.localhost'
-    // ],
     // webpack-dev-server defaults to localhost:8080
     // lazy: true,
     open: true,
@@ -32,7 +25,7 @@ module.exports = merge(common, {
     hot: true,
     inline: true,
     // compress: true,
-    watchOptions: {include: 'src', ignored: ['src/js/elm','node_modules','src/assets']},
+    watchOptions: {include: 'src', ignored: ['build','dist','nginx','src/js/elm','node_modules','src/assets']},
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -60,18 +53,18 @@ module.exports = merge(common, {
     },
   },
   plugins: [
-    // new DashboardPlugin({port: 8081}),
     new HtmlWebpackPlugin({
       title: 'CryptoWise',
       template: './src/assets/dev.index.html'
     }),
-    new AntdScssThemePlugin('./src/assets/css/theme.scss'),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    // new DashboardPlugin({port: 8081}),
+    // new AntdScssThemePlugin('./src/assets/css/theme.scss'),
     // new BundleAnalyzerPlugin({
     //   generateStatsFile: true
     // })

@@ -74,7 +74,7 @@ class ProposalComponent extends React.Component {
           page: page,
         },
         () => {
-          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
+          // Resetting windows offsetTop so as to display react-virtualized demo underfloor.
           // In real scene, you can using public method of react-virtualized:
           // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
           window.dispatchEvent(new Event('resize'));
