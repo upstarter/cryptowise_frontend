@@ -16,7 +16,7 @@ class FeaturesComponent extends React.Component {
         <div className="dark-wrap">
           <section id='features' className={classes.features}>
             <div className={classes.heading}>
-              <h1>Features</h1>
+              <h1>Ecosystem Features</h1>
             </div>
             <div className="wrap">
               <Row type="flex" justify="space-around">
@@ -31,7 +31,7 @@ class FeaturesComponent extends React.Component {
                     It takes sophisticated methods to construct, manage and
                     optimize a modern high-tech growth portfolio. Collaborate
                     with crypto and finance experts to maximize returns and stay informed of
-                    project and ecosystem developments relevant to your goals.
+                    crypto project developments relevant to your goals and interests.
                   </p>
                 </Col>
                 <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
@@ -44,7 +44,7 @@ class FeaturesComponent extends React.Component {
                   <p className="subtitle-small">
                     Participate in an investing ecosystem that rewards creative
                     solutions to complicated investment problems. Analyze, synthesize, and actualize
-                    cutting edge research across increasingly vast design spaces in Crypto Networks, Finance
+                    cutting edge research across increasingly vast design spaces in Crypto Networking, Financial Machine Learning
                     and Artificial Intelligence.
                   </p>
                 </Col>
@@ -54,11 +54,11 @@ class FeaturesComponent extends React.Component {
                       <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
                     </figure>
                   </div>
-                  <h3>Decentralized Finance Network</h3>
+                  <h3>Decentralized Finance Compute</h3>
                   <p className="subtitle-small">
                     Core Teams, Task Forces, Swarms, and Individual Agents deliver
-                    practical insights. Participants formulate and implement
-                    coherent sets of policies tailored to self-selected core
+                    practical market insights. Participants formulate, coordinate, and implement
+                    coherent sets of tactical policies custom tailored to self-selected core
                     capabilities within and across group investment objectives.
                   </p>
                 </Col>

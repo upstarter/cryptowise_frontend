@@ -7,6 +7,8 @@ import AuthService from 'Services/auth/AuthService'
 const LinkMenu = withRouter(props => {
   const { location } = props;
   const { classes } = props;
+  let auth = new AuthService;
+
   return (
     <Menu
       className={classes.menu}
@@ -53,13 +55,21 @@ const LinkMenu = withRouter(props => {
           <span className="nav-text">Participate</span>
         </Link>
       </Menu.Item>
-      {/* <Menu.Item key="/developers">
+      { auth.signedIn() ?
+        <Menu.Item key="/proposals">
+          <Link to="/proposals" style={{ textDecoration: "none" }}>
+            <Icon type="code" />
+            <span className="nav-text">Ideate</span>
+          </Link>
+        </Menu.Item> : ''
+      }
+{/*
+      <Menu.Item key="/developers">
         <Link to="/developers" style={{ textDecoration: "none" }}>
           <Icon type="code" />
           <span className="nav-text">Developers</span>
         </Link>
       </Menu.Item> */}
-
     </Menu>
   );
 });

@@ -10,6 +10,7 @@ export default class AuthService {
         this.domain = url || '//localhost:4000' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.signin = this.signin.bind(this)
+        this.signedIn = this.signedIn.bind(this)
         this.signOut = this.signOut.bind(this)
         this.getProfile = this.getProfile.bind(this)
     }
@@ -32,9 +33,9 @@ export default class AuthService {
     }
 
     signedIn() {
-        // Checks if there is a saved token and it's still valid
-        const token = this.getToken() // GEtting token from localstorage
-        return !!token && !this.isTokenExpired(token) // handwaiving here
+      // Checks if there is a saved token and it's still valid
+      const token = this.getToken() // Getting token from cookies
+      return !!token && !this.isTokenExpired(token) // handwaiving here
     }
 
     isTokenExpired(token) {

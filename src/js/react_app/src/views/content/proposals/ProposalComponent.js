@@ -157,18 +157,20 @@ class ProposalComponent extends React.Component {
                   A Hacker Quorum focused on optimal strategies for retirement 🎸 rockstars
                   and quant supergroups.
                 </h4>
+
                 <p>
-                  Entries voted to the top decile may become a
-                  candidate for future ecosystem activities.
-                </p>
-                <p>
-                  Seed the design of financial data
+                  Help seed the design of financial data
                   structures, algorithms, teams, roles, functions and processes
                   used in optimal investment intelligence within a
-                  decentralized network for consumption by the network.
+                  decentralized financial network for consumption by the network.
                 </p>
                 <p>
-                  To participate, <b> Submit</b> your own entries
+                  Ideas voted to the top decile may become
+                  candidates for future ecosystem and/or incentive
+                  engineering.
+                </p>
+                <p>
+                  To participate, <b> Submit</b> ideas
                   and/or <b>Rate </b> others' ideas so the collective interests
                   of the ecosystem can emerge.
                 </p>
@@ -179,7 +181,7 @@ class ProposalComponent extends React.Component {
               <Affix offsetTop={45}>
                 <div id="proposal-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
-                  <h3>Upvoted Entries 🌱</h3>
+                  <h3>Ideas 🌱</h3>
                   {/* <div id="riff-blurb">
                     <strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
                   </div> */}
