@@ -160,7 +160,7 @@ class ProposalComponent extends React.Component {
 
                 <p>
                   Help seed the design of financial data structures, algorithms,
-                  teams, roles, functions and processes used in optimal
+                  teams, roles, functions and processes used for optimal
                   investment intelligence within a decentralized financial
                   network.
                 </p>
