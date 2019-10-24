@@ -32,16 +32,34 @@ export default class AuthService {
           })
     }
 
+    signOut() {
+      console.log('signing out')
+      const data = {
+        withCredentials: true,
+        credentials: 'include'
+      };
+      return axios.post(`${url}/v1/auth/sign_out`, data)
+        .then(res => {
+          console.log(res.data)
+          // Clear user access token and profile data from session
+          const cookies = new Cookies();
+          const sessionToken = cookies.remove('_cw_skey', { domain: 'api.cryptowise.ai', path: '/', httpOnly: true })
+          const accessToken = cookies.remove('_cw_acc', { domain: '.cryptowise.ai', path: '/' })
+          return Promise.resolve(res);
+        })
+    }
+
+
     signedIn() {
       // Checks if there is a saved token and it's still valid
       const token = this.getToken() // Getting token from cookies
-      return !!token && !this.isTokenExpired(token) // handwaiving here
+      return !!token && !this.isTokenExpired(token)
     }
 
     isTokenExpired(token) {
         try {
             const decoded = decode(token);
-            if (decoded.exp < Date.now() / 1000) { // Checking if token is expired. N
+            if (decoded.exp < Date.now() / 1000) {
                 return true;
             }
             else
@@ -54,29 +72,12 @@ export default class AuthService {
 
     setToken(token) {
       const cookies = new Cookies();
-      cookies.set('_cw_acc', token, { path: '/' })
+      cookies.set('_cw_acc', token, { domain: '.cryptowise.ai', path: '/' })
     }
 
     getToken() {
         const cookies = new Cookies();
         return cookies.get('_cw_acc')
-    }
-
-    signOut() {
-      console.log('signout')
-        const data = {
-          withCredentials: true,
-          credentials: 'include'
-        };
-        return axios.post(`${url}/v1/auth/sign_out`, data)
-          .then(res => {
-            console.log(res.data)
-            // Clear user access token and profile data from session
-            const cookies = new Cookies();
-            const sessionToken = cookies.remove('_cw_skey', { domain: 'api.cryptowise.ai', path: '/', httpOnly: true })
-            const accessToken = cookies.remove('_cw_acc', { domain: '.cryptowise.ai', path: '/' })
-            return Promise.resolve(res);
-          })
     }
 
     getProfile() {

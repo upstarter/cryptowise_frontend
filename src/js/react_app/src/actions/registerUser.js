@@ -2,7 +2,7 @@ import { url } from 'Utils/consts';
 import axios from "Config/axios";
 import Cookies from 'universal-cookie';
 import { push } from 'connected-react-router'
-import setAuthToken from 'Services/auth/setAuthToken'
+import AuthService from 'Services/auth/AuthService'
 import { SET_CURRENT_USER } from 'Actions/index'
 
 const registerUser = state => {
@@ -29,7 +29,8 @@ const registerUser = state => {
         } else {
           const cookies = new Cookies();
           const token = cookies.get('_cw_acc')
-          setAuthToken(token)
+          const auth = new AuthService
+          auth.setToken(token)
           dispatch({
             type: SET_CURRENT_USER,
             payload: token

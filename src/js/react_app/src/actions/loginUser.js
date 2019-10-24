@@ -3,7 +3,7 @@ import { url } from 'Utils/consts';
 import axios from "axios";
 import { SESSION_ERROR } from "Actions/index";
 import { SET_CURRENT_USER } from 'Actions/index'
-import setAuthToken from 'Services/auth/setAuthToken'
+import AuthService from 'Services/auth/AuthService'
 import setCurrentUser from 'Actions/setCurrentUser'
 import decode from 'jwt-decode'
 import Cookies from 'universal-cookie';
@@ -20,13 +20,13 @@ const loginUser = creds => {
     return dispatch => {
       return request.then(response => {
         const data = response.data
-
         if (data.error) {
           console.log('user signin error')
         } else {
           const cookies = new Cookies();
           const token = cookies.get('_cw_acc')
-
+          const auth = new AuthService
+          auth.setToken(token)
           if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
           } else {
