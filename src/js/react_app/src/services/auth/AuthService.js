@@ -54,7 +54,7 @@ export default class AuthService {
 
     setToken(token) {
       const cookies = new Cookies();
-      cookies.set('_cw_acc', token, { domain: '.cryptowise.ai', path: '/' })
+      cookies.set('_cw_acc', token, { path: '/' })
     }
 
     getToken() {
