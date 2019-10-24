@@ -18,48 +18,26 @@ const LinkMenu = withRouter(props => {
       defaultSelectedKeys={["/"]}
     >
       { !auth.signedIn() ?
-        <>
         <Menu.Item key="/">
           <Link to="/" style={{ textDecoration: "none" }}>
             <Icon type="team" />
             <span className="nav-text">Sign Up</span>
           </Link>
-        </Menu.Item>
+        </Menu.Item> : '' }
+      { !auth.signedIn() ?
         <Menu.Item key="/signup">
           <Link to="/signup" style={{ textDecoration: "none" }}>
             <Icon type="dot-chart" />
             <span className="nav-text">Explore</span>
           </Link>
-        </Menu.Item>
-
-        {/* <Menu.Item key="/analysis">
-          <Icon type="area-chart" />
-          <span className="nav-text">
-          <Link to="/analysis">
-            Analysis
-          </Link>
-          </span>
-        </Menu.Item> */}
-        {/* <Menu.Item key="/portfolio">
-            <Link to="/portfolio" style={{ textDecoration: "none" }}>
-              <Icon type="user" />
-              <span className="nav-text">Portfolio</span>
-            </Link>
-        </Menu.Item> */}
-        {/* <Menu.Item key="/data_scientists">
-          <Link to="/data_scientists" style={{ textDecoration: "none" }}>
-            <Icon type="code" />
-            <span className="nav-text">Data Scientists</span>
-          </Link>
-        </Menu.Item> */}
+        </Menu.Item>  : '' }
+      { !auth.signedIn() ?
         <Menu.Item key="/analysts">
           <Link to="/analysts" style={{ textDecoration: "none" }}>
             <Icon type="code" />
             <span className="nav-text">Participate</span>
           </Link>
-        </Menu.Item>
-        </> : ''
-      }
+        </Menu.Item>  : '' }
       { auth.signedIn() ?
         <Menu.Item key="/proposals">
           <Link to="/proposals" style={{ textDecoration: "none" }}>
@@ -89,6 +67,26 @@ const menuStyles = {
   }
 };
 
+{/* <Menu.Item key="/analysis">
+  <Icon type="area-chart" />
+  <span className="nav-text">
+  <Link to="/analysis">
+    Analysis
+  </Link>
+  </span>
+</Menu.Item> */}
+{/* <Menu.Item key="/portfolio">
+    <Link to="/portfolio" style={{ textDecoration: "none" }}>
+      <Icon type="user" />
+      <span className="nav-text">Portfolio</span>
+    </Link>
+</Menu.Item> */}
+{/* <Menu.Item key="/data_scientists">
+  <Link to="/data_scientists" style={{ textDecoration: "none" }}>
+    <Icon type="code" />
+    <span className="nav-text">Data Scientists</span>
+  </Link>
+</Menu.Item> */}
 // <Menu.Item key="/portfolio">
 //   <Link to="/portfolio" style={{ textDecoration: "none" }}>
 //     <Icon type="user" />
