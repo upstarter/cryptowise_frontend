@@ -54,7 +54,7 @@ export default class AuthService {
 
     setToken(token) {
       const cookies = new Cookies();
-      cookies.set('_cw_acc', token)
+      cookies.set('_cw_acc', token, { domain: '.cryptowise.ai', path: '/' })
     }
 
     getToken() {
@@ -73,7 +73,7 @@ export default class AuthService {
             console.log(res.data)
             // Clear user access token and profile data from session
             const cookies = new Cookies();
-            const sessionToken = cookies.remove('_cw_skey', { domain: '.cryptowise.ai', path: '/' })
+            const sessionToken = cookies.remove('_cw_skey', { domain: 'api.cryptowise.ai', path: '/', httpOnly: true })
             const accessToken = cookies.remove('_cw_acc', { domain: '.cryptowise.ai', path: '/' })
             return Promise.resolve(res);
           })
