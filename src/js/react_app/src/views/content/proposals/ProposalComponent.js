@@ -162,16 +162,16 @@ class ProposalComponent extends React.Component {
                   Help seed the design of financial data
                   structures, algorithms, teams, roles, functions and processes
                   used in optimal investment intelligence within a
-                  decentralized financial network for consumption by the network.
+                  decentralized financial network.
                 </p>
                 <p>
                   Ideas voted to the top decile may become
-                  candidates for future ecosystem engineering activities.
+                  candidates for future network activities.
                 </p>
                 <p>
                   To participate, <b> Submit</b> ideas
                   and/or <b>Rate </b> others' ideas so the collective interests
-                  of the ecosystem can emerge.
+                  of the ecosystem can emerge and be implemented in code.
                 </p>
               </div>
             </div>
