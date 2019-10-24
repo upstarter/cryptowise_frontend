@@ -73,8 +73,8 @@ export default class AuthService {
             console.log(res.data)
             // Clear user access token and profile data from session
             const cookies = new Cookies();
-            const sessionToken = cookies.remove('_cw_skey')
-            const accessToken = cookies.remove('_cw_acc')
+            const sessionToken = cookies.remove('_cw_skey', { domain: 'api.cryptowise.ai', path: '/' })
+            const accessToken = cookies.remove('_cw_acc', { domain: 'api.cryptowise.ai', path: '/' })
             return Promise.resolve(res);
           })
     }
