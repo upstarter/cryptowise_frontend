@@ -55,7 +55,7 @@ class AboutComponent extends React.Component {
             <p>
               Crypto Economics, Trading Strategies & Methods, Portfolio
               Management, Decentralized Applications, Artificial Intelligence,
-              Software Architecture, Emerging Tech, Multi-Agent Reinforcement
+              Software & Systems Architecture, Emerging Tech, Multi-Agent Reinforcement
               Learning, Cognitive Computing, Quantum Computing.
             </p>
           </div>

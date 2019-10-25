@@ -73,8 +73,8 @@ class SignUpStep1 extends Component {
       <div className={classes.container}>
         <div id="topics-header" className={classes.header}>
           <h2 className={classes.title}>
-            Gain from cutting edge topics relevant to your goals/interests.
-            Choose 3 or more topics. <span className="subtitle-small">Select as many as you like.</span>
+            Gain from cutting edge insights relevant to your goals/interests.
+            Follow 3 or more topics. <span className="subtitle-small">Select as many as you like.</span>
           </h2>
         </div>
         <div className={classes.main}>
