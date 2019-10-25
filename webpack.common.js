@@ -16,7 +16,7 @@ const mode = env === "production" ? "production" : "development"
 
 module.exports = {
   mode: mode,
-  // devtool: "source-map",
+  devtool: 'source-map',
   entry: {
     app: ["./src/js/app.js"
       // , "./js/elm/app/Main.elm"
@@ -179,7 +179,8 @@ module.exports = {
       Developers: path.resolve(__dirname, 'src/js/react_app/src/views/content/developers'),
       Auth: path.resolve(__dirname, 'src/js/react_app/src/views/backoffice/auth'),
       Marketing: path.resolve(__dirname, 'src/js/react_app/src/views/backoffice/marketing'),
-      Sessions: path.resolve(__dirname, 'src/js/react_app/src/views/backoffice/sessions')
+      Sessions: path.resolve(__dirname, 'src/js/react_app/src/views/backoffice/sessions'),
+      User: path.resolve(__dirname, 'src/js/react_app/src/views/user')
     }
   },
   node: {

@@ -10,6 +10,7 @@ import MembershipComponent from "Marketing/MembershipComponent";
 import AnalystComponent from "Developers/AnalystComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
+import ProfileComponent from "User/ProfileComponent";
 import InsightComponent from "Content/insights/InsightComponent";
 import SignUpContainer from "Base/SignUpWizard/SignUpContainer";
 import AboutComponent from "Base/home/AboutComponent";
@@ -112,8 +113,12 @@ class HomeContainer extends React.Component {
                   {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
                   {/* <Route exact path="/insights" component={InsightComponent} /> */}
                   <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                  <AuthRoute exact path="/profile" component={ProfileComponent} />
+                  {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
+                  {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
+                  {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
                   {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
-                  {/* <AuthRoute exact path="/portfolio" component={PortfolioComponent} /> */}
+                  <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
                   {/* <AuthRoute exact path="/profile" component={Protected} /> */}
                   <Route exact path="/about" component={AboutComponent} />
                   <Route exact path="/signup" component={SignUpContainer} />

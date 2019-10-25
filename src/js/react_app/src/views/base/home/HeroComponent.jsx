@@ -35,7 +35,7 @@ class HeroComponent extends React.Component {
               <div className="slidingVertical">
                 <span>trader.</span>
                 <span>strategist.</span>
-                <span>hacker.</span>
+                <span>engineer.</span>
                 <span>analyst.</span>
                 <span>investor.</span>
               </div>

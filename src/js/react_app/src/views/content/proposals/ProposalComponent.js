@@ -154,24 +154,24 @@ class ProposalComponent extends React.Component {
               <div id="proposal-blurb-intro">
                 <h3 id="blurb-title">The Quantasium</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  A Hacker Quorum focused on optimal strategies for retirement 🎸 rockstars
-                  and quant supergroups.
+                  A Hacker Quorum focused on optimal strategies for retirement rockstars
+                  🎸and quant supergroups.
                 </h4>
 
                 <p>
-                  Help seed the design of financial data structures, algorithms,
-                  teams, roles, functions and processes used for optimal
-                  investment intelligence within a decentralized financial
-                  network.
+                  Help seed the design of FDS (Financial Data Structures),
+                  architectures, algorithms, teams, roles, functions and
+                  processes used for optimal investment intelligence within a
+                  decentralized financial network.
                 </p>
                 <p>
-                  Ideas voted to the top decile may become
-                  candidates for future network activities.
+                  Ideas voted to the top decile may become candidates for future
+                  ecosystem activities.
                 </p>
                 <p>
-                  To participate, <b> Submit</b> ideas
-                  and/or <b>Rate </b> others' ideas so the collective interests
-                  of the ecosystem can emerge and be implemented in code.
+                  To participate, <b> Submit</b> ideas and/or <b>Rate </b>
+                  others' ideas so the collective interests of the ecosystem can
+                  emerge and be implemented in code.
                 </p>
               </div>
             </div>

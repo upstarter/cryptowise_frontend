@@ -51,6 +51,10 @@ class SiderMenu extends React.Component {
     });
   }
 
+  onSelect = () => {
+    this.collapse()
+  }
+
   render() {
     const { location } = this.props;
     const { classes } = this.props;
@@ -70,7 +74,7 @@ class SiderMenu extends React.Component {
         // breakpoint="xs"
         // onBreakpoint={(broken) => { this.collapse() } }
       >
-        <LinkMenu />
+        <LinkMenu onSelect={this.onSelect}/>
       </Sider>
     )
   }

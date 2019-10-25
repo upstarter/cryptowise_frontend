@@ -25,10 +25,10 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
         >
           <Form layout="vertical">
             {/* <Paragraph>RIFF Guidelines</Paragraph> */}
-            <Title level={3} className='subtitle-small'>
+            <Title level={4} className='subtitle'>
               Submit an idea for a financial data
               structure, algorithm, team role or function, methodology or process that could
-              become part of our future coordinated efforts to conquer the crypto markets.
+              become part of our coordinated efforts to conquer the crypto markets.
             </Title>
             {/* <Paragraph>Examples...</Paragraph>
             <ul style={{paddingLeft: 30}}>

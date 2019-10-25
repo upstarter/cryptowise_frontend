@@ -9,6 +9,11 @@ const LinkMenu = withRouter(props => {
   const { classes } = props;
   let auth = new AuthService;
 
+
+  const onSelect = () => {
+    props.onSelect()
+  }
+
   return (
     <Menu
       className={classes.menu}
@@ -16,7 +21,16 @@ const LinkMenu = withRouter(props => {
       mode="inline"
       selectedKeys={[location.pathname]}
       defaultSelectedKeys={["/"]}
+      onSelect={onSelect}
     >
+      { auth.signedIn() ?
+        <Menu.Item key="/proposals">
+          <Link to="/proposals" style={{ textDecoration: "none" }}>
+            <Icon type="code" />
+            <span className="nav-text">Ideate</span>
+          </Link>
+        </Menu.Item> : ''
+      }
       { !auth.signedIn() ?
         <Menu.Item key="/">
           <Link to="/" style={{ textDecoration: "none" }}>
@@ -39,13 +53,35 @@ const LinkMenu = withRouter(props => {
           </Link>
         </Menu.Item>  : '' }
       { auth.signedIn() ?
-        <Menu.Item key="/proposals">
-          <Link to="/proposals" style={{ textDecoration: "none" }}>
-            <Icon type="code" />
-            <span className="nav-text">Ideate</span>
+        <Menu.Item key="/fds">
+          <Icon type="build" />
+          <span className="nav-text">
+          <Link to="/fds">
+            Curate
           </Link>
+          </span>
         </Menu.Item> : ''
       }
+      {
+        <Menu.Item key="/portfolio">
+          <Link to="/portfolio" style={{ textDecoration: "none" }}>
+            <Icon type="pie-chart" />
+            <span className="nav-text">Portfolio</span>
+          </Link>
+        </Menu.Item>
+      }
+      { auth.signedIn() ?
+        <Menu.Item key="/profile">
+          <Icon type="user" />
+          <span className="nav-text">
+          <Link to="/profile">
+            Profile
+          </Link>
+          </span>
+        </Menu.Item> : ''
+      }
+
+
 {/*
       <Menu.Item key="/developers">
         <Link to="/developers" style={{ textDecoration: "none" }}>
@@ -87,12 +123,6 @@ const menuStyles = {
     <span className="nav-text">Data Scientists</span>
   </Link>
 </Menu.Item> */}
-// <Menu.Item key="/portfolio">
-//   <Link to="/portfolio" style={{ textDecoration: "none" }}>
-//     <Icon type="user" />
-//     <span className="nav-text">Portfolio</span>
-//   </Link>
-// </Menu.Item>
 
 // <Menu.Item key="/insights">
 //   <Link to="/insights" style={{ textDecoration: "none" }}>

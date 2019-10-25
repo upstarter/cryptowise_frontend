@@ -37,7 +37,8 @@ const registerUser = state => {
           })
         }
       }).then((data) => {
-
+        localStorage.setItem('userName', state.nickname)
+        localStorage.setItem('topicIds', state.topic_interest_ids)
       }).catch(function(error) {
         console.log(error);
       })
