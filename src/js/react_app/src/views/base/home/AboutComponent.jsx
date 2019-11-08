@@ -68,7 +68,7 @@ class AboutComponent extends React.Component {
 const aboutStyles = {
   about_content: {
     padding: '0rem 1rem 2rem 1rem',
-    margin: '0 auto',
+    margin: '50px auto',
     marginBottom: 50,
     maxWidth: '60ch',
 
@@ -80,8 +80,9 @@ const aboutStyles = {
       width: '95vw',
     },
 
-    '@media (min-width: 576px)': {
-      width: '95vw',
+    '@media (max-width: 460px)': {
+      marginLeft: 40,
+      width: '80vw',
     },
 
     '& .team-image': {

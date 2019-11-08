@@ -52,7 +52,7 @@ const LinkMenu = withRouter(props => {
             <span className="nav-text">Participate</span>
           </Link>
         </Menu.Item>  : '' }
-      { auth.signedIn() ?
+      {/* { auth.signedIn() ?
         <Menu.Item key="/fds">
           <Icon type="build" />
           <span className="nav-text">
@@ -61,7 +61,7 @@ const LinkMenu = withRouter(props => {
           </Link>
           </span>
         </Menu.Item> : ''
-      }
+      } */}
       {
         <Menu.Item key="/portfolio">
           <Link to="/portfolio" style={{ textDecoration: "none" }}>
@@ -70,7 +70,7 @@ const LinkMenu = withRouter(props => {
           </Link>
         </Menu.Item>
       }
-      { auth.signedIn() ?
+      {/* { auth.signedIn() ?
         <Menu.Item key="/profile">
           <Icon type="user" />
           <span className="nav-text">
@@ -79,7 +79,7 @@ const LinkMenu = withRouter(props => {
           </Link>
           </span>
         </Menu.Item> : ''
-      }
+      } */}
 
 
 {/*

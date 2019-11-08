@@ -40,46 +40,21 @@ class ProfileComponent extends React.Component {
     // });
   }
 
-  getData = callback => {
-    const url = `${api_url}/user_profile`
-    const data = {
-      withCredentials: true
+  postData = data => {
+    const url = `${api_url}/user_profiles`
+    const profileData = {
+      withCredentials: true,
+      data: data
     };
 
-    const cookies = new Cookies();
-    const sessionToken = cookies.get('_cw_skey')
-    const accessToken = cookies.get('_cw_acc')
-    setAuthToken(accessToken) // set token in requests
+    // const cookies = new Cookies();
+    // const sessionToken = cookies.get('_cw_skey')
+    // const accessToken = cookies.get('_cw_acc')
+    // setAuthToken(accessToken) // set token in requests
 
-    axios.get(url, data).then((res) => {
+    axios.post(url, data).then((res) => {
       callback(res.data)
     })
-  };
-
-  onLoadMore = () => {
-    this.setState({
-      loading: true,
-      list: this.state.data.concat([...new Array(count)].map(() => ({ loading: true, name: {} }))),
-    });
-    this.getData(res => {
-      const data = this.state.data.concat(res.data);
-      const page = this.state.page + 1
-
-      this.setState(
-        {
-          data,
-          list: data,
-          loading: false,
-          page: page,
-        },
-        () => {
-          // Resetting windows offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-          window.dispatchEvent(new Event('resize'));
-        },
-      );
-    });
   };
 
   showModal = () => {
@@ -118,6 +93,13 @@ class ProfileComponent extends React.Component {
     });
   }
 
+  onChange = (role, bool) => {
+    // e.preventDefault();
+    // e.stopPropagation();
+    console.log(role, bool)
+    this.postData({role: role, is_role: bool})
+  }
+
   render() {
     const { classes } = this.props
     const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
@@ -129,15 +111,18 @@ class ProfileComponent extends React.Component {
           <section id="profile" className={classes.profiles}>
             <div id="profile-blurb">
               <div id="profile-blurb-intro">
-                <h3 id="blurb-title">Disruptor Profile</h3>
+                <h3 id="blurb-title">HyperDisruptor Profile</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  Self-select your current roles within the ecosystem. Site exploration will progress your skills. We
-                  recommend starting as a DC (Data Curator) of FDS (Financial Data Structures). Once mastery is attained,
-                  self-select into Strategist (S) or Machine Learning Financial Engineer (MLFE) to exploit your acquired talents.
+                  Self-select your current roles within the ecosystem. The Site
+                  adapts to your chosen roles and exploration will progress your
+                  skills. We recommend starting as a Data Curator of FDS
+                  (Financial Data Structures). Once mastery is attained,
+                  self-select into Strategist or Machine Learning Financial
+                  Engineer to exploit your acquired wisdom and talents.
                 </h4>
-                <p>
+                {/* <p>
                   <Link to="/roadmap">The Roadmap</Link> includes team formation with tools and systems.
-                </p>
+                </p> */}
               </div>
             </div>
 
@@ -149,6 +134,9 @@ class ProfileComponent extends React.Component {
               <div className="profile-column">
                 <div className='switch'>
                   <Switch
+                    name="curator"
+                    ref="curator"
+                    onChange={e => this.onChange("curator", e)}
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
@@ -156,6 +144,9 @@ class ProfileComponent extends React.Component {
                 </div>
                 <div className='switch'>
                   <Switch
+                    name="featureAnalyst"
+                    ref="featureAnalyst"
+                    onChange={e => this.onChange("analyst", e)}
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
@@ -163,6 +154,9 @@ class ProfileComponent extends React.Component {
                 </div>
                 <div className='switch'>
                   <Switch
+                    name="strategist"
+                    ref="strategist"
+                    onChange={e => this.onChange("strategist", e)}
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
@@ -170,6 +164,9 @@ class ProfileComponent extends React.Component {
                 </div>
                 <div className='switch'>
                   <Switch
+                    name="MLEngineer"
+                    ref="MLEngineer"
+                    onChange={e => this.onChange("engineer", e)}
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
@@ -178,6 +175,9 @@ class ProfileComponent extends React.Component {
 
                 <div className='switch'>
                   <Switch
+                    name="tpm"
+                    ref="tpm"
+                    onChange={e => this.onChange("tpm", e)}
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
@@ -219,7 +219,7 @@ const profileStyles = {
       // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
-        maxWidth: '40vw',
+        // maxWidth: '40vw',
 
         '& #blurb-title': {
           fontSize: '2rem',
@@ -257,7 +257,7 @@ const profileStyles = {
     },
 
     '@media (min-width: 860px)': {
-      margin: '90px 0 50px 0',
+      margin: '90px 0px 50px 0',
       justifySelf: 'center',
     },
 

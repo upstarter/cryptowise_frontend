@@ -5,10 +5,11 @@ import PortfolioGrid from "Components/datagrid/PortfolioGrid";
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import injectSheet, { jss } from "react-jss";
 import { Layout, Icon } from "antd";
-import { notify } from "Components/base/notify/notify"
+import notify from "Components/base/notify/notify"
 const { Content } = Layout;
 import axios from "Config/axios";
 import { api_url } from 'Utils/consts'
+import zip from "Utils/zip"
 
 
 class PortfolioComponent extends React.Component {
@@ -53,35 +54,32 @@ class PortfolioComponent extends React.Component {
     //   );
   }
 
-  handleSubmit = (e) => {
-    const data = new FormData(e.target);
-
-    // console.log(data.get('DFINITY (DFN)'))
+  handleSubmit = (data, totalWeight) => {
     // calculate weight
-    if (this.state.totalWeight > 100) {
+    if (totalWeight != 100) {
        notify(
-        "warning",
+        "error",
         "",
-        "Total weight must be less than 100%"
+        "Total weight must be exactly 100%"
       );
       return;
+    } else if (data.length < 1) {
+      notify(
+       "error",
+       "",
+       "Please select at least one asset."
+     );
+     return;
     } else {
-      // post portfolio
-    //
-    // data.append('name', 'ABC');   //append the values with key, value pair
-    // data.append('age', 20);
-
-    const config = {
-        headers: { 'content-type': 'multipart/form-data' }
-      }
-    axios.post(`${api_url}/portfolios`, data, config)
+      axios.defaults.headers.post['content-type'] = 'multipart/form-data'
+      axios.post(`${api_url}/portfolios`, {portfolio: data})
         .then(response => {
             console.log(response);
         })
         .catch(error => {
             console.log(error);
         });
-    }
+      }
   }
 
   handleWeightChange = (value) => {
@@ -106,25 +104,18 @@ class PortfolioComponent extends React.Component {
     const { classes } = this.props;
     return (
       <div
-        style={{
-          maxWidth: "600px",
-          textAlign: 'center',
-          margin: "45px auto",
-          height: '100vh'
-        }}
+        className={classes.portfolio}
       >
         <ScrollToTopOnMount />
 
-        <h1>Portfolio Strategist</h1>
+        <h1 className='title-small'>The WiseHive Portfolio</h1>
         <h4>
-          A tournament where investment strategists gain mastery.
+          Your vote for the optimal cryptoasset allocation.
         </h4>
         <h6 className='subtitle-small'>
-          Construct your optimal portfolio allocation from our painstakingly
-          curated assets. Top spots on leaderboards will get preferred access
-          on any future token sale.
+          Submit your asset allocation contribution to the WiseHive portfolio. Top
+          pickers will get preferred access on any future token sale.
         </h6>
-        <br />
           <PortfolioGrid
             handleSubmit={this.handleSubmit}
             handleWeightChange={this.handleWeightChange}
@@ -136,5 +127,25 @@ class PortfolioComponent extends React.Component {
   }
 }
 
-const portfolioStyles = {};
-export default injectSheet(portfolioStyles)(PortfolioComponent);
+const portfolio = {
+  portfolio: {
+    textAlign: 'center',
+    margin: "45px auto",
+    height: '100%',
+
+    '@media (max-width: 860px)': {
+       maxWidth: '90vw',
+       gridTemplateColumns: '90vw 90vw',
+      // gridTemplateAreas: '"sidebar" "content"',
+    },
+
+    '@media (min-width: 860px)': {
+      maxWidth: "600px",
+      // gridTemplateColumns: '2fr 8fr',
+      // gridTemplateAreas: '"sidebar content"',
+    },
+  },
+
+
+};
+export default injectSheet(portfolio)(PortfolioComponent);

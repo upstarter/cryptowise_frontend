@@ -1,30 +1,14 @@
 import React from "react";
-import { Table, Select, InputNumber, Button, Icon, Collapse, Tooltip, Divider } from "antd";
+import { Table, Select, InputNumber, Popover, Button, Icon } from "antd";
 import { notify } from "Components/base/notify/notify"
-const { Panel } = Collapse;
 import injectSheet, { jss } from "react-jss"
 import tokens from "./MockData";
 import formatNumber from "Utils/formatNumber"
+import zip from "Utils/zip"
+import AuthService from "Services/auth/AuthService"
 
 const Option = Select.Option;
 
-
-// class NumericInputDemo extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { value: '' };
-//   }
-//
-//   onChange = value => {
-//     this.setState({ value });
-//   };
-//
-//   render() {
-//     return (
-//       <NumericInput style={{ width: 120 }} value={this.state.value} onChange={this.onChange} />
-//     );
-//   }
-// }
 
 class PortfolioGrid extends React.Component {
   constructor() {
@@ -38,9 +22,11 @@ class PortfolioGrid extends React.Component {
           allocation: 0,
         }
       ],
+      data: [],
       result: {},
       value: ''
     };
+    this.addRow = this.addRow.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSelectChange = this.onSelectChange.bind(this);
@@ -49,22 +35,25 @@ class PortfolioGrid extends React.Component {
 
   footer = () => {
     return(
-      <>
-        <Button style={{width: '30%', marginRight: '20px'}} type="secondary" block onClick={this.addRow}>
+      <div id="table-buttons">
+        {/* <div>
+          Total of Weights: {this.state.totalWeight}
+        </div> */}
+        <Button id="add-asset" type="secondary" block onClick={this.addRow}>
           Add Asset
         </Button>
 
         <Button
+          id="portfolio-submit"
           form='myform'
           type="primary submit"
           block
           key="submit"
           htmlType="submit"
-          style={{ width: '30%', marginTop: 10 }}
         >
           Submit
         </Button>
-      </>
+      </div>
     )
   }
 
@@ -108,28 +97,46 @@ class PortfolioGrid extends React.Component {
       tableData: [
         ...prevState.tableData,
         {
-          name: tokens[n].name,
+          name: tokens[0].name,
           allocation: 0
         }
       ]
     }));
   };
 
-  columns = () => {
-    [
-      {
-        title: "#",
-        dataIndex: "key",
-        key: "key",
-        render: (text, record, i) => <a>{i + 1}</a>
-      },
+  onHover = (t,h,e) => {
+      if(!!('ontouchstart' in window)){//check for touch device
+      //behaviour and events for touch device
+        console.log('touch',t,h,e)
+      }
+      else{
+        console.log('nontouch',t,h,e)
+
+      //behaviour and events for pointing device like mouse
+      }
+  }
+
+  columns = (classes) => {
+
+    const text = <span>Title</span>;
+    const content = (
+      <div>
+        <p>Content</p>
+        <p>Content</p>
+      </div>
+    );
+
+
+    return (
+      [
       {
         title: "Token",
         dataIndex: "name",
         key: "name",
-        render: (token1, record, i) => (
+        render: (token, record, i) => (
           <Select
             ref="tokenSelect"
+            className={classes.select}
             id="name"
             data-id={i}
             name="token-select"
@@ -163,7 +170,14 @@ class PortfolioGrid extends React.Component {
             // )}
           >
             {tokens.map((token, i) => (
-              <Select.Option name={token.id} key={token.id} value={token.id}>{token.name}</Select.Option>
+              <Select.Option
+                className={classes.option, "cw-token"}
+                // onMouseEnter={(e) => this.onHover(token,record, e)}
+                name={token.id}
+                key={token.id}
+                ref={`token${token.id}`}
+                value={token.id}>{token.name}
+              </Select.Option>
             ))}
           </Select>
         )
@@ -175,8 +189,9 @@ class PortfolioGrid extends React.Component {
         render: (token, record, i) => (
           <InputNumber
             // {...this.props}
-            onChange={this.handleWeightChange}
-            defaultValue={5}
+            // onChange={this.handleWeightChange}
+            className={classes.input, "allocation"}
+            ref={`weight`}
             min={0}
             max={100}
             formatter={value => `${value}%`}
@@ -184,12 +199,12 @@ class PortfolioGrid extends React.Component {
             allowClear
             id="allocation"
             name={`weight-${token.id}`}
-            className="allocation"
             placeholder="Enter 0 - 100"
             data-id={i}
             placeholder="Adjust Weight"
             maxLength={25}
             step={5}
+            defaultValue={0}
             // value={this.state.value}
           />
         )
@@ -218,25 +233,27 @@ class PortfolioGrid extends React.Component {
           </>
         )
       }
-    ];
+    ]
+   )
   }
 
 
-  onSelect = (value,option) => {
-    console.log('selected', option.props);
-    console.table(this.state.tableData);
-
-    this.setState({tableData: this.state.tableData})
-  }
+  // onSelect = (value,option) => {
+  //   console.log('selected', option.props);
+  //   console.table(this.state.tableData);
+  //
+  //   this.setState({tableData: this.state.tableData})
+  // }
 
 
   onSelectChange = tokenId => {
-    // console.log(tokenId)
-    this.props
+    console.table(this.state.data)
+
   }
 
   handleWeightChange = (weight) => {
-    // console.log(weight)
+    // this.setState({totalWeight: this.state.totalWeight += weight},
+    // console.log(this.state.totalWeight))
   }
 
   handleChange = (e, form) => {
@@ -246,35 +263,38 @@ class PortfolioGrid extends React.Component {
 
   onSubmit = e => {
     e.preventDefault()
-    console.log(e.target.id)
 
-    if (["name", "allocation"].includes(e.target.id)) {
-      console.log(e.target.id)
-      let tableData = [...this.state.tableData];
-      tableData[e.target.dataset.id][e.target.id] = e.target.value;
-      this.setState({ tableData });
-    } else {
-      let tableData = [...this.state.tableData];
-      tableData[e.target.dataset.id][e.target.id] = e.target.value;
-      this.setState({ tableData });
-    }
-    console.table(this.state.tableData)
+    const tokes = document.querySelectorAll('.ant-select-selection-selected-value')
+    const weights = document.querySelectorAll('.allocation')
+
+    let wts = []
+    let totalWeight = 0
+    weights.forEach((weight) => {
+      let wt = parseInt(weight.children[1].children[0].value.replace('%', ''))
+      totalWeight += wt
+      wts.push(wt)
+    })
+
+    let toks = []
+
+    tokes.forEach(function(token, i) {
+      let tok = tokens.find(t => t.name === token.firstChild.data)
+      let name = tok.name
+      let tokSym = tok.symbol
+      let tokId = tok.id
+      toks.push({id: tokId, name: name, symbol: tokSym, weight: wts[i]})
+    });
+
+    let auth = new AuthService
+    let user = auth.getProfile()
+    toks = {...toks, user_id: user.sub}
+
+    this.props.handleSubmit(toks, totalWeight)
   }
-
-  // onSubmit = e => {
-  //   if (this.refs.tokenSelect) {
-  //     console.log(this.refs.tokenSelect.value);
-  //   }
-  //   e.preventDefault();
-  //   // let myForm = document.getElementById('myform');
-  //   // let formData = new FormData(myForm);
-  //   // console.table(formData);
-  //   this.props.handleSubmit(e)
-  // };
 
 
   render() {
-    const { value } = this.props;
+    const { value, classes } = this.props;
     const title = value ? (
     <span className="numeric-input-title">{value !== '-' ? formatNumber(value) : '-'}</span>
     ) : (
@@ -294,9 +314,12 @@ class PortfolioGrid extends React.Component {
         <form name='myform' id='myform' onSubmit={this.onSubmit}>
           <Table
             bordered
-            title={() => `Total of Weights: ${this.state.tableData.reduce( (sum, i) => (sum += parseInt(i.allocation)), 0 )}`}
+            className={classes.portfolioTable}
+            rowClassName={classes.portfolioTableRow}
+            // title={() => `Total of Weights: ${this.state.tableData.reduce( (sum, i) => (sum += parseInt(i.allocation)), 0 )}`}
+            // title={() => `Total of Weights: ${this.state.totalWeight}`}
             footer={this.footer}
-            columns={columns}
+            columns={this.columns(classes)}
             dataSource={this.state.tableData}
             // expandRowByClick={true}
             // expandIconAsCell={false}
@@ -312,6 +335,77 @@ class PortfolioGrid extends React.Component {
 }
 
 const styles = {
+  portfolioTableRow: {
+    '@media (max-width: 460px)': {
+      maxWidth: '90vw',
+      display: 'grid',
+      gridAutoFlow: 'row',
+      '& table': {
+        maxWidth: '90vw',
+      },
+    },
+  },
 
+  portfolioTable: {
+    margin: '50px auto',
+    maxWidth: "600px",
+    textAlign: 'center',
+    display: 'grid',
+    gridAutoFlow: 'row',
+
+    '@media (max-width: 860px)': {
+       // maxWidth: '85vw',
+       // gridTemplateRows: '100vw 100vw',
+       // gridTemplateAreas: '"content"',
+    },
+
+
+    '& .ant-table-body': {
+      maxWidth: "600px",
+
+      '@media (max-width: 460px)': {
+        maxWidth: '90vw',
+        display: 'grid',
+        gridAutoFlow: 'row',
+        '& table': {
+          // maxWidth: '90vw',
+        },
+      },
+
+      '& .ant-table-thead': {
+        gridAutoFlow: 'column',
+
+
+        '& tr': {
+
+          '@media (max-width: 860px)': {
+            display: 'grid',
+            gridAutoFlow: 'column',
+            gridTemplateColumns: '8fr 2fr 2fr',
+          },
+        },
+
+      },
+    },
+    '& #table-buttons': {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gridGap: '12px',
+
+      '@media (min-width: 860px)': {
+
+        '& #add-asset': {
+          width: '200px',
+          justifySelf: 'center'
+        },
+        '& #portfolio-submit': {
+          width: '200px',
+          justifySelf: 'center'
+        }
+      },
+
+
+    }
+  },
 }
 export default injectSheet(styles)(PortfolioGrid);
