@@ -21,7 +21,9 @@ import {
   Checkbox,
   Button,
   AutoComplete,
+  Modal
 } from 'antd';
+import TermsOfServiceComponent from 'Base/TermsOfServiceComponent'
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -65,6 +67,7 @@ class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
+    visible: false
   };
 
   handleSubmit = e => {
@@ -80,6 +83,13 @@ class RegistrationForm extends React.Component {
     const { value } = e.target;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
 
   // compareToFirstPassword = (rule, value, callback) => {
   //   const { form } = this.props;
@@ -108,9 +118,17 @@ class RegistrationForm extends React.Component {
   //   }
   //   callback();
   // };
+
+  handleCancel = () => {
+    this.setState({
+      visible: false,
+    });
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
+    const { classes, confirmLoading, onCancel, onCreate } = this.props;
 
     const formItemLayout = {
       labelCol: {
@@ -150,6 +168,15 @@ class RegistrationForm extends React.Component {
     ));
 
     return (
+      <>
+      <TermsOfServiceComponent
+        wrappedComponentRef={this.saveFormRef}
+        wrapClassName={classes.modal}
+        visible={this.state.visible}
+        onCancel={this.handleCancel}
+        onCreate={this.handleCreate}
+        confirmLoading={confirmLoading}
+      />
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item
           label={
@@ -253,31 +280,35 @@ class RegistrationForm extends React.Component {
             </Col>
           </Row>
         </Form.Item> */}
-        {/* <Form.Item {...tailFormItemLayout}>
+        <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
             valuePropName: 'checked',
           })(
             <Checkbox>
-              I have read the <a href="">agreement</a>
+              I have read the <a onClick={this.showModal}>terms of service.</a>
             </Checkbox>,
           )}
-        </Form.Item> */}
+        </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register
           </Button>
         </Form.Item>
       </Form>
+    </>
     );
   }
 }
 
 
-// const styles = {};
+const styles = {
+  modal: {
 
-// const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
-const BasicRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
+  }
+};
+const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
+// const BasicRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
 
-// const BasicRegistrationForm = injectSheet(styles)(WrappedRegistrationForm);
-// export default withRouter(BasicRegistrationForm);
+const BasicRegistrationForm = injectSheet(styles)(WrappedRegistrationForm);
 export default withRouter(BasicRegistrationForm);
+// export default withRouter(BasicRegistrationForm);

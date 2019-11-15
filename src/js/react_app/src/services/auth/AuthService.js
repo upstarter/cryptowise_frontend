@@ -44,7 +44,11 @@ export default class AuthService {
           // Clear user access token and profile data from session
           const cookies = new Cookies();
           const sessionToken = cookies.remove('_cw_skey', { domain: 'api.cryptowise.ai', path: '/', httpOnly: true })
-          const accessToken = cookies.remove('_cw_acc', { domain: '.cryptowise.ai', path: '/' })
+          if (process.env.NODE_ENV == 'development') {
+            const accessToken = cookies.remove('_cw_acc', { domain: 'localhost', path: '/' })
+          } else {
+            const accessToken = cookies.remove('_cw_acc', { domain: '.cryptowise.ai', path: '/' })
+          }
           return Promise.resolve(res);
         })
     }

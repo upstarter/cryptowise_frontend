@@ -1,29 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom';
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-import NewProposalForm from './NewProposalForm'
-import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
+import { List, Card, Button, Rate, Icon, Typography, Divider, Affix } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import userProposalCreate from "Actions/userProposalCreate";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
 
-const count = 5;
-const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
+const count = 20;
+const dataUrl = `//${api_url}/assets`;
 
-class ProposalComponent extends React.Component {
+class AssetsComponent extends React.Component {
   state = {
     initLoading: true,
     loading: false,
     data: [],
     list: [],
     page: 1,
-    ModalContent: 'Customize your experience',
     visible: false,
     confirmLoading: false
   };
@@ -40,7 +38,7 @@ class ProposalComponent extends React.Component {
   }
 
   getData = callback => {
-    const url = `${api_url}/proposals?per_page=${count}&page=${this.state.page}`
+    const url = `${api_url}/tokens?per_page=${count}&page=${this.state.page}`
     const data = {
       withCredentials: true,
       credentials: 'include'
@@ -82,41 +80,7 @@ class ProposalComponent extends React.Component {
     });
   };
 
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  }
 
-  saveFormRef = formRef => {
-    this.formRef = formRef;
-  };
-
-  handleCreate = () => {
-
-    this.setState({
-      ModalContent: 'The modal will be closed after two seconds',
-      confirmLoading: true,
-    });
-
-    const { form } = this.formRef.props;
-    form.validateFields((err, values) => {
-      if (err) {
-        console.error('handleCreate error', err)
-        return;
-      }
-      this.props.dispatch(userProposalCreate(values))
-    });
-    form.resetFields();
-    this.setState({ visible: false, confirmLoading: false })
-  }
-
-  handleCancel = () => {
-    console.log('Clicked cancel button');
-    this.setState({
-      visible: false,
-    });
-  }
 
   render() {
     const { classes } = this.props
@@ -140,80 +104,46 @@ class ProposalComponent extends React.Component {
         <React.Fragment>
           <ScrollToTopOnMount />
 
-          <section id="proposal" className={classes.proposals}>
-            <NewProposalForm
-              wrappedComponentRef={this.saveFormRef}
-              wrapClassName={classes.modal}
-              visible={this.state.visible}
-              onCancel={this.handleCancel}
-              onCreate={this.handleCreate}
-              confirmLoading={confirmLoading}
-            />
-            <div id="proposal-blurb">
-              <div id="proposal-blurb-intro">
-                <h3 id="blurb-title">The Quantasium</h3>
+          <section id="asset" className={classes.assets}>
+            <div id="asset-blurb">
+              <div id="asset-blurb-intro">
+                <h3 id="blurb-title">The Network is the Asset</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  A Hacker Quorum focused on optimal strategies for retirement rockstars
-                  🎸and quant supergroups.
+                  Continually curated for quality based on crypto valuation best practices.
+                  Allocate at least 3 to your <Link style={{color: 'green'}} to='/portfolio'>WiseHive portfolio</Link> to gain access to the next level.
                 </h4>
 
-                <p>
-                  Help seed the design of FDS (Financial Data Structures),
-                  architectures, algorithms, teams, roles, functions and
-                  processes used for optimal investment intelligence within a
-                  decentralized financial network.
-                </p>
-                <p>
-                  Ideas voted to the top decile may become candidates for future
-                  ecosystem activities.
-                </p>
-                <p>
-                  To participate, <b> Submit</b> ideas and/or <b>Rate </b>
-                  others' ideas so the collective interests of the ecosystem can
-                  emerge and be implemented in code.
-                </p>
               </div>
             </div>
 
-            <div id="proposal-items" className={classes.proposalItems}>
+            <div id="asset-items" className={classes.assetItems}>
               <Affix offsetTop={45}>
-                <div id="proposal-items-heading">
-                  <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
-                  <h3>Ideas 🌱</h3>
-                  {/* <div id="riff-blurb">
-                    <strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
-                  </div> */}
+                <div id="asset-items-heading">
+                  {/* <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' /> */}
+                  <h3>The WiseHive Assets</h3>
                 </div>
               </Affix>
-              <div className="proposal-column">
+              <div className="asset-column">
                 <List
                   className="item-list"
                   loading={initLoading}
+                  grid={{
+                    gutter: 5,
+                    xs: 1,
+                    sm: 1,
+                    md: 1,
+                    lg: 1,
+                    xl: 1,
+                    xxl: 1,
+                  }}
                   itemLayout="horizontal"
-                  loadMore={loadMore}
+                  // loadMore={loadMore}
                   dataSource={list}
                   renderItem={item => (
-                    // <List.Item actions={[<a>more</a>]}>
                     <List.Item>
-                      <Skeleton avatar title={false} loading={item.loading} active>
-                        <List.Item.Meta
-                          id='list-item-meta'
-                          avatar={
-                             <Avatar style={{}} icon="team" />
-                          }
-                          title={<a href="//ant.design">{item.name}</a>}
-                          description={<p className='item-name'>{item.description}</p>}
-                        />
-                        {
-                          // <div id="meta-details">
-                          //   <p className='item-name'>{item.name}</p>
-                          //   <p className='item-description'>{item.description}</p>
-                          // </div>
-                        }
-                        <div>
-                          <Rate allowHalf />
-                        </div>
-                      </Skeleton>
+                      <Card className={classes.card} title={item.name}>
+                        <p className='item-name'>{item.description}</p>
+                      </Card>
                     </List.Item>
                   )}
                 />
@@ -227,17 +157,22 @@ class ProposalComponent extends React.Component {
   }
 }
 
-const proposalStyles = {
+const assetStyles = {
   modal: {
-    // width: 10,
-    // background: `${colors.secondaryDark}`,
     filter: 'invert(0)',
     '& .ant-modal-content': {
       color: 'red !important',
       textDecoration: 'none !important',
     }
   },
-  proposals: {
+  card: {
+    background: `${colors.tertiaryDark}`,
+    color: `${colors.offWhite}`,
+    '& .ant-card-head-title': {
+      color: `${colors.sproutGreen}`
+    }
+  },
+  assets: {
     display: 'grid',
     gridAutoFlow: 'row',
 
@@ -251,14 +186,13 @@ const proposalStyles = {
       gridTemplateAreas: '"sidebar content"',
     },
 
-    '& #proposal-blurb': {
+    '& #asset-blurb': {
       gridArea: 'sidebar',
       justifySelf: 'center',
       maxWidth: '60ch',
-      margin: '40px 0 0 0',
+      margin: '80px 0 0 0',
       padding: 14,
 
-      // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
         maxWidth: '90vw',
@@ -271,10 +205,9 @@ const proposalStyles = {
       '@media (min-width: 860px)': {
         position: 'fixed',
         maxWidth: '30vw',
-        // maxWidth: '50ch',
       },
 
-      '& #proposal-blurb-intro': {
+      '& #asset-blurb-intro': {
         fontSize: 13,
         '& p': { padding: 'none !important'},
 
@@ -283,36 +216,29 @@ const proposalStyles = {
         '& #blurb-title': {
           fontSize: '2.7rem !important',
           color: `${colors.offWhite} !important`,
-          // filter: 'contrast(.8)'
         },
         '& #blurb-subtitle': {
           color: `${colors.offWhite} !important`,
           marginBottom: 10,
-          // fontSize: '1.15rem',
         }
       },
-
-      // '& #proposal-blurb-list': {
-      //   padding: [10,0,10,10]
-      // },
-
     },
   },
 
-  proposalItems: {
+  assetItems: {
     gridArea: 'content',
+    justifySelf: 'start',
 
     '@media (max-width: 860px)': {
-      justifySelf: 'center',
-      margin: '0 auto'
+      maxWidth: '85vw',
 
     },
     '@media (min-width: 860px)': {
-      justifySelf: 'center',
-      margin: '50px auto',
+      margin: '50px 15vw 50px 15vw',
+
     },
 
-    '& #proposal-items-heading': {
+    '& #asset-items-heading': {
       display: 'grid',
       alignItems: 'center',
       justifyItems: 'center',
@@ -351,21 +277,9 @@ const proposalStyles = {
         paddingTop: 17,
         color: '#fff',
       },
-      // '& #riff-blurb': {
-      //   gridColumn: '2',
-      //   gridRow: '2',
-      //   justifSelf: 'center',
-      //   fontSize: '1.2rem',
-      //   letterSpacing: '.02em',
-      //   '& strong': {
-      //     fontSize: '1.2rem !important',
-      //     filter: 'saturate(1.5)'
-      //   },
-      // }
     },
-    //
+
     '& .item-list': {
-      // padding: 10,
       color: `${colors.offWhite} !important`,
 
       '& #list-item-meta': {
@@ -406,4 +320,4 @@ const proposalStyles = {
 
 }
 
-export default injectSheet(proposalStyles)(ProposalComponent)
+export default injectSheet(assetStyles)(AssetsComponent)

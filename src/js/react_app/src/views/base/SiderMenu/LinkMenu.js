@@ -70,6 +70,14 @@ const LinkMenu = withRouter(props => {
           </Link>
         </Menu.Item>
       }
+      {
+        <Menu.Item key="/assets">
+          <Link to="/assets" style={{ textDecoration: "none" }}>
+            <Icon type="stock" />
+            <span className="nav-text">Assets</span>
+          </Link>
+        </Menu.Item>
+      }
       {/* { auth.signedIn() ?
         <Menu.Item key="/profile">
           <Icon type="user" />

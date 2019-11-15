@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../header/AppHeader";
 import AnalysisContainer from "Content/analysis/AnalysisContainer"
 import PortfolioComponent from "Content/portfolio/PortfolioComponent";
+import AssetsComponent from "Content/assets/AssetsComponent";
 import HomeComponent from "./HomeComponent";
 import MembershipComponent from "Marketing/MembershipComponent";
 // import DataScientistComponent from "Developers/DataScientistComponent";
@@ -119,6 +120,7 @@ class HomeContainer extends React.Component {
                   {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
                   {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
                   <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
+                  <AuthRoute exact path="/assets" component={AssetsComponent} />
                   {/* <AuthRoute exact path="/profile" component={Protected} /> */}
                   <Route exact path="/about" component={AboutComponent} />
                   <Route exact path="/signup" component={SignUpContainer} />

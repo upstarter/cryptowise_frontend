@@ -193,7 +193,7 @@ const blogStyles = {
       color: `${colors.smoke}`,
     },
     '& p': {
-      display: 'flex',
+      // display: 'flex',
       // justifyContent: 'center',
       // textAlign: 'center !important',
       fontFamily: 'Avenir-Book',
