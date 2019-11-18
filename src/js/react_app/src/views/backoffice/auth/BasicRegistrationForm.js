@@ -28,41 +28,6 @@ import TermsOfServiceComponent from 'Base/TermsOfServiceComponent'
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 
-const residences = [
-  {
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [
-      {
-        value: 'hangzhou',
-        label: 'Hangzhou',
-        children: [
-          {
-            value: 'xihu',
-            label: 'West Lake',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [
-      {
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [
-          {
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          },
-        ],
-      },
-    ],
-  },
-];
-
 class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
@@ -100,16 +65,6 @@ class RegistrationForm extends React.Component {
   //   }
   // };
   //
-
-  // handleWebsiteChange = value => {
-  //   let autoCompleteResult;
-  //   if (!value) {
-  //     autoCompleteResult = [];
-  //   } else {
-  //     autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-  //   }
-  //   this.setState({ autoCompleteResult });
-  // };
 
   // validatePassword = (rule, value, callback) => {
   //   const { form } = this.props;
@@ -189,7 +144,7 @@ class RegistrationForm extends React.Component {
           }
         >
           {getFieldDecorator('nickname', {
-            rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+            rules: [{ required: true, message: 'Please input your username!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
         <Form.Item label="E-mail">
@@ -282,11 +237,16 @@ class RegistrationForm extends React.Component {
         </Form.Item> */}
         <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
+            rules: [
+              {
+                required: true,
+                message: 'Please agree to the terms!',
+              },
+            ],
           })(
             <Checkbox>
               I have read the <a onClick={this.showModal}>terms of service.</a>
-            </Checkbox>,
+            </Checkbox>
           )}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>

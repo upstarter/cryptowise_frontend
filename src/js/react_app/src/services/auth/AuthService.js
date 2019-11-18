@@ -89,6 +89,10 @@ export default class AuthService {
         return decode(this.getToken());
     }
 
+    getProfileId() {
+      return decode(this.getToken()).sub;
+    }
+
 
     fetch(url, options) {
         // performs api calls sending the required authentication headers

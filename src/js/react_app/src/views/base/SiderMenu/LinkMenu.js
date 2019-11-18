@@ -78,7 +78,7 @@ const LinkMenu = withRouter(props => {
           </Link>
         </Menu.Item>
       }
-      {/* { auth.signedIn() ?
+      { auth.signedIn() ?
         <Menu.Item key="/profile">
           <Icon type="user" />
           <span className="nav-text">
@@ -87,7 +87,7 @@ const LinkMenu = withRouter(props => {
           </Link>
           </span>
         </Menu.Item> : ''
-      } */}
+      }
 
 
 {/*

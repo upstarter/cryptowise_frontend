@@ -11,6 +11,7 @@ import { api_url } from 'Utils/consts'
 import { Icon, Switch } from 'antd';
 import axios from "axios";
 import { connect } from "react-redux";
+import AuthService from 'Services/auth/AuthService'
 // import userProfileCreate from "Actions/userProfileCreate";
 import colors from "Styles/colors"
 // import Cookies from 'universal-cookie';
@@ -42,10 +43,7 @@ class ProfileComponent extends React.Component {
 
   postData = data => {
     const url = `${api_url}/user_profiles`
-    const profileData = {
-      withCredentials: true,
-      data: data
-    };
+
 
     // const cookies = new Cookies();
     // const sessionToken = cookies.get('_cw_skey')
@@ -97,7 +95,11 @@ class ProfileComponent extends React.Component {
     // e.preventDefault();
     // e.stopPropagation();
     console.log(role, bool)
-    this.postData({role: role, is_role: bool})
+    const auth = new AuthService
+    let id = auth.getProfileId()
+    console.log('id', id)
+    let data = {user_profile: {id: id, role: role, is_role: bool}}
+    this.postData(data)
   }
 
   render() {
@@ -117,7 +119,7 @@ class ProfileComponent extends React.Component {
                   adapts to your chosen roles and exploration will progress your
                   skills. We recommend starting as a Data Curator of FDS
                   (Financial Data Structures). Once mastery is attained,
-                  self-select into Strategist or Machine Learning Financial
+                  self-select into Investment Strategist or Machine Learning Financial
                   Engineer to exploit your acquired wisdom and talents.
                 </h4>
                 {/* <p>
@@ -160,7 +162,7 @@ class ProfileComponent extends React.Component {
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
-                  <Icon className='icon' type="bar-chart" /><span>Strategist</span>
+                  <Icon className='icon' type="bar-chart" /><span>Investment Strategist</span>
                 </div>
                 <div className='switch'>
                   <Switch
@@ -181,7 +183,7 @@ class ProfileComponent extends React.Component {
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
-                  <Icon className='icon' type="project" /><span>Technical Project Manager</span>
+                  <Icon className='icon' type="project" /><span>Technical Program Manager</span>
                 </div>
               </div>
             </div>
