@@ -14,7 +14,8 @@ const registerUser = state => {
               email: state.email,
               password: state.password,
               topic_knowledge_ids: state.topic_knowledge_ids,
-              topic_interest_ids: state.topic_interest_ids
+              topic_interest_ids: state.topic_interest_ids,
+              terms_accepted: state.terms_accepted,
             }
           },
           withCredentials: true
