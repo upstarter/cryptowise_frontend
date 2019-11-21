@@ -236,7 +236,8 @@ class RegistrationForm extends React.Component {
           </Row>
         </Form.Item> */}
         <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement', {
+          {getFieldDecorator('terms_accepted', {
+            valuePropName: 'checked',
             rules: [
               {
                 required: true,

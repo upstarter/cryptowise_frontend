@@ -7,22 +7,17 @@ import {
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-// import NewProfileForm from './NewProfileForm'
 import { Icon, Switch } from 'antd';
 import axios from "axios";
 import { connect } from "react-redux";
 import AuthService from 'Services/auth/AuthService'
-// import userProfileCreate from "Actions/userProfileCreate";
 import colors from "Styles/colors"
-// import Cookies from 'universal-cookie';
-// import setAuthToken from 'Services/auth/setAuthToken'
-
 
 class ProfileComponent extends React.Component {
   state = {
     initLoading: true,
     loading: false,
-    data: [],
+    roleData: [],
     list: [],
     page: 1,
     ModalContent: '',
@@ -31,27 +26,26 @@ class ProfileComponent extends React.Component {
   };
 
   componentDidMount() {
-    // this.getData(res => {
-    //   this.setState({
-    //     initLoading: false,
-    //     data: res.data,
-    //     list: res.data,
-    //     page: this.state.page + 1
-    //   });
-    // });
+    this.getData(res => {
+      this.setState({
+        initLoading: false,
+        roleData: res.data["roles"]
+      });
+    });
   }
 
-  postData = data => {
-    const url = `${api_url}/user_profiles`
-
-
-    // const cookies = new Cookies();
-    // const sessionToken = cookies.get('_cw_skey')
-    // const accessToken = cookies.get('_cw_acc')
-    // setAuthToken(accessToken) // set token in requests
-
-    axios.post(url, data).then((res) => {
+  getData = callback => {
+    const url = `${api_url}/user/roles`
+    axios.get(url).then((res) => {
       callback(res.data)
+    })
+  };
+
+  postData = data => {
+    const url = `${api_url}/user/update_role`
+    axios.put(url, data).then((res) => {
+      console.log('res', res.data.data)
+      this.setState({roleData: res.data.data["roles"]})
     })
   };
 
@@ -97,14 +91,13 @@ class ProfileComponent extends React.Component {
     console.log(role, bool)
     const auth = new AuthService
     let id = auth.getProfileId()
-    console.log('id', id)
-    let data = {user_profile: {id: id, role: role, is_role: bool}}
+    let data = {role: {user_id: id, role: role, is_role: bool}}
     this.postData(data)
   }
 
   render() {
     const { classes } = this.props
-    const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
+    const { initLoading, loading, roleData, visible, confirmLoading, ModalContent } = this.state;
     return (
       <div className="dark-wrap">
         <React.Fragment>
@@ -115,11 +108,9 @@ class ProfileComponent extends React.Component {
               <div id="profile-blurb-intro">
                 <h3 id="blurb-title">HyperDisruptor Profile</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  Self-select your current roles within the ecosystem. The Site
-                  adapts to your chosen roles and exploration will progress your
-                  skills. We recommend starting as a Data Curator of FDS
+                  All new entrants start as a Data Curator of FDS
                   (Financial Data Structures). Once mastery is attained,
-                  self-select into Investment Strategist or Machine Learning Financial
+                  level up into Investment Strategist or Machine Learning Financial
                   Engineer to exploit your acquired wisdom and talents.
                 </h4>
                 {/* <p>
@@ -136,6 +127,7 @@ class ProfileComponent extends React.Component {
               <div className="profile-column">
                 <div className='switch'>
                   <Switch
+                    checked={roleData.includes("curator")}
                     name="curator"
                     ref="curator"
                     onChange={e => this.onChange("curator", e)}
@@ -146,6 +138,7 @@ class ProfileComponent extends React.Component {
                 </div>
                 <div className='switch'>
                   <Switch
+                    checked={roleData.includes("analyst")}
                     name="featureAnalyst"
                     ref="featureAnalyst"
                     onChange={e => this.onChange("analyst", e)}
@@ -156,6 +149,7 @@ class ProfileComponent extends React.Component {
                 </div>
                 <div className='switch'>
                   <Switch
+                    checked={roleData.includes("strategist")}
                     name="strategist"
                     ref="strategist"
                     onChange={e => this.onChange("strategist", e)}
@@ -166,6 +160,7 @@ class ProfileComponent extends React.Component {
                 </div>
                 <div className='switch'>
                   <Switch
+                    checked={roleData.includes("engineer")}
                     name="MLEngineer"
                     ref="MLEngineer"
                     onChange={e => this.onChange("engineer", e)}
@@ -177,6 +172,7 @@ class ProfileComponent extends React.Component {
 
                 <div className='switch'>
                   <Switch
+                    checked={roleData.includes("tpm")}
                     name="tpm"
                     ref="tpm"
                     onChange={e => this.onChange("tpm", e)}
@@ -200,27 +196,29 @@ const profileStyles = {
   },
   profiles: {
     display: 'grid',
-    gridAutoFlow: 'row',
 
     '@media (max-width: 860px)': {
-      gridTemplateColumns: '100vw 100vw',
-      gridTemplateAreas: '"sidebar" "content"',
+      gridTemplateColumns: '1fr 2fr 8fr',
+      gridTemplateAreas: '"buffer" "sidebar" "content"',
     },
 
     '@media (min-width: 860px)': {
-      gridTemplateColumns: '2fr 8fr',
-      gridTemplateAreas: '"sidebar content"',
+      gridTemplateColumns: '1fr 2fr 8fr',
+      gridTemplateAreas: '"buffer sidebar content"',
     },
 
     '& #profile-blurb': {
       gridArea: 'sidebar',
-      maxWidth: '60ch',
+
+      // maxWidth: '60ch',
       margin: '100px 0 0 0',
       padding: 14,
 
       // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
+        gridColumn: '2 / 3',
+        gridRow: '1 / 2',
         // maxWidth: '40vw',
 
         '& #blurb-title': {
@@ -229,13 +227,13 @@ const profileStyles = {
       },
 
       '@media (min-width: 860px)': {
-        position: 'fixed',
-        maxWidth: '40vw',
+        gridColumn: '2 / 3',
+        gridRow: '1 / 2',
       },
 
       '& #profile-blurb-intro': {
         fontSize: 13,
-        maxWidth: '40vw',
+        maxWidth: '60ch',
 
         '& #blurb-title': {
           fontSize: '2.7rem !important',
@@ -255,11 +253,14 @@ const profileStyles = {
 
     '@media (max-width: 860px)': {
       padding: 14,
-
+      gridColumn: '2 / 3',
+      gridRow: '2 / 3',
     },
 
     '@media (min-width: 860px)': {
-      margin: '90px 0px 50px 0',
+      gridColumn: '3 / 4',
+      gridRow: '1 / 2',
+      margin: '120px 0px 50px 0',
       justifySelf: 'center',
     },
 

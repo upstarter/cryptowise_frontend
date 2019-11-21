@@ -86,13 +86,13 @@ const headerStyles = {
     display: "flex",
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 45,
+    height: 70,
     // background: `${colors.primary}`,
     padding: 0,
     position: 'fixed',
     width: '100%',
     right: 0,
-    zIndex: 1,
+    zIndex: 10,
 
     '@media (min-width: 576px)': {
     },
