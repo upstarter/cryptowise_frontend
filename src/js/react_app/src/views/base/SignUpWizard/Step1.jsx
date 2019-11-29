@@ -107,7 +107,7 @@ const styles = {
     justifyContent: "center",
     '& #topics-header': {
       position: 'fixed',
-      top: 45,
+      top: 70,
       minHeight: '20vh',
       // marginBottom: '50px',
       maxWidth: 405,
@@ -123,8 +123,8 @@ const styles = {
 
   main: {
     height: '100%',
-    marginTop: 160,
-    marginBottom: 100,
+    marginTop: 170,
+    marginBottom: 80,
 
     width: '400px !important',
     'overflow-y': 'none',
@@ -158,7 +158,7 @@ const styles = {
     width: '75px',
   },
   tileGrid: {
-    margin: '40px 0 150px 0',
+    margin: '60px 0 150px 0',
     // display: "grid",
     // gridTemplateColumns: "repeat(1, 1fr)",
     // gridTemplateRows: "repeat(1, auto)",

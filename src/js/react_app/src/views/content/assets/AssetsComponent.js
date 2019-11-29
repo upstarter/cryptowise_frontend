@@ -115,8 +115,9 @@ class AssetsComponent extends React.Component {
                       <div id='blurb-subtitle' className='subtitle-small'>
                         <span id="blurb-title">The Network is the Asset. </span>
                         <span id="blurb" className=''>
-                          Cryptoassets with strong traction and team are continually curated for quality based on crypto valuation best practices.
-                          Allocate at least 3 to your <Link style={{color: 'green'}} to='/portfolio'>WiseHive portfolio</Link> to gain access to the next level.
+                          Get to know cryptoassets with strong fundamentals. Master quantamentalism, or explore deep technical analysis.
+                          Add 3 to your <Link style={{color: 'green'}} to='/portfolio'>WiseHive portfolio</Link> to gain preferred access.
+                          <Link style={{color: 'green'}} to='/signup'> Get Started Now</Link> 
                         </span>
                       </div>
 
@@ -183,7 +184,7 @@ const assetStyles = {
     display: 'grid',
 
     '@media (max-width: 860px)': {
-      gridTemplateRows: '100px 9fr',
+      gridTemplateRows: '180px 9fr',
       gridTemplateAreas: '"header" "content"',
     },
 
@@ -194,11 +195,10 @@ const assetStyles = {
 
     '& #asset-items-heading': {
       gridArea: 'header',
-      margin: [0, 0, 0, 0],
-
       justifyItems: 'center',
       alignItems: 'center',
-      padding: [15, 15, 15, 15],
+      zIndex: 1,
+      padding: 5,
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
@@ -208,19 +208,15 @@ const assetStyles = {
       },
 
       '@media (min-width: 860px)': {
-        zIndex: 40,
+
       },
 
       '& #asset-blurb': {
-        // maxWidth: '60ch',
-        // margin: '80px 0 0 0',
         padding: [0, 20, 0, 20],
 
         '@media (max-width: 860px)': {
           gridColumn: '1 / 3',
           gridRow: '1 / 2',
-          height: '5vw',
-          zIndex: 1,
 
           '& #blurb-title': {
             background: `${colors.primaryDark}`,
@@ -234,9 +230,6 @@ const assetStyles = {
         '@media (min-width: 860px)': {
           gridColumn: '1 / 3',
           gridRow: '1 / 2',
-          height: '5vw',
-          // maxWidth: '200px'
-
         },
 
         '& #asset-blurb-intro': {
@@ -263,10 +256,8 @@ const assetStyles = {
       gridColumn: '1 / 3',
       color: `${colors.offWhite} !important`,
 
-      '@media (max-width: 860px)': {
+      '@media (max-width: 400px)': {
         zIndex: 10,
-        marginTop: 200,
-
       },
 
       '& #list-item-meta': {
@@ -284,12 +275,10 @@ const assetStyles = {
          padding: 40,
          textAlign: 'center',
          '& .item-description': {
-
          },
        },
 
     },
-
     // '& .ant-list-item': {
     //   color: `${colors.offWhite}`,
     //   // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
@@ -300,9 +289,6 @@ const assetStyles = {
     //     margin: [0,17,0,17]
     //   }
     // },
-
-
-
   },
 
 }

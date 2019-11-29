@@ -120,7 +120,7 @@ class HomeContainer extends React.Component {
                   {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
                   {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
                   <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                  <AuthRoute exact path="/assets" component={AssetsComponent} />
+                  <Route exact path="/assets" component={AssetsComponent} />
                   {/* <AuthRoute exact path="/profile" component={Protected} /> */}
                   <Route exact path="/about" component={AboutComponent} />
                   <Route exact path="/signup" component={SignUpContainer} />

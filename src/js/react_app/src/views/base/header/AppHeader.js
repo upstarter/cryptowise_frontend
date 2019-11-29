@@ -92,7 +92,7 @@ const headerStyles = {
     position: 'fixed',
     width: '100%',
     right: 0,
-    zIndex: 10,
+    zIndex: 100,
 
     '@media (min-width: 576px)': {
     },

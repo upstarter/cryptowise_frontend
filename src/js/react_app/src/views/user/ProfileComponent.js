@@ -108,10 +108,16 @@ class ProfileComponent extends React.Component {
               <div id="profile-blurb-intro">
                 <h3 id="blurb-title">HyperDisruptor Profile</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  All new entrants start as a Data Curator of FDS
-                  (Financial Data Structures). Once mastery is attained,
-                  level up into Investment Strategist or Machine Learning Financial
-                  Engineer to exploit your acquired wisdom and talents.
+                  We recommend starting as a Data Curator of FDS (Financial Data
+                  Structures). Once a certain mastery is attained, you can level
+                  up into Investment Strategist or Machine Learning Financial
+                  Engineer to exploit your acquired wisdom and talents in market
+                  competitions and coop-etitions.
+                </h4>
+                <h4 id='blurb-subtitle' className='subtitle-small'>
+                  Or just explore on your own and master market research, or use
+                  our tools to formulate and test your own trading strategies
+                  and systems.
                 </h4>
                 {/* <p>
                   <Link to="/roadmap">The Roadmap</Link> includes team formation with tools and systems.
@@ -121,7 +127,7 @@ class ProfileComponent extends React.Component {
 
             <div id="profile-items" className={classes.profileItems}>
               <div className="profile-items-heading">
-                <h3>My Core Capabilities</h3>
+                <h3>Core Capabilities</h3>
               </div>
 
               <div className="profile-column">
@@ -179,7 +185,7 @@ class ProfileComponent extends React.Component {
                     checkedChildren={<Icon type="check" />}
                     unCheckedChildren={<Icon type="close" />}
                   />
-                  <Icon className='icon' type="project" /><span>Technical Program Manager</span>
+                  <Icon className='icon' type="project" /><span>Technical Project Manager</span>
                 </div>
               </div>
             </div>
@@ -198,28 +204,24 @@ const profileStyles = {
     display: 'grid',
 
     '@media (max-width: 860px)': {
-      gridTemplateColumns: '1fr 2fr 8fr',
+      gridTemplateColumns: '1.5fr 4fr 5.5fr',
       gridTemplateAreas: '"buffer" "sidebar" "content"',
     },
 
     '@media (min-width: 860px)': {
-      gridTemplateColumns: '1fr 2fr 8fr',
+      gridTemplateColumns: '1.5fr 4fr 5.5fr',
       gridTemplateAreas: '"buffer sidebar content"',
     },
 
     '& #profile-blurb': {
       gridArea: 'sidebar',
 
-      // maxWidth: '60ch',
-      margin: '100px 0 0 0',
+      margin: '60px 0 0 0',
       padding: 14,
-
-      // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
         gridColumn: '2 / 3',
         gridRow: '1 / 2',
-        // maxWidth: '40vw',
 
         '& #blurb-title': {
           fontSize: '2rem',
@@ -260,7 +262,7 @@ const profileStyles = {
     '@media (min-width: 860px)': {
       gridColumn: '3 / 4',
       gridRow: '1 / 2',
-      margin: '120px 0px 50px 0',
+      margin: '70px 0px 50px 0',
       justifySelf: 'center',
     },
 
