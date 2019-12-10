@@ -2,17 +2,20 @@
 // - - GLOBAL css
 
 @charset "utf-8";
-@font-face {
-  font-family: "Avenir";
-  src:
-    url("../fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
-    url("../fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
-    url("../fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
-    url("../fonts/avenir/Avenir-Book.ttf") format("truetype"),
-    url("../fonts/avenir/Avenir-Light.ttf") format("truetype"),
-    url("../fonts/avenir/Avenir-Roman.ttf") format("truetype")
-}
+// @font-face {
+//   font-family: "Avenir";
+//   src:
+//     url("../fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
+//     url("../fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
+//     url("../fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
+//     url("../fonts/avenir/Avenir-Book.ttf") format("truetype"),
+//     url("../fonts/avenir/Avenir-Light.ttf") format("truetype"),
+//     url("../fonts/avenir/Avenir-Roman.ttf") format("truetype")
+// }
 
+a {
+  color: red;
+}
 html, body {
   height: 100vh;
   font-family: Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif;
@@ -20,8 +23,6 @@ html, body {
   font-size: 62.5%;
   line-height: 2.5rem;
   color: #fff;
-  a { color: 'green' }
-
 }
 
 p {
@@ -209,12 +210,6 @@ body {
   align-items: center;
 }
 
-// a {
-//   color: #73b581;
-//   &:hover {
-//     color: #EEf4fb;
-//   }
-// }
 
 #wrapper {
 

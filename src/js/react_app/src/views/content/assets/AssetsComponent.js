@@ -105,22 +105,24 @@ class AssetsComponent extends React.Component {
           <ScrollToTopOnMount />
 
           <section id="asset" className={classes.assets}>
-            <div id="asset-blurb">
-              <div id="asset-blurb-intro">
-                <h3 id="blurb-title">The Network is the Asset</h3>
-                <h4 id='blurb-subtitle' className='subtitle-small'>
-                  Continually curated for quality based on crypto valuation best practices.
-                  Allocate at least 3 to your <Link style={{color: 'green'}} to='/portfolio'>WiseHive portfolio</Link> to gain access to the next level.
-                </h4>
-
-              </div>
-            </div>
 
             <div id="asset-items" className={classes.assetItems}>
-              <Affix offsetTop={45}>
+              <Affix offsetTop={70}>
                 <div id="asset-items-heading">
                   {/* <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' /> */}
-                  <h3>The WiseHive Assets</h3>
+                  <div id="asset-blurb">
+                    <div id="asset-blurb-intro">
+                      <div id='blurb-subtitle' className='subtitle-small'>
+                        <span id="blurb-title">The Network is the Asset. </span>
+                        <span id="blurb" className=''>
+                          Get to know cryptoassets with strong fundamentals. Master quantamentalism, or explore deep technical analysis.
+                          Add 3 to your <Link style={{color: 'green'}} to='/portfolio'>WiseHive portfolio</Link> to gain preferred access.
+                          <Link style={{color: 'green'}} to='/signup'> Get Started Now</Link> 
+                        </span>
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
               </Affix>
               <div className="asset-column">
@@ -172,115 +174,91 @@ const assetStyles = {
       color: `${colors.sproutGreen}`
     }
   },
+
+
   assets: {
-    display: 'grid',
-    gridAutoFlow: 'row',
-
-    '@media (max-width: 860px)': {
-      gridTemplateColumns: '100vw 100vw',
-      gridTemplateAreas: '"sidebar" "content"',
-    },
-
-    '@media (min-width: 860px)': {
-      gridTemplateColumns: '2fr 8fr',
-      gridTemplateAreas: '"sidebar content"',
-    },
-
-    '& #asset-blurb': {
-      gridArea: 'sidebar',
-      justifySelf: 'center',
-      maxWidth: '60ch',
-      margin: '80px 0 0 0',
-      padding: 14,
-
-
-      '@media (max-width: 860px)': {
-        maxWidth: '90vw',
-
-        '& #blurb-title': {
-          fontSize: '2rem',
-        },
-      },
-
-      '@media (min-width: 860px)': {
-        position: 'fixed',
-        maxWidth: '30vw',
-      },
-
-      '& #asset-blurb-intro': {
-        fontSize: 13,
-        '& p': { padding: 'none !important'},
-
-        maxWidth: '60ch',
-
-        '& #blurb-title': {
-          fontSize: '2.7rem !important',
-          color: `${colors.offWhite} !important`,
-        },
-        '& #blurb-subtitle': {
-          color: `${colors.offWhite} !important`,
-          marginBottom: 10,
-        }
-      },
-    },
+    margin: [70,0,0,0]
   },
 
   assetItems: {
-    gridArea: 'content',
-    justifySelf: 'start',
+    display: 'grid',
 
     '@media (max-width: 860px)': {
-      maxWidth: '85vw',
-
+      gridTemplateRows: '180px 9fr',
+      gridTemplateAreas: '"header" "content"',
     },
-    '@media (min-width: 860px)': {
-      margin: '50px 15vw 50px 15vw',
 
+    '@media (min-width: 860px)': {
+      gridTemplateRows: '100px 9fr',
+      gridTemplateAreas: '"header" "content"',
     },
 
     '& #asset-items-heading': {
-      display: 'grid',
-      alignItems: 'center',
+      gridArea: 'header',
       justifyItems: 'center',
-      height: 55,
-      zIndex: 10,
-      marginBottom: 10,
+      alignItems: 'center',
+      zIndex: 1,
+      padding: 5,
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
       '-webkit-backface-visibility': 'hidden',
 
-      '& .float:hover': {
-        '-webkit-animation': 'none'
+      '@media (max-width: 860px)': {
       },
 
-      '& .float': {
-        gridColumn: '1',
-        // gridRow: '1 / 3',
-        justifySelf: 'end',
-        marginRight: 15,
-        backgroundColor: `${colors.primary}`,
-        color: '#FFF',
-        borderRadius: 50,
-        textAlign: 'center',
-        cursor: 'pointer',
-        zIndex: 10,
-        border: 'none',
-        boxShadow: `0 0 0 0 ${colors.lightBlack}`,
-        '-webkit-animation': 'pulse 1.5s infinite',
+      '@media (min-width: 860px)': {
+
       },
-      '& h3': {
-        gridColumn: '2',
-        justifySelf: 'start',
-        fontSize: '2.0rem',
-        letterSpacing: '0.5rem',
-        paddingTop: 17,
-        color: '#fff',
+
+      '& #asset-blurb': {
+        padding: [0, 20, 0, 20],
+
+        '@media (max-width: 860px)': {
+          gridColumn: '1 / 3',
+          gridRow: '1 / 2',
+
+          '& #blurb-title': {
+            background: `${colors.primaryDark}`,
+            fontSize: '2rem',
+            letterSpacing: '0.5rem',
+            color: '#fff',
+            lineHeight: '1em',
+          },
+        },
+
+        '@media (min-width: 860px)': {
+          gridColumn: '1 / 3',
+          gridRow: '1 / 2',
+        },
+
+        '& #asset-blurb-intro': {
+          fontSize: 13,
+          '& p': { padding: 'none !important'},
+
+
+          '& #blurb-title': {
+            fontSize: '2.7rem !important',
+            color: `${colors.offWhite} !important`,
+          },
+          '& #blurb-subtitle': {
+            color: `${colors.offWhite} !important`,
+            marginBottom: 10,
+          }
+        },
       },
+
     },
 
     '& .item-list': {
+      gridArea: 'content',
+      gridRow: '2 / 3',
+      gridColumn: '1 / 3',
       color: `${colors.offWhite} !important`,
+
+      '@media (max-width: 400px)': {
+        zIndex: 10,
+      },
 
       '& #list-item-meta': {
         '& p': { color: `${colors.offWhite}`},
@@ -297,12 +275,10 @@ const assetStyles = {
          padding: 40,
          textAlign: 'center',
          '& .item-description': {
-
          },
        },
 
     },
-
     // '& .ant-list-item': {
     //   color: `${colors.offWhite}`,
     //   // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
@@ -313,9 +289,6 @@ const assetStyles = {
     //     margin: [0,17,0,17]
     //   }
     // },
-
-
-
   },
 
 }

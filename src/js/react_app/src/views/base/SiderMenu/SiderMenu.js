@@ -82,7 +82,7 @@ class SiderMenu extends React.Component {
 
 const siderMenuStyles = {
   sider: {
-    marginTop: 45,
+    marginTop: 70,
     overflow: 'visible',
     height: '100vh',
     position: 'fixed',

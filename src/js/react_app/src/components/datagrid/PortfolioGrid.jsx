@@ -6,6 +6,7 @@ import tokens from "./MockData";
 import formatNumber from "Utils/formatNumber"
 import zip from "Utils/zip"
 import AuthService from "Services/auth/AuthService"
+import colors from "Styles/colors"
 
 const Option = Select.Option;
 
@@ -143,7 +144,7 @@ class PortfolioGrid extends React.Component {
             placeholder="Select an asset"
             showSearch
             key={`select-${i}`}
-            style={{ width: 200 }}
+            style={{ width: 120 }}
             optionFilterProp="children"
             onChange={this.onSelectChange}
             // onSelect={this.onSelect}
@@ -190,6 +191,7 @@ class PortfolioGrid extends React.Component {
           <InputNumber
             // {...this.props}
             // onChange={this.handleWeightChange}
+            style={{width: 70}}
             className={classes.input, "allocation"}
             ref={`weight`}
             min={0}
@@ -210,7 +212,7 @@ class PortfolioGrid extends React.Component {
         )
       },
       {
-        title: "Actions",
+        title: "Remove",
         key: "action",
         render: (text, record, i) => (
           <>
@@ -339,10 +341,7 @@ const styles = {
     '@media (max-width: 460px)': {
       maxWidth: '90vw',
       display: 'grid',
-      gridAutoFlow: 'row',
-      '& table': {
-        maxWidth: '90vw',
-      },
+      gridAutoFlow: 'column',
     },
   },
 
@@ -350,43 +349,47 @@ const styles = {
     margin: '50px auto',
     maxWidth: "600px",
     textAlign: 'center',
-    display: 'grid',
-    gridAutoFlow: 'row',
-
-    '@media (max-width: 860px)': {
-       // maxWidth: '85vw',
-       // gridTemplateRows: '100vw 100vw',
-       // gridTemplateAreas: '"content"',
-    },
-
 
     '& .ant-table-body': {
-      maxWidth: "600px",
-
-      '@media (max-width: 460px)': {
-        maxWidth: '90vw',
-        display: 'grid',
-        gridAutoFlow: 'row',
-        '& table': {
-          // maxWidth: '90vw',
-        },
-      },
 
       '& .ant-table-thead': {
-        gridAutoFlow: 'column',
 
+        borderRight: '.5px solid rgba(175,175,175,0.5)',
+        borderBottom: '.5px solid rgba(175,175,175,0.5)',
+
+        '@media (max-width: 860px)': {
+          display: 'flex',
+          flexFlow: 'row nowrap',
+          justifyContent: 'space-evenly',
+        },
 
         '& tr': {
-
           '@media (max-width: 860px)': {
-            display: 'grid',
-            gridAutoFlow: 'column',
-            gridTemplateColumns: '8fr 2fr 2fr',
+            display: 'flex',
+            flexFlow: 'row nowrap',
           },
+          '& th': {
+            // border: 'none !important',
+            background: `${colors.primaryDark}`,
+            '&:first-child': {
+              width: 100,
+            },
+            '&:last-child': {
+              width: 110,
+            }
+
+          }
         },
 
       },
+
+      '& .ant-table-tbody': {
+        '@media (max-width: 460px)': {
+          maxWidth: '90vw',
+        },
+      },
     },
+
     '& #table-buttons': {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
@@ -403,9 +406,7 @@ const styles = {
           justifySelf: 'center'
         }
       },
-
-
     }
-  },
+  }
 }
 export default injectSheet(styles)(PortfolioGrid);

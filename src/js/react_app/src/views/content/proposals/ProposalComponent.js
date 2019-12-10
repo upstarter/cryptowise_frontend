@@ -176,7 +176,7 @@ class ProposalComponent extends React.Component {
             </div>
 
             <div id="proposal-items" className={classes.proposalItems}>
-              <Affix offsetTop={45}>
+              <Affix offsetTop={70}>
                 <div id="proposal-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
                   <h3>Ideas 🌱</h3>
@@ -239,28 +239,27 @@ const proposalStyles = {
   },
   proposals: {
     display: 'grid',
-    gridAutoFlow: 'row',
 
     '@media (max-width: 860px)': {
-      gridTemplateColumns: '100vw 100vw',
+      gridTemplateRows: '1fr 9fr',
       gridTemplateAreas: '"sidebar" "content"',
     },
 
     '@media (min-width: 860px)': {
-      gridTemplateColumns: '2fr 8fr',
-      gridTemplateAreas: '"sidebar content"',
+      gridTemplateColumns: '.2fr 3fr 6.8fr',
+      gridTemplateAreas: '"buffer sidebar content"',
     },
 
     '& #proposal-blurb': {
       gridArea: 'sidebar',
       justifySelf: 'center',
-      maxWidth: '60ch',
       margin: '40px 0 0 0',
       padding: 14,
 
       // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
+        gridColumn: '1 / 2',
         maxWidth: '90vw',
 
         '& #blurb-title': {
@@ -269,8 +268,9 @@ const proposalStyles = {
       },
 
       '@media (min-width: 860px)': {
-        position: 'fixed',
         maxWidth: '30vw',
+        gridColumn: '2 / 3',
+
         // maxWidth: '50ch',
       },
 
@@ -303,8 +303,9 @@ const proposalStyles = {
     gridArea: 'content',
 
     '@media (max-width: 860px)': {
+      gridRow: '2 / 3',
       justifySelf: 'center',
-      margin: '0 auto'
+      margin: '20px auto'
 
     },
     '@media (min-width: 860px)': {
