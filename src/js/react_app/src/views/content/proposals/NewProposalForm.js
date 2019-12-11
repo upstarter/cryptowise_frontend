@@ -26,9 +26,9 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
           <Form layout="vertical">
             {/* <Paragraph>RIFF Guidelines</Paragraph> */}
             <Title level={4} className='subtitle'>
-              Submit an idea for a financial data
-              structure, algorithm, team role or function, methodology or process that could
-              become part of our coordinated efforts to conquer the crypto markets.
+              Submit an idea for a financial data structure, algorithm, system,
+              team role or function, methodology or process to become part of
+              coordinated efforts to conquer the crypto markets.
             </Title>
             {/* <Paragraph>Examples...</Paragraph>
             <ul style={{paddingLeft: 30}}>
@@ -42,10 +42,10 @@ const NewProposalForm = Form.create({ name: 'form_in_modal' })(
             <Form.Item label="Title">
               {getFieldDecorator('title', {
                 rules: [{ required: true, message: 'Please input the title!' }],
-              })(<Input placeholder="Enter a problem..."/>)}
+              })(<Input placeholder="Enter your idea..."/>)}
             </Form.Item>
             <Form.Item label="Description">
-              {getFieldDecorator('description')(<TextArea placeholder="Describe the problem..." rows={4}
+              {getFieldDecorator('description')(<TextArea placeholder="Describe your idea..." rows={4}
               type="textarea" />)}
             </Form.Item>
             {/* <Form.Item className="collection-create-form_last-form-item">

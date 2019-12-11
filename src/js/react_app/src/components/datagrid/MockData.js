@@ -2,7 +2,7 @@ import * as CryptoLogos from 'Images/crypto-logos'
 
 const Tokens = [
   {
-      logo: CryptoLogos.dfinity,
+      logo: CryptoLogos.dfn,
       name: 'DFINITY (DFN)',
       symbol: 'DFN',
       site: "https://dfinity.org",
@@ -23,7 +23,7 @@ const Tokens = [
       key: 1
   },
   {
-      logo: CryptoLogos.ocean,
+      logo: CryptoLogos.ocn,
       name: 'OCEAN (OCN)',
       symbol: "OCN",
       site: "https://oceanprotocol.com",
@@ -34,7 +34,7 @@ Ocean Protocol is kickstarting a Data Economy by breaking down data silos and eq
       key: 2
   },
   {
-      logo: CryptoLogos.cosmos,
+      logo: CryptoLogos.atom,
       name: 'COSMOS (ATOM)',
       symbol: "ATOM",
       site: "https://cosmos.network",
@@ -44,7 +44,7 @@ Ocean Protocol is kickstarting a Data Economy by breaking down data silos and eq
       key: 3
   },
   {
-      logo: CryptoLogos.polkadot,
+      logo: CryptoLogos.dot,
       name: 'POLKADOT (DOT)',
       symbol: "DOT",
       site: "https://polkadot.network",
@@ -55,7 +55,7 @@ Ocean Protocol is kickstarting a Data Economy by breaking down data silos and eq
       key: 4
   },
   {
-      logo: CryptoLogos.tezos,
+      logo: CryptoLogos.xtz,
       name: 'TEZOS (XTZ)',
       symbol: "XTZ",
       site: "https://tezos.com",
@@ -65,7 +65,7 @@ Ocean Protocol is kickstarting a Data Economy by breaking down data silos and eq
       key: 5
   },
   {
-      logo: CryptoLogos.zerox,
+      logo: CryptoLogos.zrx,
       name: '0x (ZRX)',
       symbol: "ZRX",
       site: "https://0x.org",
@@ -78,7 +78,7 @@ have never existed before.`,
       key: 6
   },
   {
-    logo: CryptoLogos.bitcoin,
+    logo: CryptoLogos.btc,
     name: 'BITCOIN (BTC)',
     symbol: "BTC",
     site: "https://www.bitcoin.org",
@@ -87,7 +87,7 @@ have never existed before.`,
     id: 7
   },
   {
-    logo: CryptoLogos.bitcoinCash,
+    logo: CryptoLogos.bch,
     name: 'BITCOIN CASH (BCH)',
     symbol: "BCH",
     site: "https://www.bitcoincash.org",
@@ -114,7 +114,7 @@ have never existed before.`,
     id: 10
   },
   {
-    logo: CryptoLogos.storj,
+    logo: CryptoLogos.sjcx,
     name: 'STORJ (SJCX)',
     symbol: "SJCX",
     site: "https://storj.io",
@@ -123,7 +123,7 @@ have never existed before.`,
     id: 11
   },
   {
-    logo: CryptoLogos.golem,
+    logo: CryptoLogos.gnt,
     name: 'GOLEM (GNT)',
     symbol: "GNT",
     site: "https://golem.network",
@@ -132,7 +132,7 @@ have never existed before.`,
     id: 12
   },
   {
-    logo: CryptoLogos.filecoin,
+    logo: CryptoLogos.fil,
     name: 'FILECOIN (FIL)',
     symbol: "FIL",
     site: "https://filecoin.io",
@@ -141,7 +141,7 @@ have never existed before.`,
     id: 13
   },
   {
-    logo: CryptoLogos.aragon,
+    logo: CryptoLogos.ant,
     name: 'ARAGON (ANT)',
     symbol: "ANT",
     site: "https://aragon.one",
@@ -150,7 +150,7 @@ have never existed before.`,
     id: 14
   },
   {
-    logo: CryptoLogos.bloxroute,
+    logo: CryptoLogos.blxr,
     name: 'BLOXROUTE (BLXR)',
     symbol: "BLXR",
     site: "https://bloxroute.com",
