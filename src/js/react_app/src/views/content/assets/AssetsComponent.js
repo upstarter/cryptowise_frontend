@@ -11,6 +11,8 @@ import { connect } from "react-redux";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
+import * as CryptoLogos from 'Images/crypto-logos'
+
 
 const count = 20;
 const dataUrl = `//${api_url}/assets`;
@@ -117,7 +119,7 @@ class AssetsComponent extends React.Component {
                         <span id="blurb" className=''>
                           Get to know cryptoassets with strong fundamentals. Master quantamentalism, or explore deep technical analysis.
                           Add 3 to your <Link style={{color: 'green'}} to='/portfolio'>WiseHive portfolio</Link> to gain preferred access.
-                          <Link style={{color: 'green'}} to='/signup'> Get Started Now</Link> 
+                          <Link style={{color: 'green'}} to='/signup'> Get Started Now</Link>
                         </span>
                       </div>
 
@@ -143,8 +145,13 @@ class AssetsComponent extends React.Component {
                   dataSource={list}
                   renderItem={item => (
                     <List.Item>
-                      <Card className={classes.card} title={item.name}>
-                        <p className='item-name'>{item.description}</p>
+                      <Card
+                        className={classes.card}
+                        title={item.name}
+                        >
+                        <img style={{ float: 'left',height: 60, width: 60}} alt={CryptoLogos[item.symbol]} src={CryptoLogos[item.symbol.toLowerCase()]} />
+                        <p style={{marginLeft: 90}} className='item-name'>{item.description}</p>
+
                       </Card>
                     </List.Item>
                   )}
@@ -266,7 +273,7 @@ const assetStyles = {
         '& .ant-list-item-meta-content': {
            color: `${colors.offWhite} !important`,
            '& #main-content': {
-             '& .item-name': {color: `${colors.offWhite}`},
+             '& .item-name': {margin: [0,0,0,30], color: `${colors.offWhite}`},
              '& .item-description': { color: `${colors.offWhite}` },
            },
         },

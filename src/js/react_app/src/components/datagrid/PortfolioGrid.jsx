@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Select, InputNumber, Popover, Button, Icon } from "antd";
-import { notify } from "Components/base/notify/notify"
+import notify from "Components/base/notify/notify"
 import injectSheet, { jss } from "react-jss"
 import tokens from "./MockData";
 import formatNumber from "Utils/formatNumber"

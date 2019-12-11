@@ -38,13 +38,13 @@ const LinkMenu = withRouter(props => {
             <span className="nav-text">Sign Up</span>
           </Link>
         </Menu.Item> : '' }
-      { !auth.signedIn() ?
+      {/* { !auth.signedIn() ?
         <Menu.Item key="/signup">
           <Link to="/signup" style={{ textDecoration: "none" }}>
             <Icon type="dot-chart" />
             <span className="nav-text">Explore</span>
           </Link>
-        </Menu.Item>  : '' }
+        </Menu.Item>  : '' } */}
 
       {/* { auth.signedIn() ?
         <Menu.Item key="/fds">
