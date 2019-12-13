@@ -14,8 +14,9 @@ import colors from "Styles/colors"
 class BasicLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    // console.error(this.props.form)
     this.props.form.validateFields((err, values) => {
+      console.log(values)
+
       if (!err) {
         this.props.dispatch(loginUser(values)).then(response => {
           this.props.history.replace('/proposals')

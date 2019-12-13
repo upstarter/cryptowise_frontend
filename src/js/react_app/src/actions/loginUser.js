@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router'
 import { url } from 'Utils/consts';
-import axios from "axios";
+import axios from "Config/axios";
 import { SESSION_ERROR } from "Actions/index";
 import { SET_CURRENT_USER } from 'Actions/index'
 import AuthService from 'Services/auth/AuthService'
@@ -11,10 +11,6 @@ import Cookies from 'universal-cookie';
 const loginUser = creds => {
     const data = {
       session: creds,
-      headers: {
-      },
-      withCredentials: true,
-      credentials: 'include'
     };
     const request = axios.post(`${url}/v1/auth/sign_in`, data)
     return dispatch => {

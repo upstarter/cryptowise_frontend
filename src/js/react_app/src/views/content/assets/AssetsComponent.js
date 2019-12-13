@@ -119,7 +119,7 @@ class AssetsComponent extends React.Component {
                         <span id="blurb" className=''>
                           Get to know cryptoassets with strong fundamentals. Master quantamentalism, or explore deep technical analysis.
                           Add 3 to your <Link style={{color: 'green'}} to='/portfolio'>WiseHive portfolio</Link> to gain preferred access.
-                          <Link style={{color: 'green'}} to='/signup'> Get Started Now</Link>
+                          {/* <Link style={{color: 'green'}} to='/portfolio'> Get Started Now</Link> */}
                         </span>
                       </div>
 
