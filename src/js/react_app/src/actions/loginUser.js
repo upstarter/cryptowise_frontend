@@ -19,15 +19,6 @@ const loginUser = creds => {
         if (data.error) {
           console.log('user signin error')
         } else {
-          const cookies = new Cookies();
-          const token = cookies.get('_cw_acc')
-          const auth = new AuthService
-          auth.setToken(token)
-          if (token) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-          } else {
-            delete axios.defaults.headers.common['Authorization']
-          }
           dispatch({
             type: SET_CURRENT_USER,
             payload: token
