@@ -112,7 +112,6 @@ const headerStyles = {
     padding: 25,
   },
   menu: {
-    padding: 10,
     marginTop: 10,
     color: `${colors.silver}`,
 
