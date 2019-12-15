@@ -184,11 +184,16 @@ const assetStyles = {
 
 
   assets: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyItems: 'center',
+    alignItems: 'center',
     margin: [70,0,0,0]
   },
 
   assetItems: {
     display: 'grid',
+    maxWidth: 800,
 
     '@media (max-width: 860px)': {
       gridTemplateRows: '180px 9fr',

@@ -62,12 +62,10 @@ class HomeContainer extends React.Component {
     super();
     this.state = {
       visible: false,
-      contentMarginLeft: '0px'
+      siderCollapsed: false
     };
   }
-  setContentMarginLeft = (margin) => {
-    this.setState({contentMarginLeft: margin})
-  }
+
   showDrawer = () => {
     this.setState({
       visible: true
@@ -80,33 +78,35 @@ class HomeContainer extends React.Component {
     });
   };
 
+  onSiderCollapse = () => {
+    this.setState({
+      siderCollapsed: !this.state.siderCollapsed
+    });
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <React.Fragment>
           <div className={classes.globe}>
-            <Layout className={classes.typography, classes.baseLayout} id="wrapper">
-              <Drawer
-                title="CryptoWise"
-                placement="right"
-                closable={true}
-                onClose={this.onClose}
-                visible={this.state.visible}
-              >
-                <p>Wrap with separate router?</p>
-                <p>Or move to BrowserRouter?</p>
-                <p>Some contents...</p>
-              </Drawer>
-              <AppHeader />
               <BrowserRouter>
                 <>
-                <SiderMenu setContentMarginLeft={this.setContentMarginLeft}/>
+                <AppHeader onSiderCollapsed={this.onSiderCollapse}/>
+                <SiderMenu isCollapsed={this.state.siderCollapsed} />
+                <Layout className={classes.typography, classes.baseLayout} id="wrapper">
+                  <Drawer
+                    title="CryptoWise"
+                    placement="right"
+                    closable={true}
+                    onClose={this.onClose}
+                    visible={this.state.visible}
+                  >
+                    <p>Wrap with separate router?</p>
+                    <p>Or move to BrowserRouter?</p>
+                    <p>Some contents...</p>
+                  </Drawer>
                 <Layout className={classes.baseContent}>
-                  <Content
-                    className={classes.content}
-                    style={{
-                      marginLeft: `${this.state.contentMarginLeft}`,
-                    }}>
+                  <Content className={classes.content}>
                     <Route exact path="/" component={HomeComponent} />
                     {/* <Route exact path="/membership" component={MembershipComponent} /> */}
                     {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
@@ -133,14 +133,15 @@ class HomeContainer extends React.Component {
                       component={PrivacyComponent}
                     />
                   </Content>
-                  <Footer className={classes.footer} style={{marginLeft: `${this.state.contentMarginLeft}`}}>
+                  <Footer className={classes.footer} >
                     Aion Labs, Inc. ©{(new Date).getFullYear()}
                   </Footer>
                 </Layout>
+              </Layout>
+
               </>
             </BrowserRouter>
 
-            </Layout>
       </div>
       </React.Fragment>
     );

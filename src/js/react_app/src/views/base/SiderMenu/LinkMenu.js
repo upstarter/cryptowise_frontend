@@ -81,12 +81,10 @@ const LinkMenu = withRouter(props => {
         </Menu.Item>  : '' }
       { auth.signedIn() ?
         <Menu.Item key="/profile">
+          <Link to="/profile" style={{ textDecoration: "none" }}>
           <Icon type="user" />
-          <span className="nav-text">
-          <Link to="/profile">
-            Profile
+            <span className="nav-text">Profile</span>
           </Link>
-          </span>
         </Menu.Item> : ''
       }
 

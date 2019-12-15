@@ -10,10 +10,10 @@ import colors from "Styles/colors"
 
 
 class SiderMenu extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      collapsed: true,
+      collapsed: props.isCollapsed,
       collapsedWidth: 0,
       broken: false
     };
@@ -56,8 +56,7 @@ class SiderMenu extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
-    const { classes } = this.props;
+    const { location, classes, isCollapsed } = this.props;
     return (
       <Sider
         className={classes.sider}
@@ -65,17 +64,16 @@ class SiderMenu extends React.Component {
         defaultCollapsed={true}
         width="140"
         collapsedWidth="0"
-        // trigger={["click"]}
+        trigger={null}
         // zeroWidthTriggerStyle={{bottom: 0}}
-        // collapsed={this.state.collapsed}
+        collapsed={isCollapsed}
         // onCollapse={this.onSiderCollapse}
         // onMouseEnter={this.open}
         // onMouseLeave={this.collapse}
         // breakpoint="xs"
         // onBreakpoint={(broken) => { this.collapse() } }
       >
-        {/* <LinkMenu onSelect={this.onSelect}/> */}
-        <LinkMenu />
+        <LinkMenu onSelect={this.onSelect}/>
       </Sider>
     )
   }

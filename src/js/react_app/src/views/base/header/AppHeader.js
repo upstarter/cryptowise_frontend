@@ -13,10 +13,11 @@ import colors from 'Styles/colors'
 import nav_logo from "Images/white_nav_logo.svg";
 
 class AppHeader extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      collapsed: false,
+      siderCollapsed: props.onSiderCollapsed(),
+      subCollapsed: true,
       visible: false
     };
   }
@@ -28,8 +29,13 @@ class AppHeader extends React.Component {
   };
 
 
-  toggle = () => {
-    this.setState({collapsed: !this.state.collapsed})
+  toggleSider = () => {
+    this.setState({siderCollapsed: !this.state.siderCollapsed})
+    this.props.onSiderCollapsed()
+  }
+
+  toggleSub = () => {
+    this.setState({subCollapsed: !this.state.subCollapsed})
   }
 
   render() {
@@ -40,8 +46,8 @@ class AppHeader extends React.Component {
       >
         <Icon
           className={classes.trigger}
-          type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-          onClick={this.toggle}
+          type={this.state.siderCollapsed ? 'menu-unfold' : 'menu-fold'}
+          onClick={this.toggleSider}
         />
         <Link to="/">
           <img className={classes.logo} src={nav_logo} />
@@ -49,29 +55,28 @@ class AppHeader extends React.Component {
         </Link>
         <div>
           <Menu
-            mode="horizontal"
             className={classes.menu}
-            onClick={
-              ({ item, key, keyPath }) => {
-                history.push(key)
-              }
-            }
+            mode="horizontal"
             style={{
               borderBottom: "none",
             }}
           >
             <SubMenu
+              onClick={
+                ({ item, key, keyPath }) => {
+                  history.push(key)
+                }
+              }
               style={{
                 borderBottom: "none",
               }}
               title={
-                <span>
                   <Icon
-                    className="trigger"
+                    style={{fontSize: 25}}
+                    className="menu"
                     type='bars'
-                    onClick={this.toggle}
+                    onClick={this.toggleSub}
                   />
-                </span>
               }
             >
               <Menu.Item key="/login">Sign In</Menu.Item>
@@ -92,6 +97,7 @@ const headerStyles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 70,
+    fontSize: 25,
     // background: `${colors.primary}`,
     padding: 0,
     position: 'fixed',
@@ -103,12 +109,11 @@ const headerStyles = {
     },
   },
   trigger: {
-    margin: 15
+    padding: 25,
   },
   menu: {
-    height: 45,
-    // padding: 9,
-    // background: `${colors.primary}`,
+    padding: 10,
+    marginTop: 10,
     color: `${colors.silver}`,
 
   },
