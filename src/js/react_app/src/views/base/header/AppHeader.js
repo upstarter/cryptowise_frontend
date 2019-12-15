@@ -55,6 +55,11 @@ class AppHeader extends React.Component {
         </Link>
         <div>
           <Menu
+            onClick={
+              ({ item, key, keyPath }) => {
+                history.replace(key)
+              }
+            }
             className={classes.menu}
             mode="horizontal"
             style={{
@@ -62,11 +67,6 @@ class AppHeader extends React.Component {
             }}
           >
             <SubMenu
-              onClick={
-                ({ item, key, keyPath }) => {
-                  history.push(key)
-                }
-              }
               style={{
                 borderBottom: "none",
               }}

@@ -18,12 +18,11 @@ class AboutComponent extends React.Component {
               wisdom of the crowd and AI to optimize investment outcomes.
             </h3>
             <p className="paragraph">
-              We are connecting investors with next-generation network structures
-              and roles for automated, scalable investment data
-              curation and decision-making. <i> We're
-              harnessing the acquired wisdom and innate talent of those most
-              passionate about the future of investing and capital formation.
-              </i>
+              We are connecting investors with next-generation network structure
+              and roles for automated, scalable investment data curation and
+              decision-making. <i> We're harnessing the acquired wisdom and
+              innate talent of those most passionate about the future of
+              investing and capital formation. </i>
             </p>
             <h1 className="title">Vision</h1>
             <h3 className="subtitle-big">
@@ -36,9 +35,10 @@ class AboutComponent extends React.Component {
               cite="//www.goodreads.com/work/quotes/3250675-the-wisdom-of-crowds">
               Groups are only smart when there is a balance between the
               information that everyone in the group shares and the information
-              that each of the members of the group holds privately. It&#39;s the
-              combination of all those pieces of independent information, some of
-              them right, some of the wrong, that keeps the group wise. - The Wisdom of Crowds
+              that each of the members of the group holds privately. It&#39;s
+              the combination of all those pieces of independent information,
+              some of them right, some of the wrong, that keeps the group wise. -
+              The Wisdom of Crowds
             </blockquote>
 
             <h1 className="title">Mission</h1>
@@ -55,8 +55,8 @@ class AboutComponent extends React.Component {
             <p>
               Crypto Economics, Trading Strategies & Methods, Portfolio
               Management, Decentralized Applications, Artificial Intelligence,
-              Software & Systems Architecture, Emerging Tech, Multi-Agent Reinforcement
-              Learning, Cognitive Computing, Quantum Computing.
+              Software & Systems Architecture, Emerging Tech, Multi-Agent
+              Reinforcement Learning, Cognitive Computing, Quantum Computing.
             </p>
           </div>
         </section>
