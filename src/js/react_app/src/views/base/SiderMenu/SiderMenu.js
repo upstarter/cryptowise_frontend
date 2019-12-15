@@ -67,10 +67,10 @@ class SiderMenu extends React.Component {
         collapsedWidth="0"
         // trigger={this.state.broken ? '' : null}
         // zeroWidthTriggerStyle={{bottom: 0}}
-        collapsed={this.state.collapsed}
+        // collapsed={this.state.collapsed}
         // onCollapse={this.onSiderCollapse}
-        onMouseEnter={this.open}
-        onMouseLeave={this.collapse}
+        // onMouseEnter={this.open}
+        // onMouseLeave={this.collapse}
         // breakpoint="xs"
         // onBreakpoint={(broken) => { this.collapse() } }
       >
@@ -92,6 +92,7 @@ const siderMenuStyles = {
     '& .ant-layout-sider-zero-width-trigger': {
       backgroundColor: `${colors.primary} !important`,
       color: `${colors.offWhite} !important`,
+      zIndex: 9999
     }
   }
 }
