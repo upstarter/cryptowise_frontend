@@ -118,6 +118,8 @@ const headerStyles = {
   logo: {
     color: '#000',
     margin: '15px',
+    height: 180,
+    width: 180,
     '@media (max-width: 576px)': {
       // marginLeft: '32px',
     },

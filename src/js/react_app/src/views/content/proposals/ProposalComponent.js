@@ -159,9 +159,11 @@ class ProposalComponent extends React.Component {
 
                 <p>
                   Help seed the design of FDS (Financial Data Structures),
-                  architectures, algorithms, teams, roles, functions and
-                  processes used for optimal investment intelligence within a
-                  decentralized financial network.
+                  architectures, algorithms, systems, business models, teams,
+                  roles, functions and processes for optimal investment
+                  intelligence within a decentralized financial network using
+                  blockchain for trust in data provisioning, data integrity, and
+                  systems and strategy efficacy.
                 </p>
                 <p>
                   Ideas voted to the top decile may become candidates for future
@@ -239,6 +241,7 @@ const proposalStyles = {
   },
   proposals: {
     display: 'grid',
+    marginTop: 30,
 
     '@media (max-width: 860px)': {
       gridTemplateRows: '1fr 9fr',
@@ -246,7 +249,7 @@ const proposalStyles = {
     },
 
     '@media (min-width: 860px)': {
-      gridTemplateColumns: '.2fr 3fr 6.8fr',
+      gridTemplateColumns: '1fr 3fr 7fr',
       gridTemplateAreas: '"buffer sidebar content"',
     },
 
@@ -278,7 +281,7 @@ const proposalStyles = {
         fontSize: 13,
         '& p': { padding: 'none !important'},
 
-        maxWidth: '60ch',
+        maxWidth: '70ch',
 
         '& #blurb-title': {
           fontSize: '2.7rem !important',
@@ -291,11 +294,6 @@ const proposalStyles = {
           // fontSize: '1.15rem',
         }
       },
-
-      // '& #proposal-blurb-list': {
-      //   padding: [10,0,10,10]
-      // },
-
     },
   },
 
@@ -310,7 +308,7 @@ const proposalStyles = {
     },
     '@media (min-width: 860px)': {
       justifySelf: 'center',
-      margin: '50px auto',
+      margin: '40px auto',
     },
 
     '& #proposal-items-heading': {

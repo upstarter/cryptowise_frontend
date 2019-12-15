@@ -115,9 +115,8 @@ class ProfileComponent extends React.Component {
                   competitions and coop-etitions.
                 </h4>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
-                  Or just explore on your own and master market research, or use
-                  our tools to formulate and test your own trading strategies
-                  and systems.
+                  Or just explore on your own and master market research & analysis
+                  for maximal profit from the free market system.
                 </h4>
                 {/* <p>
                   <Link to="/roadmap">The Roadmap</Link> includes team formation with tools and systems.
