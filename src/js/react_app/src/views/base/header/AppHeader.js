@@ -25,7 +25,7 @@ class AppHeader extends React.Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+    // history: PropTypes.object.isRequired
   };
 
 
@@ -38,8 +38,12 @@ class AppHeader extends React.Component {
     this.setState({subCollapsed: !this.state.subCollapsed})
   }
 
+  handleSubClick = ({ item, key, keyPath }) => {
+      this.props.history.replace(key)
+  }
+
   render() {
-    const { classes, match, location, history } = this.props;
+    const { classes, match, location } = this.props;
     return (
       <Header
         className={classes.header}
@@ -55,11 +59,6 @@ class AppHeader extends React.Component {
         </Link>
         <div>
           <Menu
-            onClick={
-              ({ item, key, keyPath }) => {
-                history.replace(key)
-              }
-            }
             className={classes.menu}
             mode="horizontal"
             style={{
@@ -67,6 +66,7 @@ class AppHeader extends React.Component {
             }}
           >
             <SubMenu
+              onClick={this.handleSubClick}
               style={{
                 borderBottom: "none",
               }}

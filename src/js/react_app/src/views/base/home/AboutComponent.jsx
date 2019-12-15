@@ -18,7 +18,7 @@ class AboutComponent extends React.Component {
               wisdom of the crowd and AI to optimize investment outcomes.
             </h3>
             <p className="paragraph">
-              We are connecting investors with next-generation network structure
+              We are providing investors next-generation network structure
               and roles for automated, scalable investment data curation and
               decision-making. <i> We're harnessing the acquired wisdom and
               innate talent of those most passionate about the future of
