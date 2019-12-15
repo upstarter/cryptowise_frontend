@@ -65,7 +65,7 @@ class SiderMenu extends React.Component {
         defaultCollapsed={true}
         width="140"
         collapsedWidth="0"
-        trigger={["click"]}
+        // trigger={["click"]}
         // zeroWidthTriggerStyle={{bottom: 0}}
         // collapsed={this.state.collapsed}
         // onCollapse={this.onSiderCollapse}
@@ -87,13 +87,13 @@ const siderMenuStyles = {
     overflow: 'visible',
     height: '100vh',
     position: 'fixed',
-    zIndex: 9999,
+    zIndex: 999,
     left: 0,
 
     '& .ant-layout-sider-zero-width-trigger': {
       backgroundColor: `${colors.primary} !important`,
       color: `${colors.offWhite} !important`,
-      zIndex: 9999
+      zIndex: 999
     }
   }
 }

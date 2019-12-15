@@ -38,6 +38,11 @@ class AppHeader extends React.Component {
       <Header
         className={classes.header}
       >
+        <Icon
+          className={classes.trigger}
+          type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+          onClick={this.toggle}
+        />
         <Link to="/">
           <img className={classes.logo} src={nav_logo} />
           {/* <span style={{color: 'white'}}>A web native organization.</span> */}
@@ -96,6 +101,9 @@ const headerStyles = {
 
     '@media (min-width: 576px)': {
     },
+  },
+  trigger: {
+    margin: 15
   },
   menu: {
     height: 45,
