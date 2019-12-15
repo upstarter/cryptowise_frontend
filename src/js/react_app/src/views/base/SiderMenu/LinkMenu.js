@@ -57,7 +57,7 @@ const LinkMenu = withRouter(props => {
         </Menu.Item> : ''
       } */}
       {
-        <Menu.Item key="/portfolio">
+        <Menu.Item key={auth.signedIn() ? "/portfolio" : "/login"}>
           <Link to="/portfolio" style={{ textDecoration: "none" }}>
             <Icon type="pie-chart" />
             <span className="nav-text">Portfolio</span>
@@ -65,7 +65,7 @@ const LinkMenu = withRouter(props => {
         </Menu.Item>
       }
       {
-        <Menu.Item key="/assets">
+        <Menu.Item key={auth.signedIn() ? "/assets" : "/login"}>
           <Link to="/assets" style={{ textDecoration: "none" }}>
             <Icon type="stock" />
             <span className="nav-text">Assets</span>
