@@ -16,7 +16,7 @@ class AppHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      siderCollapsed: props.onSiderCollapsed(),
+      siderCollapsed: props.siderCollapsed,
       subCollapsed: true,
       visible: false
     };
@@ -31,7 +31,7 @@ class AppHeader extends React.Component {
 
   toggleSider = () => {
     this.setState({siderCollapsed: !this.state.siderCollapsed})
-    this.props.onSiderCollapsed()
+    this.props.toggleSider()
   }
 
   toggleSub = () => {
@@ -114,7 +114,6 @@ const headerStyles = {
   menu: {
     marginTop: 10,
     color: `${colors.silver}`,
-
   },
   logo: {
     color: '#000',

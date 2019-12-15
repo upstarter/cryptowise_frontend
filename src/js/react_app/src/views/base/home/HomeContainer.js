@@ -62,7 +62,7 @@ class HomeContainer extends React.Component {
     super();
     this.state = {
       visible: false,
-      siderCollapsed: false
+      siderCollapsed: true
     };
   }
 
@@ -78,7 +78,7 @@ class HomeContainer extends React.Component {
     });
   };
 
-  onSiderCollapse = () => {
+  onSiderCollapsed = () => {
     this.setState({
       siderCollapsed: !this.state.siderCollapsed
     });
@@ -91,8 +91,8 @@ class HomeContainer extends React.Component {
           <div className={classes.globe}>
               <BrowserRouter>
                 <>
-                <AppHeader onSiderCollapsed={this.onSiderCollapse}/>
-                <SiderMenu isCollapsed={this.state.siderCollapsed} />
+                <AppHeader toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed}  />
+                <SiderMenu toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed} />
                 <Layout className={classes.typography, classes.baseLayout} id="wrapper">
                   <Drawer
                     title="CryptoWise"
@@ -105,40 +105,39 @@ class HomeContainer extends React.Component {
                     <p>Or move to BrowserRouter?</p>
                     <p>Some contents...</p>
                   </Drawer>
-                <Layout className={classes.baseContent}>
-                  <Content className={classes.content}>
-                    <Route exact path="/" component={HomeComponent} />
-                    {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                    {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
-                    <Route exact path="/analysts" component={AnalystComponent} />
-                    {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
-                    {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
-                    {/* <Route exact path="/insights" component={InsightComponent} /> */}
-                    <AuthRoute exact path="/proposals" component={ProposalComponent} />
-                    <AuthRoute exact path="/profile" component={ProfileComponent} />
-                    {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
-                    {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
-                    {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
-                    {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
-                    <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                    <AuthRoute exact path="/assets" component={AssetsComponent} />
-                    {/* <AuthRoute exact path="/profile" component={Protected} /> */}
-                    <Route exact path="/about" component={AboutComponent} />
-                    <Route exact path="/signup" component={SignUpContainer} />
-                    <Route exact path="/login" component={BasicLoginForm} />
-                    <Route exact path="/logout" component={Logout} />
-                    <Route
-                      exact
-                      path="/privacy_policy"
-                      component={PrivacyComponent}
-                    />
-                  </Content>
-                  <Footer className={classes.footer} >
-                    Aion Labs, Inc. ©{(new Date).getFullYear()}
-                  </Footer>
+                  <Layout className={classes.baseContent}>
+                    <Content className={classes.content}>
+                      <Route exact path="/" component={HomeComponent} />
+                      {/* <Route exact path="/membership" component={MembershipComponent} /> */}
+                      {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
+                      <Route exact path="/analysts" component={AnalystComponent} />
+                      {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
+                      {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
+                      {/* <Route exact path="/insights" component={InsightComponent} /> */}
+                      <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                      <AuthRoute exact path="/profile" component={ProfileComponent} />
+                      {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
+                      {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
+                      {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
+                      {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
+                      <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
+                      <AuthRoute exact path="/assets" component={AssetsComponent} />
+                      {/* <AuthRoute exact path="/profile" component={Protected} /> */}
+                      <Route exact path="/about" component={AboutComponent} />
+                      <Route exact path="/signup" component={SignUpContainer} />
+                      <Route exact path="/login" component={BasicLoginForm} />
+                      <Route exact path="/logout" component={Logout} />
+                      <Route
+                        exact
+                        path="/privacy_policy"
+                        component={PrivacyComponent}
+                      />
+                    </Content>
+                    <Footer className={classes.footer} >
+                      Aion Labs, Inc. ©{(new Date).getFullYear()}
+                    </Footer>
+                  </Layout>
                 </Layout>
-              </Layout>
-
               </>
             </BrowserRouter>
 

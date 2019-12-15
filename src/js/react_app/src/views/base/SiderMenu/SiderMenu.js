@@ -13,7 +13,7 @@ class SiderMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: props.isCollapsed,
+      collapsed: props.siderCollapsed,
       collapsedWidth: 0,
       broken: false
     };
@@ -52,11 +52,11 @@ class SiderMenu extends React.Component {
   }
 
   onSelect = () => {
-    this.collapse()
+    this.props.toggleSider()
   }
 
   render() {
-    const { location, classes, isCollapsed } = this.props;
+    const { location, classes, siderCollapsed } = this.props;
     return (
       <Sider
         className={classes.sider}
@@ -66,7 +66,7 @@ class SiderMenu extends React.Component {
         collapsedWidth="0"
         trigger={null}
         // zeroWidthTriggerStyle={{bottom: 0}}
-        collapsed={isCollapsed}
+        collapsed={siderCollapsed}
         // onCollapse={this.onSiderCollapse}
         // onMouseEnter={this.open}
         // onMouseLeave={this.collapse}
