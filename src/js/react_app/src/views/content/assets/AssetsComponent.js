@@ -132,7 +132,7 @@ class AssetsComponent extends React.Component {
                   className="item-list"
                   loading={initLoading}
                   grid={{
-                    gutter: 5,
+                    gutter: 0,
                     xs: 1,
                     sm: 1,
                     md: 1,
@@ -175,6 +175,7 @@ const assetStyles = {
     }
   },
   card: {
+    marginBottom: -17,
     background: `${colors.tertiaryDark}`,
     color: `${colors.offWhite}`,
     '& .ant-card-head-title': {
@@ -217,6 +218,7 @@ const assetStyles = {
       '-webkit-backface-visibility': 'hidden',
 
       '@media (max-width: 860px)': {
+
       },
 
       '@media (min-width: 860px)': {
@@ -245,7 +247,7 @@ const assetStyles = {
         },
 
         '& #asset-blurb-intro': {
-          fontSize: 13,
+          fontSize: 14,
           '& p': { padding: 'none !important'},
 
 
@@ -270,6 +272,7 @@ const assetStyles = {
 
       '@media (max-width: 400px)': {
         zIndex: 10,
+        marginTop: 40,
       },
 
       '& #list-item-meta': {

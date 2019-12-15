@@ -18,9 +18,9 @@ class AboutComponent extends React.Component {
               wisdom of the crowd and AI to optimize investment outcomes.
             </h3>
             <p className="paragraph">
-              We are connecting investors with next-generation financial
-              technology capabilities for automated, scalable data
-              gathering, insight generation, and investment decision-making. <i> We're
+              We are connecting investors with next-generation network structures
+              and roles for automated, scalable investment data
+              curation and decision-making. <i> We're
               harnessing the acquired wisdom and innate talent of those most
               passionate about the future of investing and capital formation.
               </i>
@@ -43,7 +43,7 @@ class AboutComponent extends React.Component {
 
             <h1 className="title">Mission</h1>
             <p>
-              To provide the worlds most informative crowdsourced investment
+              To provide the worlds most informative investment
               research & analysis ecosystem.
             </p>
             <h1 className="title">Values</h1>
