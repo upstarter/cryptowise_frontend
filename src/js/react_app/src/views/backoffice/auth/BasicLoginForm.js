@@ -112,6 +112,10 @@ const styles = {
     // margin: '100px auto',
     textAlign: 'center',
     color: `${colors.silver}`,
+
+    '& a': {
+      color: `${colors.origGreen}`
+    },
   },
   loginFormForgot: {
     float: 'right'
