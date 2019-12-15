@@ -65,7 +65,7 @@ class SiderMenu extends React.Component {
         defaultCollapsed={true}
         width="140"
         collapsedWidth="0"
-        // trigger={this.state.broken ? '' : null}
+        trigger={["click"]}
         // zeroWidthTriggerStyle={{bottom: 0}}
         // collapsed={this.state.collapsed}
         // onCollapse={this.onSiderCollapse}
@@ -74,7 +74,8 @@ class SiderMenu extends React.Component {
         // breakpoint="xs"
         // onBreakpoint={(broken) => { this.collapse() } }
       >
-        <LinkMenu onSelect={this.onSelect}/>
+        {/* <LinkMenu onSelect={this.onSelect}/> */}
+        <LinkMenu />
       </Sider>
     )
   }
@@ -86,7 +87,7 @@ const siderMenuStyles = {
     overflow: 'visible',
     height: '100vh',
     position: 'fixed',
-    zIndex: 100,
+    zIndex: 9999,
     left: 0,
 
     '& .ant-layout-sider-zero-width-trigger': {
