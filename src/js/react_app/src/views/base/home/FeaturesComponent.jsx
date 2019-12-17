@@ -27,7 +27,7 @@ class FeaturesComponent extends React.Component {
                     </figure>
                   </div>
                   <h3>Strategic Asset Analysis</h3>
-                  <p className="subtitle-small">
+                  <p>
                     It takes sophisticated methods to construct, manage and
                     optimize a modern high-tech growth portfolio. Collaborate
                     with crypto and finance experts to maximize returns and stay informed of
@@ -41,7 +41,7 @@ class FeaturesComponent extends React.Component {
                     </figure>
                   </div>
                   <h3>Crowd Investing Mastery</h3>
-                  <p className="subtitle-small">
+                  <p>
                     Participate in an investing ecosystem that rewards creative
                     solutions to complicated investment problems. Analyze, synthesize, and actualize
                     cutting edge research across increasingly vast design spaces in Crypto Networking, Financial Machine Learning
@@ -55,7 +55,7 @@ class FeaturesComponent extends React.Component {
                     </figure>
                   </div>
                   <h3>Decentralized Finance Compute</h3>
-                  <p className="subtitle-small">
+                  <p>
                     Core Teams, Task Forces, Swarms, and Individual Agents deliver
                     practical market insights. Participants formulate, coordinate, and implement
                     coherent sets of tactical policies custom tailored to self-selected core
@@ -97,10 +97,14 @@ const featuresStyles = {
       height: '10rem',
       width: '10rem',
     },
-    '& .subtitle-small': {
+    '& p': {
       margin: '0 auto',
       maxWidth: '35rem',
       color: `${colors.smoke}`,
+      fontSize: '1.75rem !important',
+      display: 'flex',
+      justifyContent: 'center',
+      textAlign: 'center !important',
 
     },
     '& h3': {
@@ -108,12 +112,6 @@ const featuresStyles = {
       textAlign: 'center !important',
       // filter: 'saturate(1)',
       color: `${colors.silver}`,
-    },
-
-    '& p': {
-      display: 'flex',
-      justifyContent: 'center',
-      textAlign: 'center !important',
     },
   }
 }
