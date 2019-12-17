@@ -106,18 +106,21 @@ class ProfileComponent extends React.Component {
           <section id="profile" className={classes.profiles}>
             <div id="profile-blurb">
               <div id="profile-blurb-intro">
-                <h3 id="blurb-title">HyperDisruptor Profile</h3>
+                <h3 id="blurb-title">Hyper-Disruptor Profile</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
+                  Master the Markets
+                </h4>
+                <p>
                   We recommend starting as a Data Curator of FDS (Financial Data
                   Structures). Once a certain mastery is attained, you can level
                   up into Investment Strategist or Machine Learning Financial
                   Engineer to exploit your acquired wisdom and talents in market
                   competitions and coop-etitions.
-                </h4>
-                <h4 id='blurb-subtitle' className='subtitle-small'>
+                </p>
+                <p>
                   Or just explore on your own and master market research & analysis
                   for maximal profit from the free market system.
-                </h4>
+                </p>
                 {/* <p>
                   <Link to="/roadmap">The Roadmap</Link> includes team formation with tools and systems.
                 </p> */}
@@ -208,17 +211,17 @@ const profileStyles = {
 
     '& #profile-blurb': {
       gridArea: 'header',
-      margin: '73px 0 0 0',
-      padding: 14,
+      maxWidth: 600,
+      margin: '80px 0 0 0',
 
       '@media (max-width: 860px)': {
         gridRow: '1 / 2',
 
         '& #blurb-title': {
-          fontSize: '2rem',
+          fontSize: '3rem',
         },
 
-        '& h4': { marginLeft: 30 }
+        '& h3': { fontSize: '3rem' }
       },
 
       '@media (min-width: 860px)': {
@@ -227,28 +230,38 @@ const profileStyles = {
       },
 
       '& #profile-blurb-intro': {
-        fontSize: 13,
-        maxWidth: '60ch',
 
         '& #blurb-title': {
           textAlign: 'center',
-          fontSize: '2.7rem !important',
+          lineHeight: '5rem',
+          fontSize: '3.5rem !important',
           color: `${colors.offWhite} !important`,
+          marginBottom: 23
         },
         '& #blurb-subtitle': {
-          // maxWidth: '60ch',
+          fontSize: '2.3rem',
+          lineHeight: '2rem',
+          textAlign: 'center',
           color: `${colors.offWhite} !important`,
-          marginBottom: 10,
-        }
+          marginBottom: 30,
+        },
+
+        '@media (max-width: 860px)': {
+          '& p': {  fontSize: '2.3rem' },
+        },
+
+        '@media (min-width: 860px)': {
+          '& p': { fontSize: '2.3rem' },
+        },
       },
     },
   },
 
   profileItems: {
     gridArea: 'content',
+    marginTop: 50,
 
     '@media (max-width: 860px)': {
-      padding: 14,
       gridRow: '2 / 3',
     },
 
@@ -260,29 +273,45 @@ const profileStyles = {
       textAlign: 'center',
       height: 55,
       zIndex: 10,
-      marginBottom: 10,
+      marginBottom: 30,
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
       '-webkit-backface-visibility': 'hidden',
       '& h3': {
         textAlign: 'center',
-        fontSize: '2.0rem',
+        fontSize: '3.3rem !important',
         letterSpacing: '0.5rem',
-        paddingTop: 17,
         color: '#fff',
+
+        '@media (max-width: 860px)': {
+          fontSize: '2.7rem !important',
+        },
       },
     },
 
     '& .profile-column': {
-      fontSize: 15,
       color: `${colors.offWhite} !important`,
-      '& .switch': {
-        marginBottom: 15,
-        fontSize: 15,
+
+
+      '@media (max-width: 860px)': {
+        gridRow: '2 / 3',
+        '& .switch': {
+          marginBottom: 20,
+          fontSize: '2rem',
+        },
       },
-      '& span': { paddingLeft: 10 },
-      '& .icon ': { paddingLeft: 10 }
+
+      '@media (min-width: 860px)': {
+        gridRow: '2 / 3',
+        '& .switch': {
+          marginBottom: 20,
+          fontSize: '3rem',
+        },
+      },
+
+      '& span': { paddingLeft: 14 },
+      '& .icon ': { paddingLeft: 14 }
     },
   },
 

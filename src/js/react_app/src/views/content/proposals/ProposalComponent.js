@@ -241,7 +241,7 @@ const proposalStyles = {
   },
   proposals: {
     display: 'grid',
-    marginTop: 30,
+    marginTop: 60,
 
     '@media (max-width: 860px)': {
       gridTemplateRows: '1fr 9fr',
@@ -256,17 +256,18 @@ const proposalStyles = {
     '& #proposal-blurb': {
       gridArea: 'sidebar',
       justifySelf: 'center',
-      margin: '40px 0 0 0',
-      padding: 14,
+      margin: '20px 0 0 0',
+      padding: 2,
 
       // color: `${colors.sand} !important`,
 
       '@media (max-width: 860px)': {
         gridColumn: '1 / 2',
-        maxWidth: '90vw',
+        maxWidth: '96vw',
 
         '& #blurb-title': {
           fontSize: '2rem',
+          padding: 14,
         },
       },
 
@@ -278,20 +279,19 @@ const proposalStyles = {
       },
 
       '& #proposal-blurb-intro': {
-        fontSize: 13,
-        '& p': { padding: 'none !important'},
-
+        fontSize: 18,
         maxWidth: '70ch',
 
         '& #blurb-title': {
-          fontSize: '2.7rem !important',
+          fontSize: '3.8rem !important',
           color: `${colors.offWhite} !important`,
           // filter: 'contrast(.8)'
         },
         '& #blurb-subtitle': {
           color: `${colors.offWhite} !important`,
-          marginBottom: 10,
-          // fontSize: '1.15rem',
+          marginBottom: 30,
+          marginLeft: 15,
+          fontSize: '2rem',
         }
       },
     },
@@ -308,7 +308,6 @@ const proposalStyles = {
     },
     '@media (min-width: 860px)': {
       justifySelf: 'center',
-      margin: '40px auto',
     },
 
     '& #proposal-items-heading': {
@@ -345,7 +344,7 @@ const proposalStyles = {
       '& h3': {
         gridColumn: '2',
         justifySelf: 'start',
-        fontSize: '2.0rem',
+        fontSize: '3rem',
         letterSpacing: '0.5rem',
         paddingTop: 17,
         color: '#fff',
@@ -379,7 +378,7 @@ const proposalStyles = {
         },
       },
       '& #meta-details': {
-         padding: 40,
+         padding: 20,
          textAlign: 'center',
          '& .item-description': {
 

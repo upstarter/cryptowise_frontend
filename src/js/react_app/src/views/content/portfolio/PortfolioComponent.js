@@ -129,20 +129,18 @@ class PortfolioComponent extends React.Component {
 
 const portfolio = {
   portfolio: {
-    textAlign: 'center',
-    margin: "45px auto",
+    margin: "80px auto",
     height: '100%',
+    textAlign: 'center',
+    '& h1': { marginLeft: 10 },
+    '& h6': { margin: '0 auto', maxWidth: '60ch' },
 
     '@media (max-width: 860px)': {
        maxWidth: '90vw',
-       gridTemplateColumns: '90vw 90vw',
-      // gridTemplateAreas: '"sidebar" "content"',
     },
 
     '@media (min-width: 860px)': {
       maxWidth: "600px",
-      // gridTemplateColumns: '2fr 8fr',
-      // gridTemplateAreas: '"sidebar content"',
     },
   },
 

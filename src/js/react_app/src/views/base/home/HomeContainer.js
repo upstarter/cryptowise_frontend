@@ -102,7 +102,7 @@ class HomeContainer extends React.Component {
                     visible={this.state.visible}
                   >
                     <p>Wrap with separate router?</p>
-                    <p>Or move to BrowserRouter?</p>
+                    <p>Or move?</p>
                     <p>Some contents...</p>
                   </Drawer>
                   <Layout className={classes.baseContent}>
