@@ -201,35 +201,29 @@ const profileStyles = {
   },
   profiles: {
     display: 'grid',
-
-    '@media (max-width: 860px)': {
-      gridTemplateColumns: '1.5fr 4fr 5.5fr',
-      gridTemplateAreas: '"buffer" "sidebar" "content"',
-    },
-
-    '@media (min-width: 860px)': {
-      gridTemplateColumns: '1.5fr 4fr 5.5fr',
-      gridTemplateAreas: '"buffer sidebar content"',
-    },
+    // justifyItems: 'center',
+    gridTemplateRows: '1fr 1fr',
+    gridTemplateAreas: '"header" "content"',
+    justifyItems: 'center',
 
     '& #profile-blurb': {
-      gridArea: 'sidebar',
-
-      margin: '60px 0 0 0',
+      gridArea: 'header',
+      margin: '73px 0 0 0',
       padding: 14,
 
       '@media (max-width: 860px)': {
-        gridColumn: '2 / 3',
         gridRow: '1 / 2',
 
         '& #blurb-title': {
           fontSize: '2rem',
         },
+
+        '& h4': { marginLeft: 30 }
       },
 
       '@media (min-width: 860px)': {
-        gridColumn: '2 / 3',
         gridRow: '1 / 2',
+
       },
 
       '& #profile-blurb-intro': {
@@ -237,11 +231,12 @@ const profileStyles = {
         maxWidth: '60ch',
 
         '& #blurb-title': {
+          textAlign: 'center',
           fontSize: '2.7rem !important',
           color: `${colors.offWhite} !important`,
         },
         '& #blurb-subtitle': {
-          maxWidth: '60ch',
+          // maxWidth: '60ch',
           color: `${colors.offWhite} !important`,
           marginBottom: 10,
         }
@@ -254,20 +249,15 @@ const profileStyles = {
 
     '@media (max-width: 860px)': {
       padding: 14,
-      gridColumn: '2 / 3',
       gridRow: '2 / 3',
     },
 
     '@media (min-width: 860px)': {
-      gridColumn: '3 / 4',
-      gridRow: '1 / 2',
-      margin: '70px 0px 50px 0',
-      justifySelf: 'center',
+      gridRow: '2 / 3',
     },
 
-    '& #profile-items-heading': {
-      alignItems: 'center',
-      justifyItems: 'center',
+    '& .profile-items-heading': {
+      textAlign: 'center',
       height: 55,
       zIndex: 10,
       marginBottom: 10,
@@ -276,8 +266,7 @@ const profileStyles = {
       '-webkit-perspective': 1000,
       '-webkit-backface-visibility': 'hidden',
       '& h3': {
-        gridColumn: '2',
-        justifySelf: 'start',
+        textAlign: 'center',
         fontSize: '2.0rem',
         letterSpacing: '0.5rem',
         paddingTop: 17,
