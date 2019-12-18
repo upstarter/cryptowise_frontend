@@ -212,11 +212,10 @@ body {
 
 
 #wrapper {
-
   h1 { padding-top: 2.5rem; }
 
   .light-wrap {
-    padding: 6rem 7rem 13rem;
+    // padding: 6rem 7rem 13rem;
     background: #fff;
     color: #000;
     display: flex;
@@ -225,8 +224,6 @@ body {
 
   .dark-wrap {
     // height: 100% !important;
-    padding: 3rem 4rem 6rem;
-    // background: rgb(25, 31, 46);
     color: #fff;
     a { background: none !important; }
   }

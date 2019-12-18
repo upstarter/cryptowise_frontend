@@ -48,7 +48,7 @@ class CardTile extends Component {
          // bordered={true}
          // hoverable={true}
          className={classes.card}
-         style={state.selected ? { background: `${colors.lightBlack}` } : null}
+         style={state.selected ? { background: `${colors.darkBlack}` } : null}
          onClick={id => this.handleSelected(data.id)}
         >
           <div

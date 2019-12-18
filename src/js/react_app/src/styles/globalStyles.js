@@ -238,7 +238,7 @@ const globalStyles = {
       },
 
       '& .dark-wrap': {
-        padding: '6rem 7rem 12rem',
+        // padding: '6rem 7rem 12rem',
         background: '#191F2D',
         color: '#fff',
         '& a': { background: 'none !important', }

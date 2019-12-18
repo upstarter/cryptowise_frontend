@@ -68,14 +68,14 @@ class BlogComponent extends React.Component {
             <h1>Blog Posts</h1>
           </div>
           <div className={classes.blogPosts}>
-            <Row type="flex" justify="space-around">
+            <Row className="card-row" type="flex" justify="center">
               {blogPosts.map(post =>
                 <Col key={post.link} xs={25} sm={25} md={7} lg={7} xl={7}>
                   <div key={post.link} className={classes.card}>
                     <div className="card-content" className={classes.card_content}>
                       <p id="date" className="caption" dangerouslySetInnerHTML={{__html: post.date}}>
                       </p>
-                      <div className="card-subtitle" dangerouslySetInnerHTML={{__html: post.content}}>
+                      <div className="card-content" dangerouslySetInnerHTML={{__html: post.content}}>
                       </div>
                       <a href={post.link} className="link">Read More</a>
                     </div>
@@ -91,28 +91,17 @@ class BlogComponent extends React.Component {
 }
 const blogStyles = {
   blog: {
-    padding: '3rem',
-    margin: '-10 auto',
-    background: '#191F2D',
-    color: '#fff',
     '& a': { background: 'none !important' }
-  },
-  blogPosts: {
-    '@media (min-width: 992px)': {
-      // width: '60vw',
-      // margin: '0 auto',
-    }
   },
   heading: {
     textAlign: 'center',
 
-    marginBottom: '10px',
     '& h1': {
       color: `${colors.white}`
     }
   },
   card: {
-    // maxWidth: '50ch',
+    maxWidth: '35ch !important',
     marginBottom: 70,
     minHeight: '100%',
 
@@ -123,8 +112,6 @@ const blogStyles = {
     '@media (min-width: 992px)': {
        // maxWidth: '60ch'
     },
-
-
 
     '.content .is-loading': {
       minHeight: '100vh',
@@ -145,64 +132,40 @@ const blogStyles = {
     flexDirection: 'column',
     alignItems: 'center',
 
-    // '& .caption': {
-    //   display: 'flex',
-    //   textAlign: 'center !important',
-    //   alignItems: 'center',
-    // },
-    // '& .link': {
-    //   display: 'flex',
-    //   textAlign: 'center !important',
-    //   alignItems: 'center'
-    // },
-    '& h1': {
-      textAlign: 'center !important',
-      fontFamily: 'Avenir-Medium',
-      fontWeight: 'normal',
-      fontSize: '2rem',
-      lineHeight: '2.6rem',
-      letterSpacing: '0.1ch',
-      color: `${colors.white}`,
-    },
-    '& h2': {
-      textAlign: 'center !important',
-      fontFamily: 'Avenir-Medium',
-      fontWeight: 'normal',
-      fontSize: '2rem',
-      lineHeight: '2.6rem',
-      letterSpacing: '0.1ch',
-      color: `${colors.white}`,
-    },
     '& h3': {
+      textAlign: 'center !important',
       // justifyContent: 'center',
       // textAlign: 'center !important',
       fontFamily: 'Avenir-Light',
       fontWeight: 'normal',
-      fontSize: '1.8rem',
+      fontSize: '2.3rem !important',
       lineHeight: '2.6rem',
       letterSpacing: '0.1ch',
       filter: 'saturate(0.85)',
       color: `${colors.offWhite}`,
     },
     '& h4': {
+      padding: 10,
       fontFamily: 'Avenir-Book',
       fontWeight: 'normal',
-      fontSize: '1.4rem !important',
-      lineHeight: '1.7rem !important',
+      fontSize: '1.6rem !important',
+      lineHeight: '2.2rem !important',
       letterSpacing: '0.09ch',
-      color: `${colors.smoke}`,
+      color: `${colors.lightBlack}`,
     },
     '& p': {
-      // display: 'flex',
-      // justifyContent: 'center',
-      // textAlign: 'center !important',
+      padding: 15,
       fontFamily: 'Avenir-Book',
       fontWeight: 'light',
       lineHeight: '2rem',
       letterSpacing: '0.1ch',
-      fontSize: '1.4rem',
-      color: `${colors.silver}`,
-    }
+      fontSize: '1.5rem',
+      color: `${colors.smoke}`,
+    },
+
+    '& .link': {
+      color: `${colors.origGreen}`
+    },
   }
 }
 export default injectSheet(blogStyles)(BlogComponent)

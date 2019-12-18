@@ -34,17 +34,22 @@ class AnalystComponent extends React.Component {
                 <h1 id="title">
                   <span style={{color: `${colors.silver}`}}>The world needs your investment wisdom.</span>
                 </h1>
-                <h3 id="subtitle" className={classes.title}>
-                  <span id='title-dev'>Join the top crypto network for:</span>
-                </h3>
-                <div id="words" className="slidingVertical">
-                  <span>Investment Strategists</span>
-                  <span>Data Curators</span>
-                  <span>Feature Analysts</span>
-                  <span>ML & AI Engineers</span>
-                  <span>Financial Analysts</span>
+                <div id="words">
+                  <div id="blurb">
+                    <h5>
+                      Join the top crypto network for:
+                    </h5>
+                    <div id='participant-list'>
+                      <ul>
+                        <li>Investment Strategists</li>
+                        <li>Data Curators</li>
+                        <li>Feature Analysts</li>
+                        <li>ML & AI Engineers</li>
+                        <li>Financial Analysts</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-
               </div>
               <p id='button'>
                 <AppButton
@@ -71,7 +76,7 @@ class AnalystComponent extends React.Component {
 
                   {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
                 </ul>
-                <div id="list-subtitle" className="subtitle-big">Own your Networks.</div>
+                <div id="social-subtitle" className="subtitle-big">Own your Networks.</div>
 
               </div>
               <p id='social-blurb'>Share it!</p>
@@ -90,30 +95,28 @@ class AnalystComponent extends React.Component {
 
 const devStyles = {
   analysts: {
-    height: '220vh',
+    marginTop: 70,
+    paddingBottom: '10%',
     '& #analyst-content': {
-      marginTop: 45,
       display: 'grid',
-      maxHeight: '120vh',
-      gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr',
-      gridTemplateColumns: '1fr 1fr 1fr',
+      gridTemplateRows: 'repeat(6, 0.03fr)',
+      gridTemplateColumns: '95vw',
       userSelect: 'none',
       filter: 'saturate(1) contrast(1)',
 
       "@media (max-width: 860px)": {
-        gridTemplateColumns: '1fr'
+        gridTemplateRows: 'repeat(6, .05fr)',
+        gridTemplateColumns: '100vw'
       },
 
       '& #analyst-header': {
         display: 'grid',
-        gridRow: 1,
-        gridColumn: 2,
-        gridTemplateRows: '105px 2fr 1fr',
+        gridTemplateRows: '50px repeat(2, .05fr)',
         justifyItems: 'center',
-        marginBottom: 50,
+        marginBottom: 20,
 
         "@media (max-width: 860px)": {
-          gridTemplateRows: '30px 2fr 1fr',
+          gridTemplateRows: '50px repeat(2, .05fr)',
         },
 
         '& #title': {
@@ -123,89 +126,119 @@ const devStyles = {
           textAlign: 'center',
 
           "@media (max-width: 860px)": {
-            fontSize: '3.8rem',
-          }
-        },
-
-        '& #subtitle': {
-          justifySelf: 'center',
-          fontSize: '2.4rem',
-          textAlign: 'center',
-
-          "@media (max-width: 860px)": {
-            marginTop: 20,
-            fontSize: '2.2rem',
+            fontSize: '4.6rem !important',
+            lineHeight: '4rem',
           }
         },
 
         '& #words': {
           gridRow: 2,
           gridColumn: 1,
-          width: '75%',
-          marginTop: 80,
-          marginLeft: 30,
-          display: 'block !important',
+          width: '95vw',
+          marginTop: 120,
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
 
           "@media (max-width: 860px)": {
-            marginTop: 125,
+            marginTop: 150,
+          },
+
+          '& #blurb': {
+            fontSize: '1.7rem !important',
+            '& h5': {
+              textAlign: 'center',
+              fontSize: '2rem',
+              color: `${colors.offWhite}`
+            },
+
+            '& #participant-list': {
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              '& ul': {
+                marginLeft: 45,
+                color: `${colors.silver}`,
+                listStyleType: 'square'
+              }
+            },
+
+            "@media (max-width: 860px)": {
+              fontSize: '2rem !important',
+            }
           },
 
           '& span': {
-            marginTop: 40,
             fontSize: '3.4rem !important',
 
             "@media (max-width: 860px)": {
-              marginTop: 80,
-              fontSize: '3.2rem !important',
+
+              width: '95vw',
+              fontSize: '2.7rem !important',
             },
           }
         },
 
       },
       '& #button': {
-        gridRow: 2,
-        gridColumn: 2,
-        alignSelf: 'center',
         justifySelf: 'center',
-        marginTop: 60,
+        // marginTop: 60,
 
         "@media (max-width: 860px)": {
-          marginTop: 80,
+          // marginTop: 40,
         },
       },
       '& #analyst-list': {
-        gridRow: 3,
-        gridColumn: 2,
-        maxWidth: '50ch',
+        maxWidth: '70ch',
         justifySelf: 'center',
-        padding: 15,
-        // marginLeft: 30,
+        padding: 17,
+        marginLeft: 30,
+
+        "@media (max-width: 860px)": {
+
+        },
+
         '& #list-subtitle': {
           fontSize: '3rem !important',
           gridRow: 4,
-          margin: '1em 0 0.75em 0',
+          margin: '5rem 0 1rem 0',
           letterSpacing: '.1em',
           fontVariant: 'small-caps',
           textAlign: 'center',
+        },
+
+        '& #social-subtitle': {
+          gridRow: 4,
+          fontSize: '3rem !important',
+          margin: '5rem 0 0 0',
+          letterSpacing: '.1em',
+          fontVariant: 'small-caps',
+          textAlign: 'center',
+
+          "@media (max-width: 860px)": {
+            marginTop: 40,
+            fontSize: '2.5rem !important',
+            margin: '0 0 0 -4rem',
+
+          },
         },
 
         '& ul li': {
           color: `${colors.silver}`,
           listStyleType: 'square',
           fontSize: '2.3rem',
-          padding: 14
+          padding: '14px 0'
         }
       },
       '& #social-blurb': {
         gridRow: 5,
-        gridColumn: 2,
         justifySelf: 'center',
         alignSelf: 'center',
         fontSize: '2rem'
       },
       '& #social-list': {
         gridRow: 6,
-        gridColumn: 2,
         justifySelf: 'center',
         alignSelf: 'center',
         '& li a': {
@@ -213,17 +246,6 @@ const devStyles = {
           filter: 'saturate(2)',
         }
       },
-
-
-      '@media (min-width: 992px)': {
-        // width: '60ch',
-      },
-
-      '@media (min-width: 480px and max-width: 992px)': {
-        // width: '95vw',
-      },
-      '@media (max-width:  480px)': {
-      }
     }
   },
 }

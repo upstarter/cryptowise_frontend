@@ -338,7 +338,7 @@ const proposalStyles = {
         cursor: 'pointer',
         zIndex: 10,
         border: 'none',
-        boxShadow: `0 0 0 0 ${colors.lightBlack}`,
+        boxShadow: `0 0 0 0 ${colors.darkBlack}`,
         '-webkit-animation': 'pulse 1.5s infinite',
       },
       '& h3': {

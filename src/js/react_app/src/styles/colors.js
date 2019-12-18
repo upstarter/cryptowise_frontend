@@ -29,6 +29,7 @@ const colors = {
 
   // yellowish
   yellow: 'rgba(237, 212, 65,1)',
+  darkYellow: 'rgba(207, 278, 35,0.8)',
   yellowOrange: 'rgba(251, 156, 48,1)',
 
   // purples
@@ -55,7 +56,9 @@ const colors = {
 
   // blacks
   black: '#000',
-  lightBlack: '#5D626E',
+  lightBlack: 'rgba(175, 170, 170, 0.8)',
+  mediumBlack: 'rgba(145, 140, 140, 0.7)',
+  darkBlack: '#5D626E',
 
   // whites
   white: 'rgb(255, 255, 255)',

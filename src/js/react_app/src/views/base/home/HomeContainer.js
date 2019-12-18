@@ -152,7 +152,7 @@ const appStyles = {
   // typography: `${typography.main}`,
   baseLayout: {
     minHeight: '100vh',
-    // paddingTop: 100,
+    paddingBottom: '10%',
     // background: `${colors.midTone}`,
     // color: 'black'
   },
