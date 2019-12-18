@@ -33,7 +33,7 @@ class BasicLoginForm extends React.Component {
         <div className={classes.container}>
           <div className={classes.header}>
             <h2 id="title" className={classes.title, "title-small"}>
-              Join the crypto network for deep tech hackers, analysts, and quants.
+              Profit from deep tech analysis on hypergrowth assets.
             </h2>
           </div>
           <div className={classes.main}>
