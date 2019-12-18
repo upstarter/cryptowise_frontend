@@ -33,7 +33,7 @@ class BasicLoginForm extends React.Component {
         <div className={classes.container}>
           <div className={classes.header}>
             <h2 id="title" className={classes.title, "title-small"}>
-              Join the top crypto network for serious investors.
+              Join the crypto network for deep tech investors.
             </h2>
           </div>
           <div className={classes.main}>
@@ -84,9 +84,9 @@ const WrappedBasicLoginForm = Form.create({ name: 'basic_login' })(BasicLoginFor
 
 const styles = {
   container: {
-    marginTop: 100,
+    marginTop: 80,
     display: "grid",
-    gridTemplateRows: ".5fr 1fr",
+    gridTemplateRows: ".2fr 1fr",
     justifyItems: 'center',
   },
   header: {
@@ -96,14 +96,14 @@ const styles = {
       fontSize: '3.3rem !important',
       lineHeight: '4.3rem !important',
       maxWidth: 400,
-      // padding: 20,
+      padding: 20,
       margin: '0 auto',
       textAlign: 'center',
       color: `${colors.white}`,
     },
   },
   main: {
-    marginTop: 20,
+    marginTop: 10,
 
     // display: 'flex',
     // flexWrap: 'wrap',
