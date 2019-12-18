@@ -21,7 +21,9 @@ export default class AuthService {
           session: {
               username,
               password
-          }
+          },
+          withCredentials: true,
+          credentials: 'include'
         }
         return axios.post(`${url}/v1/auth/sign_in`, data)
           .then(res => {
