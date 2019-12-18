@@ -53,7 +53,7 @@ class AnalystComponent extends React.Component {
                     this.state.subscribeButtonLoading ? "is-loading" : ''
                   }`}
                   onClick={this.signUpRouteChange}
-                  size='default'
+                  size='large'
                 >
                   {" "}
                   Sign Up{" "}
