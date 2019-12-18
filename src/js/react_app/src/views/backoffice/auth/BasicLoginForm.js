@@ -33,7 +33,7 @@ class BasicLoginForm extends React.Component {
         <div className={classes.container}>
           <div className={classes.header}>
             <h2 id="title" className={classes.title, "title-small"}>
-              Join the crypto network for deep tech hackers.
+              Join the crypto network for deep tech hackers, analysts, and quants.
             </h2>
           </div>
           <div className={classes.main}>
@@ -86,12 +86,12 @@ const styles = {
   container: {
     marginTop: 80,
     display: "grid",
-    gridTemplateRows: ".2fr 1fr",
+    gridTemplateRows: ".3fr 1fr",
     justifyItems: 'center',
   },
   header: {
     gridRow: 1,
-    padding: 20,
+    padding: 15,
     '& #title': {
       fontSize: '3.3rem !important',
       lineHeight: '4.3rem !important',
@@ -100,10 +100,18 @@ const styles = {
       margin: '0 auto',
       textAlign: 'center',
       color: `${colors.white}`,
+
+      "@media (max-width: 480px)": {
+        fontSize: '2.8rem !important',
+      },
     },
   },
   main: {
-    marginTop: 10,
+    marginTop: 40,
+
+    "@media (max-width: 480px)": {
+      marginTop: 0,
+    },
 
     // display: 'flex',
     // flexWrap: 'wrap',
@@ -114,6 +122,7 @@ const styles = {
   loginForm: {
     gridRow: 2,
     maxWidth: '300px',
+
     // margin: '100px auto',
     textAlign: 'center',
     color: `${colors.silver}`,
