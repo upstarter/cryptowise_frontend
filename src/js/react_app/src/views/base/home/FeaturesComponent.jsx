@@ -37,10 +37,10 @@ class FeaturesComponent extends React.Component {
                 <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
                   <div className="feature-icon">
                     <figure className="image">
-                      <img alt="Crypto Network" src={Icon2}/>
+                      <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
                     </figure>
                   </div>
-                  <h3>Crowd Investing Mastery</h3>
+                  <h3>Decentralized Finance Compute</h3>
                   <p>
                     Participate in an investing ecosystem that rewards creative
                     solutions to complicated investment problems. Analyze, synthesize, and actualize
@@ -49,12 +49,13 @@ class FeaturesComponent extends React.Component {
                   </p>
                 </Col>
                 <Col xs={25} sm={25} md={7} lg={7} xl={7} className={classes.feature}>
+
                   <div className="feature-icon">
                     <figure className="image">
-                      <img alt="Crypto Trading, Crypto Investing" src={Icon3}/>
+                      <img alt="Crypto Network" src={Icon2}/>
                     </figure>
                   </div>
-                  <h3>Decentralized Finance Compute</h3>
+                  <h3>Crowd Investing Mastery</h3>
                   <p>
                     Core Teams, Task Forces, Swarms, and Individual Agents deliver
                     practical market insights. Participants formulate, coordinate, and implement
@@ -101,7 +102,7 @@ const featuresStyles = {
       margin: '0 auto',
       maxWidth: '35rem',
       color: `${colors.smoke}`,
-      fontSize: '1.75rem !important',
+      fontSize: '1.65rem !important',
       display: 'flex',
       justifyContent: 'center',
       textAlign: 'center !important',
