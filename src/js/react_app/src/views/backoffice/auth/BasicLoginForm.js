@@ -33,7 +33,7 @@ class BasicLoginForm extends React.Component {
         <div className={classes.container}>
           <div className={classes.header}>
             <h2 id="title" className={classes.title, "title-small"}>
-              Profit from deep tech analysis of hypergrowth assets along with top analysts.
+              Profit from deep tech analysis of hyper-growth assets.
             </h2>
           </div>
           <div className={classes.main}>
@@ -59,7 +59,7 @@ class BasicLoginForm extends React.Component {
                   />,
                 )}
               </Form.Item>
-              <Form.Item>
+              <Form.Item className='action-items'>
                 {getFieldDecorator('remember', {
                   valuePropName: 'checked',
                   initialValue: true,
@@ -84,58 +84,67 @@ const WrappedBasicLoginForm = Form.create({ name: 'basic_login' })(BasicLoginFor
 
 const styles = {
   container: {
-    marginTop: 80,
+    marginTop: 110,
     display: "grid",
     gridTemplateRows: ".3fr 1fr",
     justifyItems: 'center',
   },
   header: {
     gridRow: 1,
-    padding: 15,
+    marginBottom: 10,
+
+    "@media (max-width: 480px)": {
+      marginBottom: 0,
+
+    },
+
     '& #title': {
       fontSize: '3.3rem !important',
-      lineHeight: '4.3rem !important',
+      lineHeight: '4rem !important',
       maxWidth: 400,
-      padding: 20,
-      margin: '0 auto',
+      margin: '20px auto',
       textAlign: 'center',
       color: `${colors.white}`,
 
       "@media (max-width: 480px)": {
-        fontSize: '2.8rem !important',
+        fontSize: '2.7rem !important',
+        maxWidth: '22ch !important',
+        margin: '-25px auto',
       },
     },
   },
   main: {
-    marginTop: 55,
+    marginTop: '-20px',
 
     "@media (max-width: 480px)": {
-      marginTop: 0,
+      marginTop: '-30px',
     },
-
-    // display: 'flex',
-    // flexWrap: 'wrap',
-    // flexDirection: 'column',
-    // justifyContent: "center",
-    // alignItems: 'top',
   },
   loginForm: {
     gridRow: 2,
     maxWidth: '300px',
-
-    // margin: '100px auto',
     textAlign: 'center',
     color: `${colors.silver}`,
 
     '& a': {
       color: `${colors.origGreen}`
     },
+
+    '& .action-items': {
+
+      '& a': {
+        fontSize: '1.6rem',
+      }
+    }
   },
   loginFormForgot: {
     float: 'right'
   },
   loginFormButton: {
+    margin: [10,0],
     display: 'block',
+    fontSize: '2rem',
+    height: 45,
     width: '100% !important'
   },
   fbLoginButton: {
