@@ -33,7 +33,7 @@ class BasicLoginForm extends React.Component {
         <div className={classes.container}>
           <div className={classes.header}>
             <h2 id="title" className={classes.title, "title-small"}>
-              Profit from deep tech analysis on hypergrowth assets.
+              Profit from deep tech analysis of hypergrowth assets along with top analysts.
             </h2>
           </div>
           <div className={classes.main}>
@@ -107,7 +107,7 @@ const styles = {
     },
   },
   main: {
-    marginTop: 40,
+    marginTop: 55,
 
     "@media (max-width: 480px)": {
       marginTop: 0,

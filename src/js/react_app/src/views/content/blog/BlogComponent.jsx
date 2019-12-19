@@ -101,12 +101,13 @@ const blogStyles = {
     }
   },
   card: {
-    maxWidth: '35ch !important',
-    marginBottom: 70,
+    maxWidth: '40ch !important',
     minHeight: '100%',
 
     '@media (max-width: 808px)': {
       // maxWidth: '50ch'
+      marginBottom: 70,
+
     },
 
     '@media (min-width: 992px)': {
@@ -134,12 +135,10 @@ const blogStyles = {
 
     '& h3': {
       textAlign: 'center !important',
-      // justifyContent: 'center',
-      // textAlign: 'center !important',
       fontFamily: 'Avenir-Light',
       fontWeight: 'normal',
-      fontSize: '2.3rem !important',
-      lineHeight: '2.6rem',
+      fontSize: '2rem !important',
+      lineHeight: '2.7rem',
       letterSpacing: '0.1ch',
       filter: 'saturate(0.85)',
       color: `${colors.offWhite}`,
@@ -148,18 +147,18 @@ const blogStyles = {
       padding: 10,
       fontFamily: 'Avenir-Book',
       fontWeight: 'normal',
-      fontSize: '1.6rem !important',
+      fontSize: '1.48rem !important',
       lineHeight: '2.2rem !important',
       letterSpacing: '0.09ch',
       color: `${colors.lightBlack}`,
     },
     '& p': {
-      padding: 15,
+      padding: 5,
       fontFamily: 'Avenir-Book',
       fontWeight: 'light',
       lineHeight: '2rem',
       letterSpacing: '0.1ch',
-      fontSize: '1.5rem',
+      fontSize: '1.4rem',
       color: `${colors.smoke}`,
     },
 
