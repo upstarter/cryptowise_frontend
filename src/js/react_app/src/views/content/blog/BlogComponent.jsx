@@ -105,7 +105,7 @@ const blogStyles = {
     minHeight: '100%',
 
     '@media (max-width: 808px)': {
-      // maxWidth: '50ch'
+      maxWidth: '30ch !important',
       marginBottom: 70,
 
     },

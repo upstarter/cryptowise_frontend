@@ -97,6 +97,7 @@ const devStyles = {
   analysts: {
     marginTop: 80,
     paddingBottom: '10%',
+    padding: [0,30,30,0],
     '& #analyst-content': {
       display: 'grid',
       gridTemplateRows: 'repeat(6, 0.03fr)',
@@ -184,7 +185,10 @@ const devStyles = {
       '& #button': {
         justifySelf: 'center',
         // marginTop: 60,
-
+        '& button': {
+          width: 170,
+          height: 50,
+        },
         "@media (max-width: 860px)": {
           // marginTop: 40,
         },
