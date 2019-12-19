@@ -65,7 +65,7 @@ class AnalystComponent extends React.Component {
                 </AppButton>
               </p>
               <div id='analyst-list'>
-                <div id="list-subtitle" className="subtitle-big">What's included?</div>
+                <div id="list-subtitle" className="subtitle-small">What's Included?</div>
 
                 <ul>
                   <li>Free access to ecosystem leading peer-to-peer robo-advisory services where serious investors discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
@@ -76,9 +76,9 @@ class AnalystComponent extends React.Component {
 
                   {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
                 </ul>
-                <div id="social-subtitle" className="subtitle-big">Own your Networks.</div>
-
               </div>
+              <div id="social-subtitle" className="subtitle-big">Own Your Networks.</div>
+
               <p id='social-blurb'>Share it!</p>
               <ul id='social-list'>
                 <li>On Twitter: <a target="_blank" href="//www.twitter.com/CryptoWiseAI">@CryptoWiseAI</a></li>
@@ -95,7 +95,7 @@ class AnalystComponent extends React.Component {
 
 const devStyles = {
   analysts: {
-    marginTop: 70,
+    marginTop: 80,
     paddingBottom: '10%',
     '& #analyst-content': {
       display: 'grid',
@@ -193,43 +193,41 @@ const devStyles = {
         maxWidth: '70ch',
         justifySelf: 'center',
         padding: 17,
-        marginLeft: 30,
 
         "@media (max-width: 860px)": {
 
         },
 
         '& #list-subtitle': {
-          fontSize: '3rem !important',
+          fontSize: '2.4rem !important',
           gridRow: 4,
-          margin: '5rem 0 1rem 0',
+          margin: '5rem 0 1.5rem 0',
           letterSpacing: '.1em',
-          fontVariant: 'small-caps',
+          // fontVariant: 'small-caps',
           textAlign: 'center',
         },
+        '& ul': {
+          marginLeft: 35,
 
-        '& #social-subtitle': {
-          gridRow: 4,
-          fontSize: '3rem !important',
-          margin: '5rem 0 0 0',
-          letterSpacing: '.1em',
-          fontVariant: 'small-caps',
-          textAlign: 'center',
-
-          "@media (max-width: 860px)": {
-            marginTop: 40,
-            fontSize: '2.5rem !important',
-            margin: '0 0 0 -4rem',
-
-          },
-        },
-
-        '& ul li': {
-          color: `${colors.silver}`,
-          listStyleType: 'square',
-          fontSize: '2.3rem',
-          padding: '14px 0'
+          '& li': {
+            color: `${colors.silver}`,
+            listStyleType: 'square',
+            fontSize: '2.3rem',
+            padding: '14px 0'
+          }
         }
+      },
+
+      '& #social-subtitle': {
+        gridRow: 4,
+        fontSize: '3rem !important',
+        letterSpacing: '.1em',
+        textAlign: 'center',
+
+        "@media (max-width: 860px)": {
+          fontSize: '2.5rem !important',
+
+        },
       },
       '& #social-blurb': {
         gridRow: 5,
