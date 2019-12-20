@@ -109,7 +109,7 @@ const headerStyles = {
     padding: 15,
   },
   menu: {
-    marginTop: 15,
+    padding: 15,
     color: `${colors.silver}`,
   },
   logo: {
