@@ -31,9 +31,11 @@ class AnalystComponent extends React.Component {
           <section id="analyst" className={classes.analysts}>
             <div id="analyst-content" >
               <div id='analyst-header'>
-                <h1 id="title">
-                  <span style={{color: `${colors.silver}`}}>The world needs your investment wisdom.</span>
-                </h1>
+                <div id="header-title">
+                  <h1 id="title">
+                    <span style={{color: `${colors.silver}`}}>The world needs your investment wisdom.</span>
+                  </h1>
+                </div>
                 <div id="words">
                   <div id="blurb">
                     <h5>
@@ -95,69 +97,83 @@ class AnalystComponent extends React.Component {
 
 const devStyles = {
   analysts: {
-    marginTop: 80,
-    paddingBottom: '10%',
-    padding: [0,30,30,0],
+    paddingBottom: '20px',
+    marginTop: 50,
+
+    "@media (max-width: 860px)": {
+      marginTop: 40,
+    },
+
     '& #analyst-content': {
       display: 'grid',
       gridTemplateRows: 'repeat(6, 0.03fr)',
-      gridTemplateColumns: '95vw',
+      gridTemplateColumns: '100vw',
       userSelect: 'none',
       filter: 'saturate(1) contrast(1)',
 
       "@media (max-width: 860px)": {
+        marginTop: 25,
         gridTemplateRows: 'repeat(6, .05fr)',
         gridTemplateColumns: '100vw'
       },
 
       '& #analyst-header': {
         display: 'grid',
-        gridTemplateRows: '50px repeat(2, .05fr)',
+        gridTemplateRows: '160px repeat(2, .05fr)',
         justifyItems: 'center',
-        marginBottom: 20,
 
         "@media (max-width: 860px)": {
-          gridTemplateRows: '50px repeat(2, .05fr)',
+          gridTemplateRows: '160px repeat(2, .05fr)',
         },
 
-        '& #title': {
+        '& #header-title': {
           gridRow: 1,
-          justifySelf: 'center',
-          fontSize: '4.6rem',
-          textAlign: 'center',
 
-          "@media (max-width: 860px)": {
-            fontSize: '4.6rem !important',
-            lineHeight: '4rem',
-          }
+          '& #title': {
+            justifySelf: 'center',
+            fontSize: '4.5rem !important',
+            textAlign: 'center',
+            alignSelf: 'center',
+            maxWidth: '20ch',
+
+            "@media (max-width: 860px)": {
+              fontSize: '3.4rem !important',
+              lineHeight: '3.4rem',
+            }
+          },
         },
 
         '& #words': {
           gridRow: 2,
           gridColumn: 1,
-          width: '95vw',
-          marginTop: 120,
           display: 'flex',
           flexDirection: 'row',
           flexWrap: 'wrap',
           justifyContent: 'center',
+          marginTop: 10,
 
           "@media (max-width: 860px)": {
-            marginTop: 150,
+            marginTop: 5,
+            width: '95vw',
           },
 
           '& #blurb': {
-            fontSize: '1.7rem !important',
+
             '& h5': {
               textAlign: 'center',
-              fontSize: '2rem',
-              color: `${colors.offWhite}`
+              fontSize: '2.5rem',
+              color: `${colors.offWhite}`,
+
+              "@media (max-width: 860px)": {
+                fontSize: '1.7rem !important',
+              },
             },
 
             '& #participant-list': {
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'center',
+              fontSize: '2.2rem !important',
               '& ul': {
                 marginLeft: 45,
                 color: `${colors.silver}`,
@@ -205,7 +221,7 @@ const devStyles = {
         '& #list-subtitle': {
           fontSize: '2.4rem !important',
           gridRow: 4,
-          margin: '5rem 0 1.5rem 0',
+          margin: '2.5rem 0 1.5rem 0',
           letterSpacing: '.1em',
           // fontVariant: 'small-caps',
           textAlign: 'center',
@@ -214,9 +230,10 @@ const devStyles = {
           marginLeft: 35,
 
           '& li': {
+            maxWidth: '45ch',
             color: `${colors.silver}`,
             listStyleType: 'square',
-            fontSize: '2.3rem',
+            fontSize: '2rem',
             padding: '14px 0'
           }
         }

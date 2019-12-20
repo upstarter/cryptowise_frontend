@@ -105,40 +105,40 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    '& #topics-header': {
-      position: 'fixed',
-      top: 70,
-      minHeight: '20vh',
-      // marginBottom: '50px',
-      maxWidth: 405,
-      // padding: '7px',
-      width: '105%',
-      zIndex: 1,
-      // boxShadow: '1px 1px 3px 1px ${colors.sand}',
-      background: `${colors.primaryDark}`,
-
-      // filter: 'saturate(.8) invert(1)'
-    },
   },
 
   main: {
     height: '100%',
-    marginTop: 170,
-    marginBottom: 80,
-
     width: '400px !important',
     'overflow-y': 'none',
+    marginTop: 160,
+    "@media (max-width: 482px)": {
+      marginTop: 180,
+    }
+  },
+
+  header: {
+    position: 'fixed',
+    top: 50,
+    minHeight: '15vh',
+    maxWidth: 405,
+    zIndex: 1,
+    background: `${colors.primaryDark}`,
+
+    "@media (max-width: 482px)": {
+      // marginBottom: '120px'
+    }
   },
   title: {
-    padding: 15,
-    fontSize: "20px !important",
+    padding: [18,18,8,18],
+    fontSize: "2.2rem !important",
+    lineHeight: '2.9rem !important',
     color: `${colors.offWhite}`,
-    textAlign: 'center',
-    margin: [0,0,0,20],
+
     '& .subtitle-small': {
       fontWeight: 'bold',
       filter: 'saturate(1) contrast(1)',
-      color: `${colors.origGreen}`,
+      color: `${colors.lightBlack}`,
     }
   },
   footer: {
@@ -169,47 +169,47 @@ const styles = {
     }
   },
 
-  "@media (min-width: 482px) and (max-width: 662px)": {
-    header: {
-      maxHeight: "25vh",
-    },
-    title: {
-      fontSize: "19px"
-    },
-    tileGrid: {
-      gridTemplateColumns: "1fr"
-    },
-    main: {
-      maxWidth: '99vw',
-      marginTop: 170
-    }
-  },
+  // "@media (min-width: 482px) and (max-width: 662px)": {
+  //   header: {
+  //     maxHeight: "25vh",
+  //   },
+  //   title: {
+  //     fontSize: "19px"
+  //   },
+  //   tileGrid: {
+  //     gridTemplateColumns: "1fr"
+  //   },
+  //   main: {
+  //     maxWidth: '99vw',
+  //     marginTop: 170
+  //   }
+  // },
   // MOBILE
-  "@media (max-width: 482px)": {
-    header: {
-      maxHeight: "45vh",
-      padding: [7, 7, 7, 21],
-
-      // lineHeight: ".01em",
-    },
-    title: {
-      fontSize: "15px !important",
-      textAlign: 'left'
-    },
-    steps: {
-      display: 'none !important',
-    },
-    tileGrid: {
-      gridTemplateColumns: "1fr"
-    },
-    main: {
-      marginTop: 170,
-    },
-    footer: {
-      display: 'flex',
-      minHeight: 65,
-    },
-  }
+  // "@media (max-width: 482px)": {
+  //   header: {
+  //     maxHeight: "45vh",
+  //     padding: [7, 7, 7, 21],
+  //
+  //     // lineHeight: ".01em",
+  //   },
+  //   title: {
+  //     fontSize: "15px !important",
+  //     textAlign: 'left'
+  //   },
+  //   steps: {
+  //     display: 'none !important',
+  //   },
+  //   tileGrid: {
+  //     gridTemplateColumns: "1fr"
+  //   },
+  //   main: {
+  //     marginTop: 170,
+  //   },
+  //   footer: {
+  //     display: 'flex',
+  //     minHeight: 65,
+  //   },
+  // }
 };
 
 const Step1 = injectSheet(styles)(SignUpStep1);

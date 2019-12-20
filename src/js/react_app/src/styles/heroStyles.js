@@ -3,7 +3,7 @@ console.log('HeroImage', HeroImage)
 
 const heroStyles = {
   hero: {
-    marginTop: 70,
+    marginTop: 50,
     minHeight: '61.8vh',
     '-webkit-background-clip': 'padding-box', /* for Safari */
     backgroundClip: 'padding-box', /* for IE9+, Firefox 4+, Opera, Chrome */

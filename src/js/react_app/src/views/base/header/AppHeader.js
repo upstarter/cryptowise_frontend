@@ -96,29 +96,25 @@ const headerStyles = {
     display: "flex",
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 70,
+    height: 50,
     fontSize: 25,
     // background: `${colors.primary}`,
     padding: 0,
     position: 'fixed',
-    width: '100%',
+    width: '100vw',
     right: 0,
-    zIndex: 100,
-
-    '@media (min-width: 576px)': {
-    },
+    zIndex: 999,
   },
   trigger: {
-    padding: 25,
+    padding: 15,
   },
   menu: {
-    marginTop: 10,
+    marginTop: 15,
     color: `${colors.silver}`,
   },
   logo: {
-    color: '#000',
-    margin: '15px',
-    height: 180,
+    color: `${colors.white}`,
+    height: 160,
     width: 180,
     '@media (max-width: 576px)': {
       // marginLeft: '32px',
