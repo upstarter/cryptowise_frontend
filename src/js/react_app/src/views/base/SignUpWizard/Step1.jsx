@@ -113,7 +113,7 @@ const styles = {
     'overflow-y': 'none',
     marginTop: 150,
     "@media (max-width: 482px)": {
-      marginTop: 120,
+      marginTop: 130,
     }
   },
 
@@ -130,7 +130,7 @@ const styles = {
     }
   },
   title: {
-    padding: [18,9,0,9],
+    padding: [18,11,0,11],
     fontSize: "2.2rem !important",
     lineHeight: '3rem !important',
     color: `${colors.offWhite}`,

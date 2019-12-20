@@ -134,7 +134,7 @@ class HomeContainer extends React.Component {
                       />
                     </Content>
                     <Footer className={classes.footer} >
-                      Aion Labs, Inc. ©{(new Date).getFullYear()}
+                      <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>
                     </Footer>
                   </Layout>
                 </Layout>
@@ -181,7 +181,7 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'left',
     fontSize: 12,
-    height: 45,
+    height: 50,
     bottom: 0,
     right: 0,
     left: 0,
@@ -189,6 +189,12 @@ const appStyles = {
     // background: `${colors.primary}`,
     // color: `${colors.origGreen}`,
     textAlign: 'center',
+    '& #trademark': {
+
+      '@media (max-width: 480px)': {
+        display: 'none',
+      },
+    },
   }
 };
 
