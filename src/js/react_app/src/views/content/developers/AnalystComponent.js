@@ -135,11 +135,19 @@ const devStyles = {
             textAlign: 'center',
             maxWidth: '20ch',
 
-            "@media (max-width: 860px)": {
+
+            "@media (max-width: 408px)": {
               marginTop: 35,
-              fontSize: '3rem !important',
+              fontSize: '3.3rem !important',
               lineHeight: '3rem',
-            }
+            },
+
+
+            "@media (min-width: 408px) and (max-width: 860px)": {
+              marginTop: 28,
+              fontSize: '4.3rem !important',
+              lineHeight: '3.8rem',
+            },
           },
         },
 
@@ -217,7 +225,7 @@ const devStyles = {
         },
 
         '& #list-subtitle': {
-          fontSize: '2.4rem !important',
+          fontSize: '2rem !important',
           gridRow: 4,
           margin: '2.5rem 0 1.5rem 0',
           letterSpacing: '.1em',
@@ -226,17 +234,17 @@ const devStyles = {
         },
         '& ul': {
           marginLeft: 35,
-          fontSize: '1.5rem !important',
+          fontSize: '1.7rem !important',
 
           '& li': {
             maxWidth: '45ch',
             color: `${colors.silver}`,
             listStyleType: 'square',
-            fontSize: '2.1rem',
+            fontSize: '1.7rem',
             padding: '14px 0',
 
             "@media (max-width: 860px)": {
-              fontSize: '1.8rem !important',
+              fontSize: '1.7rem !important',
             },
           }
         }
@@ -244,12 +252,12 @@ const devStyles = {
 
       '& #social-subtitle': {
         gridRow: 4,
-        fontSize: '3rem !important',
+        fontSize: '2rem !important',
         letterSpacing: '.1em',
         textAlign: 'center',
 
         "@media (max-width: 860px)": {
-          fontSize: '2.5rem !important',
+          fontSize: '2rem !important',
 
         },
       },
@@ -257,7 +265,7 @@ const devStyles = {
         gridRow: 5,
         justifySelf: 'center',
         alignSelf: 'center',
-        fontSize: '2rem'
+        fontSize: '1.8rem'
       },
       '& #social-list': {
         gridRow: 6,
