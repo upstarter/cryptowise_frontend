@@ -178,7 +178,7 @@ class ProposalComponent extends React.Component {
             </div>
 
             <div id="proposal-items" className={classes.proposalItems}>
-              <Affix offsetTop={70}>
+              <Affix offsetTop={50}>
                 <div id="proposal-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
                   <h3>Ideas 🌱</h3>
