@@ -48,7 +48,7 @@ class CardTile extends Component {
          // bordered={true}
          // hoverable={true}
          className={classes.card}
-         style={state.selected ? { background: `${colors.darkBlack}` } : null}
+         style={state.selected ? { background: `${colors.primaryDark}` } : null}
          onClick={id => this.handleSelected(data.id)}
         >
           <div
@@ -64,7 +64,7 @@ class CardTile extends Component {
                 id='check-icon'
                 type="check-circle"
                 theme="twoTone"
-                twoToneColor={`${colors.green}`}
+                twoToneColor={`${colors.origGreen}`}
               />
             </p>
 

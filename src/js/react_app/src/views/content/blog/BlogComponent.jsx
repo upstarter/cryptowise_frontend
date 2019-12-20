@@ -146,11 +146,11 @@ const blogStyles = {
     '& h4': {
       padding: 10,
       fontFamily: 'Avenir-Book',
-      fontWeight: 'normal',
+      // fontWeight: 'normal',
       fontSize: '1.48rem !important',
       lineHeight: '2.2rem !important',
       letterSpacing: '0.09ch',
-      color: `${colors.lightBlack}`,
+      color: `${colors.silver}`,
     },
     '& p': {
       padding: 5,

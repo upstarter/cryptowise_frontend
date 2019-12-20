@@ -59,6 +59,8 @@ const colors = {
   lightBlack: 'rgba(175, 170, 170, 0.8)',
   mediumBlack: 'rgba(145, 140, 140, 0.7)',
   darkBlack: '#5D626E',
+  darkerDarkBlack: 'rgba(50, 45, 45, 0.7)',
+
 
   // whites
   white: 'rgb(255, 255, 255)',

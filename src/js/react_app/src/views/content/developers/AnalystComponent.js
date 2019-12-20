@@ -123,7 +123,7 @@ const devStyles = {
         justifyItems: 'center',
 
         "@media (max-width: 860px)": {
-          gridTemplateRows: '160px repeat(2, .05fr)',
+          gridTemplateRows: '140px repeat(2, .05fr)',
         },
 
         '& #header-title': {
@@ -133,12 +133,12 @@ const devStyles = {
             justifySelf: 'center',
             fontSize: '4.5rem !important',
             textAlign: 'center',
-            alignSelf: 'center',
             maxWidth: '20ch',
 
             "@media (max-width: 860px)": {
-              fontSize: '3.4rem !important',
-              lineHeight: '3.4rem',
+              marginTop: 35,
+              fontSize: '3rem !important',
+              lineHeight: '3rem',
             }
           },
         },
@@ -150,10 +150,10 @@ const devStyles = {
           flexDirection: 'row',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          marginTop: 10,
+          marginTop: 20,
 
           "@media (max-width: 860px)": {
-            marginTop: 5,
+            marginTop: 0,
             width: '95vw',
           },
 
@@ -177,7 +177,15 @@ const devStyles = {
               '& ul': {
                 marginLeft: 45,
                 color: `${colors.silver}`,
-                listStyleType: 'square'
+                listStyleType: 'square',
+
+                '& li': {
+                  fontSize: '2.1rem !important',
+
+                  "@media (max-width: 860px)": {
+                    fontSize: '1.8rem !important'
+                  }
+                }
               }
             },
 
@@ -185,16 +193,6 @@ const devStyles = {
               fontSize: '2rem !important',
             }
           },
-
-          '& span': {
-            fontSize: '3.4rem !important',
-
-            "@media (max-width: 860px)": {
-
-              width: '95vw',
-              fontSize: '2.7rem !important',
-            },
-          }
         },
 
       },
@@ -228,13 +226,18 @@ const devStyles = {
         },
         '& ul': {
           marginLeft: 35,
+          fontSize: '1.5rem !important',
 
           '& li': {
             maxWidth: '45ch',
             color: `${colors.silver}`,
             listStyleType: 'square',
-            fontSize: '2rem',
-            padding: '14px 0'
+            fontSize: '2.1rem',
+            padding: '14px 0',
+
+            "@media (max-width: 860px)": {
+              fontSize: '1.8rem !important',
+            },
           }
         }
       },

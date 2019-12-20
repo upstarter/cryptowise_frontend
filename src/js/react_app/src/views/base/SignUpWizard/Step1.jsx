@@ -111,9 +111,9 @@ const styles = {
     height: '100%',
     width: '400px !important',
     'overflow-y': 'none',
-    marginTop: 160,
+    marginTop: 150,
     "@media (max-width: 482px)": {
-      marginTop: 180,
+      marginTop: 120,
     }
   },
 
@@ -126,14 +126,20 @@ const styles = {
     background: `${colors.primaryDark}`,
 
     "@media (max-width: 482px)": {
-      // marginBottom: '120px'
+
     }
   },
   title: {
-    padding: [18,18,8,18],
+    padding: [18,9,0,9],
     fontSize: "2.2rem !important",
-    lineHeight: '2.9rem !important',
+    lineHeight: '3rem !important',
     color: `${colors.offWhite}`,
+
+    "@media (max-width: 482px)": {
+      fontSize: '1.8rem !important',
+      height: '17vh !important',
+      lineHeight: '2rem !important',
+    },
 
     '& .subtitle-small': {
       fontWeight: 'bold',
@@ -151,65 +157,20 @@ const styles = {
     zIndex: 10,
     bottom: 0,
     right: 0,
-    fontSize: 24,
     background: 'transparent',
   },
   button: {
-    width: '75px',
+    width: 180,
+    height: 38,
+    fontSize: 20,
   },
   tileGrid: {
     margin: '60px 0 150px 0',
-    // display: "grid",
-    // gridTemplateColumns: "repeat(1, 1fr)",
-    // gridTemplateRows: "repeat(1, auto)",
-    // gridColumnGap: ".2rem",
-    // gridRowGap: ".2rem"
     '& .ant-card': {
 
     }
   },
 
-  // "@media (min-width: 482px) and (max-width: 662px)": {
-  //   header: {
-  //     maxHeight: "25vh",
-  //   },
-  //   title: {
-  //     fontSize: "19px"
-  //   },
-  //   tileGrid: {
-  //     gridTemplateColumns: "1fr"
-  //   },
-  //   main: {
-  //     maxWidth: '99vw',
-  //     marginTop: 170
-  //   }
-  // },
-  // MOBILE
-  // "@media (max-width: 482px)": {
-  //   header: {
-  //     maxHeight: "45vh",
-  //     padding: [7, 7, 7, 21],
-  //
-  //     // lineHeight: ".01em",
-  //   },
-  //   title: {
-  //     fontSize: "15px !important",
-  //     textAlign: 'left'
-  //   },
-  //   steps: {
-  //     display: 'none !important',
-  //   },
-  //   tileGrid: {
-  //     gridTemplateColumns: "1fr"
-  //   },
-  //   main: {
-  //     marginTop: 170,
-  //   },
-  //   footer: {
-  //     display: 'flex',
-  //     minHeight: 65,
-  //   },
-  // }
 };
 
 const Step1 = injectSheet(styles)(SignUpStep1);
