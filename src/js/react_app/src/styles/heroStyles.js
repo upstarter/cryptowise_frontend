@@ -14,18 +14,24 @@ const heroStyles = {
     color: '#fff',
     '& .title': { color: 'white' },
 
+    '@media (max-width: 480px)': {
+      minHeight: '37vh',
+    },
+
     '& .hero-body': {
       // marginTop: -20,
       // padding: '6rem 6rem 6rem',
       textAlign: 'center',
       '& .wrap': {
         display: 'flex',
+        paddingBottom: 10,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         '& .title': {
           fontFamily: 'Avenir-Light, sans-serif',
           maxWidth: '90rem',
+
           marginLeft: '-15%',
           fontSize: '4.8rem',
           lineHeight: '4.9rem',
@@ -37,6 +43,7 @@ const heroStyles = {
             fontSize: '3.2rem !important'
           },
           '@media (max-width: 480px)': {
+            padding: 10,
             fontSize: '2.9rem !important',
             maxWidth: '125px !important',
             textAlign: 'left'
