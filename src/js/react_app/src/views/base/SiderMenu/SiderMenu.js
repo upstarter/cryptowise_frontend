@@ -62,7 +62,7 @@ class SiderMenu extends React.Component {
         className={classes.sider}
         collapsible
         defaultCollapsed={true}
-        width="140"
+        width="150"
         collapsedWidth="0"
         trigger={null}
         // zeroWidthTriggerStyle={{bottom: 0}}
@@ -81,7 +81,7 @@ class SiderMenu extends React.Component {
 
 const siderMenuStyles = {
   sider: {
-    marginTop: 70,
+    marginTop: 50,
     overflow: 'visible',
     height: '100vh',
     position: 'fixed',
