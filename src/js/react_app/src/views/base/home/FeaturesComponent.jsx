@@ -74,7 +74,7 @@ class FeaturesComponent extends React.Component {
 
 const featuresStyles = {
   features: {
-    padding: '3rem',
+    padding: '1.5rem',
     margin: '-10 auto',
 
     color: '#fff',
@@ -100,7 +100,7 @@ const featuresStyles = {
     },
     '& p': {
       margin: '0 auto',
-      maxWidth: '35rem',
+      maxWidth: '35ch',
       color: `${colors.smoke}`,
       fontSize: '1.65rem !important',
       display: 'flex',

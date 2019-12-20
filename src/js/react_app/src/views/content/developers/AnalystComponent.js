@@ -203,7 +203,7 @@ const devStyles = {
         // marginTop: 60,
         '& button': {
           width: 170,
-          height: 50,
+          height: 45,
         },
         "@media (max-width: 860px)": {
           // marginTop: 40,
