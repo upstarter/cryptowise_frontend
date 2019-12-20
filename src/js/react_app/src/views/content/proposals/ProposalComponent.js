@@ -363,7 +363,7 @@ const proposalStyles = {
     },
     //
     '& .item-list': {
-      // padding: 10,
+      padding: '0px 12px 0 12px',
       color: `${colors.offWhite} !important`,
 
       '& #list-item-meta': {
@@ -378,8 +378,8 @@ const proposalStyles = {
         },
       },
       '& #meta-details': {
-         padding: 20,
-         textAlign: 'center',
+         // padding: 20,
+         // textAlign: 'center',
          '& .item-description': {
 
          },
