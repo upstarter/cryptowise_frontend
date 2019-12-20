@@ -55,16 +55,18 @@ const colors = {
   // secondaryDark: 'rgb(22,27,37)',
 
   // blacks
-  black: '#000',
-  lightBlack: 'rgba(175, 170, 170, 0.8)',
-  mediumBlack: 'rgba(145, 140, 140, 0.7)',
+  lighterBlack: 'rgba(225, 220, 220, 1)',
+  lightBlack: 'rgba(175, 170, 170, 1)',
+  mediumBlack: 'rgba(145, 140, 140, 1)',
   darkBlack: '#5D626E',
-  darkerDarkBlack: 'rgba(50, 45, 45, 0.7)',
+  darkerDarkBlack: 'rgba(50, 45, 45, 1)',
+  black: '#000',
+
 
 
   // whites
   white: 'rgb(255, 255, 255)',
-  offWhite: 'rgba(248, 248, 248, 0.95)',
+  offWhite: 'rgba(228, 228, 228, 1)',
   sand: 'rgb(200, 200, 200)',
   silver: '#AEBED4',
   smoke: '#D0E5FF',

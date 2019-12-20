@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-// import colors from 'Styles/colors'
+import colors from 'Styles/colors'
 // import BarChart from "Components/charts/bar"
 
 
@@ -13,19 +13,19 @@ class AboutComponent extends React.Component {
         <section id="about" style={{width: '100%'}}>
           <div id="about-content" className={classes.about_content}>
             <h1 className="title">About</h1>
-            <h3 className="subtitle-big">
+            <h3 id="about-title">
               CryptoWise is a collaborative investment ecosystem harnessing the
               wisdom of the crowd and AI to optimize investment outcomes.
             </h3>
             <p className="paragraph">
-              We are providing investors next-generation network structure
+              We are providing tech saavy investors with network structure
               and roles for automated, scalable investment data curation and
               decision-making. <i> We're harnessing the acquired wisdom and
               innate talent of those most passionate about the future of
               investing and capital formation. </i>
             </p>
             <h1 className="title">Vision</h1>
-            <h3 className="subtitle-big">
+            <h3>
               Research has shown that a collective entity makes a better
               decision as a whole than the most intelligent person in the
               group alone.
@@ -42,23 +42,29 @@ class AboutComponent extends React.Component {
             </blockquote>
 
             <h1 className="title">Mission</h1>
-            <p>
+            <h3>
               To provide the worlds most informative investment
               research & analysis ecosystem.
-            </p>
+            </h3>
             <h1 className="title">Values</h1>
-            <p>
+            <h3>
               Transparency, Integrity, Openness, Curiosity, Accuracy, Precision,
               Autonomy, Dedication, Compassion, Originality, Fun.
-            </p>
+            </h3>
             <h1 className="title">Pursuits</h1>
-            <p>
-              Crypto Economics, Trading Strategies & Methods, Portfolio
-              Management, Decentralized Applications, Artificial Intelligence,
-              Software & Systems Architecture, Emerging Tech, Multi-Agent
-              Reinforcement Learning, Cognitive Computing, Quantum Computing.
-            </p>
-          </div>
+            <ul id="pursuits">
+              <li>Crypto Economics</li>
+              <li> Trading Strategies & Methods </li>
+              <li>Portfolio Management</li>
+              <li>Decentralized Applications</li>
+              <li>Artificial Intelligence</li>
+              <li>Software & Systems Architecture</li>
+              <li>Emerging Tech</li>
+              <li>Multi-Agent Reinforcement Learning</li>
+              <li>Cognitive Computing</li>
+              <li>Quantum Computing</li>
+            </ul>
+            </div>
         </section>
       </React.Fragment>
     )
@@ -67,10 +73,44 @@ class AboutComponent extends React.Component {
 
 const aboutStyles = {
   about_content: {
-    padding: '0rem 1rem 2rem 1rem',
-    margin: '50px auto',
+    margin: '100px auto',
+    width: '100vw',
     marginBottom: 50,
     maxWidth: '60ch',
+
+    '@media (max-width: 680px)': {
+      padding: 20,
+      margin: '50px auto',
+    },
+
+
+    '& h3': {
+      marginLeft: '1.3rem',
+      color: `${colors.silver}`,
+      fontSize: '2rem',
+      lineHeight: '2.6rem !important',
+    },
+
+    '& .title': {
+      color: `${colors.sand}`,
+    },
+
+    '& .paragraph': {
+      color: `${colors.offWhite}`,
+      lineHeight: '2.2rem !important',
+    },
+
+    '& blockquote': {
+      color: `${colors.silver}`,
+    },
+
+    '& #pursuits': {
+      marginLeft: '4rem',
+      '& li': {
+        listStyleType: 'square',
+        color: `${colors.silver}`
+      }
+    },
 
     '@media (min-width: 992px)': {
       width: '60ch',
@@ -80,10 +120,6 @@ const aboutStyles = {
       width: '95vw',
     },
 
-    '@media (max-width: 460px)': {
-      marginLeft: 40,
-      width: '80vw',
-    },
 
     '& .team-image': {
       '& .image': {
