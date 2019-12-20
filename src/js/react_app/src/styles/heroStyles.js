@@ -40,7 +40,8 @@ const heroStyles = {
             fontSize: '4.9rem !important',
           },
           '@media (min-width: 480px) and (max-width: 800px)': {
-            fontSize: '3.2rem !important'
+            marginLeft: '-25%',
+            fontSize: '3.5rem !important'
           },
           '@media (max-width: 480px)': {
             padding: 10,
