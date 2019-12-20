@@ -109,25 +109,20 @@ class AssetsComponent extends React.Component {
           <section id="asset" className={classes.assets}>
 
             <div id="asset-items" className={classes.assetItems}>
-              <Affix offsetTop={70}>
+              <Affix offsetTop={50}>
                 <div id="asset-items-heading">
-                  {/* <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' /> */}
                   <div id="asset-blurb">
                     <div id="asset-blurb-intro">
-                      <div id='blurb-subtitle' className='subtitle-small'>
-                        <span id="blurb-title">The Network is the Asset. </span>
-                        <span id="blurb" className=''>
-                          Get to know cryptoassets with strong fundamentals. Master quantamentalism, or explore deep technical analysis.
-                          Add 3 to your <Link style={{color: `${colors.origGreen}`}} to='/portfolio'>WiseHive portfolio</Link> to gain preferred access.
-                          {/* <Link style={{color: 'green'}} to='/portfolio'> Get Started Now</Link> */}
-                        </span>
-                      </div>
-
+                      <h3 id="blurb-title">The Network is the Asset. </h3>
+                      <p id="blurb">
+                        Get to know cryptoassets with strong fundamentals. Master quantamentalism, or explore deep technical analysis.
+                        Add 3 to your <Link style={{color: `${colors.origGreen}`}} to='/portfolio'>WiseHive portfolio</Link> to gain preferred access.
+                      </p>
                     </div>
                   </div>
                 </div>
               </Affix>
-              <div className="asset-column">
+              <div id="asset-column">
                 <List
                   className="item-list"
                   loading={initLoading}
@@ -177,19 +172,18 @@ const assetStyles = {
   card: {
     marginBottom: -17,
     background: `${colors.tertiaryDark}`,
-    color: `${colors.offWhite}`,
+    color: `${colors.yellow}`,
     '& .ant-card-head-title': {
       color: `${colors.sproutGreen}`
     }
   },
-
 
   assets: {
     display: 'flex',
     flexDirection: 'column',
     justifyItems: 'center',
     alignItems: 'center',
-    margin: [70,0,0,0]
+    margin: [50,0,0,0]
   },
 
   assetItems: {
@@ -197,7 +191,7 @@ const assetStyles = {
     maxWidth: 800,
 
     '@media (max-width: 860px)': {
-      gridTemplateRows: '180px 9fr',
+      gridTemplateRows: '160px 9fr',
       gridTemplateAreas: '"header" "content"',
     },
 
@@ -211,7 +205,7 @@ const assetStyles = {
       justifyItems: 'center',
       alignItems: 'center',
       zIndex: 1,
-      padding: 5,
+      marginBottom: 200,
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
@@ -226,19 +220,10 @@ const assetStyles = {
       },
 
       '& #asset-blurb': {
-        padding: [0, 20, 0, 20],
 
         '@media (max-width: 860px)': {
           gridColumn: '1 / 3',
           gridRow: '1 / 2',
-
-          '& #blurb-title': {
-            background: `${colors.primaryDark}`,
-            fontSize: '2rem',
-            letterSpacing: '0.5rem',
-            color: '#fff',
-            lineHeight: '1em',
-          },
         },
 
         '@media (min-width: 860px)': {
@@ -247,65 +232,74 @@ const assetStyles = {
         },
 
         '& #asset-blurb-intro': {
-          fontSize: 14,
-          '& p': { padding: 'none !important'},
-
+          // fontSize: 14,
+          zIndex: 3,
+          padding: 10,
+          '& p': {
+            color: `${colors.silver}`,
+            padding: 'none !important'
+          },
 
           '& #blurb-title': {
             fontSize: '2.7rem !important',
-            color: `${colors.offWhite} !important`,
+            lineHeight: '3.3rem !important',
+            padding: [20, 20, 0, 20],
+            color: `${colors.lightBlack} !important`,
+
+            '@media (max-width: 860px)': {
+              fontSize: '3rem !important',
+            },
           },
-          '& #blurb-subtitle': {
-            color: `${colors.offWhite} !important`,
-            marginBottom: 10,
-          }
         },
       },
-
     },
 
-    '& .item-list': {
-      gridArea: 'content',
-      gridRow: '2 / 3',
-      gridColumn: '1 / 3',
-      color: `${colors.offWhite} !important`,
+    '& #asset-column': {
+      marginTop: 50,
 
-      '@media (max-width: 400px)': {
-        zIndex: 10,
-        marginTop: 40,
-      },
+      '& .item-list': {
+        gridArea: 'content',
+        gridRow: '2 / 3',
+        gridColumn: '1 / 3',
+        color: `${colors.offWhite} !important`,
 
-      '& #list-item-meta': {
-        '& p': { color: `${colors.offWhite}`},
-        '& a': { color: `${colors.offWhite}`},
-        '& .ant-list-item-meta-content': {
-           color: `${colors.offWhite} !important`,
-           '& #main-content': {
-             '& .item-name': {margin: [0,0,0,30], color: `${colors.offWhite}`},
-             '& .item-description': { color: `${colors.offWhite}` },
+        '@media (max-width: 408px)': {
+          marginTop: 90,
+          zIndex: 10,
+        },
+
+        // '& .ant-list-item': {
+        //   color: `${colors.offWhite}`,
+        //   // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
+        //   // background: `${colors.primary}`,
+        //   // border: '1px solid rgba(240,240,240,.5)',
+        //   // padding: 14,
+        //   '& .item-description': {
+        //     margin: [0,17,0,17]
+        //   }
+        // },
+
+        '& #list-item-meta': {
+          '& p': { color: `${colors.offWhite}`},
+          '& a': { color: `${colors.offWhite}`},
+          '& .ant-list-item-meta-content': {
+             color: `${colors.offWhite} !important`,
+             '& #main-content': {
+               '& .item-name': {margin: [0,0,0,30], color: `${colors.offWhite}`},
+               '& .item-description': { color: `${colors.offWhite}` },
+             },
+          },
+        },
+        '& #meta-details': {
+           padding: 40,
+           textAlign: 'center',
+           '& .item-description': {
            },
-        },
-      },
-      '& #meta-details': {
-         padding: 40,
-         textAlign: 'center',
-         '& .item-description': {
          },
-       },
 
-    },
-    // '& .ant-list-item': {
-    //   color: `${colors.offWhite}`,
-    //   // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
-    //   // background: `${colors.primary}`,
-    //   // border: '1px solid rgba(240,240,240,.5)',
-    //   // padding: 14,
-    //   '& .item-description': {
-    //     margin: [0,17,0,17]
-    //   }
-    // },
+      },
+    }
   },
-
 }
 
 export default injectSheet(assetStyles)(AssetsComponent)

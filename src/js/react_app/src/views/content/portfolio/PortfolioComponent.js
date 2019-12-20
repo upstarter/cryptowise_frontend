@@ -129,14 +129,24 @@ class PortfolioComponent extends React.Component {
 
 const portfolio = {
   portfolio: {
-    margin: "80px auto",
+    margin: "60px auto",
     height: '100%',
     textAlign: 'center',
-    '& h1': { marginLeft: 10 },
-    '& h6': { margin: '0 auto', maxWidth: '60ch' },
+    '& h1': {
+      marginLeft: 10,
+      '@media (max-width: 860px)': {
+        fontSize: '3rem !important',
+      },
+    },
+    '& h6': {
+      margin: '0 auto',
+      maxWidth: '60ch'
+    },
 
     '@media (max-width: 860px)': {
        maxWidth: '90vw',
+       fontSize: '3rem !important',
+
     },
 
     '@media (min-width: 860px)': {

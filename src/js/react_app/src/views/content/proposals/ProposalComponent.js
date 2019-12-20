@@ -156,7 +156,6 @@ class ProposalComponent extends React.Component {
                   A Hacker Quorum focused on optimal strategies for retirement rockstars
                   🎸and quant supergroups.
                 </h4>
-
                 <p>
                   Help seed the design of FDS (Financial Data Structures),
                   architectures, algorithms, systems, business models, teams,
@@ -244,7 +243,7 @@ const proposalStyles = {
     marginTop: 60,
 
     '@media (max-width: 860px)': {
-      gridTemplateRows: '1fr 9fr',
+      gridTemplateRows: '500px 1fr',
       gridTemplateAreas: '"sidebar" "content"',
     },
 
@@ -284,15 +283,22 @@ const proposalStyles = {
 
         '& #blurb-title': {
           fontSize: '3.8rem !important',
-          color: `${colors.offWhite} !important`,
+          lineHeight: '4rem !important',
+          color: `${colors.lightBlack} !important`,
           // filter: 'contrast(.8)'
         },
         '& #blurb-subtitle': {
-          color: `${colors.offWhite} !important`,
-          marginBottom: 30,
+          color: `${colors.silver} !important`,
+          marginBottom: 20,
           marginLeft: 15,
           fontSize: '2rem',
-        }
+          lineHeight: '2.5rem !important'
+        },
+        '& p': {
+          color: `${colors.offWhite}`,
+          fontSize: '16px',
+          padding: 0,
+        },
       },
     },
   },
@@ -316,7 +322,6 @@ const proposalStyles = {
       justifyItems: 'center',
       height: 55,
       zIndex: 10,
-      marginBottom: 10,
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
@@ -347,24 +352,24 @@ const proposalStyles = {
         fontSize: '3rem',
         letterSpacing: '0.5rem',
         paddingTop: 17,
-        color: '#fff',
+        color: `${colors.lightBlack}`,
       },
-      // '& #riff-blurb': {
-      //   gridColumn: '2',
-      //   gridRow: '2',
-      //   justifSelf: 'center',
-      //   fontSize: '1.2rem',
-      //   letterSpacing: '.02em',
-      //   '& strong': {
-      //     fontSize: '1.2rem !important',
-      //     filter: 'saturate(1.5)'
-      //   },
-      // }
     },
-    //
+
     '& .item-list': {
       padding: '0px 12px 0 12px',
       color: `${colors.offWhite} !important`,
+
+      // '& .ant-list-item': {
+      //   color: `${colors.offWhite}`,
+      //   // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
+      //   // background: `${colors.primary}`,
+      //   // border: '1px solid rgba(240,240,240,.5)',
+      //   // padding: 14,
+      //   '& .item-description': {
+      //     margin: [0,17,0,17]
+      //   }
+      // },
 
       '& #list-item-meta': {
         '& p': { color: `${colors.offWhite}`},
@@ -386,20 +391,6 @@ const proposalStyles = {
        },
 
     },
-
-    // '& .ant-list-item': {
-    //   color: `${colors.offWhite}`,
-    //   // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
-    //   // background: `${colors.primary}`,
-    //   // border: '1px solid rgba(240,240,240,.5)',
-    //   // padding: 14,
-    //   '& .item-description': {
-    //     margin: [0,17,0,17]
-    //   }
-    // },
-
-
-
   },
 
 }

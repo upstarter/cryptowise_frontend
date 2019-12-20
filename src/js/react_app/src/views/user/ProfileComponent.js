@@ -216,42 +216,42 @@ const profileStyles = {
 
       '@media (max-width: 860px)': {
         gridRow: '1 / 2',
-
-        '& #blurb-title': {
-          fontSize: '3rem',
-        },
-
-        '& h3': { fontSize: '3rem' }
       },
 
       '@media (min-width: 860px)': {
         gridRow: '1 / 2',
-
       },
 
       '& #profile-blurb-intro': {
+        '@media (max-width: 860px)': {
+        },
+
+        '@media (min-width: 860px)': {
+        },
 
         '& #blurb-title': {
           textAlign: 'center',
-          lineHeight: '5rem',
-          fontSize: '3.5rem !important',
-          color: `${colors.offWhite} !important`,
-          marginBottom: 23
+          lineHeight: '4rem',
+          padding: [0, 0, 0, 0],
+          fontSize: '3rem !important',
+          color: `${colors.silver} !important`,
+
+          '@media (max-width: 860px)': {
+          },
         },
         '& #blurb-subtitle': {
           fontSize: '2.3rem',
           lineHeight: '2rem',
           textAlign: 'center',
-          color: `${colors.offWhite} !important`,
+          color: `${colors.lightBlack} !important`,
           marginBottom: 30,
+
+          '@media (max-width: 860px)': {
+          },
         },
 
-        '@media (max-width: 860px)': {
-          '& p': {  fontSize: '2.3rem' },
-        },
-
-        '@media (min-width: 860px)': {
-          '& p': { fontSize: '2.3rem' },
+        '& p': {
+          fontSize: '1.7rem !important'
         },
       },
     },

@@ -62,7 +62,7 @@ class SiderMenu extends React.Component {
         className={classes.sider}
         collapsible
         defaultCollapsed={true}
-        width="150"
+        width="140"
         collapsedWidth="0"
         trigger={null}
         // zeroWidthTriggerStyle={{bottom: 0}}
