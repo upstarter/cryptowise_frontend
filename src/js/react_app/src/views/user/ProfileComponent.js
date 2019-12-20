@@ -205,7 +205,7 @@ const profileStyles = {
   profiles: {
     display: 'grid',
     // justifyItems: 'center',
-    gridTemplateRows: '1fr 1fr',
+    gridTemplateRows: '1fr auto',
     gridTemplateAreas: '"header" "content"',
     justifyItems: 'center',
 
@@ -251,6 +251,7 @@ const profileStyles = {
         },
 
         '& p': {
+          color: `${colors.offWhite}`,
           fontSize: '1.7rem !important'
         },
       },
@@ -259,7 +260,8 @@ const profileStyles = {
 
   profileItems: {
     gridArea: 'content',
-    marginTop: 50,
+    padding: [0, 3, 0, 5],
+    marginTop: 20,
 
     '@media (max-width: 860px)': {
       gridRow: '2 / 3',
@@ -271,7 +273,6 @@ const profileStyles = {
 
     '& .profile-items-heading': {
       textAlign: 'center',
-      height: 55,
       zIndex: 10,
       marginBottom: 30,
       color: '#fff !important',
