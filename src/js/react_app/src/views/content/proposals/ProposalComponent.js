@@ -243,17 +243,17 @@ const proposalStyles = {
     marginTop: 60,
 
     '@media (max-width: 860px)': {
-      gridTemplateRows: '500px 1fr',
-      gridTemplateAreas: '"sidebar" "content"',
+      gridTemplateRows: 'auto 1fr',
+      gridTemplateAreas: '"header" "content"',
     },
 
     '@media (min-width: 860px)': {
-      gridTemplateColumns: '1fr 3fr 7fr',
-      gridTemplateAreas: '"buffer sidebar content"',
+      gridTemplateColumns: '1fr 1fr',
+      gridTemplateAreas: '"header content"',
     },
 
     '& #proposal-blurb': {
-      gridArea: 'sidebar',
+      gridArea: 'header',
       justifySelf: 'center',
       margin: '20px 0 0 0',
       padding: 2,
@@ -271,10 +271,8 @@ const proposalStyles = {
       },
 
       '@media (min-width: 860px)': {
+        gridColumn: '1 / 2',
         maxWidth: '30vw',
-        gridColumn: '2 / 3',
-
-        // maxWidth: '50ch',
       },
 
       '& #proposal-blurb-intro': {
@@ -322,6 +320,7 @@ const proposalStyles = {
       justifyItems: 'center',
       height: 55,
       zIndex: 10,
+      marginBottom: 20,
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
@@ -336,7 +335,7 @@ const proposalStyles = {
         // gridRow: '1 / 3',
         justifySelf: 'end',
         marginRight: 15,
-        backgroundColor: `${colors.primary}`,
+        backgroundColor: `${colors.origGreen}`,
         color: '#FFF',
         borderRadius: 50,
         textAlign: 'center',
