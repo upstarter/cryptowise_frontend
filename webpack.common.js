@@ -161,8 +161,9 @@ module.exports = {
   resolve: {
     extensions: [".css", ".sass", ".scss", ".less", ".js", ".jsx"],
     alias: {
-      Actions: path.resolve(__dirname, 'src/js/react_app/src/actions'),
-      Reducers: path.resolve(__dirname, 'src/js/react_app/src/reducers'),
+      Redux: path.resolve(__dirname, 'src/js/react_app/src/redux'),
+      Actions: path.resolve(__dirname, 'src/js/react_app/src/redux/actions'),
+      Reducers: path.resolve(__dirname, 'src/js/react_app/src/redux/reducers'),
       Components: path.resolve(__dirname, 'src/js/react_app/src/components'),
       Config: path.resolve(__dirname, 'src/js/react_app/src/config'),
       Services: path.resolve(__dirname, 'src/js/react_app/src/services'),

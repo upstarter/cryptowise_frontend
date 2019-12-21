@@ -64,17 +64,11 @@ class SignUpStep2 extends Component {
     if (props.currentStep !== 2) {
       return null;
     }
-    // let Tiles = [];
-    // for (let i = 0; i < 18; i++) {
-    //   Tiles.push(<Tile />);
-    // }
+
     return (
       <div className={classes.container}>
         <div className={classes.header}>
-          <h2 className={classes.title}>
-            Join Us
-          </h2>
-          <h3 className="subtitle-small">Uncover hypergrowth cryptoassets along with top analysts</h3>
+          <h3 id="signup-blurb">Sign up to uncover hypergrowth cryptoassets along with top analysts</h3>
         </div>
         <div className={classes.main}>
           <BasicRegistrationForm saveForm={this.handleSubmit}/>
@@ -92,26 +86,37 @@ const styles = {
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: "center",
-
   },
   header: {
     minHeight: 100,
     display: 'flex',
     flexWrap: 'wrap',
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: "center",
     alignItems: 'center',
-    textAlign: 'center',
+    textAlign: 'center !important',
     width: '100%',
-    margin: [0,0,20,0],
+    margin: [50,0,20,0],
+    padding: 15,
     zIndex: 1,
     '& h2': {
-      fontSize: "23px !important",
+      fontSize: "2.2rem !important",
+      lineHeight: '3rem !important',
       color: `${colors.offWhite}`,
 
     },
     '& h3': {
+      padding: 20,
+      maxWidth: 420,
+      textAlign: 'center !important',
+      fontSize: "2.2rem !important",
+      lineHeight: '3rem !important',
       color: `${colors.offWhite} !important`,
+
+      "@media (max-width: 482px)": {
+        fontSize: "1.8rem !important",
+
+      }
     },
   },
   main: {

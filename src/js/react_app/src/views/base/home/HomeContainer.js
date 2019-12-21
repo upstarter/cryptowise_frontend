@@ -33,6 +33,27 @@ import globalStyles from "Styles/globalStyles";
 
 import Loadable from "react-loadable";
 
+//TODO: bundle-loader: require("bundle-loader?lazy&name=admin!../admin")
+const lazy = loader => class extends React.Component {
+  componentWillMount() {
+    loader(mod =>
+      this.setState({
+        Component: mod.default ? mod.default : mod
+      })
+    )
+  }
+
+  render() {
+    const { Component } = this.state
+
+    if (Component !== null) {
+      return <Component {...this.props} />
+    } else {
+      return <div>Loading...</div>
+    }
+  }
+}
+
 // const HomeComponent = Loadable({
 //   loader: () => import("./HomeComponent" /* webpackChunkName: "home" */),
 //   loading() {

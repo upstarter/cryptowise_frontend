@@ -1,4 +1,4 @@
-import { url } from '../utils/consts';
+import { url } from 'Utils/consts';
 import axios from "axios";
 import { USER_PROPOSAL_CREATE } from "./index";
 

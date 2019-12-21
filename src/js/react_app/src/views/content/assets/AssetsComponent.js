@@ -183,33 +183,29 @@ const assetStyles = {
     flexDirection: 'column',
     justifyItems: 'center',
     alignItems: 'center',
-    margin: [50,0,0,0]
+    margin: [60,0,0,0]
   },
 
   assetItems: {
     display: 'grid',
     maxWidth: 800,
 
-    '@media (max-width: 860px)': {
-      gridTemplateRows: '160px 9fr',
+    '@media (max-width: 480px)': {
+      gridTemplateRows: '175px 9fr',
       gridTemplateAreas: '"header" "content"',
     },
 
     '@media (min-width: 860px)': {
-      gridTemplateRows: '100px 9fr',
+      gridTemplateRows: '150px 9fr',
       gridTemplateAreas: '"header" "content"',
     },
 
     '& #asset-items-heading': {
       gridArea: 'header',
       justifyItems: 'center',
-      alignItems: 'center',
       zIndex: 1,
-      marginBottom: 200,
       color: '#fff !important',
       background: `${colors.primaryDark}`,
-      '-webkit-perspective': 1000,
-      '-webkit-backface-visibility': 'hidden',
 
       '@media (max-width: 860px)': {
 
@@ -232,22 +228,25 @@ const assetStyles = {
         },
 
         '& #asset-blurb-intro': {
-          // fontSize: 14,
-          zIndex: 3,
-          padding: 10,
-          '& p': {
-            color: `${colors.silver}`,
-            padding: 'none !important'
-          },
+          padding: 5,
 
           '& #blurb-title': {
-            fontSize: '2.7rem !important',
+            fontSize: '2.8rem !important',
             lineHeight: '3.3rem !important',
             padding: [20, 20, 0, 20],
             color: `${colors.lightBlack} !important`,
 
             '@media (max-width: 860px)': {
-              fontSize: '3rem !important',
+              fontSize: '2rem !important',
+            },
+          },
+
+          '& p': {
+            color: `${colors.silver}`,
+            padding: 'none !important',
+
+            '@media (max-width: 860px)': {
+              fontSize: '1.5rem !important',
             },
           },
         },
@@ -255,7 +254,6 @@ const assetStyles = {
     },
 
     '& #asset-column': {
-      marginTop: 50,
 
       '& .item-list': {
         gridArea: 'content',
@@ -263,9 +261,9 @@ const assetStyles = {
         gridColumn: '1 / 3',
         color: `${colors.offWhite} !important`,
 
-        '@media (max-width: 408px)': {
-          marginTop: 90,
-          zIndex: 10,
+        '@media (max-width: 860px)': {
+          // zIndex: 10,
+          // marginTop: '130px !important',
         },
 
         // '& .ant-list-item': {
