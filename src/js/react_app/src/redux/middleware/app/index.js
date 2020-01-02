@@ -1,6 +1,6 @@
 // middleware patterns
 // filter, map, split, aggregate, compose, enrich, normalize, translate
 
-import { tokensMiddleware } from './tokens.middleware'
+import { userTopicsMiddleware } from './user_topics.mdl'
 
-export const appMiddleware = [tokensMiddleware]
+export const appMiddleware = [userTopicsMiddleware]

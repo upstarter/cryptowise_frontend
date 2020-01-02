@@ -8,7 +8,7 @@ import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider,
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import userProposalCreate from "Actions/userProposalCreate";
+import { createUserProposal } from "Actions/user_proposals.actions";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
@@ -105,7 +105,7 @@ class ProposalComponent extends React.Component {
         console.error('handleCreate error', err)
         return;
       }
-      this.props.dispatch(userProposalCreate(values))
+      this.props.dispatch(createUserProposal(values))
     });
     form.resetFields();
     this.setState({ visible: false, confirmLoading: false })
@@ -391,7 +391,6 @@ const proposalStyles = {
 
     },
   },
-
 }
 
-export default injectSheet(proposalStyles)(ProposalComponent)
+export default injectSheet(proposalStyles)(connect()(ProposalComponent))

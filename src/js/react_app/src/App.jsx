@@ -11,6 +11,7 @@ import 'Css/ant.less'
 // import Cookies from 'universal-cookie';
 
 const store = configureStore(/*provide initial state if any*/)
+
 // const cookies = new Cookies();
 //
 // if (cookies.get('cwjwt')) {

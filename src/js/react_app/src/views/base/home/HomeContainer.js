@@ -2,17 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../header/AppHeader";
-import AnalysisContainer from "Content/analysis/AnalysisContainer"
+// import AnalysisContainer from "Content/analysis/AnalysisContainer"
 import PortfolioComponent from "Content/portfolio/PortfolioComponent";
 import AssetsComponent from "Content/assets/AssetsComponent";
 import HomeComponent from "./HomeComponent";
 import MembershipComponent from "Marketing/MembershipComponent";
-// import DataScientistComponent from "Developers/DataScientistComponent";
-import AnalystComponent from "Developers/AnalystComponent";
-import DeveloperComponent from "Developers/DeveloperComponent";
+import CurateComponent from "Providers/CurateComponent";
+import AnalystComponent from "Providers/AnalystComponent";
+// import DeveloperComponent from "Providers/DeveloperComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import ProfileComponent from "User/ProfileComponent";
-import InsightComponent from "Content/insights/InsightComponent";
+// import InsightComponent from "Content/insights/InsightComponent";
 import SignUpContainer from "Base/SignUpWizard/SignUpContainer";
 import AboutComponent from "Base/home/AboutComponent";
 import Logout from "Auth/Logout";
@@ -31,11 +31,10 @@ import typography from "Styles/typography";
 import colors from "Styles/colors";
 import globalStyles from "Styles/globalStyles";
 
-import Loadable from "react-loadable";
-
+// import Loadable from "react-loadable";
 //TODO: bundle-loader: require("bundle-loader?lazy&name=admin!../admin")
 const lazy = loader => class extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     loader(mod =>
       this.setState({
         Component: mod.default ? mod.default : mod
@@ -76,7 +75,6 @@ const lazy = loader => class extends React.Component {
 //   }
 // });
 
-const Protected = () => <h3>Protected</h3>;
 
 class HomeContainer extends React.Component {
   constructor() {
@@ -130,20 +128,20 @@ class HomeContainer extends React.Component {
                     <Content className={classes.content}>
                       <Route exact path="/" component={HomeComponent} />
                       {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                      {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
-                      <Route exact path="/analysts" component={AnalystComponent} />
                       {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
                       {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
                       {/* <Route exact path="/insights" component={InsightComponent} /> */}
-                      <AuthRoute exact path="/proposals" component={ProposalComponent} />
-                      <AuthRoute exact path="/profile" component={ProfileComponent} />
-                      {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
                       {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
                       {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
                       {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
+                      {/* <AuthRoute exact path="/profile" component={Protected} /> */}
+                      <Route exact path="/analysts" component={AnalystComponent} />
+                      <Route exact path="/curate" component={CurateComponent} />
+                      <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                      <AuthRoute exact path="/profile" component={ProfileComponent} />
                       <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
                       <AuthRoute exact path="/assets" component={AssetsComponent} />
-                      {/* <AuthRoute exact path="/profile" component={Protected} /> */}
+
                       <Route exact path="/about" component={AboutComponent} />
                       <Route exact path="/signup" component={SignUpContainer} />
                       <Route exact path="/login" component={BasicLoginForm} />

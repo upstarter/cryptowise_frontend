@@ -1,5 +1,6 @@
 export const API = {
-  TOKENS: 'https://www.cryptowise.ai/api/v1/tokens',
-  // USER_TOPICS: 'https://www.cryptowise.ai/api/v1/users/:id/topics',
-  // USER_TOKENS: 'https://www.cryptowise.ai/api/v1/users/:id/tokens',
+  TOKENS: '/tokens',
+  USER_TOPICS: '/user/topics',
+  USER_PROPOSALS: '/proposals',
+  // USER_TOKENS: '/users/:id/tokens',
 }

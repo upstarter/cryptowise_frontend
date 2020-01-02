@@ -7,23 +7,30 @@ import {
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-import { Icon, Switch } from 'antd';
+import { Icon, Switch, Tabs } from 'antd';
+const { TabPane } = Tabs;
 import axios from "axios";
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 import AuthService from 'Services/auth/AuthService'
+import { fetchUserTopics } from 'Actions/user_topics.actions'
 import colors from "Styles/colors"
 
 class ProfileComponent extends React.Component {
-  state = {
-    initLoading: true,
-    loading: false,
-    roleData: [],
-    list: [],
-    page: 1,
-    ModalContent: '',
-    visible: false,
-    confirmLoading: false
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      initLoading: true,
+      loading: false,
+      roleData: [],
+      list: [],
+      page: 1,
+      ModalContent: '',
+      visible: false,
+      confirmLoading: false
+    };
+  }
+
 
   componentDidMount() {
     this.getData(res => {
@@ -44,7 +51,6 @@ class ProfileComponent extends React.Component {
   postData = data => {
     const url = `${api_url}/user/update_role`
     axios.put(url, data).then((res) => {
-      console.log('res', res.data.data)
       this.setState({roleData: res.data.data["roles"]})
     })
   };
@@ -59,32 +65,6 @@ class ProfileComponent extends React.Component {
     this.formRef = formRef;
   };
 
-  handleCreate = () => {
-
-    this.setState({
-      ModalContent: 'The modal will be closed after two seconds',
-      confirmLoading: true,
-    });
-
-    const { form } = this.formRef.props;
-    form.validateFields((err, values) => {
-      if (err) {
-        console.error('handleCreate error', err)
-        return;
-      }
-      this.props.dispatch(userProfileCreate(values))
-    });
-    form.resetFields();
-    this.setState({ visible: false, confirmLoading: false })
-  }
-
-  handleCancel = () => {
-    console.log('Clicked cancel button');
-    this.setState({
-      visible: false,
-    });
-  }
-
   onChange = (role, bool) => {
     // e.preventDefault();
     // e.stopPropagation();
@@ -93,6 +73,13 @@ class ProfileComponent extends React.Component {
     let id = auth.getProfileId()
     let data = {role: {user_id: id, role: role, is_role: bool}}
     this.postData(data)
+  }
+
+  onTabChange = (activeKey) => {
+    if (activeKey === "2") {
+      console.log('yo', activeKey)
+      this.props.fetchUserTopics('uuu')
+    }
   }
 
   render() {
@@ -104,93 +91,132 @@ class ProfileComponent extends React.Component {
           <ScrollToTopOnMount />
 
           <section id="profile" className={classes.profiles}>
-            <div id="profile-blurb">
-              <div id="profile-blurb-intro">
-                <h3 id="blurb-title">Hyper-Disruptor Profile</h3>
-                <h4 id='blurb-subtitle' className='subtitle-small'>
-                  Master the Markets
-                </h4>
-                <p>
-                  We recommend starting as a Data Curator of FDS (Financial Data
-                  Structures). Once a certain mastery is attained, you can level
-                  up into Investment Strategist or Machine Learning Financial
-                  Engineer to exploit your acquired wisdom and talents in market
-                  competitions and coop-etitions.
-                </p>
-                <p>
-                  Or just explore on your own and master market research & analysis
-                  for maximal profit from the free market system.
-                </p>
-                {/* <p>
-                  <Link to="/roadmap">The Roadmap</Link> includes team formation with tools and systems.
-                </p> */}
-              </div>
-            </div>
-
-            <div id="profile-items" className={classes.profileItems}>
-              <div className="profile-items-heading">
-                <h3>Core Capabilities</h3>
-              </div>
-
-              <div className="profile-column">
-                <div className='switch'>
-                  <Switch
-                    checked={roleData.includes("curator")}
-                    name="curator"
-                    ref="curator"
-                    onChange={e => this.onChange("curator", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
-                  />
-                  <Icon className='icon' type="cloud-upload" /><span>Data Curator (FDS)</span>
-                </div>
-                <div className='switch'>
-                  <Switch
-                    checked={roleData.includes("analyst")}
-                    name="featureAnalyst"
-                    ref="featureAnalyst"
-                    onChange={e => this.onChange("analyst", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
-                  />
-                  <Icon className='icon' type="dot-chart" /><span>Feature Analyst</span>
-                </div>
-                <div className='switch'>
-                  <Switch
-                    checked={roleData.includes("strategist")}
-                    name="strategist"
-                    ref="strategist"
-                    onChange={e => this.onChange("strategist", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
-                  />
-                  <Icon className='icon' type="bar-chart" /><span>Investment Strategist</span>
-                </div>
-                <div className='switch'>
-                  <Switch
-                    checked={roleData.includes("engineer")}
-                    name="MLEngineer"
-                    ref="MLEngineer"
-                    onChange={e => this.onChange("engineer", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
-                  />
-                  <Icon className='icon' type="cluster" /><span>Machine Learning Engineer</span>
+            <Tabs
+              defaultActiveKey="1"
+              onChange={this.onTabChange}
+              // tabPosition="left"
+              size="large"
+              tabBarStyle={
+                  {
+                    display: 'flex',
+                    justifyContent: 'space-evenly',
+                    position: 'fixed',
+                    width: '500px',
+                    backgroundColor: `${colors.primaryDark}`,
+                    marginTop: 50,
+                    color: '#fff'
+                  }
+                }
+              >
+              <TabPane
+                tab={
+                  <span>
+                    <Icon type="user" />
+                    Profile
+                  </span>
+                }
+                key="1"
+              >
+                <div id="profile-blurb">
+                  <div id="profile-blurb-intro">
+                    <h3 id="blurb-title">Hyper-Disruptor Profile</h3>
+                    <h4 id='blurb-subtitle' className='subtitle-small'>
+                      Master the Markets
+                    </h4>
+                    <p>
+                      We recommend starting as a Data Curator of FDS (Financial Data
+                      Structures). Once a certain mastery is attained, you can level
+                      up into Investment Strategist or Machine Learning Financial
+                      Engineer to exploit your acquired wisdom and talents in market
+                      competitions and coop-etitions.
+                    </p>
+                    <p>
+                      Or just explore on your own and master market research & analysis
+                      for maximal profit from the free market system.
+                    </p>
+                    {/* <p>
+                      <Link to="/roadmap">The Roadmap</Link> includes team formation with tools and systems.
+                    </p> */}
+                  </div>
                 </div>
 
-                <div className='switch'>
-                  <Switch
-                    checked={roleData.includes("tpm")}
-                    name="tpm"
-                    ref="tpm"
-                    onChange={e => this.onChange("tpm", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
-                  />
-                  <Icon className='icon' type="project" /><span>Technical Project Manager</span>
+                <div id="profile-items" className={classes.profileItems}>
+                  <div className="profile-items-heading">
+                    <h3>Core Capabilities</h3>
+                  </div>
+
+                  <div className="profile-column">
+                    <div className='switch'>
+                      <Switch
+                        checked={roleData.includes("curator")}
+                        name="curator"
+                        ref="curator"
+                        onChange={e => this.onChange("curator", e)}
+                        checkedChildren={<Icon type="check" />}
+                        unCheckedChildren={<Icon type="close" />}
+                      />
+                      <Icon className='icon' type="cloud-upload" /><span>Data Curator (FDS)</span>
+                    </div>
+                    <div className='switch'>
+                      <Switch
+                        checked={roleData.includes("analyst")}
+                        name="featureAnalyst"
+                        ref="featureAnalyst"
+                        onChange={e => this.onChange("analyst", e)}
+                        checkedChildren={<Icon type="check" />}
+                        unCheckedChildren={<Icon type="close" />}
+                      />
+                      <Icon className='icon' type="dot-chart" /><span>Feature Analyst</span>
+                    </div>
+                    <div className='switch'>
+                      <Switch
+                        checked={roleData.includes("strategist")}
+                        name="strategist"
+                        ref="strategist"
+                        onChange={e => this.onChange("strategist", e)}
+                        checkedChildren={<Icon type="check" />}
+                        unCheckedChildren={<Icon type="close" />}
+                      />
+                      <Icon className='icon' type="bar-chart" /><span>Investment Strategist</span>
+                    </div>
+                    <div className='switch'>
+                      <Switch
+                        checked={roleData.includes("engineer")}
+                        name="MLEngineer"
+                        ref="MLEngineer"
+                        onChange={e => this.onChange("engineer", e)}
+                        checkedChildren={<Icon type="check" />}
+                        unCheckedChildren={<Icon type="close" />}
+                      />
+                      <Icon className='icon' type="cluster" /><span>Machine Learning Engineer</span>
+                    </div>
+
+                    <div className='switch'>
+                      <Switch
+                        checked={roleData.includes("tpm")}
+                        name="tpm"
+                        ref="tpm"
+                        onChange={e => this.onChange("tpm", e)}
+                        checkedChildren={<Icon type="check" />}
+                        unCheckedChildren={<Icon type="close" />}
+                      />
+                      <Icon className='icon' type="project" /><span>Technical Project Manager</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </TabPane>
+              <TabPane
+                tab={
+                  <span>
+                    <Icon type="fire" />
+                    My Topics
+                  </span>
+                }
+                key="2"
+              >
+                Tab 2
+              </TabPane>
+            </Tabs>
           </section>
         </React.Fragment>
       </div>
@@ -212,7 +238,7 @@ const profileStyles = {
     '& #profile-blurb': {
       gridArea: 'header',
       maxWidth: 600,
-      margin: '80px 0 0 0',
+      margin: '140px 0 0 0',
 
       '@media (max-width: 860px)': {
         gridRow: '1 / 2',
@@ -318,4 +344,26 @@ const profileStyles = {
 
 }
 
-export default injectSheet(profileStyles)(ProfileComponent)
+// // whatever is returned will show up as props
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     userTopics: state.userTopics
+//   }
+// }
+//
+// // anything returned from here will end up as props on component
+// // whenever fetchUserTopics is called the result should be passed to all reducers
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   // return bindActionCreators({fetchUserTopics}, dispatch);
+//   return {
+//     fetchUserTopics: query => { dispatch(fetchUserTopics(query)) }
+//   }
+// }
+const mapDispatchToProps = {fetchUserTopics}
+
+//
+// // connect takes a function and component and produces a container that is aware
+// of state contained by redux
+// promote BlogList to Container
+
+export default injectSheet(profileStyles)(connect(null, mapDispatchToProps)(ProfileComponent));

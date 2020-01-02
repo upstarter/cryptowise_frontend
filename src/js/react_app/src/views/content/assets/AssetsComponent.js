@@ -236,7 +236,7 @@ const assetStyles = {
             padding: [20, 20, 0, 20],
             color: `${colors.lightBlack} !important`,
 
-            '@media (max-width: 860px)': {
+            '@media (max-width: 480px)': {
               fontSize: '2rem !important',
             },
           },

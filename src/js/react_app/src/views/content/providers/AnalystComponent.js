@@ -98,7 +98,7 @@ class AnalystComponent extends React.Component {
 const devStyles = {
   analysts: {
     paddingBottom: '20px',
-    marginTop: 50,
+    marginTop: 60,
 
     "@media (max-width: 860px)": {
       marginTop: 40,
@@ -128,13 +128,13 @@ const devStyles = {
 
         '& #header-title': {
           gridRow: 1,
+          padding: [0, 10, 0, 10],
 
           '& #title': {
             justifySelf: 'center',
             fontSize: '4.5rem !important',
             textAlign: 'center',
             maxWidth: '20ch',
-
 
             "@media (max-width: 408px)": {
               marginTop: 35,

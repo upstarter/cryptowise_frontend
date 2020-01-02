@@ -1,4 +1,4 @@
-import { USER_PROPOSAL_CREATE } from "../actions/index";
+import { CREATE_USER_PROPOSAL } from "../actions/index";
 
 const initialState = {
   proposal: {}
@@ -7,7 +7,7 @@ const initialState = {
 const UserProposalReducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case USER_PROPOSAL_CREATE:
+    case CREATE_USER_PROPOSAL:
       return {...state, proposal: action.payload};
   }
   return state;

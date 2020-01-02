@@ -96,8 +96,8 @@ const styles = {
     alignItems: 'center',
     textAlign: 'center !important',
     width: '100%',
-    margin: [50,0,20,0],
-    padding: 15,
+    margin: [50,0,0,0],
+    padding: 20,
     zIndex: 1,
     '& h2': {
       fontSize: "2.2rem !important",

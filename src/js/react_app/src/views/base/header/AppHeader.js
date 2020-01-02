@@ -115,7 +115,7 @@ const headerStyles = {
   },
   logo: {
     color: `${colors.white}`,
-    height: 160,
+    height: 50,
     width: 180,
     '@media (max-width: 576px)': {
       // marginLeft: '32px',

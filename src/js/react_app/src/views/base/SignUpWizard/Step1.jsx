@@ -73,12 +73,11 @@ class SignUpStep1 extends Component {
       <div className={classes.container}>
         <div id="topics-header" className={classes.header}>
           <h2 className={classes.title}>
-            Gain from cutting edge insights relevant to your goals/interests.
-            Follow 3 or more topics. <span className="subtitle-small">Select as many as you like.</span>
+            Follow 3 or more topics to gain from cutting edge insights.
+             <span className="subtitle-small"> Select as many as you like.</span>
           </h2>
         </div>
         <div className={classes.main}>
-
           <div className={classes.tileGrid}>{tiles}</div>
           <div className={classes.footer}>
             <Button
@@ -130,14 +129,14 @@ const styles = {
     }
   },
   title: {
-    padding: [18,11,0,11],
+    padding: [21,14,0,14],
     fontSize: "2.2rem !important",
     lineHeight: '3rem !important',
     color: `${colors.offWhite}`,
 
     "@media (max-width: 482px)": {
       fontSize: '1.8rem !important',
-      height: '17vh !important',
+      height: '15vh !important',
       lineHeight: '2rem !important',
     },
 

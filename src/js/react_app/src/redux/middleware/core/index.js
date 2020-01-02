@@ -6,6 +6,6 @@
             // -> apiSuccess -> setLoader -> setTokens
             // -> apiError -> setLoader -> setNotification
 
-import { apiMiddleware } from './api.middleware'
+import { apiMiddleware } from './api.mdl'
 
 export const coreMiddleware = [apiMiddleware]
