@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import AppButton from 'Components/base/button/AppButton'
 
 // import colors from 'Styles/colors'
@@ -25,7 +24,6 @@ class DeveloperComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <ScrollToTopOnMount/>
         <div className="dark-wrap">
           <section id="developer" className={classes.developers}>
             <div id="developer-content" className="content">

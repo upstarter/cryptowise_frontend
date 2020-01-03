@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
 import NewProposalForm from './NewProposalForm'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
@@ -138,8 +137,6 @@ class ProposalComponent extends React.Component {
     return (
       <div className="dark-wrap">
         <React.Fragment>
-          <ScrollToTopOnMount />
-
           <section id="proposal" className={classes.proposals}>
             <NewProposalForm
               wrappedComponentRef={this.saveFormRef}

@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom';
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
 import { List, Card, Button, Rate, Icon, Typography, Divider, Affix } from 'antd';
 const { Title, Paragraph, Text } = Typography;
@@ -104,10 +103,7 @@ class AssetsComponent extends React.Component {
     return (
       <div className="dark-wrap">
         <React.Fragment>
-          <ScrollToTopOnMount />
-
           <section id="asset" className={classes.assets}>
-
             <div id="asset-items" className={classes.assetItems}>
               <Affix offsetTop={50}>
                 <div id="asset-items-heading">

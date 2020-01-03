@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 
 // import colors from 'Styles/colors'
 // import BarChart from "Components/charts/bar"
@@ -12,7 +11,6 @@ class InsightComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <ScrollToTopOnMount/>
         <section id="insight" className={classes.insights}>
           <div id="insight-content" className="content">
             <h1 className="title">Insights</h1>

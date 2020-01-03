@@ -1,13 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import AppButton from "Components/base/button/AppButton";
 import colors from "Styles/colors"
 
 // import colors from 'Styles/colors'
 // import BarChart from "Components/charts/bar"
-
 
 class AnalystComponent extends React.Component {
   constructor() {
@@ -26,7 +24,6 @@ class AnalystComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <ScrollToTopOnMount/>
         <div className="dark-wrap">
           <section id="analyst" className={classes.analysts}>
             <div id="analyst-content" >

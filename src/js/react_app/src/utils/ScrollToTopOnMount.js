@@ -1,11 +1,16 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-export default class ScrollToTopOnMount extends React.Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
+class ScrollToTopOnMount extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0)
+    }
   }
 
   render() {
-    return null;
+    return null
   }
 }
+
+export default withRouter(ScrollToTopOnMount)

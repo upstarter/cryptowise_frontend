@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { url } from "Utils/consts";
 import PortfolioGrid from "Components/datagrid/PortfolioGrid";
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import injectSheet, { jss } from "react-jss";
 import { Layout, Icon } from "antd";
 import notify from "Components/base/notify/notify"
@@ -106,8 +105,6 @@ class PortfolioComponent extends React.Component {
       <div
         className={classes.portfolio}
       >
-        <ScrollToTopOnMount />
-
         <h1 className='title-small'>The WiseHive Portfolio</h1>
         <h4>
           Your vote for the optimal cryptoasset allocation.

@@ -4,13 +4,14 @@ export const CREATE_USER_PROPOSAL = `${USER_PROPOSAL} Create`
 export const SET_USER_PROPOSAL = `${USER_PROPOSAL} Set`
 
 
-export const createUserProposal = proposal =>  {
+export const createUserProposal = values =>  {
+  console.log('createUserProposal')
   return {
     type: CREATE_USER_PROPOSAL,
     payload:  {
       proposal: {
-        title: proposal.title,
-        description: proposal.description
+        title: values.title,
+        description: values.description
       }
     }
   }

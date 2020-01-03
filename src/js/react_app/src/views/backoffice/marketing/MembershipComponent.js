@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 // import colors from 'Styles/colors'
 // import BarChart from "Components/charts/bar"
 
@@ -11,7 +10,6 @@ class MembershipComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <ScrollToTopOnMount/>
         <section id="membership" className={classes.membership}>
           <div id="membership-content" className="content">
             <h1 className="title">CryptoWise Membership</h1>

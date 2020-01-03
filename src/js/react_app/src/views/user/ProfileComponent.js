@@ -5,7 +5,6 @@ import {
   withRouter
 } from "react-router-dom";
 import injectSheet, { jss } from 'react-jss'
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
 import { Icon, Switch, Tabs } from 'antd';
 const { TabPane } = Tabs;
@@ -88,8 +87,6 @@ class ProfileComponent extends React.Component {
     return (
       <div className="dark-wrap">
         <React.Fragment>
-          <ScrollToTopOnMount />
-
           <section id="profile" className={classes.profiles}>
             <Tabs
               defaultActiveKey="1"

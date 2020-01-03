@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../header/AppHeader";
 // import AnalysisContainer from "Content/analysis/AnalysisContainer"
+import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
+
 import PortfolioComponent from "Content/portfolio/PortfolioComponent";
 import AssetsComponent from "Content/assets/AssetsComponent";
 import HomeComponent from "./HomeComponent";
@@ -110,6 +112,7 @@ class HomeContainer extends React.Component {
           <div className={classes.globe}>
               <BrowserRouter>
                 <>
+
                 <AppHeader toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed}  />
                 <SiderMenu toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed} />
                 <Layout className={classes.typography, classes.baseLayout} id="wrapper">
@@ -126,31 +129,33 @@ class HomeContainer extends React.Component {
                   </Drawer>
                   <Layout className={classes.baseContent}>
                     <Content className={classes.content}>
-                      <Route exact path="/" component={HomeComponent} />
-                      {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                      {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
-                      {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
-                      {/* <Route exact path="/insights" component={InsightComponent} /> */}
-                      {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
-                      {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
-                      {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
-                      {/* <AuthRoute exact path="/profile" component={Protected} /> */}
-                      <Route exact path="/analysts" component={AnalystComponent} />
-                      <Route exact path="/curate" component={CurateComponent} />
-                      <AuthRoute exact path="/proposals" component={ProposalComponent} />
-                      <AuthRoute exact path="/profile" component={ProfileComponent} />
-                      <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                      <AuthRoute exact path="/assets" component={AssetsComponent} />
+                        <ScrollToTopOnMount />
+                        <Route exact path="/" component={HomeComponent} />
+                        {/* <Route exact path="/membership" component={MembershipComponent} /> */}
+                        {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
+                        {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
+                        {/* <Route exact path="/insights" component={InsightComponent} /> */}
+                        {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
+                        {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
+                        {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
+                        {/* <AuthRoute exact path="/profile" component={Protected} /> */}
+                        <Route exact path="/analysts" component={AnalystComponent} />
+                        <Route exact path="/curate" component={CurateComponent} />
+                        <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                        <AuthRoute exact path="/profile" component={ProfileComponent} />
+                        <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
+                        <AuthRoute exact path="/assets" component={AssetsComponent} />
 
-                      <Route exact path="/about" component={AboutComponent} />
-                      <Route exact path="/signup" component={SignUpContainer} />
-                      <Route exact path="/login" component={BasicLoginForm} />
-                      <Route exact path="/logout" component={Logout} />
-                      <Route
-                        exact
-                        path="/privacy_policy"
-                        component={PrivacyComponent}
-                      />
+                        <Route exact path="/about" component={AboutComponent} />
+                        <Route exact path="/signup" component={SignUpContainer} />
+                        <Route exact path="/login" component={BasicLoginForm} />
+                        <Route exact path="/logout" component={Logout} />
+                        <Route
+                          exact
+                          path="/privacy_policy"
+                          component={PrivacyComponent}
+                        />
+
                     </Content>
                     <Footer className={classes.footer} >
                       <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>

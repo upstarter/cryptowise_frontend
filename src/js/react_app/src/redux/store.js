@@ -10,7 +10,7 @@ import { appMiddleware } from 'Redux/middleware/app'
 
 export const history = createBrowserHistory()
 
-let wares = [ promiseMiddleware, ...coreMiddleware, ...appMiddleware ]
+let wares = [ promiseMiddleware(), ...coreMiddleware, ...appMiddleware ]
 console.log(wares)
 if (process.env.NODE_ENV !== 'production') {
   wares = [ ...wares, logger ]

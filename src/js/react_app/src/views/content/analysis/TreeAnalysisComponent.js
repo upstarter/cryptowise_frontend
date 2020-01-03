@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { url, api_url } from "Utils/consts";
-import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import Treemap from 'Components/charts/Treemap'
 import injectSheet, { jss } from "react-jss";
 import { Layout, Icon } from "antd";
@@ -78,7 +77,6 @@ class TreeAnalysisComponent extends React.Component {
           margin: "0 auto",
         }}
       >
-        <ScrollToTopOnMount />
         <Treemap ref={this.saveTreemapRef}
           className={'flex: 1'}
           data={groups}
