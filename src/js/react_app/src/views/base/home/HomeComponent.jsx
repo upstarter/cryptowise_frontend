@@ -11,7 +11,7 @@ export default class HomeComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <HeroComponent  {...this.props} />
+        <HeroComponent {...this.props} />
         <FeaturesComponent />
         <BlogComponent />
       </React.Fragment>

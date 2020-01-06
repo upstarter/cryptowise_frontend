@@ -3,5 +3,10 @@
 
 import { userTopicsMiddleware } from './user_topics.mdl'
 import { proposalsMiddleware } from './proposals.mdl'
+import { usersMiddleware } from './users.mdl'
 
-export const appMiddleware = [userTopicsMiddleware, proposalsMiddleware]
+export const appMiddleware = [
+  userTopicsMiddleware,
+  proposalsMiddleware,
+  usersMiddleware
+]

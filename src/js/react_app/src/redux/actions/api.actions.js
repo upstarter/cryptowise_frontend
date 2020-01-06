@@ -18,10 +18,10 @@ export const apiSuccess = (body, method, url, entity) => ({
   }
 })
 
-export const apiError = (body, method, url, entity) => ({
+export const apiError = (error, method, url, entity) => ({
   type : `${entity} ${API_ERROR}`,
   payload: {
-    data: body,
+    data: error,
     meta: {method, url, entity}
   }
 })

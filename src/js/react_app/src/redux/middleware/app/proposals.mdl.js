@@ -4,8 +4,6 @@ import {setLoader} from "Actions/ui.actions"
 import {API} from "Redux/constants/api"
 
 export const proposalsMiddleware = ({dispatch}) => next => action => {
-  console.log('proposalsMdl')
-
   next(action) //  keep logger in right order
 
   switch(action.type) {

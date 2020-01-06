@@ -6,7 +6,7 @@ import {
   Link,
   withRouter
 } from "react-router-dom";
-import loginUser from "Actions/loginUser"
+import { loginUser } from "Actions/users.actions"
 import injectSheet, { jss } from 'react-jss'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import colors from "Styles/colors"
@@ -15,12 +15,8 @@ class BasicLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log(values)
-
       if (!err) {
-        this.props.dispatch(loginUser(values)).then(response => {
-          this.props.history.replace('/proposals')
-        })
+        this.props.dispatch(loginUser(values))
       }
     });
   };
