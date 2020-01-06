@@ -6,7 +6,7 @@ import {
   Link,
   withRouter
 } from "react-router-dom";
-import { loginUser } from "Actions/users.actions"
+import { loginUser } from "Actions/auth.actions"
 import injectSheet, { jss } from 'react-jss'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import colors from "Styles/colors"

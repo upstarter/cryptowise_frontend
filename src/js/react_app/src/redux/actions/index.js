@@ -6,6 +6,5 @@ export const CREATE_USER_PROPOSAL = "CREATE_USER_PROPOSAL";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 // action receivers
-import loginUser from "./loginUser"
 import setCurrentUser from "./setCurrentUser"
 import fetchUserTopics from "./user_topics.actions"

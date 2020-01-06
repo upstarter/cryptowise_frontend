@@ -3,10 +3,10 @@
 
 import { userTopicsMiddleware } from './user_topics.mdl'
 import { proposalsMiddleware } from './proposals.mdl'
-import { usersMiddleware } from './users.mdl'
+import { authMiddleware } from './auth.mdl'
 
 export const appMiddleware = [
   userTopicsMiddleware,
   proposalsMiddleware,
-  usersMiddleware
+  authMiddleware
 ]

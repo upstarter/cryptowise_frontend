@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { connect } from "react-redux";
-import registerUser from 'Actions/registerUser'
+import { registerUser } from 'Actions/auth.actions'
 
 import { url } from "Utils/consts";
 import { withRouter } from "react-router";
@@ -38,9 +38,7 @@ export class SignUpWizard extends Component {
 
     data.topic_knowledge_ids = this.state.topic_knowledge_ids
 
-    this.props.dispatch(registerUser(data)).then(response => {
-      this.props.history.replace('/proposals')
-    })
+    this.props.dispatch(registerUser(data))
 
     // this.setState({
     //     name: data.name,
