@@ -21,7 +21,7 @@ export default class AnalysisContainer extends React.Component {
   render() {
     const { mode } = this.state;
     return (
-      <React.Fragment>
+      <div style={{marginTop: 70}}>
         {/* <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
           <Radio.Button value="top">Horizontal</Radio.Button>
         </Radio.Group> */}
@@ -38,7 +38,7 @@ export default class AnalysisContainer extends React.Component {
           <TabPane tab="Analysis" key="5"><TreeAnalysisComponent topic='analysis'/></TabPane>
           <TabPane tab="Research" key="6"><TreeAnalysisComponent topic='research'/></TabPane>
         </Tabs>
-      </React.Fragment>
+      </div>
     )
   }
 }

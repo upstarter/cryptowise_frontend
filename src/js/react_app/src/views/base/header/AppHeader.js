@@ -55,7 +55,6 @@ class AppHeader extends React.Component {
         />
         <Link to="/">
           <img className={classes.logo} src={nav_logo} />
-          {/* <span style={{color: 'white'}}>A web native organization.</span> */}
         </Link>
         <div>
           <Menu

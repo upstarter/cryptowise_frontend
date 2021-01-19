@@ -10,6 +10,7 @@
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },
   "dependencies": {
+    "@carrotsearch/foamtree": "^3.5.0",
     "antd": "^3.19.7",
     "axios": "^0.18.1",
     "connected-react-router": "^6.5.2",
