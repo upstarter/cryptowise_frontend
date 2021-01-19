@@ -129,21 +129,11 @@ class HomeContainer extends React.Component {
                   <Layout className={classes.baseContent}>
                     <Content className={classes.content}>
                       <Route exact path="/" component={HomeComponent} />
-                      {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                      {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
-                      <Route exact path="/analysts" component={AnalystComponent} />
-                      {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
-                      {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
-                      {/* <Route exact path="/insights" component={InsightComponent} /> */}
                       <AuthRoute exact path="/proposals" component={ProposalComponent} />
                       <AuthRoute exact path="/profile" component={ProfileComponent} />
-                      {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
-                      {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
-                      {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
-                      {/* <AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
+                      <Route exact path="/analysts" component={AnalystComponent} />
                       <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
                       <AuthRoute exact path="/assets" component={AssetsComponent} />
-                      {/* <AuthRoute exact path="/profile" component={Protected} /> */}
                       <Route exact path="/about" component={AboutComponent} />
                       <Route exact path="/signup" component={SignUpContainer} />
                       <Route exact path="/login" component={BasicLoginForm} />
@@ -153,6 +143,16 @@ class HomeContainer extends React.Component {
                         path="/privacy_policy"
                         component={PrivacyComponent}
                       />
+                      {/* <AuthRoute exact path="/profile" component={Protected} /> */}
+                      {/* <Route exact path="/membership" component={MembershipComponent} /> */}
+                      {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
+                      {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
+                      {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
+                      {/* <Route exact path="/insights" component={InsightComponent} /> */}
+                      {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
+                      {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
+                      {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
+                      {/*<AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
                     </Content>
                     <Footer className={classes.footer} >
                       <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>

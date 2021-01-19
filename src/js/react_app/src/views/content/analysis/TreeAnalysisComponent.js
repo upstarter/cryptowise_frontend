@@ -75,7 +75,7 @@ class TreeAnalysisComponent extends React.Component {
         style={{
           maxWidth: "2000px",
           textAlign: 'center',
-          margin: "0 auto",
+          margin: "0 auto"
         }}
       >
         <ScrollToTopOnMount />
