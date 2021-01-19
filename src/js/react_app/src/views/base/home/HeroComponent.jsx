@@ -60,9 +60,9 @@ class HeroComponent extends React.Component {
                 </div>
                 <div>
                   <p style={{fontSize: 16, height: 7, marginTop: 10}}>This project is 100% open source </p>
-                  <a className="github-button" href="https://github.com/sponsors/upstarter" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-heart" aria-label="Sponsor @upstarter on GitHub">Sponsor</a>
-                  <a className="github-button" href="https://github.com/upstarter/cryptowise" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" aria-label="Star upstarter/cryptowise on GitHub">Star</a>
-                  <a className="github-button" href="https://github.com/upstarter/cryptowise/subscription" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-eye" aria-label="Watch upstarter/cryptowise on GitHub">Watch</a>
+                  <a className="github-button" target="_blank" href="https://github.com/sponsors/upstarter" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-heart" aria-label="Sponsor @upstarter on GitHub">Sponsor</a>
+                  <a className="github-button" target="_blank" href="https://github.com/upstarter/cryptowise" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" aria-label="Star upstarter/cryptowise on GitHub">Star</a>
+                  <a className="github-button" target="_blank" href="https://github.com/upstarter/cryptowise/subscription" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-eye" aria-label="Watch upstarter/cryptowise on GitHub">Watch</a>
                 </div>
               </section>
             </div>
