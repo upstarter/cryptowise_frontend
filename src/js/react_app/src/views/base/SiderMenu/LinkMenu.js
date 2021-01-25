@@ -32,6 +32,16 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item> : ''
         }
+        { auth.signedIn() ?
+          <Menu.Item key="/fds">
+            <Icon type="build" />
+            <span className="nav-text">
+            <Link to="/discuss">
+              Discuss
+            </Link>
+            </span>
+          </Menu.Item> : ''
+        }
         { !auth.signedIn() ?
           <Menu.Item key="/">
             <Link to="/" style={{ textDecoration: "none" }}>
@@ -57,6 +67,14 @@ const LinkMenu = withRouter(props => {
             </span>
           </Menu.Item> : ''
         } */}
+        {
+          <Menu.Item key="/analysis">
+            <Link to="/analysis" style={{ textDecoration: "none" }}>
+              <Icon type="heat-map" />
+              <span className="nav-text">Topics</span>
+            </Link>
+          </Menu.Item>
+        }
         {
           <Menu.Item key="/portfolio">
             <Link to="/portfolio" style={{ textDecoration: "none" }}>

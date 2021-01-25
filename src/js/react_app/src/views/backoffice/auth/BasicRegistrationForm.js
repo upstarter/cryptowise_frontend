@@ -132,7 +132,7 @@ class RegistrationForm extends React.Component {
         onCreate={this.handleCreate}
         confirmLoading={confirmLoading}
       />
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+      <Form name='reg-form' labelAlign='left' {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item
           label={
             <span>

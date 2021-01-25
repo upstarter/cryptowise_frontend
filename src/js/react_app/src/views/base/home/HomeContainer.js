@@ -10,6 +10,7 @@ import MembershipComponent from "Marketing/MembershipComponent";
 // import DataScientistComponent from "Developers/DataScientistComponent";
 import AnalystComponent from "Developers/AnalystComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
+import DiscussContainer from "Content/discuss/DiscussContainer";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import ProfileComponent from "User/ProfileComponent";
 import InsightComponent from "Content/insights/InsightComponent";
@@ -35,7 +36,7 @@ import Loadable from "react-loadable";
 
 //TODO: bundle-loader: require("bundle-loader?lazy&name=admin!../admin")
 const lazy = loader => class extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     loader(mod =>
       this.setState({
         Component: mod.default ? mod.default : mod
@@ -132,6 +133,7 @@ class HomeContainer extends React.Component {
                       <AuthRoute exact path="/proposals" component={ProposalComponent} />
                       <AuthRoute exact path="/profile" component={ProfileComponent} />
                       <Route exact path="/analysts" component={AnalystComponent} />
+                      <Route exact path="/discuss" component={DiscussContainer} />
                       <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
                       <AuthRoute exact path="/assets" component={AssetsComponent} />
                       <Route exact path="/about" component={AboutComponent} />
@@ -148,11 +150,11 @@ class HomeContainer extends React.Component {
                       {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
                       {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
                       {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
-                      {/* <Route exact path="/insights" component={InsightComponent} /> */}
+                      // <Route exact path="/insights" component={InsightComponent} />
                       {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
                       {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
                       {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
-                      {/*<AuthRoute exact path="/analysis" component={AnalysisContainer} /> */}
+                      <Route exact path="/analysis" component={AnalysisContainer} />
                     </Content>
                     <Footer className={classes.footer} >
                       <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>

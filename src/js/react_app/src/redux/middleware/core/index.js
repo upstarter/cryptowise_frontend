@@ -5,7 +5,7 @@
 // fetchTokens -> apiRequest -> setLoader
             // -> apiSuccess -> setLoader -> setTokens
             // -> apiError -> setLoader -> setNotification
-
 import { apiMiddleware } from './api.middleware'
+import { authMiddleware } from './auth.middleware'
 
-export const coreMiddleware = [apiMiddleware]
+export const coreMiddleware = [apiMiddleware, authMiddleware]

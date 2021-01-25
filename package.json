@@ -26,6 +26,7 @@
     "react-dom": "^16.9.0",
     "react-dom-factories": "^1.0.2",
     "react-facebook-login": "^4.1.1",
+    "react-google-charts": "^3.0.15",
     "react-google-login": "^5.0.4",
     "react-jss": "^8.6.1",
     "react-loadable": "^5.5.0",

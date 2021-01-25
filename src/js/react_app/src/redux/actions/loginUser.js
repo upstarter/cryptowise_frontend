@@ -2,7 +2,7 @@ import { push } from 'connected-react-router'
 import { url } from 'Utils/consts';
 import axios from "Config/axios";
 import { SESSION_ERROR } from "Actions/index";
-import { SET_CURRENT_USER } from 'Actions/index'
+import { SET_CURRENT_USER } from 'Actions/auth.actions'
 import AuthService from 'Services/auth/AuthService'
 import setCurrentUser from 'Actions/setCurrentUser'
 import decode from 'jwt-decode'

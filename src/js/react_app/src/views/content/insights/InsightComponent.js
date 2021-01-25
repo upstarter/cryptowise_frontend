@@ -23,29 +23,7 @@ class InsightComponent extends React.Component {
               intermediaries. Achieving this visionary goal requires
               contributions.
             </h3>
-            <p className="paragraph">
-
-            </p>
-            <h1 className="title">Vision</h1>
-            <h3 className="subtitle">
-=
-            </h3>
-
-
-            <p className="">
-
-            </p>
-            <h1 className="title">Mission</h1>
-            <p>
-
-            </p>
-            <h1 className="title">Values</h1>
-            <p>
-
-            </p>
-            <h1 className="title">Pursuits</h1>
-            <p>
-            </p>
+            
           </div>
         </section>
       </React.Fragment>

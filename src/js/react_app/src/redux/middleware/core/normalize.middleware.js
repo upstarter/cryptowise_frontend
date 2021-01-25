@@ -3,7 +3,7 @@ import {API_REQUEST, apiSuccess} from "Actions/api.actions"
 
 export const normalizeMiddleware = ({dispatch}) => next => action => {
   // filter document actions only
-  if (action.type.includes('set') && action.payload.meta.normalizeId) {
+  if (action.type.includes('Set') && action.payload.meta.normalizeId) {
 
     // notify the system about the transformation
     dispatch(normalizedData(action.payload.meta.entity))
