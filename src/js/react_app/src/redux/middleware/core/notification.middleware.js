@@ -16,7 +16,7 @@ export const notificationMiddleware = ({dispatch}) => next => action => {
     }
 
     // roll the action forward to the reducer
-    next( { setNotification(notification, meta.entity) )
+    next( { setNotification(notification, meta.entity) })
 
     setTimeout(() => next(removeNotification(id, meta.entity)), 5000)
   }

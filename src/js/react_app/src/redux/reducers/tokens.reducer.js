@@ -8,7 +8,7 @@ export const tokensReducer = (tokens = [], action) => {
 
     // don't care about commands or events like fetch, apiError, only document type
     case SET_TOKENS:
-      return payload.data
+      return payload
     default:
       return tokens
   }

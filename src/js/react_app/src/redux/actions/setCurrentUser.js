@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from './index'
+import { SET_CURRENT_USER } from 'Actions/auth.actions'
 
 const setCurrentUser = (user) => {
   return (dispatch) => {

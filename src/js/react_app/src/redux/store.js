@@ -5,19 +5,15 @@ import createRootReducer from "Reducers"
 import { createBrowserHistory } from 'history'
 import promiseMiddleware from "redux-promise-middleware"
 import { routerMiddleware } from 'connected-react-router'
-// import { coreMiddleware } from 'Redux/middleware/core'
-// import { appMiddleware } from 'Redux/middleware/app'
+import { coreMiddleware } from 'Redux/middleware/core'
+import { appMiddleware } from 'Redux/middleware/app'
 
 export const history = createBrowserHistory()
 
-// let wares = [ thunk, promiseMiddleware, ...coreMiddleware, ...appMiddleware ]
-let wares = [ thunk, promiseMiddleware ]
+let wares = [ ...coreMiddleware, ...appMiddleware ]
 if (process.env.NODE_ENV !== 'production') {
   wares = [ ...wares, logger ]
-  wares = [ ...wares, logger ]
 }
-
-// export default createStore(rootReducer, undefined, middleware)
 
 export default function configureStore(preloadedState) {
   const store = createStore(
