@@ -19,11 +19,11 @@ export const authReducer = (state = initialState, action) => {
 
     case `${AUTH} ${AUTH_SUCCESS}`:
       console.log('auth-succe', payload)
-      return { state: payload.state }
+      return { state: state }
 
     case `${AUTH} ${AUTH_ERROR}`:
       console.log('auth-error', payload)
-      return { state: payload.state }
+      return { state: state }
 
     default:
       return state

@@ -38,9 +38,8 @@ export class SignUpWizard extends Component {
 
     data.topic_knowledge_ids = this.state.topic_knowledge_ids
 
-    this.props.dispatch(registerUser(data)).then(response => {
-      this.props.history.replace('/proposals')
-    })
+    this.props.dispatch(registerUser(data))
+    this.props.history.replace('/proposals')
 
     // this.setState({
     //     name: data.name,
@@ -104,8 +103,8 @@ export class SignUpWizard extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  registerUser: (userInfo) => dispatch(registerUser(userInfo))
-})
+// const mapDispatchToProps = (dispatch, ownProps) => ({
+//   registerUser: (userInfo) => dispatch(registerUser(userInfo))
+// })
 
 export default connect(null, null)(withRouter(SignUpWizard));

@@ -11,18 +11,21 @@ export const registerUser = (regFormData) => ({
   }
 })
 
-export const authSuccess = (body, method, url, entity) => ({
-  type : `${entity} ${AUTH_SUCCESS}`,
+export const authSuccess = (body) => ({
+  type : `${AUTH} ${AUTH_SUCCESS}`,
   payload: {
-    data: body,
-    meta: {method, url, entity}
+    data: body
   }
 })
 
-export const authError = (body, method, url, entity) => ({
-  type : `${entity} ${AUTH_ERROR}`,
+export const authError = (body) => ({
+  type : `${AUTH} ${AUTH_ERROR}`,
   payload: {
-    data: body,
-    meta: {method, url, entity}
+    data: body
   }
+})
+
+export const setCurrentUser = (token) => ({
+  type: SET_CURRENT_USER,
+  payload: token
 })
