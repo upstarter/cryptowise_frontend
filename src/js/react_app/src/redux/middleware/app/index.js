@@ -3,4 +3,5 @@
 
 import { tokensMiddleware } from './tokens.middleware'
 import { topicsMiddleware } from './topics.middleware'
-export const appMiddleware = [tokensMiddleware]
+import { proposalsMiddleware } from './proposals.middleware'
+export const appMiddleware = [tokensMiddleware, proposalsMiddleware]

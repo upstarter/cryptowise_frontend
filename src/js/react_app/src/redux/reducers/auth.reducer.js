@@ -15,15 +15,19 @@ export const authReducer = (state = initialState, action) => {
 
     case `${AUTH} ${REGISTER_USER}`:
       console.log('reg-user', payload)
-      return { regFormData: payload }
+      return { state: payload }
 
     case `${AUTH} ${AUTH_SUCCESS}`:
       console.log('auth-succe', payload)
-      return { state: state }
+      return { state: payload }
 
     case `${AUTH} ${AUTH_ERROR}`:
       console.log('auth-error', payload)
-      return { state: state }
+      return { state: payload }
+
+    case `${AUTH} ${SET_CURRENT_USER}`:
+      console.log('set-curr-user', payload)
+      return { token: payload }
 
     default:
       return state
