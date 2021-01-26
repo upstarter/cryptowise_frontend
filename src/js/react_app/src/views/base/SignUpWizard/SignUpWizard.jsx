@@ -41,19 +41,18 @@ export class SignUpWizard extends Component {
     this.props.dispatch(registerUser(data))
     this.props.history.replace('/proposals')
 
-    // this.setState({
-    //     name: data.name,
-    //     email: data.email,
-    //     password: data.password
-    // }, () => {
-    //   let state = this.state;
-    //   if (
-    //     state.topic_knowledge_ids !== null &&
-    //     state._saveinterestIds !== null
-    //   ) {
-    //     this.props.history.replace('/proposals')
-    //   }
-    // })
+    this.setState({
+        name: data.name,
+        email: data.email,
+        password: data.password
+    }, () => {
+      let state = this.state;
+      if (
+        state.topic_knowledge_ids !== null &&
+        state._saveinterestIds !== null
+      ) {
+      }
+    })
   }
   _next() {
     let currentStep = this.state.currentStep;

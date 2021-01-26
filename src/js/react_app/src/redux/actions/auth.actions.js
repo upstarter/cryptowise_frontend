@@ -1,6 +1,7 @@
 export const AUTH = '[AUTH]'
 export const REGISTER_USER = `REGISTER_USER`
 export const SET_CURRENT_USER = `SET_CURRENT_USER`
+export const LOGIN_USER = `LOGIN_USER`
 export const AUTH_SUCCESS = `AUTH_SUCCESS`
 export const AUTH_ERROR = `AUTH_ERROR`
 
@@ -26,6 +27,13 @@ export const authError = (body) => ({
 })
 
 export const setCurrentUser = (token) => ({
-  type: SET_CURRENT_USER,
+  type: `${AUTH} ${SET_CURRENT_USER}`,
   payload: token
+})
+
+export const loginUser = (creds) => ({
+  type : `${AUTH} ${LOGIN_USER}`,
+  payload: {
+    creds,
+  }
 })
