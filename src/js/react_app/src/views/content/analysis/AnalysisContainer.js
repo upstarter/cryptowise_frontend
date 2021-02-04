@@ -1,11 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import TreeAnalysisComponent from "./TreeAnalysisComponent"
-import { Tabs, Radio } from 'antd';
+import TopicContainer from "Content/topics/TopicContainer"
+import { Tabs, Radio, Affix } from 'antd';
+const {TabPane} = Tabs;
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-
-const {TabPane} = Tabs;
+import colors from "Styles/colors"
 
 class AnalysisContainer extends React.Component {
   constructor(props) {
@@ -32,18 +32,25 @@ class AnalysisContainer extends React.Component {
         {/* <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
           <Radio.Button value="top">Horizontal</Radio.Button>
         </Radio.Group> */}
-        <Tabs
-          // defaultActiveKey="4"
-          size='large'
-          tabBarStyle={{ fontWeight: 500}}
-        >
-          <TabPane tab="Taxonomy" key='taxonomy'><TreeAnalysisComponent topic='taxonomy'/></TabPane>
-          <TabPane tab="Economics" key='economics'><TreeAnalysisComponent topic='economics'/></TabPane>
-          <TabPane tab="Strategy" key='strategy'><TreeAnalysisComponent topic='strategy'/></TabPane>
-          <TabPane tab="Analysis" key='analyze'><TreeAnalysisComponent topic='analysis'/></TabPane>
-          <TabPane tab="Valuation" key='valuation'><TreeAnalysisComponent topic='valuation'/></TabPane>
-          <TabPane tab="Research" key='research'><TreeAnalysisComponent topic='research'/></TabPane>
-        </Tabs>
+
+          <Tabs
+            size='large'
+            tabBarStyle={{ fontWeight: 500}}
+            tabPosition='top'
+            tabBarGutter={-15}
+            tabBarStyle={
+                {
+                  color: `${colors.midTone}`
+               }
+             }
+          >
+          <TabPane tab="Taxonomy" key='taxonomy'><TopicContainer topic='taxonomy'/></TabPane>
+          <TabPane tab="Economics" key='economics'><TopicContainer topic='economics'/></TabPane>
+          <TabPane tab="Strategy" key='strategy'><TopicContainer topic='strategy'/></TabPane>
+          <TabPane tab="Analysis" key='analyze'><TopicContainer topic='analysis'/></TabPane>
+          <TabPane tab="Valuation" key='valuation'><TopicContainer topic='valuation'/></TabPane>
+          <TabPane tab="Research" key='research'><TopicContainer topic='research'/></TabPane>
+          </Tabs>
       </div>
     )
   }
@@ -51,3 +58,10 @@ class AnalysisContainer extends React.Component {
 
 
 export default connect(null,null)(withRouter(AnalysisContainer));
+
+// <TabPane tab="Taxonomy" key='taxonomy'><TreeAnalysisComponent topic='taxonomy'/></TabPane>
+// <TabPane tab="Economics" key='economics'><TreeAnalysisComponent topic='economics'/></TabPane>
+// <TabPane tab="Strategy" key='strategy'><TreeAnalysisComponent topic='strategy'/></TabPane>
+// <TabPane tab="Analysis" key='analyze'><TreeAnalysisComponent topic='analysis'/></TabPane>
+// <TabPane tab="Valuation" key='valuation'><TreeAnalysisComponent topic='valuation'/></TabPane>
+// <TabPane tab="Research" key='research'><TreeAnalysisComponent topic='research'/></TabPane>

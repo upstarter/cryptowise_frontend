@@ -4,17 +4,17 @@
 const globalStyles = {
   main: {
     // '@charset': { 'utf-8' },
-    // '@font-face': {
-    //   fontFamily: 'Avenir',
-    //   src: 'url("../fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
-    //     url("../fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
-    //     url("../fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
-    //     url("../fonts/avenir/Avenir-Book.ttf") format("truetype"),
-    //     url("../fonts/avenir/Avenir-Light.ttf") format("truetype"),
-    //     url("../fonts/avenir/Avenir-Roman.ttf") format("truetype")'
-    // },
+    '@font-face': {
+      fontFamily: 'Avenir',
+      src: `url("../fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
+        url("../fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
+        url("../fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
+        url("../fonts/avenir/Avenir-Book.ttf") format("truetype"),
+        url("../fonts/avenir/Avenir-Light.ttf") format("truetype"),
+        url("../fonts/avenir/Avenir-Roman.ttf") format("truetype")`
+    },
 
-    // // The right way
+    // The right way
     // '@font-face': [
     //   {
     //     fontFamily: 'Avenir',
@@ -24,7 +24,7 @@ const globalStyles = {
     //     fontFamily: 'MySecondFont',
     //     src: 'url(webfont2.eot)'
     //   }
-    // ]
+    // ],
 
     'html, body': {
       fontFamily: 'Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif',
@@ -203,13 +203,6 @@ const globalStyles = {
       margin: 0,
       boxSizing: 'border-box',
 
-      // '@media (min-width: 576px)': {
-      //   overflow-y: 'hidden', // hide vertical scrollbar
-      //   overflow-x: 'hidden', // hide horizontal
-      //   ::-webkit-scrollbar {
-      //     display: none,
-      //   }
-      // }
     },
 
     '.center': {

@@ -10,7 +10,7 @@
 
 const colors = {
   // primary: '#001528',
-  primary: '#0A53B0',
+  primary: 'rgba(12, 61,160, .35)',
   // primary: 'rgba(23,22,23, 1)',
   // primary: theme.primaryColor,
   secondaryDark: 'rgba(25, 31, 46, 1)',

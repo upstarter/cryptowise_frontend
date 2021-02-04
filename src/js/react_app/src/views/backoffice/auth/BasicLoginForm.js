@@ -17,7 +17,9 @@ class BasicLoginForm extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.dispatch(loginUser(values))
-        this.props.history.replace('/proposals')
+        setTimeout(3000, () => {
+          this.props.history.replace('/proposals')
+        })
       }
     });
   };

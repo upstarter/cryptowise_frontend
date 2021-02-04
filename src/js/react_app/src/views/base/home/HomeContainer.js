@@ -55,28 +55,6 @@ const lazy = loader => class extends React.Component {
   }
 }
 
-// const HomeComponent = Loadable({
-//   loader: () => import("./HomeComponent" /* webpackChunkName: "home" */),
-//   loading() {
-//     return <div>Loading...</div>;
-//   }
-// });
-//
-// const AboutComponent = Loadable({
-//   loader: () => import("./AboutComponent" /* webpackChunkName: "about" */),
-//   loading() {
-//     return <div>Loading...</div>;
-//   }
-// });
-//
-// const ProviderContainer = Loadable({
-//   loader: () =>
-//     import("Content/providers/ProviderContainer" /* webpackChunkName: "provider" */),
-//   loading() {
-//     return <div>Loading...</div>;
-//   }
-// });
-
 const Protected = () => <h3>Protected</h3>;
 
 class HomeContainer extends React.Component {
@@ -109,86 +87,72 @@ class HomeContainer extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <React.Fragment>
-          <div className={classes.globe}>
-              <BrowserRouter>
-                <>
-                <AppHeader toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed}  />
-                <SiderMenu toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed} />
-                <Layout className={classes.typography, classes.baseLayout} id="wrapper">
-                  <Drawer
-                    title="CryptoWise"
-                    placement="right"
-                    closable={true}
-                    onClose={this.onClose}
-                    visible={this.state.visible}
-                  >
-                    <p>Wrap with separate router?</p>
-                    <p>Or move?</p>
-                    <p>Some contents...</p>
-                  </Drawer>
-                  <Layout className={classes.baseContent}>
-                    <Content className={classes.content}>
-                      <Route exact path="/" component={HomeComponent} />
-                      <AuthRoute exact path="/proposals" component={ProposalComponent} />
-                      <AuthRoute exact path="/profile" component={ProfileComponent} />
-                      <Route exact path="/analysts" component={AnalystComponent} />
-                      <Route exact path="/discuss" component={DiscussContainer} />
-                      <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                      <AuthRoute exact path="/assets" component={AssetsComponent} />
-                      <Route exact path="/about" component={AboutComponent} />
-                      <Route exact path="/signup" component={SignUpContainer} />
-                      <Route exact path="/login" component={BasicLoginForm} />
-                      <Route exact path="/logout" component={Logout} />
-                      <Route
-                        exact
-                        path="/privacy_policy"
-                        component={PrivacyComponent}
-                      />
-                      {/* <AuthRoute exact path="/profile" component={Protected} /> */}
-                      {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                      {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
-                      {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
-                      {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
-                      // <Route exact path="/insights" component={InsightComponent} />
-                      {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
-                      {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
-                      {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
-                      <Route exact path="/analysis" component={AnalysisContainer} />
-                    </Content>
-                    <Footer className={classes.footer} >
-                      <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>
-                    </Footer>
-                  </Layout>
+      <>
+        <div className={classes.globe}>
+            <BrowserRouter>
+              <>
+              <AppHeader toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed}  />
+              <SiderMenu toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed} />
+              <Layout className={classes.typography, classes.baseLayout} id="wrapper">
+                <Drawer
+                  title="CryptoWise"
+                  placement="right"
+                  closable={true}
+                  onClose={this.onClose}
+                  visible={this.state.visible}
+                >
+                  <p>Wrap with separate router?</p>
+                  <p>Or move?</p>
+                  <p>Some contents...</p>
+                </Drawer>
+                <Layout className={classes.baseContent}>
+                  <Content className={classes.content}>
+                    <Route exact path="/" component={HomeComponent} />
+                    <AuthRoute exact path="/proposals" component={ProposalComponent} />
+                    <AuthRoute exact path="/profile" component={ProfileComponent} />
+                    <Route exact path="/analysts" component={AnalystComponent} />
+                    <Route exact path="/discuss" component={DiscussContainer} />
+                    <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
+                    <AuthRoute exact path="/assets" component={AssetsComponent} />
+                    <Route exact path="/about" component={AboutComponent} />
+                    <Route exact path="/signup" component={SignUpContainer} />
+                    <Route exact path="/login" component={BasicLoginForm} />
+                    <Route exact path="/logout" component={Logout} />
+                    <Route
+                      exact
+                      path="/privacy_policy"
+                      component={PrivacyComponent}
+                    />
+                    {/* <AuthRoute exact path="/profile" component={Protected} /> */}
+                    {/* <Route exact path="/membership" component={MembershipComponent} /> */}
+                    {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
+                    {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
+                    {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
+                    // <Route exact path="/insights" component={InsightComponent} />
+                    {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
+                    {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
+                    {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
+                    <Route exact path="/analysis" component={AnalysisContainer} />
+                  </Content>
+                  <Footer className={classes.footer} >
+                    <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>
+                  </Footer>
                 </Layout>
-              </>
-            </BrowserRouter>
-
-      </div>
-      </React.Fragment>
+              </Layout>
+            </>
+          </BrowserRouter>
+        </div>
+      </>
     );
   }
 }
 
 const appStyles = {
-  // globe: `${globalStyles.main}`,
-  // typography: `${typography.main}`,
   baseLayout: {
     minHeight: '100vh',
     paddingBottom: '10%',
-    // background: `${colors.midTone}`,
-    // color: 'black'
   },
-  // logo: {
-  //   height: "54px",
-  //   display: "flex",
-  //   alignItems: "center",
-  //   justifyContent: "center"
-  // },
   baseContent: {
-    // marginTop: '45px',
-    // minHeight: '100%',
-    // background: `${colors.grey}`,
   },
   content: {
     '& p, & h3': {
@@ -208,9 +172,6 @@ const appStyles = {
     bottom: 0,
     right: 0,
     left: 0,
-    // width: '100vw',
-    // background: `${colors.primary}`,
-    // color: `${colors.origGreen}`,
     textAlign: 'center',
     '& #trademark': {
 
@@ -219,7 +180,7 @@ const appStyles = {
       },
     },
   }
-};
+}
 
 injectSheet(globalStyles)(HomeContainer);
 injectSheet(typography)(HomeContainer);
