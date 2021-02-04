@@ -38,15 +38,18 @@ class TopicChildren extends React.Component {
         lvl = 1
       }
       if (lvl === 0) {
-        data += `<h1 style='color: ${colors.darkYellow}; font-weight: 600;'>${parent.name}</h1>`
-      } else {
-        data += `<h${lvl} style='color: ${colors.origGreen}; font-weight: ${lvl}00;'>${parent.name}</h${lvl}>`
+        data += `<h1 style='color: ${colors.lighterBlack}; font-size: 27px;font-weight: 800;'>${parent.name}</h1>`
+      } else if (lvl === 1) {
+        data += `<h2 style='color: ${colors.lightBlack};font-size: 23px;font-weight: 600;'>${parent.name}</h2>`
+      } else if (lvl === 2) {
+        data += `<h3 style='color: ${colors.mediumBlack};font-size: 20px;font-weight: 400;'>${parent.name}</h3>`
+      } else  {
+        data += `<h${lvl} style='margin: 0 0 0 12px;color: ${colors.darkBlack};font-size: 17px; font-weight: 100;'>${parent.name}</h${lvl}>`
       }
-      data += `<p style='color: ${colors.smoke}; padding: 10px'><i>${parent.description}</i></p>`
+      data += `<p style='color: ${colors.offWhite};padding: 10px;font-weight:100;'><i>${parent.description}</i></p>`
 
       if (childs.length > 0) {
         lvl += 1
-
         data += this.topicChildren(childs, lvl=lvl)
       }
 
@@ -254,7 +257,7 @@ class TopicContainer extends React.Component {
                           //    <Avatar style={{}} icon="team" />
                           // }
 
-                          title={<a href="//ant.design">{item.name}</a>}
+                          title={<div><a style={{fontSize: 29, color: colors.orange}} href="//ant.design">{item.name}</a></div>}
                           description={this.topicDescription(item)}
                         />
                         {
