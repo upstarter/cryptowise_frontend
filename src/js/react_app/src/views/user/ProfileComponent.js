@@ -216,6 +216,7 @@ const profileStyles = {
 
       '@media (max-width: 860px)': {
         gridRow: '1 / 2',
+        maxWidth: '98vw',
       },
 
       '@media (min-width: 860px)': {

@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-import NewProposalForm from './NewProposalForm'
+import NewTopicForm from './NewTopicForm'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import { createProposal } from "Actions/proposals.actions";
+import { createProposal } from "Actions/topics.actions";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
@@ -16,10 +16,69 @@ import setAuthToken from 'Services/auth/setAuthToken'
 const count = 5;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
-class ProposalComponent extends React.Component {
+class TopicChildren extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  topicChildren = (children, lvl=0, data=``) => {
+    if (children === undefined) { return }
+    console.log('children', children)
+
+    children.map((pair, idx) => {
+      let parent = pair[0]
+      let childs = pair[1]
+      console.log(`parent-child ${idx}`, parent, childs)
+      console.log('lvl', lvl)
+      if (parent.id == 72) {
+        lvl = 0
+      }
+
+      if (parent.id == 76) {
+        lvl = 1
+      }
+      if (lvl === 0) {
+        data += `<h1 style='color: ${colors.darkYellow}; font-weight: 600;'>${parent.name}</h1>`
+      } else {
+        data += `<h${lvl} style='color: ${colors.origGreen}; font-weight: ${lvl}00;'>${parent.name}</h${lvl}>`
+      }
+      data += `<p style='color: ${colors.smoke}; padding: 10px'><i>${parent.description}</i></p>`
+
+      if (childs.length > 0) {
+        lvl += 1
+
+        data += this.topicChildren(childs, lvl=lvl)
+      }
+
+    })
+
+    return data + `<br />`
+  }
+
+
+  render() {
+    let {topic} = this.props
+    const {children, description} = topic
+
+    return (
+      <div className='topic-description'>
+        <div className='description'>
+          {description}
+        </div>
+        <div className='topic-details'
+          dangerouslySetInnerHTML={{ __html: this.topicChildren(children) }}
+        >
+        </div>
+      </div>
+    )
+  }
+}
+
+class TopicContainer extends React.Component {
   state = {
     initLoading: true,
     loading: false,
+    topic: null,
     data: [],
     list: [],
     page: 1,
@@ -30,6 +89,7 @@ class ProposalComponent extends React.Component {
 
   componentDidMount() {
     this.getData(res => {
+      res.data[0].children = res.data[1]
       this.setState({
         initLoading: false,
         data: res.data,
@@ -40,7 +100,7 @@ class ProposalComponent extends React.Component {
   }
 
   getData = callback => {
-    const url = `${api_url}/proposals?per_page=${count}&page=${this.state.page}`
+    const url = `${api_url}/${this.props.topic}?per_page=${count}&page=${this.state.page}`
     const data = {
       withCredentials: true,
       credentials: 'include'
@@ -51,7 +111,6 @@ class ProposalComponent extends React.Component {
     setAuthToken(accessToken) // set token in requests
 
     axios.get(url, data).then((res) => {
-      // console.log('Data', res.data)
       callback(res.data)
     })
   };
@@ -105,7 +164,7 @@ class ProposalComponent extends React.Component {
         console.error('handleCreate error', err)
         return;
       }
-      this.props.dispatch(createProposal(values))
+      this.props.dispatch(createTopic(values))
     });
     form.resetFields();
     this.setState({ visible: false, confirmLoading: false })
@@ -118,8 +177,25 @@ class ProposalComponent extends React.Component {
     });
   }
 
+  titleize = (topic) => {
+    topic.replace('\w\w*\g', (txt) => {
+            return txt.charAt(0).toUpperCase() +
+            txt.substr(1).toLowerCase()
+          })
+    this.setState({topic: topic})
+  }
+
+  topicDescription = (topic) => {
+    return (
+      <TopicChildren topic={topic} />
+    )
+  }
+
   render() {
-    const { classes } = this.props
+    let { classes, topic } = this.props
+    topic = topic.split(" ").map((txt) => {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
+    })
     const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
     const loadMore =
       !initLoading && !loading ? (
@@ -140,8 +216,8 @@ class ProposalComponent extends React.Component {
         <React.Fragment>
           <ScrollToTopOnMount />
 
-          <section id="proposal" className={classes.proposals}>
-            <NewProposalForm
+          <section id="topic" className={classes.topics}>
+            <NewTopicForm
               wrappedComponentRef={this.saveFormRef}
               wrapClassName={classes.modal}
               visible={this.state.visible}
@@ -149,41 +225,19 @@ class ProposalComponent extends React.Component {
               onCreate={this.handleCreate}
               confirmLoading={confirmLoading}
             />
-            <div id="proposal-blurb">
-              <div id="proposal-blurb-intro">
-                <h3 id="blurb-title">The Quantasium</h3>
-                <h4 id='blurb-subtitle' className='subtitle-small'>
-                  Digest & Curate retirement optimality knowledge.
-                </h4>
-                <p>
-                  Seed the design of FDS (Financial Data Structures),
-                  for optimal investment knowledge within a decentralized
-                  financial network using blockchain for trust in data
-                  provisioning, data integrity, and systems and strategy efficacy.
-                </p>
-                <p>
-                  Ideas voted to the top decile may become candidates for future
-                  ecosystem activities.
-                </p>
-                <p>
-                  To participate, <b> Submit</b> ideas and/or <b>Rate </b>
-                  others' ideas so the collective interests of the ecosystem can
-                  emerge and be implemented in code.
-                </p>
-              </div>
-            </div>
 
-            <div id="proposal-items" className={classes.proposalItems}>
-              <Affix offsetTop={50}>
-                <div id="proposal-items-heading">
+
+            <div id="topic-items" className={classes.topicItems}>
+              <Affix offsetTop={38}>
+                <div id="topic-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
-                  <h3>🌱 Ideas </h3>
-                  {/* <div id="riff-blurb">
-                    <strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
-                  </div> */}
+                  <h3 id="blurb-title">
+                  🧠 {topic}
+                  </h3>
                 </div>
               </Affix>
-              <div id="proposal-column">
+
+              <div className="topic-column">
                 <List
                   className="item-list"
                   loading={initLoading}
@@ -196,11 +250,12 @@ class ProposalComponent extends React.Component {
                       <Skeleton avatar title={false} loading={item.loading} active>
                         <List.Item.Meta
                           id='list-item-meta'
-                          avatar={
-                             <Avatar style={{}} icon="team" />
-                          }
+                          // avatar={
+                          //    <Avatar style={{}} icon="team" />
+                          // }
+
                           title={<a href="//ant.design">{item.name}</a>}
-                          description={<p className='item-name'>{item.description}</p>}
+                          description={this.topicDescription(item)}
                         />
                         {
                           // <div id="meta-details">
@@ -208,9 +263,6 @@ class ProposalComponent extends React.Component {
                           //   <p className='item-description'>{item.description}</p>
                           // </div>
                         }
-                        <div>
-                          <Rate allowHalf />
-                        </div>
                       </Skeleton>
                     </List.Item>
                   )}
@@ -225,7 +277,7 @@ class ProposalComponent extends React.Component {
   }
 }
 
-const proposalStyles = {
+const topicStyles = {
   modal: {
     // width: 10,
     // background: `${colors.secondaryDark}`,
@@ -235,9 +287,9 @@ const proposalStyles = {
       textDecoration: 'none !important',
     }
   },
-  proposals: {
+  topics: {
     display: 'grid',
-    marginTop: 60,
+    marginTop: 0,
 
     '@media (max-width: 860px)': {
       gridTemplateRows: 'auto 1fr',
@@ -245,82 +297,64 @@ const proposalStyles = {
     },
 
     '@media (min-width: 860px)': {
-      gridTemplateColumns: '1fr 1fr',
+      gridTemplateColumns: '1fr',
+      padding: 10,
       gridTemplateAreas: '"header content"',
     },
 
-    '& #proposal-blurb': {
-      gridArea: 'header',
-      justifySelf: 'center',
-      margin: '20px 0 0 0',
-      padding: 0,
+    '@media (min-width: 860px)': {
+      gridColumn: '1 / 2',
+      maxWidth: '96vw',
+    },
 
-      // color: `${colors.sand} !important`,
+    '& #blurb-title': {
+      fontSize: '3.8rem !important',
+      lineHeight: '1.7rem !important',
+      color: `${colors.lighterBlack} !important`,
+      margin: [50,0,0,20],
+      fontSize: 18,
+      maxWidth: '70ch',
 
       '@media (max-width: 860px)': {
         gridColumn: '1 / 2',
-        maxWidth: '94vw',
-        padding: 5,
-
-        '& #blurb-title': {
-          fontSize: '2rem',
-          padding: 0,
-        },
+        maxWidth: '98vw',
       },
+      // filter: 'contrast(.8)'
+      '& #blurb-subtitle': {
+        margin: [0,0,0,0],
+        color: `${colors.silver} !important`,
+        fontSize: '1.5rem',
 
-      '@media (min-width: 860px)': {
-        gridColumn: '1 / 2',
-        maxWidth: '30vw',
       },
+    },
 
-      '& #proposal-blurb-intro': {
-        fontSize: 18,
-        maxWidth: '70ch',
-
-        '& #blurb-title': {
-          marginTop: 0,
-          fontSize: '3.8rem !important',
-          lineHeight: '3.8rem !important',
-          color: `${colors.lightBlack} !important`,
-          // filter: 'contrast(.8)'
-        },
-        '& #blurb-subtitle': {
-          color: `${colors.silver} !important`,
-          marginBottom: 20,
-          marginLeft: 0,
-          fontSize: '2rem',
-          lineHeight: '2.5rem !important'
-        },
-        '& p': {
-          color: `${colors.offWhite}`,
-          fontSize: '16px',
-          marginLeft: 0,
-          padding: 0,
-        },
-      },
+    '& #blurb': {
+      margin: [0,0,0,0],
+      color: `${colors.offWhite}`,
+      fontSize: '16px',
+      padding: 0,
     },
   },
 
-  proposalItems: {
+  topicItems: {
     gridArea: 'content',
 
     '@media (max-width: 860px)': {
       gridRow: '2 / 3',
       justifySelf: 'center',
-      margin: '20px auto'
+      margin: '0px auto'
 
     },
     '@media (min-width: 860px)': {
       justifySelf: 'center',
+      margin: '0px auto',
     },
 
-    '& #proposal-items-heading': {
+    '& #topic-items-heading': {
       display: 'grid',
-      alignItems: 'center',
-      justifyItems: 'center',
-      height: 55,
+      height: 80,
       zIndex: 10,
-      marginBottom: 20,
+      padding: [30,0,0,5],
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
@@ -334,8 +368,8 @@ const proposalStyles = {
         gridColumn: '3',
         gridRow: '1 / 3',
         justifySelf: 'end',
-        margin: [0, 15, 0, 15],
-        backgroundColor: `${colors.origGreen}`,
+        margin: [0, 22, 0, 0],
+        backgroundColor: `${colors.darkBlack}`,
         color: '#FFF',
         borderRadius: 50,
         textAlign: 'center',
@@ -350,59 +384,73 @@ const proposalStyles = {
         justifySelf: 'start',
         fontSize: '3rem',
         letterSpacing: '0.5rem',
-        paddingTop: 17,
+        marginTop: 9,
         color: `${colors.lightBlack}`,
       },
     },
 
-    '& #proposal-column': {
+    '& .item-list': {
+      padding: '20px',
+      color: `${colors.offWhite} !important`,
 
-      '@media (max-width: 860px)': {
-        margin: 0
-      },
-      '@media (min-width: 860px)': {
-        width: '50vw',
-      },
-
-      '& .item-list': {
-        padding: '0px 12px 0 12px',
-        color: `${colors.offWhite} !important`,
+      '& .ant-list-items': {
+        boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
+        width: '90vw',
+        background: `${colors.secondaryDark}`,
+        border: `1px solid ${colors.darkerDarkBlack}`,
+        padding: 14,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'left',
+        justifyItems: 'space-around',
+        maxWidth: '95vw',
 
         '& .ant-list-item': {
-          color: `${colors.offWhite}`,
-          boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
-          background: `${colors.primary}`,
-          border: '1px solid rgba(240,240,240,.5)',
-          padding: 0,
-          margint: 0,
-          '& .item-description': {
-            margin: [0,17,0,17]
+          marginTop: 15,
+        },
+
+
+        '& .ant-list-item-meta-description': {
+            maxWidth: '80ch'
+         },
+
+        '& .item-name': {
+          margin: [0,0,20,0],
+          color: `${colors.midTone} !important`,
+
+        },
+        '& .topic-description': {
+          margin: [0,0,20,0],
+          color: `${colors.silver}`,
+
+          '& .description': {
+            margin: [0,0,7,0],
+            color: `${colors.silver}`
+          },
+
+          '& .topic-details': {
+            color: `${colors.midTone}`
           }
         },
 
-        '& #list-item-meta': {
-          '& p': { color: `${colors.offWhite}`},
-          '& a': { color: `${colors.offWhite}`},
-          '& .ant-list-item-meta-content': {
-             color: `${colors.offWhite} !important`,
-             '& #main-content': {
-               '& .item-name': {color: `${colors.offWhite}`},
-               '& .item-description': { color: `${colors.offWhite}` },
-             },
-          },
-        },
-        '& #meta-details': {
-           // padding: 20,
-           // textAlign: 'center',
-           '& .item-description': {
-
-           },
+        '& .ant-list-item-meta-title': {
+           '& a': { color: `${colors.darkYellow}`},
+           '&:hover': {
+             cursor: 'select',
+             color: '',
+             textDecoration: 'underline'
+           }
          },
 
+         '& .ant-list-item-meta-avatar': {
+
+          },
       },
-    }
+
+
+    },
   },
 
 }
 
-export default connect(null, null)(injectSheet(proposalStyles)(ProposalComponent))
+export default connect(null, null)(injectSheet(topicStyles)(TopicContainer))

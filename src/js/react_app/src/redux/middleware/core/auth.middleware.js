@@ -68,6 +68,7 @@ export const authMiddleware = ({dispatch}) => next => action => {
           const auth = new AuthService
           auth.setToken(token)
           dispatch(setCurrentUser(token))
+
         }).then((data) => {
           localStorage.setItem('userName', regFormData.nickname)
           localStorage.setItem('topicIds', regFormData.topic_knowledge_ids)
