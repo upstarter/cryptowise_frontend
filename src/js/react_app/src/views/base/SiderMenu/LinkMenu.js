@@ -68,6 +68,14 @@ const LinkMenu = withRouter(props => {
           </Menu.Item> : ''
         } */}
         {
+          <Menu.Item key={"/assets"}>
+            <Link to="/assets" style={{ textDecoration: "none" }}>
+              <Icon type="dollar" />
+              <span className="nav-text">Assets</span>
+            </Link>
+          </Menu.Item>
+        }
+        {
           <Menu.Item key="/analysis">
             <Link to="/analysis" style={{ textDecoration: "none" }}>
               <Icon type="heat-map" />
@@ -80,14 +88,6 @@ const LinkMenu = withRouter(props => {
             <Link to="/portfolio" style={{ textDecoration: "none" }}>
               <Icon type="pie-chart" />
               <span className="nav-text">Portfolio</span>
-            </Link>
-          </Menu.Item>
-        }
-        {
-          <Menu.Item key={auth.signedIn() ? "/assets" : "/login"}>
-            <Link to="/assets" style={{ textDecoration: "none" }}>
-              <Icon type="stock" />
-              <span className="nav-text">Assets</span>
             </Link>
           </Menu.Item>
         }

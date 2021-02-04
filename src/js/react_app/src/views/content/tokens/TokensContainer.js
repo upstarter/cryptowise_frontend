@@ -3,90 +3,44 @@ import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-import NewTopicForm from './NewTopicForm'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import { createProposal } from "Actions/topics.actions";
+import { createProposal } from "Actions/tokens.actions";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
 
-const count = 5;
+const count = 25;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
-class TopicChildren extends React.Component {
+class TokenDetail extends React.Component {
   constructor(props) {
     super(props)
   }
 
-  topicChildren = (children, lvl=0, data=``) => {
-    if (children === undefined) { return }
-    console.log('children', children)
-
-    children.map((pair, idx) => {
-      let parent = pair[0]
-      let childs = pair[1]
-      console.log(`parent-child ${idx}`, parent, childs)
-      console.log('lvl', lvl)
-      if (parent.id == 72) {
-        lvl = 0
-      }
-
-      if (parent.id == 76) {
-        lvl = 1
-      }
-      // tech analysis
-      if (parent.id == 91) {
-        lvl = 0
-      }
-
-      if (lvl === 0) {
-        data += `<h1 style='color: ${colors.lighterBlack}; font-size: 27px;font-weight: 800;'>${parent.name}</h1>`
-      } else if (lvl === 1) {
-        data += `<h2 style='color: ${colors.lightBlack};font-size: 23px;font-weight: 600;'>${parent.name}</h2>`
-      } else if (lvl === 2) {
-        data += `<h3 style='color: ${colors.mediumBlack};font-size: 20px;font-weight: 400;'>${parent.name}</h3>`
-      } else  {
-        data += `<h${lvl} style='margin: 0 0 0 12px;color: ${colors.darkBlack};font-size: 17px; font-weight: 100;'>${parent.name}</h${lvl}>`
-      }
-      data += `<p style='color: ${colors.offWhite};padding: 10px;font-weight:100;'><i>${parent.description}</i></p>`
-
-      if (childs.length > 0) {
-        lvl += 1
-        data += this.topicChildren(childs, lvl=lvl)
-      }
-
-    })
-
-    return data + `<br />`
-  }
-
-
   render() {
-    let {topic} = this.props
-    const {children, description} = topic
+    let {token} = this.props
+    const {children, description, name, symbol} = token
 
     return (
-      <div className='topic-description'>
+      <div className='token-description'>
         <div className='description'>
           {description}
         </div>
-        <div className='topic-details'
-          dangerouslySetInnerHTML={{ __html: this.topicChildren(children) }}
-        >
+        <div className='token-details'>
         </div>
       </div>
     )
   }
 }
 
-class TopicContainer extends React.Component {
+class TokensContainer extends React.Component {
   state = {
     initLoading: true,
     loading: false,
-    topic: null,
+    token: null,
     data: [],
     list: [],
     page: 1,
@@ -108,7 +62,7 @@ class TopicContainer extends React.Component {
   }
 
   getData = callback => {
-    const url = `${api_url}/${this.props.topic}?per_page=${count}&page=${this.state.page}`
+    const url = `${api_url}/tokens?per_page=${count}&page=${this.state.page}`
     const data = {
       withCredentials: true,
       credentials: 'include'
@@ -172,7 +126,7 @@ class TopicContainer extends React.Component {
         console.error('handleCreate error', err)
         return;
       }
-      this.props.dispatch(createTopic(values))
+      this.props.dispatch(createToken(values))
     });
     form.resetFields();
     this.setState({ visible: false, confirmLoading: false })
@@ -185,25 +139,35 @@ class TopicContainer extends React.Component {
     });
   }
 
-  titleize = (topic) => {
-    topic.replace('\w\w*\g', (txt) => {
+  titleize = (token) => {
+    token.replace('\w\w*\g', (txt) => {
             return txt.charAt(0).toUpperCase() +
             txt.substr(1).toLowerCase()
           })
-    this.setState({topic: topic})
+    this.setState({token: token})
   }
 
-  topicDescription = (topic) => {
+  tokenDescription = (token) => {
     return (
-      <TopicChildren topic={topic} />
+      <TokenDetail token={token} />
+    )
+  }
+
+  tokenTitle = (token) => {
+    return(
+      <div>
+        <a style={{fontSize: 23, color: colors.darkYellow}} href="//ant.design">
+          {token.name}
+        </a>
+      </div>
     )
   }
 
   render() {
-    let { classes, topic } = this.props
-    topic = topic.split(" ").map((txt) => {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
-    })
+    let { classes, token } = this.props
+    // token = token.split(" ").map((txt) => {
+    //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
+    // })
     const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
     const loadMore =
       !initLoading && !loading ? (
@@ -224,31 +188,25 @@ class TopicContainer extends React.Component {
         <React.Fragment>
           <ScrollToTopOnMount />
 
-          <section id="topic" className={classes.topics}>
-            <NewTopicForm
-              wrappedComponentRef={this.saveFormRef}
-              wrapClassName={classes.modal}
-              visible={this.state.visible}
-              onCancel={this.handleCancel}
-              onCreate={this.handleCreate}
-              confirmLoading={confirmLoading}
-            />
+          <section id="token" className={classes.tokens}>
 
 
-            <div id="topic-items"
-                 className={classes.topicItems}
-            >
-              <Affix offsetTop={38}>
-                <div id="topic-items-heading"
-                      style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
-                >
-                  <h3 id="blurb-title">
-                  {topic}
+            <div id="token-items" className={classes.tokenItems}>
+              <Affix offsetTop={15}>
+                <div style={{minWidth: '80vw', display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}} id="token-items-heading">
+                  <h3 className="blurb-title">
+                    ⦿ ₿ ⦿
+                  </h3>
+                  <h3 className="blurb-title">
+                    Assets
+                  </h3>
+                  <h3 className="blurb-title">
+                    ⦿ ₿ ⦿
                   </h3>
                 </div>
               </Affix>
 
-              <div className="topic-column">
+              <div className="token-column">
                 <List
                   className="item-list"
                   loading={initLoading}
@@ -265,8 +223,8 @@ class TopicContainer extends React.Component {
                           //    <Avatar style={{}} icon="team" />
                           // }
 
-                          title={<div><a style={{fontSize: 28, color: colors.darkYellow}} href="//ant.design">{item.name}</a></div>}
-                          description={this.topicDescription(item)}
+                          title={this.tokenTitle(item)}
+                          description={this.tokenDescription(item)}
                         />
                         {
                           // <div id="meta-details">
@@ -288,7 +246,7 @@ class TopicContainer extends React.Component {
   }
 }
 
-const topicStyles = {
+const tokenStyles = {
   modal: {
     // width: 10,
     // background: `${colors.secondaryDark}`,
@@ -298,7 +256,7 @@ const topicStyles = {
       textDecoration: 'none !important',
     }
   },
-  topics: {
+  tokens: {
     display: 'grid',
     marginTop: 0,
 
@@ -318,9 +276,36 @@ const topicStyles = {
       maxWidth: '96vw',
     },
 
+    '& #blurb-title': {
+      fontSize: '3.8rem !important',
+      lineHeight: '1.7rem !important',
+      color: `${colors.lighterBlack} !important`,
+      margin: [50,0,0,20],
+      fontSize: 18,
+      maxWidth: '70ch',
+
+      '@media (max-width: 860px)': {
+        gridColumn: '1 / 2',
+        maxWidth: '98vw',
+      },
+      // filter: 'contrast(.8)'
+      '& #blurb-subtitle': {
+        margin: [0,0,0,0],
+        color: `${colors.silver} !important`,
+        fontSize: '1.5rem',
+
+      },
+    },
+
+    '& #blurb': {
+      margin: [0,0,0,0],
+      color: `${colors.offWhite}`,
+      fontSize: '16px',
+      padding: 0,
+    },
   },
 
-  topicItems: {
+  tokenItems: {
     gridArea: 'content',
 
     '@media (max-width: 860px)': {
@@ -334,11 +319,11 @@ const topicStyles = {
       margin: '0px auto',
     },
 
-    '& #topic-items-heading': {
+    '& #token-items-heading': {
       display: 'grid',
+      height: 80,
       zIndex: 10,
-      minHeight: 60,
-      padding: 0,
+      padding: [30,0,0,5],
       color: '#fff !important',
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
@@ -347,36 +332,6 @@ const topicStyles = {
       '& .float:hover': {
         '-webkit-animation': 'none'
       },
-
-
-      '& #blurb-title': {
-        fontSize: '3.8rem !important',
-        lineHeight: '1.7rem !important',
-        color: `${colors.lighterBlack} !important`,
-        margin: [25,0,0,0],
-        fontSize: 30,
-        maxWidth: '70ch',
-
-        '@media (max-width: 860px)': {
-          gridColumn: '1 / 2',
-          maxWidth: '98vw',
-        },
-        // filter: 'contrast(.8)'
-        '& #blurb-subtitle': {
-          margin: [0,0,0,0],
-          color: `${colors.silver} !important`,
-          fontSize: '1.5rem',
-
-        },
-
-        '& #blurb': {
-          margin: [0,0,0,0],
-          color: `${colors.offWhite}`,
-          fontSize: '16px',
-          padding: 0,
-        },
-      },
-
 
       '& .float': {
         gridColumn: '3',
@@ -398,7 +353,7 @@ const topicStyles = {
         justifySelf: 'start',
         fontSize: '3rem',
         letterSpacing: '0.5rem',
-        marginTop: 0,
+        marginTop: 9,
         color: `${colors.lightBlack}`,
       },
     },
@@ -433,7 +388,7 @@ const topicStyles = {
           color: `${colors.midTone} !important`,
 
         },
-        '& .topic-description': {
+        '& .token-description': {
           margin: [0,0,20,0],
           color: `${colors.silver}`,
 
@@ -442,7 +397,7 @@ const topicStyles = {
             color: `${colors.silver}`
           },
 
-          '& .topic-details': {
+          '& .token-details': {
             color: `${colors.midTone}`
           }
         },
@@ -467,4 +422,4 @@ const topicStyles = {
 
 }
 
-export default connect(null, null)(injectSheet(topicStyles)(TopicContainer))
+export default connect(null, null)(injectSheet(tokenStyles)(TokensContainer))

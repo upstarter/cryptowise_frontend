@@ -21,6 +21,7 @@ import BasicLoginForm from "Auth/BasicLoginForm";
 import AuthRoute from "Services/auth/AuthRoute";
 import PrivacyComponent from "../PrivacyComponent";
 import FooterComponent from "./FooterComponent";
+import TokensContainer from "Content/tokens/TokensContainer"
 import { Layout, Menu, Icon, Drawer } from "antd";
 const { Content, Sider, Footer } = Layout;
 const { SubMenu } = Menu;
@@ -113,7 +114,7 @@ class HomeContainer extends React.Component {
                     <Route exact path="/analysts" component={AnalystComponent} />
                     <Route exact path="/discuss" component={DiscussContainer} />
                     <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                    <AuthRoute exact path="/assets" component={AssetsComponent} />
+                    <Route exact path="/assets" component={TokensContainer} />
                     <Route exact path="/about" component={AboutComponent} />
                     <Route exact path="/signup" component={SignUpContainer} />
                     <Route exact path="/login" component={BasicLoginForm} />
