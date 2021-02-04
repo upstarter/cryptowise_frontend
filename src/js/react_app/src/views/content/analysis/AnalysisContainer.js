@@ -35,20 +35,21 @@ class AnalysisContainer extends React.Component {
 
           <Tabs
             size='large'
-            tabBarStyle={{ fontWeight: 500}}
+            tabBarStyle={{ fontWeight: 800}}
             tabPosition='top'
-            tabBarGutter={-15}
             tabBarStyle={
                 {
-                  color: `${colors.midTone}`
+                  color: `${colors.midTone}`,
+                  position: 'fixed',
+                  zIndex: 100,
+                  background: 'rgba(0,0,0,1)',
+                  width: '100vw'
                }
              }
           >
           <TabPane tab="Taxonomy" key='taxonomy'><TopicContainer topic='taxonomy'/></TabPane>
           <TabPane tab="Economics" key='economics'><TopicContainer topic='economics'/></TabPane>
           <TabPane tab="Strategy" key='strategy'><TopicContainer topic='strategy'/></TabPane>
-          <TabPane tab="Analysis" key='analyze'><TopicContainer topic='analysis'/></TabPane>
-          <TabPane tab="Valuation" key='valuation'><TopicContainer topic='valuation'/></TabPane>
           <TabPane tab="Research" key='research'><TopicContainer topic='research'/></TabPane>
           </Tabs>
       </div>
