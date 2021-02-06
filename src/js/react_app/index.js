@@ -10,10 +10,7 @@ import App from "./src/App"
 import "normalize.css"
 
 
-// import { getBundles } from 'react-loadable/webpack'
-
 ReactDOM.render(
-  // <Loadable.Capture report={moduleName => modules.push(moduleName)}>
   <App />, document.getElementById("app")
 
 )

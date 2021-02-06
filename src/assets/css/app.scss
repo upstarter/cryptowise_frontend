@@ -2,16 +2,6 @@
 // - - GLOBAL css
 
 @charset "utf-8";
-// @font-face {
-//   font-family: "Avenir";
-//   src:
-//     url("../fonts/avenir/AvenirLTStd-Book.otf") format("otf"),
-//     url("../fonts/avenir/AvenirLTStd-Light.otf") format("otf"),
-//     url("../fonts/avenir/AvenirLTStd-Roman.otf") format("otf"),
-//     url("../fonts/avenir/Avenir-Book.ttf") format("truetype"),
-//     url("../fonts/avenir/Avenir-Light.ttf") format("truetype"),
-//     url("../fonts/avenir/Avenir-Roman.ttf") format("truetype")
-// }
 
 a {
   color: red;
@@ -43,13 +33,6 @@ body {
   margin: 0;
   box-sizing: border-box;
 
-  // @media (min-width: 576px) {
-  //   overflow-y: hidden; // hide vertical scrollbar
-  //   overflow-x: hidden; // hide horizontal
-  //   ::-webkit-scrollbar {
-  //     display: none;
-  //   }
-  // }
 }
 
 .hidden { display: 'none'; }
@@ -346,14 +329,12 @@ blockquote p {
    background-size:100% .3rem ;/* if linear-gradient, we need to resize it */
 }
 
-// spinner.scss
 div {
   &.is-loading {
       position: relative;
       pointer-events: none;
       opacity: 0.5;
       &:after {
-          // @include loader;
           position: absolute;
           top: calc(50% - 2.5em);
           left: calc(50% - 2.5em);
