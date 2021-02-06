@@ -19,6 +19,10 @@ const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email
 class TopicChildren extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      topic: props.topic
+    }
   }
 
   topicDetail = (topic) => {
@@ -35,32 +39,37 @@ class TopicChildren extends React.Component {
     )
   }
 
+  topicHead = (topic, lvl, data=``) => {
+    console.log('head', topic, lvl, data)
+    let href = `/topics/${topic.id}`
+
+    if (lvl === 0) {
+      data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
+    } else if (lvl === 1) {
+      data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
+    } else if (lvl === 2) {
+      data += `<h3><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 20px;font-weight: 100' href='${href}'>${this.discussTopic(topic)}</a></h3>`
+    } else if (lvl === 3) {
+      data += `<h4><a style='user-select:none;margin-left: 17px;color: ${colors.mediumBlack};font-size: 18px;font-weight: 0' href='${href}'>${topic.name}</a></h4>`
+    } else {
+      data += `<h6><a style='user-select:none;margin-left: 22px;color: ${colors.darkBlack};font-size: 16px; font-weight: 0;' href='${href}'>${topic.name}</a></h${lvl}>`
+    }
+    console.log('DD',data,lvl)
+    return data
+  }
+
   topicChildren = (topicId, children, lvl=0, data=`<div style='margin: 20px 10px 20px 0'>`) => {
     if (children === undefined) { return data }
     if (children.length === 0) { return data }
     if (lvl > 0) { return data }
-    console.log('children', children)
 
     children.map((pair, idx) => {
       if (pair.length === 0) { return data }
-      if (lvl > 2) { return data }
       let parent = pair[0]
       if (parent.parent_id === topicId) {lvl = 0}
       let childs = pair[1]
-      console.log(`parent-child`, parent, childs)
-      console.log('lvl', lvl)
-      let href = `/topics/${parent.id}`
-      if (lvl === 0) {
-        data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(parent)}</a></h2>`
-      } else if (lvl === 1) {
-        data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(parent)}</a></h2>`
-      } else if (lvl === 2) {
-        data += `<h3><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 20px;font-weight: 100' href='${href}'>${this.discussTopic(parent)}</a></h3>`
-      } else if (lvl === 3) {
-        data += `<h4><a style='user-select:none;margin-left: 17px;color: ${colors.mediumBlack};font-size: 18px;font-weight: 0' href='${href}'>${parent.name}</a></h4>`
-      } else {
-        data += `<h6><a style='user-select:none;margin-left: 22px;color: ${colors.darkBlack};font-size: 16px; font-weight: 0;' href='${href}'>${parent.name}</a></h${lvl}>`
-      }
+      if (parent === undefined) { return data }
+      data += this.topicHead(parent, lvl)
 
       data += `<div style='user-select:none;margin: 10px 0 10px 22px'>${this.topicDetail(parent)}</div>`
       data += `<ul style='user-select:none;margin: 10px 0 10px 34px;list-style-type:none;text-decoration:none;' id='topic-urls'>
@@ -80,19 +89,18 @@ class TopicChildren extends React.Component {
 
 
   render() {
-    let {topic} = this.props
-    const {children, description,name, id} = topic
-
+    let { topic } = this.props
+    if (!topic) { return (<></>) }
     return (
-      <div className='topic-description'>
-        <h1 style={{}} className='topic-name'>
-          {name}
+      <div style={{margin: [0,0,0,10]}} className='topic-description'>
+        <h1 style={{padding: 0, margin: 0}} className='topic-name'>
+          {topic && topic.name}
         </h1>
         <div className='description'>
-          {description}
+          {topic && topic.description}
         </div>
         <div className='topic-details'
-          dangerouslySetInnerHTML={{ __html: this.topicChildren(id, children) }}
+          dangerouslySetInnerHTML={{__html: this.topicChildren(topic.id, topic.children)}}
         >
         </div>
       </div>
@@ -116,7 +124,6 @@ class TopicContainer extends React.Component {
   componentDidMount() {
     this.getData(res => {
       res.data[0].children = res.data[1]
-      console.log('TTTHIS', res.data)
       this.setState({
         initLoading: false,
         data: res.data,
@@ -213,8 +220,9 @@ class TopicContainer extends React.Component {
   }
 
   topicDescription = (topic) => {
+    console.log('desc', topic[0])
     return (
-      <TopicChildren topic={topic} />
+      <TopicChildren topic={topic[0]} />
     )
   }
 
@@ -258,25 +266,8 @@ class TopicContainer extends React.Component {
                 </div>
               </Affix>
 
-              <div className="topic-column">
-                <List
-                  className="item-list"
-                  loading={initLoading}
-                  itemLayout="horizontal"
-
-                  dataSource={list}
-                  renderItem={item => (
-                    // <List.Item actions={[<a>more</a>]}>
-                    <List.Item>
-                      <Skeleton avatar title={false} loading={item.loading} active>
-                        <List.Item.Meta id='list-item-meta'/>
-                        {
-                            this.topicDescription(item)
-                        }
-                      </Skeleton>
-                    </List.Item>
-                  )}
-                />
+              <div className="item-list">
+                {this.topicDescription(list)}
               </div>
             </div>
           </section>
@@ -299,7 +290,6 @@ const topicStyles = {
   },
   topics: {
     display: 'grid',
-    marginTop: 0,
 
     '@media (max-width: 860px)': {
       gridTemplateRows: 'auto 1fr',
@@ -396,6 +386,7 @@ const topicStyles = {
     },
 
     '& .item-list': {
+
       padding: '10px',
       color: `${colors.offWhite} !important`,
 
