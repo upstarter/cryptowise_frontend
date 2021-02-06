@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url, url } from 'Utils/consts'
-import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
+import { List, Avatar, Button, Affix, Icon, Typography, Divider } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
@@ -13,7 +13,6 @@ import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
 
 const count = 25;
-const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
 class TokenDetail extends React.Component {
   constructor(props) {
@@ -22,7 +21,8 @@ class TokenDetail extends React.Component {
 
 
   render() {
-    let {token} = this.props
+    let {tokenId} = this.props
+    console.log('tid',tokenId)
     const {children, description, name, symbol, id} = token
 
     return (
@@ -41,106 +41,19 @@ class TokenDetail extends React.Component {
   }
 }
 
-class TokensContainer extends React.Component {
+class TokenContainer extends React.Component {
   state = {
     initLoading: true,
     loading: false,
     token: null,
     data: [],
-    list: [],
-    page: 1,
-    ModalContent: 'Customize your experience',
     visible: false,
     confirmLoading: false
-  };
-
-  componentDidMount() {
-    this.getData(res => {
-      res.data[0].children = res.data[1]
-      this.setState({
-        initLoading: false,
-        data: res.data,
-        list: res.data,
-        page: this.state.page + 1
-      });
-    });
-  }
-
-  getData = callback => {
-    const url = `${api_url}/tokens?per_page=${count}&page=${this.state.page}`
-    const data = {
-      withCredentials: true,
-      credentials: 'include'
-    };
-
-    const cookies = new Cookies();
-    const accessToken = cookies.get('_cw_acc')
-    setAuthToken(accessToken) // set token in requests
-
-    axios.get(url, data).then((res) => {
-      callback(res.data)
-    })
-  };
-
-  onLoadMore = () => {
-    this.setState({
-      loading: true,
-      list: this.state.data.concat([...new Array(count)].map(() => ({ loading: true, name: {} }))),
-    });
-    this.getData(res => {
-      const data = this.state.data.concat(res.data);
-      const page = this.state.page + 1
-
-      this.setState(
-        {
-          data,
-          list: data,
-          loading: false,
-          page: page,
-        },
-        () => {
-          // Resetting windows offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-          window.dispatchEvent(new Event('resize'));
-        },
-      );
-    });
   };
 
   showModal = () => {
     this.setState({
       visible: true,
-    });
-  }
-
-  saveFormRef = formRef => {
-    this.formRef = formRef;
-  };
-
-  handleCreate = () => {
-
-    this.setState({
-      ModalContent: 'The modal will be closed after two seconds',
-      confirmLoading: true,
-    });
-
-    const { form } = this.formRef.props;
-    form.validateFields((err, values) => {
-      if (err) {
-        console.error('handleCreate error', err)
-        return;
-      }
-      this.props.dispatch(createToken(values))
-    });
-    form.resetFields();
-    this.setState({ visible: false, confirmLoading: false })
-  }
-
-  handleCancel = () => {
-    console.log('Clicked cancel button');
-    this.setState({
-      visible: false,
     });
   }
 
@@ -177,81 +90,13 @@ class TokensContainer extends React.Component {
     //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
     // })
     const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
-    const loadMore =
-      !initLoading && !loading ? (
-        <div
-          id='load-more-button'
-          style={{
-            textAlign: 'center',
-            marginTop: 12,
-            height: 32,
-            lineHeight: '32px',
-          }}
-        >
-          <Button onClick={this.onLoadMore}>Load More</Button>
-        </div>
-      ) : null;
+
     return (
       <div className="dark-wrap">
         <React.Fragment>
           <ScrollToTopOnMount />
-
           <section id="token" className={classes.tokens}>
-            <div id="token-items" className={classes.tokenItems}>
-              <Affix offsetTop={50}>
-                <div
-                  id="token-items-heading"
-                  style={{
-                      minWidth: '80vw',
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-around',
-                    }}
-                >
-                  <h3 className="blurb-title">
-                    ⦿ ₿ ⦿
-                  </h3>
-                  <h3 className="blurb-title">
-                    Assets
-                  </h3>
-                  <h3 className="blurb-title">
-                    ⦿ ₿ ⦿
-                  </h3>
-                </div>
-              </Affix>
-
-              <div className="token-column">
-                <List
-                  className="item-list"
-                  loading={initLoading}
-                  itemLayout="horizontal"
-                  loadMore={loadMore}
-                  dataSource={list}
-                  renderItem={item => (
-                    // <List.Item actions={[<a>more</a>]}>
-                    <List.Item>
-                      <Skeleton avatar title={false} loading={item.loading} active>
-                        <List.Item.Meta
-                          id='list-item-meta'
-                          // avatar={
-                          //    <Avatar style={{}} icon="team" />
-                          // }
-
-                          title={this.tokenTitle(item)}
-                          description={this.tokenDescription(item)}
-                        />
-                        {
-                          // <div id="meta-details">
-                          //   <p className='item-name'>{item.name}</p>
-                          //   <p className='item-description'>{item.description}</p>
-                          // </div>
-                        }
-                      </Skeleton>
-                    </List.Item>
-                  )}
-                />
-              </div>
-            </div>
+            <TokenDetail token={token}/>
           </section>
         </React.Fragment>
       </div>
@@ -429,4 +274,4 @@ const tokenStyles = {
 
 }
 
-export default connect(null, null)(injectSheet(tokenStyles)(TokensContainer))
+export default connect(null, null)(injectSheet(tokenStyles)(TokenContainer))

@@ -13,7 +13,7 @@ import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
 
-const count = 5;
+const count = 25;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
 class TopicChildren extends React.Component {
@@ -21,60 +21,78 @@ class TopicChildren extends React.Component {
     super(props)
   }
 
-  topicChildren = (children, lvl=0, data=``) => {
-    if (children === undefined) { return }
+  topicDetail = (topic) => {
+    return (
+      `<div id='topic-detail' style='color: ${colors.smoke};padding: 0px;font-weight:200;'>
+        <i>${topic.description}</i>
+      </div>`
+    )
+  }
+
+  discussTopic = (topic) => {
+    return (
+      `<a style='letter-spacing: 1px;text-decoration: underline;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+    )
+  }
+
+  topicChildren = (topicId, children, lvl=0, data=`<div style='margin: 20px 10px 20px 0'>`) => {
+    if (children === undefined) { return data }
+    if (children.length === 0) { return data }
+    if (lvl > 0) { return data }
     console.log('children', children)
 
     children.map((pair, idx) => {
+      if (pair.length === 0) { return data }
+      if (lvl > 2) { return data }
       let parent = pair[0]
+      if (parent.parent_id === topicId) {lvl = 0}
       let childs = pair[1]
-      console.log(`parent-child ${idx}`, parent, childs)
+      console.log(`parent-child`, parent, childs)
       console.log('lvl', lvl)
-      if (parent.id == 72) {
-        lvl = 0
-      }
-
-      if (parent.id == 76) {
-        lvl = 1
-      }
-      // tech analysis
-      if (parent.id == 91) {
-        lvl = 0
-      }
-
+      let href = `/topics/${parent.id}`
       if (lvl === 0) {
-        data += `<h1 style='color: ${colors.lighterBlack}; font-size: 27px;font-weight: 800;'>${parent.name}</h1>`
+        data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(parent)}</a></h2>`
       } else if (lvl === 1) {
-        data += `<h2 style='color: ${colors.lightBlack};font-size: 23px;font-weight: 600;'>${parent.name}</h2>`
+        data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(parent)}</a></h2>`
       } else if (lvl === 2) {
-        data += `<h3 style='color: ${colors.mediumBlack};font-size: 20px;font-weight: 400;'>${parent.name}</h3>`
-      } else  {
-        data += `<h${lvl} style='margin: 0 0 0 12px;color: ${colors.darkBlack};font-size: 17px; font-weight: 100;'>${parent.name}</h${lvl}>`
+        data += `<h3><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 20px;font-weight: 100' href='${href}'>${this.discussTopic(parent)}</a></h3>`
+      } else if (lvl === 3) {
+        data += `<h4><a style='user-select:none;margin-left: 17px;color: ${colors.mediumBlack};font-size: 18px;font-weight: 0' href='${href}'>${parent.name}</a></h4>`
+      } else {
+        data += `<h6><a style='user-select:none;margin-left: 22px;color: ${colors.darkBlack};font-size: 16px; font-weight: 0;' href='${href}'>${parent.name}</a></h${lvl}>`
       }
-      data += `<p style='color: ${colors.offWhite};padding: 10px;font-weight:100;'><i>${parent.description}</i></p>`
 
+      data += `<div style='user-select:none;margin: 10px 0 10px 22px'>${this.topicDetail(parent)}</div>`
+      data += `<ul style='user-select:none;margin: 10px 0 10px 34px;list-style-type:none;text-decoration:none;' id='topic-urls'>
+                ${childs.map((children) => {
+                  return `<li style='text-indent: -10px;padding: 7px'>${this.discussTopic(children[0])} –– ${children[0].description}</li>`
+                }).join(``)}
+               </ul>`
       if (childs.length > 0) {
         lvl += 1
-        data += this.topicChildren(childs, lvl=lvl)
-      }
 
+        data += this.topicChildren(topicId, childs, lvl=lvl)
+      }
     })
 
-    return data + `<br />`
+    return data + `</div>`
   }
 
 
   render() {
     let {topic} = this.props
-    const {children, description} = topic
+    const {children, description,name, id} = topic
 
     return (
       <div className='topic-description'>
+        <h1 style={{}} className='topic-name'>
+          {name}
+        </h1>
         <div className='description'>
           {description}
         </div>
         <div className='topic-details'
-          dangerouslySetInnerHTML={{ __html: this.topicChildren(children) }}
+          dangerouslySetInnerHTML={{ __html: this.topicChildren(id, children) }}
         >
         </div>
       </div>
@@ -98,6 +116,7 @@ class TopicContainer extends React.Component {
   componentDidMount() {
     this.getData(res => {
       res.data[0].children = res.data[1]
+      console.log('TTTHIS', res.data)
       this.setState({
         initLoading: false,
         data: res.data,
@@ -205,6 +224,7 @@ class TopicContainer extends React.Component {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
     })
     const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
+    console.log('lllist', list)
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -225,16 +245,6 @@ class TopicContainer extends React.Component {
           <ScrollToTopOnMount />
 
           <section id="topic" className={classes.topics}>
-            <NewTopicForm
-              wrappedComponentRef={this.saveFormRef}
-              wrapClassName={classes.modal}
-              visible={this.state.visible}
-              onCancel={this.handleCancel}
-              onCreate={this.handleCreate}
-              confirmLoading={confirmLoading}
-            />
-
-
             <div id="topic-items"
                  className={classes.topicItems}
             >
@@ -253,26 +263,15 @@ class TopicContainer extends React.Component {
                   className="item-list"
                   loading={initLoading}
                   itemLayout="horizontal"
-                  loadMore={loadMore}
+
                   dataSource={list}
                   renderItem={item => (
                     // <List.Item actions={[<a>more</a>]}>
                     <List.Item>
                       <Skeleton avatar title={false} loading={item.loading} active>
-                        <List.Item.Meta
-                          id='list-item-meta'
-                          // avatar={
-                          //    <Avatar style={{}} icon="team" />
-                          // }
-
-                          title={<div><a style={{fontSize: 28, color: colors.darkYellow}} href="//ant.design">{item.name}</a></div>}
-                          description={this.topicDescription(item)}
-                        />
+                        <List.Item.Meta id='list-item-meta'/>
                         {
-                          // <div id="meta-details">
-                          //   <p className='item-name'>{item.name}</p>
-                          //   <p className='item-description'>{item.description}</p>
-                          // </div>
+                            this.topicDescription(item)
                         }
                       </Skeleton>
                     </List.Item>
@@ -322,6 +321,8 @@ const topicStyles = {
 
   topicItems: {
     gridArea: 'content',
+    width: '100vw',
+
 
     '@media (max-width: 860px)': {
       gridRow: '2 / 3',
@@ -337,9 +338,8 @@ const topicStyles = {
     '& #topic-items-heading': {
       display: 'grid',
       zIndex: 10,
-      minHeight: 60,
-      padding: 0,
-      color: '#fff !important',
+      minHeight: 70,
+      paddingTop: 20,
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
       '-webkit-backface-visibility': 'hidden',
@@ -349,11 +349,11 @@ const topicStyles = {
       },
 
 
-      '& #blurb-title': {
+      '& .blurb-title': {
         fontSize: '3.8rem !important',
         lineHeight: '1.7rem !important',
         color: `${colors.lighterBlack} !important`,
-        margin: [25,0,0,0],
+        margin: [5,0,0,0],
         fontSize: 30,
         maxWidth: '70ch',
 
@@ -393,53 +393,46 @@ const topicStyles = {
         boxShadow: `0 0 0 0 ${colors.darkBlack}`,
         '-webkit-animation': 'pulse 1.5s infinite',
       },
-      '& h3': {
-        gridColumn: '1',
-        justifySelf: 'start',
-        fontSize: '3rem',
-        letterSpacing: '0.5rem',
-        marginTop: 0,
-        color: `${colors.lightBlack}`,
-      },
     },
 
     '& .item-list': {
-      padding: '20px',
+      padding: '10px',
       color: `${colors.offWhite} !important`,
 
       '& .ant-list-items': {
         boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
-        width: '90vw',
+        width: '95vw',
         background: `${colors.secondaryDark}`,
         border: `1px solid ${colors.darkerDarkBlack}`,
-        padding: 14,
+        padding: 10,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'left',
-        justifyItems: 'space-around',
         maxWidth: '95vw',
 
-        '& .ant-list-item': {
-          marginTop: 15,
-        },
-
+        // '& #ant-list-item-meta': {
+        //   '& #topic-detail': {
+        //     padding: 40
+        //   }
+        // },
 
         '& .ant-list-item-meta-description': {
             maxWidth: '80ch'
          },
 
         '& .item-name': {
-          margin: [0,0,20,0],
+          margin: [0,0,0,0],
           color: `${colors.midTone} !important`,
 
         },
+
         '& .topic-description': {
-          margin: [0,0,20,0],
-          color: `${colors.silver}`,
+          margin: [0,0,0,0],
+          color: `${colors.smoke}`,
 
           '& .description': {
-            margin: [0,0,7,0],
-            color: `${colors.silver}`
+            margin: [0,0,0,0],
+            color: `${colors.smoke}`
           },
 
           '& .topic-details': {

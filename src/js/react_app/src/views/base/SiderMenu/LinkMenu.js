@@ -24,14 +24,6 @@ const LinkMenu = withRouter(props => {
         defaultSelectedKeys={["/"]}
         onSelect={onSelect}
       >
-        { auth.signedIn() ?
-          <Menu.Item key="/proposals">
-            <Link to="/proposals" style={{ textDecoration: "none" }}>
-              <Icon type="bulb" />
-              <span className="nav-text">Ideate</span>
-            </Link>
-          </Menu.Item> : ''
-        }
         {/* auth.signedIn() ?
           <Menu.Item key="/fds">
             <Icon type="build" />
@@ -78,10 +70,18 @@ const LinkMenu = withRouter(props => {
         {
           <Menu.Item key="/analysis">
             <Link to="/analysis" style={{ textDecoration: "none" }}>
-              <Icon type="heat-map" />
-              <span className="nav-text">Topics</span>
+              <Icon type="team" />
+              <span className="nav-text">Discuss</span>
             </Link>
           </Menu.Item>
+        }
+        { auth.signedIn() ?
+          <Menu.Item key="/proposals">
+            <Link to="/proposals" style={{ textDecoration: "none" }}>
+              <Icon type="bulb" />
+              <span className="nav-text">Ideate</span>
+            </Link>
+          </Menu.Item> : ''
         }
         {
           <Menu.Item key="/portfolio">

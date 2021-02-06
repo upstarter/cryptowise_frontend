@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import TopicContainer from "Content/topics/TopicContainer"
+import TokensContainer from "Content/tokens/TokensContainer"
 import { Tabs, Radio, Affix } from 'antd';
 const {TabPane} = Tabs;
 import { connect } from "react-redux";
@@ -28,7 +29,7 @@ class AnalysisContainer extends React.Component {
   render() {
     const { mode } = this.state;
     return (
-      <div style={{marginTop: 70}}>
+      <div style={{marginTop: 82}}>
         {/* <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
           <Radio.Button value="top">Horizontal</Radio.Button>
         </Radio.Group> */}
@@ -37,17 +38,19 @@ class AnalysisContainer extends React.Component {
             size='large'
             tabBarStyle={{ fontWeight: 800}}
             tabPosition='top'
+            tabBarGutter={-20}
             tabBarStyle={
                 {
-                  color: `${colors.midTone}`,
+                  color: `${colors.midtone}`,
                   position: 'fixed',
+                  height: 52,
                   zIndex: 100,
                   background: 'rgba(0,0,0,1)',
                   width: '100vw'
                }
              }
           >
-          <TabPane tab="Taxonomy" key='taxonomy'><TopicContainer topic='taxonomy'/></TabPane>
+          <TabPane tab="Assets" key='assets'><TokensContainer /></TabPane>
           <TabPane tab="Economics" key='economics'><TopicContainer topic='economics'/></TabPane>
           <TabPane tab="Strategy" key='strategy'><TopicContainer topic='strategy'/></TabPane>
           <TabPane tab="Research" key='research'><TopicContainer topic='research'/></TabPane>

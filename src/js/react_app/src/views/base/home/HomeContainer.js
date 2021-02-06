@@ -22,6 +22,8 @@ import AuthRoute from "Services/auth/AuthRoute";
 import PrivacyComponent from "../PrivacyComponent";
 import FooterComponent from "./FooterComponent";
 import TokensContainer from "Content/tokens/TokensContainer"
+import TokenContainer from "Content/tokens/TokenContainer"
+import TopicComponent from "Content/topics/TopicComponent"
 import { Layout, Menu, Icon, Drawer } from "antd";
 const { Content, Sider, Footer } = Layout;
 const { SubMenu } = Menu;
@@ -115,6 +117,8 @@ class HomeContainer extends React.Component {
                     <Route exact path="/discuss" component={DiscussContainer} />
                     <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
                     <Route exact path="/assets" component={TokensContainer} />
+                    <Route path="/tokens/:tokenId" component={TokenContainer} />
+                    <Route path="/topics/:topicId" component={TopicComponent} />
                     <Route exact path="/about" component={AboutComponent} />
                     <Route exact path="/signup" component={SignUpContainer} />
                     <Route exact path="/login" component={BasicLoginForm} />
@@ -124,15 +128,7 @@ class HomeContainer extends React.Component {
                       path="/privacy_policy"
                       component={PrivacyComponent}
                     />
-                    {/* <AuthRoute exact path="/profile" component={Protected} /> */}
-                    {/* <Route exact path="/membership" component={MembershipComponent} /> */}
-                    {/* <Route exact path="/data_scientists" component={DataScientistComponent} /> */}
-                    {/* <Route exact path="/developers" component={DeveloperComponent} /> */}
-                    {/* <Route exact path="/contribute" component={ProviderContainer} /> */}
-                    // <Route exact path="/insights" component={InsightComponent} />
-                    {/* <AuthRoute exact path="/fds" component={FDSComponent} /> */}
-                    {/* <AuthRoute exact path="/strategy" component={StrategistComponent} /> */}
-                    {/* <AuthRoute exact path="/ai-ml" component={AIComponent} /> */}
+
                     <Route exact path="/analysis" component={AnalysisContainer} />
                   </Content>
                   <Footer className={classes.footer} >
@@ -148,6 +144,15 @@ class HomeContainer extends React.Component {
   }
 }
 
+//  <AuthRoute exact path="/profile" component={Protected} />
+//  <Route exact path="/membership" component={MembershipComponent} />
+//  <Route exact path="/data_scientists" component={DataScientistComponent} />
+//  <Route exact path="/developers" component={DeveloperComponent} />
+//  <Route exact path="/contribute" component={ProviderContainer} />
+//  <Route exact path="/insights" component={InsightComponent} />
+//  <AuthRoute exact path="/fds" component={FDSComponent} />
+//  <AuthRoute exact path="/strategy" component={StrategistComponent} />
+//  <AuthRoute exact path="/ai-ml" component={AIComponent} />
 const appStyles = {
   baseLayout: {
     minHeight: '100vh',
