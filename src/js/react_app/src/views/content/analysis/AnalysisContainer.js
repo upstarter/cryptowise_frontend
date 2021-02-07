@@ -5,7 +5,7 @@ import TokensContainer from "Content/tokens/TokensContainer"
 import { Tabs, Radio, Affix } from 'antd';
 const {TabPane} = Tabs;
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Link, NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import colors from "Styles/colors"
 
 class AnalysisContainer extends React.Component {
@@ -13,21 +13,28 @@ class AnalysisContainer extends React.Component {
       super(props)
       this.state = {
         mode: 'top',
+        key: 'analysis'
       }
   }
+
+  componentDidMount() {
+    const {match} = this.props
+    this.setState({key: match.url.replace('/','')})
+  }
+
 
   handleModeChange = (e) => {
     const mode = e.target.value;
     this.setState({ mode });
   }
 
-  callback = (key) => {
-    console.log('keeey', key)
+  setKey = (key) => {
+    this.setState({ key });
+    this.props.history.replace(`/${key}`)
   }
 
-
   render() {
-    const { mode } = this.state;
+    const { mode, key } = this.state;
     return (
       <div style={{marginTop: 82}}>
         {/* <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
@@ -39,6 +46,9 @@ class AnalysisContainer extends React.Component {
             tabBarStyle={{ fontWeight: 800}}
             tabPosition='top'
             tabBarGutter={-20}
+            defaultActiveKey={'strategy'}
+            activeKey={key === "analysis" ? 'strategy' : key}
+            onChange={key => this.setKey(key)}
             tabBarStyle={
                 {
                   color: `${colors.midtone}`,
@@ -50,10 +60,10 @@ class AnalysisContainer extends React.Component {
                }
              }
           >
-          <TabPane tab="Assets" key='assets'><TokensContainer /></TabPane>
-          <TabPane tab="Economics" key='economics'><TopicContainer topic='economics'/></TabPane>
-          <TabPane tab="Strategy" key='strategy'><TopicContainer topic='strategy'/></TabPane>
-          <TabPane tab="Research" key='research'><TopicContainer topic='research'/></TabPane>
+          <TabPane tab="Strategy" key='strategy'><TopicContainer setKey={this.setKey} topic='strategy'/></TabPane>
+          <TabPane tab="Assets" key='assets'><TokensContainer setKey={this.setKey} topic='assets'/></TabPane>
+          <TabPane tab="Economics" key='economics'><TopicContainer setKey={this.setKey} topic='economics'/></TabPane>
+          <TabPane tab="Research" key='research'><TopicContainer setKey={this.setKey} topic='research'/></TabPane>
           </Tabs>
       </div>
     )

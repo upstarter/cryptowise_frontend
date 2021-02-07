@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Link, NavLink, Route, Switch, withRouter } from 'react-router-dom';
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
@@ -35,26 +36,24 @@ class TopicChildren extends React.Component {
 
   discussTopic = (topic) => {
     return (
-      `<a style='letter-spacing: 1px;text-decoration: underline;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+      `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
     )
   }
 
   topicHead = (topic, lvl, data=``) => {
-    console.log('head', topic, lvl, data)
     let href = `/topics/${topic.id}`
 
     if (lvl === 0) {
-      data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
+      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>💬&nbsp;&nbsp;${this.discussTopic(topic)}</a></h2>`
     } else if (lvl === 1) {
-      data += `<h2><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
+      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 28px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
     } else if (lvl === 2) {
-      data += `<h3><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 20px;font-weight: 100' href='${href}'>${this.discussTopic(topic)}</a></h3>`
+      data += `<h3 class='topic-heading'><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 100' href='${href}'>${this.discussTopic(topic)}</a></h3>`
     } else if (lvl === 3) {
-      data += `<h4><a style='user-select:none;margin-left: 17px;color: ${colors.mediumBlack};font-size: 18px;font-weight: 0' href='${href}'>${topic.name}</a></h4>`
+      data += `<h4 class='topic-heading'><a style='user-select:none;margin-left: 17px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 0' href='${href}'>${topic.name}</a></h4>`
     } else {
-      data += `<h6><a style='user-select:none;margin-left: 22px;color: ${colors.darkBlack};font-size: 16px; font-weight: 0;' href='${href}'>${topic.name}</a></h${lvl}>`
+      data += `<h6 class='topic-heading'><a style='user-select:none;margin-left: 22px;color: ${colors.darkBlack};font-size: 25px; font-weight: 0;' href='${href}'>${topic.name}</a></h${lvl}>`
     }
-    console.log('DD',data,lvl)
     return data
   }
 
@@ -109,28 +108,37 @@ class TopicChildren extends React.Component {
 }
 
 class TopicContainer extends React.Component {
-  state = {
-    initLoading: true,
-    loading: false,
-    topic: null,
-    data: [],
-    list: [],
-    page: 1,
-    ModalContent: 'Customize your experience',
-    visible: false,
-    confirmLoading: false
-  };
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      initLoading: true,
+      loading: false,
+      topic: null,
+      data: [],
+      list: [],
+      page: 1,
+      key: '',
+      ModalContent: 'Customize your experience',
+      visible: false,
+      confirmLoading: false
+    };
+  }
+
 
   componentDidMount() {
+
     this.getData(res => {
       res.data[0].children = res.data[1]
       this.setState({
+        topic: this.props.topic,
         initLoading: false,
         data: res.data,
         list: res.data,
         page: this.state.page + 1
       });
     });
+
   }
 
   getData = callback => {
@@ -220,7 +228,6 @@ class TopicContainer extends React.Component {
   }
 
   topicDescription = (topic) => {
-    console.log('desc', topic[0])
     return (
       <TopicChildren topic={topic[0]} />
     )
@@ -228,11 +235,12 @@ class TopicContainer extends React.Component {
 
   render() {
     let { classes, topic } = this.props
+    console.log('render topic', topic)
     topic = topic.split(" ").map((txt) => {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
     })
     const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
-    console.log('lllist', list)
+
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -261,7 +269,7 @@ class TopicContainer extends React.Component {
                       style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
                 >
                   <h3 id="blurb-title">
-                  {topic}
+                  Discuss {topic}
                   </h3>
                 </div>
               </Affix>
@@ -291,6 +299,15 @@ const topicStyles = {
   topics: {
     display: 'grid',
 
+    '& .topic-heading': {
+      '& a': {
+        fontSize: '24px !important'
+      },
+
+    },
+    '& .discuss-topic': {
+      fontSize: 17,
+    },
     '@media (max-width: 860px)': {
       gridTemplateRows: 'auto 1fr',
       gridTemplateAreas: '"header" "content"',
@@ -427,7 +444,9 @@ const topicStyles = {
           },
 
           '& .topic-details': {
-            color: `${colors.midTone}`
+            color: `${colors.midTone}`,
+
+
           }
         },
 
@@ -450,5 +469,6 @@ const topicStyles = {
   },
 
 }
+const TopicContainerWithRouter = withRouter(TopicContainer)
 
-export default connect(null, null)(injectSheet(topicStyles)(TopicContainer))
+export default connect(null, null)(injectSheet(topicStyles)(TopicContainerWithRouter));
