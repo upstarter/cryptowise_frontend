@@ -39,10 +39,7 @@ class AnalystComponent extends React.Component {
                 <div id="words">
                   <div id="blurb">
                     <p>
-                      WiseGroups give you the ability to collaborate on relevant topics with friends and
-                      other members of the cryptowise ecosystem about any topic you can imagine and create goals
-                      with eachother. Advertise your wares and market your financial services.
-                      Maximize <a>Reed's Law</a> by creating sub-networks within the larger network.
+                      Collaborate with friends and current members of the cryptowise ecosystem on a variety of wealthtech topics.
                       Future versions will include individual contributions from ecosystem members
                       including news, article submissions, group discussions, and coordinated contributions from
                       professional ecosystem peers:
@@ -100,7 +97,7 @@ const devStyles = {
 
     '& #federation-content': {
       display: 'grid',
-      gridTemplateRows: '0.2fr 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr',
+      gridTemplateRows: 'repeat(6, .03fr)',
       gridTemplateColumns: '100vw',
       userSelect: 'none',
       filter: 'saturate(1) contrast(1)',
@@ -118,13 +115,14 @@ const devStyles = {
 
         '& #header-title': {
           width: '100vw',
-          padding: 13,
+          padding: 5,
+          marginTop: 10,
           alignContent: 'center',
           gridRow: 2,
           justifyItems: 'center',
           '& #title': {
             justifySelf: 'center',
-            fontSize: '3.0rem !important',
+            fontSize: '3.7rem !important',
             textAlign: 'center',
             color: colors.darkYellow,
             height: 50,
@@ -158,7 +156,7 @@ const devStyles = {
             margin: [0,0,0,0],
             '& p': {
               width: '100vw',
-              fontSize: '2rem',
+              fontSize: '1.4rem',
               maxWidth: '70ch',
               margin: [10,0,5,15],
               padding: 15,
