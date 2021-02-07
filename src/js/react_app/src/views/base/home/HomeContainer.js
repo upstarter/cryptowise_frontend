@@ -11,6 +11,7 @@ import MembershipComponent from "Marketing/MembershipComponent";
 import AnalystComponent from "Developers/AnalystComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
 import DiscussContainer from "Content/discuss/DiscussContainer";
+import FederationsComponent from "../../groups/FederationsComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import ProfileComponent from "User/ProfileComponent";
 import InsightComponent from "Content/insights/InsightComponent";
@@ -111,25 +112,31 @@ class HomeContainer extends React.Component {
                 <Layout className={classes.baseContent}>
                   <Content className={classes.content}>
                     <Route exact path="/" component={HomeComponent} />
-                    <AuthRoute exact path="/proposals" component={ProposalComponent} />
                     <AuthRoute exact path="/profile" component={ProfileComponent} />
-                    <Route exact path="/analysts" component={AnalystComponent} />
-                    <Route exact path="/discuss" component={DiscussContainer} />
                     <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                    <Route exact path="/assets" component={TokensContainer} />
+                    <AuthRoute exact path="/proposals" component={ProposalComponent} />
+
                     <Route path="/tokens/:tokenId" component={TokenContainer} />
                     <Route path="/topics/:topicId" component={TopicComponent} />
+                    <Route exact  path="/:analysis(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
+                    <Route exact path="/tokens" component={TokensContainer} />
+                    <Route exact path="/discuss/:topicId" component={DiscussContainer} />
+                    <Route exact path="/federations" component={FederationsComponent} />
+
+                    {/*
+                    // <Route exact path="/groups" component={GroupsContainer} />
+                    // <Route exact path="/groups" component={GroupContainer} />
+                    // <Route exact path="/groups/:groupId" component={GroupComponent} />
+                    // <Route exact path="/discuss/:groupId/:topicId" component={GroupDiscussContainer} />
+                    */}
+
+
+                    <Route exact path="/analysts" component={AnalystComponent} />
                     <Route exact path="/about" component={AboutComponent} />
                     <Route exact path="/signup" component={SignUpContainer} />
                     <Route exact path="/login" component={BasicLoginForm} />
                     <Route exact path="/logout" component={Logout} />
-                    <Route
-                      exact
-                      path="/privacy_policy"
-                      component={PrivacyComponent}
-                    />
-
-                    <Route exact path="/analysis" component={AnalysisContainer} />
+                    <Route exact path="/privacy_policy" component={PrivacyComponent} />
                   </Content>
                   <Footer className={classes.footer} >
                     <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>

@@ -60,10 +60,10 @@ const LinkMenu = withRouter(props => {
           </Menu.Item> : ''
         } */}
         {
-          <Menu.Item key={"/assets"}>
-            <Link to="/assets" style={{ textDecoration: "none" }}>
-              <Icon type="dollar" />
-              <span className="nav-text">Assets</span>
+          <Menu.Item key={"/federations"}>
+            <Link to="/federations" style={{ textDecoration: "none" }}>
+              <Icon type="team" />
+              <span className="nav-text">Collaborate</span>
             </Link>
           </Menu.Item>
         }
@@ -75,6 +75,14 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item>
         }
+        { !auth.signedIn() ?
+          <Menu.Item key="/analysts">
+            <Link to="/analysts" style={{ textDecoration: "none" }}>
+              <Icon type="user" />
+              <span className="nav-text">Contribute</span>
+            </Link>
+          </Menu.Item>  : '' }
+
         { auth.signedIn() ?
           <Menu.Item key="/proposals">
             <Link to="/proposals" style={{ textDecoration: "none" }}>
@@ -83,21 +91,15 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item> : ''
         }
-        {
+        { auth.signedIn() ?
           <Menu.Item key="/portfolio">
             <Link to="/portfolio" style={{ textDecoration: "none" }}>
               <Icon type="pie-chart" />
               <span className="nav-text">Portfolio</span>
             </Link>
-          </Menu.Item>
+          </Menu.Item> : ''
         }
-        { !auth.signedIn() ?
-          <Menu.Item key="/analysts">
-            <Link to="/analysts" style={{ textDecoration: "none" }}>
-              <Icon type="team" />
-              <span className="nav-text">Participate</span>
-            </Link>
-          </Menu.Item>  : '' }
+
         { auth.signedIn() ?
           <Menu.Item key="/profile">
             <Link to="/profile" style={{ textDecoration: "none" }}>
