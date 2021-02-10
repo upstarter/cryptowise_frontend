@@ -9,7 +9,7 @@ import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider,
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import { createProposal } from "Actions/topics.actions";
+import { createProposal } from "Redux/topics";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
@@ -34,21 +34,26 @@ class TopicChildren extends React.Component {
     )
   }
 
-  discussTopic = (topic) => {
-    return (
-      `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
-    )
+  discussTopic = (topic,lvl) => {
+    let data =  ``
+    console.log('lvl',lvl)
+    if (lvl >= 0) {
+      data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+    } else {
+      data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+    }
+    return data
   }
 
   topicHead = (topic, lvl, data=``) => {
-    let href = `/topics/${topic.id}`
+    let href = `/discuss/topics/${topic.id}`
 
     if (lvl === 0) {
-      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>💬&nbsp;&nbsp;${this.discussTopic(topic)}</a></h2>`
+      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
     } else if (lvl === 1) {
-      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 28px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
+      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 28px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
     } else if (lvl === 2) {
-      data += `<h3 class='topic-heading'><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 100' href='${href}'>${this.discussTopic(topic)}</a></h3>`
+      data += `<h3 class='topic-heading'><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 100' href='${href}'>${this.discussTopic(topic,lvl)}</a></h3>`
     } else if (lvl === 3) {
       data += `<h4 class='topic-heading'><a style='user-select:none;margin-left: 17px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 0' href='${href}'>${topic.name}</a></h4>`
     } else {
@@ -65,7 +70,7 @@ class TopicChildren extends React.Component {
     children.map((pair, idx) => {
       if (pair.length === 0) { return data }
       let parent = pair[0]
-      if (parent.parent_id === topicId) {lvl = 0}
+      // if (parent.parent_id === topicId) {lvl = 0}
       let childs = pair[1]
       if (parent === undefined) { return data }
       data += this.topicHead(parent, lvl)
@@ -73,7 +78,7 @@ class TopicChildren extends React.Component {
       data += `<div style='user-select:none;margin: 10px 0 10px 22px'>${this.topicDetail(parent)}</div>`
       data += `<ul style='user-select:none;margin: 10px 0 10px 34px;list-style-type:none;text-decoration:none;' id='topic-urls'>
                 ${childs.map((children) => {
-                  return `<li style='text-indent: -10px;padding: 7px'>${this.discussTopic(children[0])} –– ${children[0].description}</li>`
+                  return `<li style='text-indent: -10px;padding: 7px'>💬&nbsp;&nbsp;&#8594;&nbsp;${this.discussTopic(children[0])} –– ${children[0].description}</li>`
                 }).join(``)}
                </ul>`
       if (childs.length > 0) {
@@ -236,9 +241,9 @@ class TopicContainer extends React.Component {
   render() {
     let { classes, topic } = this.props
     console.log('render topic', topic)
-    topic = topic.split(" ").map((txt) => {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
-    })
+    // topic = topic.split(" ").map((txt) => {
+    //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
+    // })
     const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
 
     const loadMore =

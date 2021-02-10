@@ -10,6 +10,7 @@
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.4.0",
     "@carrotsearch/foamtree": "^3.5.0",
     "antd": "^3.19.7",
     "axios": "^0.18.1",

@@ -5,7 +5,7 @@
 // fetchTokens -> apiRequest -> setLoader
             // -> apiSuccess -> setLoader -> setTokens
             // -> apiError -> setLoader -> setNotification
-import { apiMiddleware } from './api.middleware'
-import { authMiddleware } from './auth.middleware'
+import { apiMiddleware } from 'Redux/core/api.core'
+import { authMiddleware } from 'Redux/core/auth.core'
 
 export const coreMiddleware = [apiMiddleware, authMiddleware]

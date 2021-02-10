@@ -7,7 +7,7 @@ import { Card, Button, Icon, Typography, Divider } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import { createProposal } from "Actions/topics.actions";
+import { createProposal } from "Redux/topics";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
@@ -75,7 +75,7 @@ class TopicContainer extends React.Component {
 
   discussTopic = (topic) => {
     return (
-      `<a id='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+      `<a id='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/discuss/topics/${topic.id}'>${topic.name}</a>`
     )
   }
 
@@ -83,7 +83,7 @@ class TopicContainer extends React.Component {
       let href = `/topics/${topic.id}`
 
       if (lvl === 0) {
-        data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>💬&nbsp;&nbsp;${this.discussTopic(topic)}</a></h2>`
+        data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
       } else if (lvl === 1) {
         data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 28px;font-weight: 300;' href='${href}'>${this.discussTopic(topic)}</a></h2>`
       } else if (lvl === 2) {
@@ -112,7 +112,7 @@ class TopicContainer extends React.Component {
       data += `<div style='user-select:none;margin: 10px 0 10px 22px'>${this.topicDetail(parent)}</div>`
       data += `<ul style='user-select:none;margin: 10px 0 10px 34px;list-style-type:none;text-decoration:none;' id='topic-urls'>
                 ${childs.map((children) => {
-                  return `<li class='discuss-list' style='font-size: 27px;text-indent: -10px;padding: 7px'>${this.discussTopic(children[0])} –– ${children[0].description}</li>`
+                  return `<li class='discuss-list' style='font-size: 17px;text-indent: -10px;padding: 7px'>💬&nbsp;&nbsp;&#8594;&nbsp;${this.discussTopic(children[0])} –– ${children[0].description}</li>`
                 }).join(``)}
                </ul>`
       if (childs.length > 0) {

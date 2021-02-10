@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Menu, Icon } from "antd";
+import { CommentOutlined } from "@ant-design/icons"
 import injectSheet, { jss } from "react-jss";
 import AuthService from 'Services/auth/AuthService'
 
@@ -70,7 +71,7 @@ const LinkMenu = withRouter(props => {
         {
           <Menu.Item key="/analysis">
             <Link to="/analysis" style={{ textDecoration: "none" }}>
-              <Icon type="team" />
+              <CommentOutlined type="comment-outlined" />
               <span className="nav-text">Discuss</span>
             </Link>
           </Menu.Item>

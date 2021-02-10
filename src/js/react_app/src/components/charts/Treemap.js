@@ -2,7 +2,7 @@ import React from 'react';
 import { url, api_url } from "Utils/consts";
 import { Redirect } from "react-router-dom";
 import Chart from "react-google-charts";
-import { setTopics }  from 'Actions/topics.actions.js'
+import { setTopics }  from 'Redux/topics.js'
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 

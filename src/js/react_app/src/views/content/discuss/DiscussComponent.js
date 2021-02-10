@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-import NewProposalForm from './NewProposalForm'
+import NewThreadForm from './NewThreadForm'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import userProposalCreate from "Actions/userProposalCreate";
+import userThreadCreate from "Actions/userThreadCreate";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
@@ -16,7 +16,7 @@ import setAuthToken from 'Services/auth/setAuthToken'
 const count = 5;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
-class DiscussionComponent extends React.Component {
+class ThreadComponent extends React.Component {
   state = {
     initLoading: true,
     loading: false,
@@ -105,7 +105,7 @@ class DiscussionComponent extends React.Component {
         console.error('handleCreate error', err)
         return;
       }
-      this.props.dispatch(userProposalCreate(values))
+      this.props.dispatch(userThreadCreate(values))
     });
     form.resetFields();
     this.setState({ visible: false, confirmLoading: false })
@@ -140,8 +140,8 @@ class DiscussionComponent extends React.Component {
         <React.Fragment>
           <ScrollToTopOnMount />
 
-          <section id="proposal" className={classes.discussions}>
-            <NewProposalForm
+          <section id="discussion" className={classes.discussions}>
+            <NewThreadForm
               wrappedComponentRef={this.saveFormRef}
               wrapClassName={classes.modal}
               visible={this.state.visible}
@@ -149,8 +149,8 @@ class DiscussionComponent extends React.Component {
               onCreate={this.handleCreate}
               confirmLoading={confirmLoading}
             />
-            <div id="proposal-blurb">
-              <div id="proposal-blurb-intro">
+            <div id="discussion-blurb">
+              <div id="discussion-blurb-intro">
                 <h3 id="blurb-title">The Quantasium</h3>
                 <h4 id='blurb-subtitle' className='subtitle-small'>
                   A Hacker Quorum focused on optimal strategies for retirement rockstars
@@ -176,9 +176,9 @@ class DiscussionComponent extends React.Component {
               </div>
             </div>
 
-            <div id="proposal-items" className={classes.proposalItems}>
+            <div id="discussion-items" className={classes.discussionItems}>
               <Affix offsetTop={50}>
-                <div id="proposal-items-heading">
+                <div id="discussion-items-heading">
                   <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
                   <h3>Ideas 🌱</h3>
                   {/* <div id="riff-blurb">
@@ -186,7 +186,7 @@ class DiscussionComponent extends React.Component {
                   </div> */}
                 </div>
               </Affix>
-              <div className="proposal-column">
+              <div className="discussion-column">
                 <List
                   className="item-list"
                   loading={initLoading}
@@ -228,7 +228,7 @@ class DiscussionComponent extends React.Component {
   }
 }
 
-const proposalStyles = {
+const discussionStyles = {
   modal: {
     // width: 10,
     // background: `${colors.secondaryDark}`,
@@ -252,7 +252,7 @@ const proposalStyles = {
       gridTemplateAreas: '"header content"',
     },
 
-    '& #proposal-blurb': {
+    '& #discussion-blurb': {
       gridArea: 'header',
       justifySelf: 'center',
       margin: '20px 0 0 0',
@@ -275,7 +275,7 @@ const proposalStyles = {
         maxWidth: '30vw',
       },
 
-      '& #proposal-blurb-intro': {
+      '& #discussion-blurb-intro': {
         fontSize: 18,
         maxWidth: '70ch',
 
@@ -301,7 +301,7 @@ const proposalStyles = {
     },
   },
 
-  proposalItems: {
+  discussionItems: {
     gridArea: 'content',
 
     '@media (max-width: 860px)': {
@@ -314,7 +314,7 @@ const proposalStyles = {
       justifySelf: 'center',
     },
 
-    '& #proposal-items-heading': {
+    '& #discussion-items-heading': {
       display: 'grid',
       alignItems: 'center',
       justifyItems: 'center',
@@ -394,4 +394,4 @@ const proposalStyles = {
 
 }
 
-export default injectSheet(proposalStyles)(ProposalComponent)
+export default injectSheet(discussionStyles)(ThreadComponent)

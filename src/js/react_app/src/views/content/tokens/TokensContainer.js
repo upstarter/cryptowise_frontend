@@ -7,7 +7,7 @@ import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider,
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import { createProposal } from "Actions/tokens.actions";
+import { createProposal } from "Redux/tokens";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
@@ -165,7 +165,7 @@ class TokensContainer extends React.Component {
           style={{fontSize: 24, color: colors.lighterBlack, fontWeight: 700}}
           href={`/tokens/${token.id}`}
         >
-          {token.name}
+          💬&nbsp;&nbsp;&#8594;&nbsp;{token.name}
         </a>
       </div>
     )

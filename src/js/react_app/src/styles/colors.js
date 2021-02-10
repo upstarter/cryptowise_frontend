@@ -60,6 +60,7 @@ const colors = {
   mediumBlack: 'rgba(145, 140, 140, 1)',
   darkBlack: '#5D626E',
   darkerDarkBlack: 'rgba(50, 45, 45, 1)',
+  darkerDarkBlacka: 'rgba(50, 45, 45, 0.4)',
   black: '#000',
 
 
