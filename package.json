@@ -13,7 +13,7 @@
     "@ant-design/icons": "^4.4.0",
     "@carrotsearch/foamtree": "^3.5.0",
     "antd": "^3.19.7",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "connected-react-router": "^6.5.2",
     "dotenv-webpack": "^1.7.0",
     "font-awesome": "4",
