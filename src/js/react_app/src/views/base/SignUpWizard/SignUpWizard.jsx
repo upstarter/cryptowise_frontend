@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import { connect } from "react-redux";
-import { registerUser } from 'Actions/auth.actions'
+import { registerUser } from 'Redux/core/auth.core'
 
 import { url } from "Utils/consts";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 
 export class SignUpWizard extends Component {
   constructor() {

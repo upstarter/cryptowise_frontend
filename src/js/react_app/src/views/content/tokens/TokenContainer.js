@@ -7,7 +7,7 @@ import { List, Avatar, Button, Affix, Icon, Typography, Divider } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import { createProposal } from "Actions/tokens.actions";
+import { createProposal } from "Redux/tokens";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'

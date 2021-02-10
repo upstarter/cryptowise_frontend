@@ -1,6 +1,23 @@
-// ENRICHING DATA (add id)
+export const SET_NOTIFICATION = 'SET_NOTIFICATION'
+export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION'
 
-import {CREATE_NOTIFICATION, setNotification, removeNotification} from "Actions/notifications.actions"
+export const setNotification = (notification, entity) => ({
+  type: `${entity} ${SET_NOTIFICATION}`,
+  payload: {
+    data: notification,
+    meta: entity
+  }
+})
+
+export const removeNotification = (notification, entity) => ({
+  type: `${entity} ${REMOVE_NOTIFICATION}`,
+  payload: {
+    data: notification,
+    meta: entity
+  }
+})
+
+// ENRICHING DATA (add id)
 
 export const notificationMiddleware = ({dispatch}) => next => action => {
   next(action)

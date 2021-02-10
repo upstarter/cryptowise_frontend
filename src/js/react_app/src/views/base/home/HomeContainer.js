@@ -25,6 +25,7 @@ import FooterComponent from "./FooterComponent";
 import TokensContainer from "Content/tokens/TokensContainer"
 import TokenContainer from "Content/tokens/TokenContainer"
 import TopicComponent from "Content/topics/TopicComponent"
+import TopicContainer from "Content/topics/TopicContainer"
 import { Layout, Menu, Icon, Drawer } from "antd";
 const { Content, Sider, Footer } = Layout;
 const { SubMenu } = Menu;
@@ -118,9 +119,10 @@ class HomeContainer extends React.Component {
 
                     <Route path="/tokens/:tokenId" component={TokenContainer} />
                     <Route path="/topics/:topicId" component={TopicComponent} />
+                    <Route path="/discuss/topics/:topicId" component={DiscussContainer} />
+
                     <Route exact  path="/:analysis(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
                     <Route exact path="/tokens" component={TokensContainer} />
-                    <Route exact path="/discuss/:topicId" component={DiscussContainer} />
                     <Route exact path="/federations" component={FederationsComponent} />
 
                     {/*

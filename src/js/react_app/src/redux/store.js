@@ -1,12 +1,12 @@
 import { createStore, compose, applyMiddleware } from "redux"
 import logger from "redux-logger"
 import thunk from "redux-thunk"
-import createRootReducer from "Reducers"
 import { createBrowserHistory } from 'history'
 import promiseMiddleware from "redux-promise-middleware"
 import { routerMiddleware } from 'connected-react-router'
-import { coreMiddleware } from 'Redux/middleware/core'
-import { appMiddleware } from 'Redux/middleware/app'
+import { coreMiddleware } from 'Redux/core'
+import { appMiddleware } from 'Redux/app_middleware'
+import createRootReducer from "Redux/root_reducers"
 
 export const history = createBrowserHistory()
 

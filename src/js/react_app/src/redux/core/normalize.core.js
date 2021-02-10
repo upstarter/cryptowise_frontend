@@ -1,5 +1,5 @@
 // normalize (transform from array to object)
-import {API_REQUEST, apiSuccess} from "Actions/api.actions"
+import {API_REQUEST, apiSuccess} from "Redux/core/api.core"
 
 export const normalizeMiddleware = ({dispatch}) => next => action => {
   // filter document actions only

@@ -8,7 +8,7 @@ import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider,
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";
-import { createProposal } from "Actions/proposals.actions";
+import { createProposal } from "Redux/proposals";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
