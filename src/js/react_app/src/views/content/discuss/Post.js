@@ -23,12 +23,13 @@ class Post extends React.Component {
 
   render() {
     let {post, classes} = this.props
-    const {posts, description, title, id} = post
+    const {posts, description, title, body, id} = post
 
     return (
       <li className={classes.postDetail} key={post.id}>
         <div className={classes.post}>
-          <h6 className={classes.postTitle}>{post.title}</h6>
+          <h3 className={classes.postUser}>{post.user}</h3>
+          <h6 className={classes.postTitle}>{post.body}</h6>
         </div>
       </li>
     )
@@ -56,11 +57,12 @@ const postStyles = {
     padding: 7,
     margin: 2,
     background: colors.darkBlue,
-    
+
   },
   postTitle: {
     marginLeft: 7,
     color: colors.yellow,
+    opacity: 0.9,
   },
 
 

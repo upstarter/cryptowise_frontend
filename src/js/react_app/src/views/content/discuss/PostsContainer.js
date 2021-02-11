@@ -106,11 +106,11 @@ class PostsContainer extends React.Component {
                   className={`${classes.btn} ${classes.threadAction} ${classes.commentThreadBtn}`}
                   onClick={this.showModal}
                   >
-                    Comment
+                    Reply
                 </Button>
               </div>
             </div>
-            <div className={classes.postsHeader}>Comments</div>
+            <div className={classes.postsHeader}>Replies</div>
             <div className={classes.threadDetail}>
               lorem ipsum optima loka filejus mora lorem ipsum optima loka filejus mora lorem ipsum optima loka filejus moralorem ipsum optima loka filejus moralorem ipsum optima loka filejus moralorem ipsum optima loka filejus moralorem ipsum optima loka filejus mora lorem ipsum optima loka filejus morax
             </div>
@@ -139,10 +139,9 @@ const postsStyles = {
     display: 'flex',
     flexDirection: 'column',
     background: colors.darkBlue,
+
     '& #thread-header:hover': {
-      background: 'rgba(130,188,200,0.3)',
-      opacity: 0.8,
-      filter: 'alpha(opacity=80)',
+      // background: `linear-gradient(to bottom, rgba(175,170,170, .15), rgba(175,170,170, .10)), no-repeat`,
     }
   },
 
