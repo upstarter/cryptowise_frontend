@@ -119,7 +119,8 @@ class TopicContainer extends React.Component {
     this.state = {
       initLoading: true,
       loading: false,
-      topic: null,
+      topic: this.props.topic,
+      topicID: this.props.match.params.topicID,
       data: [],
       list: [],
       page: 1,
@@ -132,11 +133,17 @@ class TopicContainer extends React.Component {
 
 
   componentDidMount() {
+    const { match, topic } = this.props
+    console.log('mat', match)
+    console.log('rpo', this.props)
 
+    const topicID = match.params.topicID
     this.getData(res => {
+      console.log('res',res)
       res.data[0].children = res.data[1]
       this.setState({
-        topic: this.props.topic,
+        topic: topic,
+        topicID: topicID,
         initLoading: false,
         data: res.data,
         list: res.data,
@@ -147,17 +154,33 @@ class TopicContainer extends React.Component {
   }
 
   getData = callback => {
-    const url = `${api_url}/${this.props.topic}?per_page=${count}&page=${this.state.page}`
-    const data = {
-      withCredentials: true,
-      credentials: 'include'
-    };
+    const topicID = this.state.topicID
+    const {topic} = this.props
+    console.log('top', this.state)
+    let re = /\d+$/
+    let found = topicID && topicID.match(re)
 
-    const cookies = new Cookies();
-    const accessToken = cookies.get('_cw_acc')
-    setAuthToken(accessToken) // set token in requests
+    let url = `${api_url}/${topic}?per_page=${count}&page=${this.state.page}`
 
-    axios.get(url, data).then((res) => {
+    if (found) {
+      url = `${api_url}/topics/${this.state.topicID}?per_page=${count}&page=${this.state.page}`
+    }
+
+    // const data = {
+    //   withCredentials: true,
+    //   credentials: 'include'
+    // };
+    //
+    // const cookies = new Cookies();
+    // const accessToken = cookies.get('_cw_acc')
+    // setAuthToken(accessToken) // set token in requests
+    //
+    // axios.get(url, data).then((res) => {
+    //   callback(res.data)
+    // })
+
+
+    axios.get(url).then((res) => {
       callback(res.data)
     })
   };

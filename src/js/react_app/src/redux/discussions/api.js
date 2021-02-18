@@ -106,7 +106,8 @@ export const discussionsMiddleware = ({dispatch}) => next => action => {
       threadData.title = data.getFieldValue('title')
       threadData.description = data.getFieldValue('description')
       threadData.is_public = data.getFieldValue('is_public')
-      threadData.topic_id = data.getFieldValue('topicID')
+      threadData.topic_id = data.topicID
+      threadData.user_id = 1
 
       dispatch(apiRequest(threadData, 'POST', API.CREATE_THREAD, THREAD))
       next({...action, threadData})

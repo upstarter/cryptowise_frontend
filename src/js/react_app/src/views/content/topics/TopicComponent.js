@@ -56,9 +56,9 @@ class TopicContainer extends React.Component {
       credentials: 'include'
     };
 
-    const cookies = new Cookies();
-    const accessToken = cookies.get('_cw_acc')
-    setAuthToken(accessToken) // set token in requests
+    // const cookies = new Cookies();
+    // const accessToken = cookies.get('_cw_acc')
+    // setAuthToken(accessToken) // set token in requests
 
     axios.get(url, data).then((res) => {
       callback(res.data)

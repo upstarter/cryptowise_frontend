@@ -119,11 +119,11 @@ class HomeContainer extends React.Component {
                     <AuthRoute exact path="/proposals" component={ProposalComponent} />
 
                     <Route path="/tokens/:tokenId" component={TokenContainer} />
-                    <Route path="/topics/:topicId" component={TopicComponent} />
+                    <Route path="/topics/:topicID" component={TopicContainer} />
                     <Route path="/discuss/topics/:topicID" component={DiscussContainer} />
                     <Route path="/discuss/threads/:threadID" component={ThreadContainer} />
 
-                    <Route exact  path="/:analysis(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
+                    <Route exact  path="/:topicID(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
                     <Route exact path="/tokens" component={TokensContainer} />
                     <Route exact path="/federations" component={FederationsComponent} />
 

@@ -22,7 +22,7 @@ class DiscussContainer extends React.Component {
       initLoading: true,
       loading: false,
       count: 25,
-      threads: Array(),
+      threads: [],
       selectedThread: null,
       topicID: this.props.match.params.topicID,
       isLoading: true,
@@ -39,7 +39,8 @@ class DiscussContainer extends React.Component {
         console.log('DDD', res)
         this.setState({
           initLoading: false,
-          threads: [...this.state.threads, res],
+          threads: res.data,
+          topicName: res.data[0].topic.name,
           page: this.state.page + 1,
         });
       });
@@ -48,7 +49,6 @@ class DiscussContainer extends React.Component {
   getData = callback => {
     let {match} = this.props
     const url = `${api_url}${match.url}?per_page=${this.state.count}&page=${this.state.page}`
-    console.log(url)
 
     axios.get(url).then((res) => {
       callback(res.data)
@@ -106,6 +106,7 @@ class DiscussContainer extends React.Component {
       }
     });
     form.topicID = this.state.topicID
+    console.log(form)
     // form.userID = this.state.userID
     this.props.dispatch(createThread(form))
 
@@ -123,9 +124,9 @@ class DiscussContainer extends React.Component {
 
   render() {
     let {classes} = this.props
-    const { initLoading, loading, threads, visible, confirmLoading, ModalContent } = this.state;
-    let topicName = threads[0] && threads[0].topic && threads[0].topic.name
+    const { topicName, threads, initLoading, loading, visible, confirmLoading, ModalContent } = this.state;
 
+console.log('threds', threads)
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -166,7 +167,7 @@ class DiscussContainer extends React.Component {
                 <ul className={classes.threadList}>
                   {threads.map((thread) => {
                     return (
-                        <Thread thread={thread} />
+                        <Thread key={thread.id} thread={thread} />
                       )
                   })
                   }
