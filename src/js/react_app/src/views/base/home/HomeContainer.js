@@ -11,6 +11,7 @@ import MembershipComponent from "Marketing/MembershipComponent";
 import AnalystComponent from "Developers/AnalystComponent";
 import DeveloperComponent from "Developers/DeveloperComponent";
 import DiscussContainer from "Content/discuss/DiscussContainer";
+import ThreadContainer from "Content/discuss/ThreadContainer";
 import FederationsComponent from "../../groups/FederationsComponent";
 import ProposalComponent from "Content/proposals/ProposalComponent";
 import ProfileComponent from "User/ProfileComponent";
@@ -119,7 +120,8 @@ class HomeContainer extends React.Component {
 
                     <Route path="/tokens/:tokenId" component={TokenContainer} />
                     <Route path="/topics/:topicId" component={TopicComponent} />
-                    <Route path="/discuss/topics/:topicId" component={DiscussContainer} />
+                    <Route path="/discuss/topics/:topicID" component={DiscussContainer} />
+                    <Route path="/discuss/threads/:threadID" component={ThreadContainer} />
 
                     <Route exact  path="/:analysis(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
                     <Route exact path="/tokens" component={TokensContainer} />

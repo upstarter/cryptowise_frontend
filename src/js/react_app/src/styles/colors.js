@@ -45,12 +45,13 @@ const colors = {
 
   // blues
   royalBlue: 'rgba(12,73,167, 1)',
-  darkBlue: '#191F2D',
+  babyBlue: '#D0E5FF',
+
+  lightBlue: '#EEf4fb',
   lightDarkBlue: 'rgb(20,23,30)',
   lighterDarkBlue: 'rgb(23,26,33)',
+  darkBlue: '#191F2D',
   darkerDarkBlue: '#001528',
-  lightBlue: '#EEf4fb',
-  babyBlue: '#D0E5FF',
   blue: '#76c8e7', // tealish
   // secondaryDark: 'rgb(22,27,37)',
 
@@ -68,8 +69,13 @@ const colors = {
   // whites
   white: 'rgb(255, 255, 255)',
   offWhite: 'rgba(228, 228, 228, 1)',
+  offWhite2: 'rgba(228, 228, 228, 0.2)',
+  offWhite4: 'rgba(228, 228, 228, 0.4)',
   sand: 'rgb(200, 200, 200)',
   silver: '#AEBED4',
+  silver2: 'rgba(174,190,212, .2)',
+  silver6: 'rgba(174,190,212, .6)',
+  silver8: 'rgba(174,190,212, .8)',
   smoke: '#D0E5FF',
 
 // $tableBackground-color: rgb(150,150,150)

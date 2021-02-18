@@ -10,11 +10,12 @@ import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import NewThreadForm from './NewThreadForm'
 import NewPostForm from './NewPostForm'
 import PostsContainer from './PostsContainer'
+import Post from './Post'
 import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
 import { api_url, url } from 'Utils/consts'
 import { CommentOutlined } from "@ant-design/icons"
 
-class DiscussContainer extends React.Component {
+class ThreadContainer extends React.Component {
 
   constructor(props) {
     super(props)
@@ -22,9 +23,10 @@ class DiscussContainer extends React.Component {
       initLoading: true,
       loading: false,
       count: 25,
-      threads: Array(),
-      selectedThread: null,
-      topicID: this.props.match.params.topicID,
+      threadId: this.props.match.params.threadId,
+      thread: null,
+      posts: Array(),
+      selectedPost: null,
       isLoading: true,
       error: null,
       page: 1,
@@ -39,7 +41,8 @@ class DiscussContainer extends React.Component {
         console.log('DDD', res)
         this.setState({
           initLoading: false,
-          threads: [...this.state.threads, res],
+          thread: res,
+          posts: res.posts,
           page: this.state.page + 1,
         });
       });
@@ -47,8 +50,9 @@ class DiscussContainer extends React.Component {
 
   getData = callback => {
     let {match} = this.props
+    console.log('stat',this.state)
+    console.log('ma', match)
     const url = `${api_url}${match.url}?per_page=${this.state.count}&page=${this.state.page}`
-    console.log(url)
 
     axios.get(url).then((res) => {
       callback(res.data)
@@ -105,8 +109,6 @@ class DiscussContainer extends React.Component {
         return;
       }
     });
-    form.topicID = this.state.topicID
-    // form.userID = this.state.userID
     this.props.dispatch(createThread(form))
 
     form.resetFields();
@@ -123,8 +125,8 @@ class DiscussContainer extends React.Component {
 
   render() {
     let {classes} = this.props
-    const { initLoading, loading, threads, visible, confirmLoading, ModalContent } = this.state;
-    let topicName = threads[0] && threads[0].topic && threads[0].topic.name
+    const { initLoading, loading, posts, visible, confirmLoading, ModalContent } = this.state;
+    let topicName = posts[0] && posts[0].topic && posts[0].topic.name
 
     const loadMore =
       !initLoading && !loading ? (
@@ -147,7 +149,7 @@ class DiscussContainer extends React.Component {
         <React.Fragment>
           <ScrollToTopOnMount />
 
-          <section id="topic-threads" className={classes.threadSection}>
+          <section id="topic-posts" className={classes.threadSection}>
             <NewThreadForm
               wrappedComponentRef={this.saveFormRef}
               wrapClassName={classes.modal}
@@ -157,16 +159,16 @@ class DiscussContainer extends React.Component {
               confirmLoading={confirmLoading}
             />
 
-            <div id="thread-items" className={classes.threads}>
-              <div className={classes.threadsHeader}>
+            <div id="thread-items" className={classes.posts}>
+              <div className={classes.postsHeader}>
                 <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
                 <h2 className={"title-large", classes.pageTitle}><span>💬</span> DISCUSS {topicName} </h2>
               </div>
               <div className={classes.threadMain}>
                 <ul className={classes.threadList}>
-                  {threads.map((thread) => {
+                  {posts.map((post) => {
                     return (
-                        <Thread thread={thread} />
+                        <Post post={post} />
                       )
                   })
                   }
@@ -197,7 +199,7 @@ const threadListStyles = {
       textDecoration: 'none !important',
     }
   },
-  threads: {
+  posts: {
     userSelect: 'none',
     marginTop: 60,
     margin: '0 auto',
@@ -223,7 +225,7 @@ const threadListStyles = {
     },
   },
 
-  threadsHeader: {
+  postsHeader: {
       display: 'grid',
       paddingTop: 15,
       zIndex: 10,
@@ -274,11 +276,11 @@ const threadListStyles = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    threads: state.threads
+    posts: state.posts
   }
 }
 
-// anything returned from here will end up as props on DiscussContainer
+// anything returned from here will end up as props on ThreadContainer
 // whenever selectPost is called the result should be passed to all reducers
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators({selectThread: null}, dispatch);
@@ -287,4 +289,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 // connect takes a function and component and produces a container that is aware
 // of state contained by redux
 // promote Discuss to Container
-export default connect(mapStateToProps, null)(injectSheet(threadListStyles)(DiscussContainer));
+export default connect(mapStateToProps, null)(injectSheet(threadListStyles)(ThreadContainer));

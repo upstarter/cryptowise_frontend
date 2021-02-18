@@ -25,7 +25,7 @@ const NewPostForm = Form.create({ name: 'form_in_modal' })(
         >
           <Form layout="vertical">
             <Form.Item label="Reply">
-              {getFieldDecorator('title')(<TextArea placeholder="Your comment..." rows={4}
+              {getFieldDecorator('body')(<TextArea placeholder="Your comment..." rows={4}
               type="textarea" />)}
             </Form.Item>
             {/* <Form.Item className="collection-create-form_last-form-item">

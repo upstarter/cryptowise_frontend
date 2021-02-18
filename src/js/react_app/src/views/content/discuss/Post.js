@@ -23,13 +23,18 @@ class Post extends React.Component {
 
   render() {
     let {post, classes} = this.props
-    const {posts, description, title, body, id} = post
+    console.log(post)
+    const { description, title, body, id} = post
 
     return (
       <li className={classes.postDetail} key={post.id}>
         <div className={classes.post}>
-          <h3 className={classes.postUser}>{post.user}</h3>
-          <h6 className={classes.postTitle}>{post.body}</h6>
+          <span className={classes.userCaption}>
+            <span className={classes.postedBy}>Posted by </span>
+            <span className={classes.postUser}>{post.user_id}</span>
+            <span className={classes.postAge}>{post.since_posted} minutes ago</span>
+          </span>
+          <span className={classes.postBody}>{post.body}</span>
         </div>
       </li>
     )
@@ -37,7 +42,13 @@ class Post extends React.Component {
 }
 
 const postStyles = {
-
+  postBody: {
+    fontSize: 14,
+  },
+  userCaption: {
+    color: colors.midTone,
+    fontSize: 13,
+  },
   postDetail: {
     width: '100vw',
     '& .description':  {
@@ -56,10 +67,10 @@ const postStyles = {
     margin: '0 auto',
     padding: 7,
     margin: 2,
-    background: colors.darkBlue,
+    background: colors.primary,
 
   },
-  postTitle: {
+  postBody: {
     marginLeft: 7,
     color: colors.yellow,
     opacity: 0.9,

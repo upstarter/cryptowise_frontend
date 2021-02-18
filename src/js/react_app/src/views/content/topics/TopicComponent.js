@@ -125,11 +125,6 @@ class TopicContainer extends React.Component {
     return data + `</div>`
   }
 
-  // componentWillReceiveProps(props) {
-  //   if (!_.isEqual(_.get(this.props, 'match.url'), _.get(props, 'match.url'))) {
-  //       this.setState({ key: _.get(props, 'match.url') });
-  //   }
-  // }
 
   render() {
     let { classes} = this.props

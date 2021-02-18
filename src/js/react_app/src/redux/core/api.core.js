@@ -36,7 +36,6 @@ export const apiMiddleware = ({dispatch}) => next => action => {
   if (action.type.includes(API_REQUEST)) {
     const { data } = action.payload
     const { entity, method, url  } = action.payload.meta
-
     axios({
       method: method,
       url: url,

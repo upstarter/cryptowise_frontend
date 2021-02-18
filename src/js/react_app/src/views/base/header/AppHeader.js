@@ -49,7 +49,7 @@ class AppHeader extends React.Component {
         className={classes.header}
       >
         <Icon
-          className={classes.trigger}
+          className={classes.mainMenu}
           type={this.state.siderCollapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={this.toggleSider}
         />
@@ -104,13 +104,16 @@ const headerStyles = {
     right: 0,
     zIndex: 999,
   },
-  trigger: {
-    padding: 15,
+  mainMenu: {
+    marginLeft: 10,
+    marginTop: -5
   },
   menu: {
-    padding: 5,
-    marginTop: 10,
     color: `${colors.silver}`,
+    '& .ant-menu-submenu-title': {
+      padding: 0,
+      margin: 0
+    }
   },
   logo: {
     color: `${colors.white}`,

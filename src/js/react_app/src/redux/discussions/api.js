@@ -12,7 +12,7 @@ import { api_url } from 'Utils/consts';
 
 const API = {
   FETCH_THREADS: `${api_url}/discuss/threads`,
-  CREATE_THREADS: `${api_url}/discuss/threads`,
+  CREATE_THREAD: `${api_url}/discuss/threads`,
   CREATE_POST: `${api_url}/discuss/posts`
 }
 
@@ -50,7 +50,7 @@ export const discussionsApiReducer = (state = initialState, action) => {
 
     case `${THREAD} ${API_SUCCESS}`:
       console.log('auth-succe', payload)
-      return { thread: payload }
+      return { thread: payload.data.data }
 
     case `${THREAD} ${API_ERROR}`:
       console.log('auth-error', payload)
@@ -91,13 +91,25 @@ export const discussionsMiddleware = ({dispatch}) => next => action => {
 
     case CREATE_POST:
       let postData = {}
-      postData.title = data.getFieldValue('title')
+      postData.body = data.getFieldValue('body')
       postData.thread_id = data.threadId
       postData.user_id = 1
       postData.parent_id = data.threadId
 
       dispatch(apiRequest(postData, 'POST', API.CREATE_POST, POST))
       next({...action, postData})
+      break;
+
+
+    case CREATE_THREAD:
+      let threadData = {}
+      threadData.title = data.getFieldValue('title')
+      threadData.description = data.getFieldValue('description')
+      threadData.is_public = data.getFieldValue('is_public')
+      threadData.topic_id = data.getFieldValue('topicID')
+
+      dispatch(apiRequest(threadData, 'POST', API.CREATE_THREAD, THREAD))
+      next({...action, threadData})
       break;
 
 

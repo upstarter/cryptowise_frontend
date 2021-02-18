@@ -89,39 +89,11 @@ class PostsContainer extends React.Component {
           onCreate={this.handleCreate}
           confirmLoading={confirmLoading}
         />
-        <Affix offsetTop={125}>
-          <div className={classes.threadRow}>
-            <div id='thread-header' className={classes.threadHeader}>
-              <h3 className={classes.threadTitle}>{thread.title}</h3>
-              <div className={classes.threadActions}>
-                <Button
-                  size='small'
-                  className={`${classes.btn} ${classes.threadAction} ${classes.viewThreadBtn}`}
-                  onClick={this.showModal}
-                  >
-                    View
-                </Button>
-                <Button
-                  size='small'
-                  className={`${classes.btn} ${classes.threadAction} ${classes.commentThreadBtn}`}
-                  onClick={this.showModal}
-                  >
-                    Reply
-                </Button>
-              </div>
-            </div>
-            <div className={classes.postsHeader}>Replies</div>
-            <div className={classes.threadDetail}>
-              lorem ipsum optima loka filejus mora lorem ipsum optima loka filejus mora lorem ipsum optima loka filejus moralorem ipsum optima loka filejus moralorem ipsum optima loka filejus moralorem ipsum optima loka filejus moralorem ipsum optima loka filejus mora lorem ipsum optima loka filejus morax
-            </div>
-          </div>
-        </Affix>
-
         <div className={classes.posts}>
           <ul className={classes.postList}>
             {
               thread.posts.map((post) => {
-                return <Post post={post} />
+                return <Post key={post.id} post={post} />
               })
             }
           </ul>
@@ -166,7 +138,8 @@ const postsStyles = {
     display: 'flex',
     height: 35,
     padding: 2,
-    border: `1px solid ${colors.primaryDark}`,
+    background: colors.silver,
+    color: colors.white,
     justifyContent: 'space-between'
   },
   threadTitle: {
@@ -175,7 +148,7 @@ const postsStyles = {
     fontSize: 12,
     fontWeight: 800,
     letterSpacing: '1.2em',
-    color: colors.midTone
+    color: colors.black
   },
   threadActions: {
 
