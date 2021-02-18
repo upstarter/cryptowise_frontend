@@ -12,6 +12,7 @@ import { createPost } from "Redux/discussions";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
+import {timeSince} from 'Utils/timeUtils'
 
 const count = 25;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
@@ -24,17 +25,17 @@ class Post extends React.Component {
   render() {
     let {post, classes} = this.props
     console.log(post)
-    const { description, title, body, id} = post
+    const { description, title, body, id, since_posted, user} = post
 
     return (
       <li className={classes.postDetail} key={post.id}>
         <div className={classes.post}>
           <span className={classes.userCaption}>
             <span className={classes.postedBy}>Posted by </span>
-            <span className={classes.postUser}>{post.user_id}</span>
-            <span className={classes.postAge}>{post.since_posted} minutes ago</span>
+            <span className={classes.postUser}>{user} </span>
+            <span className={classes.postAge}>{timeSince(since_posted)} ago</span>
           </span>
-          <span className={classes.postBody}>{post.body}</span>
+          <span className={classes.postBody}>{body}</span>
         </div>
       </li>
     )
