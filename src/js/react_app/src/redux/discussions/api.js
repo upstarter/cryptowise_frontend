@@ -92,9 +92,9 @@ export const discussionsMiddleware = ({dispatch}) => next => action => {
     case CREATE_POST:
       let postData = {}
       postData.body = data.getFieldValue('body')
-      postData.thread_id = data.threadId
+      postData.thread_id = data.threadID
       postData.user_id = 1
-      postData.parent_id = data.threadId
+      postData.parent_id = data.threadID
 
       dispatch(apiRequest(postData, 'POST', API.CREATE_POST, POST))
       next({...action, postData})

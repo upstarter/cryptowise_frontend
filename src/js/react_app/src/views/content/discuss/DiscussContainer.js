@@ -39,8 +39,8 @@ class DiscussContainer extends React.Component {
         console.log('DDD', res)
         this.setState({
           initLoading: false,
-          threads: res.data,
-          topicName: res.data[0].topic.name,
+          threads: res.data.threads,
+          topicName: res.data.topic.name,
           page: this.state.page + 1,
         });
       });
@@ -49,7 +49,6 @@ class DiscussContainer extends React.Component {
   getData = callback => {
     let {match} = this.props
     const url = `${api_url}${match.url}?per_page=${this.state.count}&page=${this.state.page}`
-
     axios.get(url).then((res) => {
       callback(res.data)
     })
@@ -106,7 +105,6 @@ class DiscussContainer extends React.Component {
       }
     });
     form.topicID = this.state.topicID
-    console.log(form)
     // form.userID = this.state.userID
     this.props.dispatch(createThread(form))
 
@@ -125,8 +123,33 @@ class DiscussContainer extends React.Component {
   render() {
     let {classes} = this.props
     const { topicName, threads, initLoading, loading, visible, confirmLoading, ModalContent } = this.state;
+    if (threads.length < 1) {
+      return (
+        <React.Fragment>
+          <ScrollToTopOnMount />
+          <NewThreadForm
+            wrappedComponentRef={this.saveFormRef}
+            wrapClassName={classes.modal}
+            visible={this.state.visible}
+            onCancel={this.handleCancel}
+            onCreate={this.handleCreate}
+            confirmLoading={confirmLoading}
+          />
 
-console.log('threds', threads)
+          <div id="thread-items" className={classes.threads}>
+            <div className={classes.threadsHeader}>
+              <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
+              <h2 className={"title-large", classes.pageTitle}><span>💬</span> DISCUSS {topicName} </h2>
+            </div>
+          </div>
+          <section id="topic-threads" className={classes.threadSection}>
+            <h1>No Threads Yet.. Be the first to discuss {topicName}</h1>
+          </section>
+        </React.Fragment>
+      )
+    }
+  console.log('nam', topicName)
+
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -143,7 +166,6 @@ console.log('threds', threads)
       ) : null;
 
     return (
-      <div className="dark-wrap">
 
         <React.Fragment>
           <ScrollToTopOnMount />
@@ -176,7 +198,6 @@ console.log('threds', threads)
             </div>
           </section>
         </React.Fragment>
-      </div>
     )
   }
 }

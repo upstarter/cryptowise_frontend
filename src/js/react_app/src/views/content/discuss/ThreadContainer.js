@@ -2,12 +2,10 @@ import React from 'react'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import axios from "Config/axios";
-import Thread from "Content/discuss/Thread";
-import {createThread} from "Redux/discussions"
+import {createPost} from "Redux/discussions"
 import colors from "Styles/colors"
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
-import NewThreadForm from './NewThreadForm'
 import NewPostForm from './NewPostForm'
 import PostsContainer from './PostsContainer'
 import Post from './Post'
@@ -23,9 +21,11 @@ class ThreadContainer extends React.Component {
       initLoading: true,
       loading: false,
       count: 25,
-      threadId: this.props.match.params.threadId,
-      thread: null,
-      posts: Array(),
+      threadID: this.props.match.params.threadID,
+      threadTitle: '',
+      topicID: null,
+      topicName: null,
+      posts: [],
       selectedPost: null,
       isLoading: true,
       error: null,
@@ -38,11 +38,13 @@ class ThreadContainer extends React.Component {
 
   componentDidMount() {
       this.getData(res => {
-        console.log('DDD', res)
+        console.log('DDD', res.data)
         this.setState({
           initLoading: false,
-          thread: res,
-          posts: res.posts,
+          topicName: res.data.topic.name,
+          threadID: res.data.thread.id,
+          threadTitle: res.data.thread.title,
+          posts: res.data.posts,
           page: this.state.page + 1,
         });
       });
@@ -50,8 +52,7 @@ class ThreadContainer extends React.Component {
 
   getData = callback => {
     let {match} = this.props
-    console.log('stat',this.state)
-    console.log('ma', match)
+    console.log('state',this.state)
     const url = `${api_url}${match.url}?per_page=${this.state.count}&page=${this.state.page}`
 
     axios.get(url).then((res) => {
@@ -109,7 +110,9 @@ class ThreadContainer extends React.Component {
         return;
       }
     });
-    this.props.dispatch(createThread(form))
+    form.threadID = this.state.threadID
+    console.log('form', form)
+    this.props.dispatch(createPost(form))
 
     form.resetFields();
     this.setState({ visible: false, confirmLoading: false })
@@ -125,9 +128,33 @@ class ThreadContainer extends React.Component {
 
   render() {
     let {classes} = this.props
-    const { initLoading, loading, posts, visible, confirmLoading, ModalContent } = this.state;
-    let topicName = posts[0] && posts[0].topic && posts[0].topic.name
+    const { posts, threadTitle, topicName, initLoading, loading, visible, confirmLoading, ModalContent } = this.state;
 
+    if (posts && posts.length < 0) {
+      return (
+        <React.Fragment>
+          <ScrollToTopOnMount />
+          <NewThreadForm
+            wrappedComponentRef={this.saveFormRef}
+            wrapClassName={classes.modal}
+            visible={this.state.visible}
+            onCancel={this.handleCancel}
+            onCreate={this.handleCreate}
+            confirmLoading={confirmLoading}
+          />
+
+          <div id="post-items" className={classes.posts}>
+            <div className={classes.postsHeader}>
+              <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
+              <h2 className={"title-large", classes.pageTitle}><span>💬</span> DISCUSS {threadTitle} </h2>
+            </div>
+          </div>
+          <section id="post-posts" className={classes.postsSection}>
+            <h1>No Posts Yet.. Be the first to discuss {threadTitle}</h1>
+          </section>
+        </React.Fragment>
+      )
+    }
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -149,8 +176,8 @@ class ThreadContainer extends React.Component {
         <React.Fragment>
           <ScrollToTopOnMount />
 
-          <section id="topic-posts" className={classes.threadSection}>
-            <NewThreadForm
+          <section id="topic-posts" className={classes.postSection}>
+            <NewPostForm
               wrappedComponentRef={this.saveFormRef}
               wrapClassName={classes.modal}
               visible={this.state.visible}
@@ -159,18 +186,18 @@ class ThreadContainer extends React.Component {
               confirmLoading={confirmLoading}
             />
 
-            <div id="thread-items" className={classes.posts}>
+            <div id="post-items" className={classes.posts}>
               <div className={classes.postsHeader}>
                 <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
-                <h2 className={"title-large", classes.pageTitle}><span>💬</span> DISCUSS {topicName} </h2>
+                <h2 className={"title-large", classes.pageTitle}><span>💬</span> {threadTitle} </h2>
               </div>
-              <div className={classes.threadMain}>
-                <ul className={classes.threadList}>
-                  {posts.map((post) => {
+              <div className={classes.postMain}>
+                <ul className={classes.postList}>
+                  {posts ? posts.map((post) => {
                     return (
                         <Post post={post} />
                       )
-                  })
+                  }) : <>No Posts Yet. Be the first..</>
                   }
                 </ul>
               </div>
@@ -182,13 +209,13 @@ class ThreadContainer extends React.Component {
   }
 }
 
-const threadListStyles = {
+const postListStyles = {
   pageTitle: {
     padding: [3,3,3,13],
     color: colors.white,
 
   },
-  threadSection: {
+  postSection: {
 
   },
   modal: {
@@ -204,9 +231,9 @@ const threadListStyles = {
     marginTop: 60,
     margin: '0 auto',
   },
-  threadMain: {
+  postMain: {
   },
-  threadList: {
+  postList: {
     listStyleType: 'none',
 
     '@media (max-width: 860px)': {
@@ -216,7 +243,7 @@ const threadListStyles = {
 
     },
   },
-  threadDetail: {
+  postDetail: {
   },
   threadTitle: {
 
@@ -289,4 +316,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 // connect takes a function and component and produces a container that is aware
 // of state contained by redux
 // promote Discuss to Container
-export default connect(mapStateToProps, null)(injectSheet(threadListStyles)(ThreadContainer));
+export default connect(mapStateToProps, null)(injectSheet(postListStyles)(ThreadContainer));

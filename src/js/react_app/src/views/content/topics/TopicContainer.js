@@ -34,11 +34,20 @@ class TopicChildren extends React.Component {
     )
   }
 
-  discussTopic = (topic,lvl) => {
+  getDepth = (tree) => {
+      return 1 + Math.max(0, ...tree.map(({ children = [] }) => getDepth(children)));
+  }
+
+  discussTopic = (topic,lvl,children=null) => {
     let data =  ``
-    console.log('lvl',lvl)
+    console.log('dasfa', children)
+    let hasChildren = children && children.length > 0
     if (lvl >= 0) {
-      data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+      if (hasChildren) {
+        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+      } else {
+        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/discuss/topics/${topic.id}'>${topic.name}</a>`
+      }
     } else {
       data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
     }
@@ -78,7 +87,7 @@ class TopicChildren extends React.Component {
       data += `<div style='user-select:none;margin: 10px 0 10px 22px'>${this.topicDetail(parent)}</div>`
       data += `<ul style='user-select:none;margin: 10px 0 10px 34px;list-style-type:none;text-decoration:none;' id='topic-urls'>
                 ${childs.map((children) => {
-                  return `<li style='text-indent: -10px;padding: 7px'>💬&nbsp;&nbsp;&#8594;&nbsp;${this.discussTopic(children[0])} –– ${children[0].description}</li>`
+                  return `<li style='text-indent: -10px;padding: 7px'>💬&nbsp;&nbsp;&#8594;&nbsp;${this.discussTopic(children[0], lvl, children[1])} –– ${children[0].description}</li>`
                 }).join(``)}
                </ul>`
       if (childs.length > 0) {
