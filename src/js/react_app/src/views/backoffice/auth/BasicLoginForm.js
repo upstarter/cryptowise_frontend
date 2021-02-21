@@ -8,9 +8,9 @@ import {
 } from "react-router-dom";
 import { loginUser } from "Redux/core/auth.core"
 import injectSheet, { jss } from 'react-jss'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox } from 'antd';
 import colors from "Styles/colors"
-
+import {UserOutlined,LockOutlined} from "@ant-design/icons"
 class BasicLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -42,7 +42,7 @@ class BasicLoginForm extends React.Component {
                   rules: [{ required: true, message: 'Please input your email!' }],
                 })(
                   <Input
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                     placeholder="Email"
                   />,
                 )}
@@ -52,7 +52,7 @@ class BasicLoginForm extends React.Component {
                   rules: [{ required: true, message: 'Please input your Password!' }],
                 })(
                   <Input
-                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                     type="password"
                     placeholder="Password"
                   />,

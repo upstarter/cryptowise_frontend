@@ -4,14 +4,14 @@ import {
   Link,
   withRouter
 } from "react-router-dom";
-import { Button, Icon, notification } from "antd";
+import { Button, notification } from "antd";
 import injectSheet, { jss } from "react-jss";
 import { Layout, Menu } from "antd";
 const { SubMenu } = Menu;
 const { Header } = Layout;
 import colors from 'Styles/colors'
 import nav_logo from "Images/white_nav_logo.svg";
-
+import {MenuUnfoldOutlined, MenuFoldOutlined} from "@ant-design/icons"
 class AppHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -48,12 +48,17 @@ class AppHeader extends React.Component {
       <Header
         className={classes.header}
       >
-        <Icon
-          className={classes.mainMenu}
-          type={this.state.siderCollapsed ? 'menu-unfold' : 'menu-fold'}
-          onClick={this.toggleSider}
-        />
-        <Link to="/">
+        {this.state.siderCollapsed ?
+          <MenuUnfoldOutlined
+            className={classes.mainMenu}
+            onClick={this.toggleSider}
+          /> :
+          <MenuUnfoldOutlined
+            className={classes.mainMenu}
+            onClick={this.toggleSider}
+          />
+        }
+        <Link className={classes.logoLink} to="/">
           <img className={classes.logo} src={nav_logo} />
         </Link>
         <div>
@@ -92,21 +97,19 @@ class AppHeader extends React.Component {
 
 const headerStyles = {
   header: {
+    position: 'fixed',
     display: "flex",
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 50,
-    fontSize: 25,
-    // background: `${colors.primary}`,
-    padding: 0,
-    position: 'fixed',
     width: '100vw',
+    // height: 50,
+    fontSize: 25,
+    padding: 0,
     right: 0,
     zIndex: 999,
   },
   mainMenu: {
     marginLeft: 10,
-    marginTop: -5
   },
   menu: {
     color: `${colors.silver}`,
@@ -115,9 +118,12 @@ const headerStyles = {
       margin: 0
     }
   },
+  logoLink: {
+
+  },
   logo: {
     color: `${colors.white}`,
-    height: 50,
+    // height: 50,
     width: 180,
     '@media (max-width: 576px)': {
       // marginLeft: '32px',

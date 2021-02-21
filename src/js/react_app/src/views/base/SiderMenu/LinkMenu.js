@@ -1,9 +1,15 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Menu, Icon } from "antd";
+import { Menu } from "antd";
 import { CommentOutlined } from "@ant-design/icons"
 import injectSheet, { jss } from "react-jss";
 import AuthService from 'Services/auth/AuthService'
+import { UserAddOutlined,
+  UserOutlined,
+  PieChartOutlined,
+  BulbOutlined,
+  CloseOutlined,
+ } from '@ant-design/icons';
 
 const LinkMenu = withRouter(props => {
   const { location } = props;
@@ -38,7 +44,7 @@ const LinkMenu = withRouter(props => {
         { !auth.signedIn() ?
           <Menu.Item key="/">
             <Link to="/" style={{ textDecoration: "none" }}>
-              <Icon type="user-add" />
+              <UserAdd />
               <span className="nav-text">Sign Up</span>
             </Link>
           </Menu.Item> : '' }
@@ -79,7 +85,7 @@ const LinkMenu = withRouter(props => {
         { !auth.signedIn() ?
           <Menu.Item key="/analysts">
             <Link to="/analysts" style={{ textDecoration: "none" }}>
-              <Icon type="user" />
+              <UserOutlined />
               <span className="nav-text">Contribute</span>
             </Link>
           </Menu.Item>  : '' }
@@ -87,7 +93,7 @@ const LinkMenu = withRouter(props => {
         { auth.signedIn() ?
           <Menu.Item key="/proposals">
             <Link to="/proposals" style={{ textDecoration: "none" }}>
-              <Icon type="bulb" />
+              <Bulb />
               <span className="nav-text">Ideate</span>
             </Link>
           </Menu.Item> : ''
@@ -95,7 +101,7 @@ const LinkMenu = withRouter(props => {
         { auth.signedIn() ?
           <Menu.Item key="/portfolio">
             <Link to="/portfolio" style={{ textDecoration: "none" }}>
-              <Icon type="pie-chart" />
+              <PieChart />
               <span className="nav-text">Portfolio</span>
             </Link>
           </Menu.Item> : ''
@@ -104,7 +110,7 @@ const LinkMenu = withRouter(props => {
         { auth.signedIn() ?
           <Menu.Item key="/profile">
             <Link to="/profile" style={{ textDecoration: "none" }}>
-            <Icon type="user" />
+            <User />
               <span className="nav-text">Profile</span>
             </Link>
           </Menu.Item> : ''
@@ -113,7 +119,7 @@ const LinkMenu = withRouter(props => {
         {
           <Menu.Item key="/closemenu">
             <Link to="/profile" style={{ textDecoration: "none" }}>
-            <Icon type="close" />
+            <CloseOutlined />
               <span className="nav-text">Close</span>
             </Link>
           </Menu.Item>

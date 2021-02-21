@@ -83,8 +83,8 @@ class AnalystComponent extends React.Component {
 
               <p id='social-blurb'>Share it!</p>
               <ul id='social-list'>
-                <li>On Twitter: <a target="_blank" href="//www.twitter.com/CryptoWiseAI">@CryptoWiseAI</a></li>
                 <li>On Reddit: <a target="_blank" href="//www.reddit.com/user/CryptoWiseAI">u/CryptoWiseAI</a></li>
+                <li>On Twitter: <a target="_blank" href="//www.twitter.com/CryptoWiseAI">@CryptoWiseAI</a></li>
                 <li>On Medium: <a target="_blank" href="//medium.com/@cryptowise">@cryptowise</a></li>
               </ul>
             </div>

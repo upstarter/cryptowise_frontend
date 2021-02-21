@@ -7,7 +7,15 @@ import {
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-import { Icon, Switch } from 'antd';
+import { Switch } from 'antd';
+import { CheckOutlined,
+CloseOutlined,
+CloudUploadOutlined,
+DotChartOutlined,
+BarChartOutlined,
+ClusterOutlined,
+ProjectOutlined,
+ } from '@ant-design/icons';
 import axios from "axios";
 import { connect } from "react-redux";
 import AuthService from 'Services/auth/AuthService'
@@ -139,10 +147,10 @@ class ProfileComponent extends React.Component {
                     name="curator"
                     ref="curator"
                     onChange={e => this.onChange("curator", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
+                    checkedChildren={<CheckOutlined />}
+                    unCheckedChildren={<CloseOutlined />}
                   />
-                  <Icon className='icon' type="cloud-upload" /><span>Data Curator (FDS)</span>
+                  <CloudUploadOutlined /><span>Data Curator (FDS)</span>
                 </div>
                 <div className='switch'>
                   <Switch
@@ -150,10 +158,10 @@ class ProfileComponent extends React.Component {
                     name="featureAnalyst"
                     ref="featureAnalyst"
                     onChange={e => this.onChange("analyst", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
+                    checkedChildren={<CheckOutlined />}
+                    unCheckedChildren={<CloseOutlined />}
                   />
-                  <Icon className='icon' type="dot-chart" /><span>Feature Analyst</span>
+                  <DotChartOutlined /><span>Feature Analyst</span>
                 </div>
                 <div className='switch'>
                   <Switch
@@ -161,10 +169,10 @@ class ProfileComponent extends React.Component {
                     name="strategist"
                     ref="strategist"
                     onChange={e => this.onChange("strategist", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
+                    checkedChildren={<CheckOutlined />}
+                    unCheckedChildren={<CloseOutlined />}
                   />
-                  <Icon className='icon' type="bar-chart" /><span>Investment Strategist</span>
+                  <BarChartOutlined /><span>Investment Strategist</span>
                 </div>
                 <div className='switch'>
                   <Switch
@@ -172,10 +180,10 @@ class ProfileComponent extends React.Component {
                     name="MLEngineer"
                     ref="MLEngineer"
                     onChange={e => this.onChange("engineer", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
+                    checkedChildren={<CheckOutlined />}
+                    unCheckedChildren={<CloseOutlined />}
                   />
-                  <Icon className='icon' type="cluster" /><span>Machine Learning Engineer</span>
+                  <ClusterOutlined /><span>Machine Learning Engineer</span>
                 </div>
 
                 <div className='switch'>
@@ -184,10 +192,10 @@ class ProfileComponent extends React.Component {
                     name="tpm"
                     ref="tpm"
                     onChange={e => this.onChange("tpm", e)}
-                    checkedChildren={<Icon type="check" />}
-                    unCheckedChildren={<Icon type="close" />}
+                    checkedChildren={<CheckOutlined />}
+                    unCheckedChildren={<CloseOutlined />}
                   />
-                  <Icon className='icon' type="project" /><span>Technical Project Manager</span>
+                  <ProjectOutlined /><span>Technical Project Manager</span>
                 </div>
               </div>
             </div>

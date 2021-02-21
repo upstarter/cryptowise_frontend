@@ -1,5 +1,4 @@
 import HeroImage from 'Images/hero.jpeg';
-console.log('HeroImage', HeroImage)
 
 const heroStyles = {
   hero: {
@@ -7,7 +6,7 @@ const heroStyles = {
     minHeight: '61.8vh',
     '-webkit-background-clip': 'padding-box', /* for Safari */
     backgroundClip: 'padding-box', /* for IE9+, Firefox 4+, Opera, Chrome */
-    background: `linear-gradient(to bottom, rgba(14,19,27, .85), rgba(14,19,27, .75)), url(${HeroImage}) no-repeat`,
+    background: `linear-gradient(to bottom, rgba(25, 31, 46, .80), rgba(25, 31, 46, .35)), url(${HeroImage}) no-repeat`,
     backgroundRepeat: 'no-repeat',
     position: 'relative',
     backgroundSize: '100% 100%',

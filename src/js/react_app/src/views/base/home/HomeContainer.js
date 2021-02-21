@@ -185,7 +185,7 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'left',
     fontSize: 12,
-    height: 50,
+    height: 84,
     bottom: 0,
     right: 0,
     left: 0,

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from 'react-router-dom'
-import { GoogleLogin, GoogleLogout } from 'react-google-login'
-import FacebookLogin from 'react-facebook-login';
+import { Redirect, withRouter } from "react-router-dom";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import FacebookLogin from "react-facebook-login";
 import BasicRegistrationForm from "Auth/BasicRegistrationForm";
 
-import {url} from 'Utils/consts'
+import { url } from "Utils/consts";
 import injectSheet from "react-jss";
 import Tile from "Components/base/tile/Tile";
 import logo from "Images/white_nav_logo.svg";
@@ -13,8 +13,7 @@ import fbWhite from "Images/facebook-white.svg";
 import googleLogo from "Images/google.svg";
 import googleLogoWhite from "Images/google-plus-white.png";
 import googleSigninButton from "Images/btn_google_signin_dark_normal_web.png";
-import colors from "Styles/colors"
-
+import colors from "Styles/colors";
 
 class SignUpStep2 extends Component {
   constructor(props) {
@@ -28,9 +27,9 @@ class SignUpStep2 extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.state = {
-      email: '',
-      name: '',
-      password: ''
+      email: "",
+      name: "",
+      password: "",
     };
   }
   // _validate() {
@@ -56,7 +55,7 @@ class SignUpStep2 extends Component {
 
   responseFacebook = (response) => {
     console.log(response);
-  }
+  };
 
   render() {
     let props = this.props;
@@ -68,67 +67,65 @@ class SignUpStep2 extends Component {
     return (
       <div className={classes.container}>
         <div className={classes.header}>
-          <h3 id="signup-blurb">Sign up to uncover hypergrowth cryptoassets along with top analysts</h3>
+          <h3 id="signup-blurb">
+            Uncover Hypergrowth Cryptoassets Along With Top Analysts
+          </h3>
         </div>
         <div className={classes.main}>
-          <BasicRegistrationForm saveForm={this.handleSubmit}/>
+          <BasicRegistrationForm saveForm={this.handleSubmit} />
         </div>
       </div>
     );
   }
 }
 
-
 const styles = {
   container: {
     display: "flex",
     flexDirection: "row",
-    flexWrap: 'wrap',
-    alignItems: 'center',
+    flexWrap: "wrap",
+    alignItems: "center",
     justifyContent: "center",
   },
   header: {
     minHeight: 100,
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
     justifyContent: "center",
-    alignItems: 'center',
-    textAlign: 'center !important',
-    width: '100%',
-    margin: [50,0,20,0],
+    alignItems: "center",
+    textAlign: "center !important",
+    width: "100%",
+    margin: [50, 0, 20, 0],
     padding: 15,
     zIndex: 1,
-    '& h2': {
+    "& h2": {
       fontSize: "2.2rem !important",
-      lineHeight: '3rem !important',
+      lineHeight: "3rem !important",
       color: `${colors.offWhite}`,
-
     },
-    '& h3': {
+    "& h3": {
       padding: 20,
       maxWidth: 420,
-      textAlign: 'center !important',
+      textAlign: "center !important",
       fontSize: "2.2rem !important",
-      lineHeight: '3rem !important',
+      lineHeight: "3rem !important",
       color: `${colors.offWhite} !important`,
 
       "@media (max-width: 482px)": {
         fontSize: "1.8rem !important",
-
-      }
+      },
     },
   },
   main: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'column',
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
     justifyContent: "center",
-    alignItems: 'center',
-    minWidth: '400px !important',
-    'overflow-y': 'none',
+    alignItems: "center",
+    minWidth: "400px !important",
+    "overflow-y": "none",
     // filter: 'invert(1)',
-
   },
 
   formButton: {
@@ -139,49 +136,49 @@ const styles = {
   },
   fbLoginButton: {
     width: 190,
-    height:35,
+    height: 35,
     borderRadius: 3,
-    background: '#3b5998',
-    color: 'white',
-    border: '0px transparent',
-    textAlign: 'center',
+    background: "#3b5998",
+    color: "white",
+    border: "0px transparent",
+    textAlign: "center",
     margin: [5, 0, 0, 0],
-    display: 'inline-block',
-    '&:hover': {
-        background: '#3b5998',
-        opacity: "0.6"
-    }
+    display: "inline-block",
+    "&:hover": {
+      background: "#3b5998",
+      opacity: "0.6",
+    },
   },
   googleLoginButton: {
     width: 190,
     height: 48,
     borderRadius: 3,
-    color: 'white',
-    background: 'transparent',
-    border: '0px transparent',
-    textAlign: 'center',
+    color: "white",
+    background: "transparent",
+    border: "0px transparent",
+    textAlign: "center",
     margin: [10, 0, 0, 0],
-    display: 'inline-block',
-    '&:hover': {
-        background: 'transparent',
-        opacity: "0.6"
-    }
+    display: "inline-block",
+    "&:hover": {
+      background: "transparent",
+      opacity: "0.6",
+    },
   },
   socialButtons: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   loginForm: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   footer: {
-    position: 'fixed',
+    position: "fixed",
     height: "80px",
-    width: '100vw',
+    width: "100vw",
     bottom: 0,
     right: 0,
     fontSize: 22,
     background: `${colors.white}`,
-    boxShadow: '8px 2px 4px 8px #f0f1f2',
+    boxShadow: "8px 2px 4px 8px #f0f1f2",
   },
   "@media (min-width: 576px) (max-width: 992px)": {
     header: {
@@ -189,27 +186,27 @@ const styles = {
       lineHeight: "2em",
     },
     title: {
-      width: '80vw',
-      margin: '1.7em auto',
+      width: "80vw",
+      margin: "1.7em auto",
       fontSize: "21px",
-      margin: 20
+      margin: 20,
     },
     tileGrid: {
-      gridTemplateColumns: "1fr 1fr 1fr 1fr"
+      gridTemplateColumns: "1fr 1fr 1fr 1fr",
     },
     main: {
-      padding: "1em 1em"
+      padding: "1em 1em",
     },
     socialButtons: {
-      maxWidth: "100%"
+      maxWidth: "100%",
     },
     vl: {
       borderTop: "1px solid black",
       width: "40em",
       borderLeft: "0",
       height: "0",
-      maxWidth: "100%"
-    }
+      maxWidth: "100%",
+    },
   },
   "@media (max-width: 800px)": {
     header: {
@@ -217,25 +214,24 @@ const styles = {
       lineHeight: "2em",
     },
     title: {
-      width: '80vw',
-      margin: '1.7em auto',
+      width: "80vw",
+      margin: "1.7em auto",
       fontSize: "16px",
       margin: 20,
-
     },
     steps: {
-      display: 'none !important',
+      display: "none !important",
     },
     tileGrid: {
-      gridTemplateColumns: "1fr 1fr"
+      gridTemplateColumns: "1fr 1fr",
     },
     main: {
-      padding: "0 1em"
+      padding: "0 1em",
     },
     loginForm: {
-      maxWidth: "100%"
-    }
-  }
+      maxWidth: "100%",
+    },
+  },
 };
 
 const Step2 = injectSheet(styles)(SignUpStep2);

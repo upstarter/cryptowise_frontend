@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Select, InputNumber, Popover, Button, Icon } from "antd";
+import { Table, Select, InputNumber, Popover, Button } from "antd";
 import notify from "Components/base/notify/notify"
 import injectSheet, { jss } from "react-jss"
 import tokens from "./MockData";
@@ -7,7 +7,7 @@ import formatNumber from "Utils/formatNumber"
 import zip from "Utils/zip"
 import AuthService from "Services/auth/AuthService"
 import colors from "Styles/colors"
-
+import DeleteOutlined from "@ant-design/icons"
 const Option = Select.Option;
 
 
@@ -224,8 +224,7 @@ class PortfolioGrid extends React.Component {
               this.togglePanel(i);
             }}
           /> */}
-          <Icon
-            type="delete"
+          <DeleteOutlined
             theme="twoTone"
             style={{ cursor: "pointer" }}
             onClick={() => {

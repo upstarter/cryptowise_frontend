@@ -28,8 +28,8 @@ class TopicChildren extends React.Component {
 
   topicDetail = (topic) => {
     return (
-      `<div id='topic-detail' style='color: ${colors.smoke};padding: 0px;font-weight:200;'>
-        <i>${topic.description}</i>
+      `<div class='topic-detail' style='color: ${colors.silver8};padding: 0px;font-weight:200;'>
+        <p class='topic-detail-description'>${topic.description}</p>
       </div>`
     )
   }
@@ -40,16 +40,15 @@ class TopicChildren extends React.Component {
 
   discussTopic = (topic,lvl,children=null) => {
     let data =  ``
-    console.log('dasfa', children)
     let hasChildren = children && children.length > 0
     if (lvl >= 0) {
       if (hasChildren) {
-        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
       } else {
-        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/discuss/topics/${topic.id}'>${topic.name}</a>`
+        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.antBlue};' href='/discuss/topics/${topic.id}'>${topic.name}</a>`
       }
     } else {
-      data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.sproutGreen};' href='/topics/${topic.id}'>${topic.name}</a>`
+      data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
     }
     return data
   }
@@ -58,20 +57,25 @@ class TopicChildren extends React.Component {
     let href = `/discuss/topics/${topic.id}`
 
     if (lvl === 0) {
-      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
+      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 6px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
     } else if (lvl === 1) {
-      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 10px;color: ${colors.lightBlack};font-size: 28px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
+      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 6px;color: ${colors.lightBlack};font-size: 28px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
     } else if (lvl === 2) {
-      data += `<h3 class='topic-heading'><a style='user-select:none;margin-left: 12px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 100' href='${href}'>${this.discussTopic(topic,lvl)}</a></h3>`
+      data += `<h3 class='topic-heading'><a style='user-select:none;margin-left: 8px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 100' href='${href}'>${this.discussTopic(topic,lvl)}</a></h3>`
     } else if (lvl === 3) {
-      data += `<h4 class='topic-heading'><a style='user-select:none;margin-left: 17px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 0' href='${href}'>${topic.name}</a></h4>`
+      data += `<h4 class='topic-heading'><a style='user-select:none;margin-left: 11px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 0' href='${href}'>${topic.name}</a></h4>`
     } else {
-      data += `<h6 class='topic-heading'><a style='user-select:none;margin-left: 22px;color: ${colors.darkBlack};font-size: 25px; font-weight: 0;' href='${href}'>${topic.name}</a></h${lvl}>`
+      data += `<h6 class='topic-heading'><a style='user-select:none;margin-left: 14px;color: ${colors.darkBlack};font-size: 25px; font-weight: 0;' href='${href}'>${topic.name}</a></h${lvl}>`
     }
+    // return (
+    //   <section className={classes.topicHead}>
+    //
+    //   </section>
+    // )
     return data
   }
 
-  topicChildren = (topicId, children, lvl=0, data=`<div style='margin: 20px 10px 20px 0'>`) => {
+  topicChildren = (topicId, children, lvl=0, data=`<div class='child'>`) => {
     if (children === undefined) { return data }
     if (children.length === 0) { return data }
     if (lvl > 0) { return data }
@@ -84,10 +88,10 @@ class TopicChildren extends React.Component {
       if (parent === undefined) { return data }
       data += this.topicHead(parent, lvl)
 
-      data += `<div style='user-select:none;margin: 10px 0 10px 22px'>${this.topicDetail(parent)}</div>`
-      data += `<ul style='user-select:none;margin: 10px 0 10px 34px;list-style-type:none;text-decoration:none;' id='topic-urls'>
+      data += `<div class='topic-details' style='user-select:none;'>${this.topicDetail(parent)}</div>`
+      data += `<ul style='user-select:none;list-style-type:none;text-decoration:none;' id='topic-urls'>
                 ${childs.map((children) => {
-                  return `<li style='text-indent: -10px;padding: 7px'>💬&nbsp;&nbsp;&#8594;&nbsp;${this.discussTopic(children[0], lvl, children[1])} –– ${children[0].description}</li>`
+                  return `<li class='discuss-link' style='text-indent: -10px;padding: 7px'>${this.discussTopic(children[0], lvl, children[1])} – ${children[0].description}</li>`
                 }).join(``)}
                </ul>`
       if (childs.length > 0) {
@@ -102,17 +106,19 @@ class TopicChildren extends React.Component {
 
 
   render() {
-    let { topic } = this.props
+    let { topic, classes } = this.props
     if (!topic) { return (<></>) }
     return (
-      <div style={{margin: [0,0,0,10]}} className='topic-description'>
-        <h1 style={{padding: 0, margin: 0}} className='topic-name'>
-          {topic && topic.name}
-        </h1>
-        <div className='description'>
-          {topic && topic.description}
-        </div>
-        <div className='topic-details'
+      <div className={classes.topic}>
+        <section className={classes.topicHead}>
+          <span className={classes.topicName}>
+            {topic && topic.name}
+          </span>
+          <span className={classes.topicDescription}>
+            {topic && topic.description}
+          </span>
+        </section>
+        <div className={classes.topicDetails}
           dangerouslySetInnerHTML={{__html: this.topicChildren(topic.id, topic.children)}}
         >
         </div>
@@ -120,6 +126,71 @@ class TopicChildren extends React.Component {
     )
   }
 }
+
+let topicChildrenStyles = {
+  topic: {
+    '& .child': {
+      maxWidth: '95vw',
+
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    '& .topic-heading': {
+      '& a': {
+        fontSize: '24px !important'
+      },
+    },
+    '& .topic-details': {
+
+    },
+    '& .discuss-link': {
+      marginLeft: 15,
+      color: `${colors.silver8}`,
+    },
+    '& .topic-detail-description': {
+      fontWeight: 600,
+    },
+    '& .discuss-topic': {
+      marginTop: 27,
+      fontSize: 17,
+
+    }
+  },
+  topicHead: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // background: colors.silver2,
+  },
+  topicName: {
+    fontSize: 27,
+    color: colors.silver,
+  },
+  topicDescription: {
+    color: colors.silver6,
+    fontWeight: 600,
+    maxWidth: '60ch',
+
+    "@media (max-width: 408px)": {
+      marginLeft: 15,
+    },
+    "@media (min-width: 408px)": {},
+  },
+  topicDetails: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    margin: '20px auto',
+    maxWidth: '60ch',
+
+  }
+}
+
+TopicChildren = injectSheet(topicChildrenStyles)(TopicChildren)
 
 class TopicContainer extends React.Component {
   constructor(props) {
@@ -301,16 +372,6 @@ class TopicContainer extends React.Component {
             <div id="topic-items"
                  className={classes.topicItems}
             >
-              <Affix offsetTop={38}>
-                <div id="topic-items-heading"
-                      style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
-                >
-                  <h3 id="blurb-title">
-                  Discuss {topic}
-                  </h3>
-                </div>
-              </Affix>
-
               <div className="item-list">
                 {this.topicDescription(list)}
               </div>
@@ -333,18 +394,17 @@ const topicStyles = {
       textDecoration: 'none !important',
     }
   },
+  topic: {
+
+  },
+  topicHeader: {
+
+  },
   topics: {
     display: 'grid',
+    marginTop: 65,
 
-    '& .topic-heading': {
-      '& a': {
-        fontSize: '24px !important'
-      },
 
-    },
-    '& .discuss-topic': {
-      fontSize: 17,
-    },
     '@media (max-width: 860px)': {
       gridTemplateRows: 'auto 1fr',
       gridTemplateAreas: '"header" "content"',
@@ -367,7 +427,6 @@ const topicStyles = {
     gridArea: 'content',
     width: '100vw',
 
-
     '@media (max-width: 860px)': {
       gridRow: '2 / 3',
       justifySelf: 'center',
@@ -382,8 +441,8 @@ const topicStyles = {
     '& #topic-items-heading': {
       display: 'grid',
       zIndex: 10,
-      minHeight: 70,
-      paddingTop: 20,
+      // minHeight: 70,
+      // paddingTop: 20,
       background: `${colors.primaryDark}`,
       '-webkit-perspective': 1000,
       '-webkit-backface-visibility': 'hidden',
@@ -391,36 +450,6 @@ const topicStyles = {
       '& .float:hover': {
         '-webkit-animation': 'none'
       },
-
-
-      '& .blurb-title': {
-        fontSize: '3.8rem !important',
-        lineHeight: '1.7rem !important',
-        color: `${colors.lighterBlack} !important`,
-        margin: [5,0,0,0],
-        fontSize: 30,
-        maxWidth: '70ch',
-
-        '@media (max-width: 860px)': {
-          gridColumn: '1 / 2',
-          maxWidth: '98vw',
-        },
-        // filter: 'contrast(.8)'
-        '& #blurb-subtitle': {
-          margin: [0,0,0,0],
-          color: `${colors.silver} !important`,
-          fontSize: '1.5rem',
-
-        },
-
-        '& #blurb': {
-          margin: [0,0,0,0],
-          color: `${colors.offWhite}`,
-          fontSize: '16px',
-          padding: 0,
-        },
-      },
-
 
       '& .float': {
         gridColumn: '3',
@@ -441,66 +470,29 @@ const topicStyles = {
 
     '& .item-list': {
 
-      padding: '10px',
       color: `${colors.offWhite} !important`,
 
-      '& .ant-list-items': {
-        boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
-        width: '95vw',
-        background: `${colors.secondaryDark}`,
-        border: `1px solid ${colors.darkerDarkBlack}`,
-        padding: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'left',
-        maxWidth: '95vw',
+      '& .topic-description': {
+        margin: [0,0,0,0],
+        color: `${colors.smoke4}`,
 
-        // '& #ant-list-item-meta': {
-        //   '& #topic-detail': {
-        //     padding: 40
-        //   }
-        // },
-
-        '& .ant-list-item-meta-description': {
-            maxWidth: '80ch'
-         },
-
-        '& .item-name': {
-          margin: [0,0,0,0],
-          color: `${colors.midTone} !important`,
-
+        '& .topic-name': {
+          color: colors.silver
         },
 
-        '& .topic-description': {
+        '& .description': {
           margin: [0,0,0,0],
-          color: `${colors.smoke}`,
+          color: `${colors.silver6}`
+        },
 
-          '& .description': {
-            margin: [0,0,0,0],
-            color: `${colors.smoke}`
-          },
+        '& .topic-detail': {
 
-          '& .topic-details': {
-            color: `${colors.midTone}`,
-
-
+          '& .topic-detail-description': {
+            color: `${colors.silver8}`,
           }
-        },
 
-        '& .ant-list-item-meta-title': {
-           '& a': { color: `${colors.darkYellow}`},
-           '&:hover': {
-             cursor: 'select',
-             color: '',
-             textDecoration: 'underline'
-           }
-         },
-
-         '& .ant-list-item-meta-avatar': {
-
-          },
+        }
       },
-
 
     },
   },

@@ -57,7 +57,7 @@ class SignUpStep1 extends Component {
       ? props.topics.map((data, i) => {
           return (
             <Tile
-              className="topic-tile"
+              className={classes.topicTile}
               data={data}
               key={i}
               id={data.id}
@@ -86,7 +86,7 @@ class SignUpStep1 extends Component {
               onClick={this._validate}
               disabled={!this.state.showFooter}
               style={
-                this.state.showFooter ? {background: `${colors.origGreen}`,
+                this.state.showFooter ? {background: `${colors.antBlue}`,
                                          color: `${colors.offWhite}`} : {  }
               }
             >
@@ -123,7 +123,7 @@ const styles = {
     minHeight: '15vh',
     maxWidth: 405,
     zIndex: 1,
-    background: `${colors.primaryDark}`,
+    background: `${colors.black}`,
 
     "@media (max-width: 482px)": {
 
@@ -147,12 +147,17 @@ const styles = {
       color: `${colors.lightBlack}`,
     }
   },
+
+  topicTile: {
+    background: `${colors.black}`,
+
+  },
   footer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'fixed',
-    minHeight: "50px",
+    minHeight: "64px",
     width: '100vw',
     zIndex: 10,
     bottom: 0,

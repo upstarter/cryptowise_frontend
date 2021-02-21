@@ -95,7 +95,7 @@ export const discussionsMiddleware = ({dispatch}) => next => action => {
       postData.thread_id = data.threadID
       postData.user_id = 1
       postData.parent_id = data.threadID
-
+      console.log('post',postData)
       dispatch(apiRequest(postData, 'POST', API.CREATE_POST, POST))
       next({...action, postData})
       break;

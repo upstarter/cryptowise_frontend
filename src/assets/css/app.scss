@@ -3,9 +3,6 @@
 
 @charset "utf-8";
 
-a {
-  color: red;
-}
 html, body {
   height: 100vh;
   font-family: Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif;
@@ -150,7 +147,7 @@ body {
     line-height: 3.4rem;
     letter-spacing: 0.15ch;
     @media (min-width: 992px) {
-      font-size: 5.1rem;
+      font-size: 3.8rem;
     }
   }
 

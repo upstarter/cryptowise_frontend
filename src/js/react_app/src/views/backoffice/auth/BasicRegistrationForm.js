@@ -13,7 +13,6 @@ import {
   Form,
   Input,
   Tooltip,
-  Icon,
   Cascader,
   Select,
   Row,
@@ -23,6 +22,8 @@ import {
   AutoComplete,
   Modal
 } from 'antd';
+
+import {QuestionCircleOutlined} from "@ant-design/icons"
 import TermsOfServiceComponent from 'Base/TermsOfServiceComponent'
 
 const { Option } = Select;
@@ -138,7 +139,7 @@ class RegistrationForm extends React.Component {
             <span>
               Username&nbsp;
               <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
+                <QuestionCircleOutlined />
               </Tooltip>
             </span>
           }

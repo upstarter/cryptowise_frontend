@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
-import { Card, Icon } from 'antd';
+import { Card } from 'antd';
 import colors from "Styles/colors"
-
+import {CheckCircleOutlined} from '@ant-design/icons';
 class CardTile extends Component {
   constructor(props) {
     super(props);
@@ -48,23 +48,22 @@ class CardTile extends Component {
          // bordered={true}
          // hoverable={true}
          className={classes.card}
-         style={state.selected ? { background: `${colors.primaryDark}` } : null}
+         style={state.selected ? { background: `${colors.white}` } : null}
          onClick={id => this.handleSelected(data.id)}
         >
           <div
             id={`item-${data.id}`}
             className={state.selected ? "selected-topic-item" : "topic-item"}
-            style={state.selected ? { color: `${colors.offWhite}` } : null}
+            style={state.selected ? { color: colors.antBlue } : null}
           >
             {/* <p><strong>{data.id}</strong></p> */}
-            <p id='name'>
+            <p className={state.selected ? classes.topicNameSelected : classes.topicName}>
               <span>{data.name}</span>
-              <Icon
+              <CheckCircleOutlined
                 style={state.selected ? { position: 'absolute', right: 10, top: 10 } : { display: 'none'}}
                 id='check-icon'
-                type="check-circle"
                 theme="twoTone"
-                twoToneColor={`${colors.origGreen}`}
+                twoToneColor={`${colors.spotifyGreen}`}
               />
             </p>
 
@@ -86,6 +85,13 @@ class CardTile extends Component {
 }
 
 const styles = {
+  topicName: {
+    color: colors.silver,
+
+  },
+  topicNameSelected: {
+    color: colors.black,
+  },
   card: {
     minHeight: 50,
     marginBottom: 5,
@@ -95,7 +101,7 @@ const styles = {
     // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
     // border: '1px solid rgba(240,240,240,.5)',
     fontSize: '1.2rem',
-    background: `${colors.quartDark}`,
+    background: `${colors.antBlue}`,
     '& .topic-item': {
       display: 'flex',
       flexDirection: 'row',
