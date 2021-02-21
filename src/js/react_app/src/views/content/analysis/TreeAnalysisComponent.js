@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import Treemap from 'Components/charts/Treemap'
 import injectSheet, { jss } from "react-jss";
-import { Layout, Icon } from "antd";
+import { Layout } from "antd";
 const { Content } = Layout;
 import Tooltip from './Tooltip.js';
 import { connect } from "react-redux";

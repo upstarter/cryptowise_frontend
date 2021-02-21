@@ -8,18 +8,7 @@ import Cookies from "universal-cookie";
 import { api_url, url } from "Utils/consts";
 import setAuthToken from "Services/auth/setAuthToken";
 import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
-import {
-  List,
-  Avatar,
-  Button,
-  Skeleton,
-  Affix,
-  Rate,
-  Icon,
-  Typography,
-  Divider,
-  Modal,
-} from "antd";
+import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from "antd";
 const { Title, Paragraph, Text } = Typography;
 import { bindActionCreators } from "redux";
 import { createPost } from "Redux/discussions";

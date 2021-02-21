@@ -4,7 +4,7 @@ import { url } from "Utils/consts";
 import PortfolioGrid from "Components/datagrid/PortfolioGrid";
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import injectSheet, { jss } from "react-jss";
-import { Layout, Icon } from "antd";
+import { Layout } from "antd";
 import notify from "Components/base/notify/notify"
 const { Content } = Layout;
 import axios from "Config/axios";

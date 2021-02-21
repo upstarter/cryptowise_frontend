@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
-import { List, Card, Button, Rate, Icon, Typography, Divider, Affix } from 'antd';
+import { List, Card, Button, Rate, Typography, Divider, Affix } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";

@@ -5,7 +5,7 @@ import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
 import NewTopicForm from './NewTopicForm'
-import { List, Avatar, Button, Skeleton, Affix, Rate, Icon, Typography, Divider, Modal } from 'antd';
+import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
 import { connect } from "react-redux";

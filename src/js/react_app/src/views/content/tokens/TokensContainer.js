@@ -11,7 +11,6 @@ import {
   Skeleton,
   Affix,
   Rate,
-  Icon,
   Typography,
   Divider,
   Modal,

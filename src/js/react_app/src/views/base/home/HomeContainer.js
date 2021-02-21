@@ -27,7 +27,7 @@ import TokensContainer from "Content/tokens/TokensContainer"
 import TokenContainer from "Content/tokens/TokenContainer"
 import TopicComponent from "Content/topics/TopicComponent"
 import TopicContainer from "Content/topics/TopicContainer"
-import { Layout, Menu, Icon, Drawer } from "antd";
+import { Layout, Menu, Drawer } from "antd";
 const { Content, Sider, Footer } = Layout;
 const { SubMenu } = Menu;
 import config from "Utils/config";
@@ -41,7 +41,7 @@ import globalStyles from "Styles/globalStyles";
 import Loadable from "react-loadable";
 
 //TODO: bundle-loader: require("bundle-loader?lazy&name=admin!../admin")
-const lazy = loader => class extends React.Component {
+const lazy = loader => (class extends React.Component {
   componentDidMount() {
     loader(mod =>
       this.setState({
@@ -59,7 +59,7 @@ const lazy = loader => class extends React.Component {
       return <div>Loading...</div>
     }
   }
-}
+})
 
 const Protected = () => <h3>Protected</h3>;
 
@@ -92,66 +92,64 @@ class HomeContainer extends React.Component {
 
   render() {
     const { classes } = this.props;
-    return (
-      <>
-        <div className={classes.globe}>
-            <BrowserRouter>
-              <>
-              <AppHeader toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed}  />
-              <SiderMenu toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed} />
-              <Layout className={classes.typography, classes.baseLayout} id="wrapper">
-                <Drawer
-                  title="CryptoWise"
-                  placement="right"
-                  closable={true}
-                  onClose={this.onClose}
-                  visible={this.state.visible}
-                >
-                  <p>Wrap with separate router?</p>
-                  <p>Or move?</p>
-                  <p>Some contents...</p>
-                </Drawer>
-                <Layout className={classes.baseContent}>
-                  <Content className={classes.content}>
-                    <Route exact path="/" component={HomeComponent} />
-                    <AuthRoute exact path="/profile" component={ProfileComponent} />
-                    <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
-                    <AuthRoute exact path="/proposals" component={ProposalComponent} />
+    return <>
+      <div className={classes.globe}>
+          <BrowserRouter>
+            <>
+            <AppHeader toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed}  />
+            <SiderMenu toggleSider={this.onSiderCollapsed} siderCollapsed={this.state.siderCollapsed} />
+            <Layout className={(classes.typography, classes.baseLayout)} id="wrapper">
+              <Drawer
+                title="CryptoWise"
+                placement="right"
+                closable={true}
+                onClose={this.onClose}
+                visible={this.state.visible}
+              >
+                <p>Wrap with separate router?</p>
+                <p>Or move?</p>
+                <p>Some contents...</p>
+              </Drawer>
+              <Layout className={classes.baseContent}>
+                <Content className={classes.content}>
+                  <Route exact path="/" component={HomeComponent} />
+                  <AuthRoute exact path="/profile" component={ProfileComponent} />
+                  <AuthRoute exact path="/portfolio" component={PortfolioComponent} />
+                  <AuthRoute exact path="/proposals" component={ProposalComponent} />
 
-                    <Route path="/tokens/:tokenId" component={TokenContainer} />
-                    <Route path="/topics/:topicID" component={TopicContainer} />
-                    <Route path="/discuss/topics/:topicID" component={DiscussContainer} />
-                    <Route path="/discuss/threads/:threadID" component={ThreadContainer} />
+                  <Route path="/tokens/:tokenId" component={TokenContainer} />
+                  <Route path="/topics/:topicID" component={TopicContainer} />
+                  <Route path="/discuss/topics/:topicID" component={DiscussContainer} />
+                  <Route path="/discuss/threads/:threadID" component={ThreadContainer} />
 
-                    <Route exact  path="/:topicID(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
-                    <Route exact path="/tokens" component={TokensContainer} />
-                    <Route exact path="/federations" component={FederationsComponent} />
+                  <Route exact  path="/:topicID(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
+                  <Route exact path="/tokens" component={TokensContainer} />
+                  <Route exact path="/federations" component={FederationsComponent} />
 
-                    {/*
-                    // <Route exact path="/groups" component={GroupsContainer} />
-                    // <Route exact path="/groups" component={GroupContainer} />
-                    // <Route exact path="/groups/:groupId" component={GroupComponent} />
-                    // <Route exact path="/discuss/:groupId/:topicId" component={GroupDiscussContainer} />
-                    */}
+                  {/*
+                  // <Route exact path="/groups" component={GroupsContainer} />
+                  // <Route exact path="/groups" component={GroupContainer} />
+                  // <Route exact path="/groups/:groupId" component={GroupComponent} />
+                  // <Route exact path="/discuss/:groupId/:topicId" component={GroupDiscussContainer} />
+                  */}
 
 
-                    <Route exact path="/analysts" component={AnalystComponent} />
-                    <Route exact path="/about" component={AboutComponent} />
-                    <Route exact path="/signup" component={SignUpContainer} />
-                    <Route exact path="/login" component={BasicLoginForm} />
-                    <Route exact path="/logout" component={Logout} />
-                    <Route exact path="/privacy_policy" component={PrivacyComponent} />
-                  </Content>
-                  <Footer className={classes.footer} >
-                    <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>
-                  </Footer>
-                </Layout>
+                  <Route exact path="/analysts" component={AnalystComponent} />
+                  <Route exact path="/about" component={AboutComponent} />
+                  <Route exact path="/signup" component={SignUpContainer} />
+                  <Route exact path="/login" component={BasicLoginForm} />
+                  <Route exact path="/logout" component={Logout} />
+                  <Route exact path="/privacy_policy" component={PrivacyComponent} />
+                </Content>
+                <Footer className={classes.footer} >
+                  <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>
+                </Footer>
               </Layout>
-            </>
-          </BrowserRouter>
-        </div>
-      </>
-    );
+            </Layout>
+          </>
+        </BrowserRouter>
+      </div>
+    </>;
   }
 }
 

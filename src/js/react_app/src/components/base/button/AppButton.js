@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon } from 'antd';
+import { Button } from 'antd';
 import styles from 'Css/styles.scss'
 
 export default class AppButton extends Component {

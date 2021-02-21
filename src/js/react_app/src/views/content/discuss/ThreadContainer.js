@@ -9,18 +9,7 @@ import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
 import NewPostForm from "./NewPostForm";
 import PostsContainer from "./PostsContainer";
 import Post from "./Post";
-import {
-  List,
-  Avatar,
-  Button,
-  Skeleton,
-  Affix,
-  Rate,
-  Icon,
-  Typography,
-  Divider,
-  Modal,
-} from "antd";
+import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from "antd";
 import { api_url, url } from "Utils/consts";
 import { CommentOutlined } from "@ant-design/icons";
 

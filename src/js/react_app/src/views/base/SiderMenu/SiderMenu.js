@@ -5,7 +5,7 @@ const { Sider } = Layout;
 import LinkMenu from './LinkMenu'
 import injectSheet, { jss } from "react-jss"
 import AppButton from 'Components/base/button/AppButton';
-import { Button, Radio, Icon } from 'antd';
+import { Button, Radio } from 'antd';
 import colors from "Styles/colors"
 
 
