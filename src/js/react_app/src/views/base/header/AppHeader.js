@@ -11,7 +11,7 @@ const { SubMenu } = Menu;
 const { Header } = Layout;
 import colors from 'Styles/colors'
 import nav_logo from "Images/white_nav_logo.svg";
-import {MenuUnfoldOutlined, MenuFoldOutlined} from "@ant-design/icons"
+import {MenuUnfoldOutlined, MenuFoldOutlined, BarsOutlined} from "@ant-design/icons"
 class AppHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -75,10 +75,9 @@ class AppHeader extends React.Component {
                 borderBottom: "none",
               }}
               title={
-                  <Icon
+                  <BarsOutlined
                     style={{fontSize: 25}}
                     className="menu"
-                    type='bars'
                     onClick={this.toggleSub}
                   />
               }

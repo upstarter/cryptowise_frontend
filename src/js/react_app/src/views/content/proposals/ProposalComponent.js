@@ -4,6 +4,7 @@ import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import { api_url } from 'Utils/consts'
 import NewProposalForm from './NewProposalForm'
+import { PlusOutlined, TeamOutlined } from '@ant-design/icons';
 import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from 'antd';
 const { Title, Paragraph, Text } = Typography;
 import axios from "axios";
@@ -176,7 +177,7 @@ class ProposalComponent extends React.Component {
             <div id="proposal-items" className={classes.proposalItems}>
               <Affix offsetTop={50}>
                 <div id="proposal-items-heading">
-                  <Button className="float" onClick={this.showModal} shape="circle" icon="plus" size='large' />
+                  <Button className="float" onClick={this.showModal} shape="circle" icon={<PlusOutlined />} size='large' />
                   <h3>🌱 Ideas </h3>
                   {/* <div id="riff-blurb">
                     <strong>R</strong>apid <strong>I</strong>mplementation, <strong>F</strong>easibility, <strong>F</strong>undability
@@ -197,7 +198,7 @@ class ProposalComponent extends React.Component {
                         <List.Item.Meta
                           id='list-item-meta'
                           avatar={
-                             <Avatar style={{}} icon="team" />
+                             <Avatar style={{}} icon={<TeamOutlined />} />
                           }
                           title={<a href="//ant.design">{item.name}</a>}
                           description={<p className='item-name'>{item.description}</p>}
@@ -220,8 +221,7 @@ class ProposalComponent extends React.Component {
           </section>
         </React.Fragment>
       </div>
-
-    )
+    );
   }
 }
 

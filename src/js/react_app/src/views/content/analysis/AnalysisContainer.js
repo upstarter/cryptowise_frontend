@@ -14,13 +14,18 @@ class AnalysisContainer extends React.Component {
     super(props);
     this.state = {
       mode: "top",
-      key: "analysis",
+      key: "strategy",
     };
   }
 
   componentDidMount() {
     const { match } = this.props;
-    this.setState({ key: match.url.replace("/", "") });
+    let key = match.url.replace("/", "")
+    if (key === 'discuss') {
+      this.setState({key: 'strategy'})
+    } else {
+      this.setState({ key: key })
+    }
   }
 
   handleModeChange = (e) => {
@@ -37,7 +42,7 @@ class AnalysisContainer extends React.Component {
     const { classes } = this.props;
     const { mode, key } = this.state;
     return (
-      <div style={{ marginTop: 60 }}>
+      <div style={{marginTop: 60}}>
         {/* <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
           <Radio.Button value="top">Horizontal</Radio.Button>
         </Radio.Group> */}
@@ -47,14 +52,15 @@ class AnalysisContainer extends React.Component {
           size="large"
           tabBarStyle={{ fontWeight: 800 }}
           tabPosition="top"
-          tabBarGutter={5}
+          tabBarGutter={22}
+          centered
           defaultActiveKey={"strategy"}
           activeKey={key === "analysis" ? "strategy" : key}
           onChange={(key) => this.setKey(key)}
           tabBarStyle={{
-            color: `${colors.midtone}`,
+            color: `${colors.silver8}`,
             position: "fixed",
-            height: 52,
+            height: 55,
             zIndex: 100,
             background: "rgba(0,0,0,1)",
             width: "100vw",
@@ -63,10 +69,10 @@ class AnalysisContainer extends React.Component {
           <TabPane tab="Strategy" key="strategy">
             <TopicContainer setKey={this.setKey} topic="strategy" />
           </TabPane>
-          <TabPane tab="Crypto Assets" key="assets">
+          <TabPane tab="Assets" key="assets">
             <TokensContainer setKey={this.setKey} topic="assets" />
           </TabPane>
-          <TabPane tab="Crypto Economics" key="economics">
+          <TabPane tab="Economics" key="economics">
             <TopicContainer setKey={this.setKey} topic="economics" />
           </TabPane>
           <TabPane tab="Research" key="research">

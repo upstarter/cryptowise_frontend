@@ -122,6 +122,8 @@ class HomeContainer extends React.Component {
                   <Route path="/discuss/topics/:topicID" component={DiscussContainer} />
                   <Route path="/discuss/threads/:threadID" component={ThreadContainer} />
 
+                  <Route exact  path="/:topicID(discuss)" component={AnalysisContainer} />
+
                   <Route exact  path="/:topicID(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
                   <Route exact path="/tokens" component={TokensContainer} />
                   <Route exact path="/federations" component={FederationsComponent} />

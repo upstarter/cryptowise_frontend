@@ -68,7 +68,7 @@ class BlogComponent extends React.Component {
             <h1>Blog Posts</h1>
           </div>
           <div className={classes.blogPosts}>
-            <Row className="card-row" type="flex" justify="center">
+            <Row className={classes.blogRow} type="flex" justify="center">
               {blogPosts.map(post =>
                 <Col key={post.link} xs={25} sm={25} md={7} lg={7} xl={7}>
                   <div key={post.link} className={classes.card}>
@@ -93,6 +93,10 @@ const blogStyles = {
   blog: {
     '& a': { background: 'none !important' }
   },
+  blogRow: {
+    display: 'flex',
+    justifyContent: 'space-around'
+  },
   heading: {
     textAlign: 'center',
 
@@ -101,17 +105,17 @@ const blogStyles = {
     }
   },
   card: {
-    maxWidth: '40ch !important',
+
     minHeight: '100%',
 
     '@media (max-width: 808px)': {
-      maxWidth: '30ch !important',
+      maxWidth: '40ch !important',
       marginBottom: 70,
 
     },
 
-    '@media (min-width: 992px)': {
-       // maxWidth: '60ch'
+    '@media (min-width: 808px)': {
+      width: '35ch'
     },
 
     '.content .is-loading': {

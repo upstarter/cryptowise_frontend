@@ -9,8 +9,10 @@ import {
   withRouter
 } from "react-router-dom";
 
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+
 import {
-  Form,
   Input,
   Tooltip,
   Cascader,
@@ -20,7 +22,7 @@ import {
   Checkbox,
   Button,
   AutoComplete,
-  Modal
+  Modal,
 } from 'antd';
 
 import {QuestionCircleOutlined} from "@ant-design/icons"

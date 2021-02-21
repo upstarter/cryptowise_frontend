@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import injectSheet, { jss } from "react-jss";
 import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
 import { api_url, url } from "Utils/consts";
+import { TeamOutlined } from '@ant-design/icons';
 import {
   List,
   Avatar,
@@ -39,9 +40,12 @@ class TokenDetail extends React.Component {
       <div className={classes.token}>
         <div className={classes.tokenDescription}>{description}</div>
         <div className={classes.tokenDetails}>
-          <div className={classes.tokenUrl}>
-            <Button href={`${url}/tokens/${id}`} type="secondary">
+          <div className={classes.tokenActions}>
+            <Button className={classes.actionButton} href={`${url}/tokens/${id}`} type="secondary">
               View {symbol}
+            </Button>
+            <Button className={classes.actionButton} href={`${url}/discuss/tokens/${id}`} type="secondary">
+              Discuss {symbol}
             </Button>
           </div>
         </div>
@@ -52,8 +56,15 @@ class TokenDetail extends React.Component {
 
 const tokenDetailStyles = {
   token: {},
+  tokenActions: {
+  },
+  actionButton: {
+    marginRight: 5
+
+  },
   tokenDescription: {
     color: colors.silver8,
+    padding: [3,0,13,0],
   },
   tokenDetails: {},
 };
@@ -186,17 +197,16 @@ class TokensContainer extends React.Component {
   };
 
   avatar = (token, classes) => {
-    console.log(token.symbol.toLowerCase())
-    let imgUrl = `./crypto-logos/${token.symbol.toLowerCase()}.png`
+    let imgUrl = require(`./crypto-logos/${token.symbol.toLowerCase()}.png`)
+    //
     const tokenImg = (
       <Image
         src={imgUrl}
-        width={'1000px'}
+        className={classes.img}
       />
     );
 
-    console.log(tokenImg)
-    return <Avatar size="large" src={tokenImg} icon="team" />
+    return <Avatar size="large" src={tokenImg} icon={<TeamOutlined />} />;
   };
 
   render() {
@@ -280,9 +290,16 @@ const tokenStyles = {
     maxWidth: 600,
     margin: "0 auto",
   },
+  img: {
+
+  },
   tokenName: {},
   tokenItems: {
     "& .item-list": {
+      '& .ant-avatar': {
+        width: 70,
+        height: 70,
+      },
       color: `${colors.offWhite} !important`,
       "& .ant-list-items": {
         boxShadow: "-6px 6px 2px -3px  rgba(100,100,100,.1)",
@@ -294,7 +311,7 @@ const tokenStyles = {
         justifyItems: "space-around",
 
         "& .ant-list-item": {
-          background: colors.primaryDark,
+          // background: colors.primaryDark,
           padding: 20,
         },
 

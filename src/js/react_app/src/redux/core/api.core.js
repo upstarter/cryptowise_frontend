@@ -40,8 +40,8 @@ export const apiMiddleware = ({dispatch}) => next => action => {
       method: method,
       url: url,
       data: data,
-    }).then( res => res )
-      .then( data => dispatch( apiSuccess(data, entity) ) )
-      .catch( res => dispatch( apiError(res, entity) ) )
+    })
+      .then( res => dispatch( apiSuccess(res.data, entity) ) )
+      .catch( err => dispatch( apiError(err, entity) ) )
   }
 }

@@ -1,5 +1,7 @@
 {
-  "engines" : { "node" : ">=14.15.5" },
+  "engines": {
+    "node": ">=14.15.5"
+  },
   "repository": {},
   "license": "MIT",
   "scripts": {
@@ -11,6 +13,7 @@
     "eslint": "node_modules/.bin/eslint -c ../.eslintrc.js js/"
   },
   "dependencies": {
+    "@ant-design/compatible": "^1.0.8",
     "@ant-design/icons": "^4.4.0",
     "@carrotsearch/foamtree": "^3.5.0",
     "antd": "^4.12.3",

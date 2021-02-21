@@ -11,7 +11,7 @@ import PostsContainer from "./PostsContainer";
 import Post from "./Post";
 import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from "antd";
 import { api_url, url } from "Utils/consts";
-import { CommentOutlined } from "@ant-design/icons";
+import { CommentOutlined, PlusOutlined } from '@ant-design/icons';
 
 class ThreadContainer extends React.Component {
   constructor(props) {
@@ -157,7 +157,7 @@ class ThreadContainer extends React.Component {
                 className="float"
                 onClick={this.showModal}
                 shape="circle"
-                icon="plus"
+                icon={<PlusOutlined />}
                 size="large"
               />
               <h2 className={("title-large", classes.pageTitle)}>
@@ -207,7 +207,7 @@ class ThreadContainer extends React.Component {
                   className="float"
                   onClick={this.showModal}
                   shape="circle"
-                  icon="plus"
+                  icon={<PlusOutlined />}
                   size="large"
                 />
                 <h2 className={("title-large", classes.pageTitle)}>

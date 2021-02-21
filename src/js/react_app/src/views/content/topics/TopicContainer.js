@@ -240,7 +240,14 @@ class TopicContainer extends React.Component {
     let re = /\d+$/
     let found = topicID && topicID.match(re)
 
-    let url = `${api_url}/${topic}?per_page=${count}&page=${this.state.page}`
+    let url = `${api_url}/${topic}`
+
+    if (topic === 'discuss') {
+      url = `${api_url}/strategy?per_page=${count}&page=${this.state.page}`
+    } else {
+      url = `${url}?per_page=${count}&page=${this.state.page}`
+
+    }
 
     if (found) {
       url = `${api_url}/topics/${this.state.topicID}?per_page=${count}&page=${this.state.page}`

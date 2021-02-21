@@ -1,6 +1,9 @@
 import React from 'react'
 
-import { List, Button, Modal, Form, Input, Radio, Typography } from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+
+import { List, Button, Modal, Input, Radio, Typography } from 'antd';
 const { TextArea } = Input;
 const { Title, Paragraph, Text } = Typography;
 import colors from "Styles/colors"

@@ -8,18 +8,19 @@ import {
 } from "react-router-dom";
 import { loginUser } from "Redux/core/auth.core"
 import injectSheet, { jss } from 'react-jss'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Input, Button, Checkbox } from 'antd';
+import { Form } from '@ant-design/compatible';
+
 import colors from "Styles/colors"
 import {UserOutlined,LockOutlined} from "@ant-design/icons"
+
 class BasicLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.props.dispatch(loginUser(values))
-        setTimeout(3000, () => {
-          this.props.history.replace('/proposals')
-        })
+        this.props.history.replace('/discuss')
       }
     });
   };
@@ -223,4 +224,4 @@ const styles = {
   }
 };
 
-export default connect(null, null)(injectSheet(styles)(WrappedBasicLoginForm));
+export default connect(null, null)(injectSheet(styles)(withRouter(WrappedBasicLoginForm)));

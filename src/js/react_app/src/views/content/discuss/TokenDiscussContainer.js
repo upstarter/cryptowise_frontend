@@ -14,7 +14,7 @@ import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal
 import { api_url, url } from "Utils/consts";
 import { CommentOutlined, PlusOutlined } from '@ant-design/icons';
 
-class DiscussContainer extends React.Component {
+class TokenDiscussContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -303,7 +303,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-// anything returned from here will end up as props on DiscussContainer
+// anything returned from here will end up as props on TokenDiscussContainer
 // whenever selectPost is called the result should be passed to all reducers
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators({ selectThread: null }, dispatch);
@@ -315,4 +315,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   null
-)(injectSheet(threadListStyles)(DiscussContainer));
+)(injectSheet(threadListStyles)(TokenDiscussContainer));

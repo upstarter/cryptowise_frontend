@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Menu } from "antd";
-import { CommentOutlined } from "@ant-design/icons"
 import injectSheet, { jss } from "react-jss";
 import AuthService from 'Services/auth/AuthService'
 import { UserAddOutlined,
@@ -9,6 +8,7 @@ import { UserAddOutlined,
   PieChartOutlined,
   BulbOutlined,
   CloseOutlined,
+  CommentOutlined
  } from '@ant-design/icons';
 
 const LinkMenu = withRouter(props => {
@@ -44,7 +44,7 @@ const LinkMenu = withRouter(props => {
         { !auth.signedIn() ?
           <Menu.Item key="/">
             <Link to="/" style={{ textDecoration: "none" }}>
-              <UserAdd />
+              <UserAddOutlined />
               <span className="nav-text">Sign Up</span>
             </Link>
           </Menu.Item> : '' }
@@ -75,8 +75,8 @@ const LinkMenu = withRouter(props => {
           </Menu.Item>
         } */}
         {
-          <Menu.Item key="/analysis">
-            <Link to="/analysis" style={{ textDecoration: "none" }}>
+          <Menu.Item key="/discuss">
+            <Link to="/discuss" style={{ textDecoration: "none" }}>
               <CommentOutlined type="comment-outlined" />
               <span className="nav-text">Discuss</span>
             </Link>
@@ -93,7 +93,7 @@ const LinkMenu = withRouter(props => {
         { auth.signedIn() ?
           <Menu.Item key="/proposals">
             <Link to="/proposals" style={{ textDecoration: "none" }}>
-              <Bulb />
+              <BulbOutlined />
               <span className="nav-text">Ideate</span>
             </Link>
           </Menu.Item> : ''
@@ -101,7 +101,7 @@ const LinkMenu = withRouter(props => {
         { auth.signedIn() ?
           <Menu.Item key="/portfolio">
             <Link to="/portfolio" style={{ textDecoration: "none" }}>
-              <PieChart />
+              <PieChartOutlined />
               <span className="nav-text">Portfolio</span>
             </Link>
           </Menu.Item> : ''
@@ -110,7 +110,7 @@ const LinkMenu = withRouter(props => {
         { auth.signedIn() ?
           <Menu.Item key="/profile">
             <Link to="/profile" style={{ textDecoration: "none" }}>
-            <User />
+            <UserOutlined />
               <span className="nav-text">Profile</span>
             </Link>
           </Menu.Item> : ''

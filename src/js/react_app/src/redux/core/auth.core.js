@@ -3,51 +3,68 @@ import { api_url } from 'Utils/consts';
 import AuthService from 'Services/auth/AuthService'
 import decode from 'jwt-decode'
 import Cookies from 'universal-cookie'
-import {apiRequest} from 'Redux/core/api.core'
+import {apiRequest, API_SUCCESS, API_ERROR} from 'Redux/core/api.core'
 
 export const AUTH = '[AUTH]'
-export const REGISTER_USER = `REGISTER_USER`
-export const SET_CURRENT_USER = `SET_CURRENT_USER`
-export const LOGIN_USER = `LOGIN_USER`
-export const AUTH_SUCCESS = `AUTH_SUCCESS`
-export const AUTH_ERROR = `AUTH_ERROR`
+export const REGISTER_USER = `${AUTH} REGISTER_USER`
+export const LOGIN_USER = `${AUTH} LOGIN_USER`
+export const AUTH_SUCCESS = `${AUTH} API_SUCCESS`
+export const AUTH_ERROR = `${AUTH} API_ERROR`
+export const LOGIN_SUCCESS = `${AUTH} LOGIN_SUCCESS`
+export const LOGIN_ERROR = `${AUTH} LOGIN_ERROR`
+export const SET_CURRENT_USER = `${AUTH} SET_CURRENT_USER`
 
 const API = {
   REGISTER_USER: `${api_url}/auth/create`,
   LOGIN_USER: `${api_url}/auth/sign_in`,
 }
 export const registerUser = (regFormData) => ({
-  type : `${AUTH} ${REGISTER_USER}`,
+  type : REGISTER_USER,
   payload: {
     regFormData,
   }
 })
 
+export const loginUser = (creds) => ({
+  type : LOGIN_USER,
+  payload: {
+    creds,
+  }
+})
+
 export const authSuccess = (body) => ({
-  type : `${AUTH} ${AUTH_SUCCESS}`,
+  type : AUTH_SUCCESS,
   payload: {
     data: body
   }
 })
 
 export const authError = (body) => ({
-  type : `${AUTH} ${AUTH_ERROR}`,
+  type : AUTH_ERROR,
+  payload: {
+    data: body
+  }
+})
+
+export const loginSuccess = (body) => ({
+  type : LOGIN_SUCCESS,
+  payload: {
+    data: body
+  }
+})
+
+export const loginError = (body) => ({
+  type : LOGIN_ERROR,
   payload: {
     data: body
   }
 })
 
 export const setCurrentUser = (token) => ({
-  type: `${AUTH} ${SET_CURRENT_USER}`,
+  type: SET_CURRENT_USER,
   payload: token
 })
 
-export const loginUser = (creds) => ({
-  type : `${AUTH} ${LOGIN_USER}`,
-  payload: {
-    creds,
-  }
-})
 
 
 let initialState = {}
@@ -57,19 +74,27 @@ export const authReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
-    case `${AUTH} ${REGISTER_USER}`:
+    case REGISTER_USER:
       console.log('reg-user', payload)
       return { state: payload }
 
-    case `${AUTH} ${AUTH_SUCCESS}`:
-      console.log('auth-succe', payload)
-      return { state: payload }
+    // case AUTH_SUCCESS:
+    //   console.log('auth-success', payload)
+    //   return { state: payload }
+    //
+    // case AUTH_ERROR:
+    //   console.log('auth-error', payload)
+    //   return { state: payload }
+    //
+    // case LOGIN_SUCCESS:
+    //   console.log('login-success', payload)
+    //   return { state: payload }
+    //
+    // case LOGIN_ERROR:
+    //   console.log('login-error', payload)
+    //   return { state: payload }
 
-    case `${AUTH} ${AUTH_ERROR}`:
-      console.log('auth-error', payload)
-      return { state: payload }
-
-    case `${AUTH} ${SET_CURRENT_USER}`:
+    case SET_CURRENT_USER:
       console.log('set-curr-user', payload)
       return { token: payload }
 
@@ -139,30 +164,30 @@ export const authMiddleware = ({dispatch}) => next => action => {
 
   switch(action.type) {
 
-    case `${AUTH} ${LOGIN_USER}`:
+    case LOGIN_USER:
       const { creds } = action.payload
       const data = {session: creds}
-      dispatch(apiRequest(null, 'POST', API.LOGIN_USER, LOGIN_USER))
-      const request = axios.post(`${API.LOGIN_USER}`, data)
-      request.then(response => {
-        const data = response.data
-        if (data.error) {
-          dispatch( authError(error) )
-          console.log('user signin error')
-        } else {
-          dispatch( authSuccess(data) )
-          dispatch(setCurrentUser(creds))
-        }
-      })
-      .catch((error) => {
-        console.log('error', error)
-        dispatch( authError(error) )
-      })
+      dispatch(apiRequest(data, 'POST', API.LOGIN_USER, AUTH))
+
+      // const request = axios.post(`${API.LOGIN_USER}`, data)
+      // request.then(response => {
+      //   const data = response.data
+      //   if (data.error) {
+      //     dispatch( authError(error) )
+      //     console.log('user signin error')
+      //   } else {
+      //     dispatch( authSuccess(data) )
+      //   }
+      // })
+      // .catch((error) => {
+      //   console.log('error', error)
+      //   dispatch( authError(error) )
+      // })
       next({...action, payload: creds})
       break;
 
 
-    case `${AUTH} ${REGISTER_USER}`:
+    case REGISTER_USER:
 
       const { regFormData } = action.payload
       dispatch(apiRequest(null, 'POST', API.REGISTER_USER, REGISTER_USER))
@@ -186,7 +211,7 @@ export const authMiddleware = ({dispatch}) => next => action => {
           const token = cookies.get('_cw_acc')
           const auth = new AuthService
           auth.setToken(token)
-          dispatch(setCurrentUser(token))
+          // dispatch(setCurrentUser(token))
 
         }).then((data) => {
           localStorage.setItem('userName', regFormData.nickname)
@@ -199,8 +224,27 @@ export const authMiddleware = ({dispatch}) => next => action => {
         next({...action, payload: regFormData})
         break;
 
+    case AUTH_SUCCESS:
+      // dispatch(setCurrentUser(creds))
+      // dispatch(authSuccess())
+      console.log('auth succ', action.payload)
 
-    case `${AUTH} ${AUTH_SUCCESS}`:
+      next({...action, payload: action.payload})
+
+      break;
+
+
+    case AUTH_ERROR:
+      console.log('auth err')
+
+      console.log(action.payload)
+      // next({...action, payload: action.payload})
+
+      break;
+
+    case LOGIN_SUCCESS:
+      dispatch(setCurrentUser(creds))
+
       console.log('auth succ')
       // dispatch(authSuccess())
       next({...action, payload: action.payload})
@@ -208,7 +252,7 @@ export const authMiddleware = ({dispatch}) => next => action => {
       break;
 
 
-    case `${AUTH} ${AUTH_ERROR}`:
+    case LOGIN_ERROR:
       console.log('auth err')
       // dispatch(apiError())
       next({...action, payload: action.payload})
