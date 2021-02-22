@@ -242,6 +242,9 @@ class TokensContainer extends React.Component {
           <ScrollToTopOnMount />
 
           <section id="token" className={classes.tokens}>
+            <h1 className={classes.discuss}>
+              Wisdom Repo
+            </h1>
             <div id="token-items" className={classes.tokenItems}>
               <div className={classes.tokenColumn}>
                 <List
@@ -286,12 +289,24 @@ class TokensContainer extends React.Component {
 
 const tokenStyles = {
   tokens: {
-    marginTop: 60,
+    marginTop: 50,
     maxWidth: 600,
     margin: "0 auto",
   },
   img: {
 
+  },
+  discuss: {
+    margin: [0,0,10,0],
+    marginTop: '10px !important',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    "@media (max-width: 408px)": {
+
+    },
+    "@media (min-width: 408px)": {},
   },
   tokenName: {},
   tokenItems: {

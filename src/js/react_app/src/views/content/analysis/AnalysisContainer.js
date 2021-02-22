@@ -55,7 +55,7 @@ class AnalysisContainer extends React.Component {
           tabBarGutter={22}
           centered
           defaultActiveKey={"strategy"}
-          activeKey={key === "analysis" ? "strategy" : key}
+          activeKey={key === "discuss" ? "strategy" : key}
           onChange={(key) => this.setKey(key)}
           tabBarStyle={{
             color: `${colors.silver8}`,
@@ -69,11 +69,11 @@ class AnalysisContainer extends React.Component {
           <TabPane tab="Strategy" key="strategy">
             <TopicContainer setKey={this.setKey} topic="strategy" />
           </TabPane>
-          <TabPane tab="Assets" key="assets">
-            <TokensContainer setKey={this.setKey} topic="assets" />
-          </TabPane>
           <TabPane tab="Economics" key="economics">
             <TopicContainer setKey={this.setKey} topic="economics" />
+          </TabPane>
+          <TabPane tab="Assets" key="assets">
+            <TopicContainer setKey={this.setKey} topic="discuss/topics/193" />
           </TabPane>
           <TabPane tab="Research" key="research">
             <TopicContainer setKey={this.setKey} topic="research" />

@@ -22,7 +22,8 @@ class TopicChildren extends React.Component {
     super(props)
 
     this.state = {
-      topic: props.topic
+      topic: props.topic,
+      topicID: props.topicID
     }
   }
 
@@ -43,12 +44,12 @@ class TopicChildren extends React.Component {
     let hasChildren = children && children.length > 0
     if (lvl >= 0) {
       if (hasChildren) {
-        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
+        data += `<a class='discuss-topic' style='user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
       } else {
-        data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.antBlue};' href='/discuss/topics/${topic.id}'>${topic.name}</a>`
+        data += `<a class='discuss-topic' style='user-select:none;color: ${colors.antBlue};' href='/discuss/topics/${topic.id}'>${topic.name}</a>`
       }
     } else {
-      data += `<a class='discuss-topic' style='letter-spacing: 1px;font-variant: small-caps;font-weight: 600;user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
+      data += `<a class='discuss-topic' style='user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
     }
     return data
   }
@@ -107,12 +108,14 @@ class TopicChildren extends React.Component {
 
   render() {
     let { topic, classes } = this.props
+    let { topicID } = this.state
     if (!topic) { return (<></>) }
+
     return (
       <div className={classes.topic}>
         <section className={classes.topicHead}>
           <span className={classes.topicName}>
-            {topic && topic.name}
+            Discuss {topic && topicID === 'strategy' ? "Strategy" : topic.name }
           </span>
           <span className={classes.topicDescription}>
             {topic && topic.description}
@@ -129,6 +132,7 @@ class TopicChildren extends React.Component {
 
 let topicChildrenStyles = {
   topic: {
+    marginTop: 20,
     '& .child': {
       maxWidth: '95vw',
 
@@ -159,6 +163,14 @@ let topicChildrenStyles = {
 
     }
   },
+  discuss: {
+    margin: [0,0,0,0],
+
+    "@media (max-width: 408px)": {
+
+    },
+    "@media (min-width: 408px)": {},
+  },
   topicHead: {
     display: 'flex',
     flexDirection: 'column',
@@ -167,14 +179,19 @@ let topicChildrenStyles = {
     // background: colors.silver2,
   },
   topicName: {
-    fontSize: 27,
+    fontSize: '2.45rem !important',
     color: colors.silver,
+    maxWidth: '400px',
+    "@media (max-width: 408px)": {
+      fontSize: '1.5rem !important',
+      padding: 5,
+    },
   },
   topicDescription: {
     color: colors.silver6,
-    fontWeight: 600,
+    fontWeight: 500,
     maxWidth: '60ch',
-
+    marginBottom: 5,
     "@media (max-width: 408px)": {
       marginLeft: 15,
     },
@@ -214,16 +231,12 @@ class TopicContainer extends React.Component {
 
   componentDidMount() {
     const { match, topic } = this.props
-    console.log('mat', match)
     console.log('rpo', this.props)
 
-    const topicID = match.params.topicID
     this.getData(res => {
       console.log('res',res)
       res.data[0].children = res.data[1]
       this.setState({
-        topic: topic,
-        topicID: topicID,
         initLoading: false,
         data: res.data,
         list: res.data,
@@ -234,25 +247,26 @@ class TopicContainer extends React.Component {
   }
 
   getData = callback => {
-    const topicID = this.state.topicID
+    const { topicID } = this.state
     const {topic} = this.props
-    console.log('top', this.state)
+    console.log('state', this.state)
     let re = /\d+$/
     let found = topicID && topicID.match(re)
 
-    let url = `${api_url}/${topic}`
+    let url
 
-    if (topic === 'discuss') {
+    if (topicID === 'discuss') {
       url = `${api_url}/strategy?per_page=${count}&page=${this.state.page}`
+    } else if (topicID === 'assets') {
+      url = `${api_url}/topics/193?per_page=${count}&page=${this.state.page}`
     } else {
-      url = `${url}?per_page=${count}&page=${this.state.page}`
-
+      url = `${api_url}/${topicID}?per_page=${count}&page=${this.state.page}`
     }
 
     if (found) {
-      url = `${api_url}/topics/${this.state.topicID}?per_page=${count}&page=${this.state.page}`
+      url = `${api_url}/topics/${topicID}?per_page=${count}&page=${this.state.page}`
     }
-
+    console.log('url', url)
     // const data = {
     //   withCredentials: true,
     //   credentials: 'include'
@@ -342,14 +356,15 @@ class TopicContainer extends React.Component {
     this.setState({topic: topic})
   }
 
-  topicDescription = (topic) => {
+  topicDescription = (topic, topicID) => {
     return (
-      <TopicChildren topic={topic[0]} />
+      <TopicChildren topic={topic[0]} topicID={topicID} />
     )
   }
 
   render() {
     let { classes, topic } = this.props
+    let { topicID } = this.state
     console.log('render topic', topic)
     // topic = topic.split(" ").map((txt) => {
     //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
@@ -380,7 +395,7 @@ class TopicContainer extends React.Component {
                  className={classes.topicItems}
             >
               <div className="item-list">
-                {this.topicDescription(list)}
+                {this.topicDescription(list, topicID)}
               </div>
             </div>
           </section>
@@ -409,7 +424,7 @@ const topicStyles = {
   },
   topics: {
     display: 'grid',
-    marginTop: 65,
+    marginTop: 50,
 
 
     '@media (max-width: 860px)': {

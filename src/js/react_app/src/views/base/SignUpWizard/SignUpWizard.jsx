@@ -39,7 +39,7 @@ export class SignUpWizard extends Component {
     data.topic_knowledge_ids = this.state.topic_knowledge_ids
 
     this.props.dispatch(registerUser(data))
-    this.props.history.replace('/proposals')
+    this.props.history.replace('/discuss')
 
     this.setState({
         name: data.name,

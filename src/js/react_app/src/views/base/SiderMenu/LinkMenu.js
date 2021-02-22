@@ -8,7 +8,9 @@ import { UserAddOutlined,
   PieChartOutlined,
   BulbOutlined,
   CloseOutlined,
-  CommentOutlined
+  CommentOutlined,
+  DotChartOutlined,
+  CodeOutlined
  } from '@ant-design/icons';
 
 const LinkMenu = withRouter(props => {
@@ -48,13 +50,14 @@ const LinkMenu = withRouter(props => {
               <span className="nav-text">Sign Up</span>
             </Link>
           </Menu.Item> : '' }
-        {/* { !auth.signedIn() ?
-          <Menu.Item key="/signup">
-            <Link to="/signup" style={{ textDecoration: "none" }}>
-              <Icon type="dot-chart" />
-              <span className="nav-text">Explore</span>
+        {
+          <Menu.Item key="/discuss">
+            <Link to="/discuss" style={{ textDecoration: "none" }}>
+              <CommentOutlined type="comment-outlined" />
+              <span className="nav-text">Discuss</span>
             </Link>
-          </Menu.Item>  : '' } */}
+          </Menu.Item>
+        }
 
         {/* { auth.signedIn() ?
           <Menu.Item key="/fds">
@@ -74,39 +77,34 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item>
         } */}
-        {
-          <Menu.Item key="/discuss">
-            <Link to="/discuss" style={{ textDecoration: "none" }}>
-              <CommentOutlined type="comment-outlined" />
-              <span className="nav-text">Discuss</span>
-            </Link>
-          </Menu.Item>
-        }
-        { !auth.signedIn() ?
-          <Menu.Item key="/analysts">
-            <Link to="/analysts" style={{ textDecoration: "none" }}>
-              <UserOutlined />
-              <span className="nav-text">Contribute</span>
-            </Link>
-          </Menu.Item>  : '' }
 
-        { auth.signedIn() ?
-          <Menu.Item key="/proposals">
-            <Link to="/proposals" style={{ textDecoration: "none" }}>
-              <BulbOutlined />
-              <span className="nav-text">Ideate</span>
-            </Link>
-          </Menu.Item> : ''
-        }
-        { auth.signedIn() ?
-          <Menu.Item key="/portfolio">
-            <Link to="/portfolio" style={{ textDecoration: "none" }}>
-              <PieChartOutlined />
-              <span className="nav-text">Portfolio</span>
-            </Link>
-          </Menu.Item> : ''
-        }
-
+        {/*
+        // { !auth.signedIn() ?
+        //   <Menu.Item key="/analysts">
+        //     <Link to="/analysts" style={{ textDecoration: "none" }}>
+        //       <UserOutlined />
+        //       <span className="nav-text">Contribute</span>
+        //     </Link>
+        //   </Menu.Item>  : '' }
+        */}
+          {/*
+            // { auth.signedIn() ?
+            //   <Menu.Item key="/proposals">
+            //     <Link to="/proposals" style={{ textDecoration: "none" }}>
+            //       <BulbOutlined />
+            //       <span className="nav-text">Ideate</span>
+            //     </Link>
+            //   </Menu.Item> : ''
+            // }
+            // { auth.signedIn() ?
+            //   <Menu.Item key="/portfolio">
+            //     <Link to="/portfolio" style={{ textDecoration: "none" }}>
+            //       <PieChartOutlined />
+            //       <span className="nav-text">Portfolio</span>
+            //     </Link>
+            //   </Menu.Item> : ''
+            // }
+        */}
         { auth.signedIn() ?
           <Menu.Item key="/profile">
             <Link to="/profile" style={{ textDecoration: "none" }}>
@@ -115,17 +113,19 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item> : ''
         }
-
-        {
-          <Menu.Item key="/closemenu">
-            <Link to="/profile" style={{ textDecoration: "none" }}>
-            <CloseOutlined />
-              <span className="nav-text">Close</span>
-            </Link>
-          </Menu.Item>
-        }
+      {/*
+        // {
+        //   <Menu.Item key="/closemenu">
+        //     <Link to="/close" style={{ textDecoration: "none" }}>
+        //     <CloseOutlined />
+        //       <span className="nav-text">Close</span>
+        //     </Link>
+        //   </Menu.Item>
+        // }
+        */}
       </Menu>
-      {/* <Menu
+      {/*
+      <Menu
         className={classes.menu2}
         theme="dark"
         mode="inline"
@@ -135,11 +135,12 @@ const LinkMenu = withRouter(props => {
       >
         <Menu.Item key="/developers">
           <Link to="/developers" style={{ textDecoration: "none" }}>
-            <Icon type="code" />
+            <CodeOutlined />
             <span className="nav-text">Developers</span>
           </Link>
         </Menu.Item>
-      </Menu> */}
+      </Menu>
+      */}
     </div>
   );
 });
@@ -158,7 +159,7 @@ const menuStyles = {
   },
 
   menu2: {
-    marginBottom: 120
+
   }
 };
 

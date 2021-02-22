@@ -61,8 +61,7 @@ class AnalystComponent extends React.Component {
                   onClick={this.signUpRouteChange}
                   size="large"
                 >
-                  {" "}
-                  Sign Up{" "}
+                  Sign Up
                 </AppButton>
               </p>
               <div id="analyst-list">
