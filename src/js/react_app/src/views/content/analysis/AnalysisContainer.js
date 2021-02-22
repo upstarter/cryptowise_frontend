@@ -14,7 +14,7 @@ class AnalysisContainer extends React.Component {
     super(props);
     this.state = {
       mode: "top",
-      key: "strategy",
+      key: "",
     };
   }
 
@@ -34,7 +34,8 @@ class AnalysisContainer extends React.Component {
   };
 
   setKey = (key) => {
-    this.setState({ key });
+    console.log('setkey', key)
+    this.setState({ key: key, topicID: key });
     this.props.history.replace(`/${key}`);
   };
 
@@ -52,7 +53,7 @@ class AnalysisContainer extends React.Component {
           size="large"
           tabBarStyle={{ fontWeight: 800 }}
           tabPosition="top"
-          tabBarGutter={22}
+          tabBarGutter={20}
           centered
           defaultActiveKey={"strategy"}
           activeKey={key === "discuss" ? "strategy" : key}

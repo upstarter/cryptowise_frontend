@@ -161,7 +161,7 @@ class ThreadContainer extends React.Component {
                 size="large"
               />
               <h2 className={("title-large", classes.pageTitle)}>
-                <span>💬</span> DISCUSS {threadTitle}{" "}
+                <span>Discuss</span> {threadTitle}{" "}
               </h2>
             </div>
           </div>

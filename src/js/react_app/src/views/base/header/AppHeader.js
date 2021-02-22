@@ -62,32 +62,7 @@ class AppHeader extends React.Component {
           <img className={classes.logo} src={nav_logo} />
         </Link>
         <div>
-          <Menu
-            className={classes.menu}
-            mode="horizontal"
-            style={{
-              borderBottom: "none",
-            }}
-          >
-            <SubMenu
-              onClick={this.handleSubClick}
-              style={{
-                borderBottom: "none",
-              }}
-              title={
-                  <BarsOutlined
-                    style={{fontSize: 25}}
-                    className="menu"
-                    onClick={this.toggleSub}
-                  />
-              }
-            >
-              <Menu.Item key="/login">Sign In</Menu.Item>
-              {/* <Menu.Item key="/contact">Contact</Menu.Item> */}
-              <Menu.Item key="/about">About</Menu.Item>
-              <Menu.Item key="/logout">Sign out</Menu.Item>
-            </SubMenu>
-          </Menu>
+
         </div>
       </Header>
     )
@@ -111,7 +86,7 @@ const headerStyles = {
     marginLeft: 10,
   },
   menu: {
-    color: `${colors.silver}`,
+    color: `${colors.silver} !important`,
     '& .ant-menu-submenu-title': {
       padding: 0,
       margin: 0
@@ -122,6 +97,7 @@ const headerStyles = {
   },
   logo: {
     color: `${colors.white}`,
+    marginRight: 63,
     // height: 50,
     width: 180,
     '@media (max-width: 576px)': {

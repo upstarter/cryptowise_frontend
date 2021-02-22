@@ -230,7 +230,7 @@ class TopicContainer extends React.Component {
 
 
   componentDidMount() {
-    const { match, topic } = this.props
+    const { match } = this.props
     console.log('rpo', this.props)
 
     this.getData(res => {
@@ -248,7 +248,6 @@ class TopicContainer extends React.Component {
 
   getData = callback => {
     const { topicID } = this.state
-    const {topic} = this.props
     console.log('state', this.state)
     let re = /\d+$/
     let found = topicID && topicID.match(re)

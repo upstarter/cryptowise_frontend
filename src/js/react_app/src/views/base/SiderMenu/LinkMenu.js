@@ -10,7 +10,10 @@ import { UserAddOutlined,
   CloseOutlined,
   CommentOutlined,
   DotChartOutlined,
-  CodeOutlined
+  CodeOutlined,
+  LoginOutlined,
+  LogoutOutlined,
+  QuestionOutlined
  } from '@ant-design/icons';
 
 const LinkMenu = withRouter(props => {
@@ -113,6 +116,26 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item> : ''
         }
+        { <Menu.Item key="/about">
+            <Link to="/about" style={{ textDecoration: "none" }}>
+            <QuestionOutlined />
+              <span className="nav-text">About</span>
+            </Link>
+          </Menu.Item>
+        }
+        { <Menu.Item key="/login">
+            <Link to="/login" style={{ textDecoration: "none" }}>
+            <LoginOutlined />
+            <span className="nav-text">Login</span>
+            </Link>
+          </Menu.Item> }
+        {/* <Menu.Item key="/contact">Contact</Menu.Item> */}
+        { <Menu.Item key="/logout">
+            <Link to="/logout" style={{ textDecoration: "none" }}>
+            <LogoutOutlined />
+            <span className="nav-text">Logout</span>
+            </Link>
+          </Menu.Item> }
       {/*
         // {
         //   <Menu.Item key="/closemenu">

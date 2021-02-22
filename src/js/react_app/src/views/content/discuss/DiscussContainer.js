@@ -153,7 +153,7 @@ class DiscussContainer extends React.Component {
                 size="large"
               />
               <h2 className={("title-large", classes.pageTitle)}>
-                <span>💬</span> DISCUSS {topicName}{" "}
+                <span>Discuss</span> {topicName}{" "}
               </h2>
             </div>
           </div>
@@ -204,7 +204,7 @@ class DiscussContainer extends React.Component {
                 size="large"
               />
               <h2 className={("title-large", classes.pageTitle)}>
-                <span>💬</span> DISCUSS {topicName}{" "}
+                <span>Discuss</span> {topicName}{" "}
               </h2>
             </div>
             <div className={classes.threadMain}>

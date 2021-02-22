@@ -6,11 +6,11 @@ const heroStyles = {
     minHeight: '61.8vh',
     '-webkit-background-clip': 'padding-box', /* for Safari */
     backgroundClip: 'padding-box', /* for IE9+, Firefox 4+, Opera, Chrome */
-    background: `linear-gradient(to bottom, rgba(25, 31, 46, .78), rgba(25, 31, 46, .25)), url(${HeroImage}) no-repeat center`,
+    background: `linear-gradient(to bottom, rgba(25, 31, 46, .95), rgba(25, 31, 46, .40)), url(${HeroImage}) no-repeat center`,
     backgroundRepeat: 'no-repeat',
     position: 'relative',
     backgroundPosition: '0px 0px',
-    backgroundSize: '100% 85%',
+    backgroundSize: '100% 100%',
     color: '#fff',
     '& .title': { color: 'white' },
 
