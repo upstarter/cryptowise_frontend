@@ -51,7 +51,6 @@ const postStyles = {
     fontSize: 13,
   },
   postDetail: {
-    width: '100vw',
     '& .description':  {
       color: colors.lightBlack,
       fontWeight: 100,

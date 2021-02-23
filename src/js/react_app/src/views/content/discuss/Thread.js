@@ -131,7 +131,7 @@ class Thread extends React.Component {
             </Button>
             <Button
               size="small"
-              className={`${classes.btn} ${classes.threadAction} ${classes.commentThreadBtn}`}
+              className={`${classes.btn} ${classes.threadAction} ${classes.replyThreadBtn}`}
               onClick={this.showModal}
             >
               Reply
@@ -146,35 +146,23 @@ class Thread extends React.Component {
 const threadStyles = {
   thread: {
     background: colors.secondaryDark,
-    padding: [8, 13, 8, 13],
     border: `0.2px solid ${colors.silver2}`,
   },
   threadHeader: {
     display: "grid",
-    gridTemplateAreas: '"title" "desc" "caption" "actions"',
-    // gridTemplateRows: 'auto 1fr',
-    // gridTemplateColumns: '1fr 1fr',
-    // '@media (max-width: 860px)': {
-    //   gridTemplateRows: 'auto 1fr',
-    //   gridTemplateAreas: '"header" "content"',
-    // },
-    //
-    // '@media (min-width: 860px)': {
-    //   gridTemplateColumns: '1fr 1fr',
-    //   gridTemplateAreas: '"header content"',
-    // },
+    gridTemplateAreas: `
+     "title actions"
+     "desc actions"
+     "caption actions"
+   `,
   },
   userCaption: {
     gridArea: "caption",
     color: colors.midTone,
     fontSize: 12,
   },
-  threadContent: {
-    // gridArea: "title",
-  },
   threadTitle: {
     gridArea: "title",
-
     fontSize: "15px !important",
     lineHeight: "1em !important",
     fontWeight: "500 !important",
@@ -183,9 +171,9 @@ const threadStyles = {
     textOverflow: "ellipsis",
     overflow: "hidden",
     height: 20,
-    width: "90vw",
     whiteSpace: "nowrap",
     display: "block",
+    padding: [3,0,0,0],
     // '@media (max-width: 408px)': {
     //   maxWidth: '45ch',
     //
@@ -204,9 +192,9 @@ const threadStyles = {
     color: colors.silver8,
     textOverflow: "ellipsis",
     overflow: "hidden",
-    width: "90vw",
     whiteSpace: "nowrap",
     display: "block",
+    padding: [13,0,8,0],
     // '@media (max-width: 408px)': {
     //   maxWidth: '45ch',
     //
@@ -218,22 +206,32 @@ const threadStyles = {
   },
   threadActions: {
     gridArea: 'actions',
+    display: 'grid',
+    alignItems: 'center',
+    justifyItems: 'center',
+    gridTemplateAreas: `
+      "view"
+      "reply"
+    `,
   },
-  // threadAction: {
-  // },
-  // viewThreadBtn: {
-  //   gridColumn: '1/2',
-  // },
-  // commentThreadBtn: {
-  //   gridColumn: '2/3',
-  // },
+
+  threadAction: {
+    margin: '0 auto',
+  },
+
+  viewThreadBtn: {
+    gridArea: "view"
+  },
+  replyThreadBtn: {
+    gridArea: "reply"
+  },
   btn: {
     background: colors.antBlue,
     marginRight: 10,
     color: colors.white,
     width: 43,
     paddingLeft: '2px !important',
-    height: 22,
+
     // '@media (max-width: 408px)': {
     //   height: '2em !important',
     //   // width: '30vw !important',

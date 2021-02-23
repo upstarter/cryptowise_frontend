@@ -22,7 +22,7 @@ class AnalysisContainer extends React.Component {
     const { match } = this.props;
     let key = match.url.replace("/", "")
     if (key === 'discuss') {
-      this.setState({key: 'strategy'})
+      this.setState({key: 'economics'})
     } else {
       this.setState({ key: key })
     }
@@ -34,7 +34,6 @@ class AnalysisContainer extends React.Component {
   };
 
   setKey = (key) => {
-    console.log('setkey', key)
     this.setState({ key: key, topicID: key });
     this.props.history.replace(`/${key}`);
   };
@@ -55,8 +54,8 @@ class AnalysisContainer extends React.Component {
           tabPosition="top"
           tabBarGutter={20}
           centered
-          defaultActiveKey={"strategy"}
-          activeKey={key === "discuss" ? "strategy" : key}
+          defaultActiveKey={"economics"}
+          activeKey={key === "discuss" ? "economics" : key}
           onChange={(key) => this.setKey(key)}
           tabBarStyle={{
             color: `${colors.silver8}`,
@@ -67,11 +66,11 @@ class AnalysisContainer extends React.Component {
             width: "100vw",
           }}
         >
-          <TabPane tab="Strategy" key="strategy">
-            <TopicContainer setKey={this.setKey} topic="strategy" />
-          </TabPane>
           <TabPane tab="Economics" key="economics">
             <TopicContainer setKey={this.setKey} topic="economics" />
+          </TabPane>
+          <TabPane tab="Strategy" key="strategy">
+            <TopicContainer setKey={this.setKey} topic="strategy" />
           </TabPane>
           <TabPane tab="Assets" key="assets">
             <TopicContainer setKey={this.setKey} topic="discuss/topics/193" />

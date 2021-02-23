@@ -160,8 +160,8 @@ class ThreadContainer extends React.Component {
                 icon={<PlusOutlined />}
                 size="large"
               />
-              <h2 className={("title-large", classes.pageTitle)}>
-                <span>Discuss</span> {threadTitle}{" "}
+              <h2 className={( classes.pageTitle)}>
+                <span>Discuss</span> <span>{threadTitle}{" "}</span>
               </h2>
             </div>
           </div>
@@ -187,7 +187,7 @@ class ThreadContainer extends React.Component {
       ) : null;
 
     return (
-      <div className="dark-wrap">
+      <div className={classes.thread}>
         <React.Fragment>
           <ScrollToTopOnMount />
 
@@ -203,22 +203,25 @@ class ThreadContainer extends React.Component {
 
             <div id="post-items" className={classes.posts}>
               <div className={classes.postsHeader}>
-                <Button
-                  className="float"
-                  onClick={this.showModal}
-                  shape="circle"
-                  icon={<PlusOutlined />}
-                  size="large"
-                />
-                <h2 className={("title-large", classes.pageTitle)}>
-                  <span>💬</span> {threadTitle}{" "}
-                </h2>
+
+                <div className={classes.threadHead}>
+                  <div className={classes.threadTitle}>
+                    💬  {threadTitle}{" "}
+                  </div>
+                </div>
+                <div className={classes.threadActions}>
+                  <Button
+                    className={`${classes.newPostBtn} ${classes.btn}`}
+                    onClick={this.showModal}
+                    icon={<PlusOutlined />}
+                    size="medium"
+                  >
+                    New Post
+                  </Button>
+                </div>
               </div>
 
               <div className={classes.postMain}>
-                <div className={classes.postListHeader}>
-                  Discourse
-                </div>
                 <ul className={classes.postList}>
                   {posts ? (
                     posts.map((post) => {
@@ -238,11 +241,24 @@ class ThreadContainer extends React.Component {
 }
 
 const postListStyles = {
-  pageTitle: {
-    padding: [3, 3, 3, 13],
-    color: colors.white,
+  threadHead: {
+    display: 'flex',
+    alignItems: 'center',
+    alignContent: 'center',
+    minHeight: 40,
+
   },
-  postSection: {},
+  threadTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    alignContent: 'center',
+
+    paddingLeft: 13,
+    color: colors.white,
+    "& a": {
+      color: colors.offWhite2,
+    },
+  },
   modal: {
     // background: `${colors.secondaryDark}`,
     filter: "invert(0)",
@@ -253,8 +269,22 @@ const postListStyles = {
   },
   posts: {
     userSelect: "none",
-    marginTop: 60,
+    marginTop: 65,
     margin: "0 auto",
+  },
+  postsHeader: {
+    display: "grid",
+    gridTemplateAreas: `'title newPost'`,
+    alignItems: "center",
+    alignContent: 'center',
+    zIndex: 10,
+    color: "#fff !important",
+    background: `${colors.primary}`,
+    "-webkit-perspective": 1000,
+    "-webkit-backface-visibility": "hidden",
+
+    "@media (max-width: 860px)": {},
+    "@media (min-width: 860px)": {},
   },
   postMain: {},
   postListHeader: {
@@ -269,52 +299,38 @@ const postListStyles = {
     "@media (min-width: 860px)": {},
   },
   postDetail: {},
-  threadTitle: {
-    "& a": {
-      color: colors.offWhite2,
-    },
-  },
-
-  postsHeader: {
-    display: "grid",
-    paddingTop: 15,
+  newPostBtn: {
+    backgroundColor: `${colors.antBlue}`,
+    color: `${colors.midTone}`,
+    textAlign: "center",
+    cursor: "pointer",
     zIndex: 10,
-    color: "#fff !important",
-    background: `${colors.primary}`,
-    "-webkit-perspective": 1000,
-    "-webkit-backface-visibility": "hidden",
-
-    "@media (max-width: 860px)": {},
-    "@media (min-width: 860px)": {},
-
-    "& .float:hover": {
-      "-webkit-animation": "none",
-    },
-
-    "& .float": {
-      gridColumn: "3",
-      gridRow: "1 / 3",
-      justifySelf: "end",
-      margin: [0, 15, 0, 15],
-      backgroundColor: `${colors.antBlue}`,
-      color: `${colors.midTone}`,
-      borderRadius: 50,
-      textAlign: "center",
-      cursor: "pointer",
-      zIndex: 10,
-      border: "none",
-      boxShadow: `0 0 0 0 ${colors.antBlue}`,
-      "-webkit-animation": "pulse 1.5s infinite",
-    },
-    "& h3": {
-      gridColumn: "1",
-      justifySelf: "center",
-      fontSize: "3rem",
-      letterSpacing: "0.5rem",
-      paddingTop: 17,
-      color: `${colors.lighterBlack}`,
-    },
+    border: "none",
+    boxShadow: `0 0 0 0 ${colors.antBlue}`,
   },
+  threadActions: {
+    gridArea: "newPost",
+    justifySelf: "end",
+  },
+
+  threadAction: {
+    margin: '0 auto',
+  },
+
+  btn: {
+    marginRight: 10,
+    paddingLeft: '2px !important',
+
+    // '@media (max-width: 408px)': {
+    //   height: '2em !important',
+    //   // width: '30vw !important',
+    // },
+    // '@media (min-width: 408px)': {
+    //   height: '2em !important',
+    //   // width: '30vw !important',
+    // },
+  },
+
 };
 // whatever is returned will show up as props inside Discuss
 

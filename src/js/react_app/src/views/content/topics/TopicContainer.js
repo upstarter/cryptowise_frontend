@@ -29,7 +29,7 @@ class TopicChildren extends React.Component {
 
   topicDetail = (topic) => {
     return (
-      `<div class='topic-detail' style='color: ${colors.silver8};padding: 0px;font-weight:200;'>
+      `<div class='topic-detail' style='color: ${colors.silver8};padding: 0px 0px 0px 13px;'>
         <p class='topic-detail-description'>${topic.description}</p>
       </div>`
     )
@@ -57,6 +57,8 @@ class TopicChildren extends React.Component {
   topicHead = (topic, lvl, data=``) => {
     let href = `/discuss/topics/${topic.id}`
 
+    data += `<div class='topic-header'>${this.topicImage(topic.name)}`
+
     if (lvl === 0) {
       data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 6px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
     } else if (lvl === 1) {
@@ -68,6 +70,8 @@ class TopicChildren extends React.Component {
     } else {
       data += `<h6 class='topic-heading'><a style='user-select:none;margin-left: 14px;color: ${colors.darkBlack};font-size: 25px; font-weight: 0;' href='${href}'>${topic.name}</a></h${lvl}>`
     }
+
+    data += `</div>`
     // return (
     //   <section className={classes.topicHead}>
     //
@@ -105,6 +109,20 @@ class TopicChildren extends React.Component {
     return data + `</div>`
   }
 
+  topicImage = (name) => {
+      let re = /\(.*\)/
+      let symbol = name.match(re)
+
+      if (symbol) {
+        let sym = symbol[0].replace('(','').replace(')', '').toLowerCase()
+
+        let imgUrl = require(`./crypto-logos/${sym}.png`)
+        //
+
+        return `<div class='topic-image'><img src=${imgUrl} /></div>`
+      }
+      return ``
+  }
 
   render() {
     let { topic, classes } = this.props
@@ -135,18 +153,36 @@ let topicChildrenStyles = {
     marginTop: 20,
     '& .child': {
       maxWidth: '95vw',
-
       margin: '0 auto',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+
     },
-    '& .topic-heading': {
-      '& a': {
-        fontSize: '24px !important'
+    '& .topic-header': {
+      display: 'grid',
+      gridTemplateAreas: `'image heading'`,
+      minWidth: 285,
+      marginBottom: 20,
+
+      '& .topic-image': {
+        gridArea: "image",
+        '& img': {
+          width: '50px',
+          height: '50px',
+        }
       },
     },
+    '& .topic-heading': {
+      gridArea: "heading",
+      margin: [8,0,0,13],
+
+      '& a': {
+        fontSize: '24px !important',
+      },
+    },
+
     '& .topic-details': {
 
     },
@@ -155,12 +191,12 @@ let topicChildrenStyles = {
       color: `${colors.silver8}`,
     },
     '& .topic-detail-description': {
-      fontWeight: 600,
+      color: colors.silver8,
+      fontWeight: 445,
     },
     '& .discuss-topic': {
-      marginTop: 27,
       fontSize: 17,
-
+      color: `${colors.antBlue} !important`,
     }
   },
   discuss: {
@@ -178,6 +214,7 @@ let topicChildrenStyles = {
     justifyContent: 'center',
     // background: colors.silver2,
   },
+
   topicName: {
     fontSize: '2.45rem !important',
     color: colors.silver,
@@ -189,7 +226,6 @@ let topicChildrenStyles = {
   },
   topicDescription: {
     color: colors.silver6,
-    fontWeight: 500,
     maxWidth: '60ch',
     marginBottom: 5,
     "@media (max-width: 408px)": {
@@ -255,7 +291,7 @@ class TopicContainer extends React.Component {
     let url
 
     if (topicID === 'discuss') {
-      url = `${api_url}/strategy?per_page=${count}&page=${this.state.page}`
+      url = `${api_url}/economics?per_page=${count}&page=${this.state.page}`
     } else if (topicID === 'assets') {
       url = `${api_url}/topics/193?per_page=${count}&page=${this.state.page}`
     } else {
