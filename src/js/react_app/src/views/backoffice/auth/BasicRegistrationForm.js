@@ -24,6 +24,7 @@ import {
   AutoComplete,
   Modal,
 } from 'antd';
+import colors from "Styles/colors";
 
 import {QuestionCircleOutlined} from "@ant-design/icons"
 import TermsOfServiceComponent from 'Base/TermsOfServiceComponent'
@@ -137,9 +138,10 @@ class RegistrationForm extends React.Component {
       />
       <Form name='reg-form' labelAlign='left' {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item
+
           label={
-            <span>
-              Username&nbsp;
+            <span className={classes.label}>
+              Nickname&nbsp;
               <Tooltip title="What do you want others to call you?">
                 <QuestionCircleOutlined />
               </Tooltip>
@@ -147,10 +149,17 @@ class RegistrationForm extends React.Component {
           }
         >
           {getFieldDecorator('nickname', {
-            rules: [{ required: true, message: 'Please input your username!', whitespace: true }],
+            rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
-        <Form.Item label="E-mail">
+        <Form.Item
+          className={classes.label}
+          label={
+            <span className={classes.label}>
+              Email&nbsp;
+            </span>
+          }
+        >
           {getFieldDecorator('email', {
             rules: [
               {
@@ -165,7 +174,12 @@ class RegistrationForm extends React.Component {
           })(<Input />)}
         </Form.Item>
         <Form.Item
-          label="Password"
+          className={classes.label}
+          label={
+            <span className={classes.label}>
+              Password&nbsp;
+            </span>
+          }
           hasFeedback
           // validateStatus="error"
           // help="Should be at least 8 chars"
@@ -266,9 +280,15 @@ class RegistrationForm extends React.Component {
 
 
 const styles = {
-  modal: {
+  label: {
+    color: colors.midTone,
+    '& .ant-legacy-form-it': {
+      color: colors.midTone,
 
-  }
+      listStyleType: 'none',
+    }
+  },
+
 };
 const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
 // const BasicRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
