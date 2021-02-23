@@ -4,6 +4,7 @@ import {API_REQUEST, API_SUCCESS, API_ERROR, apiRequest, apiSuccess, apiError} f
 export const THREAD = '[THREAD]'
 export const CREATE_THREAD = `${THREAD} Create`
 export const FETCH_THREADS = `${THREAD} Fetch`
+export const SET_THREAD = `${THREAD} Set`
 export const POST = '[POST]'
 export const CREATE_POST = `${POST} Create`
 export const SET_POST = `${POST} Set`
@@ -19,7 +20,8 @@ const API = {
 
 // REDUCER
 let initialState = {
-  post: {}
+  post: {},
+  thread: {}
 }
 export const discussionsApiReducer = (state = initialState, action) => {
   const { payload } = action
@@ -44,13 +46,9 @@ export const discussionsApiReducer = (state = initialState, action) => {
       return {post: payload.data.data}
 
     // THREADS
-    case `${CREATE_THREAD}`:
-      console.log('create thread', payload)
-      return { thread: payload }
-
-    case `${THREAD} ${API_SUCCESS}`:
-      console.log('auth-succe', payload)
-      return { thread: payload.data.data }
+    case SET_THREAD:
+      console.log('setTHREAD reducer PAYLOAD.DATA', payload.data)
+      return {...state, thread: payload.data}
 
     case `${THREAD} ${API_ERROR}`:
       console.log('auth-error', payload)
@@ -76,6 +74,13 @@ export const createThread = (data) => ({
     }
 })
 
+export const setThread = (data) => ({
+  type: SET_THREAD,
+  payload: {
+    data: data
+  }
+})
+
 export const setPost = (data) => ({
   type: SET_POST,
   payload: {
@@ -95,7 +100,7 @@ export const discussionsMiddleware = ({dispatch}) => next => action => {
       postData.thread_id = data.threadID
       postData.user_id = 1
       postData.parent_id = data.threadID
-      console.log('post',postData)
+      console.log('post',postData, data)
       dispatch(apiRequest(postData, 'POST', API.CREATE_POST, POST))
       next({...action, postData})
       break;
@@ -110,9 +115,20 @@ export const discussionsMiddleware = ({dispatch}) => next => action => {
       threadData.user_id = 1
 
       dispatch(apiRequest(threadData, 'POST', API.CREATE_THREAD, THREAD))
-      next({...action, threadData})
       break;
 
+    case `${THREAD} ${API_SUCCESS}`:
+      console.log('api-succes', action, data)
+
+      next({...action, data})
+
+      next(setThread(data))
+      break;
+
+    case `${THREAD} ${API_ERROR}`:
+      console.log('auth-error', data)
+      next({...action, data})
+      break;
 
     case `${POST} ${API_SUCCESS}`:
 

@@ -10,9 +10,19 @@ import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
 import NewThreadForm from "./NewThreadForm";
 import NewPostForm from "./NewPostForm";
 import PostsContainer from "./PostsContainer";
-import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from "antd";
+import {
+  List,
+  Avatar,
+  Button,
+  Skeleton,
+  Affix,
+  Rate,
+  Typography,
+  Divider,
+  Modal,
+} from "antd";
 import { api_url, url } from "Utils/consts";
-import { CommentOutlined, PlusOutlined } from '@ant-design/icons';
+import { CommentOutlined, PlusOutlined } from "@ant-design/icons";
 
 class DiscussContainer extends React.Component {
   constructor(props) {
@@ -36,6 +46,7 @@ class DiscussContainer extends React.Component {
   componentDidMount() {
     this.getData((res) => {
       console.log("DDD", res);
+
       this.setState({
         initLoading: false,
         threads: res.data.threads,
@@ -106,10 +117,20 @@ class DiscussContainer extends React.Component {
     });
     form.topicID = this.state.topicID;
     // form.userID = this.state.userID
-    this.props.dispatch(createThread(form));
+
+
+    this.props.dispatch(createThread(form))
+
 
     form.resetFields();
-    this.setState({ visible: false, confirmLoading: false });
+
+    console.log('props', this.props)
+    this.setState({
+      visible: false,
+      confirmLoading: false,
+      // threads: [this.props.discussions.thread, ...this.state.threads]
+    })
+
   };
 
   handleCancel = () => {
@@ -118,6 +139,13 @@ class DiscussContainer extends React.Component {
       visible: false,
     });
   };
+
+  componentWillReceiveProps(nextProps){
+    console.log('willRE', nextProps)
+      this.setState({
+          threads: [nextProps.discussions.thread, ...this.state.threads],
+      })
+    }
 
   render() {
     let { classes } = this.props;
@@ -145,14 +173,16 @@ class DiscussContainer extends React.Component {
 
           <div id="thread-items" className={classes.threads}>
             <div className={classes.threadsHeader}>
-              <Button
-                className="float"
-                onClick={this.showModal}
-                shape="circle"
-                icon={<PlusOutlined />}
-                size="large"
-              />
-              <h2 className={("title-large", classes.pageTitle)}>
+            <Button
+              className={classes.newThreadButton}
+              type="primary"
+              onClick={this.showModal}
+              icon={<PlusOutlined />}
+              size="medium"
+            >
+              New Thread
+            </Button>
+              <h2 className={(classes.pageTitle)}>
                 <span>Discuss</span> {topicName}{" "}
               </h2>
             </div>
@@ -163,7 +193,6 @@ class DiscussContainer extends React.Component {
         </React.Fragment>
       );
     }
-    console.log("nam", topicName);
 
     const loadMore =
       !initLoading && !loading ? (
@@ -196,16 +225,18 @@ class DiscussContainer extends React.Component {
 
           <div id="thread-items" className={classes.threads}>
             <div className={classes.threadsHeader}>
-              <Button
-                className="float"
-                onClick={this.showModal}
-                shape="circle"
-                icon={<PlusOutlined />}
-                size="large"
-              />
-              <h2 className={("title-large", classes.pageTitle)}>
-                <span>Discuss</span> {topicName}{" "}
+              <h2 className={classes.pageTitle}>
+                <span>Discuss</span> {topicName}
               </h2>
+              <Button
+                className={classes.newThreadButton}
+                type="primary"
+                onClick={this.showModal}
+                icon={<PlusOutlined />}
+                size="medium"
+              >
+                New Thread
+              </Button>
             </div>
             <div className={classes.threadMain}>
               <ul className={classes.threadList}>
@@ -222,9 +253,50 @@ class DiscussContainer extends React.Component {
 }
 
 const threadListStyles = {
+
+
+  threadsHeader: {
+    display: "grid",
+    alignItems: "center",
+    alignContent: 'center',
+    minHeight: 40,
+    zIndex: 10,
+    color: "#fff !important",
+    background: `${colors.primary}`,
+    "-webkit-perspective": 1000,
+    "-webkit-backface-visibility": "hidden",
+
+    "@media (max-width: 860px)": {},
+    "@media (min-width: 860px)": {},
+  },
   pageTitle: {
-    padding: [3, 3, 3, 13],
-    color: colors.white,
+    alignContent: 'center',
+    padding: [13,0,0,13],
+  },
+  threadAction: {
+
+
+  },
+  newThreadButton: {
+    gridColumn: "3",
+    gridRow: "1 / 3",
+    justifySelf: "end",
+    margin: [0, 13, 0, 0],
+    height: "1.93em",
+    backgroundColor: `${colors.antBlue}`,
+    color: `${colors.midTone}`,
+    textAlign: "center",
+    cursor: "pointer",
+    zIndex: 10,
+    border: "none",
+    boxShadow: `0 0 0 0 ${colors.antBlue}`,
+  },
+  threads: {
+    userSelect: "none",
+    margin: "0 auto",
+    marginTop: 80,
+  },
+  thredItems: {
   },
   threadSection: {},
   modal: {
@@ -235,11 +307,7 @@ const threadListStyles = {
       textDecoration: "none !important",
     },
   },
-  threads: {
-    userSelect: "none",
-    marginTop: 60,
-    margin: "0 auto",
-  },
+
   threadMain: {},
   threadList: {
     listStyleType: "none",
@@ -253,61 +321,22 @@ const threadListStyles = {
       color: colors.offWhite2,
     },
   },
-
-  threadsHeader: {
-    display: "grid",
-    paddingTop: 15,
-    zIndex: 10,
-    color: "#fff !important",
-    background: `${colors.primary}`,
-    "-webkit-perspective": 1000,
-    "-webkit-backface-visibility": "hidden",
-
-    "@media (max-width: 860px)": {},
-    "@media (min-width: 860px)": {},
-
-    "& .float:hover": {
-      "-webkit-animation": "none",
-    },
-
-    "& .float": {
-      gridColumn: "3",
-      gridRow: "1 / 3",
-      justifySelf: "end",
-      margin: [0, 15, 0, 15],
-      backgroundColor: `${colors.antBlue}`,
-      color: `${colors.midTone}`,
-      borderRadius: 50,
-      textAlign: "center",
-      cursor: "pointer",
-      zIndex: 10,
-      border: "none",
-      boxShadow: `0 0 0 0 ${colors.antBlue}`,
-      "-webkit-animation": "pulse 1.5s infinite",
-    },
-    "& h3": {
-      gridColumn: "1",
-      justifySelf: "center",
-      fontSize: "3rem",
-      letterSpacing: "0.5rem",
-      paddingTop: 17,
-      color: `${colors.lighterBlack}`,
-    },
-  },
 };
 // whatever is returned will show up as props inside Discuss
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state, ownProps)
+  let {thread} = state.discussions
   return {
-    threads: state.threads,
+    discussions: state.discussions,
   };
 };
 
 // anything returned from here will end up as props on DiscussContainer
 // whenever selectPost is called the result should be passed to all reducers
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return bindActionCreators({ selectThread: null }, dispatch);
-};
+const mapDispatchToProps = (dispatch) => {
+  createThread: threadData => dispatch(createThread(threadData))
+}
 
 // connect takes a function and component and produces a container that is aware
 // of state contained by redux
