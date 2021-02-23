@@ -118,19 +118,13 @@ class DiscussContainer extends React.Component {
     form.topicID = this.state.topicID;
     // form.userID = this.state.userID
 
-
     this.props.dispatch(createThread(form))
-
-
     form.resetFields();
 
-    console.log('props', this.props)
     this.setState({
       visible: false,
       confirmLoading: false,
-      // threads: [this.props.discussions.thread, ...this.state.threads]
-    })
-
+    });
   };
 
   handleCancel = () => {
