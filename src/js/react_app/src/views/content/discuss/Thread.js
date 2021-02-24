@@ -108,7 +108,7 @@ class Thread extends React.Component {
           onCreate={this.handleCreate}
           confirmLoading={confirmLoading}
         />
-        <div className={classes.listItems}>
+        <div id="thread-items" className={classes.threads}>
           <div className={classes.threadHeader}>
             <span className={classes.threadContent}>
               <span className={classes.threadTitle}>{thread.title}</span>
@@ -149,6 +149,13 @@ const threadStyles = {
     background: colors.secondaryDark,
     border: `0.2px solid ${colors.silver2}`,
     padding: 13,
+  },
+
+  threads: {
+    userSelect: "none",
+    margin: "0 auto",
+  },
+  threadItems: {
   },
   threadHeader: {
     display: "grid",

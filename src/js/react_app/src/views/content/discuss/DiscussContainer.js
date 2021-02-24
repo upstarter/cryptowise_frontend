@@ -229,6 +229,10 @@ class DiscussContainer extends React.Component {
               <h2 className={classes.pageTitle}>
                 <span>Discuss</span> {topicName}
               </h2>
+              <span className={classes.threadContent}>
+                <span className={classes.threadTitle}>{thread.title}</span>
+                <span className={classes.threadDesc}>{thread.description}</span>
+              </span>
               <Button
                 className={`${classes.newThreadButton} ${classes.btn}`}
                 type="primary"

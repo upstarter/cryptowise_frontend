@@ -203,34 +203,36 @@ class PostsContainer extends React.Component {
       <div className={classes.thread}>
         <React.Fragment>
           <ScrollToTopOnMount />
+          <NewPostForm
+            wrappedComponentRef={this.saveFormRef}
+            wrapClassName={classes.modal}
+            visible={this.state.visible}
+            onCancel={this.handleCancel}
+            onCreate={this.handleCreate}
+            confirmLoading={confirmLoading}
+          />
 
           <section id="topic-posts" className={classes.postSection}>
-            <NewPostForm
-              wrappedComponentRef={this.saveFormRef}
-              wrapClassName={classes.modal}
-              visible={this.state.visible}
-              onCancel={this.handleCancel}
-              onCreate={this.handleCreate}
-              confirmLoading={confirmLoading}
-            />
+            <div className={classes.threadsHeader}>
+              <h2 className={classes.pageTitle}>
+                <span>Discuss</span> {topicName}
+              </h2>
+              <span className={classes.threadContent}>
+                <span className={classes.threadTitle}>{thread.title}</span>
+                <span className={classes.threadDesc}>{thread.description}</span>
+              </span>
+              <Button
+                className={`${classes.newThreadButton} ${classes.btn}`}
+                type="primary"
+                onClick={this.showModal}
+                icon={<PlusOutlined />}
+                size="large"
+              >
+                Create Post
+              </Button>
+            </div>
 
-            <div className={classes.listItems}>
-              <div className={classes.threadHeader}>
-                <span className={classes.threadContent}>
-                  <span className={classes.threadTitle}>{title}</span>
-                  <span className={classes.threadDesc}>{description}</span>
-                </span>
-                <span className={classes.threadActions}>
-                  <Button
-                    size="large"
-                    icon={<PlusOutlined />}
-                    className={`${classes.btn} ${classes.threadAction} ${classes.createPostBtn}`}
-                    onClick={this.viewThread}
-                  >
-                    Create Post
-                  </Button>
-                </span>
-              </div>
+            <div id="post-items" className={classes.posts}>
 
               <div className={classes.postMain}>
                 <ul className={classes.postList}>
@@ -253,18 +255,21 @@ class PostsContainer extends React.Component {
 
 const postListStyles = {
 
-  thread: {
-    background: colors.secondaryDark,
-    border: `0.2px solid ${colors.silver2}`,
-    padding: 13,
-  },
-  threadHeader: {
-    display: "grid",
-    gridTemplateAreas: `
-     "title actions"
-     "desc actions"
-   `,
-   marginTop: 60,
+  threadsHeader: {
+      display: "grid",
+      gridTemplateAreas: `
+       "title actions"
+       "content actions"
+     `,
+      alignItems: "center",
+      alignContent: 'center',
+      minHeight: 40,
+      zIndex: 10,
+      color: "#fff !important",
+      background: `${colors.primary}`,
+      "-webkit-perspective": 1000,
+      "-webkit-backface-visibility": "hidden",
+
   },
   pageTitle: {
     alignContent: 'center',
@@ -278,6 +283,10 @@ const postListStyles = {
   },
   noThreadsYet: {
     color: colors.orangeRed
+  },
+  threadContent: {
+    gridArea: "content",
+    padding: [0,0,3,13]
   },
   threadTitle: {
 
@@ -324,40 +333,58 @@ const postListStyles = {
     },
 
   },
-  threadActions: {
-    gridArea: 'actions',
-    display: 'grid',
-    alignItems: 'center',
-    justifyItems: 'center',
-    gridTemplateAreas: `
-      "view"
-      "reply"
-    `,
-  },
-
-  threadAction: {
-    margin: '0 auto',
-    marginBottom: 3,
-  },
-
-  createPostBtn: {
-    gridArea: "actions"
-  },
-
   btn: {
-    background: colors.link,
-    marginRight: 20,
+    backgroundColor: `${colors.link}`,
     cursor: "pointer",
     boxShadow: `0 0 0 0 ${colors.link}`,
   },
+  newThreadButton: {
+    gridColumn: "3",
+    gridRow: "1 / 3",
+    justifySelf: "end",
+    margin: [0, 13, 0, 0],
+  },
+  threads: {
+    userSelect: "none",
+    margin: "0 auto",
+    marginTop: 80,
+    // width: '95vw',
+  },
+  threadItems: {
+  },
+  threadSection: {
+    margin: '0 auto',
+    maxWidth: '96vw',
+  },
+  modal: {
+    // background: `${colors.secondaryDark}`,
+    filter: "invert(0)",
+    "& .ant-modal-content": {
+      color: "red !important",
+      textDecoration: "none !important",
+    },
+  },
 
-  //
-  // thread: {
-  //   background: colors.secondaryDark,
-  //   border: `0.2px solid ${colors.silver2}`,
-  //   maxWidth: '96vw',
-  //   margin: '0 auto',
-  // },
+  threadMain: {},
+  threadList: {
+    listStyleType: "none",
+
+    "@media (max-width: 860px)": {},
+    "@media (min-width: 860px)": {},
+  },
+  threadDetail: {},
+  threadTitle: {
+    "& a": {
+      color: colors.offWhite2,
+    },
+  },
+
+  thread: {
+    background: colors.secondaryDark,
+    border: `0.2px solid ${colors.silver2}`,
+    maxWidth: '96vw',
+    marginTop: 60,
+  },
   // threadsHeader: {
   //   display: "grid",
   //   gridTemplateAreas: `
