@@ -15,7 +15,7 @@ const colors = {
   quartDark: 'rgba(28,49,70,1)',
 
   // LINKS
-  link: 'rgb(46,188,247)',
+  link: 'rgb(25,90,247)',
   antBlue: 'rgb(10,83,176)',
   antBlueLight: 'rgb(2,116,192)',
   antBluePop: 'rgb(46,188,247)',

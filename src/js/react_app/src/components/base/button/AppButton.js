@@ -12,7 +12,7 @@ export default class AppButton extends Component {
         icon={<FireOutlined type={props.icon} />}
         size={props.size}
         style={{
-            background: colors.antBlueLight,
+            background: colors.link,
             border: `1px solid ${colors.link}`
           }}
 

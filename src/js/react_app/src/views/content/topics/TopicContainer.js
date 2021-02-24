@@ -196,7 +196,7 @@ let topicChildrenStyles = {
     },
     '& .discuss-topic': {
       fontSize: 17,
-      color: `${colors.antBluePop} !important`,
+      color: `${colors.link} !important`,
     }
   },
   discuss: {
