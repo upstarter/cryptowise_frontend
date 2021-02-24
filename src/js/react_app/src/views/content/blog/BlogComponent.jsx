@@ -167,7 +167,7 @@ const blogStyles = {
     },
 
     '& .link': {
-      color: `${colors.origGreen}`
+      color: `${colors.link}`
     },
   }
 }

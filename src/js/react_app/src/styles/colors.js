@@ -14,13 +14,22 @@ const colors = {
   tertiaryDark: 'rgba(28,35,52,1)',
   quartDark: 'rgba(28,49,70,1)',
 
+  // LINKS
+  link: 'rgb(46,188,247)',
+  antBlue: 'rgb(10,83,176)',
+  antBlueLight: 'rgb(2,116,192)',
+  antBluePop: 'rgb(46,188,247)',
+
+  antBlueDark: 'rgb(5,0,161)',
+
   // BLUE
   primaryBlue: 'rgba(12,61,160, 1)',
   royalBlue: 'rgba(12,73,167, 1)',
-  antBlue: 'rgb(10,83,176)',
   babyBlue: '#D0E5FF',
   antSecondaryBlue: '#1990ff',
   blue: '#76c8e7', // tealish
+
+  // DARKS
   primaryDark: 'rgba(23,22,23, 1)',
   midTone: '#f6f6f6',
   lightBlue: '#EEf4fb',
@@ -28,9 +37,6 @@ const colors = {
   lighterDarkBlue: 'rgb(23,26,33)',
   darkBlue: '#191F2D',
   darkerDarkBlue: '#001528',
-  // secondaryDark: 'rgb(22,27,37)',
-
-  // cw colors
 
   // orangey
   orange:  'rgba(232, 122, 80, 1)',

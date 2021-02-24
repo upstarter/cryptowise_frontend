@@ -196,7 +196,7 @@ let topicChildrenStyles = {
     },
     '& .discuss-topic': {
       fontSize: 17,
-      color: `${colors.antBlue} !important`,
+      color: `${colors.antBluePop} !important`,
     }
   },
   discuss: {
@@ -301,7 +301,6 @@ class TopicContainer extends React.Component {
     if (found) {
       url = `${api_url}/topics/${topicID}?per_page=${count}&page=${this.state.page}`
     }
-    console.log('url', url)
     // const data = {
     //   withCredentials: true,
     //   credentials: 'include'

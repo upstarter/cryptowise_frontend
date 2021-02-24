@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import AppButton from 'Components/base/button/AppButton';
 import { url } from "Utils/consts";
+import colors from 'Styles/colors'
+
 // quiz
 import injectSheet, { jss } from "react-jss";
 import nestedJSS from 'jss-nested'
@@ -53,8 +55,7 @@ class HeroComponent extends React.Component {
                       onClick={this.signUpRouteChange}
                       size='large'
                     >
-                      {" "}
-                      Sign Up{" "}
+                      Sign Up
                     </AppButton>
                   </div>
                 </div>
