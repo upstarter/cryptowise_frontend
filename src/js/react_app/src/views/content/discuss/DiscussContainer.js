@@ -9,7 +9,6 @@ import injectSheet, { jss } from "react-jss";
 import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
 import NewThreadForm from "./NewThreadForm";
 import NewPostForm from "./NewPostForm";
-import PostsContainer from "./PostsContainer";
 import {
   List,
   Avatar,
@@ -135,11 +134,19 @@ class DiscussContainer extends React.Component {
   };
 
   componentWillReceiveProps(nextProps){
-    console.log('willRE', nextProps)
+    console.log('willRE', nextProps.discussions.thread, this.state.threads)
+    if (this.state.threads.length === 0 && Object.keys(nextProps.discussions.thread).length != 0) {
       this.setState({
           threads: [nextProps.discussions.thread, ...this.state.threads],
       })
     }
+
+    if (this.state.threads.length > 0 && Object.keys(nextProps.discussions.thread).length != 0) {
+      this.setState({
+          threads: [nextProps.discussions.thread, ...this.state.threads],
+      })
+    }
+  }
 
   render() {
     let { classes } = this.props;
@@ -172,17 +179,17 @@ class DiscussContainer extends React.Component {
               type="primary"
               onClick={this.showModal}
               icon={<PlusOutlined />}
-              size="medium"
+              size="large"
             >
-              New Thread
+              Create Thread
             </Button>
               <h2 className={(classes.pageTitle)}>
                 <span>Discuss</span> {topicName}{" "}
               </h2>
             </div>
           </div>
-          <section id="topic-threads" className={classes.threadSection}>
-            <h1>No Threads Yet.. Be the first to discuss {topicName}</h1>
+          <section id="topic-threads" className={classes.noThreadsSection}>
+            <h3 className={classes.noThreadsYet}>No Threads Yet.. Be the first to discuss {topicName}</h3>
           </section>
         </React.Fragment>
       );
@@ -223,13 +230,13 @@ class DiscussContainer extends React.Component {
                 <span>Discuss</span> {topicName}
               </h2>
               <Button
-                className={classes.newThreadButton}
+                className={`${classes.newThreadButton} ${classes.btn}`}
                 type="primary"
                 onClick={this.showModal}
                 icon={<PlusOutlined />}
-                size="medium"
+                size="large"
               >
-                New Thread
+                Create Thread
               </Button>
             </div>
             <div className={classes.threadMain}>
@@ -247,8 +254,6 @@ class DiscussContainer extends React.Component {
 }
 
 const threadListStyles = {
-
-
   threadsHeader: {
     display: "grid",
     alignItems: "center",
@@ -260,39 +265,43 @@ const threadListStyles = {
     "-webkit-perspective": 1000,
     "-webkit-backface-visibility": "hidden",
 
-    "@media (max-width: 860px)": {},
-    "@media (min-width: 860px)": {},
   },
   pageTitle: {
     alignContent: 'center',
     padding: [13,0,0,13],
   },
-  threadAction: {
+  noThreadsSection: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: [23,0,0,0]
 
-
+  },
+  noThreadsYet: {
+    color: colors.orangeRed
+  },
+  btn: {
+    backgroundColor: `${colors.link}`,
+    cursor: "pointer",
+    boxShadow: `0 0 0 0 ${colors.link}`,
   },
   newThreadButton: {
     gridColumn: "3",
     gridRow: "1 / 3",
     justifySelf: "end",
     margin: [0, 13, 0, 0],
-    height: "1.93em",
-    backgroundColor: `${colors.antBlue}`,
-    color: `${colors.midTone}`,
-    textAlign: "center",
-    cursor: "pointer",
-    zIndex: 10,
-    border: "none",
-    boxShadow: `0 0 0 0 ${colors.antBlue}`,
   },
   threads: {
     userSelect: "none",
     margin: "0 auto",
     marginTop: 80,
+    // width: '95vw',
   },
-  thredItems: {
+  threadItems: {
   },
-  threadSection: {},
+  threadSection: {
+    margin: '0 auto',
+    maxWidth: '96vw',
+  },
   modal: {
     // background: `${colors.secondaryDark}`,
     filter: "invert(0)",

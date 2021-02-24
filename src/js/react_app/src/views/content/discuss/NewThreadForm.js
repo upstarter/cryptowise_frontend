@@ -1,18 +1,27 @@
-import React from 'react'
+import React from "react";
 
-import { Form } from '@ant-design/compatible';
-import '@ant-design/compatible/assets/index.css';
+import { Form } from "@ant-design/compatible";
+import "@ant-design/compatible/assets/index.css";
 
-import { List, Button, Modal, Input, Radio, Typography } from 'antd';
+import { List, Button, Modal, Input, Radio, Typography } from "antd";
 const { TextArea } = Input;
 const { Title, Paragraph, Text } = Typography;
-import colors from "Styles/colors"
+import colors from "Styles/colors";
+import injectSheet, { jss } from "react-jss";
 
-const NewThreadForm = Form.create({ name: 'form_in_modal' })(
+const NewThreadForm = Form.create({ name: "form_in_modal" })(
   // eslint-disable-next-line
   class extends React.Component {
     render() {
-      const { visible, onCancel, onCreate, form, confirmLoading, wrapClassName } = this.props;
+      const {
+        classes,
+        visible,
+        onCancel,
+        onCreate,
+        form,
+        confirmLoading,
+        wrapClassName,
+      } = this.props;
       const { getFieldDecorator } = form;
       return (
         <Modal
@@ -27,41 +36,70 @@ const NewThreadForm = Form.create({ name: 'form_in_modal' })(
           confirmLoading={confirmLoading}
         >
           <Form layout="vertical">
-            <Paragraph size="small"><Text>Discussion Thread Examples...</Text></Paragraph>
+            <Paragraph size="small">
+              <Text>Discussion Thread Examples...</Text>
+            </Paragraph>
 
-            <ul style={{listStyleType: 'ellipses', paddingLeft: 30, color: colors.smoke}}>
+            <ul
+              style={{
+                listStyleType: "ellipses",
+                paddingLeft: 30,
+                color: colors.smoke,
+              }}
+            >
               <li>
-                I need someone to correlate BTC volatility, momentum and sentiment data and provide a data product endpoint
+                Anyone want to synthesize a strategy using BTC volatility stats and intermarket analysis?
               </li>
-              <li>
-                Who can provide stats on seasonality and periodicity for ATOM swing trading (2-4 weeks value-at-risk) over the last year?
-              </li>
+              <li>What is the average true range (ATR) of BTC?</li>
             </ul>
-            <Form.Item label="Title">
-              {getFieldDecorator('title', {
-                rules: [{ required: true, message: 'Please input the title!' }],
-              })(<Input placeholder="Enter your title..."/>)}
+            <Form.Item
+              label={
+                <span className={classes.label}>
+                  Title&nbsp;
+                </span>
+              }
+              >
+              {getFieldDecorator("title", {
+                rules: [{ required: true, message: "Please input the title!" }],
+              })(<Input placeholder="Enter your title..." />)}
             </Form.Item>
-            <Form.Item label="Description">
-              {getFieldDecorator('description')(<TextArea placeholder="Describe your question, thesis, idea..." rows={4}
-              type="textarea" />)}
+            <Form.Item
+              label={
+                <span className={classes.label}>
+                  Description&nbsp;
+                </span>
+              }
+              >
+              {getFieldDecorator("description")(
+                <TextArea
+                  placeholder="Ask a question, test a theory, form a group.."
+                  rows={4}
+                  type="textarea"
+                />
+              )}
             </Form.Item>
             <Form.Item className="collection-create-form_last-form-item">
-              {getFieldDecorator('is_public', {
-                initialValue: 'public',
+              {getFieldDecorator("is_public", {
+                initialValue: "public",
               })(
                 <Radio.Group>
                   <Radio value="public">Public</Radio>
                   <Radio value="private">Private (you can publish later)</Radio>
-                </Radio.Group>,
+                </Radio.Group>
               )}
             </Form.Item>
           </Form>
         </Modal>
       );
     }
-  },
+  }
 );
 
+const styles = {
+  label: {
+    color: colors.midTone,
+  },
+};
 
-export default NewThreadForm
+const ThreadForm = injectSheet(styles)(NewThreadForm);
+export default ThreadForm;

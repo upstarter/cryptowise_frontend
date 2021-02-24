@@ -282,7 +282,7 @@ class RegistrationForm extends React.Component {
 const styles = {
   label: {
     color: colors.midTone,
-    '& .ant-legacy-form-it': {
+    '& .ant-legacy-form-item': {
       color: colors.midTone,
 
       listStyleType: 'none',

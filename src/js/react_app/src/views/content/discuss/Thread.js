@@ -108,35 +108,36 @@ class Thread extends React.Component {
           onCreate={this.handleCreate}
           confirmLoading={confirmLoading}
         />
-
-        <div className={classes.threadHeader}>
-          <span className={classes.threadContent}>
-            <span className={classes.threadTitle}>{thread.title}</span>
-            <span className={classes.threadDesc}>{thread.description}</span>
-          </span>
-          <span className={classes.userCaption}>
-            <span className={classes.threadBy}>Posted by </span>
-            <span className={classes.threadUser}>{thread.user}</span>
-            <span className={classes.threadAge}>
-              {thread.since_posted} minutes ago
+        <div className={classes.listItems}>
+          <div className={classes.threadHeader}>
+            <span className={classes.threadContent}>
+              <span className={classes.threadTitle}>{thread.title}</span>
+              <span className={classes.threadDesc}>{thread.description}</span>
             </span>
-          </span>
-          <span className={classes.threadActions}>
-            <Button
-              size="small"
-              className={`${classes.btn} ${classes.threadAction} ${classes.viewThreadBtn}`}
-              onClick={this.viewThread}
-            >
-              View
-            </Button>
-            <Button
-              size="small"
-              className={`${classes.btn} ${classes.threadAction} ${classes.replyThreadBtn}`}
-              onClick={this.showModal}
-            >
-              Reply
-            </Button>
-          </span>
+            <span className={classes.userCaption}>
+              <span className={classes.threadBy}>Posted by </span>
+              <span className={classes.threadUser}>{thread.user}</span>
+              <span className={classes.threadAge}>
+                {thread.since_posted} minutes ago
+              </span>
+            </span>
+            <span className={classes.threadActions}>
+              <Button
+                size="large"
+                className={`${classes.btn} ${classes.threadAction} ${classes.viewThreadBtn}`}
+                onClick={this.viewThread}
+              >
+                View
+              </Button>
+              <Button
+                size="large"
+                className={`${classes.btn} ${classes.threadAction} ${classes.replyThreadBtn}`}
+                onClick={this.showModal}
+              >
+                Reply
+              </Button>
+            </span>
+          </div>
         </div>
       </li>
     );
@@ -162,7 +163,25 @@ const threadStyles = {
     color: colors.midTone,
     fontSize: 12,
   },
+  pageTitle: {
+    alignContent: 'center',
+    padding: [13,0,0,13],
+  },
+  threadAction: {
+
+
+  },
+  noThreadsSection: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: [23,0,0,0]
+
+  },
+  noThreadsYet: {
+    color: colors.orangeRed
+  },
   threadTitle: {
+
     gridArea: "title",
     fontSize: "15px !important",
     lineHeight: "1em !important",
@@ -176,11 +195,11 @@ const threadStyles = {
     display: "block",
     padding: [3,0,0,0],
     '@media (max-width: 408px)': {
-      maxWidth: '33ch',
+      maxWidth: '60vw',
 
     },
     '@media (min-width: 408px)': {
-      maxWidth: '80vw',
+      maxWidth: '65vw',
 
     },
   },
@@ -196,15 +215,15 @@ const threadStyles = {
     whiteSpace: "nowrap",
     display: "block",
     padding: [13,0,8,0],
-
     '@media (max-width: 408px)': {
-      maxWidth: '37ch',
+      maxWidth: '60vw',
 
     },
     '@media (min-width: 408px)': {
-      maxWidth: '85vw',
+      maxWidth: '65vw',
 
     },
+
   },
   threadActions: {
     gridArea: 'actions',
@@ -219,29 +238,24 @@ const threadStyles = {
 
   threadAction: {
     margin: '0 auto',
+    marginBottom: 3,
   },
 
   viewThreadBtn: {
     gridArea: "view"
   },
   replyThreadBtn: {
-    gridArea: "reply"
+    gridArea: "reply",
+    width: 66,
+    '& span': {
+      marginLeft: -3,
+    }
   },
   btn: {
-    background: colors.antBlue,
-    marginRight: 10,
-    color: colors.white,
-    width: 43,
-    paddingLeft: '2px !important',
-
-    // '@media (max-width: 408px)': {
-    //   height: '2em !important',
-    //   // width: '30vw !important',
-    // },
-    // '@media (min-width: 408px)': {
-    //   height: '2em !important',
-    //   // width: '30vw !important',
-    // },
+    background: colors.link,
+    marginRight: 20,
+    cursor: "pointer",
+    boxShadow: `0 0 0 0 ${colors.link}`,
   },
 };
 // whatever is returned will show up as props inside Discuss

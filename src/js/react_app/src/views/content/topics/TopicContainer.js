@@ -112,8 +112,10 @@ class TopicChildren extends React.Component {
   topicImage = (name) => {
       let re = /\(.*\)/
       let symbol = name.match(re)
+        && symbol != "DPoS"
+        && symbol != "PoWeight"
 
-      if (symbol) {
+      if (symbol && symbol[0]) {
         let sym = symbol[0].replace('(','').replace(')', '').toLowerCase()
 
         let imgUrl = require(`./crypto-logos/${sym}.png`)

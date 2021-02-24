@@ -1,33 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import injectSheet, { jss } from "react-jss";
-import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
-import { api_url, url } from "Utils/consts";
-import {
-  List,
-  Avatar,
-  Button,
-  Skeleton,
-  Affix,
-  Rate,
-  Icon,
-  Typography,
-  Divider,
-  Modal,
-} from "antd";
-const { Title, Paragraph, Text } = Typography;
-import axios from "axios";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import axios from "Config/axios";
 import { createPost } from "Redux/discussions";
 import colors from "Styles/colors";
-import Cookies from "universal-cookie";
-import setAuthToken from "Services/auth/setAuthToken";
-import Post from "./Post";
+import injectSheet, { jss } from "react-jss";
+import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
 import NewPostForm from "./NewPostForm";
-
-const count = 25;
-const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
+import Post from "./Post";
+import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from "antd";
+import { api_url, url } from "Utils/consts";
+import { CommentOutlined, PlusOutlined } from '@ant-design/icons';
 
 class PostsContainer extends React.Component {
   constructor(props) {
@@ -36,7 +19,10 @@ class PostsContainer extends React.Component {
       initLoading: true,
       loading: false,
       count: 25,
-      threadId: null,
+      threadID: this.props.match.params.threadID,
+      topicID: null,
+      topicName: null,
+      thread: null,
       posts: [],
       selectedPost: null,
       isLoading: true,
@@ -47,6 +33,59 @@ class PostsContainer extends React.Component {
       confirmLoading: false,
     };
   }
+
+  componentDidMount() {
+    this.getData((res) => {
+      console.log("DDD", res.data);
+      this.setState({
+        initLoading: false,
+        topicName: res.data.topic.name,
+        thread: res.data.thread,
+        threadID: res.data.thread.id,
+        posts: res.data.posts,
+        page: this.state.page + 1,
+      });
+    });
+  }
+
+  getData = (callback) => {
+    let { match } = this.props;
+    console.log("state", this.state);
+    const url = `${api_url}${match.url}?per_page=${this.state.count}&page=${this.state.page}`;
+
+    axios.get(url).then((res) => {
+      callback(res.data);
+    });
+  };
+
+  onLoadMore = () => {
+    this.setState({
+      loading: true,
+      list: this.state.data.concat(
+        [...new Array(count)].map(() => ({ loading: true, name: {} }))
+      ),
+    });
+    this.getData((res) => {
+      const data = this.state.data.concat(res.data);
+      const page = this.state.page + 1;
+
+      this.setState(
+        {
+          data,
+          list: data,
+          loading: false,
+          page: page,
+        },
+        () => {
+          // Resetting windows offsetTop so as to display react-virtualized demo underfloor.
+          // In real scene, you can using public method of react-virtualized:
+          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
+          window.dispatchEvent(new Event("resize"));
+        }
+      );
+    });
+  };
+
   showModal = () => {
     this.setState({
       visible: true,
@@ -70,7 +109,8 @@ class PostsContainer extends React.Component {
         return;
       }
     });
-    form.threadId = this.props.thread.id;
+    form.threadID = this.state.threadID;
+    console.log("form", form);
     this.props.dispatch(createPost(form));
 
     form.resetFields();
@@ -84,128 +124,404 @@ class PostsContainer extends React.Component {
     });
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shoul', nextProps.discussions.post, this.state.posts)
+    return nextProps.discussions.post != this.state.posts
+  }
+  componentWillReceiveProps(nextProps){
+    console.log('willRE', nextProps.discussions.post)
+    // if (!this.state.posts {
+      this.setState({
+          posts: [nextProps.discussions.post, ...this.state.posts],
+      })
+    // }
+  }
+
   render() {
-    const { classes, thread } = this.props;
+    let { classes } = this.props;
     const {
+      posts,
+      thread,
+      topicName,
       initLoading,
       loading,
       visible,
       confirmLoading,
       ModalContent,
     } = this.state;
+    if (!thread) return (<></>)
+    let {title, description} = thread
+    if (posts && posts.length < 0) {
+      return (
+        <React.Fragment>
+          <ScrollToTopOnMount />
+          <NewThreadForm
+            wrappedComponentRef={this.saveFormRef}
+            wrapClassName={classes.modal}
+            visible={this.state.visible}
+            onCancel={this.handleCancel}
+            onCreate={this.handleCreate}
+            confirmLoading={confirmLoading}
+          />
+
+          <div id="post-items" className={classes.posts}>
+            <div className={classes.postsHeader}>
+              <Button
+                className="float"
+                onClick={this.showModal}
+                shape="circle"
+                icon={<PlusOutlined />}
+                size="large"
+              />
+              <h2 className={( classes.pageTitle)}>
+                <span>Discuss</span> <span>{title}{" "}</span>
+              </h2>
+            </div>
+          </div>
+          <section id="post-posts" className={classes.postsSection}>
+            <h1>No Posts Yet.. Be the first to discuss {title}</h1>
+          </section>
+        </React.Fragment>
+      );
+    }
+    const loadMore =
+      !initLoading && !loading ? (
+        <div
+          id="load-more-button"
+          style={{
+            textAlign: "center",
+            marginTop: 12,
+            height: 32,
+            lineHeight: "32px",
+          }}
+        >
+          <Button onClick={this.onLoadMore}>Load More</Button>
+        </div>
+      ) : null;
+
     return (
       <div className={classes.thread}>
-        <NewPostForm
-          wrappedComponentRef={this.saveFormRef}
-          wrapClassName={classes.modal}
-          visible={this.state.visible}
-          onCancel={this.handleCancel}
-          onCreate={this.handleCreate}
-          confirmLoading={confirmLoading}
-        />
-        <div className={classes.posts}>
-          <ul className={classes.postList}>
-            {thread.posts.map((post) => {
-              return <Post key={post.id} post={post} />;
-            })}
-          </ul>
-        </div>
-        <div className={classes.postsFooter}>
-          <Button
-            size="small"
-            className={`${classes.btn} ${classes.viewMorePostsBtn}`}
-            onClick={this.showModal}
-          >
-            View More
-          </Button>
-        </div>
+        <React.Fragment>
+          <ScrollToTopOnMount />
+
+          <section id="topic-posts" className={classes.postSection}>
+            <NewPostForm
+              wrappedComponentRef={this.saveFormRef}
+              wrapClassName={classes.modal}
+              visible={this.state.visible}
+              onCancel={this.handleCancel}
+              onCreate={this.handleCreate}
+              confirmLoading={confirmLoading}
+            />
+
+            <div className={classes.listItems}>
+              <div className={classes.threadHeader}>
+                <span className={classes.threadContent}>
+                  <span className={classes.threadTitle}>{title}</span>
+                  <span className={classes.threadDesc}>{description}</span>
+                </span>
+                <span className={classes.threadActions}>
+                  <Button
+                    size="large"
+                    icon={<PlusOutlined />}
+                    className={`${classes.btn} ${classes.threadAction} ${classes.createPostBtn}`}
+                    onClick={this.viewThread}
+                  >
+                    Create Post
+                  </Button>
+                </span>
+              </div>
+
+              <div className={classes.postMain}>
+                <ul className={classes.postList}>
+                  {posts ? (
+                    posts.map((post) => {
+                      return <Post post={post} />;
+                    })
+                  ) : (
+                    <>No Posts Yet. Be the first..</>
+                  )}
+                </ul>
+              </div>
+            </div>
+          </section>
+        </React.Fragment>
       </div>
     );
   }
 }
 
-const postsStyles = {
-  threadRow: {
-    display: "flex",
-    flexDirection: "column",
-    background: colors.darkBlue,
+const postListStyles = {
 
-    "& #thread-header:hover": {
-      // background: `linear-gradient(to bottom, rgba(175,170,170, .15), rgba(175,170,170, .10)), no-repeat`,
+  thread: {
+    background: colors.secondaryDark,
+    border: `0.2px solid ${colors.silver2}`,
+    padding: 13,
+  },
+  threadHeader: {
+    display: "grid",
+    gridTemplateAreas: `
+     "title actions"
+     "desc actions"
+   `,
+   marginTop: 60,
+  },
+  pageTitle: {
+    alignContent: 'center',
+    padding: [13,0,0,13],
+  },
+  noThreadsSection: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: [23,0,0,0]
+
+  },
+  noThreadsYet: {
+    color: colors.orangeRed
+  },
+  threadTitle: {
+
+    gridArea: "title",
+    fontSize: "15px !important",
+    lineHeight: "1em !important",
+    fontWeight: "500 !important",
+    letterSpacing: ".05em !important",
+    color: colors.white,
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    height: 20,
+    whiteSpace: "nowrap",
+    display: "block",
+    padding: [3,0,0,0],
+    '@media (max-width: 408px)': {
+      maxWidth: '60vw',
+
+    },
+    '@media (min-width: 408px)': {
+      maxWidth: '65vw',
+
     },
   },
 
-  postsHeader: {
-    display: "flex",
-    justifyContent: "center",
-    height: 14.5,
-    padding: 1.5,
-    fontSize: 14,
-    fontWeight: 600,
-    letterSpacing: 2,
-    fontVariant: "small-caps",
-    lineHeight: ".85em",
-    background: colors.black,
-    color: colors.midTone,
+  threadDesc: {
+    gridArea: "desc",
+    fontSize: "14px !important",
+    fontWeight: "100 !important",
+    letterSpacing: ".05em !important",
+    color: colors.silver8,
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    display: "block",
+    padding: [13,0,8,0],
+    '@media (max-width: 408px)': {
+      maxWidth: '60vw',
+
+    },
+    '@media (min-width: 408px)': {
+      maxWidth: '65vw',
+
+    },
+
   },
-  postList: {
-    listStyleType: "none",
+  threadActions: {
+    gridArea: 'actions',
+    display: 'grid',
+    alignItems: 'center',
+    justifyItems: 'center',
+    gridTemplateAreas: `
+      "view"
+      "reply"
+    `,
   },
-  threadHeader: {
-    display: "flex",
-    height: 35,
-    padding: 2,
-    background: colors.silver,
-    color: colors.white,
-    justifyContent: "space-between",
-  },
-  threadTitle: {
-    margin: [0, 7, 0, 7],
-    padding: 2,
-    fontSize: 12,
-    fontWeight: 800,
-    letterSpacing: "1.2em",
-    color: colors.black,
-  },
-  threadActions: {},
+
   threadAction: {
-    padding: 2,
-    margin: [0, 2, 0, 2],
-
-    height: "1.93em",
+    margin: '0 auto',
+    marginBottom: 3,
   },
+
+  createPostBtn: {
+    gridArea: "actions"
+  },
+
   btn: {
-    background: colors.darkerDarkBlue,
-    fontSize: 10,
-    fontWeight: 740,
-    letterSpacing: ".1em",
-  },
-  commentThreadBtn: {},
-  viewThreadBtn: {},
-  threadDetail: {
-    display: "none",
+    background: colors.link,
+    marginRight: 20,
+    cursor: "pointer",
+    boxShadow: `0 0 0 0 ${colors.link}`,
   },
 
-  postsFooter: {
-    display: "flex",
-    alignItems: "top",
-    justifyContent: "center",
-    height: 40,
-  },
-  viewMorePostsBtn: {},
+  //
+  // thread: {
+  //   background: colors.secondaryDark,
+  //   border: `0.2px solid ${colors.silver2}`,
+  //   maxWidth: '96vw',
+  //   margin: '0 auto',
+  // },
+  // threadsHeader: {
+  //   display: "grid",
+  //   gridTemplateAreas: `
+  //    "title actions"
+  //    "desc actions"
+  //  `,
+  //   alignItems: "center",
+  //   alignContent: 'center',
+  //   minHeight: 40,
+  //   zIndex: 10,
+  //   color: "#fff !important",
+  //   background: `${colors.primary}`,
+  //   "-webkit-perspective": 1000,
+  //   "-webkit-backface-visibility": "hidden",
+  //
+  //
+  //
+  // },
+  // pageTitle: {
+  //   alignContent: 'center',
+  //   padding: [13,0,0,13],
+  // },
+  //
+  // threadTitle: {
+  //   gridArea: "title",
+  //   fontSize: "15px !important",
+  //   lineHeight: "1em !important",
+  //   fontWeight: "500 !important",
+  //   letterSpacing: ".05em !important",
+  //   color: colors.white,
+  //   textOverflow: "ellipsis",
+  //   overflow: "hidden",
+  //   height: 20,
+  //   whiteSpace: "nowrap",
+  //   display: "block",
+  //   padding: [3,0,0,0],
+  //   '@media (max-width: 408px)': {
+  //     maxWidth: '60vw',
+  //
+  //   },
+  //   '@media (min-width: 408px)': {
+  //     maxWidth: '65vw',
+  //
+  //   },
+  // },
+  //
+  // threadDesc: {
+  //   gridArea: "desc",
+  //   fontSize: "14px !important",
+  //   fontWeight: "100 !important",
+  //   letterSpacing: ".05em !important",
+  //   color: colors.silver8,
+  //   textOverflow: "ellipsis",
+  //   overflow: "hidden",
+  //   whiteSpace: "nowrap",
+  //   display: "block",
+  //   padding: [13,0,0,0],
+  //   '@media (max-width: 408px)': {
+  //     maxWidth: '60vw',
+  //
+  //   },
+  //   '@media (min-width: 408px)': {
+  //     maxWidth: '65vw',
+  //
+  //   },
+  //
+  // },
+  // modal: {
+  //   // background: `${colors.secondaryDark}`,
+  //   filter: "invert(0)",
+  //   "& .ant-modal-content": {
+  //     color: "red !important",
+  //     textDecoration: "none !important",
+  //   },
+  // },
+  // posts: {
+  //   userSelect: "none",
+  //   marginTop: 65,
+  //   margin: "0 auto",
+  // },
+  // postsHeader: {
+  //   display: "grid",
+  //   gridTemplateAreas: `'title newPost'`,
+  //   alignItems: "center",
+  //   alignContent: 'center',
+  //   color: "#fff !important",
+  //   background: `${colors.primary}`,
+  //   fontSize: '2.6rem',
+  //   "-webkit-perspective": 1000,
+  //   "-webkit-backface-visibility": "hidden",
+  //
+  //   "@media (max-width: 860px)": {},
+  //   "@media (min-width: 860px)": {},
+  // },
+  // postSection: {
+  // },
+  // postListHeader: {
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  // },
+  //
+  // postList: {
+  //   listStyleType: "none",
+  //
+  //   "@media (max-width: 860px)": {},
+  //   "@media (min-width: 860px)": {},
+  // },
+  // postDetail: {},
+  // newPostBtn: {
+  //   backgroundColor: `${colors.antBlue}`,
+  //   cursor: "pointer",
+  //   boxShadow: `0 0 0 0 ${colors.antBlue}`,
+  // },
+  // threadActions: {
+  //   gridArea: 'actions',
+  //   display: 'grid',
+  //   alignItems: 'center',
+  //   justifyItems: 'center',
+  //   gridTemplateAreas: `
+  //     "view"
+  //     "reply"
+  //   `,
+  // },
+  //
+  // threadAction: {
+  //   margin: '0 auto',
+  //   marginBottom: 3,
+  // },
+  //
+  // btn: {
+  //   marginRight: 13,
+  //   paddingLeft: '2px !important',
+  //
+  //   // '@media (max-width: 408px)': {
+  //   //   height: '2em !important',
+  //   //   // width: '30vw !important',
+  //   // },
+  //   // '@media (min-width: 408px)': {
+  //   //   height: '2em !important',
+  //   //   // width: '30vw !important',
+  //   // },
+  // },
+
 };
-
 // whatever is returned will show up as props inside Discuss
+
 const mapStateToProps = (state, ownProps) => {
+  console.log(state, ownProps)
+  let {thread} = state.discussions
   return {
-    post: state.post,
+    discussions: state.discussions,
   };
 };
 
-// anything returned from here will end up as props on DiscussContainer
+// anything returned from here will end up as props on PostsContainer
 // whenever selectPost is called the result should be passed to all reducers
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return bindActionCreators({ selectPost: null }, dispatch);
+  return bindActionCreators({ selectThread: null }, dispatch);
 };
 
-export default connect(null, null)(injectSheet(postsStyles)(PostsContainer));
+// connect takes a function and component and produces a container that is aware
+// of state contained by redux
+// promote Discuss to Container
+export default connect(
+  mapStateToProps,
+  null
+)(injectSheet(postListStyles)(PostsContainer));
