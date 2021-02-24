@@ -125,6 +125,19 @@ class ThreadContainer extends React.Component {
     });
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shoul', nextProps.discussions.post, this.state.posts)
+    return nextProps.discussions.post != this.state.posts
+  }
+  componentWillReceiveProps(nextProps){
+    console.log('willRE', nextProps.discussions.post)
+    // if (!this.state.posts {
+      this.setState({
+          posts: [nextProps.discussions.post, ...this.state.posts],
+      })
+    // }
+  }
+
   render() {
     let { classes } = this.props;
     const {
@@ -206,7 +219,7 @@ class ThreadContainer extends React.Component {
 
                 <div className={classes.threadHead}>
                   <div className={classes.threadTitle}>
-                    💬  {threadTitle}{" "}
+                    {threadTitle}
                   </div>
                 </div>
                 <div className={classes.threadActions}>
@@ -253,7 +266,7 @@ const postListStyles = {
     alignItems: 'center',
     alignContent: 'center',
 
-    paddingLeft: 13,
+    padding: '1.8rem',
     color: colors.white,
     "& a": {
       color: colors.offWhite2,
@@ -335,8 +348,10 @@ const postListStyles = {
 // whatever is returned will show up as props inside Discuss
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state, ownProps)
+  let {thread} = state.discussions
   return {
-    posts: state.posts,
+    discussions: state.discussions,
   };
 };
 

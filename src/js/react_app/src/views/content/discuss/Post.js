@@ -24,7 +24,6 @@ class Post extends React.Component {
 
   render() {
     let {post, classes} = this.props
-    console.log(post)
     const { description, title, body, id, since_posted, user} = post
 
     return (
@@ -45,10 +44,33 @@ class Post extends React.Component {
 const postStyles = {
   postBody: {
     fontSize: 14,
+    marginLeft: 7,
+    color: colors.silver,
+    opacity: 0.9,
+    '@media (max-width: 408px)': {
+      maxWidth: '37ch',
+
+    },
+    '@media (min-width: 408px)': {
+      maxWidth: '85vw',
+
+    },
+  },
+  post: {
+    margin: '0 auto',
+    padding: 13,
+    margin: 2,
+    background: colors.primary,
+
   },
   userCaption: {
-    color: colors.midTone,
+    color: colors.white,
     fontSize: 13,
+  },
+  postUser: {
+    color: colors.yellow,
+    fontSize: 15,
+    letterSpacing: '0.05em'
   },
   postDetail: {
     '& .description':  {
@@ -62,21 +84,6 @@ const postStyles = {
     },
 
   },
-
-  post: {
-    margin: '0 auto',
-    padding: 7,
-    margin: 2,
-    background: colors.primary,
-
-  },
-  postBody: {
-    marginLeft: 7,
-    color: colors.yellow,
-    opacity: 0.9,
-  },
-
-
 }
 // whatever is returned will show up as props inside Discuss
 const mapStateToProps = (state, ownProps) => {

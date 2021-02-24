@@ -21,38 +21,34 @@ const API = {
 // REDUCER
 let initialState = {
   post: {},
-  thread: {}
+  thread: {},
 }
 export const discussionsApiReducer = (state = initialState, action) => {
   const { payload } = action
-
   switch (action.type) {
+
+
     case CREATE_POST:
       console.log('create post ', payload)
-      return { post: payload }
+      return {...state, post: payload }
 
     case `${POST} ${API_SUCCESS}`:
-
       console.log('disc-post-success-reducer', payload)
-      return { post: payload.data.data }
+      return {...state, post: payload }
 
     case `${POST} ${API_ERROR}`:
       console.log('discussionpost-error-reducer', payload)
-      return { post: payload }
+      return {...state, post: payload }
 
     // don't care about commands or events like fetch, apiError, only document type
     case SET_POST:
-      console.log('setreducer', payload.data.data)
-      return {post: payload.data.data}
+      console.log('setreducer', payload.data)
+      return {post: payload.data}
 
     // THREADS
     case SET_THREAD:
       console.log('setTHREAD reducer PAYLOAD.DATA', payload.data)
       return {...state, thread: payload.data}
-
-    case `${THREAD} ${API_ERROR}`:
-      console.log('auth-error', payload)
-      return { thread: payload }
 
     default:
       return state
@@ -90,9 +86,33 @@ export const setPost = (data) => ({
 
 // MIDDLEWARE
 export const discussionsMiddleware = ({dispatch}) => next => action => {
+  // let payload = action.payload
   let {data} = action.payload
 
   switch(action.type) {
+
+    case CREATE_THREAD:
+      console.log('da', data)
+      let threadData = {}
+      threadData.title = data.getFieldValue('title')
+      threadData.description = data.getFieldValue('description')
+      threadData.is_public = data.getFieldValue('is_public')
+      threadData.topic_id = data.topicID
+      threadData.user_id = 1
+      dispatch(apiRequest(threadData, 'POST', API.CREATE_THREAD, THREAD))
+      break;
+
+    case `${THREAD} ${API_SUCCESS}`:
+      console.log('api-succes', action, data)
+      next(setThread(data))
+      break;
+
+    case `${THREAD} ${API_ERROR}`:
+      console.log('auth-error', data)
+      // next([
+      //   setNotification(action.payload.data.message, THREAD),
+      // ])
+      break;
 
     case CREATE_POST:
       let postData = {}
@@ -100,49 +120,17 @@ export const discussionsMiddleware = ({dispatch}) => next => action => {
       postData.thread_id = data.threadID
       postData.user_id = 1
       postData.parent_id = data.threadID
-      console.log('post',postData, data)
       dispatch(apiRequest(postData, 'POST', API.CREATE_POST, POST))
-      next({...action, postData})
-      break;
-
-
-    case CREATE_THREAD:
-      let threadData = {}
-      threadData.title = data.getFieldValue('title')
-      threadData.description = data.getFieldValue('description')
-      threadData.is_public = data.getFieldValue('is_public')
-      threadData.topic_id = data.topicID
-      threadData.user_id = 1
-
-      dispatch(apiRequest(threadData, 'POST', API.CREATE_THREAD, THREAD))
-      break;
-
-    case `${THREAD} ${API_SUCCESS}`:
-      console.log('api-succes', action, data)
-
-      next({...action, data})
-
-      next(setThread(data))
-      break;
-
-    case `${THREAD} ${API_ERROR}`:
-      console.log('auth-error', data)
-      next({...action, data})
       break;
 
     case `${POST} ${API_SUCCESS}`:
-
-      data = action.payload
       console.log('api success', data)
-      next({...action, data})
       next(setPost(data))
       break;
 
     case `${POST} ${API_ERROR}`:
       data = action.payload
       console.log('errr', data)
-      // next({...action, data})
-
       // next([
       //   setNotification(action.payload.data.message, THREAD),
       // ])

@@ -25,7 +25,6 @@ export const timeSince = (date) => {
   }
 
   interval = seconds / 60;
-  console.log('nnn', now, then, seconds, interval)
 
   if (interval > 1) {
     return Math.floor(interval) + " minutes";

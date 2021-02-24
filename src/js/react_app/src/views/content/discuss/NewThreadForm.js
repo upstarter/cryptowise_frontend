@@ -25,6 +25,9 @@ const NewThreadForm = Form.create({ name: 'form_in_modal' })(
           onOk={onCreate}
           centered={true}
           confirmLoading={confirmLoading}
+          width={'95vw'}
+          height={'95vh'}
+          bodyStyle={{height: '61.8vh', width: '95vw'}}
         >
           <Form layout="vertical">
             <Paragraph size="small"><Text>Discussion Thread Examples...</Text></Paragraph>

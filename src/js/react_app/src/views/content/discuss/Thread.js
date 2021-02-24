@@ -147,6 +147,7 @@ const threadStyles = {
   thread: {
     background: colors.secondaryDark,
     border: `0.2px solid ${colors.silver2}`,
+    padding: 13,
   },
   threadHeader: {
     display: "grid",
@@ -174,14 +175,14 @@ const threadStyles = {
     whiteSpace: "nowrap",
     display: "block",
     padding: [3,0,0,0],
-    // '@media (max-width: 408px)': {
-    //   maxWidth: '45ch',
-    //
-    // },
-    // '@media (min-width: 408px)': {
-    //   maxWidth: '70ch',
-    //
-    // },
+    '@media (max-width: 408px)': {
+      maxWidth: '33ch',
+
+    },
+    '@media (min-width: 408px)': {
+      maxWidth: '80vw',
+
+    },
   },
 
   threadDesc: {
@@ -195,14 +196,15 @@ const threadStyles = {
     whiteSpace: "nowrap",
     display: "block",
     padding: [13,0,8,0],
-    // '@media (max-width: 408px)': {
-    //   maxWidth: '45ch',
-    //
-    // },
-    // '@media (min-width: 408px)': {
-    //   maxWidth: '70ch',
-    //
-    // },
+
+    '@media (max-width: 408px)': {
+      maxWidth: '37ch',
+
+    },
+    '@media (min-width: 408px)': {
+      maxWidth: '85vw',
+
+    },
   },
   threadActions: {
     gridArea: 'actions',

@@ -319,7 +319,6 @@ const threadListStyles = {
 // whatever is returned will show up as props inside Discuss
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state, ownProps)
   let {thread} = state.discussions
   return {
     discussions: state.discussions,
