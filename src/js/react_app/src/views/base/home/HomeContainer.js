@@ -176,7 +176,7 @@ const appStyles = {
       textAlign: 'left'
     },
     '@media (max-width: 576px)': {
-      marginLeft: '0',
+      marginLeft: '0 !important',
     },
   },
   footer: {

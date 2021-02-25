@@ -36,36 +36,27 @@ const LinkMenu = withRouter(props => {
         defaultSelectedKeys={["/"]}
         onSelect={onSelect}
       >
-        {/* auth.signedIn() ?
-          <Menu.Item key="/fds">
-            <Icon type="build" />
-            <span className="nav-text">
-            <Link to="/discuss">
-              Discuss
-            </Link>
-            </span>
-          </Menu.Item> : ''
-        */}
+
         { !auth.signedIn() ?
-          <Menu.Item key="/">
+          <Menu.Item title={false} key="/">
             <Link to="/" style={{ textDecoration: "none" }}>
               <UserAddOutlined />
-              <span className="nav-text">Sign Up</span>
+              <span className={classes.navText}>Sign Up</span>
             </Link>
           </Menu.Item> : '' }
         {
-          <Menu.Item key="/discuss">
+          <Menu.Item title={false} title={false} key="/discuss">
             <Link to="/discuss" style={{ textDecoration: "none" }}>
               <CommentOutlined type="comment-outlined" />
-              <span className="nav-text">Discuss</span>
+              <span className={classes.navText}>Discuss</span>
             </Link>
           </Menu.Item>
         }
 
         {/* { auth.signedIn() ?
-          <Menu.Item key="/fds">
+          <Menu.Item title={false} key="/fds">
             <Icon type="build" />
-            <span className="nav-text">
+            <span className={classes.navText}>
             <Link to="/fds">
               Curate
             </Link>
@@ -73,75 +64,75 @@ const LinkMenu = withRouter(props => {
           </Menu.Item> : ''
         } */}
         {/*{
-          <Menu.Item key={"/federations"}>
+          <Menu.Item title={false} key={"/federations"}>
             <Link to="/federations" style={{ textDecoration: "none" }}>
               <Icon type="team" />
-              <span className="nav-text">Collaborate</span>
+              <span className={classes.navText}>Collaborate</span>
             </Link>
           </Menu.Item>
         } */}
 
         {/*
         // { !auth.signedIn() ?
-        //   <Menu.Item key="/analysts">
+        //   <Menu.Item title={false} key="/analysts">
         //     <Link to="/analysts" style={{ textDecoration: "none" }}>
         //       <UserOutlined />
-        //       <span className="nav-text">Contribute</span>
+        //       <span className={classes.navText}>Contribute</span>
         //     </Link>
         //   </Menu.Item>  : '' }
         */}
           {/*
             // { auth.signedIn() ?
-            //   <Menu.Item key="/proposals">
+            //   <Menu.Item title={false} key="/proposals">
             //     <Link to="/proposals" style={{ textDecoration: "none" }}>
             //       <BulbOutlined />
-            //       <span className="nav-text">Ideate</span>
+            //       <span className={classes.navText}>Ideate</span>
             //     </Link>
             //   </Menu.Item> : ''
             // }
             // { auth.signedIn() ?
-            //   <Menu.Item key="/portfolio">
+            //   <Menu.Item title={false} key="/portfolio">
             //     <Link to="/portfolio" style={{ textDecoration: "none" }}>
             //       <PieChartOutlined />
-            //       <span className="nav-text">Portfolio</span>
+            //       <span className={classes.navText}>Portfolio</span>
             //     </Link>
             //   </Menu.Item> : ''
             // }
         */}
         { auth.signedIn() ?
-          <Menu.Item key="/profile">
+          <Menu.Item title={false} key="/profile">
             <Link to="/profile" style={{ textDecoration: "none" }}>
             <UserOutlined />
-              <span className="nav-text">Profile</span>
+              <span className={classes.navText}>Profile</span>
             </Link>
           </Menu.Item> : ''
         }
-        { <Menu.Item key="/about">
+        { <Menu.Item title={false} key="/about">
             <Link to="/about" style={{ textDecoration: "none" }}>
             <QuestionOutlined />
-              <span className="nav-text">About</span>
+              <span className={classes.navText}>About</span>
             </Link>
           </Menu.Item>
         }
-        { <Menu.Item key="/login">
+        { <Menu.Item title={false} key="/login">
             <Link to="/login" style={{ textDecoration: "none" }}>
             <LoginOutlined />
-            <span className="nav-text">Login</span>
+            <span className={classes.navText}>Login</span>
             </Link>
           </Menu.Item> }
-        {/* <Menu.Item key="/contact">Contact</Menu.Item> */}
-        { <Menu.Item key="/logout">
+        {/* <Menu.Item title={false} key="/contact">Contact</Menu.Item> */}
+        { <Menu.Item title={false} key="/logout">
             <Link to="/logout" style={{ textDecoration: "none" }}>
             <LogoutOutlined />
-            <span className="nav-text">Logout</span>
+            <span className={classes.navText}>Logout</span>
             </Link>
           </Menu.Item> }
       {/*
         // {
-        //   <Menu.Item key="/closemenu">
+        //   <Menu.Item title={false} key="/closemenu">
         //     <Link to="/close" style={{ textDecoration: "none" }}>
         //     <CloseOutlined />
-        //       <span className="nav-text">Close</span>
+        //       <span className={classes.navText}>Close</span>
         //     </Link>
         //   </Menu.Item>
         // }
@@ -156,10 +147,10 @@ const LinkMenu = withRouter(props => {
         defaultSelectedKeys={["/"]}
         onSelect={onSelect}
       >
-        <Menu.Item key="/developers">
+        <Menu.Item title={false} key="/developers">
           <Link to="/developers" style={{ textDecoration: "none" }}>
             <CodeOutlined />
-            <span className="nav-text">Developers</span>
+            <span className={classes.navText}>Developers</span>
           </Link>
         </Menu.Item>
       </Menu>
@@ -174,71 +165,68 @@ const menuStyles = {
     flexDirection: 'column',
     height: '100%',
     justifyContent: 'space-between',
+    '& .ant-menu-item-selected': {}
+  },
+  navText: {
+    color: "silver",
 
-    "& .nav-text a": {
-      textDecoration: "none",
-      color: "silver"
-    }
   },
 
-  menu2: {
-
-  }
 };
 
-{/* <Menu.Item key="/analysis">
+{/* <Menu.Item title={false} key="/analysis">
   <Icon type="area-chart" />
-  <span className="nav-text">
+  <span className={classes.navText}>
   <Link to="/analysis">
     Analysis
   </Link>
   </span>
 </Menu.Item> */}
-{/* <Menu.Item key="/portfolio">
+{/* <Menu.Item title={false} key="/portfolio">
     <Link to="/portfolio" style={{ textDecoration: "none" }}>
       <Icon type="user" />
-      <span className="nav-text">Portfolio</span>
+      <span className={classes.navText}>Portfolio</span>
     </Link>
 </Menu.Item> */}
-{/* <Menu.Item key="/data_scientists">
+{/* <Menu.Item title={false} key="/data_scientists">
   <Link to="/data_scientists" style={{ textDecoration: "none" }}>
     <Icon type="code" />
-    <span className="nav-text">Data Scientists</span>
+    <span className={classes.navText}>Data Scientists</span>
   </Link>
 </Menu.Item> */}
 
-// <Menu.Item key="/insights">
+// <Menu.Item title={false} key="/insights">
 //   <Link to="/insights" style={{ textDecoration: "none" }}>
 //     <Icon type="rise" />
-//     <span className="nav-text">Market Insights</span>
+//     <span className={classes.navText}>Market Insights</span>
 //   </Link>
 // </Menu.Item>
 
 
-// <Menu.Item key="/about_tokens">
+// <Menu.Item title={false} key="/about_tokens">
 //   <Link to="/about_tokens" style={{ textDecoration: "none" }}>
 //     <Icon type="form" />
-//     <span className="nav-text">Philosophy</span>
+//     <span className={classes.navText}>Philosophy</span>
 //   </Link>
 // </Menu.Item>
-// <Menu.Item key="/contribute">
+// <Menu.Item title={false} key="/contribute">
 //   <Link to="/contribute" style={{ textDecoration: "none" }}>
 //     <Icon type="form" />
-//     <span className="nav-text">Contribute</span>
+//     <span className={classes.navText}>Contribute</span>
 //   </Link>
 // </Menu.Item>
 //
-// <Menu.Item key="/investors">
+// <Menu.Item title={false} key="/investors">
 //   <Link to="/investors" style={{ textDecoration: "none" }}>
 //     <Icon type="usergroup-add" />
-//     <span className="nav-text">Investors</span>
+//     <span className={classes.navText}>Investors</span>
 //   </Link>
 // </Menu.Item>
 //
 
-// <Menu.Item key="/protocol">
+// <Menu.Item title={false} key="/protocol">
 //   <Icon type="area-chart" />
-//   <span className="nav-text">
+//   <span className={classes.navText}>
 //   <Link to="/protocol">
 //     Protocol
 //   </Link>
@@ -247,10 +235,10 @@ const menuStyles = {
 
 
 //
-// <Menu.Item key="/about">
+// <Menu.Item title={false} key="/about">
 //   <Link to="/about" style={{ textDecoration: "none" }}>
 //     <Icon type="team" />
-//     <span className="nav-text">About</span>
+//     <span className={classes.navText}>About</span>
 //   </Link>
 // </Menu.Item>
 

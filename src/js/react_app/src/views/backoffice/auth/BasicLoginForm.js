@@ -26,6 +26,9 @@ class BasicLoginForm extends React.Component {
   };
 
   render() {
+    const layout = {
+      labelCol: { span: 8 },
+    }
     const { classes } = this.props
     const { getFieldDecorator } = this.props.form;
     return (
@@ -37,23 +40,44 @@ class BasicLoginForm extends React.Component {
             </h2>
           </div>
           <div className={classes.main}>
-            <Form onSubmit={this.handleSubmit} className={classes.loginForm}>
-              <Form.Item>
+            <Form
+              {...layout}
+              onSubmit={this.handleSubmit}
+              className={classes.loginForm}
+              >
+              <Form.Item
+                label={
+                  <span className={`${classes.label} ${classes.emailLabel}`}>
+                    Email&nbsp;
+                  </span>
+                }
+              >
                 {getFieldDecorator('email', {
                   rules: [{ required: true, message: 'Please input your email!' }],
                 })(
                   <Input
-                    prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    className={`${classes.input} ${classes.emailInput}`}
+                    prefix={<UserOutlined className={classes.icon} />}
                     placeholder="Email"
                   />,
                 )}
               </Form.Item>
-              <Form.Item>
+              <Form.Item
+                className={classes.passwordItem}
+                label={
+                  <span
+                    className={`${classes.label} ${classes.passWordLabel}`}
+                  >
+                    Password&nbsp;
+                  </span>
+                }
+              >
                 {getFieldDecorator('password', {
                   rules: [{ required: true, message: 'Please input your Password!' }],
                 })(
                   <Input
-                    prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    className={`${classes.input} ${classes.passwordInput}`}
+                    prefix={<LockOutlined className={classes.icon}/>}
                     type="password"
                     placeholder="Password"
                   />,
@@ -88,6 +112,20 @@ const styles = {
     display: "grid",
     gridTemplateRows: ".3fr 1fr",
     justifyItems: 'center',
+  },
+  passWordItem: {
+  },
+  input: {
+  },
+  emailInput: {
+
+  },
+  passwordInput: {
+  },
+  passWordLabel: {
+  },
+  icon: {
+    margin: [0,7,0,0],
   },
   header: {
     gridRow: 1,
@@ -127,7 +165,7 @@ const styles = {
     color: `${colors.silver}`,
 
     '& a': {
-      color: `${colors.origGreen}`
+      color: `${colors.link}`
     },
 
     '& .action-items': {
@@ -136,6 +174,17 @@ const styles = {
         fontSize: '1.6rem',
       }
     }
+  },
+  label: {
+    color: colors.white,
+    '& .ant-legacy-form-item': {
+      color: colors.white,
+
+      listStyleType: 'none',
+    }
+  },
+  emailLabel: {
+
   },
   loginFormForgot: {
     float: 'right'

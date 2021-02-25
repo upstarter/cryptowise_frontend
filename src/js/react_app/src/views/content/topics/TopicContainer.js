@@ -135,7 +135,7 @@ class TopicChildren extends React.Component {
       <div className={classes.topic}>
         <section className={classes.topicHead}>
           <span className={classes.topicName}>
-            Discuss {topic && topicID === 'strategy' ? "Strategy" : topic.name }
+             {topic && topicID === 'strategy' ? "Strategy" : topic.name }
           </span>
           <span className={classes.topicDescription}>
             {topic && topic.description}

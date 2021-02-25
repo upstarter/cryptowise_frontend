@@ -13,6 +13,7 @@ const { Title, Paragraph, Text } = Typography;
 import { bindActionCreators } from "redux";
 import { createPost } from "Redux/discussions";
 import colors from "Styles/colors";
+import {timeSince} from 'Utils/timeUtils'
 
 import NewPostForm from "./NewPostForm";
 
@@ -110,31 +111,25 @@ class Thread extends React.Component {
         />
         <div id="thread-items" className={classes.threads}>
           <div className={classes.threadHeader}>
+          <span className={classes.userCaption}>
+            <span className={classes.threadBy}>Posted by </span>
+            <span className={classes.threadUser}>{thread.user} </span>
+            <span className={classes.threadAge}>
+              {timeSince(thread.since_posted)} ago
+            </span>
+          </span>
             <span className={classes.threadContent}>
               <span className={classes.threadTitle}>{thread.title}</span>
               <span className={classes.threadDesc}>{thread.description}</span>
             </span>
-            <span className={classes.userCaption}>
-              <span className={classes.threadBy}>Posted by </span>
-              <span className={classes.threadUser}>{thread.user}</span>
-              <span className={classes.threadAge}>
-                {thread.since_posted} minutes ago
-              </span>
-            </span>
+
             <span className={classes.threadActions}>
               <Button
                 size="large"
                 className={`${classes.btn} ${classes.threadAction} ${classes.viewThreadBtn}`}
                 onClick={this.viewThread}
               >
-                View
-              </Button>
-              <Button
-                size="large"
-                className={`${classes.btn} ${classes.threadAction} ${classes.replyThreadBtn}`}
-                onClick={this.showModal}
-              >
-                Reply
+                View Thread
               </Button>
             </span>
           </div>
@@ -147,10 +142,22 @@ class Thread extends React.Component {
 const threadStyles = {
   thread: {
     background: colors.secondaryDark,
-    border: `0.2px solid ${colors.silver2}`,
-    padding: 13,
-  },
+    borderBottom: `0.2px solid ${colors.silver2}`,
 
+    padding: 8,
+  },
+  threadContent: {
+    width: 'min-content',
+    marginRight: '1.2rem',
+    '@media (max-width: 408px)': {
+      maxWidth: '20ch',
+
+    },
+    '@media (min-width: 408px)': {
+      maxWidth: '65vw',
+
+    },
+  },
   threads: {
     userSelect: "none",
     margin: "0 auto",
@@ -160,23 +167,20 @@ const threadStyles = {
   threadHeader: {
     display: "grid",
     gridTemplateAreas: `
+     "caption actions"
      "title actions"
      "desc actions"
-     "caption actions"
    `,
   },
   userCaption: {
     gridArea: "caption",
     color: colors.midTone,
     fontSize: 12,
+    marginBottom: 8,
   },
   pageTitle: {
     alignContent: 'center',
     padding: [13,0,0,13],
-  },
-  threadAction: {
-
-
   },
   noThreadsSection: {
     display: 'flex',
@@ -239,24 +243,14 @@ const threadStyles = {
     justifyItems: 'center',
     gridTemplateAreas: `
       "view"
-      "reply"
     `,
   },
 
   threadAction: {
     margin: '0 auto',
-    marginBottom: 3,
   },
-
   viewThreadBtn: {
     gridArea: "view"
-  },
-  replyThreadBtn: {
-    gridArea: "reply",
-    width: 66,
-    '& span': {
-      marginLeft: -3,
-    }
   },
   btn: {
     background: colors.link,

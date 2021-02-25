@@ -163,33 +163,36 @@ class DiscussContainer extends React.Component {
       return (
         <React.Fragment>
           <ScrollToTopOnMount />
-          <NewThreadForm
-            wrappedComponentRef={this.saveFormRef}
-            wrapClassName={classes.modal}
-            visible={this.state.visible}
-            onCancel={this.handleCancel}
-            onCreate={this.handleCreate}
-            confirmLoading={confirmLoading}
-          />
+          <section id="topic-threads" className={classes.threadSection}>
 
-          <div id="thread-items" className={classes.threads}>
-            <div className={classes.threadsHeader}>
-            <Button
-              className={classes.newThreadButton}
-              type="primary"
-              onClick={this.showModal}
-              icon={<PlusOutlined />}
-              size="large"
-            >
-              Create Thread
-            </Button>
-              <h2 className={(classes.pageTitle)}>
-                <span>Discuss</span> {topicName}{" "}
-              </h2>
+            <NewThreadForm
+              wrappedComponentRef={this.saveFormRef}
+              wrapClassName={classes.modal}
+              visible={this.state.visible}
+              onCancel={this.handleCancel}
+              onCreate={this.handleCreate}
+              confirmLoading={confirmLoading}
+            />
+
+            <div id="thread-items" className={classes.threads}>
+              <div className={classes.threadsHeader}>
+              <Button
+                className={classes.newThreadButton}
+                type="primary"
+                onClick={this.showModal}
+                icon={<PlusOutlined />}
+                size="large"
+              >
+                Create Thread
+              </Button>
+                <h2 className={(classes.pageTitle)}>
+                  <span>Discuss</span> {topicName}{" "}
+                </h2>
+              </div>
             </div>
-          </div>
-          <section id="topic-threads" className={classes.noThreadsSection}>
-            <h3 className={classes.noThreadsYet}>No Threads Yet.. Be the first to discuss {topicName}</h3>
+            <section id="topic-threads" className={classes.noThreadsSection}>
+              <h3 className={classes.noThreadsYet}>No Threads Yet.. Be the first to discuss {topicName}</h3>
+            </section>
           </section>
         </React.Fragment>
       );
@@ -229,10 +232,7 @@ class DiscussContainer extends React.Component {
               <h2 className={classes.pageTitle}>
                 <span>Discuss</span> {topicName}
               </h2>
-              <span className={classes.threadContent}>
-                <span className={classes.threadTitle}>{thread.title}</span>
-                <span className={classes.threadDesc}>{thread.description}</span>
-              </span>
+
               <Button
                 className={`${classes.newThreadButton} ${classes.btn}`}
                 type="primary"
@@ -262,7 +262,7 @@ const threadListStyles = {
     display: "grid",
     alignItems: "center",
     alignContent: 'center',
-    minHeight: 40,
+    minHeight: 50,
     zIndex: 10,
     color: "#fff !important",
     background: `${colors.primary}`,
@@ -297,13 +297,11 @@ const threadListStyles = {
   threads: {
     userSelect: "none",
     margin: "0 auto",
-    marginTop: 80,
-    // width: '95vw',
   },
   threadItems: {
   },
   threadSection: {
-    margin: '0 auto',
+    margin: '70px auto',
     maxWidth: '96vw',
   },
   modal: {

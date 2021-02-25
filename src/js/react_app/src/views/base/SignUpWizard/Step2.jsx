@@ -67,9 +67,9 @@ class SignUpStep2 extends Component {
     return (
       <div className={classes.container}>
         <div className={classes.header}>
-          <h3 id="signup-blurb">
+          <span className={classes.blurb}>
             Uncover Hypergrowth Cryptoassets Along With Top Analysts
-          </h3>
+          </span>
         </div>
         <div className={classes.main}>
           <BasicRegistrationForm saveForm={this.handleSubmit} />
@@ -87,8 +87,11 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
+  blurb: {
+    height: 70,
+  },
   header: {
-    minHeight: 100,
+    height: '95px !important',
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "row",
@@ -96,26 +99,10 @@ const styles = {
     alignItems: "center",
     textAlign: "center !important",
     width: "100%",
-    margin: [50, 0, 20, 0],
+    margin: [50, 0, 8, 0],
     padding: 15,
     zIndex: 1,
-    "& h2": {
-      fontSize: "2.2rem !important",
-      lineHeight: "3rem !important",
-      color: `${colors.offWhite}`,
-    },
-    "& h3": {
-      padding: 20,
-      maxWidth: 420,
-      textAlign: "center !important",
-      fontSize: "2.2rem !important",
-      lineHeight: "3rem !important",
-      color: `${colors.offWhite} !important`,
 
-      "@media (max-width: 482px)": {
-        fontSize: "1.8rem !important",
-      },
-    },
   },
   main: {
     display: "flex",
@@ -123,6 +110,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    justifyItems: 'space-between',
     minWidth: "400px !important",
     "overflow-y": "none",
     // filter: 'invert(1)',
@@ -170,16 +158,7 @@ const styles = {
   loginForm: {
     justifyContent: "center",
   },
-  footer: {
-    position: "fixed",
-    height: "80px",
-    width: "100vw",
-    bottom: 0,
-    right: 0,
-    fontSize: 22,
-    background: `${colors.white}`,
-    boxShadow: "8px 2px 4px 8px #f0f1f2",
-  },
+
   "@media (min-width: 576px) (max-width: 992px)": {
     header: {
       height: "160px",
@@ -194,9 +173,7 @@ const styles = {
     tileGrid: {
       gridTemplateColumns: "1fr 1fr 1fr 1fr",
     },
-    main: {
-      padding: "1em 1em",
-    },
+
     socialButtons: {
       maxWidth: "100%",
     },

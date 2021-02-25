@@ -54,7 +54,7 @@ const footerStyles = {
     fontSize: "1.4rem",
     textAlign: "center",
     padding: "2rem",
-    color: `${colors.lightBlue}`,
+    color: `${colors.link}`,
     '& a': { background: 'none !important' }
   }
 }

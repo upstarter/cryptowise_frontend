@@ -8,9 +8,19 @@ import injectSheet, { jss } from "react-jss";
 import ScrollToTopOnMount from "Utils/ScrollToTopOnMount";
 import NewPostForm from "./NewPostForm";
 import Post from "./Post";
-import { List, Avatar, Button, Skeleton, Affix, Rate, Typography, Divider, Modal } from "antd";
+import {
+  List,
+  Avatar,
+  Button,
+  Skeleton,
+  Affix,
+  Rate,
+  Typography,
+  Divider,
+  Modal,
+} from "antd";
 import { api_url, url } from "Utils/consts";
-import { CommentOutlined, PlusOutlined } from '@ant-design/icons';
+import { CommentOutlined, PlusOutlined } from "@ant-design/icons";
 
 class PostsContainer extends React.Component {
   constructor(props) {
@@ -125,15 +135,15 @@ class PostsContainer extends React.Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('shoul', nextProps.discussions.post, this.state.posts)
-    return nextProps.discussions.post != this.state.posts
+    console.log("shoul", nextProps.discussions.post, this.state.posts);
+    return nextProps.discussions.post != this.state.posts;
   }
-  componentWillReceiveProps(nextProps){
-    console.log('willRE', nextProps.discussions.post)
+  componentWillReceiveProps(nextProps) {
+    console.log("willRE", nextProps.discussions.post);
     // if (!this.state.posts {
-      this.setState({
-          posts: [nextProps.discussions.post, ...this.state.posts],
-      })
+    this.setState({
+      posts: [nextProps.discussions.post, ...this.state.posts],
+    });
     // }
   }
 
@@ -149,8 +159,8 @@ class PostsContainer extends React.Component {
       confirmLoading,
       ModalContent,
     } = this.state;
-    if (!thread) return (<></>)
-    let {title, description} = thread
+    if (!thread) return <></>;
+    let { title, description } = thread;
     if (posts && posts.length < 0) {
       return (
         <React.Fragment>
@@ -173,8 +183,8 @@ class PostsContainer extends React.Component {
                 icon={<PlusOutlined />}
                 size="large"
               />
-              <h2 className={( classes.pageTitle)}>
-                <span>Discuss</span> <span>{title}{" "}</span>
+              <h2 className={classes.pageTitle}>
+                <span>Discuss</span> <span>{title} </span>
               </h2>
             </div>
           </div>
@@ -200,7 +210,7 @@ class PostsContainer extends React.Component {
       ) : null;
 
     return (
-      <div className={classes.thread}>
+      <div className={classes.threadPosts}>
         <React.Fragment>
           <ScrollToTopOnMount />
           <NewPostForm
@@ -213,29 +223,31 @@ class PostsContainer extends React.Component {
           />
 
           <section id="topic-posts" className={classes.postSection}>
-            <div className={classes.threadsHeader}>
-              <h2 className={classes.pageTitle}>
-                <span>Discuss</span> {topicName}
-              </h2>
-              <span className={classes.threadContent}>
-                <span className={classes.threadTitle}>{thread.title}</span>
-                <span className={classes.threadDesc}>{thread.description}</span>
-              </span>
-              <Button
-                className={`${classes.newThreadButton} ${classes.btn}`}
-                type="primary"
-                onClick={this.showModal}
-                icon={<PlusOutlined />}
-                size="large"
-              >
-                Create Post
-              </Button>
-            </div>
-
+            <section className={classes.threadHeader}>
+              <div className={classes.threadsContent}>
+                <h2 className={classes.pageTitle}>
+                  <span>Discuss</span> {topicName}
+                </h2>
+                <div className={classes.threadContent}>
+                  <span className={classes.threadTitle}>{thread.title}</span>
+                  <span className={classes.threadDesc}>{thread.description}</span>
+                </div>
+                <div className={classes.postActions}>
+                  <Button
+                    className={`${classes.newPostButton} ${classes.btn}`}
+                    type="primary"
+                    onClick={this.showModal}
+                    icon={<PlusOutlined />}
+                    size="large"
+                  >
+                    Reply
+                  </Button>
+                </div>
+              </div>
+            </section>
             <div id="post-items" className={classes.posts}>
-
               <div className={classes.postMain}>
-                <ul className={classes.postList}>
+                <section className={classes.postList}>
                   {posts ? (
                     posts.map((post) => {
                       return <Post post={post} />;
@@ -243,7 +255,7 @@ class PostsContainer extends React.Component {
                   ) : (
                     <>No Posts Yet. Be the first..</>
                   )}
-                </ul>
+                </section>
               </div>
             </div>
           </section>
@@ -254,108 +266,97 @@ class PostsContainer extends React.Component {
 }
 
 const postListStyles = {
-
-  threadsHeader: {
-      display: "grid",
-      gridTemplateAreas: `
+  threadHeader: {
+  },
+  threadsContent: {
+    display: "grid",
+    gridTemplateAreas: `
        "title actions"
-       "content actions"
+       "content content"
      `,
-      alignItems: "center",
-      alignContent: 'center',
-      minHeight: 40,
-      zIndex: 10,
-      color: "#fff !important",
-      background: `${colors.primary}`,
-      "-webkit-perspective": 1000,
-      "-webkit-backface-visibility": "hidden",
-
+    alignItems: "center",
+    alignContent: "center",
+    zIndex: 10,
+    color: "#fff !important",
+    background: `${colors.primary}`,
+    "-webkit-perspective": 1000,
+    "-webkit-backface-visibility": "hidden",
+  },
+  posts: {
+    background: colors.secondaryDark,
+  },
+  postSection: {
+    margin: "70px auto",
+    maxWidth: "96vw",
+  },
+  postActions: {
+    gridArea: 'actions',
+    display: 'grid',
+    alignItems: 'center',
+    justifyItems: 'end',
+    gridTemplateAreas: `
+      "view"
+    `,
+    marginRight: 30,
+  },
+  btn: {
+    background: colors.link,
+    marginRight: 20,
+    cursor: "pointer",
+    boxShadow: `0 0 0 0 ${colors.link}`,
   },
   pageTitle: {
-    alignContent: 'center',
-    padding: [13,0,0,13],
+    alignContent: "center",
+    padding: [13, 0, 0, 13],
   },
   noThreadsSection: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: [23,0,0,0]
-
+    display: "flex",
+    justifyContent: "center",
+    margin: [23, 0, 0, 0],
   },
   noThreadsYet: {
-    color: colors.orangeRed
+    color: colors.orangeRed,
   },
   threadContent: {
     gridArea: "content",
-    padding: [0,0,3,13]
+    display: 'grid',
+    gridTemplateAreas: `"threadTitle" "threadBody"`,
+    gridTemplateRows: `1fr 5fr`,
+    padding: 8,
+    // "@media (max-width: 408px)": {
+    //   width: "40ch",
+    // },
+    // "@media (min-width: 408px)": {
+    //   maxWidth: "60vw",
+    // },
   },
   threadTitle: {
-
-    gridArea: "title",
+    gridArea: "threadTitle",
     fontSize: "15px !important",
     lineHeight: "1em !important",
     fontWeight: "500 !important",
     letterSpacing: ".05em !important",
     color: colors.white,
-    textOverflow: "ellipsis",
-    overflow: "hidden",
-    height: 20,
-    whiteSpace: "nowrap",
-    display: "block",
-    padding: [3,0,0,0],
-    '@media (max-width: 408px)': {
-      maxWidth: '60vw',
-
-    },
-    '@media (min-width: 408px)': {
-      maxWidth: '65vw',
-
-    },
+    padding: 3,
   },
 
   threadDesc: {
-    gridArea: "desc",
+    gridArea: 'threadBody',
     fontSize: "14px !important",
     fontWeight: "100 !important",
     letterSpacing: ".05em !important",
     color: colors.silver8,
-    textOverflow: "ellipsis",
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    display: "block",
-    padding: [13,0,8,0],
-    '@media (max-width: 408px)': {
-      maxWidth: '60vw',
-
-    },
-    '@media (min-width: 408px)': {
-      maxWidth: '65vw',
-
-    },
-
+    padding: 3,
   },
   btn: {
     backgroundColor: `${colors.link}`,
     cursor: "pointer",
     boxShadow: `0 0 0 0 ${colors.link}`,
   },
-  newThreadButton: {
-    gridColumn: "3",
-    gridRow: "1 / 3",
-    justifySelf: "end",
-    margin: [0, 13, 0, 0],
+  newPostButton: {
+
   },
-  threads: {
-    userSelect: "none",
-    margin: "0 auto",
-    marginTop: 80,
-    // width: '95vw',
-  },
-  threadItems: {
-  },
-  threadSection: {
-    margin: '0 auto',
-    maxWidth: '96vw',
-  },
+
   modal: {
     // background: `${colors.secondaryDark}`,
     filter: "invert(0)",
@@ -364,27 +365,19 @@ const postListStyles = {
       textDecoration: "none !important",
     },
   },
-
-  threadMain: {},
-  threadList: {
+  postList: {
     listStyleType: "none",
 
     "@media (max-width: 860px)": {},
     "@media (min-width: 860px)": {},
   },
-  threadDetail: {},
-  threadTitle: {
+  postDetail: {},
+  postTitle: {
     "& a": {
       color: colors.offWhite2,
     },
   },
 
-  thread: {
-    background: colors.secondaryDark,
-    border: `0.2px solid ${colors.silver2}`,
-    maxWidth: '96vw',
-    marginTop: 60,
-  },
   // threadsHeader: {
   //   display: "grid",
   //   gridTemplateAreas: `
@@ -527,13 +520,12 @@ const postListStyles = {
   //   //   // width: '30vw !important',
   //   // },
   // },
-
 };
 // whatever is returned will show up as props inside Discuss
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state, ownProps)
-  let {thread} = state.discussions
+  console.log(state, ownProps);
+  let { thread } = state.discussions;
   return {
     discussions: state.discussions,
   };

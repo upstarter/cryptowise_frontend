@@ -136,7 +136,7 @@ class RegistrationForm extends React.Component {
         onCreate={this.handleCreate}
         confirmLoading={confirmLoading}
       />
-      <Form name='reg-form' labelAlign='left' {...formItemLayout} onSubmit={this.handleSubmit}>
+      <Form className={classes.regForm} name='reg-form' labelAlign='left' {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item
 
           label={
@@ -280,6 +280,9 @@ class RegistrationForm extends React.Component {
 
 
 const styles = {
+  regForm: {
+    maxHeight: '50vh'
+  },
   label: {
     color: colors.midTone,
     '& .ant-legacy-form-item': {

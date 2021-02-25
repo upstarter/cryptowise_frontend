@@ -27,43 +27,71 @@ class Post extends React.Component {
     const { description, title, body, id, since_posted, user} = post
 
     return (
-      <li className={classes.postDetail} key={post.id}>
+      <div className={classes.postDetail} key={post.id}>
         <div className={classes.post}>
-          <span className={classes.userCaption}>
+          <div className={classes.userCaption}>
             <span className={classes.postedBy}>Posted by </span>
             <span className={classes.postUser}>{user} </span>
             <span className={classes.postAge}>{timeSince(since_posted)} ago</span>
-          </span>
-          <span className={classes.postBody}>{body}</span>
+          </div>
+          <div className={classes.postContent}>
+            <div className={classes.postBody}>{body}</div>
+          </div>
+
         </div>
-      </li>
+      </div>
     )
   }
 }
 
 const postStyles = {
+
+  postDetail: {
+    display: 'grid',
+    gridTemplateAreas: `
+      "caption"
+      "body"
+      `,
+      '@media (max-width: 408px)': {
+        maxWidth: '96vw',
+
+      },
+      '@media (min-width: 408px)': {
+        maxWidth: '100%',
+
+      },
+  },
+
   postBody: {
-    fontSize: 14,
-    marginLeft: 7,
-    color: colors.silver,
-    opacity: 0.9,
+    gridArea: "body",
+    fontSize: "14px !important",
+    fontWeight: "100 !important",
+    letterSpacing: ".05em !important",
+    color: colors.silver8,
+    padding: [13,0,8,0],
+    wordWrap: 'break-word',
     '@media (max-width: 408px)': {
-      maxWidth: '37ch',
+      maxWidth: '40ch',
 
     },
     '@media (min-width: 408px)': {
-      maxWidth: '85vw',
+      maxWidth: '90vw',
 
     },
   },
+  postContent: {
+    maxWidth: '100%',
+  },
   post: {
-    margin: '0 auto',
+
+    margin: [0,0,10,0],
+    borderBottom: `1px solid ${colors.silver2}`,
     padding: 13,
-    margin: 2,
-    background: colors.primary,
+    background: colors.secondaryDark,
 
   },
   userCaption: {
+    gridArea: "caption",
     color: colors.white,
     fontSize: 13,
   },
@@ -71,18 +99,6 @@ const postStyles = {
     color: colors.yellow,
     fontSize: 15,
     letterSpacing: '0.05em'
-  },
-  postDetail: {
-    '& .description':  {
-      color: colors.lightBlack,
-      fontWeight: 100,
-    },
-
-    '& .post-heading': {
-      fontSize: '24px !important'
-
-    },
-
   },
 }
 // whatever is returned will show up as props inside Discuss
