@@ -16,7 +16,7 @@ class FeaturesComponent extends React.Component {
         <div className="dark-wrap">
           <section id='features' className={classes.features}>
             <div className={classes.heading}>
-              <h1>Ecosystem Features</h1>
+              <h1>Ecosystem</h1>
             </div>
             <div className="wrap">
               <Row type="flex" justify="space-around">

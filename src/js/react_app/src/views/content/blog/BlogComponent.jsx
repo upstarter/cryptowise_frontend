@@ -65,7 +65,7 @@ class BlogComponent extends React.Component {
       <React.Fragment>
         <section id="blog" className={classes.blog, 'dark-wrap'}>
           <div className={classes.heading}>
-            <h1>Blog Posts</h1>
+            <h1>Blog</h1>
           </div>
           <div className={classes.blogPosts}>
             <Row className={classes.blogRow} type="flex" justify="center">
