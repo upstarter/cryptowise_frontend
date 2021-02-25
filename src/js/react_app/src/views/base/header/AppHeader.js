@@ -53,7 +53,7 @@ class AppHeader extends React.Component {
             className={classes.mainMenu}
             onClick={this.toggleSider}
           /> :
-          <MenuUnfoldOutlined
+          <MenuFoldOutlined
             className={classes.mainMenu}
             onClick={this.toggleSider}
           />
