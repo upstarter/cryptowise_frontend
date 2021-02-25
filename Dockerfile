@@ -1,4 +1,4 @@
-FROM node:12.10 as build-stage
+FROM node:14.15.5 as build-stage
 # FROM envoyproxy/envoy:v1.17.0 as build-stage
 ARG app_dir=/app/cw_web
 WORKDIR ${app_dir}
