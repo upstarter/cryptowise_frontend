@@ -37,7 +37,7 @@ class BlogListContainer extends React.Component {
 
 
   render() {
-    console.log(this);
+
     return (
       <div>
         <ul className="blog-list">

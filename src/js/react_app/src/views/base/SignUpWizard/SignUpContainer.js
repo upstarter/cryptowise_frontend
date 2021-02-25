@@ -17,9 +17,7 @@ class SignupContainer extends Component {
     fetch(`${url}/v1/signup_topics`)
       .then(response => {
         if (response.status !== 200) {
-          console.log(
-            "Looks like there was a problem. Status Code: " + response.status
-          );
+          // dispatch error msg
           return;
         }
 
@@ -29,7 +27,7 @@ class SignupContainer extends Component {
         });
       })
       .catch(err => {
-        console.log("Fetch Error :-S", err);
+
       });
   }
 

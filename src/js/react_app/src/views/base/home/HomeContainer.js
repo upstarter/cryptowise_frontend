@@ -127,6 +127,7 @@ class HomeContainer extends React.Component {
                   <Route exact  path="/:topicID(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
                   <Route exact path="/tokens" component={TokensContainer} />
                   <Route exact path="/federations" component={FederationsComponent} />
+                  <Route exact path="/developers" component={DeveloperComponent} />
 
                   {/*
                   // <Route exact path="/groups" component={GroupsContainer} />
@@ -144,7 +145,7 @@ class HomeContainer extends React.Component {
                   <Route exact path="/privacy_policy" component={PrivacyComponent} />
                 </Content>
                 <Footer className={classes.footer} >
-                  <span id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>
+                  <span className={classes.trademark} id="trademark">Aion Labs, Inc. ©{(new Date).getFullYear()}</span>
                 </Footer>
               </Layout>
             </Layout>
@@ -158,7 +159,7 @@ class HomeContainer extends React.Component {
 //  <AuthRoute exact path="/profile" component={Protected} />
 //  <Route exact path="/membership" component={MembershipComponent} />
 //  <Route exact path="/data_scientists" component={DataScientistComponent} />
-//  <Route exact path="/developers" component={DeveloperComponent} />
+ // <Route exact path="/developers" component={DeveloperComponent} />
 //  <Route exact path="/contribute" component={ProviderContainer} />
 //  <Route exact path="/insights" component={InsightComponent} />
 //  <AuthRoute exact path="/fds" component={FDSComponent} />
@@ -181,14 +182,17 @@ const appStyles = {
   },
   footer: {
     position: 'fixed',
-    display: 'flex',
+    display: 'grid',
+    gridTemplateAreas: `"space trademark"`,
+    gridTemplateColumns: '13fr 1fr',
     alignItems: 'center',
-    justifyContent: 'left',
+    justifyItems: 'end',
     fontSize: 12,
     height: 84,
     bottom: 0,
-    right: 0,
     left: 0,
+    right: 0,
+
     textAlign: 'center',
     '& #trademark': {
 
@@ -196,7 +200,12 @@ const appStyles = {
         display: 'none',
       },
     },
-  }
+  },
+  trademark: {
+    width: 'max-content',
+    gridArea: "trademark",
+    color: colors.silver6,
+  },
 }
 
 injectSheet(globalStyles)(HomeContainer);

@@ -100,13 +100,13 @@ class Treemap extends React.Component {
                   'You selected : ' + dataTable.fg[row].c[0].v
                 )
                 chart.setSelection(selection)
-                // console.log(dataTable.fg[row], row, selection)
+                // 
               }
             },
           },
         ]}
       />
-      console.log('ch', chart)
+      
 
       // let dataTable = chartWrapper.getDataTable()
       return chart

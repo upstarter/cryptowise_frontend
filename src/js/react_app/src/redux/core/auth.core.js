@@ -75,27 +75,27 @@ export const authReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case REGISTER_USER:
-      console.log('reg-user', payload)
+      
       return { state: payload }
 
     // case AUTH_SUCCESS:
-    //   console.log('auth-success', payload)
+    //   
     //   return { state: payload }
     //
     // case AUTH_ERROR:
-    //   console.log('auth-error', payload)
+    //   
     //   return { state: payload }
     //
     // case LOGIN_SUCCESS:
-    //   console.log('login-success', payload)
+    //   
     //   return { state: payload }
     //
     // case LOGIN_ERROR:
-    //   console.log('login-error', payload)
+    //   
     //   return { state: payload }
 
     case SET_CURRENT_USER:
-      console.log('set-curr-user', payload)
+      
       return { token: payload }
 
     default:
@@ -122,7 +122,7 @@ export const authReducer = (state = initialState, action) => {
 //     request.then(response => {
 //       const data = response.data
 //       if (data.error) {
-//         console.log('user register create error')
+//         
 //       } else {
 //         const cookies = new Cookies();
 //         const token = cookies.get('_cw_acc')
@@ -137,7 +137,7 @@ export const authReducer = (state = initialState, action) => {
 //       localStorage.setItem('userName', state.nickname)
 //       localStorage.setItem('topicIds', state.topic_interest_ids)
 //     }).catch(function(error) {
-//       console.log(error);
+//       
 //     })
 // }
 //
@@ -174,13 +174,13 @@ export const authMiddleware = ({dispatch}) => next => action => {
       //   const data = response.data
       //   if (data.error) {
       //     dispatch( authError(error) )
-      //     console.log('user signin error')
+      //     
       //   } else {
       //     dispatch( authSuccess(data) )
       //   }
       // })
       // .catch((error) => {
-      //   console.log('error', error)
+      //   
       //   dispatch( authError(error) )
       // })
       next({...action, payload: creds})
@@ -227,7 +227,7 @@ export const authMiddleware = ({dispatch}) => next => action => {
     case AUTH_SUCCESS:
       // dispatch(setCurrentUser(creds))
       // dispatch(authSuccess())
-      console.log('auth succ', action.payload)
+      
 
       next({...action, payload: action.payload})
 
@@ -235,9 +235,9 @@ export const authMiddleware = ({dispatch}) => next => action => {
 
 
     case AUTH_ERROR:
-      console.log('auth err')
+      
 
-      console.log(action.payload)
+      
       // next({...action, payload: action.payload})
 
       break;
@@ -245,7 +245,7 @@ export const authMiddleware = ({dispatch}) => next => action => {
     case LOGIN_SUCCESS:
       dispatch(setCurrentUser(creds))
 
-      console.log('auth succ')
+      
       // dispatch(authSuccess())
       next({...action, payload: action.payload})
 
@@ -253,7 +253,7 @@ export const authMiddleware = ({dispatch}) => next => action => {
 
 
     case LOGIN_ERROR:
-      console.log('auth err')
+      
       // dispatch(apiError())
       next({...action, payload: action.payload})
 

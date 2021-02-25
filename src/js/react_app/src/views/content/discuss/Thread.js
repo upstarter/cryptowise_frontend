@@ -75,7 +75,6 @@ class Thread extends React.Component {
   };
 
   handleCancel = () => {
-    console.log("Clicked cancel button");
     this.setState({
       visible: false,
     });
@@ -83,7 +82,6 @@ class Thread extends React.Component {
 
   viewThread = () => {
     const { match, location, history } = this.props;
-    console.log(match, location, history);
     this.props.history.push(`/discuss/threads/${this.state.thread.id}`);
   };
 

@@ -22,7 +22,7 @@ class TokenDetail extends React.Component {
 
   render() {
     let {tokenId} = this.props
-    console.log('tid',tokenId)
+    
     const {children, description, name, symbol, id} = token
 
     return (

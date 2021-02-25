@@ -46,7 +46,6 @@ class PostsContainer extends React.Component {
 
   componentDidMount() {
     this.getData((res) => {
-      console.log("DDD", res.data);
       this.setState({
         initLoading: false,
         topicName: res.data.topic.name,
@@ -60,7 +59,6 @@ class PostsContainer extends React.Component {
 
   getData = (callback) => {
     let { match } = this.props;
-    console.log("state", this.state);
     const url = `${api_url}${match.url}?per_page=${this.state.count}&page=${this.state.page}`;
 
     axios.get(url).then((res) => {
@@ -120,7 +118,6 @@ class PostsContainer extends React.Component {
       }
     });
     form.threadID = this.state.threadID;
-    console.log("form", form);
     this.props.dispatch(createPost(form));
 
     form.resetFields();
@@ -128,18 +125,15 @@ class PostsContainer extends React.Component {
   };
 
   handleCancel = () => {
-    console.log("Clicked cancel button");
     this.setState({
       visible: false,
     });
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("shoul", nextProps.discussions.post, this.state.posts);
     return nextProps.discussions.post != this.state.posts;
   }
   componentWillReceiveProps(nextProps) {
-    console.log("willRE", nextProps.discussions.post);
     // if (!this.state.posts {
     this.setState({
       posts: [nextProps.discussions.post, ...this.state.posts],
@@ -524,7 +518,6 @@ const postListStyles = {
 // whatever is returned will show up as props inside Discuss
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state, ownProps);
   let { thread } = state.discussions;
   return {
     discussions: state.discussions,

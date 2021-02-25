@@ -32,15 +32,13 @@ export const proposalsReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case `${PROPOSALS} ${CREATE_PROPOSAL}`:
-      console.log('user-proposal', payload)
+
       return { payload }
 
     case `${PROPOSALS} ${API_SUCCESS}`:
-      console.log('auth-succe', payload)
       return { state: payload }
 
     case `${PROPOSALS} ${API_ERROR}`:
-      console.log('auth-error', payload)
       return { state: payload }
 
     default:
@@ -68,7 +66,7 @@ export const proposalsMiddleware = ({dispatch}) => next => action => {
               console.error('user proposal create non-error')
             }
           }).catch(function(error) {
-            console.log(error);
+
           })
       next({...action, formData})
       break;

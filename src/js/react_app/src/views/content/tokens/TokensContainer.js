@@ -169,7 +169,7 @@ class TokensContainer extends React.Component {
   };
 
   handleCancel = () => {
-    console.log("Clicked cancel button");
+    
     this.setState({
       visible: false,
     });

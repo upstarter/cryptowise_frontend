@@ -37,13 +37,6 @@ const LinkMenu = withRouter(props => {
         onSelect={onSelect}
       >
 
-        { !auth.signedIn() ?
-          <Menu.Item title={false} key="/">
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <UserAddOutlined />
-              <span className={classes.navText}>Sign Up</span>
-            </Link>
-          </Menu.Item> : '' }
         {
           <Menu.Item title={false} title={false} key="/discuss">
             <Link to="/discuss" style={{ textDecoration: "none" }}>
@@ -52,7 +45,13 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item>
         }
-
+        { !auth.signedIn() ?
+          <Menu.Item title={false} key="/">
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <UserAddOutlined />
+              <span className={classes.navText}>Sign Up</span>
+            </Link>
+          </Menu.Item> : '' }
         {/* { auth.signedIn() ?
           <Menu.Item title={false} key="/fds">
             <Icon type="build" />
@@ -107,26 +106,7 @@ const LinkMenu = withRouter(props => {
             </Link>
           </Menu.Item> : ''
         }
-        { <Menu.Item title={false} key="/about">
-            <Link to="/about" style={{ textDecoration: "none" }}>
-            <QuestionOutlined />
-              <span className={classes.navText}>About</span>
-            </Link>
-          </Menu.Item>
-        }
-        { <Menu.Item title={false} key="/login">
-            <Link to="/login" style={{ textDecoration: "none" }}>
-            <LoginOutlined />
-            <span className={classes.navText}>Login</span>
-            </Link>
-          </Menu.Item> }
-        {/* <Menu.Item title={false} key="/contact">Contact</Menu.Item> */}
-        { <Menu.Item title={false} key="/logout">
-            <Link to="/logout" style={{ textDecoration: "none" }}>
-            <LogoutOutlined />
-            <span className={classes.navText}>Logout</span>
-            </Link>
-          </Menu.Item> }
+
       {/*
         // {
         //   <Menu.Item title={false} key="/closemenu">
@@ -138,7 +118,7 @@ const LinkMenu = withRouter(props => {
         // }
         */}
       </Menu>
-      {/*
+
       <Menu
         className={classes.menu2}
         theme="dark"
@@ -147,14 +127,37 @@ const LinkMenu = withRouter(props => {
         defaultSelectedKeys={["/"]}
         onSelect={onSelect}
       >
-        <Menu.Item title={false} key="/developers">
+
+        { <Menu.Item title={false} key="/login">
+            <Link to="/login" style={{ textDecoration: "none" }}>
+            <LoginOutlined />
+            <span className={classes.navText}>Login</span>
+            </Link>
+          </Menu.Item> }
+        { <Menu.Item title={false} key="/developers">
           <Link to="/developers" style={{ textDecoration: "none" }}>
             <CodeOutlined />
-            <span className={classes.navText}>Developers</span>
+            <span className={classes.navText}>Dev</span>
           </Link>
         </Menu.Item>
+        }
+
+        {/* <Menu.Item title={false} key="/contact">Contact</Menu.Item> */}
+        { <Menu.Item title={false} key="/about">
+            <Link to="/about" style={{ textDecoration: "none" }}>
+            <QuestionOutlined />
+              <span className={classes.navText}>About</span>
+            </Link>
+          </Menu.Item>
+        }
+        { <Menu.Item title={false} key="/logout">
+            <Link to="/logout" style={{ textDecoration: "none" }}>
+            <LogoutOutlined />
+            <span className={classes.navText}>Logout</span>
+            </Link>
+          </Menu.Item> }
       </Menu>
-      */}
+
     </div>
   );
 });
@@ -163,7 +166,7 @@ const menuStyles = {
   menus: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
+    height: '90vh',
     justifyContent: 'space-between',
     '& .ant-menu-item-selected': {}
   },

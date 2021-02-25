@@ -74,10 +74,10 @@ class PortfolioComponent extends React.Component {
       axios.defaults.headers.post['content-type'] = 'multipart/form-data'
       axios.post(`${api_url}/portfolios`, {portfolio: data})
         .then(response => {
-            console.log(response);
+            
         })
         .catch(error => {
-            console.log(error);
+            
         });
       }
   }

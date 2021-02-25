@@ -52,7 +52,7 @@ class ProposalComponent extends React.Component {
     setAuthToken(accessToken) // set token in requests
 
     axios.get(url, data).then((res) => {
-      // console.log('Data', res.data)
+      // 
       callback(res.data)
     })
   };
@@ -113,7 +113,7 @@ class ProposalComponent extends React.Component {
   }
 
   handleCancel = () => {
-    console.log('Clicked cancel button');
+    
     this.setState({
       visible: false,
     });

@@ -59,15 +59,15 @@ class PortfolioGrid extends React.Component {
   }
 
   onBlur() {
-    console.log('blur');
+    
   }
 
   onFocus() {
-    console.log('focus');
+    
   }
 
   onSearch(val) {
-    console.log('search:', val);
+    
   }
 
   deleteRow(idx) {
@@ -108,10 +108,10 @@ class PortfolioGrid extends React.Component {
   onHover = (t,h,e) => {
       if(!!('ontouchstart' in window)){//check for touch device
       //behaviour and events for touch device
-        console.log('touch',t,h,e)
+        
       }
       else{
-        console.log('nontouch',t,h,e)
+        
 
       //behaviour and events for pointing device like mouse
       }
@@ -240,7 +240,7 @@ class PortfolioGrid extends React.Component {
 
 
   // onSelect = (value,option) => {
-  //   console.log('selected', option.props);
+  //   
   //   console.table(this.state.tableData);
   //
   //   this.setState({tableData: this.state.tableData})
@@ -254,11 +254,11 @@ class PortfolioGrid extends React.Component {
 
   handleWeightChange = (weight) => {
     // this.setState({totalWeight: this.state.totalWeight += weight},
-    // console.log(this.state.totalWeight))
+    // 
   }
 
   handleChange = (e, form) => {
-    console.log('change', e,form)
+    
   }
 
 

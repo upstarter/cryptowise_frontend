@@ -35,14 +35,12 @@ export default class AuthService {
     }
 
     signOut() {
-      console.log('signing out')
       const data = {
         withCredentials: true,
         credentials: 'include'
       };
       return axios.post(`${url}/v1/auth/sign_out`, data)
         .then(res => {
-          console.log(res.data)
           // Clear user access token and profile data from session
           const cookies = new Cookies();
           const sessionToken = cookies.remove('_cw_skey', { domain: 'api.cryptowise.ai', path: '/', httpOnly: true })

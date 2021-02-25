@@ -26,7 +26,6 @@ class SiderMenu extends React.Component {
   }
 
   onSiderCollapse = (collapsed, type) => {
-    console.log(collapsed, type)
     if (!collapsed) {
       this.setState({collapsed: false})
       setTimeout(() => {

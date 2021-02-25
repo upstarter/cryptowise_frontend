@@ -108,7 +108,7 @@ export default class Treemap extends React.Component {
       //   // component.zoomOutDisabled = true;
       //   // this.zoom(event.group);
       //   let rurl = `${url}/api/vi/topics/${event.group.id}`
-      //   console.log(rurl)
+      //   
       //   return <Redirect to={rurl} />;
       //
       // },

@@ -4,7 +4,7 @@ import Chart from "../charts/spark";
 
 class TokenListContainer extends Component {
   renderToken(tokenData) {
-    console.log(tokenData);
+    
     const name = tokenData.ticker;
     const storeOfValue = tokenData.list.map(token => token.storeOfValue);
     const utility = tokenData.list.map(token => token.util);
@@ -19,7 +19,7 @@ class TokenListContainer extends Component {
   }
 
   render() {
-    console.log(this);
+    
 
     return (
       <table className="table table-hover">

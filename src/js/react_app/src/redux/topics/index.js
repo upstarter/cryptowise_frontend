@@ -39,7 +39,7 @@ export const topicsMiddleware = ({dispatch}) => next => action => {
   // filter document actions only
   if (action.type.includes(SET_TOPICS)) {
     // const { data } = action.payload
-    // console.log('AAAAAA', action)
+    // 
   }
     // case FETCH_TOPICS:
     //   dispatch(apiRequest(null, 'GET', API.TOPICS, TOPICS))

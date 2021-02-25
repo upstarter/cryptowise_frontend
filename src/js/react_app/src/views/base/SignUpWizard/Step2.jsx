@@ -50,11 +50,11 @@ class SignUpStep2 extends Component {
     this.setState({ password: event.target.value });
   }
   responseGoogle(response) {
-    console.log(response);
+    
   }
 
   responseFacebook = (response) => {
-    console.log(response);
+    
   };
 
   render() {

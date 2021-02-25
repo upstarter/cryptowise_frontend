@@ -79,7 +79,7 @@
 //   }
 //
 //   componentDidMount() {
-//     console.log('ppp', this.props)
+//     
 //     this.setState({
 //       initLoading: this.props.initLoading,
 //       loading: this.props.loading,
@@ -189,7 +189,7 @@
 //       confirmLoading,
 //       ModalContent,
 //     } = this.state;
-//     console.log('after list', initLoading)
+//     
 //     const loadMore =
 //       !initLoading && !loading ? (
 //         <div
@@ -371,9 +371,9 @@
 //   componentDidMount() {
 //     const { match } = this.props
 //     this.getData(res => {
-//       console.log('res',res)
+//       
 //       let list = res.data[1].map((pair) => { return pair[0] })
-//       console.log('befor list', list)
+//       
 //       res.data[0].children = res.data[1]
 //       this.setState({
 //         initLoading: false,
@@ -387,7 +387,7 @@
 //
 //   getData = callback => {
 //     const { topicID } = this.state
-//     console.log('state', this.state)
+//     
 //     let re = /\d+$/
 //     let found = topicID && topicID.match(re)
 //
@@ -404,7 +404,7 @@
 //     if (found) {
 //       url = `${api_url}/topics/${topicID}?per_page=${count}&page=${this.state.page}`
 //     }
-//     console.log('url', url)
+//     
 //     // const data = {
 //     //   withCredentials: true,
 //     //   credentials: 'include'
@@ -480,7 +480,7 @@
 //   }
 //
 //   handleCancel = () => {
-//     console.log('Clicked cancel button');
+//     
 //     this.setState({
 //       visible: false,
 //     });
@@ -504,12 +504,12 @@
 //   render() {
 //     let { classes, topic } = this.props
 //     let { topicID } = this.state
-//     console.log('render topic', topic)
+//     
 //     // topic = topic.split(" ").map((txt) => {
 //     //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
 //     // })
 //     const { initLoading, loading, visible, list, confirmLoading, ModalContent } = this.state;
-//     console.log('before render list', initLoading)
+//     
 //     const loadMore =
 //       !initLoading && !loading ? (
 //         <div

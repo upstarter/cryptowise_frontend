@@ -52,7 +52,6 @@ class ProfileComponent extends React.Component {
   postData = data => {
     const url = `${api_url}/user/update_role`
     axios.put(url, data).then((res) => {
-      console.log('res', res.data.data)
       this.setState({roleData: res.data.data["roles"]})
     })
   };
@@ -87,7 +86,6 @@ class ProfileComponent extends React.Component {
   }
 
   handleCancel = () => {
-    console.log('Clicked cancel button');
     this.setState({
       visible: false,
     });
@@ -96,7 +94,6 @@ class ProfileComponent extends React.Component {
   onChange = (role, bool) => {
     // e.preventDefault();
     // e.stopPropagation();
-    console.log(role, bool)
     const auth = new AuthService
     let id = auth.getProfileId()
     let data = {role: {user_id: id, role: role, is_role: bool}}

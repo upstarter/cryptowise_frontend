@@ -4,7 +4,7 @@ import injectSheet, { jss } from 'react-jss'
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import AppButton from 'Components/base/button/AppButton'
 
-// import colors from 'Styles/colors'
+import colors from 'Styles/colors'
 // import BarChart from "Components/charts/bar"
 
 
@@ -29,51 +29,84 @@ class DeveloperComponent extends React.Component {
         <div className="dark-wrap">
           <section id="developer" className={classes.developers}>
             <div id="developer-content" className="content">
-              <div id='developer-header'>
-                <div id="title" className="title-small"><span id='title-dev'>CryptoWise for</span> Developers</div>
-                <p style={{textAlign: 'center'}}>
-                  <span style={{ fontSize: '1.2em'}}>The world needs your investment wisdom.</span>
-                </p>
-
-                <p style={{textAlign: 'center'}}>
-                  <AppButton
-                    type="primary"
-                    className={`${
-                      this.state.subscribeButtonLoading ? "is-loading" : ''
-                    }`}
-                    onClick={this.signUpRouteChange}
-                    size='medium'
-                  >
-                    {" "}
-                    Sign Up{" "}
-                  </AppButton>
-                </p>
+            <div id="developer-header">
+              <div id="header-title">
+                <h1 id="title">
+                  <span style={{ color: `${colors.silver}` }}>
+                    The world needs your WealthTech.
+                  </span>
+                </h1>
               </div>
-              <div id='developer-list'>
-                <div id="subtitle" className="subtitle-big">What's included?</div>
-
-                <ul style={{marginLeft: 30}}>
-                  <li>Free training and plug-and-play capabilities to help you access and/or provide ecosystem leading peer-to-peer robo-advisory services.</li>
-                  <li>Help discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
-                  <li>Become a leading source of crypto (and related technology) expertise in a growing ecosystem.</li>
-                  <li>Grow and tune your investment capabilities (crypto and traditional).</li>
-                  <li>Access our wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your investing activities.</li>
-                  {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
-
-                  {/* <li>Carefully selected early contributors who will have access to closed Beta</li> */}
-                  {/* <li>Crowdsourced token project intelligence</li> */}
-                  {/* <li>Polkadot, Cosmos (Interop)</li> */}
-                  {/* <li>BDFL Eric Steen, democratically developed software usually doesn't work, just enough authority, engineers making risk decisions, not management</li> */}
-                </ul>
-                <div id="subtitle" className="subtitle-big">Own your Networks.</div>
-
+              <div id="words">
+                <div id="blurb">
+                  <h5>Become a <span className={classes.become}>Legendary</span>:</h5>
+                  <div id="participant-list">
+                    <ul>
+                      <li>ML & AI Financial Strategist</li>
+                      <li>Cryptoasset Specialist</li>
+                      <li>Data Scientist</li>
+                      <li>Data Engineer</li>
+                      <li>Distributed Systems Engineer</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <p>Like what you read? Share it! Hate what you read? Let us know..</p>
-              <ul style={{margin: '0 auto', width: '50%', listStyleType: 'none'}}>
-                <li>On Twitter: <a target="_blank" href="//www.twitter.com/CryptoWiseAI">@CryptoWiseAI</a></li>
-                <li>On Reddit: <a target="_blank" href="//www.reddit.com/user/CryptoWiseAI">u/CryptoWiseAI</a></li>
-                <li>On Medium: <a target="_blank" href="//medium.com/@cryptowise">@cryptowise</a></li>
-              </ul>
+            </div>
+            <p id="button">
+              <AppButton
+                type="primary"
+                className={`${
+                  this.state.subscribeButtonLoading ? "is-loading" : ""
+                }`}
+                onClick={this.signUpRouteChange}
+                size="large"
+              >
+                Sign Up
+              </AppButton>
+            </p>
+            <div id="developer-list">
+              <div id="list-subtitle" className="subtitle-small">
+                What's Included?
+              </div>
+              <ul>
+                <li>Free training content and plug-and-play capabilities to help you access and/or provide ecosystem leading peer-to-peer crypto-advisory services.</li>
+                <li>Help discover, implement, curate and enrich next-generation decentralized methods of strategic asset analysis.</li>
+                <li>Become a leading source of crypto (and related technology) expertise in a growing ecosystem.</li>
+                <li>Grow and tune your investment capabilities (crypto and traditional).</li>
+                <li>Access our wisdom repository: ontologies, systems, strategies, tactics, viewpoints, and insights for optimization of your trading activities.</li>
+                {/* <li>DO THIS! Fill out our Google docs application form |here| and we will get back to you soon.</li> */}
+
+                {/* <li>Carefully selected early contributors who will have access to closed Beta</li> */}
+                {/* <li>Crowdsourced token project intelligence</li> */}
+                {/* <li>Polkadot, Cosmos (Interop)</li> */}
+                {/* <li>BDFL Eric Steen, democratically developed software usually doesn't work, just enough authority, engineers making risk decisions, not management</li> */}
+            </ul>
+            </div>
+            <div id="social-subtitle" className="subtitle-big">
+              Own Your Networks.
+            </div>
+
+            <p id="social-blurb">Share it!</p>
+            <ul id="social-list">
+              <li>
+                On Reddit:{" "}
+                <a target="_blank" href="//www.reddit.com/user/CryptoWiseAI">
+                  u/CryptoWiseAI
+                </a>
+              </li>
+              <li>
+                On Twitter:{" "}
+                <a target="_blank" href="//www.twitter.com/CryptoWiseAI">
+                  @CryptoWiseAI
+                </a>
+              </li>
+              <li>
+                On Medium:{" "}
+                <a target="_blank" href="//medium.com/@cryptowise">
+                  @cryptowise
+                </a>
+              </li>
+            </ul>
             </div>
           </section>
         </div>
@@ -84,66 +117,180 @@ class DeveloperComponent extends React.Component {
 
 const devStyles = {
   developers: {
-    '& #developer-content': {
-      margin: '0 auto',
-      padding: 20,
-      paddingBottom: 150,
-      maxWidth: '60ch',
-      userSelect: 'none',
-      filter: 'saturate(1) contrast(1)',
+    paddingBottom: "20px",
+    marginTop: 50,
 
-      '& #title': {
-        fontSize: '3em',
-        lineHeight: '1em',
-        // marginBottom: '0.4em',
-        // width: '50%',
-        // margin: '0 auto',
-        textAlign: 'center',
-        '& #title-dev': {
-          fontSize: '.7em'
-        }
-      },
-      '& #subtitle': {
-        // fontSize: '1.4em',
-        // lineHeight: '1.8em',
-        // fontWeight: 'bold',
-        letterSpacing: '.1em',
-        fontVariant: 'small-caps',
-        textAlign: 'center',
-        margin: '0 0 15px 0',
-        textAlign: 'center',
-        '& #title-dev': {
-          fontSize: '.7em'
-        }
-      },
-      '& h3': {
-        textAlign: 'center',
-        maxWidth: '50ch'
+    "@media (max-width: 860px)": {
+      marginTop: 40,
+    },
+
+    "& #developer-content": {
+      display: "grid",
+      gridTemplateRows: "repeat(6, 0.03fr)",
+      gridTemplateColumns: "100vw",
+      userSelect: "none",
+      filter: "saturate(1) contrast(1)",
+
+      "@media (max-width: 860px)": {
+        marginTop: 25,
+        gridTemplateRows: "repeat(6, .05fr)",
+        gridTemplateColumns: "100vw",
       },
 
-      '& #developer-header': {
-        maxWidth: '50ch',
-        marginBottom: '20px'
+      "& #developer-header": {
+        display: "grid",
+        gridTemplateRows: "160px repeat(2, .05fr)",
+        justifyItems: "center",
+
+        "@media (max-width: 860px)": {
+          gridTemplateRows: "140px repeat(2, .05fr)",
+        },
+
+        "& #header-title": {
+          gridRow: 1,
+
+          "& #title": {
+            justifySelf: "center",
+            fontSize: "4.5rem !important",
+            textAlign: "center",
+            maxWidth: "20ch",
+
+            "@media (max-width: 408px)": {
+              marginTop: 35,
+              fontSize: "3.3rem !important",
+              lineHeight: "3rem",
+            },
+
+            "@media (min-width: 408px) and (max-width: 860px)": {
+              marginTop: 28,
+              fontSize: "4.3rem !important",
+              lineHeight: "3.8rem",
+            },
+          },
+        },
+
+        "& #words": {
+          gridRow: 2,
+          gridColumn: 1,
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          marginTop: 20,
+
+          "@media (max-width: 860px)": {
+            marginTop: 0,
+            width: "95vw",
+          },
+
+          "& #blurb": {
+            "& h5": {
+              textAlign: "center",
+              fontSize: "2.5rem",
+              color: `${colors.offWhite}`,
+
+              "@media (max-width: 860px)": {
+                fontSize: "1.7rem !important",
+              },
+            },
+
+            "& #participant-list": {
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              fontSize: "2.2rem !important",
+              "& ul": {
+                marginLeft: 45,
+                color: `${colors.silver}`,
+                listStyleType: "square",
+
+                "& li": {
+                  fontSize: "2.1rem !important",
+
+                  "@media (max-width: 860px)": {
+                    fontSize: "1.8rem !important",
+                  },
+                },
+              },
+            },
+
+            "@media (max-width: 860px)": {
+              fontSize: "2rem !important",
+            },
+          },
+        },
+      },
+      "& #button": {
+        justifySelf: "center",
+        // marginTop: 60,
+        "& button": {
+          width: 170,
+          height: 45,
+        },
+        "@media (max-width: 860px)": {
+          // marginTop: 40,
+        },
+      },
+      "& #developer-list": {
+        maxWidth: "70ch",
+        justifySelf: "center",
+        padding: 17,
+
+        "@media (max-width: 860px)": {},
+
+        "& #list-subtitle": {
+          fontSize: "2rem !important",
+          gridRow: 4,
+          margin: "2.5rem 0 1.5rem 0",
+          letterSpacing: ".1em",
+          // fontVariant: 'small-caps',
+          textAlign: "center",
+        },
+        "& ul": {
+          marginLeft: 35,
+          fontSize: "1.7rem !important",
+
+          "& li": {
+            maxWidth: "45ch",
+            color: `${colors.silver}`,
+            listStyleType: "square",
+            fontSize: "1.7rem",
+            padding: "14px 0",
+
+            "@media (max-width: 860px)": {
+              fontSize: "1.7rem !important",
+            },
+          },
+        },
       },
 
-      '& #developer-list': {
-        maxWidth: '50ch',
-        // padding: 15
-      },
+      "& #social-subtitle": {
+        gridRow: 4,
+        fontSize: "2rem !important",
+        letterSpacing: ".1em",
+        textAlign: "center",
 
-      '@media (min-width: 992px)': {
-        width: '60ch',
+        "@media (max-width: 860px)": {
+          fontSize: "2rem !important",
+        },
       },
-
-      '@media (min-width: 480px and max-width: 992px)': {
-        width: '95vw',
+      "& #social-blurb": {
+        gridRow: 5,
+        justifySelf: "center",
+        alignSelf: "center",
+        fontSize: "1.8rem",
       },
-
-      '@media (min-width:  480px)': {
-        width: '95vw',
+      "& #social-list": {
+        gridRow: 6,
+        justifySelf: "center",
+        alignSelf: "center",
+        "& li a": {
+          color: `${colors.origGreen}`,
+          filter: "saturate(2)",
+        },
       },
-    }
-  }
+    },
+  },
 }
 
 export default injectSheet(devStyles)(DeveloperComponent)

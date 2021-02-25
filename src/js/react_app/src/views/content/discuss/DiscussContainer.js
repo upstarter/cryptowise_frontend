@@ -44,8 +44,6 @@ class DiscussContainer extends React.Component {
 
   componentDidMount() {
     this.getData((res) => {
-      console.log("DDD", res);
-
       this.setState({
         initLoading: false,
         threads: res.data.threads,
@@ -127,14 +125,12 @@ class DiscussContainer extends React.Component {
   };
 
   handleCancel = () => {
-    console.log("Clicked cancel button");
     this.setState({
       visible: false,
     });
   };
 
   componentWillReceiveProps(nextProps){
-    console.log('willRE', nextProps.discussions.thread, this.state.threads)
     if (this.state.threads.length === 0 && Object.keys(nextProps.discussions.thread).length != 0) {
       this.setState({
           threads: [nextProps.discussions.thread, ...this.state.threads],

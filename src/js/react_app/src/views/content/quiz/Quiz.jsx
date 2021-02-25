@@ -86,7 +86,7 @@ export default class Quiz extends Component {
     });
   }
   handleClick = index => {
-    console.log(index);
+    
     const { step, questions, answers, totalQuestions } = this.state;
     answers.push(index + 1);
     let updatedStep = step;

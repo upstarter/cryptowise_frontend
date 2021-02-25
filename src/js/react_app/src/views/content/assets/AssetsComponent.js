@@ -51,7 +51,7 @@ class AssetsComponent extends React.Component {
     setAuthToken(accessToken) // set token in requests
 
     axios.get(url, data).then((res) => {
-      // console.log('Data', res.data)
+      // 
       callback(res.data)
     })
   };

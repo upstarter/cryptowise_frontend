@@ -112,16 +112,15 @@ class TopicChildren extends React.Component {
   topicImage = (name) => {
       let re = /\(.*\)/
       let symbol = name.match(re)
-        && symbol != "DPoS"
-        && symbol != "PoWeight"
+      let matched = symbol && symbol[0]
+      if (symbol && matched != "DPoS" && matched != "PoWeight") {
 
-      if (symbol && symbol[0]) {
-        let sym = symbol[0].replace('(','').replace(')', '').toLowerCase()
+          let sym = matched.replace('(','').replace(')', '').toLowerCase()
 
-        let imgUrl = require(`./crypto-logos/${sym}.png`)
-        //
+          let imgUrl = require(`./crypto-logos/${sym}.png`)
+          //
 
-        return `<div class='topic-image'><img src=${imgUrl} /></div>`
+          return `<div class='topic-image'><img src=${imgUrl} /></div>`
       }
       return ``
   }
@@ -182,6 +181,8 @@ let topicChildrenStyles = {
 
       '& a': {
         fontSize: '24px !important',
+        color: `${colors.link} !important`,
+
       },
     },
 
@@ -269,10 +270,8 @@ class TopicContainer extends React.Component {
 
   componentDidMount() {
     const { match } = this.props
-    console.log('rpo', this.props)
 
     this.getData(res => {
-      console.log('res',res)
       res.data[0].children = res.data[1]
       this.setState({
         initLoading: false,
@@ -286,7 +285,6 @@ class TopicContainer extends React.Component {
 
   getData = callback => {
     const { topicID } = this.state
-    console.log('state', this.state)
     let re = /\d+$/
     let found = topicID && topicID.match(re)
 
@@ -378,7 +376,6 @@ class TopicContainer extends React.Component {
   }
 
   handleCancel = () => {
-    console.log('Clicked cancel button');
     this.setState({
       visible: false,
     });
@@ -401,7 +398,6 @@ class TopicContainer extends React.Component {
   render() {
     let { classes, topic } = this.props
     let { topicID } = this.state
-    console.log('render topic', topic)
     // topic = topic.split(" ").map((txt) => {
     //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
     // })

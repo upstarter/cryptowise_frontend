@@ -41,8 +41,8 @@ class CardTile extends Component {
     let data = props.data;
     let classes = props.classes;
     let state = this.state;
-    // console.log(data.id);
-    // console.log("ids", props.selectedIds);
+    //
+    //
     return (
        <Card
          // bordered={true}

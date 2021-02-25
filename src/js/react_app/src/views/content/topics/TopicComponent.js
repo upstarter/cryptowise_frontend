@@ -39,8 +39,6 @@ class TopicContainer extends React.Component {
 
   componentDidMount() {
       this.getData(res => {
-        console.log('DDDD', res.data)
-
         this.setState({
           topic: res.data
         });
