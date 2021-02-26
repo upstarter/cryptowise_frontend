@@ -9,8 +9,17 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link href="./css/app.css" rel="stylesheet">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script async defer type="text/javascript">
+      function onboard(e) {
+        e.preventDefault();
+        alert("bubba");
+        document.getElementById("onboard-container").style.display = "block";
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
+
   </body>
+
 </html>
