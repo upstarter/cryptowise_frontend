@@ -13,7 +13,7 @@ import { createProposal } from "Redux/topics";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
-
+import OnboardContainer from './OnboardContainer'
 const count = 25;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
@@ -23,15 +23,16 @@ class TopicChildren extends React.Component {
 
     this.state = {
       topic: props.topic,
-      topicID: props.topicID
+      topicID: props.topicID,
+      showOnboard: false,
     }
   }
 
   topicDetail = (topic) => {
     return (
-      `<div class='topic-detail' style='color: ${colors.silver8};padding: 0px 0px 0px 13px;'>
-        <p class='topic-detail-description'>${topic.description}</p>
-      </div>`
+      <div className='topic-detail' style={{color: colors.silver8, padding: '0px 0px 0px 13px'}}>
+        <p className='topic-detail-description'>{topic.description}</p>
+      </div>
     )
   }
 
@@ -39,90 +40,117 @@ class TopicChildren extends React.Component {
       return 1 + Math.max(0, ...tree.map(({ children = [] }) => getDepth(children)));
   }
 
+  sleep = (ms, callback=null) => {
+    setTimeout(ms, callback)
+  }
+
   discussTopic = (topic,lvl,children=null) => {
-    let data =  ``
     let hasChildren = children && children.length > 0
+    let a = null
     if (lvl >= 0) {
       if (hasChildren) {
-        data += `<a class='discuss-topic' style='user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
+        a = <a className='discuss-topic' onClick={(e) => this.onboard(e)} style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
       } else {
-        data += `<a class='discuss-topic' style='user-select:none;color: ${colors.antBlue};' href='/discuss/topics/${topic.id}'>${topic.name}</a>`
+        a = <a className='discuss-topic' onClick={(e) => this.onboard(e)} style={{userSelect: 'none', color: colors.antBlue}} href={`/discuss/topics/${topic.id}`}>{topic.name}</a>
       }
     } else {
-      data += `<a class='discuss-topic' style='user-select:none;color: ${colors.antBlue};' href='/topics/${topic.id}'>${topic.name}</a>`
+      a = <a className='discuss-topic' onClick={(e) => this.onboard(e)} style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
     }
-    return data
+    return a
   }
 
-  topicHead = (topic, lvl, data=``) => {
+  onboard = (e) => {
+      e.preventDefault();
+      this.setState({showOnboard: true})
+    }
+
+  topicHead = (topic, lvl) => {
     let href = `/discuss/topics/${topic.id}`
 
-    data += `<div class='topic-header'>${this.topicImage(topic.name)}`
-
+    let title = null
     if (lvl === 0) {
-      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 6px;color: ${colors.lightBlack};font-size: 23px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
+      title = <h2 className='topic-heading'><a style={{userSelect:'none', marginLeft: '6px', color:  colors.lightBlack, fontSize: '23px', fontWeight: 300}}  href={href}>{this.discussTopic(topic,lvl)}</a></h2>
     } else if (lvl === 1) {
-      data += `<h2 class='topic-heading'><a style='user-select:none;margin-left: 6px;color: ${colors.lightBlack};font-size: 28px;font-weight: 300;' href='${href}'>${this.discussTopic(topic,lvl)}</a></h2>`
+      title = <h2 className='topic-heading'><a style={{userSelect:'none', marginLeft: '6px', color:  colors.lightBlack, fontSize: '28px', fontWeight: 300}}  href={href}>{this.discussTopic(topic,lvl)}</a></h2>
     } else if (lvl === 2) {
-      data += `<h3 class='topic-heading'><a style='user-select:none;margin-left: 8px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 100' href='${href}'>${this.discussTopic(topic,lvl)}</a></h3>`
+      title = <h3 className='topic-heading'><a style={{userSelect:'none', marginLeft: '8px', color:  colors.mediumBlack, fontSize: '25px', fontWeight: 100}} href={href}>{this.discussTopic(topic,lvl)}</a></h3>
     } else if (lvl === 3) {
-      data += `<h4 class='topic-heading'><a style='user-select:none;margin-left: 11px;color: ${colors.mediumBlack};font-size: 25px;font-weight: 0' href='${href}'>${topic.name}</a></h4>`
+      title = <h4 className='topic-heading'><a style={{userSelect:'none', marginLeft: '11px', color: colors.mediumBlack, fontSize: '25px', fontWeight: 0}} href={href}>{topic.name}</a></h4>
     } else {
-      data += `<h6 class='topic-heading'><a style='user-select:none;margin-left: 14px;color: ${colors.darkBlack};font-size: 25px; font-weight: 0;' href='${href}'>${topic.name}</a></h${lvl}>`
+      title = <h6 className='topic-heading'><a style={{userSelect:'none', marginLeft: '14px', color: colors.darkBlack, fontSize: '25px',  fonWweight: 0}}  href={href}>{topic.name}</a></h6>
     }
-
-    data += `</div>`
-    // return (
-    //   <section className={classes.topicHead}>
-    //
-    //   </section>
-    // )
-    return data
+    return title
   }
 
-  topicChildren = (topicId, children, lvl=0, data=`<div class='child'>`) => {
-    if (children === undefined) { return data }
-    if (children.length === 0) { return data }
-    if (lvl > 0) { return data }
+  topicChildren = (topicID, children, classes, lvl=0) => {
+    if (children === undefined) return
+    if (children.length === 0)  return
+    if (lvl > 0) return data
 
-    children.map((pair, idx) => {
-      if (pair.length === 0) { return data }
-      let parent = pair[0]
-      // if (parent.parent_id === topicId) {lvl = 0}
-      let childs = pair[1]
-      if (parent === undefined) { return data }
-      data += this.topicHead(parent, lvl)
+    return (
+       <div className='child'>
+        {
+          children.map((pair, idx) => {
+            if (pair.length === 0) { return data }
+            let parent = pair[0]
+            // if (parent.parent_id === topicId) {lvl = 0}
+            let childs = pair[1]
+            if (parent === undefined) { return data }
+            let img = parent.parent_id === 193 ?
+              this.topicImage(parent.name, classes) : null
 
-      data += `<div class='topic-details' style='user-select:none;'>${this.topicDetail(parent)}</div>`
-      data += `<ul style='user-select:none;list-style-type:none;text-decoration:none;' id='topic-urls'>
-                ${childs.map((children) => {
-                  return `<li class='discuss-link' style='text-indent: -10px;padding: 7px'>${this.discussTopic(children[0], lvl, children[1])} – ${children[0].description}</li>`
-                }).join(``)}
-               </ul>`
-      if (childs.length > 0) {
-        lvl += 1
-
-        data += this.topicChildren(topicId, childs, lvl=lvl)
-      }
-    })
-
-    return data + `</div>`
+            return (
+               <div key={parent.id} className={classes.topicHead}>
+                <div class='topic-header'>
+                  {img}
+                  {this.topicHead(parent, lvl)}
+                </div>
+                <div className='topic-details' style={{userSelect: 'none'}}>{this.topicDetail(parent)}</div>
+                  <ul style={{userSelect: 'none', listStyleType: 'none', textDecoration: 'none'}} id='topic-urls'>
+                      {
+                        childs.map((children) => {
+                          return <li className='discuss-link' style={{textIndent: -10, padding: 7}}>{this.discussTopic(children[0], lvl, children[1])} – {children[0].description}</li>
+                        })
+                      }
+                  </ul>
+               </div>
+            )
+          })
+        }
+      </div>
+    )
   }
 
-  topicImage = (name) => {
+  topicBody = (parent, topicID, childs, lvl) => {
+    return (
+      <>
+        <div className='topic-details' style={{userSelect: 'none'}}>{this.topicDetail(parent)}</div>
+        <ul style={{userSelect: 'none', listStyleType: 'none', textDecoration: 'none'}} id='topic-urls'>
+            {
+              childs.map((children) => {
+                return <li className='discuss-link' style={{textIndent: -10, padding: 7}}>{this.discussTopic(children[0], lvl, children[1])} – {children[0].description}</li>
+              })
+            }
+        </ul>
+        {
+          childs.length > 0 ? (
+            lvl += 1,
+            this.topicChildren(topicID, childs, lvl=lvl)
+          ) : null
+        }
+      </>
+    )
+  }
+
+  topicImage = (name, classes) => {
       let re = /\(.*\)/
       let symbol = name.match(re)
       let matched = symbol && symbol[0]
-      if (symbol && matched != "DPoS" && matched != "PoWeight") {
-
-          let sym = matched.replace('(','').replace(')', '').toLowerCase()
-
-          let imgUrl = require(`./crypto-logos/${sym}.png`)
-          //
-
-          return `<div class='topic-image'><img src=${imgUrl} /></div>`
+      if (symbol) {
+        let sym = matched.replace('(','').replace(')', '').toLowerCase()
+        let imgUrl = require(`./crypto-logos/${sym}.png`)
+        return (<div className={classes.topicImage}><img src={imgUrl} /></div>)
       }
-      return ``
   }
 
   render() {
@@ -140,16 +168,25 @@ class TopicChildren extends React.Component {
             {topic && topic.description}
           </span>
         </section>
-        <div className={classes.topicDetails}
-          dangerouslySetInnerHTML={{__html: this.topicChildren(topic.id, topic.children)}}
-        >
+        <div className={classes.topicDetails}>
+          { this.topicChildren(topic.id, topic.children, classes) }
         </div>
+        { this.state.showOnboard ? <OnboardContainer id='onboard-container'/> : '' }
       </div>
+
     )
   }
 }
 
 let topicChildrenStyles = {
+  topicImage: {
+    gridArea: "image",
+    '& img': {
+      width: '50px',
+      height: '50px',
+      borderRadius: '50px',
+    },
+  },
   topic: {
     marginTop: 20,
     '& .child': {
