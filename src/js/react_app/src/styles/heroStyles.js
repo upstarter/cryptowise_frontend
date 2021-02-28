@@ -3,7 +3,7 @@ import HeroImage from 'Images/hero.webp';
 const heroStyles = {
   hero: {
     marginTop: 50,
-    minHeight: '61.8vh',
+    minHeight: '55vh',
     '-webkit-background-clip': 'padding-box', /* for Safari */
     backgroundClip: 'padding-box', /* for IE9+, Firefox 4+, Opera, Chrome */
     background: `linear-gradient(to bottom, rgba(25, 31, 46, .95), rgba(25, 31, 46, .40)), url(${HeroImage}) no-repeat center`,
