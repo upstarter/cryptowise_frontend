@@ -8,6 +8,7 @@
 // import theme from 'Css/theme_export.scss'
 
 const colors = {
+  origBackground: 'rgb(27,34,51)',
   primary: 'rgba(12, 61,160, .35)',
   primaryDark: 'rgba(23,22,23, 1)',
   secondaryDark: 'rgba(25, 31, 46, 1)',
@@ -15,10 +16,10 @@ const colors = {
   quartDark: 'rgba(28,49,70,1)',
 
   // LINKS
-  link: 'rgb(25,90,247)',
+  link: 'rgb(26,235,255)',
   antBlue: 'rgb(10,83,176)',
   antBlueLight: 'rgb(2,116,192)',
-  antBluePop: 'rgb(46,188,247)',
+  antBluePop: 'rgb(26,235,255)',
   antBlueDark: 'rgb(5,0,161)',
 
   // BLUE

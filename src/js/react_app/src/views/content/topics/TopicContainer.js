@@ -47,14 +47,14 @@ class TopicChildren extends React.Component {
   discussTopic = (topic,lvl,children=null) => {
     let hasChildren = children && children.length > 0
     let a = null
-    if (lvl >= 0) {
+    if ([0,1].includes(lvl)) {
       if (hasChildren) {
-        a = <a className='discuss-topic' style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
+        a = <a className='discuss-topic' style={{color: colors.antBluePop}} href={`/topics/${topic.id}`}>{topic.name}</a>
       } else {
-        a = <a className='discuss-topic' style={{userSelect: 'none', color: colors.antBlue}} href={`/discuss/topics/${topic.id}`}>{topic.name}</a>
+        a = <a className='discuss-topic' style={{color: colors.antBluePop}} href={`/discuss/topics/${topic.id}`}>{topic.name}</a>
       }
     } else {
-      a = <a className='discuss-topic' style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
+      a = <a className='discuss-topic' style={{color: colors.antBluePop}} href={`/topics/${topic.id}`}>{topic.name}</a>
     }
     return a
   }
@@ -69,7 +69,7 @@ class TopicChildren extends React.Component {
 
     let title = null
     if (lvl === 0) {
-      title = <h2 className='topic-heading'><a style={{userSelect:'none', marginLeft: '6px', color:  colors.lightBlack, fontSize: '23px', fontWeight: 300}}  href={href}>{this.discussTopic(topic,lvl)}</a></h2>
+      title = <h2 className='topic-heading'><a style={{userSelect:'none', marginLeft: '6px', color:  colors.lightBlack, fontSize: '23px', fontWeight: 600}}  href={href}>{this.discussTopic(topic,lvl)}</a></h2>
     } else if (lvl === 1) {
       title = <h2 className='topic-heading'><a style={{userSelect:'none', marginLeft: '6px', color:  colors.lightBlack, fontSize: '28px', fontWeight: 300}}  href={href}>{this.discussTopic(topic,lvl)}</a></h2>
     } else if (lvl === 2) {
@@ -217,8 +217,9 @@ let topicChildrenStyles = {
       margin: [8,0,0,13],
 
       '& a': {
-        fontSize: '24px !important',
-        color: `${colors.link} !important`,
+        fontSize: '2.6rem !important',
+        color: `${colors.antBluePop} !important`,
+        fontWeight: 600,
 
       },
     },
@@ -236,7 +237,7 @@ let topicChildrenStyles = {
     },
     '& .discuss-topic': {
       fontSize: 17,
-      color: `${colors.link} !important`,
+      userSelect: 'none',
     }
   },
   discuss: {
@@ -256,7 +257,7 @@ let topicChildrenStyles = {
   },
 
   topicName: {
-    fontSize: '2.45rem !important',
+    fontSize: '3.5rem !important',
     color: colors.silver,
     maxWidth: '400px',
     "@media (max-width: 408px)": {
@@ -268,6 +269,7 @@ let topicChildrenStyles = {
     color: colors.silver6,
     maxWidth: '60ch',
     marginBottom: 5,
+    textAlign: 'center',
     "@media (max-width: 408px)": {
       marginLeft: 15,
     },
