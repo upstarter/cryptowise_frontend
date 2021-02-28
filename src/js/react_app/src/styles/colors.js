@@ -70,6 +70,10 @@ const colors = {
 
   // blacks
   lighterBlack: 'rgba(225, 220, 220, 1)',
+  lighterBlack2: 'rgba(225, 220, 220, .2)',
+  lighterBlack4: 'rgba(225, 220, 220, .4)',
+  lighterBlack6: 'rgba(225, 220, 220, .6)',
+  lighterBlack8: 'rgba(225, 220, 220, .8)',
   lightBlack: 'rgba(175, 170, 170, 1)',
   mediumBlack: 'rgba(145, 140, 140, 1)',
   darkBlack: 'rgba(75,79,91,1)',

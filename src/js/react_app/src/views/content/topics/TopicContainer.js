@@ -181,10 +181,15 @@ class TopicChildren extends React.Component {
 let topicChildrenStyles = {
   topicImage: {
     gridArea: "image",
+    paddingBottom: 13,
+
     '& img': {
       width: '50px',
       height: '50px',
       borderRadius: '50px',
+      boxShadow: `0 0 30px 0 ${colors.lighterBlack}`,
+
+
     },
   },
   topic: {
@@ -204,20 +209,11 @@ let topicChildrenStyles = {
       alignItems: 'center',
       justifyItems: 'center',
       minWidth: 285,
-      marginBottom: 20,
-
-      '& .topic-image': {
-        gridArea: "image",
-
-        '& img': {
-          width: '50px',
-          height: '50px',
-        }
-      },
+      marginBottom: 18,
     },
     '& .topic-heading': {
       gridArea: "heading",
-      margin: [8,0,0,13],
+      margin: [8,0,13,0],
       textAlign: 'center',
 
       '& a': {
@@ -244,6 +240,7 @@ let topicChildrenStyles = {
       userSelect: 'none',
       fontWeight: 500,
       letterSpacing: '.1em',
+
     }
   },
   discuss: {
