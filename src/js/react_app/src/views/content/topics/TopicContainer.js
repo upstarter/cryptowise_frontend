@@ -49,12 +49,12 @@ class TopicChildren extends React.Component {
     let a = null
     if ([0,1].includes(lvl)) {
       if (hasChildren) {
-        a = <a className='discuss-topic' style={{color: colors.antBluePop}} href={`/topics/${topic.id}`}>{topic.name}</a>
+        a = <a className='discuss-topic' style={{color: colors.link}} href={`/topics/${topic.id}`}>{topic.name}</a>
       } else {
-        a = <a className='discuss-topic' style={{color: colors.antBluePop}} href={`/discuss/topics/${topic.id}`}>{topic.name}</a>
+        a = <a className='discuss-topic' style={{color: colors.link}} href={`/discuss/topics/${topic.id}`}>{topic.name}</a>
       }
     } else {
-      a = <a className='discuss-topic' style={{color: colors.antBluePop}} href={`/topics/${topic.id}`}>{topic.name}</a>
+      a = <a className='discuss-topic' style={{color: colors.link}} href={`/topics/${topic.id}`}>{topic.name}</a>
     }
     return a
   }
@@ -215,11 +215,12 @@ let topicChildrenStyles = {
     '& .topic-heading': {
       gridArea: "heading",
       margin: [8,0,0,13],
+      textAlign: 'center',
 
       '& a': {
-        fontSize: '2.6rem !important',
-        color: `${colors.antBluePop} !important`,
-        fontWeight: 600,
+        fontSize: '3.3rem !important',
+        color: `${colors.link} !important`,
+        fontWeight: 500,
 
       },
     },
@@ -253,13 +254,14 @@ let topicChildrenStyles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    // background: colors.silver2,
+    alignItems: 'center',
   },
 
   topicName: {
-    fontSize: '3.5rem !important',
+    fontSize: '4.5rem !important',
     color: colors.silver,
     maxWidth: '400px',
+    textAlign: 'center',
     "@media (max-width: 408px)": {
       fontSize: '1.5rem !important',
       padding: 5,
@@ -269,6 +271,7 @@ let topicChildrenStyles = {
     color: colors.silver6,
     maxWidth: '60ch',
     marginBottom: 5,
+    padding: 13,
     textAlign: 'center',
     "@media (max-width: 408px)": {
       marginLeft: 15,
