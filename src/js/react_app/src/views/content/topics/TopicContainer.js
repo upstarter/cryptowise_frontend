@@ -200,12 +200,15 @@ let topicChildrenStyles = {
     },
     '& .topic-header': {
       display: 'grid',
-      gridTemplateAreas: `'image heading'`,
+      gridTemplateAreas: `"heading" "image"`,
+      alignItems: 'center',
+      justifyItems: 'center',
       minWidth: 285,
       marginBottom: 20,
 
       '& .topic-image': {
         gridArea: "image",
+
         '& img': {
           width: '50px',
           height: '50px',
@@ -239,6 +242,8 @@ let topicChildrenStyles = {
     '& .discuss-topic': {
       fontSize: 17,
       userSelect: 'none',
+      fontWeight: 500,
+      letterSpacing: '.1em',
     }
   },
   discuss: {

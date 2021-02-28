@@ -16,9 +16,10 @@ const colors = {
   quartDark: 'rgba(28,49,70,1)',
 
   // LINKS
-  link: 'rgb(145,87,137)',
+  link: '#1990ff',
   antBlue: 'rgb(10,83,176)',
   antBlueLight: 'rgb(2,116,192)',
+  antBluePop: 'rgb(26,235,255)',
   antBlueDark: 'rgb(5,0,161)',
 
   // BLUE
@@ -53,7 +54,8 @@ const colors = {
 
   // purples
   darkPurple: 'rgba(83,40,85,.8)',
-  purple: 'rgba(118, 48, 103, 1)',
+  purple: 'rgb(120,61,111)',
+  origPurple: 'rgba(118, 48, 103, 1)',
   lightPurple: '#783D6F',
   brightPurple: 'rgba(200, 0, 154, 1)',
   smoothPurple: 'rgba(158,25,129,1)',
