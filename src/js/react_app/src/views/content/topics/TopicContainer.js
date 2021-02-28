@@ -49,12 +49,12 @@ class TopicChildren extends React.Component {
     let a = null
     if (lvl >= 0) {
       if (hasChildren) {
-        a = <a className='discuss-topic' onClick={(e) => this.onboard(e)} style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
+        a = <a className='discuss-topic' style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
       } else {
-        a = <a className='discuss-topic' onClick={(e) => this.onboard(e)} style={{userSelect: 'none', color: colors.antBlue}} href={`/discuss/topics/${topic.id}`}>{topic.name}</a>
+        a = <a className='discuss-topic' style={{userSelect: 'none', color: colors.antBlue}} href={`/discuss/topics/${topic.id}`}>{topic.name}</a>
       }
     } else {
-      a = <a className='discuss-topic' onClick={(e) => this.onboard(e)} style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
+      a = <a className='discuss-topic' style={{userSelect: 'none', color: colors.antBlue}} href={`/topics/${topic.id}`}>{topic.name}</a>
     }
     return a
   }
