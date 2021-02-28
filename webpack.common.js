@@ -110,7 +110,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|webp)$/i,
         exclude: [path.resolve(__dirname, "node_modules"),path.resolve(__dirname, "src/js/elm")],
         use: [
           {

@@ -1,4 +1,4 @@
-import HeroImage from 'Images/hero.jpeg';
+import HeroImage from 'Images/hero.webp';
 
 const heroStyles = {
   hero: {
