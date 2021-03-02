@@ -10,22 +10,22 @@ class AboutComponent extends React.Component {
     const { classes } = this.props
     return (
       <React.Fragment>
-        <section id="about" style={{width: '100%'}}>
+        <section className={classes.about}>
           <div id="about-content" className={classes.about_content}>
-            <h1 className="title">About</h1>
-            <h3 id="about-title">
+            <h1 className={classes.headerTitle}>About</h1>
+            <h3 className={classes.descHead}>
               CryptoWise is a collaborative investment ecosystem harnessing the
               wisdom of the crowd and AI to optimize investment outcomes.
             </h3>
-            <p className="paragraph">
+            <p className={classes.descBody}>
               We are providing tech saavy investors with network structure
               and roles for automated, scalable investment data curation and
               decision-making. <i> We're harnessing the acquired wisdom and
               innate talent of those most passionate about the future of
               investing and capital formation. </i>
             </p>
-            <h1 className="title">Vision</h1>
-            <h3>
+            <h1 className={classes.title2}>Vision</h1>
+            <h3 className={classes.blockDesc}>
               Research has shown that a collective entity makes a better
               decision as a whole than the most intelligent person in the
               group alone.
@@ -41,17 +41,17 @@ class AboutComponent extends React.Component {
               The Wisdom of Crowds
             </blockquote>
 
-            <h1 className="title">Mission</h1>
-            <h3>
+            <h1 className={classes.title2}>Mission</h1>
+            <h3 className={classes.blockDesc}>
               To provide the worlds most informative investment
               research & analysis ecosystem.
             </h3>
-            <h1 className="title">Values</h1>
-            <h3>
+            <h1 className={classes.title2}>Values</h1>
+            <h3 className={classes.blockDesc}>
               Transparency, Integrity, Openness, Curiosity, Accuracy, Precision,
               Autonomy, Dedication, Compassion, Originality, Fun.
             </h3>
-            <h1 className="title">Pursuits</h1>
+            <h1 className={classes.title2}>Pursuits</h1>
             <ul id="pursuits">
               <li>Crypto Economics</li>
               <li> Trading Strategies & Methods </li>
@@ -72,6 +72,35 @@ class AboutComponent extends React.Component {
 }
 
 const aboutStyles = {
+  about: {
+    marginTop: 40,
+    width: '100%',
+  },
+  headerTitle: {
+    fontSize: '40px !important',
+    fontWeight: '600 !important',
+    textAlign: 'center',
+  },
+  descHead: {
+    fontSize: '21px !important',
+    color: '#eee !important',
+  },
+  descBody: {
+    color: colors.smoke8,
+    maxWidth: '60ch',
+    margin: '3.8rem auto 2.4rem auto',
+    padding: 10
+    // margin: [55, 60, 13, 90],
+  },
+  title2: {
+    color: '#eee',
+    fontWeight: '400 !important'
+  },
+  blockDesc: {
+    color: '#bbb',
+    color: `${colors.smoke8} !important`,
+    fontSize: '1.8rem !important'
+  },
   about_content: {
     margin: '100px auto',
     width: '100vw',
@@ -86,13 +115,12 @@ const aboutStyles = {
 
     '& h3': {
       marginLeft: '1.3rem',
-      color: `${colors.silver}`,
-      fontSize: '2rem',
-      lineHeight: '2.6rem !important',
+      color: `#ddd`,
+      fontSize: '.8rem',
     },
 
     '& .title': {
-      color: `${colors.sand}`,
+      color: `#bbb`,
     },
 
     '& .paragraph': {
@@ -101,14 +129,14 @@ const aboutStyles = {
     },
 
     '& blockquote': {
-      color: `${colors.silver}`,
+      color: `#ccc`,
     },
 
     '& #pursuits': {
       marginLeft: '4rem',
       '& li': {
         listStyleType: 'square',
-        color: `${colors.silver}`
+        color: `#bbb`
       }
     },
 
