@@ -120,7 +120,7 @@ const styles = {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      width: '100%',
+      maxWidth: '400px !important',
       fontFamily: "Avenir, Avenir-Light, Avenir-Book, Avenir-Roman, sans-serif",
       fontSize: '15px',
       userSelect: 'none',

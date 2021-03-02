@@ -73,7 +73,7 @@ class SignUpStep1 extends Component {
       <div className={classes.container}>
         <div id="topics-header" className={classes.header}>
           <h2 className={classes.title}>
-            Gain from cutting edge insights relevant to your goals/interests.
+            Gain from cutting edge market insights.
             Follow 3 or more topics. <span className="subtitle-small">Select as many as you like.</span>
           </h2>
         </div>
@@ -105,11 +105,13 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+    justifyItems: 'center',
+
+
   },
 
   main: {
     height: '100%',
-    width: '400px !important',
     'overflow-y': 'none',
     marginTop: 150,
     "@media (max-width: 482px)": {
@@ -119,30 +121,34 @@ const styles = {
 
   header: {
     position: 'fixed',
-    top: 50,
-    minHeight: '15vh',
-    maxWidth: 405,
+    top: 60,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyItems: 'center',
+    justifyContent: 'center',
     zIndex: 1,
     background: `${colors.black}`,
 
-    "@media (max-width: 482px)": {
-
+    "@media (min-width: 482px)": {
+      maxWidth: '400px'
     }
   },
   title: {
-    padding: [18,11,0,11],
-    fontSize: "2.2rem !important",
+    marginTop: 21,
+    padding: 20,
+    fontSize: "2.8rem !important",
     lineHeight: '3rem !important',
     color: `${colors.offWhite}`,
 
     "@media (max-width: 482px)": {
-      fontSize: '1.8rem !important',
-      height: '17vh !important',
-      lineHeight: '2rem !important',
+      fontSize: '2.5rem !important',
+      lineHeight: '2.8rem !important',
     },
 
     '& .subtitle-small': {
       fontWeight: 'bold',
+      display: 'inline-block',
       filter: 'saturate(1) contrast(1)',
       color: `${colors.lightBlack}`,
     }
@@ -158,6 +164,7 @@ const styles = {
     justifyContent: 'center',
     position: 'fixed',
     minHeight: "64px",
+    marginBottom: '10px',
     width: '100vw',
     zIndex: 10,
     bottom: 0,
@@ -170,7 +177,10 @@ const styles = {
     fontSize: 20,
   },
   tileGrid: {
-    margin: '65px 5px 130px 5px',
+    padding: 3,
+    "@media (min-width: 482px)": {
+      marginTop: 120,
+    },
     '& .ant-card': {
 
     }
