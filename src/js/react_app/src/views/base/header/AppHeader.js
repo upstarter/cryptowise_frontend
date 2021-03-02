@@ -59,7 +59,11 @@ class AppHeader extends React.Component {
           />
         }
         <Link className={classes.logoLink} to="/">
-          <img className={classes.logo} src={nav_logo} />
+          <img
+            loading="lazy"
+            className={classes.logo} src={nav_logo}
+            alt="cryptoasset research, cryptosasset analyisis, cryptoasset trading, cryptoasset investing"
+          />
         </Link>
         <div>
 

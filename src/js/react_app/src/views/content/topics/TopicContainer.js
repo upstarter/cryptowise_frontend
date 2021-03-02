@@ -28,20 +28,53 @@ class TopicChildren extends React.Component {
     }
   }
 
-  topicDetail = (topic) => {
-    return (
-      <div className='topic-detail' style={{color: colors.silver8, padding: '0px 0px 0px 13px'}}>
-        <p className='topic-detail-description'>{topic.description}</p>
-      </div>
-    )
-  }
-
   getDepth = (tree) => {
       return 1 + Math.max(0, ...tree.map(({ children = [] }) => getDepth(children)));
   }
 
   sleep = (ms, callback=null) => {
     setTimeout(ms, callback)
+  }
+
+  onboard = (e) => {
+      e.preventDefault();
+      this.setState({showOnboard: true})
+  }
+
+  topicDetail = (topic, classes) => {
+    return (
+      <div className={classes.topicDetail}>
+        <p className={classes.topicDescription}>{topic.description}</p>
+      </div>
+    )
+  }
+
+  topicImage = (name, classes) => {
+      let re = /\(.*\)/
+      let symbol = name.match(re)
+      let matched = symbol && symbol[0]
+      if (symbol) {
+        let sym = matched.replace('(','').replace(')', '').toLowerCase()
+        let imgUrl = require(`./crypto-logos/${sym}.png`)
+        return (<div className={classes.topicImage}><img src={imgUrl} /></div>)
+      }
+  }
+
+  topicHead = (topic, lvl, classes) => {
+    let href = `/discuss/topics/${topic.id}`
+    let title = null
+    if (lvl === 0) {
+      title = <h2 className={classes.topicHeading}><a href={href}>{this.discussTopic(topic,lvl, classes)}</a></h2>
+    } else if (lvl === 1) {
+      title = <h2 className={classes.topicHeading}><a href={href}>{this.discussTopic(topic,lvl, classes)}</a></h2>
+    } else if (lvl === 2) {
+      title = <h3 className={classes.topicHeading}><a href={href}>{this.discussTopic(topic,lvl, classes)}</a></h3>
+    } else if (lvl === 3) {
+      title = <h4 className={classes.topicHeading}><a href={href}>{topic.name}</a></h4>
+    } else {
+      title = <h6 className={classes.topicHeading}><a href={href}>{topic.name}</a></h6>
+    }
+    return title
   }
 
   discussTopic = (topic,lvl,children=null) => {
@@ -59,60 +92,29 @@ class TopicChildren extends React.Component {
     return a
   }
 
-  onboard = (e) => {
-      e.preventDefault();
-      this.setState({showOnboard: true})
-    }
-
-  topicHead = (topic, lvl) => {
-    let href = `/discuss/topics/${topic.id}`
-
-    let title = null
-    if (lvl === 0) {
-      title = <h2 className='topic-heading'><a style={{userSelect:'none', marginLeft: '6px', color:  colors.lightBlack, fontSize: '23px', fontWeight: 600}}  href={href}>{this.discussTopic(topic,lvl)}</a></h2>
-    } else if (lvl === 1) {
-      title = <h2 className='topic-heading'><a style={{userSelect:'none', marginLeft: '6px', color:  colors.lightBlack, fontSize: '28px', fontWeight: 300}}  href={href}>{this.discussTopic(topic,lvl)}</a></h2>
-    } else if (lvl === 2) {
-      title = <h3 className='topic-heading'><a style={{userSelect:'none', marginLeft: '8px', color:  colors.mediumBlack, fontSize: '25px', fontWeight: 100}} href={href}>{this.discussTopic(topic,lvl)}</a></h3>
-    } else if (lvl === 3) {
-      title = <h4 className='topic-heading'><a style={{userSelect:'none', marginLeft: '11px', color: colors.mediumBlack, fontSize: '25px', fontWeight: 0}} href={href}>{topic.name}</a></h4>
-    } else {
-      title = <h6 className='topic-heading'><a style={{userSelect:'none', marginLeft: '14px', color: colors.darkBlack, fontSize: '25px',  fonWweight: 0}}  href={href}>{topic.name}</a></h6>
-    }
-    return title
-  }
-
   topicChildren = (topicID, children, classes, lvl=0) => {
     if (children === undefined) return
     if (children.length === 0)  return
-    if (lvl > 0) return data
 
     return (
-       <div className='child'>
+       <div className={classes.child}>
         {
           children.map((pair, idx) => {
-            if (pair.length === 0) { return data }
+            if (pair.length === 0) { return null }
             let parent = pair[0]
             // if (parent.parent_id === topicId) {lvl = 0}
             let childs = pair[1]
-            if (parent === undefined) { return data }
+            if (parent === undefined) { return null }
             let img = parent.parent_id === 193 ?
               this.topicImage(parent.name, classes) : null
-
             return (
                <div key={parent.id} className={classes.topicHead}>
-                <div class='topic-header'>
+                <div className={classes.topicsHeader}>
                   {img}
-                  {this.topicHead(parent, lvl)}
+                  {this.topicHead(parent, lvl, classes)}
                 </div>
-                <div className='topic-details' style={{userSelect: 'none'}}>{this.topicDetail(parent)}</div>
-                  <ul style={{userSelect: 'none', listStyleType: 'none', textDecoration: 'none'}} id='topic-urls'>
-                      {
-                        childs.map((children) => {
-                          return <li className='discuss-link' style={{textIndent: -10, padding: 7}}>{this.discussTopic(children[0], lvl, children[1])} – {children[0].description}</li>
-                        })
-                      }
-                  </ul>
+                <div className={classes.childTopicDetails} style={{userSelect: 'none'}}>{this.topicDetail(parent, classes)}</div>
+                  {this.topicBody(parent, topicID, childs, classes, lvl)}
                </div>
             )
           })
@@ -121,36 +123,30 @@ class TopicChildren extends React.Component {
     )
   }
 
-  topicBody = (parent, topicID, childs, lvl) => {
+  topicBody = (parent, topicID, childs, classes, lvl) => {
     return (
       <>
-        <div className='topic-details' style={{userSelect: 'none'}}>{this.topicDetail(parent)}</div>
         <ul style={{userSelect: 'none', listStyleType: 'none', textDecoration: 'none'}} id='topic-urls'>
             {
               childs.map((children) => {
-                return <li className='discuss-link' style={{textIndent: -10, padding: 7}}>{this.discussTopic(children[0], lvl, children[1])} – {children[0].description}</li>
-              })
+                return (
+                  <>
+                    <li className={classes.childDetail}>
+                      <div
+                        className={classes.childTopicName}
+                        >
+                        {this.discussTopic(children[0], lvl, children[1], classes)}
+                      </div>
+                      <div className={classes.childTopicDesc}>
+                        {children[0].description}
+                      </div>
+                   </li>
+                </>
+              )})
             }
         </ul>
-        {
-          childs.length > 0 ? (
-            lvl += 1,
-            this.topicChildren(topicID, childs, lvl=lvl)
-          ) : null
-        }
       </>
     )
-  }
-
-  topicImage = (name, classes) => {
-      let re = /\(.*\)/
-      let symbol = name.match(re)
-      let matched = symbol && symbol[0]
-      if (symbol) {
-        let sym = matched.replace('(','').replace(')', '').toLowerCase()
-        let imgUrl = require(`./crypto-logos/${sym}.png`)
-        return (<div className={classes.topicImage}><img src={imgUrl} /></div>)
-      }
   }
 
   render() {
@@ -168,7 +164,7 @@ class TopicChildren extends React.Component {
             {topic && topic.description}
           </span>
         </section>
-        <div className={classes.topicDetails}>
+        <div className={classes.childTopicDetails}>
           { this.topicChildren(topic.id, topic.children, classes) }
         </div>
         { this.state.showOnboard ? <OnboardContainer id='onboard-container'/> : '' }
@@ -179,115 +175,97 @@ class TopicChildren extends React.Component {
 }
 
 let topicChildrenStyles = {
+
+  topicsHeader: {
+    gridArea: "image",
+    justifyContent: 'center',
+    justifyItems: 'center',
+    alignItems: 'center',
+  },
+
+  topicHead: {
+    display: 'flex',
+    marginTop: '5em',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  topicHeading: {
+    gridArea: "heading",
+    textAlign: 'center',
+    fontSize: 21,
+    marginBottom: 0,
+    '& a': {
+      fontSize: '3.3rem !important',
+      color: `${colors.link} !important`,
+      fontWeight: 500,
+
+    },
+  },
+  topicDescription: {
+    color: colors.smoke9,
+    maxWidth: '60ch',
+    textAlign: 'center',
+    "@media (max-width: 408px)": {
+    },
+  },
+  topicName: {
+    fontSize: '4rem !important',
+    color: '#eee',
+    maxWidth: '400px',
+    textAlign: 'center',
+    userSelect: 'none',
+    fontWeight: 500,
+
+    "@media (max-width: 408px)": {
+      fontSize: '3.5rem !important',
+    },
+  },
+
+  // Children
+  child: {
+    margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyItems: 'center',
+    justifyContent: 'center',
+    marginTop: -30,
+  },
+  childTopicDetails: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    maxWidth: '60ch',
+    padding: 13,
+    margin: '0 auto',
+  },
+  childDetail: {
+    padding: 21,
+  },
+  childTopicName: {
+    fontSize: 25,
+  },
+  childTopicDesc: {
+    color: colors.smoke9,
+    maxWidth: '60ch',
+    padding: [0,0,0,0],
+    "@media (max-width: 408px)": {
+    },
+    "@media (min-width: 408px)": {},
+  },
   topicImage: {
     gridArea: "image",
-    paddingBottom: 13,
+    display: 'grid',
+    justifyContent: 'center',
+    paddingBottom: 24,
 
     '& img': {
       width: '50px',
       height: '50px',
       borderRadius: '50px',
-      boxShadow: `0 0 30px 0 ${colors.lighterBlack}`,
-
-
+      boxShadow: `0 0 55px 0 ${colors.lighterBlack}`,
     },
   },
-  topic: {
-    marginTop: 20,
-    '& .child': {
-      maxWidth: '95vw',
-      margin: '0 auto',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-
-    },
-    '& .topic-header': {
-      display: 'grid',
-      gridTemplateAreas: `"heading" "image"`,
-      alignItems: 'center',
-      justifyItems: 'center',
-      minWidth: 285,
-      marginBottom: 18,
-    },
-    '& .topic-heading': {
-      gridArea: "heading",
-      margin: [8,0,13,0],
-      textAlign: 'center',
-
-      '& a': {
-        fontSize: '3.3rem !important',
-        color: `${colors.link} !important`,
-        fontWeight: 500,
-
-      },
-    },
-
-    '& .topic-details': {
-
-    },
-    '& .discuss-link': {
-      marginLeft: 15,
-      color: `${colors.silver8}`,
-    },
-    '& .topic-detail-description': {
-      color: colors.silver8,
-      fontWeight: 445,
-    },
-    '& .discuss-topic': {
-      fontSize: 17,
-      userSelect: 'none',
-      fontWeight: 500,
-      letterSpacing: '.1em',
-
-    }
-  },
-  discuss: {
-    margin: [0,0,0,0],
-
-    "@media (max-width: 408px)": {
-
-    },
-    "@media (min-width: 408px)": {},
-  },
-  topicHead: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  topicName: {
-    fontSize: '4.5rem !important',
-    color: colors.silver,
-    maxWidth: '400px',
-    textAlign: 'center',
-    "@media (max-width: 408px)": {
-      fontSize: '1.5rem !important',
-      padding: 5,
-    },
-  },
-  topicDescription: {
-    color: colors.silver6,
-    maxWidth: '60ch',
-    marginBottom: 5,
-    padding: 13,
-    textAlign: 'center',
-    "@media (max-width: 408px)": {
-      marginLeft: 15,
-    },
-    "@media (min-width: 408px)": {},
-  },
-  topicDetails: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    margin: '20px auto',
-    maxWidth: '60ch',
-
-  }
 }
 
 TopicChildren = injectSheet(topicChildrenStyles)(TopicChildren)
@@ -466,7 +444,7 @@ class TopicContainer extends React.Component {
         <React.Fragment>
           <ScrollToTopOnMount />
 
-          <section id="topic" className={classes.topics}>
+          <section className={classes.topics}>
             <div id="topic-items"
                  className={classes.topicItems}
             >
@@ -500,8 +478,6 @@ const topicStyles = {
   },
   topics: {
     display: 'grid',
-    marginTop: 50,
-
 
     '@media (max-width: 860px)': {
       gridTemplateRows: 'auto 1fr',

@@ -89,6 +89,7 @@ const colors = {
   white4: 'rgb(255, 255, 255, 0.4)',
   white6: 'rgb(255, 255, 255, 0.6)',
   white8: 'rgb(255, 255, 255, 0.8)',
+  white9: 'rgb(255, 255, 255, 0.9)',
   offWhite: 'rgba(228, 228, 228, 1)',
   offWhite2: 'rgba(228, 228, 228, 0.2)',
   offWhite4: 'rgba(228, 228, 228, 0.4)',
@@ -103,7 +104,10 @@ const colors = {
   smoke2: 'rgba(198,222,255, .2)',
   smoke4: 'rgba(198,222,255, .4)',
   smoke6: 'rgba(198,222,255, .6)',
+  smoke7: 'rgba(198,222,255, .7)',
   smoke8: 'rgba(198,222,255, .8)',
+  smoke8_5: 'rgba(198,222,255, .85)',
+  smoke9: 'rgba(198,222,255, .9)',
   smoke: 'rgba(198,222,255, 1)',
 
 }
