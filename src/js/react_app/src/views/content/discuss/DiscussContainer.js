@@ -187,7 +187,7 @@ class DiscussContainer extends React.Component {
               </div>
             </div>
             <section id="topic-threads" className={classes.noThreadsSection}>
-              <h3 className={classes.noThreadsYet}>No Threads Yet.. Be the first to discuss {topicName}</h3>
+              <h3 className={classes.noThreadsYet}>No Threads Yet.. Create a thread about {topicName} to start the discussion!</h3>
             </section>
           </section>
         </React.Fragment>
@@ -272,12 +272,15 @@ const threadListStyles = {
   },
   noThreadsSection: {
     display: 'flex',
+    justifyItems: 'center',
     justifyContent: 'center',
-    margin: [23,0,0,0]
-
+    margin: '28px auto',
+    maxWidth: '60ch',
   },
   noThreadsYet: {
-    color: colors.orangeRed
+    color: colors.brightPurple,
+    textShadow: `1px 1px 30px ${colors.lightBlack}`,
+    margin: '13px 13px',
   },
   btn: {
     backgroundColor: `${colors.link}`,

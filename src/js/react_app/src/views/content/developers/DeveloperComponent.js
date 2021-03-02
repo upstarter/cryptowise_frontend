@@ -279,11 +279,14 @@ const devStyles = {
         justifySelf: "center",
         alignSelf: "center",
         fontSize: "1.8rem",
+
       },
       "& #social-list": {
         gridRow: 6,
         justifySelf: "center",
         alignSelf: "center",
+        marginBottom: 60,
+
         "& li a": {
           color: `${colors.origGreen}`,
           filter: "saturate(2)",
