@@ -63,26 +63,32 @@ class TopicChildren extends React.Component {
   topicHead = (topic, lvl, classes, children=[]) => {
     let hasChildren = children.length > 0
     let href = hasChildren ? `/topics/${topic.id}` : `/discuss/topics/${topic}`
+    let klasses = hasChildren ? classes.parentTopicLink : classes.childTopicLink
 
-    let a = <a className={classes.discussLink} style={{color: colors.link}} href={href}>{topic.name}</a>
-    if (hasChildren) {
-      a = <a className={classes.discussLink} style={{color: colors.link}} href={href}>{topic.name}</a>
-    } else {
-      a = <a className={classes.discussLink} style={{color: colors.link}} href={href}>{topic.name}</a>
-    }
-
-    let title = null
+    let a = <a className={klasses} href={href}>{topic.name}</a>
     if (lvl === 0) {
-      title = <h2 className={classes.topicHeading}><a href={href}>{topic.name}</a></h2>
+      a = <a className={classes.link1}>{a}</a>
     } else if (lvl === 1) {
-      title = <h2 className={classes.topicHeading}><a href={href}>{topic.name}</a></h2>
-    } else if (lvl === 2) {
-      title = <h3 className={classes.topicHeading}><a href={href}>{topic.name}</a></h3>
+      a = <a className={classes.link2}>{a}</a>
+    } else if (lvl === 2){
+      a = <a className={classes.link3}>{a}</a>
     } else if (lvl === 3) {
-      title = <h4 className={classes.topicHeading}><a href={href}>{topic.name}</a></h4>
-    } else {
-      title = <h6 className={classes.topicHeading}><a href={href}>{topic.name}</a></h6>
+      a = <a className={classes.link4}>{a}</a>
     }
+    let title
+
+    if (lvl === 0) {
+      title = <h1 className={classes.link1}>{a}</h1>
+    } else if (lvl === 1) {
+      title = <h2 className={classes.link2}>{a}</h2>
+    } else if (lvl === 2){
+      title = <h3 className={classes.link3}>{a}</h3>
+    } else if (lvl === 3) {
+      title = <h4 className={classes.link4}>{a}</h4>
+    }
+
+    // if (topic.name === 'Crypto Macro Economy') debugger
+
     return title
   }
 
@@ -105,11 +111,12 @@ class TopicChildren extends React.Component {
             return (
                <div key={parent.id} className={classes.topicHead}>
                 <div className={classes.topicsHeader}>
-                  {img}
                   {this.topicHead(parent, lvl, classes, childs)}
+                  {img}
+
                 </div>
                 <div className={classes.childTopicDetails} style={{userSelect: 'none'}}>{this.topicDetail(parent, classes)}</div>
-                  {this.topicBody(parent, topicID, childs, classes, lvl)}
+                  {this.topicBody(parent, topicID, childs, classes, lvl+1)}
                </div>
             )
           })
@@ -151,7 +158,7 @@ class TopicChildren extends React.Component {
 
     return (
       <div className={classes.topic}>
-        <section className={classes.topicHead}>
+        <section className={classes.mainTopicHead}>
           <span className={classes.topicName}>
              {topic && topicID === 'strategy' ? "Strategy" : topic.name }
           </span>
@@ -178,18 +185,12 @@ let topicChildrenStyles = {
     alignItems: 'center',
     textAlign: 'center !important',
   },
-  topicHead: {
-    display: 'flex',
-    marginTop: '5em',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   topicHeading: {
     gridArea: "heading",
     flexDirection: 'column',
     justifyContent: 'start',
-    fontSize: '34px !important',
+    fontSize: '5em !important',
   },
   topicDescription: {
     color: colors.smoke9,
@@ -213,44 +214,64 @@ let topicChildrenStyles = {
       fontSize: '3.5rem !important',
     },
   },
+  mainTopicHead: {
+    display: 'flex',
+    marginTop: '5.2em',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
   // Children
   child: {
-    margin: '0 auto',
+    margin: '0px auto',
     display: 'flex',
     flexDirection: 'column',
     justifyItems: 'center',
     justifyContent: 'center',
-    marginTop: -30,
+  },
+  topicHead: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   childTopicDetails: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     maxWidth: '60ch',
-    padding: 13,
+    padding: 7,
     margin: '0 auto',
+
     '&:nth-of-type(1)': {
-        marginTop: 45,
     },
   },
   childDetail: {
     padding: 23,
-  },
-  childTopicName: {
-    fontSize: 25,
 
   },
-  discussLink: {
+  childTopicLink: {
+
+  },
+  parentTopicLink: {
+
+  },
+  link1: {
+    fontSize: '40px !important'
+
+  },
+  link2: {
+  },
+  link3: {
+
+  },
+  link4: {
 
   },
   childTopicDesc: {
     color: colors.smoke9,
     maxWidth: '60ch',
     padding: [0,0,0,0],
-    '&:nth-child(1)': {
-        marginTop: 1000
-    },
     "@media (max-width: 408px)": {
     },
     "@media (min-width: 408px)": {},
@@ -259,7 +280,8 @@ let topicChildrenStyles = {
     gridArea: "image",
     display: 'grid',
     justifyContent: 'center',
-    paddingBottom: 50,
+    alignItems: 'end',
+    paddingBottom: 10,
 
     '& img': {
       width: '50px',
