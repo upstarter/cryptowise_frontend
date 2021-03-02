@@ -170,7 +170,7 @@ const styles = {
     fontSize: 20,
   },
   tileGrid: {
-    margin: '60px 5px 130px 5px',
+    margin: '65px 5px 130px 5px',
     '& .ant-card': {
 
     }
