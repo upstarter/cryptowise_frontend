@@ -166,7 +166,8 @@ const menuStyles = {
   menus: {
     display: 'flex',
     flexDirection: 'column',
-    height: '90vh',
+    height: '80vh',
+    paddingTop: 21,
     justifyContent: 'space-between',
     '& .ant-menu-item-selected': {}
   },
