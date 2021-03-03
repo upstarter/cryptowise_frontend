@@ -65,7 +65,7 @@ class TopicChildren extends React.Component {
     let href = hasChildren ? `/topics/${topic.id}` : `/discuss/topics/${topic}`
     let klasses = hasChildren ? classes.parentTopicLink : classes.childTopicLink
 
-    let a = <a className={classes.link4} href={href}>{topic.name}</a>
+    let a = null
     if (lvl === 0) {
       a = <a className={classes.link1} href={href}>{topic.name}</a>
     } else if (lvl === 1) {
@@ -202,7 +202,7 @@ let topicChildrenStyles = {
     },
   },
   topicName: {
-    fontSize: '3.7em !important',
+    fontSize: '4.3rem !important',
     lineHeight: '1.1em',
     color: `${colors.smoke} !important`,
     maxWidth: '60ch',
@@ -216,7 +216,6 @@ let topicChildrenStyles = {
   },
   mainTopicHead: {
     display: 'flex',
-    marginTop: '2.5rem',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -229,32 +228,32 @@ let topicChildrenStyles = {
   topicHead: { },
   childTopicDetails: {
     maxWidth: '60ch',
-    margin: '0 auto',
-    '&:nth-of-type(1)': {
+    margin: '1.2em auto',
+    display: 'flex',
+    justifyItems: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    "@media (max-width: 408px)": {
+      maxWidth: '50ch'
     },
   },
   childDetail: {
     padding: 23,
   },
   childTopicLink: {},
-  parentTopicLink: {},
   link1: {
-    fontSize: '34px !important',
-    width: '98vw',
+    margin: 0,
+    fontSize: '3.4rem !important',
+    width: '100%',
     textAlign: 'center',
-    paddingLeft: 3,
-    // textShadow: `-3px 5px 21px #ffffff !important`,
+    marginBottom: 21,
+    // textShadow: `-2px -2px 20px ${colors.smoke} !important`,
   },
   link2: {},
   link3: {},
   link4: {},
   childTopicDesc: {
     color: colors.smoke8,
-    maxWidth: '60ch',
-    padding: [0,0,0,0],
-    "@media (max-width: 408px)": {
-    },
-    "@media (min-width: 408px)": {},
   },
   topicImage: {
     gridArea: "image",
@@ -267,7 +266,7 @@ let topicChildrenStyles = {
       width: '50px',
       height: '50px',
       borderRadius: '50px',
-      // boxShadow: `0 0 55px 0 ${colors.lighterBlack}`,
+      boxShadow: `0 0 55px 0 ${colors.lighterBlack}`,
     },
   },
   glitch: {
