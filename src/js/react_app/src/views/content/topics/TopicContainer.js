@@ -160,7 +160,7 @@ class TopicChildren extends React.Component {
       <div className={classes.topic}>
         <section className={classes.mainTopicHead}>
           <span className={classes.topicName}>
-             {topic && topicID === 'strategy' ? "Strategy" : topic.name }
+             Discuss {topic && topicID === 'strategy' ? "Strategy" : topic.name }
           </span>
           <span className={classes.topicDescription}>
             {topic && topic.description}
@@ -177,7 +177,9 @@ class TopicChildren extends React.Component {
 }
 
 let topicChildrenStyles = {
-
+  topic: {
+    marginTop: 100,
+  },
   topicsHeader: {
     gridArea: "image",
     justifyContent: 'center',
@@ -193,30 +195,31 @@ let topicChildrenStyles = {
     fontSize: '5em !important',
   },
   topicDescription: {
-    color: colors.smoke9,
+    color: colors.smoke7,
     maxWidth: '60ch',
+    fontStyle: 'italic',
     display: 'flex',
     justifyItems: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     "@media (max-width: 408px)": {
+      maxWidth: '40ch'
     },
   },
   topicName: {
-    fontSize: '4rem !important',
-    color: '#eee',
-    maxWidth: '400px',
+    fontSize: '3.6rem !important',
+    color: `${colors.smoke} !important`,
+    maxWidth: '60ch',
     textAlign: 'center',
     userSelect: 'none',
     fontWeight: 500,
-
     "@media (max-width: 408px)": {
       fontSize: '3.5rem !important',
     },
   },
   mainTopicHead: {
     display: 'flex',
-    marginTop: '5.2em',
+    marginTop: '2.5rem',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -269,7 +272,7 @@ let topicChildrenStyles = {
 
   },
   childTopicDesc: {
-    color: colors.smoke9,
+    color: colors.smoke8,
     maxWidth: '60ch',
     padding: [0,0,0,0],
     "@media (max-width: 408px)": {
@@ -467,7 +470,6 @@ class TopicContainer extends React.Component {
       <div className="dark-wrap">
         <React.Fragment>
           <ScrollToTopOnMount />
-
           <section className={classes.topics}>
             <div id="topic-items"
                  className={classes.topicItems}
@@ -494,11 +496,12 @@ const topicStyles = {
       textDecoration: 'none !important',
     }
   },
+
   topic: {
 
   },
   topicsHeader: {
-    color: 'red'
+
   },
   topics: {
     display: 'grid',
@@ -517,83 +520,7 @@ const topicStyles = {
       gridColumn: '1 / 2',
       maxWidth: '99vw',
     },
-
   },
-
-  topicItems: {
-    gridArea: 'content',
-    width: '98vw',
-
-    '@media (max-width: 860px)': {
-      gridRow: '2 / 3',
-      justifySelf: 'center',
-      margin: '0px auto'
-
-    },
-    '@media (min-width: 860px)': {
-      justifySelf: 'center',
-      margin: '0px auto',
-    },
-
-    '& #topic-items-heading': {
-      display: 'grid',
-      zIndex: 10,
-      // minHeight: 70,
-      // paddingTop: 20,
-      background: `${colors.primaryDark}`,
-      '-webkit-perspective': 1000,
-      '-webkit-backface-visibility': 'hidden',
-
-      '& .float:hover': {
-        '-webkit-animation': 'none'
-      },
-
-      '& .float': {
-        gridColumn: '3',
-        gridRow: '1 / 3',
-        justifySelf: 'end',
-        margin: [0, 22, 0, 0],
-        backgroundColor: `${colors.darkBlack}`,
-        color: '#FFF',
-        borderRadius: 50,
-        textAlign: 'center',
-        cursor: 'pointer',
-        zIndex: 10,
-        border: 'none',
-        boxShadow: `0 0 0 0 ${colors.darkBlack}`,
-        '-webkit-animation': 'pulse 1.5s infinite',
-      },
-    },
-
-    '& .item-list': {
-
-      color: `${colors.offWhite} !important`,
-
-      '& .topic-description': {
-        margin: [0,0,0,0],
-        color: `${colors.smoke4}`,
-
-        '& .topic-name': {
-          color: colors.silver
-        },
-
-        '& .description': {
-          margin: [0,0,0,0],
-          color: `${colors.silver6}`
-        },
-
-        '& .topic-detail': {
-
-          '& .topic-detail-description': {
-            color: `${colors.silver8}`,
-          }
-
-        }
-      },
-
-    },
-  },
-
 }
 const TopicContainerWithRouter = withRouter(TopicContainer)
 

@@ -77,6 +77,7 @@ const headerStyles = {
   header: {
     position: 'fixed',
     display: "flex",
+    marginBottom: 80,
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100vw',
@@ -85,6 +86,7 @@ const headerStyles = {
     padding: 0,
     right: 0,
     zIndex: 999,
+
   },
   mainMenu: {
     marginLeft: 10,

@@ -170,9 +170,8 @@ const appStyles = {
     minHeight: '100vh',
     paddingBottom: '10%',
   },
-  baseContent: {
-  },
   content: {
+
     '& p, & h3': {
       textAlign: 'left'
     },

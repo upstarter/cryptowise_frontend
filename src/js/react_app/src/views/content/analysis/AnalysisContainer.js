@@ -42,49 +42,56 @@ class AnalysisContainer extends React.Component {
     const { classes } = this.props;
     const { mode, key } = this.state;
     return (
-      <div style={{marginTop: 60}}>
-        {/* <Radio.Group onChange={this.handleModeChange} value={mode} style={{ marginBottom: 8 }}>
-          <Radio.Button value="top">Horizontal</Radio.Button>
-        </Radio.Group> */}
+      <>
+        <div style={{ marginTop: 60}}>
+            <Tabs
+              className={classes.tabs}
+              size="large"
+              tabBarStyle={{ position: 'fixed', fontWeight: 800 }}
+              tabPosition="top"
+              tabBarGutter={20}
+              centered
+              defaultActiveKey={"economics"}
+              activeKey={key === "discuss" ? "economics" : key}
+              onChange={(key) => this.setKey(key)}
+              tabBarStyle={{
+                color: `${colors.silver}`,
+                position: "fixed",
+                height: 55,
+                zIndex: 100,
+                background: "rgba(0,0,0,1)",
+                width: "100vw",
+              }}
+            >
 
-        <Tabs
-          className={classes.tabs}
-          size="large"
-          tabBarStyle={{ fontWeight: 800 }}
-          tabPosition="top"
-          tabBarGutter={20}
-          centered
-          defaultActiveKey={"economics"}
-          activeKey={key === "discuss" ? "economics" : key}
-          onChange={(key) => this.setKey(key)}
-          tabBarStyle={{
-            color: `${colors.silver8}`,
-            position: "fixed",
-            height: 55,
-            zIndex: 100,
-            background: "rgba(0,0,0,1)",
-            width: "100vw",
-          }}
-        >
-          <TabPane tab="Economics" key="economics">
-            <TopicContainer setKey={this.setKey} topic="economics" />
-          </TabPane>
-          <TabPane tab="Strategy" key="strategy">
-            <TopicContainer setKey={this.setKey} topic="strategy" />
-          </TabPane>
-          <TabPane tab="Assets" key="assets">
-            <TopicContainer setKey={this.setKey} topic="discuss/topics/193" />
-          </TabPane>
-          <TabPane tab="Research" key="research">
-            <TopicContainer setKey={this.setKey} topic="research" />
-          </TabPane>
-        </Tabs>
-      </div>
+              <TabPane tab="Economics" key="economics">
+                <TopicContainer setKey={this.setKey} topic="economics" />
+              </TabPane>
+              <TabPane tab="Strategy" key="strategy">
+                <TopicContainer setKey={this.setKey} topic="strategy" />
+              </TabPane>
+              <TabPane tab="Assets" key="assets">
+                <TopicContainer setKey={this.setKey} topic="discuss/topics/193" />
+              </TabPane>
+              <TabPane tab="Research" key="research">
+                <TopicContainer setKey={this.setKey} topic="research" />
+              </TabPane>
+            </Tabs>
+        </div>
+      </>
+
     );
   }
 }
 
 const analysisStyles = {
+  pageHead: {
+    display: 'flex',
+    position: 'fixed',
+    justifyContent: 'center',
+    maxHeight: '50px',
+    fontSize: '5rem !important',
+  },
   tabs: {
     '& .ant-tabs-tab-active': {
 

@@ -80,6 +80,8 @@ const aboutStyles = {
     fontSize: '40px !important',
     fontWeight: '600 !important',
     textAlign: 'center',
+    color: colors.smoke,
+
   },
   descHead: {
     fontSize: '21px !important',
@@ -88,8 +90,7 @@ const aboutStyles = {
   descBody: {
     color: colors.smoke8,
     maxWidth: '60ch',
-    margin: '3.8rem auto 2.4rem auto',
-    padding: 10
+    margin: '1rem auto 2.4rem auto',
     // margin: [55, 60, 13, 90],
   },
   title2: {
@@ -114,7 +115,6 @@ const aboutStyles = {
 
 
     '& h3': {
-      marginLeft: '1.3rem',
       color: `#ddd`,
       fontSize: '.8rem',
     },
@@ -136,7 +136,7 @@ const aboutStyles = {
       marginLeft: '4rem',
       '& li': {
         listStyleType: 'square',
-        color: `#bbb`
+        color: `#ddd`
       }
     },
 
