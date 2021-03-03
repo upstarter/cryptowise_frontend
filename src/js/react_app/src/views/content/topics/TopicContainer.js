@@ -65,20 +65,20 @@ class TopicChildren extends React.Component {
     let href = hasChildren ? `/topics/${topic.id}` : `/discuss/topics/${topic}`
     let klasses = hasChildren ? classes.parentTopicLink : classes.childTopicLink
 
-    let a = <a className={klasses} href={href}>{topic.name}</a>
+    let a = null
     if (lvl === 0) {
-      a = <a className={classes.link1}>{a}</a>
+      a = <a className={classes.link1}>{topic.name}</a>
     } else if (lvl === 1) {
-      a = <a className={classes.link2}>{a}</a>
+      a = <a className={classes.link2}>{topic.name}</a>
     } else if (lvl === 2){
-      a = <a className={classes.link3}>{a}</a>
+      a = <a className={classes.link3}>{topic.name}</a>
     } else if (lvl === 3) {
-      a = <a className={classes.link4}>{a}</a>
+      a = <a className={classes.link4}>{topic.name}</a>
     }
     let title
 
     if (lvl === 0) {
-      title = <h1 className={classes.link1}>{a}</h1>
+      title = <h1 className={`${classes.link1}`} glitch-data-trick={topic.name}>{a}</h1>
     } else if (lvl === 1) {
       title = <h2 className={classes.link2}>{a}</h2>
     } else if (lvl === 2){
@@ -182,16 +182,11 @@ let topicChildrenStyles = {
   },
   topicsHeader: {
     gridArea: "image",
-    justifyContent: 'center',
-    justifyItems: 'center',
-    alignItems: 'center',
-    textAlign: 'center !important',
   },
 
   topicHeading: {
     gridArea: "heading",
     flexDirection: 'column',
-    justifyContent: 'start',
     fontSize: '5em !important',
   },
   topicDescription: {
@@ -207,14 +202,16 @@ let topicChildrenStyles = {
     },
   },
   topicName: {
-    fontSize: '3.6rem !important',
+    fontSize: '3.7em !important',
+    lineHeight: '1.1em',
     color: `${colors.smoke} !important`,
     maxWidth: '60ch',
     textAlign: 'center',
     userSelect: 'none',
     fontWeight: 500,
+    marginBottom: 13,
     "@media (max-width: 408px)": {
-      fontSize: '3.5rem !important',
+      fontSize: '4.4rem !important',
     },
   },
   mainTopicHead: {
@@ -228,49 +225,29 @@ let topicChildrenStyles = {
   // Children
   child: {
     margin: '0px auto',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyItems: 'center',
-    justifyContent: 'center',
   },
-  topicHead: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
+  topicHead: { },
   childTopicDetails: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
     maxWidth: '60ch',
-    padding: 7,
     margin: '0 auto',
-
     '&:nth-of-type(1)': {
     },
   },
   childDetail: {
     padding: 23,
-
   },
-  childTopicLink: {
-
-  },
-  parentTopicLink: {
-
-  },
+  childTopicLink: {},
+  parentTopicLink: {},
   link1: {
-    fontSize: '40px !important'
-
+    fontSize: '34px !important',
+    width: '98vw',
+    textAlign: 'center',
+    paddingLeft: 3,
+    // textShadow: `-3px 5px 21px #ffffff !important`,
   },
-  link2: {
-  },
-  link3: {
-
-  },
-  link4: {
-
-  },
+  link2: {},
+  link3: {},
+  link4: {},
   childTopicDesc: {
     color: colors.smoke8,
     maxWidth: '60ch',
@@ -290,9 +267,43 @@ let topicChildrenStyles = {
       width: '50px',
       height: '50px',
       borderRadius: '50px',
-      boxShadow: `0 0 55px 0 ${colors.lighterBlack}`,
+      // boxShadow: `0 0 55px 0 ${colors.lighterBlack}`,
     },
   },
+  glitch: {
+    color: 'white',
+    fontSize: '10rem',
+    width: '40rem',
+    position: 'relative',
+
+    '&:after': {
+        content: 'attr(glitch-data-trick)',
+        position: 'absolute',
+        height: '100%',
+        top: 20,
+        left: '39px',
+        color: colors.link,
+        backgroundColor: colors.black,
+        overflow: 'hidden',
+        textShadow: `-1px 0 ${colors.antBluePop}`,
+        clip: 'rect(0, 90rem, 0, 0)',
+        animation: 'noise 2s infinite linear alternate-reverse',
+    },
+    '&:before': {
+        content: 'attr(glitch-data-trick)',
+        position: 'absolute',
+        height: '100%',
+        top: 20,
+        left: '39px',
+        color: colors.link,
+        backgroundColor: colors.black,
+        overflow: 'hidden',
+        textShadow: `1px 0 ${colors.orange}`,
+        clip: 'rect(0, 90rem, 0, 0)',
+        animation: 'noise 4s infinite linear alternate-reverse',
+      }
+
+  }
 }
 
 TopicChildren = injectSheet(topicChildrenStyles)(TopicChildren)

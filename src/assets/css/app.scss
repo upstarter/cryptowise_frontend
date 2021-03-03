@@ -293,6 +293,40 @@ body {
   }
 }
 
+@-webkit-keyframes noise {
+  0% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  2% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  3% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  5% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  7% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  10% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  13% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  17% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  20% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  25% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  27% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  30% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  33% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  37% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  40% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  43% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  45% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  50% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  53% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  57% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  60% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  65% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  70% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  75% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  80% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  85% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  90% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  95% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  98% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+  100% { clip: rect(random(12)+rem, 99.99rem, random(12)+rem, 0) }
+}
+
+
 blockquote {
   // background: #f9f9f9;
   // border-left: 10px solid #ccc;

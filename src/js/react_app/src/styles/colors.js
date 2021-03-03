@@ -39,7 +39,7 @@ const colors = {
   darkerDarkBlue: '#001528',
 
   // orangey
-  orange:  'rgba(232, 122, 80, 1)',
+  orange:  'rgba(225, 110, 75, 1)',
   orangeRed:  'rgba(232, 52, 80, 1)',
 
   // yellowish
