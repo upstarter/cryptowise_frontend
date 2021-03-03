@@ -13,7 +13,8 @@ import { UserAddOutlined,
   CodeOutlined,
   LoginOutlined,
   LogoutOutlined,
-  QuestionOutlined
+  QuestionOutlined,
+  ExperimentOutlined
  } from '@ant-design/icons';
 
 const LinkMenu = withRouter(props => {
@@ -36,7 +37,14 @@ const LinkMenu = withRouter(props => {
         defaultSelectedKeys={["/"]}
         onSelect={onSelect}
       >
-
+        {
+          <Menu.Item title={false} title={false} key="/explore">
+            <Link to="/explore" style={{ textDecoration: "none" }}>
+              <ExperimentOutlined  />
+              <span className={classes.navText}>Explore</span>
+            </Link>
+          </Menu.Item>
+        }
         {
           <Menu.Item title={false} title={false} key="/discuss">
             <Link to="/discuss" style={{ textDecoration: "none" }}>
