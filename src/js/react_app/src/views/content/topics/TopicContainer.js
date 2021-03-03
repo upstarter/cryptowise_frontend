@@ -65,15 +65,15 @@ class TopicChildren extends React.Component {
     let href = hasChildren ? `/topics/${topic.id}` : `/discuss/topics/${topic}`
     let klasses = hasChildren ? classes.parentTopicLink : classes.childTopicLink
 
-    let a = null
+    let a = <a className={classes.link4} href={href}>{topic.name}</a>
     if (lvl === 0) {
-      a = <a className={classes.link1}>{topic.name}</a>
+      a = <a className={classes.link1} href={href}>{topic.name}</a>
     } else if (lvl === 1) {
-      a = <a className={classes.link2}>{topic.name}</a>
+      a = <a className={classes.link2} href={href}>{topic.name}</a>
     } else if (lvl === 2){
-      a = <a className={classes.link3}>{topic.name}</a>
+      a = <a className={classes.link3} href={href}>{topic.name}</a>
     } else if (lvl === 3) {
-      a = <a className={classes.link4}>{topic.name}</a>
+      a = <a className={classes.link4} href={href}>{topic.name}</a>
     }
     let title
 
