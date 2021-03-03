@@ -38,7 +38,6 @@ class TokenDetail extends React.Component {
 
     return (
       <div className={classes.token}>
-        <div className={classes.tokenDescription}>{description}</div>
         <div className={classes.tokenDetails}>
           <div className={classes.tokenActions}>
             <Button className={classes.actionButton} href={`${url}/tokens/${id}`} type="secondary">
@@ -169,7 +168,6 @@ class TokensContainer extends React.Component {
   };
 
   handleCancel = () => {
-    
     this.setState({
       visible: false,
     });
@@ -182,22 +180,19 @@ class TokensContainer extends React.Component {
     this.setState({ token: token });
   };
 
-  tokenDescription = (token) => {
-    return <TokenDetail token={token} />;
-  };
-
   tokenTitle = (token, classes) => {
     return (
-      <div>
+      <div className={classes.cardHeader}>
         <a className={classes.tokenName} href={`/tokens/${token.id}`}>
           {token.name}
         </a>
+        {this.avatar(token, classes)}
       </div>
     );
   };
 
   avatar = (token, classes) => {
-    let imgUrl = require(`./crypto-logos/${token.symbol.toLowerCase()}.png`)
+    let imgUrl = require(`Images/crypto-logos/${token.symbol.toLowerCase()}.png`)
     //
     const tokenImg = (
       <Image
@@ -206,7 +201,11 @@ class TokensContainer extends React.Component {
       />
     );
 
-    return <Avatar size="large" src={tokenImg} icon={<TeamOutlined />} />;
+    return <Avatar size="small" src={tokenImg} icon={<TeamOutlined />} />;
+  };
+
+  tokenDescription = (token) => {
+    return <TokenDetail token={token} />;
   };
 
   render() {
@@ -243,7 +242,7 @@ class TokensContainer extends React.Component {
 
           <section id="token" className={classes.tokens}>
             <h1 className={classes.discuss}>
-              Wisdom Repo
+              Explore & Analyze
             </h1>
             <div id="token-items" className={classes.tokenItems}>
               <div className={classes.tokenColumn}>
@@ -264,7 +263,6 @@ class TokensContainer extends React.Component {
                       >
                         <List.Item.Meta
                           id="list-item-meta"
-                          avatar={this.avatar(item, classes)}
                           title={this.tokenTitle(item, classes)}
                           description={this.tokenDescription(item)}
                         />
@@ -293,8 +291,16 @@ const tokenStyles = {
     maxWidth: 600,
     margin: "0 auto",
   },
+  cardHeader: {
+    display: 'grid',
+    gridTemplateAreas: `'image title'`,
+    gridTemplateColumns: `1fr 9fr`,
+  },
   img: {
-
+    gridArea: 'image',
+    width: 30,
+    height: 30,
+    borderRadius: 50,
   },
   discuss: {
     margin: [0,0,10,0],
@@ -302,13 +308,16 @@ const tokenStyles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-
+    fontSize: '5rem',
+    color: '#eee',
     "@media (max-width: 408px)": {
 
     },
     "@media (min-width: 408px)": {},
   },
-  tokenName: {},
+  tokenName: {
+    gridArea: "title",
+  },
   tokenItems: {
     "& .item-list": {
       '& .ant-avatar': {
@@ -319,14 +328,16 @@ const tokenStyles = {
       "& .ant-list-items": {
         boxShadow: "-6px 6px 2px -3px  rgba(100,100,100,.1)",
         // background: `${colors.secondaryDark}`,
-        border: `1px solid ${colors.darkerDarkBlack}`,
         display: "flex",
         flexDirection: "column",
         alignItems: "left",
         justifyItems: "space-around",
 
         "& .ant-list-item": {
-          // background: colors.primaryDark,
+          boxShadow: `inset 0 0 20px 1px ${colors.smoke8}`,
+          margin: [0, 0, 13, 0],
+          borderRadius: 13,
+
           padding: 20,
         },
 

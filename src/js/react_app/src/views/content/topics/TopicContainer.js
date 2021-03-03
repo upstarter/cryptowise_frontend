@@ -62,7 +62,7 @@ class TopicChildren extends React.Component {
 
   topicHead = (topic, lvl, classes, children=[]) => {
     let hasChildren = children.length > 0
-    let href = hasChildren ? `/topics/${topic.id}` : `/discuss/topics/${topic}`
+    let href = hasChildren ? `/topics/${topic.id}` : `/discuss/topics/${topic.id}`
     let klasses = hasChildren ? classes.parentTopicLink : classes.childTopicLink
 
     let a = null

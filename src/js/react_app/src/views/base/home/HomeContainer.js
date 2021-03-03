@@ -2,15 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import AppHeader from "../header/AppHeader";
-import AnalysisContainer from "Content/analysis/AnalysisContainer"
+import DiscussContainer from "Content/discuss/DiscussContainer"
+import DiscussComponent from "Content/discuss/DiscussComponent"
 // import PortfolioComponent from "Content/portfolio/PortfolioComponent";
 // import AssetsComponent from "Content/assets/AssetsComponent";
 import HomeComponent from "./HomeComponent";
 import MembershipComponent from "Marketing/MembershipComponent";
 // import DataScientistComponent from "Developers/DataScientistComponent";
 // import AnalystComponent from "Developers/AnalystComponent";
+import AnalysisContainer from "Content/analysis/AnalysisContainer"
+
 import DeveloperComponent from "Developers/DeveloperComponent";
-import DiscussContainer from "Content/discuss/DiscussContainer";
 import PostsContainer from "Content/discuss/PostsContainer";
 // import FederationsComponent from "../../groups/FederationsComponent";
 // import ProposalComponent from "Content/proposals/ProposalComponent";
@@ -116,12 +118,14 @@ class HomeContainer extends React.Component {
                   <AuthRoute exact path="/profile" component={ProfileComponent} />
 
                   <Route path="/topics/:topicID" component={TopicContainer} />
-                  <Route path="/discuss/topics/:topicID" component={DiscussContainer} />
+                  <Route path="/discuss/topics/:topicID" component={DiscussComponent} />
                   <Route path="/discuss/threads/:threadID" component={PostsContainer} />
+                  <Route exact path="/:topicID(discuss)" component={DiscussContainer} />
+                  <Route exact path="/:topicID(assets|strategy|economics|research)" component={DiscussContainer} />
+                  <Route exact path="/:tokenID(explore)" component={AnalysisContainer} />
 
-                  <Route exact  path="/:topicID(discuss)" component={AnalysisContainer} />
+                  <Route exact path="/tokens/:tokenID(price|volatility|fundamentals|sentiment)" component={AnalysisContainer} />
 
-                  <Route exact  path="/:topicID(analysis|assets|strategy|economics|research)" component={AnalysisContainer} />
                   <Route exact path="/developers" component={DeveloperComponent} />
 
                   {/*

@@ -171,6 +171,8 @@ module.exports = {
       Css: path.resolve(__dirname, 'src/assets/css'),
       Fonts: path.resolve(__dirname, 'src/assets/fonts'),
       Templates: path.resolve(__dirname, 'src/templates'),
+      Tokens: path.resolve(__dirname, 'src/js/react_app/src/views/content/tokens'),
+      Topics: path.resolve(__dirname, 'src/js/react_app/src/views/content/topics'),
       Views: path.resolve(__dirname, 'src/js/react_app/src/views'),
       Proposals: path.resolve(__dirname, 'src/js/react_app/src/views/proposals'),
       Content: path.resolve(__dirname, 'src/js/react_app/src/views/content'),
