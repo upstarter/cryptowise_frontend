@@ -78,7 +78,7 @@ class TopicChildren extends React.Component {
     let title
 
     if (lvl === 0) {
-      title = <h1 className={`${classes.link1}`} glitch-data-trick={topic.name}>{a}</h1>
+      title = <h1 className={`${classes.link1}`} >{a}</h1>
     } else if (lvl === 1) {
       title = <h2 className={classes.link2}>{a}</h2>
     } else if (lvl === 2){
@@ -317,7 +317,6 @@ class TopicContainer extends React.Component {
       topic: this.props.topic,
       topicID: this.props.match.params.topicID,
       data: [],
-      list: [],
       page: 1,
       key: '',
       ModalContent: 'Customize your experience',
@@ -335,7 +334,6 @@ class TopicContainer extends React.Component {
       this.setState({
         initLoading: false,
         data: res.data,
-        list: res.data,
         page: this.state.page + 1
       });
     });
@@ -382,7 +380,7 @@ class TopicContainer extends React.Component {
   onLoadMore = () => {
     this.setState({
       loading: true,
-      list: this.state.data.concat([...new Array(count)].map(() => ({ loading: true, name: {} }))),
+      data: this.state.data.concat([...new Array(count)].map(() => ({ loading: true, name: {} }))),
     });
     this.getData(res => {
       const data = this.state.data.concat(res.data);
@@ -391,7 +389,6 @@ class TopicContainer extends React.Component {
       this.setState(
         {
           data,
-          list: data,
           loading: false,
           page: page,
         },
@@ -460,7 +457,7 @@ class TopicContainer extends React.Component {
     // topic = topic.split(" ").map((txt) => {
     //   return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() + ' '
     // })
-    const { initLoading, loading, list, visible, confirmLoading, ModalContent } = this.state;
+    const { initLoading, loading, data, visible, confirmLoading, ModalContent } = this.state;
 
     const loadMore =
       !initLoading && !loading ? (
@@ -485,7 +482,7 @@ class TopicContainer extends React.Component {
                  className={classes.topicItems}
             >
               <div className="item-list">
-                {this.topicDescription(list, topicID)}
+                {this.topicDescription(data, topicID)}
               </div>
             </div>
           </section>

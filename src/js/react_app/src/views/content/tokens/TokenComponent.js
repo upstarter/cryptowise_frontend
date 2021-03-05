@@ -11,6 +11,7 @@ import { createProposal } from "Redux/tokens";
 import colors from "Styles/colors"
 import Cookies from 'universal-cookie';
 import setAuthToken from 'Services/auth/setAuthToken'
+import Spark from 'Components/charts/spark'
 
 const count = 25;
 

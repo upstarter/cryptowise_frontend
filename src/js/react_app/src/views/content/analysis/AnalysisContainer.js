@@ -13,7 +13,7 @@ class AnalysisContainer extends React.Component {
     super(props);
     this.state = {
       mode: "top",
-      key: "",
+      key: "Price",
     };
   }
 
@@ -21,7 +21,7 @@ class AnalysisContainer extends React.Component {
     const { match } = this.props;
     let key = match.url.replace("/", "")
     if (key === 'explore') {
-      this.setState({key: 'price'})
+      this.setState({key: 'Price'})
     } else {
       this.setState({ key: key })
     }
@@ -50,8 +50,8 @@ class AnalysisContainer extends React.Component {
               tabPosition="top"
               tabBarGutter={18}
               centered
-              defaultActiveKey={"price"}
-              activeKey={key === "explore" ? "volatility" : key}
+              defaultActiveKey={"Price"}
+              activeKey={key === "explore" ? "Price" : key}
               onChange={(key) => this.setKey(key)}
               tabBarStyle={{
                 color: `${colors.silver}`,
@@ -62,14 +62,17 @@ class AnalysisContainer extends React.Component {
                 width: "100vw",
               }}
             >
-              <TabPane tab="Price" key="price">
-                <TokensContainer setKey={this.setKey} token="price" />
+              <TabPane tab="Stats" key="Stats">
+                <TokensContainer setKey={this.setKey} token="Stats" />
               </TabPane>
-              <TabPane tab="Volatility" key="volatility">
-                <TokensContainer setKey={this.setKey} token="volatility" />
+              <TabPane tab="Price" key="Price">
+                <TokensContainer setKey={this.setKey} token="Price" />
               </TabPane>
-              <TabPane tab="Sentiment" key="sentiment">
-                <TokensContainer setKey={this.setKey} token="sentiment" />
+              <TabPane tab="Volatility" key="Volatility">
+                <TokensContainer setKey={this.setKey} token="Volatility" />
+              </TabPane>
+              <TabPane tab="Sentiment" key="Sentiment">
+                <TokensContainer setKey={this.setKey} token="Sentiment" />
               </TabPane>
             </Tabs>
         </div>

@@ -330,11 +330,6 @@ const globalStyles = {
       fontSize: '3em',
     },
 
-    '& .fancy-underline': {
-      paddingBottom: '.5rem',
-      background: 'linear-gradient(to right, rgba(167, 249, 205,0) 0%, rgba(167, 249, 205,.35) 55%, rgba(167, 249, 205,.50) 80%, rgba(167, 249, 205,1) 100% ) left bottom transparent no-repeat',
-      backgroundSize: '100% .3rem'
-    },
 
     // spinner.scss
     '& div': {
