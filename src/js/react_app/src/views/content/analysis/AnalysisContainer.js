@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import TokensContainer from "Tokens/TokensContainer"
+import MetricsContainer from "Insights/MetricsContainer"
 import { Tabs, Radio, Affix } from "antd";
 const { TabPane } = Tabs;
 import { connect } from "react-redux";
@@ -13,7 +14,7 @@ class AnalysisContainer extends React.Component {
     super(props);
     this.state = {
       mode: "top",
-      key: "Price",
+      key: "Metrics",
     };
   }
 
@@ -21,7 +22,7 @@ class AnalysisContainer extends React.Component {
     const { match } = this.props;
     let key = match.url.replace("/", "")
     if (key === 'explore') {
-      this.setState({key: 'Price'})
+      this.setState({key: 'Metrics'})
     } else {
       this.setState({ key: key })
     }
@@ -40,7 +41,7 @@ class AnalysisContainer extends React.Component {
   render() {
     const { classes } = this.props;
     const { mode, key } = this.state;
-    console.log('mm', mode, key)
+
     return (
       <>
         <div style={{ marginTop: 60}}>
@@ -50,8 +51,8 @@ class AnalysisContainer extends React.Component {
               tabPosition="top"
               tabBarGutter={18}
               centered
-              defaultActiveKey={"Price"}
-              activeKey={key === "explore" ? "Price" : key}
+              defaultActiveKey={"Metrics"}
+              activeKey={key === "explore" ? "Metrics" : key}
               onChange={(key) => this.setKey(key)}
               tabBarStyle={{
                 color: `${colors.silver}`,
@@ -62,8 +63,8 @@ class AnalysisContainer extends React.Component {
                 width: "100vw",
               }}
             >
-              <TabPane tab="Stats" key="Stats">
-                <TokensContainer setKey={this.setKey} token="Stats" />
+              <TabPane tab="Metrics" key="Metrics">
+                <MetricsContainer setKey={this.setKey} stat="Metrics" />
               </TabPane>
               <TabPane tab="Price" key="Price">
                 <TokensContainer setKey={this.setKey} token="Price" />

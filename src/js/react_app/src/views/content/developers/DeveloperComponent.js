@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectSheet, { jss } from 'react-jss'
+import { api_url, url } from "Utils/consts";
+
 import ScrollToTopOnMount from 'Utils/ScrollToTopOnMount'
 import AppButton from 'Components/base/button/AppButton'
+import { Button } from 'antd';
+
 
 import colors from 'Styles/colors'
 // import BarChart from "Components/charts/bar"
@@ -30,14 +34,14 @@ class DeveloperComponent extends React.Component {
           <section id="developer" className={classes.developers}>
             <div id="developer-content" className="content">
             <div id="developer-header">
-              <div id="header-title">
-                <h1 id="title">
-                  <span style={{ color: `${colors.silver}` }}>
+              <div  id="header-title">
+                <h1 style={{ margin: '4rem 0 4rem 0', maxWidth: '96vw'}} id="title">
+                  <span style={{color: `${colors.silver}` }}>
                     The world needs your WealthTech.
                   </span>
                 </h1>
               </div>
-              <div id="words">
+              <div style={{marginTop: '3.5rem'}} id="words">
                 <div id="blurb">
                   <h5>Become a <span className={classes.become}>Legendary</span>:</h5>
                   <div id="participant-list">
@@ -85,7 +89,18 @@ class DeveloperComponent extends React.Component {
             <div id="social-subtitle" className="subtitle-big">
               Own Your Networks.
             </div>
-
+            <p className={classes.discussBtn}>
+              <AppButton
+                type="primary"
+                className={`${
+                  this.state.subscribeButtonLoading ? "is-loading" : ""
+                }`}
+                onClick={this.signUpRouteChange}
+                size="large"
+              >
+                Discuss It
+              </AppButton>
+            </p>
             <p id="social-blurb">Share it!</p>
             <ul id="social-list">
               <li>
@@ -116,6 +131,11 @@ class DeveloperComponent extends React.Component {
 }
 
 const devStyles = {
+  discussBtn: {
+    marginBottom: 21,
+    marginTop: 21,
+    justifySelf: 'center',
+  },
   developers: {
     paddingBottom: "20px",
     marginTop: 50,
@@ -148,7 +168,8 @@ const devStyles = {
 
         "& #header-title": {
           gridRow: 1,
-
+          alignSelf: 'center',
+          
           "& #title": {
             justifySelf: "center",
             fontSize: "4.5rem !important",
@@ -176,10 +197,9 @@ const devStyles = {
           flexDirection: "row",
           flexWrap: "wrap",
           justifyContent: "center",
-          marginTop: 20,
+          marginBottom: '2.3rem',
 
           "@media (max-width: 860px)": {
-            marginTop: 0,
             width: "95vw",
           },
 
@@ -222,10 +242,8 @@ const devStyles = {
       },
       "& #button": {
         justifySelf: "center",
-        // marginTop: 60,
         "& button": {
-          width: 170,
-          height: 45,
+          maxWidth: 150,
         },
         "@media (max-width: 860px)": {
           // marginTop: 40,
@@ -234,7 +252,6 @@ const devStyles = {
       "& #developer-list": {
         maxWidth: "70ch",
         justifySelf: "center",
-        padding: 17,
 
         "@media (max-width: 860px)": {},
 
@@ -243,7 +260,6 @@ const devStyles = {
           gridRow: 4,
           margin: "2.5rem 0 1.5rem 0",
           letterSpacing: ".1em",
-          // fontVariant: 'small-caps',
           textAlign: "center",
         },
         "& ul": {
@@ -275,20 +291,19 @@ const devStyles = {
         },
       },
       "& #social-blurb": {
-        gridRow: 5,
         justifySelf: "center",
         alignSelf: "center",
         fontSize: "1.8rem",
+        marginTop: 21,
 
       },
       "& #social-list": {
-        gridRow: 6,
         justifySelf: "center",
         alignSelf: "center",
-        marginBottom: 60,
+        // margin: [30,0,20,0],
 
         "& li a": {
-          color: `${colors.origGreen}`,
+          color: `${colors.link}`,
           filter: "saturate(2)",
         },
       },
