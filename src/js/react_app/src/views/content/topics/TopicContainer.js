@@ -358,19 +358,6 @@ class TopicContainer extends React.Component {
     if (found) {
       url = `${api_url}/topics/${topicID}?per_page=${count}&page=${this.state.page}`
     }
-    // const data = {
-    //   withCredentials: true,
-    //   credentials: 'include'
-    // };
-    //
-    // const cookies = new Cookies();
-    // const accessToken = cookies.get('_cw_acc')
-    // setAuthToken(accessToken) // set token in requests
-    //
-    // axios.get(url, data).then((res) => {
-    //   callback(res.data)
-    // })
-
 
     axios.get(url).then((res) => {
       callback(res.data)
