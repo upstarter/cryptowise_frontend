@@ -42,9 +42,31 @@ class MetricDetail extends React.Component {
     };
   }
 
+  // <div className={classes.sparkLines}>
+  //   <Sparklines
+  //     className={`${classes.sparkLine} ${classes.sparkLine1}`}
+  //     data={
+  //       [ 20, 28, 38, 45]
+  //     }
+  //   >
+  //     <SparklinesLine color="#eee" />
+  //     <SparklinesReferenceLine type="avg" />
+  //   </Sparklines>
+  //   <Sparklines
+  //     className={`${classes.sparkLine} ${classes.sparkLine2}`}
+  //     data={
+  //       [ 20, 28, 38, 45]
+  //     }
+  //   >
+  //     <SparklinesLine color="#eee" />
+  //     <SparklinesReferenceLine type="avg" />
+  //   </Sparklines>
+  // </div>
+
   render() {
     let { metric, data, classes } = this.props;
     let { daily_market_history } = metric;
+    let { token_info } = metric;
     if (daily_market_history[0] == undefined) return null;
     let dmh;
 
@@ -67,8 +89,20 @@ class MetricDetail extends React.Component {
     return (
       <div className={classes.metric}>
         <div className={classes.metricDetails}>
-          {dmh}
-          <div className={classes.itemFooter}>
+          <div className={classes.metricGrid}>
+            <div className={`${classes.name} ${classes.gridMetric}`}>Name: {token_info.name}</div>
+            <div className={`${classes.symbol} ${classes.gridMetric}`}>Symbol: {token_info.symbol}</div>
+            <div className={`${classes.platform} ${classes.gridMetric}`}>Platform: {token_info.price}</div>
+            <div className={`${classes.price} ${classes.gridMetric}`}>Price: {token_info.price}</div>
+            <div className={`${classes.volume_24h} ${classes.gridMetric}`}>24h Volume: {token_info.volume_24h}</div>
+            <div className={`${classes.volume_7d} ${classes.gridMetric}`}>7d Voume: {token_info.volume_7d}</div>
+            <div className={`${classes.percent_change_24h} ${classes.gridMetric}`}>24h % Change: {token_info.percent_change_24h}</div>
+            <div className={`${classes.percent_change_7d} ${classes.gridMetric}`}>7d % Change: {token_info.percent_change_7d}</div>
+            <div className={`${classes.percent_change_30d} ${classes.gridMetric}`}>30d % Change: {token_info.percent_change_30d}</div>
+            <div className={`${classes.total_supply} ${classes.gridMetric}`}>Total Supply: {token_info.total_supply}</div>
+            <div className={`${classes.max_supply} ${classes.gridMetric}`}>Max Supply: {token_info.max_supply}</div>
+          </div>
+          <div className={classes.metricFooter}>
             <div className={classes.metricActions}></div>
           </div>
         </div>
@@ -77,29 +111,54 @@ class MetricDetail extends React.Component {
   }
 }
 
-// <div className={classes.sparkLines}>
-//   <Sparklines
-//     className={`${classes.sparkLine} ${classes.sparkLine1}`}
-//     data={
-//       [ 20, 28, 38, 45]
-//     }
-//   >
-//     <SparklinesLine color="#eee" />
-//     <SparklinesReferenceLine type="avg" />
-//   </Sparklines>
-//   <Sparklines
-//     className={`${classes.sparkLine} ${classes.sparkLine2}`}
-//     data={
-//       [ 20, 28, 38, 45]
-//     }
-//   >
-//     <SparklinesLine color="#eee" />
-//     <SparklinesReferenceLine type="avg" />
-//   </Sparklines>
-// </div>
 const metricDetailStyles = {
+  metricGrid: {
+    display: "flex",
+    flexDirection: 'column',
+    justifyItems: 'space-between',
+    alignItems: 'center',
+  },
+  gridMetric: {
+    padding: 5
+  },
+  name: {
+    gridArea: "name",
+  },
+  symbol: {
+    gridArea: "symbol",
+  },
+  platform: {
+    gridArea: "pfname",
+  },
+  price: {
+    gridArea: "price",
+  },
+  volume_24h: {
+    gridArea: "volume_24h",
+  },
+  volume_7d: {
+    gridArea: "volume_7d",
+  },
+  percent_change_24h: {
+    gridArea: "percent_change_24h",
+  },
+  percent_change_7d: {
+    gridArea: "percent_change_7d",
+  },
+  percent_change_30d: {
+    gridArea: "percent_change_30d",
+  },
+  total_supply: {
+    gridArea: "total_supply",
+  },
+  max_supply: {
+    gridArea: "max_supply",
+  },
   chartBlock: {
     padding: [13, 2, 13, 2],
+  },
+  metricDetails: {
+    margin: "0 auto",
   },
   itemFooter: {
     display: "grid",
@@ -134,9 +193,7 @@ const metricDetailStyles = {
     color: colors.silver8,
     padding: [3, 0, 13, 0],
   },
-  metricDetails: {
-    margin: "0 auto",
-  },
+
 };
 
 MetricDetail = injectSheet(metricDetailStyles)(MetricDetail);
