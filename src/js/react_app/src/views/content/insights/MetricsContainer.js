@@ -90,17 +90,29 @@ class MetricDetail extends React.Component {
       <div className={classes.metric}>
         <div className={classes.metricDetails}>
           <div className={classes.metricGrid}>
-            <div className={`${classes.name} ${classes.gridMetric}`}>Name: {token_info.name}</div>
-            <div className={`${classes.symbol} ${classes.gridMetric}`}>Symbol: {token_info.symbol}</div>
-            <div className={`${classes.platform} ${classes.gridMetric}`}>Platform: {token_info.price}</div>
-            <div className={`${classes.price} ${classes.gridMetric}`}>Price: {token_info.price}</div>
-            <div className={`${classes.volume_24h} ${classes.gridMetric}`}>24h Volume: {token_info.volume_24h}</div>
-            <div className={`${classes.volume_7d} ${classes.gridMetric}`}>7d Voume: {token_info.volume_7d}</div>
-            <div className={`${classes.percent_change_24h} ${classes.gridMetric}`}>24h % Change: {token_info.percent_change_24h}</div>
-            <div className={`${classes.percent_change_7d} ${classes.gridMetric}`}>7d % Change: {token_info.percent_change_7d}</div>
-            <div className={`${classes.percent_change_30d} ${classes.gridMetric}`}>30d % Change: {token_info.percent_change_30d}</div>
-            <div className={`${classes.total_supply} ${classes.gridMetric}`}>Total Supply: {token_info.total_supply}</div>
-            <div className={`${classes.max_supply} ${classes.gridMetric}`}>Max Supply: {token_info.max_supply}</div>
+            <div className={classes.metricBody}>
+              <div className={classes.metricID}>
+                <div className={`${classes.symbol} ${classes.gridMetric}`}>Symbol: {token_info.symbol}</div>
+                <div className={`${classes.platform} ${classes.gridMetric}`}>Platform: {token_info.platform_name || "N/A"}</div>
+              </div>
+
+              <div className={classes.metricPriceVol}>
+                <div className={`${classes.price} ${classes.gridMetric}`}>Price: {token_info.usd_price}</div>
+                <div className={`${classes.volume_24h} ${classes.gridMetric}`}>24h Volume: {token_info.volume_24h}</div>
+                <div className={`${classes.volume_7d} ${classes.gridMetric}`}>7d Volume: {token_info.volume_7d}</div>
+              </div>
+
+              <div className={classes.metricsChange}>
+                <div className={`${classes.percent_change_24h} ${classes.gridMetric}`}>24h % Change: {token_info.percent_change_24h}</div>
+                <div className={`${classes.percent_change_7d} ${classes.gridMetric}`}>7d % Change: {token_info.percent_change_7d}</div>
+                <div className={`${classes.percent_change_30d} ${classes.gridMetric}`}>30d % Change: {token_info.percent_change_30d}</div>
+              </div>
+
+              <div className={classes.supply}>
+                <div className={`${classes.total_supply} ${classes.gridMetric}`}>Total Supply: {token_info.total_supply}</div>
+                <div className={`${classes.max_supply} ${classes.gridMetric}`}>Max Supply: {token_info.max_supply}</div>
+              </div>
+            </div>
           </div>
           <div className={classes.metricFooter}>
             <div className={classes.metricActions}></div>
@@ -112,14 +124,42 @@ class MetricDetail extends React.Component {
 }
 
 const metricDetailStyles = {
+  metric: {
+    width: '100% !important',
+    margin: '0 auto',
+
+  },
   metricGrid: {
     display: "flex",
-    flexDirection: 'column',
-    justifyItems: 'space-between',
-    alignItems: 'center',
+    flexDirection: 'row',
+
   },
   gridMetric: {
-    padding: 5
+    padding: 8,
+    textShadow: `1px 1px 13px ${colors.lightBlack}`,
+  },
+  metricID: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyItems: 'center',
+    justifyContent: 'center',
+    color: colors.smoke8,
+  },
+  metricBody: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    borderRadius: 5,
+    background: colors.silver2,
+  },
+  metricPriceVol: {
+    display: 'flex',
+  },
+  metricsChange: {
+    display: 'flex',
+  },
+  supply: {
+    display: 'flex',
   },
   name: {
     gridArea: "name",
@@ -157,8 +197,15 @@ const metricDetailStyles = {
   chartBlock: {
     padding: [13, 2, 13, 2],
   },
+  metricDetail: {
+    justifySelf: 'start'
+  },
   metricDetails: {
     margin: "0 auto",
+  },
+  metricDescription: {
+    color: colors.silver8,
+    padding: [3, 0, 13, 0],
   },
   itemFooter: {
     display: "grid",
@@ -168,7 +215,7 @@ const metricDetailStyles = {
     alignContent: "center",
     padding: [10, 0, 0, 0],
   },
-  metric: {},
+
   metricActions: {
     gridArea: "actions",
   },
@@ -189,10 +236,7 @@ const metricDetailStyles = {
   actionButton: {
     margin: [10, 5, 0, 0],
   },
-  metricDescription: {
-    color: colors.silver8,
-    padding: [3, 0, 13, 0],
-  },
+
 
 };
 
@@ -270,18 +314,22 @@ class MetricsContainer extends React.Component {
     return (
       <div className={classes.cardHeader}>
         <a className={classes.metricName} href={`/metrics`}>
-          {metric.title}
+          {metric.token_info.name}
         </a>
+
+        {this.avatar(metric, classes)}
+
       </div>
     );
   };
 
   avatar = (metric, classes) => {
-    let imgUrl = require(`Images/crypto-logos/${metric.symbol}.png`);
+    console.log('METRic', metric)
+    let imgUrl = require(`Images/crypto-logos/${metric.symbol.toLowerCase()}.png`);
     //
     const metricImg = <Image src={imgUrl} className={classes.img} />;
 
-    return <Avatar size="small" src={metricImg} icon={<TeamOutlined />} />;
+    return <Avatar className={classes.avatar} size="small" src={metricImg} icon={<TeamOutlined />} />;
   };
 
   metricDescription = (metric, data) => {
@@ -334,8 +382,10 @@ class MetricsContainer extends React.Component {
                   dataSource={data.filter((m) => {return m.daily_market_history.length > 0})}
                   renderItem={(item) => (
                     <>
-                      <List.Item actions={[<a>more</a>]} />
-                      <List.Item className={classes.metricListItem}>
+                      <List.Item
+                        className={classes.metricListItem}
+                        actions={[<a>More</a>, <a>Discuss</a>]}
+                        >
                         <Skeleton
                           avatar
                           title={false}
@@ -370,12 +420,10 @@ class MetricsContainer extends React.Component {
 const metricStyles = {
   metrics: {
     marginTop: 50,
-    maxWidth: 600,
+    maxWidth: 800,
     margin: "0 auto",
   },
   metricListItem: {
-    marginTop: 55,
-    padding: 13,
   },
   cardHeader: {
     display: "grid",
@@ -401,7 +449,11 @@ const metricStyles = {
   metricDetails: {},
   metricName: {
     gridArea: "title",
+    fontSize: '2.4rem',
     marginLeft: 8,
+    textShadow: `1px 1px 13px ${colors.smoke8}`,
+  },
+  avatar: {
   },
   metricItems: {
     marginTop: "4em",
