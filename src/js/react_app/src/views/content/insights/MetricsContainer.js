@@ -26,6 +26,7 @@ import setAuthToken from "Services/auth/setAuthToken";
 import {
   Sparklines,
   SparklinesLine,
+  SparklinesBars,
   SparklinesReferenceLine,
 } from "react-sparklines";
 import Chart from "react-google-charts";
@@ -42,27 +43,14 @@ class MetricDetail extends React.Component {
     };
   }
 
-  // <div className={classes.sparkLines}>
-  //   <Sparklines
-  //     className={`${classes.sparkLine} ${classes.sparkLine1}`}
-  //     data={
-  //       [ 20, 28, 38, 45]
-  //     }
-  //   >
-  //     <SparklinesLine color="#eee" />
-  //     <SparklinesReferenceLine type="avg" />
-  //   </Sparklines>
-  //   <Sparklines
-  //     className={`${classes.sparkLine} ${classes.sparkLine2}`}
-  //     data={
-  //       [ 20, 28, 38, 45]
-  //     }
-  //   >
-  //     <SparklinesLine color="#eee" />
-  //     <SparklinesReferenceLine type="avg" />
-  //   </Sparklines>
-  // </div>
-
+  chartData = (metric) => {
+    let header = [['Day', '% Change 30d']]
+      let date = new Date()
+      let row = [date.getDay(), parseInt(metric.token_info.percent_change_7d)]
+      header.push(row)
+      console.log('hea', header)
+    return header
+  }
   render() {
     let { metric, data, classes } = this.props;
     let { daily_market_history } = metric;
@@ -74,48 +62,146 @@ class MetricDetail extends React.Component {
       const d = daily_market_history[0];
       dmh = (
         <>
-        <div>
-          {metric.market_cap_usd}
-        </div>
-        <div style={{ color: "#eee" }}>
-          {metric.title} {d.high} {d.low} {d.close} {d.open}
-        </div>
+          <div>{metric.market_cap_usd}</div>
+          <div style={{ color: "#eee" }}>
+            {metric.title} {d.high} {d.low} {d.close} {d.open}
+          </div>
         </>
       );
     } else {
       dmh = <div>No results</div>;
     }
     console.log("dmh", metric);
+    let chartData = this.chartData(metric)
+    console.log('chart data', chartData.slice(1))
     return (
       <div className={classes.metric}>
         <div className={classes.metricDetails}>
           <div className={classes.metricGrid}>
-            <div className={classes.metricBody}>
-              <div className={classes.metricID}>
-                <div className={`${classes.symbol} ${classes.gridMetric}`}>Symbol: {token_info.symbol}</div>
-                <div className={`${classes.platform} ${classes.gridMetric}`}>Platform: {token_info.platform_name || "N/A"}</div>
+              <div className={`${classes.symbol} ${classes.gridMetric}`}>
+                <span className={classes.metricLabel}>Symbol: </span>
+                <span className={classes.metricValue}>{token_info.symbol}</span>
+              </div>
+              <div className={`${classes.price} ${classes.gridMetric}`}>
+                <span className={classes.metricLabel}>Price: </span>
+                <span className={classes.metricValue}>
+                  {token_info.usd_price}
+                </span>
+              </div>
+              <div className={`${classes.volume_24h} ${classes.gridMetric}`}>
+                <span className={classes.metricLabel}>24h Volume: </span>
+                <span className={classes.metricValue}>
+                  {token_info.volume_24h}
+                </span>
+              </div>
+              <div className={`${classes.volume_7d} ${classes.gridMetric}`}>
+                <span className={classes.metricLabel}>7d Volume: </span>
+                <span className={classes.metricValue}>
+                  {token_info.volume_7d}
+                </span>
               </div>
 
-              <div className={classes.metricPriceVol}>
-                <div className={`${classes.price} ${classes.gridMetric}`}>Price: {token_info.usd_price}</div>
-                <div className={`${classes.volume_24h} ${classes.gridMetric}`}>24h Volume: {token_info.volume_24h}</div>
-                <div className={`${classes.volume_7d} ${classes.gridMetric}`}>7d Volume: {token_info.volume_7d}</div>
+              <div
+                className={`${classes.percent_change_24h} ${classes.gridMetric}`}
+              >
+                <span className={classes.metricLabel}>% Change 24h: </span>
+                <span className={classes.metricValue}>
+                  {token_info.percent_change_24h}
+                </span>
+              </div>
+              <div
+                className={`${classes.percent_change_7d} ${classes.gridMetric}`}
+              >
+                <span className={classes.metricLabel}>% Change 7d: </span>
+                <span className={classes.metricValue}>
+                  {token_info.percent_change_7d || "N/A"}
+                </span>
+              </div>
+              <div
+                className={`${classes.percent_change_30d} ${classes.gridMetric}`}
+              >
+                <span className={classes.metricLabel}>% Change 30d: </span>
+                <span className={classes.metricValue}>
+                  {token_info.percent_change_30d || "N/A"}
+                </span>
               </div>
 
-              <div className={classes.metricsChange}>
-                <div className={`${classes.percent_change_24h} ${classes.gridMetric}`}>24h % Change: {token_info.percent_change_24h}</div>
-                <div className={`${classes.percent_change_7d} ${classes.gridMetric}`}>7d % Change: {token_info.percent_change_7d}</div>
-                <div className={`${classes.percent_change_30d} ${classes.gridMetric}`}>30d % Change: {token_info.percent_change_30d}</div>
+              <div className={`${classes.total_supply} ${classes.gridMetric}`}>
+                <span className={classes.metricLabel}>Total Supply: </span>
+                <span className={classes.metricValue}>
+                  {token_info.total_supply || "N/A"}
+                </span>
               </div>
-
-              <div className={classes.supply}>
-                <div className={`${classes.total_supply} ${classes.gridMetric}`}>Total Supply: {token_info.total_supply}</div>
-                <div className={`${classes.max_supply} ${classes.gridMetric}`}>Max Supply: {token_info.max_supply}</div>
+              <div className={`${classes.max_supply} ${classes.gridMetric}`}>
+                <span className={classes.metricLabel}>Max Supply: </span>
+                <span className={classes.metricValue}>
+                  {token_info.max_supply || "N/A"}
+                </span>
               </div>
-            </div>
+              <div className={`${classes.platform} ${classes.gridMetric}`}>
+                <span className={classes.metricLabel}>Platform: </span>
+                <span className={classes.metricValue}>
+                  {token_info.platform_name || "N/A"}
+                </span>
+              </div>
           </div>
           <div className={classes.metricFooter}>
             <div className={classes.metricActions}></div>
+          </div>
+        </div>
+        <div className={classes.metricCharts}>
+        <div className={classes.chartBlock}>
+          <Chart
+
+            chartType="ColumnChart"
+            loader={<div>Loading Chart</div>}
+            data={chartData}
+            options={{
+              height: '200px',
+              width: '205px',
+              legend: 'none',
+                legend: {
+                  position: 'top',
+                  maxLines: 3
+                },
+                vAxis: {
+                  logScale: true,
+                  viewWindow: {
+                    max: 20,
+                    min: -20
+                  },
+                },
+              // bar: { groupWidth: '100%' }, // Remove space between bars.
+              // candlestick: {
+              // fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+              // risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+              // },
+              // minColor: '#f00',
+              // midColor: '#eee',
+              // backgroundColor: '#eee',
+              // maxColor: '#0d0',
+              // headerHeight: 30,
+              // fontColor: 'black',
+              // axisTitlesPosition: 'none',
+              // fontSize: 12,
+              // showScale: true,
+              generateTooltip: (row, size, value) => {
+                this.showFullTooltip(row, size, value)
+              },
+            }}
+            rootProps={{ 'data-testid': '1' }}
+
+          />
+        </div>
+
+          <div className={classes.sparkLines}>
+            <Sparklines
+              className={`${classes.sparkLine} ${classes.sparkLine1}`}
+              data={this.chartData(metric).slice(1)}
+            >
+              <SparklinesBars color="#eee" />
+            </Sparklines>
+
           </div>
         </div>
       </div>
@@ -125,86 +211,98 @@ class MetricDetail extends React.Component {
 
 const metricDetailStyles = {
   metric: {
-    width: '100% !important',
-    margin: '0 auto',
-
+    width: "100%",
+    margin: "0 auto",
   },
   metricGrid: {
-    display: "flex",
-    flexDirection: 'row',
-
+    display: "grid",
+    gridTemplateAreas: `
+      "sym pct24h tsupply"
+      "price pct7d msupply"
+      "v24h pct30d platform"
+      "v7d pct30d platform"
+    `,
+    justifyItems: "space-between",
+    width: "100%",
+    borderRadius: 8,
+    border: 'none',
+    background: colors.smoke2,
+    boxShadow: `inset 0 0 13px 0px ${colors.silver2},
+                0 0 13px 0px ${colors.silver4}`,
+    padding: 13,
   },
   gridMetric: {
-    padding: 8,
-    textShadow: `1px 1px 13px ${colors.lightBlack}`,
+    color: colors.smoke8,
+    padding: 5,
   },
-  metricID: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyItems: 'center',
-    justifyContent: 'center',
+  metricGroup: {
+    padding: 8,
+    justifySelf: 'center',
+  },
+  metricHead: {
+    gridArea: "metricHead",
+    justifyItems: "center",
+    justifyContent: "center",
     color: colors.smoke8,
   },
-  metricBody: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    borderRadius: 5,
-    background: colors.silver2,
+  metricsBody: {
+    gridArea: "metricsBody",
   },
-  metricPriceVol: {
-    display: 'flex',
+  metricPriceVol: {},
+  metricsBody: {},
+  metricExtra: {
+    gridArea: "metricExtra",
   },
-  metricsChange: {
-    display: 'flex',
+  metricLabel: {
+    color: colors.smoke8,
   },
-  supply: {
-    display: 'flex',
+  metricValue: {
+    color: colors.spotifyGreen,
   },
   name: {
     gridArea: "name",
   },
   symbol: {
-    gridArea: "symbol",
+    gridArea: "sym",
   },
   platform: {
-    gridArea: "pfname",
+    gridArea: "platform",
   },
   price: {
     gridArea: "price",
   },
   volume_24h: {
-    gridArea: "volume_24h",
+    gridArea: "v24h",
   },
   volume_7d: {
-    gridArea: "volume_7d",
+    gridArea: "v7d",
   },
   percent_change_24h: {
-    gridArea: "percent_change_24h",
+    gridArea: "pct24h",
   },
   percent_change_7d: {
-    gridArea: "percent_change_7d",
+    gridArea: "pct7d",
   },
   percent_change_30d: {
-    gridArea: "percent_change_30d",
+    gridArea: "pct30d",
   },
   total_supply: {
-    gridArea: "total_supply",
+    gridArea: "tsupply",
   },
   max_supply: {
-    gridArea: "max_supply",
+    gridArea: "msupply",
   },
   chartBlock: {
     padding: [13, 2, 13, 2],
   },
   metricDetail: {
-    justifySelf: 'start'
+    justifySelf: "start",
   },
   metricDetails: {
     margin: "0 auto",
   },
   metricDescription: {
-    color: colors.silver8,
+    color: colors.smoke,
     padding: [3, 0, 13, 0],
   },
   itemFooter: {
@@ -221,11 +319,11 @@ const metricDetailStyles = {
   },
   sparkLines: {
     display: "grid",
-    gridTemplateAreas: `'spark1 spark2'`,
+    gridTemplateAreas: `'spark1 spark2 spark3'`,
+    gridTemplateColumns: "repeat(3, 1fr)",
   },
   sparkLine: {
-    width: "50%",
-    height: "100px",
+    margin: 50,
   },
   sparkLine1: {
     gridArea: "spark1",
@@ -236,8 +334,6 @@ const metricDetailStyles = {
   actionButton: {
     margin: [10, 5, 0, 0],
   },
-
-
 };
 
 MetricDetail = injectSheet(metricDetailStyles)(MetricDetail);
@@ -318,18 +414,24 @@ class MetricsContainer extends React.Component {
         </a>
 
         {this.avatar(metric, classes)}
-
       </div>
     );
   };
 
   avatar = (metric, classes) => {
-    console.log('METRic', metric)
+    console.log("METRic", metric);
     let imgUrl = require(`Images/crypto-logos/${metric.symbol.toLowerCase()}.png`);
     //
     const metricImg = <Image src={imgUrl} className={classes.img} />;
 
-    return <Avatar className={classes.avatar} size="small" src={metricImg} icon={<TeamOutlined />} />;
+    return (
+      <Avatar
+        className={classes.avatar}
+        size="small"
+        src={metricImg}
+        icon={<TeamOutlined />}
+      />
+    );
   };
 
   metricDescription = (metric, data) => {
@@ -379,13 +481,15 @@ class MetricsContainer extends React.Component {
                   loading={initLoading}
                   itemLayout="vertical"
                   loadMore={loadMore}
-                  dataSource={data.filter((m) => {return m.daily_market_history.length > 0})}
+                  dataSource={data.filter((m) => {
+                    return m.daily_market_history.length > 0;
+                  })}
                   renderItem={(item) => (
                     <>
                       <List.Item
                         className={classes.metricListItem}
                         actions={[<a>More</a>, <a>Discuss</a>]}
-                        >
+                      >
                         <Skeleton
                           avatar
                           title={false}
@@ -423,8 +527,7 @@ const metricStyles = {
     maxWidth: 800,
     margin: "0 auto",
   },
-  metricListItem: {
-  },
+  metricListItem: {},
   cardHeader: {
     display: "grid",
     gridTemplateAreas: `'image title'`,
@@ -449,12 +552,11 @@ const metricStyles = {
   metricDetails: {},
   metricName: {
     gridArea: "title",
-    fontSize: '2.4rem',
+    fontSize: "2.4rem",
     marginLeft: 8,
     textShadow: `1px 1px 13px ${colors.smoke8}`,
   },
-  avatar: {
-  },
+  avatar: {},
   metricItems: {
     marginTop: "4em",
   },
