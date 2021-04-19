@@ -43,14 +43,71 @@ class MetricDetail extends React.Component {
     };
   }
 
-  chartData = (metric) => {
-    let header = [['Day', '% Change 30d']]
-      let date = new Date()
-      let row = [date.getDay(), parseInt(metric.token_info.percent_change_7d)]
-      header.push(row)
-      console.log('hea', header)
-    return header
-  }
+  renderCharts = ({token_info}) => {
+    let header = [["Day", "% Change 30d"]];
+    let date = new Date();
+    let vals = [
+      token_info.volume_24h,
+      token_info.volume_7d,
+      token_info.percent_change_24h,
+      token_info.percent_change_7d,
+      token_info.percent_change_30d
+    ]
+    let rows = header.concat(vals.map((val) => {
+      let row = [
+        date.toDateString(),
+        parseInt(val),
+      ];
+      return row
+    }))
+    console.log('rows', rows)
+    let charts = rows.map((c) => this.renderChart(c))
+    return charts
+  };
+
+  renderChart = (chartData) => {
+    return (
+        <Chart
+        chartType="ColumnChart"
+        loader={<div>Loading Chart</div>}
+        data={chartData}
+        options={{
+          height: "200px",
+          width: "205px",
+          legend: "none",
+          legend: {
+            position: "top",
+            maxLines: 3,
+          },
+          vAxis: {
+            logScale: true,
+            viewWindow: {
+              max: 20,
+              min: -20,
+            },
+          },
+          // bar: { groupWidth: '100%' }, // Remove space between bars.
+          // candlestick: {
+          // fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+          // risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+          // },
+          // minColor: '#f00',
+          // midColor: '#eee',
+          // backgroundColor: '#eee',
+          // maxColor: '#0d0',
+          headerHeight: 30,
+          // fontColor: 'black',
+          // axisTitlesPosition: 'none',
+          fontSize: 12,
+          // showScale: true,
+          generateTooltip: (row, size, value) => {
+            this.showFullTooltip(row, size, value);
+          },
+        }}
+        rootProps={{ "data-testid": "1" }}
+      />
+    )
+  };
   render() {
     let { metric, data, classes } = this.props;
     let { daily_market_history } = metric;
@@ -71,143 +128,100 @@ class MetricDetail extends React.Component {
     } else {
       dmh = <div>No results</div>;
     }
-    console.log("dmh", metric);
-    let chartData = this.chartData(metric)
-    console.log('chart data', chartData.slice(1))
     return (
       <div className={classes.metric}>
         <div className={classes.metricDetails}>
           <div className={classes.metricGrid}>
-              <div className={`${classes.symbol} ${classes.gridMetric}`}>
-                <span className={classes.metricLabel}>Symbol: </span>
-                <span className={classes.metricValue}>{token_info.symbol}</span>
-              </div>
-              <div className={`${classes.price} ${classes.gridMetric}`}>
-                <span className={classes.metricLabel}>Price: </span>
-                <span className={classes.metricValue}>
-                  {token_info.usd_price}
-                </span>
-              </div>
-              <div className={`${classes.volume_24h} ${classes.gridMetric}`}>
-                <span className={classes.metricLabel}>24h Volume: </span>
-                <span className={classes.metricValue}>
-                  {token_info.volume_24h}
-                </span>
-              </div>
-              <div className={`${classes.volume_7d} ${classes.gridMetric}`}>
-                <span className={classes.metricLabel}>7d Volume: </span>
-                <span className={classes.metricValue}>
-                  {token_info.volume_7d}
-                </span>
-              </div>
-
-              <div
-                className={`${classes.percent_change_24h} ${classes.gridMetric}`}
-              >
-                <span className={classes.metricLabel}>% Change 24h: </span>
-                <span className={classes.metricValue}>
-                  {token_info.percent_change_24h}
-                </span>
-              </div>
-              <div
-                className={`${classes.percent_change_7d} ${classes.gridMetric}`}
-              >
-                <span className={classes.metricLabel}>% Change 7d: </span>
-                <span className={classes.metricValue}>
-                  {token_info.percent_change_7d || "N/A"}
-                </span>
-              </div>
-              <div
-                className={`${classes.percent_change_30d} ${classes.gridMetric}`}
-              >
-                <span className={classes.metricLabel}>% Change 30d: </span>
-                <span className={classes.metricValue}>
-                  {token_info.percent_change_30d || "N/A"}
-                </span>
-              </div>
-
-              <div className={`${classes.total_supply} ${classes.gridMetric}`}>
-                <span className={classes.metricLabel}>Total Supply: </span>
-                <span className={classes.metricValue}>
-                  {token_info.total_supply || "N/A"}
-                </span>
-              </div>
-              <div className={`${classes.max_supply} ${classes.gridMetric}`}>
-                <span className={classes.metricLabel}>Max Supply: </span>
-                <span className={classes.metricValue}>
-                  {token_info.max_supply || "N/A"}
-                </span>
-              </div>
-              <div className={`${classes.platform} ${classes.gridMetric}`}>
-                <span className={classes.metricLabel}>Platform: </span>
-                <span className={classes.metricValue}>
-                  {token_info.platform_name || "N/A"}
-                </span>
-              </div>
+            <div className={`${classes.symbol} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>Symbol: </span>
+              <span className={classes.metricValue}>{token_info.symbol}</span>
+            </div>
+            <div className={`${classes.price} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>Price: </span>
+              <span className={classes.metricValue}>
+                {token_info.usd_price}
+              </span>
+            </div>
+            <div className={`${classes.volume_24h} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>24h Volume: </span>
+              <span className={classes.metricValue}>
+                {token_info.volume_24h}
+              </span>
+            </div>
+            <div className={`${classes.volume_7d} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>7d Volume: </span>
+              <span className={classes.metricValue}>
+                {token_info.volume_7d}
+              </span>
+            </div>
+            <div
+              className={`${classes.percent_change_24h} ${classes.gridMetric}`}
+            >
+              <span className={classes.metricLabel}>% Change 24h: </span>
+              <span className={classes.metricValue}>
+                {token_info.percent_change_24h}
+              </span>
+            </div>
+            <div
+              className={`${classes.percent_change_7d} ${classes.gridMetric}`}
+            >
+              <span className={classes.metricLabel}>% Change 7d: </span>
+              <span className={classes.metricValue}>
+                {token_info.percent_change_7d || "N/A"}
+              </span>
+            </div>
+            <div
+              className={`${classes.percent_change_30d} ${classes.gridMetric}`}
+            >
+              <span className={classes.metricLabel}>% Change 30d: </span>
+              <span className={classes.metricValue}>
+                {token_info.percent_change_30d || "N/A"}
+              </span>
+            </div>
+            <div className={`${classes.platform} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>Platform: </span>
+              <span className={classes.metricValue}>
+                {token_info.platform_name || "N/A"}
+              </span>
+            </div>
+            <div className={`${classes.total_supply} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>Total Supply: </span>
+              <span className={classes.metricValue}>
+                {token_info.total_supply || "N/A"}
+              </span>
+            </div>
+            <div className={`${classes.max_supply} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>Max Supply: </span>
+              <span className={classes.metricValue}>
+                {token_info.max_supply || "N/A"}
+              </span>
+            </div>
           </div>
           <div className={classes.metricFooter}>
             <div className={classes.metricActions}></div>
           </div>
         </div>
         <div className={classes.metricCharts}>
-        <div className={classes.chartBlock}>
-          <Chart
-
-            chartType="ColumnChart"
-            loader={<div>Loading Chart</div>}
-            data={chartData}
-            options={{
-              height: '200px',
-              width: '205px',
-              legend: 'none',
-                legend: {
-                  position: 'top',
-                  maxLines: 3
-                },
-                vAxis: {
-                  logScale: true,
-                  viewWindow: {
-                    max: 20,
-                    min: -20
-                  },
-                },
-              // bar: { groupWidth: '100%' }, // Remove space between bars.
-              // candlestick: {
-              // fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
-              // risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
-              // },
-              // minColor: '#f00',
-              // midColor: '#eee',
-              // backgroundColor: '#eee',
-              // maxColor: '#0d0',
-              // headerHeight: 30,
-              // fontColor: 'black',
-              // axisTitlesPosition: 'none',
-              // fontSize: 12,
-              // showScale: true,
-              generateTooltip: (row, size, value) => {
-                this.showFullTooltip(row, size, value)
-              },
-            }}
-            rootProps={{ 'data-testid': '1' }}
-
-          />
-        </div>
-
-          <div className={classes.sparkLines}>
-            <Sparklines
-              className={`${classes.sparkLine} ${classes.sparkLine1}`}
-              data={this.chartData(metric).slice(1)}
-            >
-              <SparklinesBars color="#eee" />
-            </Sparklines>
-
+          <div className={classes.chartBlock}>
+          {
+            this.renderCharts(metric)
+          }
           </div>
         </div>
       </div>
     );
   }
 }
+
+// <div className={classes.sparkLines}>
+//   <Sparklines
+//     className={`${classes.sparkLine} ${classes.sparkLine1}`}
+//     data={this.chartData(metric).slice(1)}
+//   >
+//     <SparklinesBars color="#eee" />
+//   </Sparklines>
+//
+// </div>
 
 const metricDetailStyles = {
   metric: {
@@ -219,13 +233,14 @@ const metricDetailStyles = {
     gridTemplateAreas: `
       "sym pct24h tsupply"
       "price pct7d msupply"
-      "v24h pct30d platform"
-      "v7d pct30d platform"
+      "platform pct30d msupply"
+      "platform v24h msupply"
+      "platform v7d msupply"
     `,
     justifyItems: "space-between",
     width: "100%",
     borderRadius: 8,
-    border: 'none',
+    border: "none",
     background: colors.smoke2,
     boxShadow: `inset 0 0 13px 0px ${colors.silver2},
                 0 0 13px 0px ${colors.silver4}`,
@@ -237,7 +252,7 @@ const metricDetailStyles = {
   },
   metricGroup: {
     padding: 8,
-    justifySelf: 'center',
+    justifySelf: "center",
   },
   metricHead: {
     gridArea: "metricHead",

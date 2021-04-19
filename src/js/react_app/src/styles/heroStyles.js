@@ -1,4 +1,4 @@
-import HeroImage from 'Images/hero.webp';
+import HeroImage from 'Images/new_hero_lossy.webp';
 
 const heroStyles = {
   hero: {
