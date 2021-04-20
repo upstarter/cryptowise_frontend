@@ -22,6 +22,7 @@ import {
 } from "antd";
 import { api_url, url } from "Utils/consts";
 import { CommentOutlined, PlusOutlined } from "@ant-design/icons";
+import OnboardContainer from 'Topics/OnboardContainer'
 
 class DiscussComponent extends React.Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class DiscussComponent extends React.Component {
       ModalContent: "Customize your experience",
       visible: false,
       confirmLoading: false,
+      onboard: false,
     };
   }
 
@@ -95,6 +97,9 @@ class DiscussComponent extends React.Component {
     });
   };
 
+  onboard = () => {
+    this.setState({onboard: true})
+  }
   saveFormRef = (formRef) => {
     this.formRef = formRef;
   };
@@ -153,7 +158,7 @@ class DiscussComponent extends React.Component {
       loading,
       visible,
       confirmLoading,
-      ModalContent,
+      ModalContent
     } = this.state;
     if (threads.length < 1) {
       return (
@@ -161,35 +166,39 @@ class DiscussComponent extends React.Component {
           <ScrollToTopOnMount />
           <section id="topic-threads" className={classes.threadSection}>
 
-            <NewThreadForm
-              wrappedComponentRef={this.saveFormRef}
-              wrapClassName={classes.modal}
-              visible={this.state.visible}
-              onCancel={this.handleCancel}
-              onCreate={this.handleCreate}
-              confirmLoading={confirmLoading}
-            />
+
 
             <div id="thread-items" className={classes.threads}>
               <div className={classes.threadsHeader}>
-              <Button
-                className={classes.newThreadButton}
-                type="primary"
-                onClick={this.showModal}
-                icon={<PlusOutlined />}
-                size="large"
-              >
-                Create Thread
-              </Button>
+                <Button
+                  className={classes.newThreadButton}
+                  type="primary"
+                  onClick={this.onboard}
+                  icon={<PlusOutlined />}
+                  size="large"
+                >
+                  Create Thread
+                </Button>
                 <h2 className={(classes.pageTitle)}>
                   <span>Discuss</span> {topicName}{" "}
                 </h2>
               </div>
             </div>
+            { this.state.showOnboard ? <OnboardContainer
+                className={classes.onboardContainer} id='onboard-container'/> : '' }
+
             <section id="topic-threads" className={classes.noThreadsSection}>
               <h3 className={classes.noThreadsYet}>No Threads Yet.. Create a thread about {topicName} to start the discussion!</h3>
             </section>
           </section>
+          <NewThreadForm
+            wrappedComponentRef={this.saveFormRef}
+            wrapClassName={classes.modal}
+            visible={this.state.visible}
+            onCancel={this.handleCancel}
+            onCreate={this.handleCreate}
+            confirmLoading={confirmLoading}
+          />
         </React.Fragment>
       );
     }
@@ -232,20 +241,30 @@ class DiscussComponent extends React.Component {
               <Button
                 className={`${classes.newThreadButton} ${classes.btn}`}
                 type="primary"
-                onClick={this.showModal}
+                onClick={this.onboard}
                 icon={<PlusOutlined />}
                 size="large"
               >
                 Create Thread
               </Button>
             </div>
+
             <div className={classes.threadMain}>
-              <ul className={classes.threadList}>
+
+              <div className={classes.threadList}>
                 {threads.map((thread) => {
                   return <Thread key={thread.id} thread={thread} />;
                 })}
-              </ul>
+                { this.state.onboard ?
+                  <OnboardContainer
+                    className={classes.onboardContainer}
+                    id='onboard-container'
+                    /> : ''
+                  }
+              </div>
+
             </div>
+
           </div>
         </section>
       </React.Fragment>
@@ -254,6 +273,12 @@ class DiscussComponent extends React.Component {
 }
 
 const threadListStyles = {
+  onboardContainer: {
+
+  },
+  threadMain: {
+
+  },
   threadsHeader: {
     display: "grid",
     alignItems: "center",
@@ -300,8 +325,8 @@ const threadListStyles = {
   threadItems: {
   },
   threadSection: {
-    margin: '70px auto',
-    maxWidth: '96vw',
+    margin: [70,0,0,0],
+    maxWidth: '100vw',
   },
   modal: {
     // background: `${colors.secondaryDark}`,
@@ -312,7 +337,7 @@ const threadListStyles = {
     },
   },
 
-  threadMain: {},
+
   threadList: {
     listStyleType: "none",
 

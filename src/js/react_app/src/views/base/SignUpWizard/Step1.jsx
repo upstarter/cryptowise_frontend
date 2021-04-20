@@ -115,7 +115,7 @@ const styles = {
     'overflow-y': 'none',
     marginTop: 150,
     "@media (max-width: 482px)": {
-      marginTop: 130,
+      marginTop: 170,
     }
   },
 

@@ -98,7 +98,7 @@ class Thread extends React.Component {
     const { description, title, body, id } = thread;
 
     return (
-      <li className={classes.thread} key={thread.id}>
+      <div className={classes.thread} key={thread.id}>
         <NewPostForm
           wrappedComponentRef={this.saveFormRef}
           wrapClassName={classes.modal}
@@ -132,7 +132,7 @@ class Thread extends React.Component {
             </span>
           </div>
         </div>
-      </li>
+      </div>
     );
   }
 }

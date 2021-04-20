@@ -4,11 +4,13 @@ import AppButton from 'Components/base/button/AppButton';
 import { url } from "Utils/consts";
 import colors from 'Styles/colors'
 import FadeIn from 'react-fade-in';
+import { withRouter } from "react-router-dom";
 
 // quiz
 import injectSheet, { jss } from "react-jss";
-import nestedJSS from 'jss-nested'
+// import nestedJSS from 'jss-nested'
 import heroStyles from 'Styles/heroStyles'
+import onboardStyles from './onboardStyles'
 
 class OnboardContainer extends React.Component {
   constructor() {
@@ -17,10 +19,9 @@ class OnboardContainer extends React.Component {
       subscribeButtonLoading: false,
       applyNowButtonLoading: false,
     };
-    this.signUpRouteChange = this.signUpRouteChange.bind(this);
   }
 
-  signUpRouteChange() {
+  signUpRouteChange = () => {
     let path = '/signup';
     this.props.history.push(path);
   }
@@ -71,13 +72,8 @@ class OnboardContainer extends React.Component {
   }
 }
 
-const onboardStyles = {
-  fadeIn: {
 
-  }
-}
-OnboardContainer = injectSheet(onboardStyles)(OnboardContainer)
-export default injectSheet(heroStyles)(OnboardContainer)
+export default injectSheet(onboardStyles)(withRouter(OnboardContainer))
 
 // <div>
 //   <a className="github-button" target="_blank" href="https://github.com/sponsors/upstarter" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-heart" aria-label="Sponsor @upstarter on GitHub">Sponsor</a>

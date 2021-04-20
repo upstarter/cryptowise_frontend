@@ -21,6 +21,7 @@ import {
 } from "antd";
 import { api_url, url } from "Utils/consts";
 import { CommentOutlined, PlusOutlined } from "@ant-design/icons";
+import OnboardContainer from 'Topics/OnboardContainer'
 
 class PostsContainer extends React.Component {
   constructor(props) {
@@ -41,6 +42,8 @@ class PostsContainer extends React.Component {
       ModalContent: "Customize your experience",
       visible: false,
       confirmLoading: false,
+      onboard: false,
+
     };
   }
 
@@ -99,6 +102,10 @@ class PostsContainer extends React.Component {
       visible: true,
     });
   };
+
+  onboard = () => {
+    this.setState({onboard: true})
+  }
 
   saveFormRef = (formRef) => {
     this.formRef = formRef;
@@ -230,7 +237,7 @@ class PostsContainer extends React.Component {
                   <Button
                     className={`${classes.newPostButton} ${classes.btn}`}
                     type="primary"
-                    onClick={this.showModal}
+                    onClick={this.onboard}
                     icon={<PlusOutlined />}
                     size="large"
                   >
@@ -249,7 +256,11 @@ class PostsContainer extends React.Component {
                   ) : (
                     <>No Posts Yet. Be the first..</>
                   )}
+
                 </section>
+                { this.state.onboard ? <OnboardContainer
+                    className={classes.onboardContainer} id='onboard-container'/> : '' }
+
               </div>
             </div>
           </section>
@@ -260,6 +271,9 @@ class PostsContainer extends React.Component {
 }
 
 const postListStyles = {
+  onboardContainer: {
+    marginTop: 300,
+  },
   threadHeader: {
   },
   threadsContent: {
@@ -280,8 +294,8 @@ const postListStyles = {
     background: colors.secondaryDark,
   },
   postSection: {
-    margin: "70px auto",
-    maxWidth: "96vw",
+    margin: [70,0,0,0],
+    maxWidth: "100vw",
   },
   postActions: {
     gridArea: 'actions',
