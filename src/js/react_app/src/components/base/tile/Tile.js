@@ -145,7 +145,7 @@ const styles = {
 
     // boxShadow: '-6px 6px 2px -3px  rgba(100,100,100,.1)',
     // border: '1px solid rgba(240,240,240,.5)',
-    background: `${colors.antBlue}`,
+    background: `${colors.black}`,
 
     "& .ant-card-bordered": {
       border: "none !important",
