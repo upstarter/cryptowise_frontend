@@ -272,7 +272,7 @@ class PostsContainer extends React.Component {
 
 const postListStyles = {
   onboardContainer: {
-    marginTop: 300,
+    marginTop: 350,
   },
   threadHeader: {
   },

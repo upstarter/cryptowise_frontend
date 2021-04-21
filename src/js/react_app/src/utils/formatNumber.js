@@ -1,4 +1,5 @@
 function formatNumber(value) {
+  if (value === null) return value
   value += '';
   const list = value.split('.');
   const prefix = list[0].charAt(0) === '-' ? '-' : '';

@@ -46,6 +46,7 @@ const colors = {
   yellow2: 'rgba(237, 212, 65,.2)',
   yellow4: 'rgba(237, 212, 65,.4)',
   yellow6: 'rgba(237, 212, 65,.6)',
+  yellow7: 'rgba(237, 212, 65,.7)',
   yellow8: 'rgba(237, 212, 65,.8)',
   yellow: 'rgba(237, 212, 65,1)',
 

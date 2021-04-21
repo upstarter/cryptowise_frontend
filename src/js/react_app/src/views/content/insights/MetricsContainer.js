@@ -30,7 +30,7 @@ import {
   SparklinesReferenceLine,
 } from "react-sparklines";
 import Chart from "react-google-charts";
-
+import formatNumber from 'Utils/formatNumber'
 const count = 25;
 const fakeDataUrl = `//randomuser.me/api/?results=${count}&inc=name,gender,email,nat&noinfo`;
 
@@ -139,19 +139,19 @@ class MetricDetail extends React.Component {
             <div className={`${classes.price} ${classes.gridMetric}`}>
               <span className={classes.metricLabel}>Price: </span>
               <span className={classes.metricValue}>
-                {token_info.usd_price}
+                {formatNumber(token_info.usd_price)}
               </span>
             </div>
             <div className={`${classes.volume_24h} ${classes.gridMetric}`}>
               <span className={classes.metricLabel}>24h Volume: </span>
               <span className={classes.metricValue}>
-                {token_info.volume_24h}
+                {formatNumber(token_info.volume_24h)}
               </span>
             </div>
             <div className={`${classes.volume_7d} ${classes.gridMetric}`}>
               <span className={classes.metricLabel}>7d Volume: </span>
               <span className={classes.metricValue}>
-                {token_info.volume_7d}
+                {formatNumber(token_info.volume_7d)}
               </span>
             </div>
             <div
@@ -159,7 +159,7 @@ class MetricDetail extends React.Component {
             >
               <span className={classes.metricLabel}>% Change 24h: </span>
               <span className={classes.metricValue}>
-                {token_info.percent_change_24h}
+                {formatNumber(token_info.percent_change_24h)}
               </span>
             </div>
             <div
@@ -167,7 +167,7 @@ class MetricDetail extends React.Component {
             >
               <span className={classes.metricLabel}>% Change 7d: </span>
               <span className={classes.metricValue}>
-                {token_info.percent_change_7d || "N/A"}
+                {formatNumber(token_info.percent_change_7d) || "N/A"}
               </span>
             </div>
             <div
@@ -175,7 +175,7 @@ class MetricDetail extends React.Component {
             >
               <span className={classes.metricLabel}>% Change 30d: </span>
               <span className={classes.metricValue}>
-                {token_info.percent_change_30d || "N/A"}
+                {formatNumber(token_info.percent_change_30d) || "N/A"}
               </span>
             </div>
             <div className={`${classes.platform} ${classes.gridMetric}`}>
@@ -187,27 +187,35 @@ class MetricDetail extends React.Component {
             <div className={`${classes.total_supply} ${classes.gridMetric}`}>
               <span className={classes.metricLabel}>Total Supply: </span>
               <span className={classes.metricValue}>
-                {token_info.total_supply || "N/A"}
+                {formatNumber(token_info.total_supply) || "N/A"}
               </span>
             </div>
             <div className={`${classes.max_supply} ${classes.gridMetric}`}>
               <span className={classes.metricLabel}>Max Supply: </span>
               <span className={classes.metricValue}>
-                {token_info.max_supply || "N/A"}
+                {formatNumber(token_info.max_supply) || "N/A"}
               </span>
             </div>
+            <div className={`${classes.tags} ${classes.gridMetric}`}>
+              <span className={classes.metricLabel}>Tags: </span>
+              {token_info.tags &&
+                token_info.tags.map((t) =>
+                { return <span className={classes.tag}>{t}, </span> }) }
+            </div>
           </div>
+
           <div className={classes.metricFooter}>
             <div className={classes.metricActions}></div>
           </div>
         </div>
-        <div className={classes.metricCharts}>
+        {/*<div className={classes.metricCharts}>
           <div className={classes.chartBlock}>
           {
             this.renderCharts(metric)
           }
           </div>
         </div>
+        */}
       </div>
     );
   }
@@ -224,18 +232,26 @@ class MetricDetail extends React.Component {
 // </div>
 
 const metricDetailStyles = {
+  tags: {gridArea: "tags"},
+  tag: {
+    color: colors.yellow7
+  },
   metric: {
     width: "100%",
     margin: "0 auto",
+    marginBottom: 30,
+
   },
+
   metricGrid: {
     display: "grid",
     gridTemplateAreas: `
       "sym pct24h tsupply"
-      "price pct7d msupply"
-      "platform pct30d msupply"
-      "platform v24h msupply"
+      "price v24h msupply"
+      "platform pct7d msupply"
       "platform v7d msupply"
+      "platform pct30d msupply"
+      "tags tags tags"
     `,
     justifyItems: "space-between",
     width: "100%",
@@ -279,12 +295,16 @@ const metricDetailStyles = {
   },
   symbol: {
     gridArea: "sym",
+    fontSize: "2rem",
+    lineHeight: "1em",
   },
   platform: {
     gridArea: "platform",
   },
   price: {
     gridArea: "price",
+    fontSize: '1.7rem',
+    lineHeight: "1em",
   },
   volume_24h: {
     gridArea: "v24h",
@@ -422,11 +442,12 @@ class MetricsContainer extends React.Component {
   };
 
   metricTitle = (metric, classes) => {
+    console.log(metric)
     return (
       <div className={classes.cardHeader}>
-        <a className={classes.metricName} href={`/metrics`}>
+        <span className={classes.metricName}>
           {metric.token_info.name}
-        </a>
+        </span>
 
         {this.avatar(metric, classes)}
       </div>
@@ -434,7 +455,6 @@ class MetricsContainer extends React.Component {
   };
 
   avatar = (metric, classes) => {
-    console.log("METRic", metric);
     let imgUrl = require(`Images/crypto-logos/${metric.symbol.toLowerCase()}.png`);
     //
     const metricImg = <Image src={imgUrl} className={classes.img} />;
@@ -497,13 +517,13 @@ class MetricsContainer extends React.Component {
                   itemLayout="vertical"
                   loadMore={loadMore}
                   dataSource={data.filter((m) => {
-                    return m.daily_market_history.length > 0;
+                    return m.daily_market_history && m.daily_market_history.length > 0;
                   })}
                   renderItem={(item) => (
                     <>
                       <List.Item
                         className={classes.metricListItem}
-                        actions={[<a>More</a>, <a>Discuss</a>]}
+                        actions={[]}
                       >
                         <Skeleton
                           avatar
@@ -570,6 +590,7 @@ const metricStyles = {
     fontSize: "2.4rem",
     marginLeft: 8,
     textShadow: `1px 1px 13px ${colors.smoke8}`,
+    color: "#eee"
   },
   avatar: {},
   metricItems: {

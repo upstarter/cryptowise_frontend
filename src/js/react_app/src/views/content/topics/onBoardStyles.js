@@ -4,7 +4,7 @@ import colors from 'Styles/colors'
 const onboardStyles = {
   hero: {
     position: 'absolute',
-    top: '-10vh',
+    top: '-24vh',
     minHeight: '100vh',
     '-webkit-background-clip': 'padding-box', /* for Safari */
     backgroundClip: 'padding-box', /* for IE9+, Firefox 4+, Opera, Chrome */
@@ -20,6 +20,8 @@ const onboardStyles = {
 
     '@media (max-width: 480px)': {
       minHeight: '100vh',
+      top: '-7vh',
+
     },
 
     '& .hero-body': {

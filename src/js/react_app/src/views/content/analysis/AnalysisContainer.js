@@ -63,18 +63,10 @@ class AnalysisContainer extends React.Component {
                 width: "100vw",
               }}
             >
-              <TabPane tab="Metrics" key="Metrics">
+              <TabPane tab="Token Metrics" key="Metrics">
                 <MetricsContainer setKey={this.setKey} stat="Metrics" />
               </TabPane>
-              <TabPane tab="Price" key="Price">
-                <TokensContainer setKey={this.setKey} token="Price" />
-              </TabPane>
-              <TabPane tab="Volatility" key="Volatility">
-                <TokensContainer setKey={this.setKey} token="Volatility" />
-              </TabPane>
-              <TabPane tab="Sentiment" key="Sentiment">
-                <TokensContainer setKey={this.setKey} token="Sentiment" />
-              </TabPane>
+
             </Tabs>
         </div>
       </>
