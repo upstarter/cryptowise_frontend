@@ -9,7 +9,6 @@ import { withRouter } from "react-router-dom";
 // quiz
 import injectSheet, { jss } from "react-jss";
 // import nestedJSS from 'jss-nested'
-import heroStyles from 'Styles/heroStyles'
 import onboardStyles from 'Styles/onboardStyles'
 
 class OnboardContainer extends React.Component {

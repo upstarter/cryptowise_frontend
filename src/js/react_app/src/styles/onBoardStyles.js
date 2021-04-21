@@ -116,5 +116,5 @@ const onboardStyles = {
     }
   },
 }
-// const onboardStyles = heroStyles
+
 export default onboardStyles;
