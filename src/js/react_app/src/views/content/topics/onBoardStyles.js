@@ -4,7 +4,7 @@ import colors from 'Styles/colors'
 const onboardStyles = {
   hero: {
     position: 'absolute',
-    top: '-24vh',
+    top: '-18vh',
     minHeight: '100vh',
     '-webkit-background-clip': 'padding-box', /* for Safari */
     backgroundClip: 'padding-box', /* for IE9+, Firefox 4+, Opera, Chrome */
