@@ -234,7 +234,7 @@ class MetricDetail extends React.Component {
 const metricDetailStyles = {
   tags: {gridArea: "tags"},
   tag: {
-    color: colors.yellow7
+    color: colors.smoke4
   },
   metric: {
     width: "100%",
@@ -285,10 +285,12 @@ const metricDetailStyles = {
     gridArea: "metricExtra",
   },
   metricLabel: {
-    color: colors.smoke8,
+    color: colors.smoke6,
   },
   metricValue: {
     color: colors.spotifyGreen,
+    fontSize: '1.18em',
+    fontWeight: '600'
   },
   name: {
     gridArea: "name",
