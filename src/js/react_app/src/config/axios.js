@@ -9,7 +9,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('_cw_acc'
 axios.defaults.headers.common['X-CSRF-TOKEN'] = cookies.get('_cw_csrf');
 axios.defaults.headers.common['Origin'] = 'https://www.cryptowise.ai'
 axios.defaults.headers.common['credentials'] = 'same-origin'
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 // Also add/ configure interceptors && all the other cool stuff
 //
 // instance.interceptors.request...
