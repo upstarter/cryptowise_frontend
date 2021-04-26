@@ -17,7 +17,7 @@ RUN apt update -y \
 
 COPY --from=build-stage /app/cw_web/dist /usr/share/nginx/html
 COPY --from=build-stage /app/cw_web/dist /var/www/html
-COPY --from=build-stage /app/cw_web/nginx/default.conf /etc/nginx/nginx.conf
+COPY --from=build-stage /app/cw_web/nginx/default.conf /etc/nginx/sites-enabled/default.conf
 
 COPY ./bootstart.sh /
 RUN chmod +x /bootstart.sh
