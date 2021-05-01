@@ -160,9 +160,10 @@ class DiscussComponent extends React.Component {
       loading,
       visible,
       confirmLoading,
-      ModalContent
+      ModalContent,
+      onboard
     } = this.state;
-    if (threads.length < 1) {
+    if (threads && threads.length < 1) {
       return (
         <React.Fragment>
           <ScrollToTopOnMount />
@@ -186,7 +187,7 @@ class DiscussComponent extends React.Component {
                 </h2>
               </div>
             </div>
-            { this.state.onboard ? <OnboardContainer
+            { onboard ? <OnboardContainer
                 className={classes.onboardContainer} id='onboard-container'/> : '' }
 
             <section id="topic-threads" className={classes.noThreadsSection}>
@@ -243,7 +244,7 @@ class DiscussComponent extends React.Component {
               <Button
                 className={`${classes.newThreadButton} ${classes.btn}`}
                 type="primary"
-                onClick={this.onboard}
+                onClick={e => this.onboard(e)}
                 icon={<PlusOutlined />}
                 size="large"
               >
@@ -257,7 +258,7 @@ class DiscussComponent extends React.Component {
                 {threads.map((thread) => {
                   return <Thread key={thread.id} thread={thread} />;
                 })}
-                { this.state.onboard ?
+                { onboard ?
                   <OnboardContainer
                     className={classes.onboardContainer}
                     id='onboard-container'
