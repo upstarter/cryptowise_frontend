@@ -161,14 +161,26 @@ class DiscussComponent extends React.Component {
       ModalContent,
       onboard
     } = this.state;
-    if (threads.length < 1) {
-      return (
+    const loadMore =
+      !initLoading && !loading ? (
+        <div
+          id="load-more-button"
+          style={{
+            textAlign: "center",
+            marginTop: 12,
+            height: 32,
+            lineHeight: "32px",
+          }}
+        >
+          <Button onClick={this.onLoadMore}>Load More</Button>
+        </div>
+      ) : null;
+
+    return (
+
         <React.Fragment>
           <ScrollToTopOnMount />
           <section id="topic-threads" className={classes.threadSection}>
-
-
-
             <div id="thread-items" className={classes.threads}>
               <div className={classes.threadsHeader}>
                 <Button
@@ -203,74 +215,6 @@ class DiscussComponent extends React.Component {
         </React.Fragment>
       );
     }
-
-    const loadMore =
-      !initLoading && !loading ? (
-        <div
-          id="load-more-button"
-          style={{
-            textAlign: "center",
-            marginTop: 12,
-            height: 32,
-            lineHeight: "32px",
-          }}
-        >
-          <Button onClick={this.onLoadMore}>Load More</Button>
-        </div>
-      ) : null;
-
-    return (
-      <React.Fragment>
-        <ScrollToTopOnMount />
-
-        <section id="topic-threads" className={classes.threadSection}>
-          <NewThreadForm
-            wrappedComponentRef={this.saveFormRef}
-            wrapClassName={classes.modal}
-            visible={this.state.visible}
-            onCancel={this.handleCancel}
-            onCreate={this.handleCreate}
-            confirmLoading={confirmLoading}
-          />
-
-          <div id="thread-items" className={classes.threads}>
-            <div className={classes.threadsHeader}>
-              <h2 className={classes.pageTitle}>
-                <span>Discuss</span> {topicName}
-              </h2>
-
-              <Button
-                className={`${classes.newThreadButton} ${classes.btn}`}
-                type="primary"
-                onClick={this.onboard}
-                icon={<PlusOutlined />}
-                size="large"
-              >
-                Create Thread
-              </Button>
-            </div>
-
-            <div className={classes.threadMain}>
-
-              <div className={classes.threadList}>
-                {threads.map((thread) => {
-                  return <Thread key={thread.id} thread={thread} />;
-                })}
-                { onboard ?
-                  <OnboardContainer
-                    className={classes.onboardContainer}
-                    id='onboard-container'
-                    /> : ''
-                  }
-              </div>
-
-            </div>
-
-          </div>
-        </section>
-      </React.Fragment>
-    );
-  }
 }
 
 const threadListStyles = {
