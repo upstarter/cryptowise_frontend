@@ -1,4 +1,3 @@
-import axios from "axios";
 import url from "Utils/consts"
 import { api_url } from 'Utils/consts';
 import {API_SUCCESS, API_ERROR, apiRequest} from "Redux/core/api.core"
