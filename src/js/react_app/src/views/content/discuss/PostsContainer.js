@@ -103,9 +103,7 @@ class PostsContainer extends React.Component {
     });
   };
 
-  onboard = (e) => {
-    e.preventDefault();
-
+  onboard = () => {
     this.setState({onboard: true})
   }
 
@@ -161,42 +159,11 @@ class PostsContainer extends React.Component {
       visible,
       confirmLoading,
       ModalContent,
+      onboard
     } = this.state;
     if (!thread) return <></>;
     let { title, description } = thread;
-    if (posts && posts.length < 0) {
-      return (
-        <React.Fragment>
-          <ScrollToTopOnMount />
-          <NewThreadForm
-            wrappedComponentRef={this.saveFormRef}
-            wrapClassName={classes.modal}
-            visible={this.state.visible}
-            onCancel={this.handleCancel}
-            onCreate={this.handleCreate}
-            confirmLoading={confirmLoading}
-          />
-
-          <div id="post-items" className={classes.posts}>
-            <div className={classes.postsHeader}>
-              <Button
-                className="float"
-                onClick={this.showModal}
-                shape="circle"
-                icon={<PlusOutlined />}
-                size="large"
-              />
-              <h2 className={classes.pageTitle}>
-                <span>Discuss</span> <span>{title} </span>
-              </h2>
-            </div>
-          </div>
-          <section id="post-posts" className={classes.postsSection}>
-            <h1>No Posts Yet.. Be the first to discuss {title}</h1>
-          </section>
-        </React.Fragment>
-      );
-    }
+    
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -260,7 +227,7 @@ class PostsContainer extends React.Component {
                   )}
 
                 </section>
-                { this.state.onboard ? <OnboardContainer
+                { onboard ? <OnboardContainer
                     className={classes.onboardContainer} id='onboard-container'/> : '' }
 
               </div>

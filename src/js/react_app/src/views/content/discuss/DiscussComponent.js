@@ -97,9 +97,7 @@ class DiscussComponent extends React.Component {
     });
   };
 
-  onboard = (e) => {
-    e.preventDefault();
-
+  onboard = () => {
     this.setState({onboard: true})
   }
   saveFormRef = (formRef) => {
@@ -163,7 +161,7 @@ class DiscussComponent extends React.Component {
       ModalContent,
       onboard
     } = this.state;
-    if (threads && threads.length < 1) {
+    if (threads.length < 1) {
       return (
         <React.Fragment>
           <ScrollToTopOnMount />
@@ -176,7 +174,7 @@ class DiscussComponent extends React.Component {
                 <Button
                   className={classes.newThreadButton}
                   type="primary"
-                  onClick={e => this.onboard(e)}
+                  onClick={this.onboard}
                   icon={<PlusOutlined />}
                   size="large"
                 >
@@ -244,7 +242,7 @@ class DiscussComponent extends React.Component {
               <Button
                 className={`${classes.newThreadButton} ${classes.btn}`}
                 type="primary"
-                onClick={e => this.onboard(e)}
+                onClick={this.onboard}
                 icon={<PlusOutlined />}
                 size="large"
               >
