@@ -158,9 +158,10 @@ class DiscussComponent extends React.Component {
       loading,
       visible,
       confirmLoading,
-      ModalContent,
-      onboard
+      ModalContent
     } = this.state;
+
+
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -177,33 +178,10 @@ class DiscussComponent extends React.Component {
       ) : null;
 
     return (
+      <React.Fragment>
+        <ScrollToTopOnMount />
 
-        <React.Fragment>
-          <ScrollToTopOnMount />
-          <section id="topic-threads" className={classes.threadSection}>
-            <div id="thread-items" className={classes.threads}>
-              <div className={classes.threadsHeader}>
-                <Button
-                  className={classes.newThreadButton}
-                  type="primary"
-                  onClick={this.onboard}
-                  icon={<PlusOutlined />}
-                  size="large"
-                >
-                  Create Thread
-                </Button>
-                <h2 className={(classes.pageTitle)}>
-                  <span>Discuss</span> {topicName}{" "}
-                </h2>
-              </div>
-            </div>
-            { onboard ? <OnboardContainer
-                className={classes.onboardContainer} id='onboard-container'/> : '' }
-
-            <section id="topic-threads" className={classes.noThreadsSection}>
-              <h3 className={classes.noThreadsYet}>No Threads Yet.. Create a thread about {topicName} to start the discussion!</h3>
-            </section>
-          </section>
+        <section id="topic-threads" className={classes.threadSection}>
           <NewThreadForm
             wrappedComponentRef={this.saveFormRef}
             wrapClassName={classes.modal}
@@ -212,17 +190,75 @@ class DiscussComponent extends React.Component {
             onCreate={this.handleCreate}
             confirmLoading={confirmLoading}
           />
-        </React.Fragment>
-      );
-    }
+
+          <div id="thread-items" className={classes.threads}>
+            <div className={classes.threadsHeader}>
+              <h2 className={classes.pageTitle}>
+                <span>Discuss</span> {topicName}
+              </h2>
+
+              <Button
+                className={`${classes.newThreadButton} ${classes.btn}`}
+                type="primary"
+                onClick={this.onboard}
+                icon={<PlusOutlined />}
+                size="large"
+              >
+                Create Thread
+              </Button>
+            </div>
+
+            <div className={classes.threadMain}>
+
+              <div className={classes.threadList}>
+                { threads.length > 0 ? threads.map((thread) => {
+                    return <Thread key={thread.id} thread={thread} />;
+                  }) :
+                  <section id="topic-threads" className={classes.noThreadsSection}>
+                    <h3 className={classes.noThreadsYet}>No Threads Yet.. Create a thread about {topicName} to start the discussion!</h3>
+                  </section>
+
+
+              }
+                { this.state.onboard ?
+                  <OnboardContainer
+                    className={classes.onboardContainer}
+                    id='onboard-container'/> : '' }
+              </div>
+
+              <NewThreadForm
+                wrappedComponentRef={this.saveFormRef}
+                wrapClassName={classes.modal}
+                visible={this.state.visible}
+                onCancel={this.handleCancel}
+                onCreate={this.handleCreate}
+                confirmLoading={confirmLoading}
+              />
+            </div>
+
+          </div>
+        </section>
+      </React.Fragment>
+    );
+  }
 }
 
 const threadListStyles = {
   onboardContainer: {
-
+    position: 'absolute',
+    display: 'block',
+    width: '100vw',
+    height: '100vh',
+    top: '100px',
+    left: 0,
+    right: 0,
   },
   threadMain: {
-
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    width: '100vw',
+    height: '100vh'
   },
   threadsHeader: {
     display: "grid",
