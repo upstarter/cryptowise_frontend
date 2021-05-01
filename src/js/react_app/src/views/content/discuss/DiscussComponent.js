@@ -175,7 +175,7 @@ class DiscussComponent extends React.Component {
                 <Button
                   className={classes.newThreadButton}
                   type="primary"
-                  onClick={this.onboard}
+                  onClick={e => this.onboard(e)}
                   icon={<PlusOutlined />}
                   size="large"
                 >
