@@ -97,7 +97,9 @@ class DiscussComponent extends React.Component {
     });
   };
 
-  onboard = () => {
+  onboard = (e) => {
+    e.preventDefault();
+
     this.setState({onboard: true})
   }
   saveFormRef = (formRef) => {
@@ -184,7 +186,7 @@ class DiscussComponent extends React.Component {
                 </h2>
               </div>
             </div>
-            { this.state.showOnboard ? <OnboardContainer
+            { this.state.onboard ? <OnboardContainer
                 className={classes.onboardContainer} id='onboard-container'/> : '' }
 
             <section id="topic-threads" className={classes.noThreadsSection}>

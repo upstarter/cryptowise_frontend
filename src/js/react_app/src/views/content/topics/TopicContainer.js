@@ -24,7 +24,7 @@ class TopicChildren extends React.Component {
     this.state = {
       topic: props.topic,
       topicID: props.topicID,
-      showOnboard: false,
+      onboard: false,
     }
   }
 
@@ -38,7 +38,7 @@ class TopicChildren extends React.Component {
 
   onboard = (e) => {
       e.preventDefault();
-      this.setState({showOnboard: true})
+      this.setState({onboard: true})
   }
 
   topicDetail = (topic, classes) => {
@@ -169,7 +169,7 @@ class TopicChildren extends React.Component {
         <div className={classes.childTopicDetails}>
           { this.topicChildren(topic.id, topic.children, classes) }
         </div>
-        { this.state.showOnboard ? <OnboardContainer id='onboard-container'/> : '' }
+        { this.state.onboard ? <OnboardContainer id='onboard-container'/> : '' }
       </div>
 
     )

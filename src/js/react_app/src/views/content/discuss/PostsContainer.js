@@ -103,7 +103,9 @@ class PostsContainer extends React.Component {
     });
   };
 
-  onboard = () => {
+  onboard = (e) => {
+    e.preventDefault();
+
     this.setState({onboard: true})
   }
 

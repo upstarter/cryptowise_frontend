@@ -6,9 +6,7 @@ import colors from 'Styles/colors'
 import FadeIn from 'react-fade-in';
 import { withRouter } from "react-router-dom";
 
-// quiz
 import injectSheet, { jss } from "react-jss";
-// import nestedJSS from 'jss-nested'
 import onboardStyles from './onboardStyles'
 
 class OnboardContainer extends React.Component {
@@ -73,40 +71,3 @@ class OnboardContainer extends React.Component {
 
 
 export default injectSheet(onboardStyles)(withRouter(OnboardContainer))
-
-// <div>
-//   <a className="github-button" target="_blank" href="https://github.com/sponsors/upstarter" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-heart" aria-label="Sponsor @upstarter on GitHub">Sponsor</a>
-//   <a className="github-button" target="_blank" href="https://github.com/upstarter/cryptowise" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" aria-label="Star upstarter/cryptowise on GitHub">Star</a>
-//   <a className="github-button" target="_blank" href="https://github.com/upstarter/cryptowise/subscription" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-eye" aria-label="Watch upstarter/cryptowise on GitHub">Watch</a>
-// </div>
-
-// <p className="subtitle-big">Receive free insights in your inbox.</p>
-
-// <div className="control has-text-centered">
-//   <input
-//     className="input"
-//     type="text"
-//     placeholder="Email Address"
-//   />
-// </div>
-
-// <Modal
-//   isOpen={state.showQuizModal}
-//   // onAfterOpen={this.afterOpenModal}
-//   onRequestClose={this.handleCloseModal}
-//   style={modalStyles}
-//   contentLabel="Example Modal"
-// >
-//   <Quiz quiz={quiz} />
-// </Modal>
-
-// <Button
-//   className={`is-primary is-rounded ${
-//     state.subscribeButtonLoading ? "is-loading" : null
-//   }`}
-//   onClick={this.handleOpenQuizModal}
-// >
-//   {" "}
-//   Quiz{" "}
-// </Button>
-// Compile styles, apply plugins.
