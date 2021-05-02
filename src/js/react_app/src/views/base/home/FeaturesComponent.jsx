@@ -44,7 +44,7 @@ class FeaturesComponent extends React.Component {
                   <p>
                     Participate in an investing ecosystem that rewards creative
                     solutions to complicated investment problems. Analyze, synthesize, and actualize
-                    cutting edge research across increasingly vast design spaces in Crypto Networking, Financial Machine Learning
+                    bleeding edge research across increasingly vast design spaces in Crypto Networking, Financial Machine Learning
                     and Artificial Intelligence.
                   </p>
                 </Col>

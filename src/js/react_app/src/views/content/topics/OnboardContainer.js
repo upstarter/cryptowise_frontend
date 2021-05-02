@@ -33,13 +33,12 @@ class OnboardContainer extends React.Component {
           <div className='hero-body'>
             <div className="wrap">
               <h1 className="title">
-                Become a <span className="fancy-underline">top 1%</span> crypto
+                <span className="fancy-underline">Take the Journey</span>
                 <div className="slidingVertical">
-                  <span>trader.</span>
-                  <span>strategist.</span>
-                  <span>engineer.</span>
-                  <span>analyst.</span>
-                  <span>investor.</span>
+                  <span>from Data.</span>
+                  <span>to Information.</span>
+                  <span>to Knowledge.</span>
+                  <span>to Wisdom.</span>
                 </div>
               </h1>
               <div id="subscribe-form" className="email-leadgen">
@@ -55,7 +54,7 @@ class OnboardContainer extends React.Component {
                         onClick={this.signUpRouteChange}
                         size='large'
                       >
-                        Sign Up
+                        Sign Up to Discuss
                       </AppButton>
                     </div>
                   </div>

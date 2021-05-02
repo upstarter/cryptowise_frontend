@@ -38,7 +38,7 @@ const onboardStyles = {
           fontFamily: 'Avenir-Light, sans-serif',
           maxWidth: '90rem',
 
-          marginLeft: '-15%',
+          marginLeft: '-25%',
           fontSize: '4.8rem',
           lineHeight: '4.9rem',
           letterSpacing: '-.02ch',
