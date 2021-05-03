@@ -52,10 +52,12 @@ class AppHeader extends React.Component {
           <MenuUnfoldOutlined
             className={classes.mainMenu}
             onClick={this.toggleSider}
+            size="large"
           /> :
           <MenuFoldOutlined
             className={classes.mainMenu}
             onClick={this.toggleSider}
+            size="large"
           />
         }
         <Link className={classes.logoLink} to="/">
@@ -90,6 +92,7 @@ const headerStyles = {
   },
   mainMenu: {
     marginLeft: 10,
+    fontSize: '5rem',
   },
   menu: {
     color: `${colors.silver} !important`,

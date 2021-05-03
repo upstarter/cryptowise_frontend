@@ -13,41 +13,22 @@ class SiderMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: props.siderCollapsed,
+      siderCollapsed: props.siderCollapsed,
       collapsedWidth: 0,
       broken: false
     };
   }
 
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
 
-  onSiderCollapse = (collapsed, type) => {
-    if (!collapsed) {
-      this.setState({collapsed: false})
+  componentDidUpdate(prevProps, prevState) {
+    if (!this.props.siderCollapsed) {
+      // when the state is updated (turned red),
+      // a timeout is triggered to switch it back off
       setTimeout(() => {
-        this.setState({collapsed: true})
-      }, 5000)
-    } else {
-      setTimeout(() => {
-        this.setState({collapsed: true})
-      }, 5000)
+        this.props.toggleSider()
+
+      }, 5000);
     }
-  };
-
-  collapse = () => {
-    this.setState({
-      collapsed: true,
-    });
-  }
-
-  open = () => {
-    this.setState({
-      collapsed: false
-    });
   }
 
   onSelect = () => {
@@ -55,14 +36,14 @@ class SiderMenu extends React.Component {
   }
 
   render() {
-    const { location, classes, siderCollapsed } = this.props;
+    const { location, classes, siderCollapsed} = this.props;
     return (
       <Sider
         className={classes.sider}
         style={{right: 0}}
         collapsible
         defaultCollapsed={true}
-        width="130"
+        width="200"
         collapsedWidth="0"
         trigger={null}
         // zeroWidthTriggerStyle={{bottom: 0}}
@@ -81,7 +62,7 @@ class SiderMenu extends React.Component {
 
 const siderMenuStyles = {
   sider: {
-    marginTop: 50,
+    marginTop: 60,
     overflow: 'auto',
     height: '100vh',
     position: 'fixed',
