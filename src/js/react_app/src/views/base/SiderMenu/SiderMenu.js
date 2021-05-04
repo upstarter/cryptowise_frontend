@@ -19,17 +19,17 @@ class SiderMenu extends React.Component {
     };
   }
 
-
-  componentDidUpdate(prevProps, prevState) {
-    if (!this.props.siderCollapsed) {
-      // when the state is updated (turned red),
-      // a timeout is triggered to switch it back off
-      setTimeout(() => {
-        this.props.toggleSider()
-
-      }, 5000);
-    }
-  }
+  // 
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (!this.props.siderCollapsed) {
+  //     // when the state is updated (turned red),
+  //     // a timeout is triggered to switch it back off
+  //     setTimeout(() => {
+  //       this.props.toggleSider()
+  //
+  //     }, 5000);
+  //   }
+  // }
 
   onSelect = () => {
     this.props.toggleSider()
