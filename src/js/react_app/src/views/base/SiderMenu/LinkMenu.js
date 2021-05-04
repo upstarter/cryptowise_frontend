@@ -40,7 +40,7 @@ const LinkMenu = withRouter(props => {
         {
           <Menu.Item title={false} title={false} key="/explore">
             <Link to="/explore" style={{ textDecoration: "none" }}>
-              <ExperimentOutlined  />
+              <ExperimentOutlined style={{fontSize: '1.4em'}}  />
               <span className={classes.navText}>Explore</span>
             </Link>
           </Menu.Item>
@@ -48,7 +48,7 @@ const LinkMenu = withRouter(props => {
         {
           <Menu.Item title={false} title={false} key="/discuss">
             <Link to="/discuss" style={{ textDecoration: "none" }}>
-              <CommentOutlined type="comment-outlined" />
+              <CommentOutlined style={{fontSize: '1.4em'}} type="comment-outlined" />
               <span className={classes.navText}>Discuss</span>
             </Link>
           </Menu.Item>
@@ -56,7 +56,7 @@ const LinkMenu = withRouter(props => {
         { !auth.signedIn() ?
           <Menu.Item title={false} key="/">
             <Link to="/" style={{ textDecoration: "none" }}>
-              <UserAddOutlined />
+              <UserAddOutlined style={{fontSize: '1.4em'}} />
               <span className={classes.navText}>Sign Up</span>
             </Link>
           </Menu.Item> : '' }
@@ -83,7 +83,7 @@ const LinkMenu = withRouter(props => {
         // { !auth.signedIn() ?
         //   <Menu.Item title={false} key="/analysts">
         //     <Link to="/analysts" style={{ textDecoration: "none" }}>
-        //       <UserOutlined />
+        //       <UserOutlined style={{fontSize: '1.4em'}} />
         //       <span className={classes.navText}>Contribute</span>
         //     </Link>
         //   </Menu.Item>  : '' }
@@ -92,7 +92,7 @@ const LinkMenu = withRouter(props => {
             // { auth.signedIn() ?
             //   <Menu.Item title={false} key="/proposals">
             //     <Link to="/proposals" style={{ textDecoration: "none" }}>
-            //       <BulbOutlined />
+            //       <BulbOutlined style={{fontSize: '1.4em'}} />
             //       <span className={classes.navText}>Ideate</span>
             //     </Link>
             //   </Menu.Item> : ''
@@ -100,7 +100,7 @@ const LinkMenu = withRouter(props => {
             // { auth.signedIn() ?
             //   <Menu.Item title={false} key="/portfolio">
             //     <Link to="/portfolio" style={{ textDecoration: "none" }}>
-            //       <PieChartOutlined />
+            //       <PieChartOutlined style={{fontSize: '1.4em'}} />
             //       <span className={classes.navText}>Portfolio</span>
             //     </Link>
             //   </Menu.Item> : ''
@@ -109,7 +109,7 @@ const LinkMenu = withRouter(props => {
         { auth.signedIn() ?
           <Menu.Item title={false} key="/profile">
             <Link to="/profile" style={{ textDecoration: "none" }}>
-            <UserOutlined />
+            <UserOutlined style={{fontSize: '1.4em'}} />
               <span className={classes.navText}>Profile</span>
             </Link>
           </Menu.Item> : ''
@@ -119,7 +119,7 @@ const LinkMenu = withRouter(props => {
         // {
         //   <Menu.Item title={false} key="/closemenu">
         //     <Link to="/close" style={{ textDecoration: "none" }}>
-        //     <CloseOutlined />
+        //     <CloseOutlined style={{fontSize: '1.4em'}} />
         //       <span className={classes.navText}>Close</span>
         //     </Link>
         //   </Menu.Item>
@@ -138,13 +138,13 @@ const LinkMenu = withRouter(props => {
 
         { <Menu.Item title={false} key="/login">
             <Link to="/login" style={{ textDecoration: "none" }}>
-            <LoginOutlined />
+            <LoginOutlined style={{fontSize: '1.4em'}} />
             <span className={classes.navText}>Sign In</span>
             </Link>
           </Menu.Item> }
         { <Menu.Item title={false} key="/developers">
           <Link to="/developers" style={{ textDecoration: "none" }}>
-            <CodeOutlined />
+            <CodeOutlined style={{fontSize: '1.4em'}} />
             <span className={classes.navText}>Dev</span>
           </Link>
         </Menu.Item>
@@ -153,14 +153,14 @@ const LinkMenu = withRouter(props => {
         {/* <Menu.Item title={false} key="/contact">Contact</Menu.Item> */}
         { <Menu.Item title={false} key="/about">
             <Link to="/about" style={{ textDecoration: "none" }}>
-            <QuestionOutlined />
+            <QuestionOutlined style={{fontSize: '1.4em'}} />
               <span className={classes.navText}>About</span>
             </Link>
           </Menu.Item>
         }
         { <Menu.Item title={false} key="/logout">
             <Link to="/logout" style={{ textDecoration: "none" }}>
-            <LogoutOutlined />
+            <LogoutOutlined style={{fontSize: '1.4em'}} />
             <span className={classes.navText}>Sign Out</span>
             </Link>
           </Menu.Item> }
@@ -181,7 +181,7 @@ const menuStyles = {
   },
   navText: {
     color: "silver",
-
+    fontSize: '1.4em'
   },
 
 };
