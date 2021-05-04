@@ -38,7 +38,7 @@ class OnboardContainer extends React.Component {
                   <span>from Data.</span>
                   <span>to Information.</span>
                   <span>to Knowledge.</span>
-                  <span>to <span style={{fontSize: '1.4em'}}>Wisdom.</span></span>
+                  <span>to Wisdom.</span>
                 </div>
               </h1>
               <div id="subscribe-form" className="email-leadgen">

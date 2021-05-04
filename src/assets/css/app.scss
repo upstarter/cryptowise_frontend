@@ -225,7 +225,8 @@ body {
     animation: topToBottom 6s linear infinite 0s;
     -ms-animation: topToBottom 6s linear infinite 0s;
     -webkit-animation: topToBottom 6s linear infinite 0s;
-    color: #1990ff;
+    color: #eee;
+    // text-shadow: 0px 0px 30px #fff;
     opacity: 0;
   }
   .slidingVertical span:nth-child(2){
