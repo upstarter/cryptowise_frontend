@@ -139,7 +139,7 @@ const LinkMenu = withRouter(props => {
         { <Menu.Item title={false} key="/login">
             <Link to="/login" style={{ textDecoration: "none" }}>
             <LoginOutlined />
-            <span className={classes.navText}>Login</span>
+            <span className={classes.navText}>Sign In</span>
             </Link>
           </Menu.Item> }
         { <Menu.Item title={false} key="/developers">
@@ -161,7 +161,7 @@ const LinkMenu = withRouter(props => {
         { <Menu.Item title={false} key="/logout">
             <Link to="/logout" style={{ textDecoration: "none" }}>
             <LogoutOutlined />
-            <span className={classes.navText}>Logout</span>
+            <span className={classes.navText}>Sign Out</span>
             </Link>
           </Menu.Item> }
       </Menu>

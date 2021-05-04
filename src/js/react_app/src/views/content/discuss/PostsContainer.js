@@ -22,6 +22,8 @@ import {
 import { api_url, url } from "Utils/consts";
 import { CommentOutlined, PlusOutlined } from "@ant-design/icons";
 import OnboardContainer from 'Topics/OnboardContainer'
+import AuthService from 'Services/auth/AuthService'
+let auth = new AuthService;
 
 class PostsContainer extends React.Component {
   constructor(props) {
@@ -148,6 +150,30 @@ class PostsContainer extends React.Component {
     // }
   }
 
+  buttons = (classes) => {
+    if (!auth.signedIn()) {
+      return <Button
+        className={`${classes.newPostButton} ${classes.btn}`}
+        type="primary"
+        onClick={this.onboard}
+        icon={<PlusOutlined />}
+        size="large"
+      >
+        Reply
+      </Button>
+  } else {
+    return <Button
+        className={`${classes.newThreadButton} ${classes.btn}`}
+        type="primary"
+        onClick={this.showModal}
+        icon={<PlusOutlined />}
+        size="large"
+      >
+        Reply
+      </Button>
+    }
+  }
+
   render() {
     let { classes } = this.props;
     const {
@@ -163,7 +189,7 @@ class PostsContainer extends React.Component {
     } = this.state;
     if (!thread) return <></>;
     let { title, description } = thread;
-    
+
     const loadMore =
       !initLoading && !loading ? (
         <div
@@ -203,15 +229,7 @@ class PostsContainer extends React.Component {
                   <span className={classes.threadDesc}>{thread.description}</span>
                 </div>
                 <div className={classes.postActions}>
-                  <Button
-                    className={`${classes.newPostButton} ${classes.btn}`}
-                    type="primary"
-                    onClick={this.onboard}
-                    icon={<PlusOutlined />}
-                    size="large"
-                  >
-                    Reply
-                  </Button>
+                  {this.buttons(classes)}
                 </div>
               </div>
             </section>
