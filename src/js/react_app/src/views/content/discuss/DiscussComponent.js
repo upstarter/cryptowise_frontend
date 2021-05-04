@@ -23,7 +23,8 @@ import {
 import { api_url, url } from "Utils/consts";
 import { CommentOutlined, PlusOutlined } from "@ant-design/icons";
 import OnboardContainer from 'Topics/OnboardContainer'
-
+import AuthService from 'Services/auth/AuthService'
+let auth = new AuthService;
 class DiscussComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -149,6 +150,30 @@ class DiscussComponent extends React.Component {
     }
   }
 
+  buttons = (classes) => {
+    if (!auth.signedIn()) {
+      return <Button
+        className={`${classes.newThreadButton} ${classes.btn}`}
+        type="primary"
+        onClick={this.onboard}
+        icon={<PlusOutlined />}
+        size="large"
+      >
+        Create Thread
+      </Button>
+    } else {
+      return <Button
+        className={`${classes.newThreadButton} ${classes.btn}`}
+        type="primary"
+        onClick={this.showModal}
+        icon={<PlusOutlined />}
+        size="large"
+      >
+        Create Thread
+      </Button>
+    }
+  }
+
   render() {
     let { classes } = this.props;
     const {
@@ -197,15 +222,7 @@ class DiscussComponent extends React.Component {
                 <span>Discuss</span> {topicName}
               </h2>
 
-              <Button
-                className={`${classes.newThreadButton} ${classes.btn}`}
-                type="primary"
-                onClick={this.onboard}
-                icon={<PlusOutlined />}
-                size="large"
-              >
-                Create Thread
-              </Button>
+              {this.buttons(classes)}
             </div>
 
             <div className={classes.threadMain}>
