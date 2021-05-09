@@ -84,8 +84,7 @@ class MetricDetail extends React.Component {
   }
   render() {
     let { metric, data, classes } = this.props;
-    let { daily_market_history } = metric;
-    let { token_info } = metric;
+    let { daily_market_history, token_info } = metric;
     if (daily_market_history[0] == undefined) return null;
     let dmh;
     let pct24h = token_info.percent_change_24h
@@ -172,11 +171,13 @@ class MetricDetail extends React.Component {
                 {formatNumber(token_info.max_supply) || "N/A"}
               </span>
             </div>
-            <div className={`${classes.tags} ${classes.gridMetric}`}>
-              <span className={classes.metricLabel}>Tags </span>
-              {token_info.tags &&
-                token_info.tags.map((t) =>
-                { return <span className={classes.tag}>{t}, </span> }) }
+            <div className={`${classes.tags}`}>
+              <h4 className={classes.metricLabel}>Tags </h4>
+              <div>
+                {token_info.tags &&
+                  token_info.tags.map((t) =>
+                  { return <span className={classes.tag}>{t}, </span> }) }
+              </div>
             </div>
           </div>
 
@@ -198,9 +199,24 @@ class MetricDetail extends React.Component {
 }
 
 const metricDetailStyles = {
-  tags: {gridArea: "tags"},
+  tags: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gridArea: "tags",
+  },
+  tagLabel: {
+
+  },
   tag: {
-    color: colors.smoke4
+    paddingRight: 8,
+    minWidth: 40,
+    color: colors.smoke5_5
+  },
+  metricLabel: {
+
+    color: colors.silver,
+    // textShadow: `-2px -2px 4px ${colors.silver8}`
   },
   metric: {
     width: "100%",
@@ -226,6 +242,7 @@ const metricDetailStyles = {
     boxShadow: `inset 0 0 30px 10px ${colors.silver2},
                 0 0 13px 10px ${colors.silver2}`,
     padding: 35,
+    fontSize: '2rem',
   },
   gridMetric: {
     display: 'flex',
@@ -252,10 +269,7 @@ const metricDetailStyles = {
   metricExtra: {
     gridArea: "metricExtra",
   },
-  metricLabel: {
-    color: colors.silver,
-    // textShadow: `-2px -2px 4px ${colors.silver8}`
-  },
+
   metricValue: {
     color: colors.spotifyGreen,
     fontSize: '1.1em',
@@ -310,7 +324,6 @@ const metricDetailStyles = {
     padding: [13, 2, 13, 2],
   },
   metricDetail: {
-    justifySelf: "start",
   },
   metricDetails: {
     margin: "0 auto",

@@ -1,6 +1,6 @@
 function formatNumber(value) {
   if (value === null) return value
-  if (value === undefined) return "N/A"
+  if (value === undefined) return "Unk"
   value += '';
   const list = value.split('.');
   const prefix = list[0].charAt(0) === '-' ? '-' : '';
