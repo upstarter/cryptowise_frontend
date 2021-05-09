@@ -103,7 +103,6 @@ class MetricsContainer extends React.Component {
   };
 
   metricTitle = (metric, classes) => {
-    console.log(metric)
     return (
       <div className={classes.cardHeader}>
         <span className={classes.metricName}>

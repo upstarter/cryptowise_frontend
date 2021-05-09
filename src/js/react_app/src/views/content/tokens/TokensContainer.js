@@ -45,7 +45,6 @@ class TokenDetail extends React.Component {
   render() {
     let { token, data, classes } = this.props;
     const { children, description, name, symbol, id } = token;
-    console.log('dat', data)
     return (
       <div className={classes.token}>
         <div className={classes.tokenDetails}>
