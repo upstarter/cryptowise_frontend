@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import AuthService from 'Services/auth/AuthService'
+import AuthService from 'Services/AuthService'
 import { Route, Redirect } from "react-router-dom";
 
 export default class Logout extends Component {
 
-  constructor() {
-    super();
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
+  constructor(props) {
+    super(props);
   }
   state = {
     redirectToReferrer: false,
@@ -15,7 +13,7 @@ export default class Logout extends Component {
     password: ``
   };
 
-  handleUpdate(event) {
+  handleUpdate = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
